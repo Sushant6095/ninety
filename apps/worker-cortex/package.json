@@ -1,0 +1,1 @@
+{ "name": "@omnipitch/worker-cortex", "private": true, "scripts": { "dev": "python3 src/cortex/main.py", "build": "echo py", "lint": "echo py", "test": "echo py" } }

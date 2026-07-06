@@ -1,0 +1,6 @@
+:root {
+  --bg:#0B0D10; --surface:#14171C; --hairline:#232A33;
+  --text-hi:#F5F7FA; --text-lo:#97A0AF;
+  --up:#2BD97C; --down:#FF3D81; --halt:#FFB020; --chain:#9D6BFF;
+  --radius-card:16px; --radius-chip:999px;
+}

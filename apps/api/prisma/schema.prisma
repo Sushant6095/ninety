@@ -1,0 +1,120 @@
+// Durable truth (README data-flow rule 3). Hot state lives in Redis.
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String         @id @default(uuid())
+  handle       String         @unique
+  walletPubkey String         @unique
+  authKind     String // embedded | external  (ADR-006)
+  createdAt    DateTime       @default(now())
+  positions    Position[]
+  orders       Order[]
+  credits      CreditLedger[]
+}
+
+model Match {
+  id        String   @id // txline match id
+  stage     String
+  kickoffAt DateTime
+  status    String
+  home      String
+  away      String
+  markets   Market[]
+}
+
+model Market {
+  id             String     @id
+  matchId        String
+  kind           String     @default("1X2") // ADR-001
+  status         String     @default("SCHEDULED")
+  bParam         Float      @default(300)
+  settledOutcome String?
+  settleSig      String?
+  match          Match      @relation(fields: [matchId], references: [id])
+  orders         Order[]
+  positions      Position[]
+}
+
+model Order {
+  id       String   @id @default(uuid())
+  userId   String
+  marketId String
+  outcome  String // H | D | A
+  side     String // buy | sell
+  size     Int
+  status   String
+  ts       DateTime @default(now())
+  user     User     @relation(fields: [userId], references: [id])
+  market   Market   @relation(fields: [marketId], references: [id])
+  fills    Fill[]
+}
+
+model Fill {
+  id      String   @id @default(uuid())
+  orderId String
+  price   Float
+  size    Int
+  fee     Float
+  ts      DateTime @default(now())
+  order   Order    @relation(fields: [orderId], references: [id])
+}
+
+model Position {
+  userId      String
+  marketId    String
+  outcome     String
+  qty         Int
+  avgPrice    Float
+  realizedPnl Float  @default(0)
+  user        User   @relation(fields: [userId], references: [id])
+  market      Market @relation(fields: [marketId], references: [id])
+
+  @@id([userId, marketId, outcome])
+}
+
+model CreditLedger {
+  id      String   @id @default(uuid())
+  userId  String
+  matchId String
+  delta   Int
+  reason  String
+  ts      DateTime @default(now())
+  user    User     @relation(fields: [userId], references: [id])
+}
+
+model SettlementSaga {
+  marketId  String   @id
+  step      String
+  state     String
+  updatedAt DateTime @updatedAt
+}
+
+model Settlement {
+  marketId  String @id
+  result    String
+  proofHash String
+  solanaSig String
+  lbRoot    String
+}
+
+model Moment {
+  id       String  @id @default(uuid())
+  marketId String
+  imageUri String
+  mintSig  String?
+}
+
+model ChainEvent {
+  sig     String @id
+  program String
+  kind    String
+  payload Json
+  slot    BigInt
+}

@@ -1,0 +1,8 @@
+# fly launch --config infra/fly.api.toml
+app = "omnipitch-api"
+primary_region = "bom"
+[build]
+dockerfile = "../apps/api/Dockerfile"
+[http_service]
+internal_port = 4000
+force_https = true

@@ -1,0 +1,10 @@
+[toolchain]
+[features]
+resolution = true
+[programs.devnet]
+omnipitch_core = "Fill1nAfterFirstDeploy11111111111111111111111"
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+[scripts]
+test = "yarn ts-mocha -p ./tsconfig.json tests/**/*.ts"

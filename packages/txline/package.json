@@ -1,0 +1,6 @@
+{
+  "name": "@omnipitch/txline", "private": true, "version": "0.0.1",
+  "main": "src/client.ts",
+  "scripts": { "build": "tsc -p .", "lint": "echo lint", "test": "echo ok" },
+  "devDependencies": { "typescript": "^5.5.0" }
+}

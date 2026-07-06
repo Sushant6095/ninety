@@ -1,0 +1,7 @@
+{
+  "name": "@omnipitch/chain", "private": true, "version": "0.0.1",
+  "main": "src/index.ts",
+  "scripts": { "build": "tsc -p .", "lint": "echo lint", "test": "echo ok" },
+  "dependencies": { "@solana/web3.js": "^1.95.0" },
+  "devDependencies": { "typescript": "^5.5.0" }
+}

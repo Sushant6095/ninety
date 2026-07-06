@@ -1,0 +1,7 @@
+{
+  "name": "@omnipitch/bus", "private": true, "version": "0.0.1",
+  "main": "src/index.ts",
+  "scripts": { "build": "tsc -p .", "lint": "echo lint", "test": "echo ok" },
+  "dependencies": { "ioredis": "^5.4.0", "@omnipitch/schema": "workspace:*" },
+  "devDependencies": { "typescript": "^5.5.0" }
+}

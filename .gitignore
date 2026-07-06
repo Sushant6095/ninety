@@ -1,0 +1,14 @@
+node_modules/
+.next/
+dist/
+.env
+*.log
+__pycache__/
+.venv/
+target/
+.anchor/
+test-ledger/
+# appended by AI-native layer
+.claude/trace/*.jsonl
+.claude/trace/*.log
+.claude/settings.local.json

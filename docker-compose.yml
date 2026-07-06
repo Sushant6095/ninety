@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: omnipitch
+      POSTGRES_PASSWORD: omnipitch
+      POSTGRES_DB: omnipitch
+    ports: ["5433:5432"]   # host 5433 → container 5432 (host 5432 taken by another local pg); DATABASE_URL matches
+    volumes: [pgdata:/var/lib/postgresql/data]
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+  # optional: real kafka locally — `docker compose --profile kafka up`
+  redpanda:
+    profiles: [kafka]
+    image: redpandadata/redpanda:latest
+    command: redpanda start --overprovisioned --smp 1 --memory 512M --node-id 0 --kafka-addr PLAINTEXT://0.0.0.0:9092
+    ports: ["9092:9092"]
+volumes:
+  pgdata:
