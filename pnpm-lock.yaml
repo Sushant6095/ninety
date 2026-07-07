@@ -99,6 +99,9 @@ importers:
       '@omnipitch/txline':
         specifier: workspace:*
         version: link:../../packages/txline
+      ioredis:
+        specifier: ^5.4.0
+        version: 5.11.1
     devDependencies:
       tsx:
         specifier: ^4.16.0
@@ -106,6 +109,9 @@ importers:
       typescript:
         specifier: ^5.5.0
         version: 5.9.3
+      vitest:
+        specifier: ^2.0.0
+        version: 2.1.9(@types/node@24.13.2)
 
   apps/worker-jobs:
     dependencies:
