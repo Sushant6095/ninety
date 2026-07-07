@@ -1,2 +1,7 @@
 [workspace]
 members = ["programs/omnipitch_core"]
+resolver = "2"
+
+# Anchor requires overflow-checks in release: on-chain integer overflow must panic, never wrap (security).
+[profile.release]
+overflow-checks = true

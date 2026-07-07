@@ -2,7 +2,7 @@ use anchor_lang::prelude::*;
 pub mod state; pub mod proof; pub mod instructions;
 use instructions::*;
 
-declare_id!("Fill1nAfterFirstDeploy11111111111111111111111");
+declare_id!("6ps8ao7CVhacnRajvFXWTmkknsRnHfEbWmtQ3nDCdBkj");
 
 // Trust layer ONLY (CLAUDE.md law). Trading never happens here.
 #[program]

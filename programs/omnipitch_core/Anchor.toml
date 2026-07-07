@@ -2,7 +2,7 @@
 [features]
 resolution = true
 [programs.devnet]
-omnipitch_core = "Fill1nAfterFirstDeploy11111111111111111111111"
+omnipitch_core = "6ps8ao7CVhacnRajvFXWTmkknsRnHfEbWmtQ3nDCdBkj"
 [provider]
 cluster = "devnet"
 wallet = "~/.config/solana/id.json"
