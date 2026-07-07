@@ -7,6 +7,7 @@ export const EventSource = z.enum([
   "txline.fixtures",
   "txline.proofs",
   "engine",
+  "cortex", // pricing/quant worker — devigged marks on prices.marks (ADR-022)
   "chain",
   "user",
   "replay",

@@ -1,1 +1,10 @@
-{ "name": "@omnipitch/worker-cortex", "private": true, "scripts": { "dev": "python3 src/cortex/main.py", "build": "echo py", "lint": "echo py", "test": "echo py" } }
+{
+  "name": "@omnipitch/worker-cortex",
+  "private": true,
+  "scripts": {
+    "dev": "sh -c 'PYTHONPATH=src ${PYTHON:-.venv/bin/python} -m cortex.main'",
+    "build": "echo py",
+    "lint": "echo py",
+    "test": "sh -c 'if [ -x .venv/bin/pytest ]; then .venv/bin/pytest -q; else echo \"cortex: no .venv (create: python3.11 -m venv .venv && .venv/bin/pip install numpy redis penaltyblog pytest) — skipping\"; fi'"
+  }
+}

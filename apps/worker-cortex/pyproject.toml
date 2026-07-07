@@ -4,3 +4,10 @@ version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = ["numpy", "redis", "penaltyblog"]
 # ADR-004: pricing math stays Python — penaltyblog implements Dixon-Coles + Shin de-vig.
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "tests"]
+testpaths = ["tests"]
