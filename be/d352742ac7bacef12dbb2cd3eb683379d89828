@@ -1,0 +1,91 @@
+packages/bus/src/contract.ts
+  s_82db0e7c9eb747::t_534515a8095b41 6
+  s_82db0e7c9eb747::t_2c618661ac1d7f 31
+  s_82db0e7c9eb747::t_d320b6b9c557de 17-30
+  s_82db0e7c9eb747::t_a924eb181a55fd 5
+  s_82db0e7c9eb747::t_e40c5ab3f8add1 2
+apps/api/src/http/routes/admin.test.ts
+  s_82db0e7c9eb747::t_8a7512e7cb7fa2 1-54
+packages/schema/src/topics.ts
+  s_82db0e7c9eb747::t_25bd68b423fa18 12-13
+packages/schema/src/sys.ts
+  s_82db0e7c9eb747::t_15effc2931b74b 1-64
+packages/schema/src/index.ts
+  s_82db0e7c9eb747::t_58aa2c7d57fc18 6
+apps/worker-ingest/src/replayer.ts
+  s_82db0e7c9eb747::t_ddc3348f194ac6 7-9,12
+  s_82db0e7c9eb747::t_0993a6ce2a8c7a 73-75
+  s_82db0e7c9eb747::t_04c9daa017b536 30-72,76-111,114,116-120,122-130,132-155,159-165
+  s_82db0e7c9eb747::t_f18116a6379801 6
+  s_82db0e7c9eb747::t_5631a559a7a65f 112-113,115,121,131
+  s_82db0e7c9eb747::t_e3552f1c709ee3 156-158
+packages/bus/src/kafka.ts
+  s_82db0e7c9eb747::t_191b296de87d53 1-2,5-6
+apps/worker-ingest/src/ingest.ts
+  s_82db0e7c9eb747::t_147d10677f557a 79
+  s_82db0e7c9eb747::t_4daffa64273618 4,6-7,14-24
+  s_82db0e7c9eb747::t_604cba1f2edea5 45,48
+  s_82db0e7c9eb747::t_7599cd07b3a2b2 95
+  s_82db0e7c9eb747::t_ea07095a0c15f0 160
+apps/api/src/http/routes/admin.ts
+  s_82db0e7c9eb747::t_614997bfbe892e 4,9-16,22
+  s_82db0e7c9eb747::t_a40e2a6ea97293 1-3,5-8,17-21,23-40
+packages/schema/src/sys.test.ts
+  s_82db0e7c9eb747::t_635d3b9a4dc8c9 1-34,36-37
+  s_82db0e7c9eb747::t_d8b9c0acbfd7a2 35
+docs/adr/ADR-020-system-signal-plane-through-the-bus.md
+  s_82db0e7c9eb747::t_8748e1a32923fb 1-5
+docs/adr/ADR-021-finished-fixture-replay-through-ingest-plane.md
+  s_82db0e7c9eb747::t_111a236a4ddffd 1-3
+apps/worker-ingest/src/supervise.test.ts
+  s_82db0e7c9eb747::t_20bb9535ac9b12 5,7,21-38
+  s_82db0e7c9eb747::t_9e6b9334b7e59c 276-282,284-316
+  s_82db0e7c9eb747::t_9604eadf6eac52 13-14
+  s_82db0e7c9eb747::t_ceee562c8f1572 283
+  s_82db0e7c9eb747::t_7c2cf0f992d2a1 203-204,208
+  s_82db0e7c9eb747::t_76fff455e10a4a 39-40
+apps/api/src/http/server.ts
+  s_82db0e7c9eb747::t_ddb0c9fc74442a 2-5,9,11
+docs/adr/ADR-019-ingest-stream-gap-recovery-exactly-once-hardening.md
+  s_82db0e7c9eb747::t_93efb6b5a999b4 4-5
+packages/bus/src/redis.ts
+  s_82db0e7c9eb747::t_d8425c0278f8d6 4
+  s_82db0e7c9eb747::t_ec9cdc895fe965 34,38-39,41,47-49
+apps/worker-ingest/src/normalizer.ts
+  s_82db0e7c9eb747::t_73e3821bce63eb 76
+  s_82db0e7c9eb747::t_6c466d9cdc0b15 30-33,37
+  s_82db0e7c9eb747::t_3de854e229f758 62
+apps/worker-ingest/src/main.ts
+  s_82db0e7c9eb747::t_9f193f9ed7a60d 1-5,7,11-20
+scripts/replay.sh
+  s_82db0e7c9eb747::t_02adc21a4dd81f 2-18
+.claude/context/NOW.md
+  s_82db0e7c9eb747::t_82bfa214ad063e 5-6
+apps/worker-ingest/src/replayer.test.ts
+  s_82db0e7c9eb747::t_cb8e1a5939f72f 1-66,69-97,109
+  s_82db0e7c9eb747::t_c7629c68318479 98-108
+  s_82db0e7c9eb747::t_732706216d87be 67-68
+CLAUDE.md
+  s_82db0e7c9eb747::t_2c42fb31edd2fc 14
+packages/bus/src/index.ts
+  s_82db0e7c9eb747::t_0f9b6c7d3fd0ae 27,29
+  s_82db0e7c9eb747::t_a7140ec32d88e5 2-8
+  s_82db0e7c9eb747::t_fb7cf0126cb5be 23-25
+  s_82db0e7c9eb747::t_26511a18cca667 9-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "bed352742ac7bacef12dbb2cd3eb683379d89828",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
