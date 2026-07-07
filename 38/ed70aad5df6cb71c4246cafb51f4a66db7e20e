@@ -1,0 +1,42 @@
+docs/adr/ADR-016-devnet-sl1-data-spine-live-stream-freshness.md
+  s_82db0e7c9eb747::t_8628c9218581a2 1-3
+docs/adr/ADR-015-txline-verified-live-devnet-reality-corrections.md
+  s_82db0e7c9eb747::t_6c4f7a331a6355 4-5
+scripts/txline-live.mjs
+  s_82db0e7c9eb747::t_f0659b91170135 101,103-104
+  s_82db0e7c9eb747::t_5639ac505279ce 1-46,48-60,63-100,102,105-126,128,132,134-136,138-140
+  s_82db0e7c9eb747::t_2070a209ae0633 127,129-131,133,137
+  s_82db0e7c9eb747::t_cd9983bf887b5b 47,61-62
+.claude/prompts/1-data-spine/07-proof-spike.md
+  s_82db0e7c9eb747::t_521d6ce8505b2c 1-37
+package.json
+  s_82db0e7c9eb747::t_d5eb16d9f21cfc 10
+packages/txline/src/client.ts
+  s_82db0e7c9eb747::t_f922c745fb3790 242-253
+packages/txline/src/mock.ts
+  s_82db0e7c9eb747::t_5975d895947911 68
+docs/TXLINE-MAP.md
+  s_82db0e7c9eb747::t_7ee4b231a2bb7f 16-19
+.claude/prompts/PROGRAM-STANDARD.md
+  s_82db0e7c9eb747::t_83e249466460db 24-30
+.claude/context/NOW.md
+  s_82db0e7c9eb747::t_b5bce578ff8962 5
+pnpm-lock.yaml
+  s_82db0e7c9eb747::t_35c6da6d1ae9ab 11-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "38ed70aad5df6cb71c4246cafb51f4a66db7e20e",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
