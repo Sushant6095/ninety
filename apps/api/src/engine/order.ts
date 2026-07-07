@@ -16,6 +16,7 @@ export type Side = "buy" | "sell";
 export type RejectCode =
   | "INVALID_SIZE" // size not a positive finite integer (0 / negative / NaN / Infinity / fractional)
   | "INVALID_OUTCOME" // outcome not an in-range integer index into q (guards against NaN-bricking the AMM)
+  | "PRICE_UNAVAILABLE" // LMSR returned a non-finite cost (bad b / overflow) — reject, never journal a NaN fill
   | "MARKET_HALTED" // market not accepting orders (only OPEN/LIVE)
   | "RATE_LIMIT" // more than RATE_LIMIT orders in the trailing second for this user
   | "SLIPPAGE" // server price moved past the client's limit (server price wins; client reconciles)
@@ -76,6 +77,7 @@ export function applyOrder(input: OrderInput): OrderResult {
 
   if (side === "buy") {
     const cost = buyCost(q, b, outcome, size); // LMSR marginal cost at LIVE b (server price wins)
+    if (!Number.isFinite(cost)) return { ok: false, code: "PRICE_UNAVAILABLE" }; // never let a NaN/Inf cost reach the journal
     const fee = bankersRound(cost * FEE_RATE);
     const debit = cost + fee;
     if (limit !== undefined && debit > limit + BALANCE_EPS) return { ok: false, code: "SLIPPAGE" };
@@ -97,6 +99,7 @@ export function applyOrder(input: OrderInput): OrderResult {
   // sell (symmetric): no shorting — can't sell more than held.
   if (position < size) return { ok: false, code: "INSUFFICIENT_POSITION" };
   const refund = -buyCost(q, b, outcome, -size); // credits returned for removing `size` shares (≥ 0)
+  if (!Number.isFinite(refund)) return { ok: false, code: "PRICE_UNAVAILABLE" }; // never journal a NaN/Inf sell
   const fee = bankersRound(refund * FEE_RATE);
   const net = refund - fee;
   if (limit !== undefined && net < limit - BALANCE_EPS) return { ok: false, code: "SLIPPAGE" };

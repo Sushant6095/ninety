@@ -73,6 +73,16 @@ export const PositionPayload = z.object({
 });
 export type PositionPayload = z.infer<typeof PositionPayload>;
 
+// Credit-ledger delta projected from an engine ledger effect (ADR-027). `kind` is the accounting bucket and
+// carries the direction — debit removes credits, credit adds them, burn removes from the supply. `amount` ≥ 0.
+export const CreditPayload = z.object({
+  user_id: z.string(),
+  kind: z.enum(["debit", "credit", "burn"]),
+  amount: z.number().min(0),
+  reason: z.string().optional(),
+});
+export type CreditPayload = z.infer<typeof CreditPayload>;
+
 // --- market lifecycle (ADR-005: goal → HALT → re-anchor with decaying spread) ---
 export const HaltReopenPayload = z.object({
   reason: z.string().min(1),

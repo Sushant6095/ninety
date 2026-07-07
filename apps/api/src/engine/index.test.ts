@@ -1,14 +1,20 @@
 import { describe, it, expect } from "vitest";
 import { Engine, EngineLeaseError, type EngineCmd, type EngineMarket } from "./index";
 import { MemJournalStore, type JournalStore } from "./journal";
+import type { StaleAlert } from "./watchdog";
 
 const store = () => new MemJournalStore<EngineCmd, EngineMarket>();
 const okLock = { acquire: async () => true, release: async () => {} };
-const mark = (at: number): EngineCmd => ({ kind: "mark", at, bHint: 300, spread: 1 });
+const mark = (at: number): EngineCmd => ({ kind: "mark", at, bHint: 300 });
 const life = (trigger: string, at: number, extra: Record<string, unknown> = {}): EngineCmd =>
   ({ kind: "lifecycle", at, cmd: { trigger: trigger as never, at, ...extra } });
 const order = (at: number, o: Partial<Extract<EngineCmd, { kind: "order" }>["order"]> = {}): EngineCmd =>
   ({ kind: "order", at, order: { user: "u1", side: "buy", outcome: 0, size: 100, balance: 1e9, recentOrderTimes: [], ...o } });
+// Effect-collecting emit spy shared by the order + halt/reopen suites. Matches the widened emit(marketId, n, at, effects).
+const collect = () => {
+  const effects: Array<{ type: string; [k: string]: unknown }> = [];
+  return { effects, emit: (_m: string, _n: number, _at: number, e: readonly { type: string }[]) => void effects.push(...(e as never[])) };
+};
 
 describe("engine loop — per-market serialization", () => {
   it("2 markets × 1k interleaved commands → per-market ordering is perfect", async () => {
@@ -138,11 +144,6 @@ describe("engine loop — recovery", () => {
 });
 
 describe("engine loop — orders (ADR-026)", () => {
-  const collect = () => {
-    const effects: Array<{ type: string; [k: string]: unknown }> = [];
-    return { effects, emit: (_m: string, e: readonly { type: string }[]) => void effects.push(...(e as never[])) };
-  };
-
   it("fills an order: advances q, updates the position, emits fill/position/ledger effects", async () => {
     const { effects, emit } = collect();
     const engine = new Engine({ store: store(), emit, lock: okLock });
@@ -230,5 +231,118 @@ describe("engine loop — orders (ADR-026)", () => {
     const dearCost = dear.effects.find((e) => e.type === "fill")!.cost as number;
     const tightCost = tight.effects.find((e) => e.type === "fill")!.cost as number;
     expect(dearCost).toBeGreaterThan(tightCost); // reopen decay widened the spread → thinner b → dearer fill
+  });
+});
+
+describe("engine loop — halt/reopen hardening (ADR-028)", () => {
+  it("halts within one loop tick, well under the 300ms wall budget (measure)", async () => {
+    const { effects, emit } = collect();
+    const engine = new Engine({ store: store(), emit, lock: okLock });
+    await engine.start();
+    engine.submit("mA", "matchA", life("open", 1));
+    engine.submit("mA", "matchA", life("kickoff", 2));
+    await engine.drain();
+    const t0 = performance.now();
+    engine.submit("mA", "matchA", life("pivot", 3, { reason: "goal" }));
+    await engine.drain();
+    const elapsedMs = performance.now() - t0;
+    expect(effects.some((e) => e.type === "halt")).toBe(true); // the halt landed on that tick
+    expect(elapsedMs).toBeLessThan(300); // one loop tick ≪ 300ms budget
+  });
+
+  it("rejects every order in the halt window — zero fills between goal and reopen (VERIFY)", async () => {
+    const { effects, emit } = collect();
+    const engine = new Engine({ store: store(), emit, lock: okLock });
+    await engine.start();
+    engine.submit("mA", "matchA", life("open", 1));
+    engine.submit("mA", "matchA", life("kickoff", 2));
+    engine.submit("mA", "matchA", order(3, { user: "u1", size: 100 })); // fills while LIVE
+    engine.submit("mA", "matchA", life("pivot", 4, { reason: "goal" })); // → HALTED
+    for (let i = 0; i < 5; i++) engine.submit("mA", "matchA", order(5 + i, { user: `u${i}`, size: 50 })); // all mid-halt
+    await engine.drain();
+    expect(effects.filter((e) => e.type === "fill")).toHaveLength(1); // only the pre-goal fill
+    expect(effects.filter((e) => e.type === "reject" && e.code === "MARKET_HALTED")).toHaveLength(5); // halt window rejects all
+  });
+
+  it("auto-reopens on the next mark after the 10s halt window; a mark inside the window stays halted", async () => {
+    const { effects, emit } = collect();
+    const engine = new Engine({ store: store(), emit, lock: okLock });
+    await engine.start();
+    engine.submit("mA", "matchA", life("open", 1));
+    engine.submit("mA", "matchA", life("kickoff", 2));
+    engine.submit("mA", "matchA", life("pivot", 3, { reason: "goal" })); // HALTED, haltedAt=3
+    engine.submit("mA", "matchA", mark(5)); // 2s in → below the 10s window → anchor updates, stays HALTED
+    await engine.drain();
+    expect(engine.stateOf("mA")!.lifecycle.status).toBe("HALTED");
+    engine.submit("mA", "matchA", mark(20_000)); // >10s since halt → auto-reopen on this mark
+    await engine.drain();
+    expect(engine.stateOf("mA")!.lifecycle.status).toBe("LIVE");
+    expect(engine.stateOf("mA")!.lifecycle.reopenAt).toBe(20_000);
+    expect(effects.some((e) => e.type === "reopen")).toBe(true); // reopen effect emitted
+  });
+
+  it("reopen cost curve decays monotonically as the spread relaxes 3×→1× (VERIFY)", async () => {
+    const costAtElapsed = async (elapsedMs: number): Promise<number> => {
+      const { effects, emit } = collect();
+      const e = new Engine({ store: store(), emit, lock: okLock });
+      await e.start();
+      e.submit("m", "match", life("open", 1));
+      e.submit("m", "match", life("kickoff", 2));
+      e.submit("m", "match", life("pivot", 3, { reason: "goal" }));
+      e.submit("m", "match", mark(20_000)); // auto-reopen → reopenAt = 20000, spread = 1× (mark hazard)
+      e.submit("m", "match", order(20_000 + elapsedMs, { size: 100 })); // fresh market each time → only the spread differs
+      await e.drain();
+      return e.stateOf("m") ? (effects.find((x) => x.type === "fill")!.cost as number) : NaN;
+    };
+    const c0 = await costAtElapsed(0); // full 3× spread → thinnest b → dearest
+    const c30 = await costAtElapsed(30_000); // half decayed
+    const c60 = await costAtElapsed(60_000); // fully relaxed (1×) → cheapest
+    expect(c0).toBeGreaterThan(c30);
+    expect(c30).toBeGreaterThan(c60); // strictly monotonic decrease as the spread relaxes
+  });
+
+  it("same-ts resolution is bus-ARRIVAL order (replay-deterministic), NOT reducer event-time precedence", async () => {
+    // goal ARRIVES before the order (both event-time ts=5): the order sees HALTED and rejects.
+    const a = collect();
+    const eA = new Engine({ store: store(), emit: a.emit, lock: okLock });
+    await eA.start();
+    eA.submit("mA", "matchA", life("open", 1));
+    eA.submit("mA", "matchA", life("kickoff", 2));
+    eA.submit("mA", "matchA", life("pivot", 5, { reason: "goal" }));
+    eA.submit("mA", "matchA", order(5, { user: "u1", size: 100 }));
+    await eA.drain();
+    expect(a.effects.filter((e) => e.type === "fill")).toHaveLength(0);
+    expect(a.effects.some((e) => e.type === "reject" && e.code === "MARKET_HALTED")).toBe(true);
+
+    // order ARRIVES before the goal (both ts=5): it FILLS at pre-goal prices, then the goal halts. There is NO
+    // reducer-level event-time tiebreak — resolution is arrival order. Replay stays deterministic (the journal
+    // preserves arrival order); a cross-topic same-ts reorder buffer is a documented follow-up (it would fight the
+    // ≤300ms one-tick halt). This test pins the residual behavior so the naming can't overstate a guarantee.
+    const b = collect();
+    const eB = new Engine({ store: store(), emit: b.emit, lock: okLock });
+    await eB.start();
+    eB.submit("mB", "matchB", life("open", 1));
+    eB.submit("mB", "matchB", life("kickoff", 2));
+    eB.submit("mB", "matchB", order(5, { user: "u1", size: 100 }));
+    eB.submit("mB", "matchB", life("pivot", 5, { reason: "goal" }));
+    await eB.drain();
+    expect(b.effects.filter((e) => e.type === "fill")).toHaveLength(1); // filled — arrival order, no lookahead
+    expect(b.effects.some((e) => e.type === "halt")).toBe(true);
+  });
+
+  it("stale-mark watchdog alerts a HALTED market whose feed goes stale, once, and re-arms on a fresh mark (ADR-028)", async () => {
+    const alerts: StaleAlert[] = [];
+    const engine = new Engine({ store: store(), emit: () => {}, lock: okLock, onStaleMark: (a) => alerts.push(a), staleMarkMs: 10_000, now: () => 0 });
+    await engine.start();
+    engine.submit("mA", "matchA", life("open", 1));
+    engine.submit("mA", "matchA", life("kickoff", 2));
+    engine.submit("mA", "matchA", mark(3)); // lastMarkAt = now() = 0
+    engine.submit("mA", "matchA", life("pivot", 4, { reason: "goal" })); // → HALTED
+    await engine.drain();
+    expect(engine.checkStaleMarks(5_000)).toEqual([]); // 5s stale < threshold
+    expect(engine.checkStaleMarks(20_000)).toEqual([{ marketId: "mA", staleMs: 20_000 }]); // >10s → alert once
+    expect(engine.checkStaleMarks(30_000)).toEqual([]); // already alerted → silent
+    expect(engine.metrics.staleMarkAlerts).toBe(1);
+    expect(alerts).toEqual([{ marketId: "mA", staleMs: 20_000 }]);
   });
 });

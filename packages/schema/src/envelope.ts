@@ -25,6 +25,7 @@ export const EventType = z.enum([
   "order",
   "fill",
   "position",
+  "credit",
   "halt",
   "reopen",
   "mark",

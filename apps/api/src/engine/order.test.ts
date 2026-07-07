@@ -102,6 +102,13 @@ describe("order — risk rejections (each unit-tested)", () => {
     expect(applyOrder({ ...base, tradeable: false })).toMatchObject({ ok: false, code: "MARKET_HALTED" });
   });
 
+  it("PRICE_UNAVAILABLE when the LMSR cost is non-finite (bad b) — never journals a NaN fill (buy + sell)", () => {
+    // b = 0 → q_i/b = ±Inf → cost/refund is non-finite; the guard must reject BEFORE the balance check.
+    expect(applyOrder({ ...base, b: 0 })).toMatchObject({ ok: false, code: "PRICE_UNAVAILABLE" });
+    expect(applyOrder({ ...base, b: NaN })).toMatchObject({ ok: false, code: "PRICE_UNAVAILABLE" });
+    expect(applyOrder({ ...base, side: "sell", position: 100, q: [100, 0, 0], b: 0 })).toMatchObject({ ok: false, code: "PRICE_UNAVAILABLE" });
+  });
+
   it("RATE_LIMIT: the 5th order in a second passes, the 6th rejects; stale orders fall out of the window", () => {
     expect(applyOrder({ ...base, recentOrderTimes: [1000, 1000, 1000, 1000], now: 1000 }).ok).toBe(true); // 5th
     expect(applyOrder({ ...base, recentOrderTimes: [1000, 1000, 1000, 1000, 1000], now: 1000 })).toMatchObject({ ok: false, code: "RATE_LIMIT" }); // 6th

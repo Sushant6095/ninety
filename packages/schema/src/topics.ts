@@ -7,6 +7,7 @@ export const TOPICS = {
   orders: "orders.v1",
   fills: "fills.v1",
   positions: "positions.v1",
+  credits: "credits.v1", // engine credit-ledger deltas (debit/credit/burn) → projection consumer (ADR-027)
   commentary: "commentary.v1",
   settlement: "settlement.v1",
   // System/ops plane (sys.*, ADR-020) — carries SysEvent signals, never domain data. Same Bus, distinct plane.

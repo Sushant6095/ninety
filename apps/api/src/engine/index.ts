@@ -10,11 +10,15 @@ import type { Redis } from "ioredis";
 import { createBus } from "@omnipitch/bus";
 import { TOPICS, type Envelope } from "@omnipitch/schema";
 import { Journal, RedisJournalStore, hashState, type JournalStore } from "./journal";
-import { transition, initialMarket, fromEnvelope, canAcceptOrder, spreadAt, IllegalTransitionError, type MarketState, type MarketEffect, type MarketCommand } from "./market";
+import { transition, initialMarket, fromEnvelope, canAcceptOrder, spreadAt, shouldReopen, IllegalTransitionError, type MarketState, type MarketEffect, type MarketCommand } from "./market";
 import { applyOrder, type Side, type RejectCode } from "./order";
+import { MarkWatchdog, type StaleAlert } from "./watchdog";
+import { effectsToEnvelopes } from "./emit";
 
 const B0_DEFAULT = 300; // base LMSR liquidity until a mark re-anchors it
-const SPREAD_FLOOR = 0.01; // clamp the effective spread divisor > 0 so a malformed mark (spread ≤ 0) can't div-by-0 b
+const B_MAX = 3 * B0_DEFAULT; // mark-tether bound: b stays in [b0, 3·b0] (ADR-022); the engine re-clamps defensively
+const SPREAD_FLOOR = 0.01; // purely defensive floor on the b divisor; spreadAt() is lifecycle-derived ∈ [1,3] so it never binds
+const STALE_MARK_MS = 10_000; // a HALTED market with no fresh mark for this long is alerted (ADR-028)
 
 // Effects the engine emits — a superset of the lifecycle MarketEffect: fills, position updates, credit-ledger
 // events, and typed order rejections. The engine only emits; the bus/ledger apply them.
@@ -30,8 +34,8 @@ export type EngineEffect =
 // reproduces them exactly (determinism law).
 export interface EngineMarket {
   lifecycle: MarketState;
-  bHint: number; // AMM liquidity b(t), re-anchored from cortex marks
-  spread: number; // current spread multiplier
+  bHint: number; // AMM liquidity b(t) = b0·(1+κ·hazard), FULLY computed by cortex (ADR-022) — the engine does NOT
+  // re-apply hazard (that double-counts). The only extra thinning is the ADR-005 reopen decay via spreadAt().
   q: number[]; // LMSR shares outstanding per outcome (the AMM position vector)
   positions: Record<string, number[]>; // user → per-outcome position in THIS market
 }
@@ -51,18 +55,26 @@ export interface OrderCmd {
 // A command on a market's lane. `at` is event-time (payload), used for deterministic seeding + rate windowing.
 export type EngineCmd =
   | { kind: "lifecycle"; at: number; cmd: MarketCommand }
-  | { kind: "mark"; at: number; bHint: number; spread: number }
+  | { kind: "mark"; at: number; bHint: number }
   | { kind: "order"; at: number; order: OrderCmd };
 
 function seedMarket(marketId: string, matchId: string, cmd: EngineCmd): EngineMarket {
   // q seeded to 3 outcomes (1X2) in v1. ponytail: fixed 3; n-outcome sizing from the mark is a follow-up (ADR-026).
-  return { lifecycle: initialMarket(marketId, matchId, cmd.at), bHint: B0_DEFAULT, spread: 1, q: [0, 0, 0], positions: {} };
+  return { lifecycle: initialMarket(marketId, matchId, cmd.at), bHint: B0_DEFAULT, q: [0, 0, 0], positions: {} };
 }
 
 /** Total apply (never throws): lifecycle → market machine (illegal parks); mark → re-anchor; order → risk+fill. */
 export function engineApply(state: EngineMarket, cmd: EngineCmd): { state: EngineMarket; effects: readonly EngineEffect[] } {
   if (cmd.kind === "mark") {
-    return { state: { ...state, bHint: cmd.bHint, spread: cmd.spread }, effects: [] };
+    const bHint = Number.isFinite(cmd.bHint) ? Math.min(Math.max(cmd.bHint, B0_DEFAULT), B_MAX) : B0_DEFAULT; // bounded + NaN/Inf-safe re-anchor (ADR-022 [b0, 3·b0])
+    // Auto-reopen (ADR-005 "next mark → REOPEN"): a HALTED market whose 10s halt window has elapsed reopens on
+    // THIS mark. Deterministic (uses cmd.at) → replay reproduces the reopen. The new bHint applies on top, and
+    // spreadAt() then decays 3×→1× over 60s from reopenAt. A mark before the window just re-anchors (stays HALTED).
+    if (shouldReopen(state.lifecycle, cmd.at)) {
+      const { state: lifecycle, effects } = transition(state.lifecycle, { trigger: "reopen", at: cmd.at });
+      return { state: { ...state, lifecycle, bHint }, effects };
+    }
+    return { state: { ...state, bHint }, effects: [] };
   }
   if (cmd.kind === "order") return applyOrderCmd(state, cmd.order, cmd.at);
   try {
@@ -83,9 +95,9 @@ function applyOrderCmd(state: EngineMarket, o: OrderCmd, at: number): { state: E
     outcome: o.outcome,
     size: o.size,
     q: state.q,
-    // live b, thinned by BOTH spread sources: the cortex hazard spread (from marks) × the ADR-005 reopen decay
-    // (3×→1× over 60s after a goal-halt reopen). They compound; floored so a bad mark can't div-by-0. Server price wins.
-    b: state.bHint / Math.max(state.spread * spreadAt(state.lifecycle, at), SPREAD_FLOOR),
+    // live b: the hazard-adjusted bHint (from cortex, ADR-022) thinned ONLY by the ADR-005 reopen decay
+    // (spreadAt 3×→1× over 60s). Hazard is NOT re-applied here — it already lives in bHint. Floored vs a bad mark.
+    b: state.bHint / Math.max(spreadAt(state.lifecycle, at), SPREAD_FLOOR),
     tradeable: canAcceptOrder(state.lifecycle),
     balance: o.balance,
     position: held[o.outcome] ?? 0,
@@ -125,15 +137,21 @@ export interface EngineMetrics {
   backpressureRejects: number;
   maxDepth: number;
   unserveable: number; // markets quarantined after a recovery failure
+  staleMarkAlerts: number; // HALTED markets whose pricing feed went stale (ADR-028)
 }
 export interface EngineDeps {
   store: JournalStore<EngineCmd, EngineMarket>;
-  emit: (marketId: string, effects: readonly EngineEffect[]) => Promise<void> | void;
+  // n = journal seq (deterministic id source), at = event-time (ts_source). The adapter turns effects into
+  // bus Envelopes with deterministic event_ids; a projection consumer writes DB + Redis idempotently (ADR-027).
+  emit: (marketId: string, n: number, at: number, effects: readonly EngineEffect[]) => Promise<void> | void;
   lock?: EngineLock;
   maxQueueDepth?: number; // default 1000
   snapshotEvery?: number;
   onApplied?: (marketId: string, cmd: EngineCmd) => void; // observability hook (tracing/tests)
   onError?: (marketId: string, err: unknown) => void;
+  onStaleMark?: (a: StaleAlert) => void; // enables the stale-mark watchdog when provided (ADR-028)
+  staleMarkMs?: number; // stale threshold; default STALE_MARK_MS
+  now?: () => number; // operational wall clock (injectable for tests); default Date.now
 }
 
 interface Lane {
@@ -145,13 +163,23 @@ interface Lane {
 }
 
 export class Engine {
-  readonly metrics: EngineMetrics = { processed: 0, backpressureRejects: 0, maxDepth: 0, unserveable: 0 };
+  readonly metrics: EngineMetrics = { processed: 0, backpressureRejects: 0, maxDepth: 0, unserveable: 0, staleMarkAlerts: 0 };
   private readonly journal: Journal<EngineCmd, EngineMarket>;
   private readonly lanes = new Map<string, Lane>();
   private readonly maxDepth: number;
+  private readonly now: () => number;
+  private readonly watchdog?: MarkWatchdog;
+  private watchdogTimer?: ReturnType<typeof setInterval>;
 
   constructor(private readonly deps: EngineDeps) {
     this.maxDepth = deps.maxQueueDepth ?? 1000;
+    this.now = deps.now ?? Date.now;
+    if (deps.onStaleMark) {
+      this.watchdog = new MarkWatchdog(deps.staleMarkMs ?? STALE_MARK_MS, (a) => {
+        this.metrics.staleMarkAlerts++;
+        deps.onStaleMark!(a);
+      });
+    }
     this.journal = new Journal<EngineCmd, EngineMarket>({
       store: deps.store,
       reduce: engineReduce,
@@ -159,6 +187,31 @@ export class Engine {
       hash: hashState,
       snapshotEvery: deps.snapshotEvery,
     });
+  }
+
+  /** Operational stale-mark scan (ADR-028): alert HALTED markets whose pricing feed went stale. The `now` arg
+   *  makes it deterministic for tests; the prod interval (startWatchdog) passes the wall clock. */
+  checkStaleMarks(now?: number): StaleAlert[] {
+    if (!this.watchdog) return [];
+    const halted = [...this.lanes].filter(([, l]) => l.state?.lifecycle.status === "HALTED").map(([id]) => id);
+    return this.watchdog.check(now ?? this.now(), halted);
+  }
+
+  /** Start the periodic stale-mark scan (prod). No-op without onStaleMark; unref'd so it never holds the process open. */
+  startWatchdog(): void {
+    if (!this.watchdog || this.watchdogTimer) return;
+    const period = Math.max(1000, Math.floor((this.deps.staleMarkMs ?? STALE_MARK_MS) / 2));
+    this.watchdogTimer = setInterval(() => this.checkStaleMarks(), period);
+    this.watchdogTimer.unref?.();
+  }
+
+  /** Graceful stop: halt the watchdog timer and release the single-writer lease. */
+  async stop(): Promise<void> {
+    if (this.watchdogTimer) {
+      clearInterval(this.watchdogTimer);
+      this.watchdogTimer = undefined;
+    }
+    await this.deps.lock?.release();
   }
 
   /** Acquire the single-writer lease before serving. Throws EngineLeaseError if another process holds it. */
@@ -239,8 +292,10 @@ export class Engine {
     const prev = lane.state ?? seedMarket(marketId, marketId, cmd); // seed IDENTICAL to the journal seed (marketId as matchId)
     const { state, effects } = engineApply(prev, cmd);
     lane.state = state; // apply
+    if (cmd.kind === "mark") this.watchdog?.markSeen(marketId, this.now()); // watchdog: fresh pricing feed seen
+    if (state.lifecycle.status !== "HALTED") this.watchdog?.clear(marketId); // re-arm once the market leaves HALTED
     await this.journal.maybeSnapshot(marketId, state, n);
-    await this.deps.emit(marketId, effects); // emit (a failed emit is logged; at-least-once re-emit via outbox is a follow-up)
+    await this.deps.emit(marketId, n, cmd.at, effects); // emit (a failed emit is logged; at-least-once re-emit via outbox is a follow-up)
     this.metrics.processed++;
     this.deps.onApplied?.(marketId, cmd);
   }
@@ -277,14 +332,20 @@ export async function startEngine(redis?: Redis): Promise<Engine | null> {
   const engine = new Engine({
     store,
     lock: new RedisLease(redis),
-    emit: async (marketId, effects) => {
-      // publish each lifecycle effect + resulting fills/positions to the bus (adapter; topic mapping TBD)
-      void marketId;
-      void effects;
+    emit: async (marketId, n, at, effects) => {
+      // map effects → Envelopes (deterministic event_ids) and publish to fills/positions/orders/credits/settlement
+      // for the projection consumer (ADR-027). ts_ingest is wall-time (adapter IO, not the deterministic reducer).
+      const tsSource = new Date(at).toISOString();
+      const tsIngest = new Date().toISOString();
+      for (const { topic, env } of effectsToEnvelopes(marketId, n, effects, tsSource, tsIngest)) {
+        await bus.publish(topic, env.match_id, env);
+      }
     },
     onError: (marketId, err) => console.error(JSON.stringify({ evt: "engine.error", marketId, msg: String((err as Error)?.message ?? err) })),
+    onStaleMark: (a) => console.warn(JSON.stringify({ evt: "engine.stale_mark", ...a })), // ADR-028: wedged pricing feed
   });
   await engine.start(); // throws EngineLeaseError (exits loudly) if a second engine is already running
+  engine.startWatchdog(); // ADR-028: alert HALTED markets whose marks go stale (>10s)
 
   const marketId = (env: Envelope) => env.match_id; // one 1x2 market per match for now (marketId === matchId)
   // ack the bus only AFTER the command is durably journaled; redeliver on backpressure; drop on quarantine.
@@ -301,9 +362,10 @@ export async function startEngine(redis?: Redis): Promise<Engine | null> {
     if (cmd) await deliver(env, { kind: "lifecycle", at: cmd.at, cmd });
   });
   await bus.consume(TOPICS.pricesMarks, "engine", async (env) => {
-    const p = env.payload as { b_hint?: number; hazard?: number };
+    const p = env.payload as { b_hint?: number };
     const at = Date.parse(env.ts_source);
-    await deliver(env, { kind: "mark", at: Number.isNaN(at) ? 0 : at, bHint: p.b_hint ?? B0_DEFAULT, spread: 1 + (p.hazard ?? 0) });
+    if (Number.isNaN(at)) return; // drop a corrupt-timestamp mark (mirror fromEnvelope) — never stamp event-time 0
+    await deliver(env, { kind: "mark", at, bHint: p.b_hint ?? B0_DEFAULT }); // bHint already carries hazard (ADR-022)
   });
   return engine;
 }

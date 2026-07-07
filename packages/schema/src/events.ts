@@ -10,6 +10,7 @@ import {
   OrderPayload,
   FillPayload,
   PositionPayload,
+  CreditPayload,
   HaltReopenPayload,
   CommentaryPayload,
   SettledPayload,
@@ -29,6 +30,7 @@ export const FtEvent = EnvelopeBase.extend({ type: z.literal("ft"), payload: Sta
 export const OrderEvent = EnvelopeBase.extend({ type: z.literal("order"), payload: OrderPayload });
 export const FillEvent = EnvelopeBase.extend({ type: z.literal("fill"), payload: FillPayload });
 export const PositionEvent = EnvelopeBase.extend({ type: z.literal("position"), payload: PositionPayload });
+export const CreditEvent = EnvelopeBase.extend({ type: z.literal("credit"), payload: CreditPayload });
 export const HaltEvent = EnvelopeBase.extend({ type: z.literal("halt"), payload: HaltReopenPayload });
 export const ReopenEvent = EnvelopeBase.extend({ type: z.literal("reopen"), payload: HaltReopenPayload });
 export const MarkEvent = EnvelopeBase.extend({ type: z.literal("mark"), payload: Mark });
@@ -47,6 +49,7 @@ export const AnyEvent = z.discriminatedUnion("type", [
   OrderEvent,
   FillEvent,
   PositionEvent,
+  CreditEvent,
   HaltEvent,
   ReopenEvent,
   MarkEvent,
@@ -71,6 +74,7 @@ export const PAYLOAD_BY_TYPE = {
   order: OrderPayload,
   fill: FillPayload,
   position: PositionPayload,
+  credit: CreditPayload,
   halt: HaltReopenPayload,
   reopen: HaltReopenPayload,
   mark: Mark,

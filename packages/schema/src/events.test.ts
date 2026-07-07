@@ -24,6 +24,7 @@ const payloadByType: Record<string, unknown> = {
   order: { order_id: "o1", user_id: "u1", outcome: "H", side: "buy", size: 10, status: "accepted" },
   fill: { order_id: "o1", price: 0.61, size: 10, fee: 0.5 },
   position: { user_id: "u1", outcome: "H", qty: 10, avg: 0.6 },
+  credit: { user_id: "u1", kind: "debit", amount: 61.5, reason: "debit" },
   halt: { reason: "goal", spread_mult: 2 },
   reopen: { reason: "resolved", spread_mult: 1.5 },
   mark: { market_id: "wc26-bra-arg:1x2", fair: { H: 0.6, D: 0.25, A: 0.15 }, hazard: 0.02, b_hint: 300 },

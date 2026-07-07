@@ -83,7 +83,7 @@ model CreditLedger {
   id      String   @id @default(uuid())
   userId  String
   matchId String
-  delta   Int
+  delta   Float // credits are fractional play-money (LMSR cost is a float); Σ(delta) per user == balance (ADR-003)
   reason  String
   ts      DateTime @default(now())
   user    User     @relation(fields: [userId], references: [id])
@@ -117,4 +117,13 @@ model ChainEvent {
   kind    String
   payload Json
   slot    BigInt
+}
+
+// Idempotency inbox for the bus→DB projection (ADR-027). One row per consumed event_id, inserted in the SAME
+// transaction as the projected rows — re-consuming an event hits the PK and the whole apply is skipped, so the
+// projection is exactly-once ("zero duplicate rows on re-consume"). Redis hot state derives from these writes.
+model ProcessedEvent {
+  eventId String   @id
+  topic   String
+  ts      DateTime @default(now())
 }
