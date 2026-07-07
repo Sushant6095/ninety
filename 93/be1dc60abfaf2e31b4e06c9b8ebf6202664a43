@@ -1,0 +1,29 @@
+packages/bus/src/contract.ts
+  s_82db0e7c9eb747::t_89be8129545e79 1-66,72-100,102-132,134-154,156-173,175-177
+  s_82db0e7c9eb747::t_8360ff61bb98fb 67-71,101,133,155,174
+packages/bus/src/redis.test.ts
+  s_82db0e7c9eb747::t_5a9d9020267170 2,4,6-7,11-36
+packages/bus/src/kafka.test.ts
+  s_82db0e7c9eb747::t_5621c683b359cc 1-3,6-24
+  s_82db0e7c9eb747::t_85f2674fcb7e66 4-5
+.claude/context/NOW.md
+  s_82db0e7c9eb747::t_98c07a1c8b485e 3
+docs/adr/ADR-007-bus-redis-streams-then-kafka.md
+  s_82db0e7c9eb747::t_448f55d66a657b 4-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "93be1dc60abfaf2e31b4e06c9b8ebf6202664a43",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
