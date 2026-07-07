@@ -65,7 +65,7 @@ export function mockTxLine(): MockTxLine {
     if (path.startsWith("/api/scores/snapshot/")) return json(scores);
     if (path.startsWith("/api/scores/updates/")) return json(sample("scores-updates"));
     if (path === "/api/scores/stat-validation") return json(sample("scores-stat-validation"));
-    if (path === "/api/scores/stream") return sse(scores.slice(0, 1)); // a stream event is one ScoreState
+    if (path === "/api/scores/stream") return sse([{ Ts: 1 }, ...scores.slice(0, 1)]); // {Ts} keepalive then a real ScoreState — client must skip the keepalive
     if (path.startsWith("/api/odds/snapshot/")) return json(sample("odds-snapshot"));
     if (path.startsWith("/api/odds/updates/")) return json(sample("odds-updates"));
     if (path === "/api/odds/stream") return sse(oddsTicks.slice(0, 2));

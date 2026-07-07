@@ -239,8 +239,18 @@ export class TxLineClient {
           const frame = buf.slice(0, sep);
           buf = buf.slice(sep + 2);
           const data = sseData(frame);
-          if (data === null) continue; // heartbeat / comment frame
-          const event = schema.parse(JSON.parse(data));
+          if (data === null) continue; // comment / no-data frame
+          let raw: unknown;
+          try {
+            raw = JSON.parse(data);
+          } catch {
+            continue;
+          }
+          // The live scores stream interleaves keepalive frames (e.g. bare `{Ts}`) with real events;
+          // skip anything that isn't a valid event rather than throwing (never quote blind).
+          const result = schema.safeParse(raw);
+          if (!result.success) continue;
+          const event = result.data;
           const seq = (event as { Seq?: unknown; seq?: unknown }).Seq ?? (event as { seq?: unknown }).seq;
           if (typeof seq === "number") {
             if (opts?.onGap && lastSeq !== undefined && seq > lastSeq + 1) opts.onGap(lastSeq, seq);
