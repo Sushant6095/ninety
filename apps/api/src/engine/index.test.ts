@@ -7,6 +7,8 @@ const okLock = { acquire: async () => true, release: async () => {} };
 const mark = (at: number): EngineCmd => ({ kind: "mark", at, bHint: 300, spread: 1 });
 const life = (trigger: string, at: number, extra: Record<string, unknown> = {}): EngineCmd =>
   ({ kind: "lifecycle", at, cmd: { trigger: trigger as never, at, ...extra } });
+const order = (at: number, o: Partial<Extract<EngineCmd, { kind: "order" }>["order"]> = {}): EngineCmd =>
+  ({ kind: "order", at, order: { user: "u1", side: "buy", outcome: 0, size: 100, balance: 1e9, recentOrderTimes: [], ...o } });
 
 describe("engine loop — per-market serialization", () => {
   it("2 markets × 1k interleaved commands → per-market ordering is perfect", async () => {
@@ -132,5 +134,101 @@ describe("engine loop — recovery", () => {
     expect(e2.metrics.unserveable).toBe(1); // quarantined — NOT silently seeded fresh onto a wrong state
     expect(e2.stateOf("mA")).toBeUndefined();
     expect(errors.some((e) => e instanceof Error)).toBe(true); // alerted
+  });
+});
+
+describe("engine loop — orders (ADR-026)", () => {
+  const collect = () => {
+    const effects: Array<{ type: string; [k: string]: unknown }> = [];
+    return { effects, emit: (_m: string, e: readonly { type: string }[]) => void effects.push(...(e as never[])) };
+  };
+
+  it("fills an order: advances q, updates the position, emits fill/position/ledger effects", async () => {
+    const { effects, emit } = collect();
+    const engine = new Engine({ store: store(), emit, lock: okLock });
+    await engine.start();
+    engine.submit("mA", "matchA", life("open", 1));
+    engine.submit("mA", "matchA", life("kickoff", 2)); // → LIVE (tradeable)
+    engine.submit("mA", "matchA", order(3, { size: 100, outcome: 0 }));
+    await engine.drain();
+    const st = engine.stateOf("mA")!;
+    expect(st.q[0]).toBe(100); // AMM shares advanced
+    expect(st.positions["u1"]).toEqual([100, 0, 0]); // position booked
+    expect(effects.find((e) => e.type === "fill")).toMatchObject({ user: "u1", size: 100, side: "buy" });
+    expect(effects.find((e) => e.type === "position")).toMatchObject({ user: "u1", qty: 100 });
+    expect(effects.filter((e) => e.type === "ledger").map((e) => e.kind)).toEqual(["debit", "burn"]);
+  });
+
+  it("emits a typed reject (no state change) for an order on a non-tradeable market", async () => {
+    const { effects, emit } = collect();
+    const engine = new Engine({ store: store(), emit, lock: okLock });
+    await engine.start();
+    engine.submit("mA", "matchA", order(1)); // first cmd → SCHEDULED, not tradeable
+    await engine.drain();
+    expect(effects).toEqual([{ type: "reject", user: "u1", code: "MARKET_HALTED" }]);
+    expect(engine.stateOf("mA")!.q).toEqual([0, 0, 0]); // untouched
+    expect(engine.stateOf("mA")!.positions).toEqual({});
+  });
+
+  it("replays orders deterministically — recovered q + positions match the live engine", async () => {
+    const s = store();
+    const e1 = new Engine({ store: s, emit: () => {}, lock: okLock });
+    await e1.start();
+    e1.submit("mA", "matchA", life("open", 1));
+    e1.submit("mA", "matchA", life("kickoff", 2));
+    e1.submit("mA", "matchA", order(3, { user: "u1", outcome: 0, size: 100 }));
+    e1.submit("mA", "matchA", order(4, { user: "u2", outcome: 1, size: 50 }));
+    await e1.drain();
+    const live = e1.stateOf("mA")!;
+
+    const e2 = new Engine({ store: s, emit: () => {}, lock: okLock });
+    await e2.start();
+    e2.submit("mA", "matchA", mark(5)); // forces lane creation + full journal replay of the two orders
+    await e2.drain();
+    expect(e2.stateOf("mA")!.q).toEqual(live.q); // q rebuilt purely from the journal
+    expect(e2.stateOf("mA")!.positions).toEqual(live.positions);
+  });
+
+  it("rebuilds q + positions from a SNAPSHOT (snapshotEvery:1), not only the command stream", async () => {
+    const s = store();
+    const e1 = new Engine({ store: s, emit: () => {}, lock: okLock, snapshotEvery: 1 });
+    await e1.start();
+    e1.submit("mA", "matchA", life("open", 1));
+    e1.submit("mA", "matchA", life("kickoff", 2));
+    e1.submit("mA", "matchA", order(3, { user: "u1", outcome: 0, size: 100 }));
+    e1.submit("mA", "matchA", order(4, { user: "u2", outcome: 2, size: 40 }));
+    await e1.drain();
+    const live = e1.stateOf("mA")!;
+
+    const e2 = new Engine({ store: s, emit: () => {}, lock: okLock, snapshotEvery: 1 });
+    await e2.start();
+    e2.submit("mA", "matchA", mark(5)); // recovery loads the snapshot (written after every command) → not a from-zero replay
+    await e2.drain();
+    expect(e2.stateOf("mA")!.q).toEqual(live.q); // q survived the snapshot round-trip
+    expect(e2.stateOf("mA")!.positions).toEqual(live.positions);
+  });
+
+  it("thins b through the ADR-005 reopen decay: a fill right after a goal-halt reopen costs more than at plain LIVE", async () => {
+    const dear = collect();
+    const tight = collect();
+    const eDear = new Engine({ store: store(), emit: dear.emit, lock: okLock });
+    const eTight = new Engine({ store: store(), emit: tight.emit, lock: okLock });
+    await eDear.start();
+    await eTight.start();
+    // dear market: goal-halt then reopen → spreadAt = full 3× right at reopenAt
+    eDear.submit("mD", "matchD", life("open", 1));
+    eDear.submit("mD", "matchD", life("kickoff", 2));
+    eDear.submit("mD", "matchD", life("pivot", 3, { reason: "goal" }));
+    eDear.submit("mD", "matchD", life("reopen", 5));
+    eDear.submit("mD", "matchD", order(5, { size: 100 })); // at === reopenAt → 3× spread → thinner b
+    // tight market: plain LIVE → spreadAt = 1×
+    eTight.submit("mT", "matchT", life("open", 1));
+    eTight.submit("mT", "matchT", life("kickoff", 2));
+    eTight.submit("mT", "matchT", order(5, { size: 100 }));
+    await eDear.drain();
+    await eTight.drain();
+    const dearCost = dear.effects.find((e) => e.type === "fill")!.cost as number;
+    const tightCost = tight.effects.find((e) => e.type === "fill")!.cost as number;
+    expect(dearCost).toBeGreaterThan(tightCost); // reopen decay widened the spread → thinner b → dearer fill
   });
 });

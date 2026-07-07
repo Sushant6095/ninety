@@ -10,31 +10,61 @@ import type { Redis } from "ioredis";
 import { createBus } from "@omnipitch/bus";
 import { TOPICS, type Envelope } from "@omnipitch/schema";
 import { Journal, RedisJournalStore, hashState, type JournalStore } from "./journal";
-import { transition, initialMarket, fromEnvelope, IllegalTransitionError, type MarketState, type MarketEffect, type MarketCommand } from "./market";
+import { transition, initialMarket, fromEnvelope, canAcceptOrder, spreadAt, IllegalTransitionError, type MarketState, type MarketEffect, type MarketCommand } from "./market";
+import { applyOrder, type Side, type RejectCode } from "./order";
 
 const B0_DEFAULT = 300; // base LMSR liquidity until a mark re-anchors it
+const SPREAD_FLOOR = 0.01; // clamp the effective spread divisor > 0 so a malformed mark (spread ≤ 0) can't div-by-0 b
 
-// The full per-market state the engine owns: the lifecycle machine + the AMM anchor tethered from prices.marks.
+// Effects the engine emits — a superset of the lifecycle MarketEffect: fills, position updates, credit-ledger
+// events, and typed order rejections. The engine only emits; the bus/ledger apply them.
+export type EngineEffect =
+  | MarketEffect
+  | { type: "fill"; user: string; outcome: number; side: Side; price: number; size: number; cost: number; fee: number }
+  | { type: "position"; user: string; outcome: number; qty: number }
+  | { type: "ledger"; user: string; kind: "debit" | "credit" | "burn"; amount: number }
+  | { type: "reject"; user: string; code: RejectCode };
+
+// The full per-market state the engine owns: the lifecycle machine + the AMM anchor tethered from prices.marks +
+// the LMSR shares outstanding (q) and per-user positions. q/positions are part of the journaled state → replay
+// reproduces them exactly (determinism law).
 export interface EngineMarket {
   lifecycle: MarketState;
   bHint: number; // AMM liquidity b(t), re-anchored from cortex marks
   spread: number; // current spread multiplier
+  q: number[]; // LMSR shares outstanding per outcome (the AMM position vector)
+  positions: Record<string, number[]>; // user → per-outcome position in THIS market
 }
 
-// A command on a market's lane. `at` is event-time (payload), used for deterministic seeding.
+// An order on a market's lane. balance + recentOrderTimes are provided BY THE CALLER (the ledger is the balance
+// authority, ADR-003; the gateway supplies the user's rate-window) — the engine owns only per-market AMM state.
+export interface OrderCmd {
+  user: string;
+  side: Side;
+  outcome: number;
+  size: number;
+  balance: number;
+  recentOrderTimes: number[];
+  limit?: number; // client slippage guard (server price still wins)
+}
+
+// A command on a market's lane. `at` is event-time (payload), used for deterministic seeding + rate windowing.
 export type EngineCmd =
   | { kind: "lifecycle"; at: number; cmd: MarketCommand }
-  | { kind: "mark"; at: number; bHint: number; spread: number };
+  | { kind: "mark"; at: number; bHint: number; spread: number }
+  | { kind: "order"; at: number; order: OrderCmd };
 
 function seedMarket(marketId: string, matchId: string, cmd: EngineCmd): EngineMarket {
-  return { lifecycle: initialMarket(marketId, matchId, cmd.at), bHint: B0_DEFAULT, spread: 1 };
+  // q seeded to 3 outcomes (1X2) in v1. ponytail: fixed 3; n-outcome sizing from the mark is a follow-up (ADR-026).
+  return { lifecycle: initialMarket(marketId, matchId, cmd.at), bHint: B0_DEFAULT, spread: 1, q: [0, 0, 0], positions: {} };
 }
 
-/** Total apply (never throws): lifecycle → market machine (illegal parks); mark → re-anchor. Returns effects. */
-export function engineApply(state: EngineMarket, cmd: EngineCmd): { state: EngineMarket; effects: readonly MarketEffect[] } {
+/** Total apply (never throws): lifecycle → market machine (illegal parks); mark → re-anchor; order → risk+fill. */
+export function engineApply(state: EngineMarket, cmd: EngineCmd): { state: EngineMarket; effects: readonly EngineEffect[] } {
   if (cmd.kind === "mark") {
     return { state: { ...state, bHint: cmd.bHint, spread: cmd.spread }, effects: [] };
   }
+  if (cmd.kind === "order") return applyOrderCmd(state, cmd.order, cmd.at);
   try {
     const { state: lifecycle, effects } = transition(state.lifecycle, cmd.cmd);
     return { state: { ...state, lifecycle }, effects };
@@ -42,6 +72,38 @@ export function engineApply(state: EngineMarket, cmd: EngineCmd): { state: Engin
     if (e instanceof IllegalTransitionError) return { state, effects: [] }; // park — deterministic on replay too
     throw e;
   }
+}
+
+// Order branch: delegate the risk+fill decision to the pure applyOrder (amm math stays out of here), then apply
+// the q + position deltas and turn the result into emitted effects. A reject emits one typed reject, no state change.
+function applyOrderCmd(state: EngineMarket, o: OrderCmd, at: number): { state: EngineMarket; effects: readonly EngineEffect[] } {
+  const held = state.positions[o.user] ?? new Array<number>(state.q.length).fill(0);
+  const res = applyOrder({
+    side: o.side,
+    outcome: o.outcome,
+    size: o.size,
+    q: state.q,
+    // live b, thinned by BOTH spread sources: the cortex hazard spread (from marks) × the ADR-005 reopen decay
+    // (3×→1× over 60s after a goal-halt reopen). They compound; floored so a bad mark can't div-by-0. Server price wins.
+    b: state.bHint / Math.max(state.spread * spreadAt(state.lifecycle, at), SPREAD_FLOOR),
+    tradeable: canAcceptOrder(state.lifecycle),
+    balance: o.balance,
+    position: held[o.outcome] ?? 0,
+    recentOrderTimes: o.recentOrderTimes,
+    now: at, // event-time, never a wall clock
+    limit: o.limit,
+  });
+  if (!res.ok) return { state, effects: [{ type: "reject", user: o.user, code: res.code }] };
+  const q = [...state.q];
+  q[o.outcome] += res.shareDelta;
+  const nextPos = [...held];
+  nextPos[o.outcome] = (held[o.outcome] ?? 0) + res.positionDelta;
+  const effects: EngineEffect[] = [
+    { type: "fill", user: o.user, outcome: o.outcome, side: o.side, price: res.fill.price, size: res.fill.size, cost: res.fill.cost, fee: res.fill.fee },
+    { type: "position", user: o.user, outcome: o.outcome, qty: nextPos[o.outcome] },
+    ...res.ledger.map((l) => ({ type: "ledger" as const, user: o.user, kind: l.kind, amount: l.amount })),
+  ];
+  return { state: { ...state, q, positions: { ...state.positions, [o.user]: nextPos } }, effects };
 }
 const engineReduce = (state: EngineMarket, cmd: EngineCmd): EngineMarket => engineApply(state, cmd).state;
 
@@ -66,7 +128,7 @@ export interface EngineMetrics {
 }
 export interface EngineDeps {
   store: JournalStore<EngineCmd, EngineMarket>;
-  emit: (marketId: string, effects: readonly MarketEffect[]) => Promise<void> | void;
+  emit: (marketId: string, effects: readonly EngineEffect[]) => Promise<void> | void;
   lock?: EngineLock;
   maxQueueDepth?: number; // default 1000
   snapshotEvery?: number;
