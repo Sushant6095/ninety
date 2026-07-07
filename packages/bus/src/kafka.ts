@@ -4,4 +4,5 @@ import type { Envelope, Topic } from "@omnipitch/schema";
 export class KafkaBus implements Bus {
   async publish(_t: Topic, _k: string, _e: Envelope) { throw new Error("wire kafkajs when BUS_DRIVER=kafka"); }
   async consume() { throw new Error("wire kafkajs when BUS_DRIVER=kafka"); }
+  async close() { /* no-op until kafkajs is wired */ }
 }
