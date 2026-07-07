@@ -1,0 +1,106 @@
+apps/api/src/engine/order.test.ts
+  s_82db0e7c9eb747::t_a140c3a0996b82 105-111
+apps/api/prisma/schema.prisma
+  s_82db0e7c9eb747::t_8dc86f92d34130 121-129
+  s_82db0e7c9eb747::t_09324601afc3f0 86
+docs/adr/ADR-028-engine-halt-reopen-hardening-auto-reopen-watchdog-hazard-single-count.md
+  s_82db0e7c9eb747::t_dee123cd0778f6 1-3
+apps/api/src/services/projection.test.ts
+  s_82db0e7c9eb747::t_38526f77971ff6 76,84-86
+  s_82db0e7c9eb747::t_2250b13fa41128 1-57,63-75,77-83,87-89
+  s_82db0e7c9eb747::t_f5c4e37e078908 58-62
+packages/schema/src/envelope.ts
+  s_82db0e7c9eb747::t_059ab1685a28df 28
+packages/schema/src/events.ts
+  s_82db0e7c9eb747::t_0a2375ab689314 52
+  s_82db0e7c9eb747::t_16b0163effdff4 33
+  s_82db0e7c9eb747::t_6255f5fb7d7f86 13
+  s_82db0e7c9eb747::t_720279ba50926d 77
+apps/api/src/engine/emit.test.ts
+  s_82db0e7c9eb747::t_3f51fe10ee4bcb 1-44
+packages/schema/src/payloads.ts
+  s_82db0e7c9eb747::t_1e53abacce73f8 76-85
+apps/api/prisma/migrations/20260708000001_credit_ledger_delta_float/migration.sql
+  s_82db0e7c9eb747::t_a09c8ea0394386 1-3
+apps/api/src/services/projection.ts
+  s_82db0e7c9eb747::t_6be411d467d0b9 1-9,11-20,22-48,54,57-62
+  s_82db0e7c9eb747::t_148b6f968fb03c 49-53,55-56
+  s_82db0e7c9eb747::t_cd7eacc21c976f 10,21
+apps/api/src/db.ts
+  s_82db0e7c9eb747::t_651f1b2e5b5097 1-7
+apps/api/src/engine/watchdog.test.ts
+  s_82db0e7c9eb747::t_76fcdeef0fd619 1-45
+docs/adr/ADR-027-read-model-projection-bus-to-postgres-redis-idempotent.md
+  s_82db0e7c9eb747::t_5fe4121e3652ab 1-3
+apps/api/prisma/migrations/20260708000000_add_processed_event_inbox/migration.sql
+  s_82db0e7c9eb747::t_808d84943df8be 1-9
+apps/api/src/engine/amm.test.ts
+  s_82db0e7c9eb747::t_edd0d04c4e0e54 2-20
+apps/api/src/services/projection-runtime.ts
+  s_82db0e7c9eb747::t_9a273f0620cecc 1-32
+packages/schema/src/events.test.ts
+  s_82db0e7c9eb747::t_d179e4121b2a32 27
+apps/api/src/engine/watchdog.ts
+  s_82db0e7c9eb747::t_0078775e7342da 1-47
+apps/api/src/engine/index.test.ts
+  s_82db0e7c9eb747::t_9428508347245b 14-15,17
+  s_82db0e7c9eb747::t_ec6a1e4bd25da0 236-303,331-348
+  s_82db0e7c9eb747::t_6f3ae2728e5c4b 304-330
+  s_82db0e7c9eb747::t_0b8ac54afaeb9d 13,16
+  s_82db0e7c9eb747::t_3f29aa316cd44e 8
+  s_82db0e7c9eb747::t_4564593ca49c93 4
+.claude/context/NOW.md
+  s_82db0e7c9eb747::t_cbd0304bf953b5 12-14
+apps/api/src/main.ts
+  s_82db0e7c9eb747::t_1849676f107f98 3,7,9-11
+apps/api/src/engine/emit.ts
+  s_82db0e7c9eb747::t_b6f790ca833cd7 1-64
+apps/api/src/services/projection-store.ts
+  s_82db0e7c9eb747::t_6d36c51062c3c3 7
+  s_82db0e7c9eb747::t_fe096dee467106 24,36
+  s_82db0e7c9eb747::t_a14fd4e5f7669a 74-78,82
+  s_82db0e7c9eb747::t_288a92766acb5d 1-6,8-23,25-35,37-73,79-81,83-85
+apps/api/src/engine/order.ts
+  s_82db0e7c9eb747::t_d74acdc5482e6d 102
+  s_82db0e7c9eb747::t_70b7e58177c583 19
+  s_82db0e7c9eb747::t_a5a53705508114 80
+apps/api/src/engine/index.ts
+  s_82db0e7c9eb747::t_5c4b3c0826652f 345,348
+  s_82db0e7c9eb747::t_96758271393582 69
+  s_82db0e7c9eb747::t_4a3b290843818b 140,152-154
+  s_82db0e7c9eb747::t_7396da983e864a 144-146
+  s_82db0e7c9eb747::t_04887f85f91c84 71-72,75,77
+  s_82db0e7c9eb747::t_9742522e833b4c 16
+  s_82db0e7c9eb747::t_c6360f9c1e57fa 70,73-74,76
+  s_82db0e7c9eb747::t_7dabbfdc855a0c 13,15,19,21
+  s_82db0e7c9eb747::t_1b410981067d14 335-342
+  s_82db0e7c9eb747::t_5fdc4c65b829b2 365,367-368
+  s_82db0e7c9eb747::t_d280d97468af1f 37-38
+  s_82db0e7c9eb747::t_0ff52eca388abd 20
+  s_82db0e7c9eb747::t_a7c5c552df3a19 298
+  s_82db0e7c9eb747::t_85d1ca66ee4a19 58,63
+  s_82db0e7c9eb747::t_353b7eb8c17bc4 295-296
+  s_82db0e7c9eb747::t_16ddd817b2d22d 98-100
+  s_82db0e7c9eb747::t_1ca884b125bd9f 166,170-172,176-182,192-215
+  s_82db0e7c9eb747::t_197a237aec6e64 216
+packages/schema/src/topics.ts
+  s_82db0e7c9eb747::t_7d9540b9a3856f 10
+apps/api/src/engine/amm.ts
+  s_82db0e7c9eb747::t_47b3a45bd19250 1-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "799068680c3e4d208502a187c2578d93cc51e231",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
