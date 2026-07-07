@@ -1,0 +1,50 @@
+apps/worker-ingest/src/supervise.ts
+  s_82db0e7c9eb747::t_94c9c998f91d70 111
+  s_82db0e7c9eb747::t_1e8f93965947da 138
+  s_82db0e7c9eb747::t_afb24f31d00820 85,87,89-90
+  s_82db0e7c9eb747::t_04bfd8b2abc0a2 1-54,65-75,77-78,80,91-93,95-110,112-137,139-141
+  s_82db0e7c9eb747::t_fa7f9629ef38ea 55-64
+  s_82db0e7c9eb747::t_54abce72bd2df1 76,88,94
+  s_82db0e7c9eb747::t_8e8c07909a1cfd 79,81-84,86
+packages/txline/src/client.ts
+  s_82db0e7c9eb747::t_55f86a8d7ce41e 22-24
+  s_82db0e7c9eb747::t_6f22d9b4dc568b 245-248,253,259-262
+apps/worker-ingest/src/normalizer.ts
+  s_82db0e7c9eb747::t_692e725fd97acc 97-103,105
+  s_82db0e7c9eb747::t_ec576595c9a9a0 75
+  s_82db0e7c9eb747::t_d86357766e2668 13-17
+  s_82db0e7c9eb747::t_395ad08719fce3 69-72,76,83-85,87-88
+  s_82db0e7c9eb747::t_09211e24bd6ba7 61
+  s_82db0e7c9eb747::t_5d39a7510942cf 32,36
+  s_82db0e7c9eb747::t_e04df764dad6c9 29-31,53
+  s_82db0e7c9eb747::t_74d4d0157e0e20 81
+docs/adr/ADR-018-ingest-normalization-odds-raw-match-events-fixtures-compacted-idempotency.md
+  s_82db0e7c9eb747::t_72564502852c11 4-5
+apps/worker-ingest/src/ingest.ts
+  s_82db0e7c9eb747::t_59920c00024256 49,54-55
+  s_82db0e7c9eb747::t_51e915976cd4f8 74-78,80-82,84
+  s_82db0e7c9eb747::t_b9f85942eb2a97 2-4,10,13,22-23,27-28,30,34,38-39,47,50,52,58,63-64,66-67,69,72-73,79,83,85,88,93,109,113,119-150,152-169,185-186
+apps/worker-ingest/src/supervise.test.ts
+  s_82db0e7c9eb747::t_80dd890403af4d 164-253
+  s_82db0e7c9eb747::t_98745a81a7c50f 1-163
+.claude/context/NOW.md
+  s_82db0e7c9eb747::t_b51733726db03d 5
+docs/adr/ADR-019-ingest-stream-gap-recovery-exactly-once-hardening.md
+  s_82db0e7c9eb747::t_fda8b0016fabb4 1-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "cf7df7668be66ed8d9ea8c3b2e4496f80cb7f278",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
