@@ -1,15 +1,10 @@
-// VERIFY: exercise every typed TxLINE wrapper against a deterministic mock (real WC26 data), print an
-// authenticated fixtures/scores snapshot, assert each returns a parsed schema type, and (with --emit)
-// write one real sample per endpoint to docs/txline-samples/. Doubles as `pnpm --filter @omnipitch/txline test`.
+// CI VERIFY (mock): exercise every typed TxLINE wrapper against a deterministic mock that serves the
+// REAL payloads captured live into docs/txline-samples/ (ADR-015). Asserts each wrapper returns a parsed
+// schema type + the auth invariants. For the LIVE (world) run see packages/chain/scripts/txline-live.mjs.
+// Runs as `pnpm --filter @omnipitch/txline test`.
 import assert from "node:assert/strict";
-import { writeFileSync, mkdirSync } from "node:fs";
-import { fileURLToPath } from "node:url";
-import { dirname, resolve } from "node:path";
 import { TxLineClient } from "../src/client";
 import { mockTxLine, WC26_FIXTURE_ID } from "../src/mock";
-
-const here = dirname(fileURLToPath(import.meta.url));
-const samplesDir = resolve(here, "../../../docs/txline-samples");
 
 async function collect<T>(gen: AsyncGenerator<T>, max = 100): Promise<T[]> {
   const out: T[] = [];
@@ -22,84 +17,63 @@ async function collect<T>(gen: AsyncGenerator<T>, max = 100): Promise<T[]> {
 
 async function main(): Promise<void> {
   const { fetch, subscriber, signer, calls } = mockTxLine();
-  const client = new TxLineClient({ cluster: "devnet", apiOrigin: "https://txline-dev.txodds.com", serviceLevel: 12, leagues: ["wc26"], fetch, subscriber, signer });
+  const client = new TxLineClient({ cluster: "devnet", apiOrigin: "https://txline-dev.txodds.com", fetch, subscriber, signer });
 
-  // every wrapper returns a parsed schema type (not any) — parse happens inside the wrapper
-  const schedule = await client.fixtures(); // F1
-  const scores = await client.scoresSnapshot(WC26_FIXTURE_ID); // S1
-  const scoreUpdates = await client.scoresUpdates(20624, 19, 3); // S2
+  const fixtures = await client.fixtures(); // F1 → Fixture[]
+  const scores = await client.scoresSnapshot(WC26_FIXTURE_ID); // S1 → ScoreState[]
+  const scoreUpdates = await client.scoresUpdates(20641, 1, 8); // S2
   const scoreEvents = await collect(client.scoresStream()); // S3 (SSE)
-  const statVal = await client.statValidation(WC26_FIXTURE_ID, 9001, 1002, 1003); // S4
-  const oddsSnap = await client.oddsSnapshot(WC26_FIXTURE_ID); // O1
-  const oddsUpdates = await client.oddsUpdates(20624, 19, 3); // O2
+  const statVal = await client.statValidation(WC26_FIXTURE_ID, scores[0]?.Seq ?? 0, 1002); // S4
+  const oddsSnap = await client.oddsSnapshot(WC26_FIXTURE_ID); // O1 (empty for scheduled fixture)
+  const oddsUpdates = await client.oddsUpdates(20641, 1, 8); // O2
   const oddsTicks = await collect(client.oddsStream()); // O3 (SSE)
 
-  console.log("── TxLINE authenticated snapshot (devnet · guest→subscribe→activate · both headers) ──\n");
-  console.log("GET /api/scores/schedule");
-  console.log(JSON.stringify(schedule, null, 2));
-  console.log(`\nGET /api/scores/snapshot/${WC26_FIXTURE_ID}`);
-  console.log(JSON.stringify(scores, null, 2));
+  const wc = fixtures.find((f) => f.CompetitionId === 72) ?? fixtures[0];
+  const s0 = scores[0];
+  const g = s0?.Score;
+  console.log("── TxLINE authenticated snapshot (mock of real payloads · both headers) ──\n");
+  console.log("GET /api/fixtures/snapshot (first fixture)");
+  console.log(JSON.stringify(wc, null, 2));
+  console.log(`\nGET /api/scores/snapshot/${WC26_FIXTURE_ID} →`, `${wc?.Participant1} ${g?.Participant1?.Total?.Goals ?? "?"}-${g?.Participant2?.Total?.Goals ?? "?"} ${wc?.Participant2} · state ${s0?.GameState} · seq ${s0?.Seq}`);
   console.log("\nwrappers (parsed, typed):");
-  console.log(`  S1 scoresSnapshot   → ${scores.home.team} ${scores.home.goals}-${scores.away.goals} ${scores.away.team} @${scores.minute}'`);
-  console.log(`  S2 scoresUpdates    → ${scoreUpdates.events.length} events in bucket ${scoreUpdates.epochDay}/${scoreUpdates.hourOfDay}/${scoreUpdates.interval}`);
-  console.log(`  S3 scoresStream     → ${scoreEvents.length} events (first: ${scoreEvents[0]?.type})`);
-  console.log(`  S4 statValidation   → ${statVal.stats.length} stats, root ${statVal.rootPda.slice(0, 12)}…`);
-  console.log(`  F1 fixtures         → ${schedule.fixtures.length} fixtures`);
-  console.log(`  O1 oddsSnapshot     → H ${oddsSnap.odds.H} / D ${oddsSnap.odds.D} / A ${oddsSnap.odds.A}`);
-  console.log(`  O2 oddsUpdates      → ${oddsUpdates.ticks.length} ticks`);
-  console.log(`  O3 oddsStream       → ${oddsTicks.length} StablePrice ticks (first H ${oddsTicks[0]?.odds.H})`);
+  console.log(`  F1 fixtures        → ${fixtures.length} fixtures (${wc?.Competition})`);
+  console.log(`  S1 scoresSnapshot  → ${scores.length} states, fixture ${s0?.FixtureId}`);
+  console.log(`  S2 scoresUpdates   → ${scoreUpdates.length} states`);
+  console.log(`  S3 scoresStream    → ${scoreEvents.length} event(s)`);
+  console.log(`  S4 statValidation  → statToProve key ${statVal.statToProve.key}, ${statVal.statProof.length} proof nodes`);
+  console.log(`  O1 oddsSnapshot    → ${oddsSnap.length} ticks`);
+  console.log(`  O2 oddsUpdates     → ${oddsUpdates.length} ticks (${oddsUpdates[0]?.Bookmaker ?? "n/a"})`);
+  console.log(`  O3 oddsStream      → ${oddsTicks.length} tick(s)`);
 
-  // --- assertions: parsed schema shapes ---
-  assert.equal(scores.fixtureId, WC26_FIXTURE_ID);
-  assert.equal(scores.home.team, "Brazil");
-  assert.equal(scoreUpdates.events.length, 2);
-  assert.equal(scoreEvents[0].type, "goal");
-  assert.equal(statVal.stats.length, 2);
-  assert.equal(schedule.fixtures.length, 3);
-  assert.ok(oddsSnap.odds.H > 0 && oddsSnap.odds.A > 0);
-  assert.equal(oddsUpdates.ticks.length, 2);
-  assert.equal(oddsTicks[0].odds.A, 5.2);
+  // parsed-shape assertions
+  assert.ok(Array.isArray(fixtures) && fixtures.length > 0 && typeof fixtures[0].FixtureId === "number");
+  assert.ok(typeof s0.FixtureId === "number" && s0.Score, "scores parsed with nested Score");
+  assert.equal(scoreEvents[0].FixtureId, s0.FixtureId, "stream yields typed ScoreState");
+  assert.equal(typeof statVal.statToProve.key, "number");
+  assert.ok(Array.isArray(oddsSnap));
+  assert.ok(oddsUpdates.length > 0 && Array.isArray(oddsUpdates[0].Prices ?? []));
+  assert.equal(typeof oddsTicks[0].FixtureId, "number");
 
-  // --- assertions: auth invariants ---
+  // auth invariants
   for (const c of calls.data) {
-    assert.ok(c.bearer?.startsWith("Bearer "), "every data request must send Authorization: Bearer {jwt}");
-    assert.ok(c.apiToken && c.apiToken.length > 0, "every data request must send X-Api-Token {apiToken}");
+    assert.ok(c.bearer?.startsWith("Bearer "), "every data request sends Authorization: Bearer {jwt}");
+    assert.ok(c.apiToken && c.apiToken.length > 0, "every data request sends X-Api-Token");
   }
-  assert.equal(calls.guestStart, 1, "guest/start runs once — session cached across all wrappers");
-  assert.equal(calls.activate, 1, "token/activate runs once — session cached across all wrappers");
+  assert.equal(calls.guestStart, 1, "session cached across all wrappers");
+  assert.equal(calls.activate, 1, "session cached across all wrappers");
 
-  // refresh-and-retry on 401
   calls.expireNextToken = true;
   const refreshed = await client.scoresSnapshot(WC26_FIXTURE_ID);
-  assert.equal(refreshed.fixtureId, WC26_FIXTURE_ID);
+  assert.equal(refreshed[0].FixtureId, s0.FixtureId);
   assert.equal(calls.activate, 2, "a 401 triggers exactly one re-activate");
 
-  // never mix networks
   assert.throws(
     () => new TxLineClient({ cluster: "devnet", apiOrigin: "https://txline.txodds.com", fetch, subscriber, signer }),
     /network mismatch/i,
     "mainnet origin with a devnet cluster must throw",
   );
 
-  if (process.argv.includes("--emit")) {
-    mkdirSync(samplesDir, { recursive: true });
-    const out: Record<string, unknown> = {
-      "scores-snapshot": scores,
-      "scores-updates": scoreUpdates,
-      "scores-stream-event": scoreEvents[0],
-      "scores-stat-validation": statVal,
-      "fixtures-schedule": schedule,
-      "odds-snapshot": oddsSnap,
-      "odds-updates": oddsUpdates,
-      "odds-stream-event": oddsTicks[0],
-    };
-    for (const [name, data] of Object.entries(out)) {
-      writeFileSync(resolve(samplesDir, `${name}.json`), JSON.stringify(data, null, 2) + "\n");
-    }
-    console.log(`\nwrote ${Object.keys(out).length} samples → ${samplesDir}`);
-  }
-
-  console.log("\n✓ VERIFY OK — 8 endpoints, every wrapper returns a parsed schema type; dual headers, cache, refresh, network guard asserted.");
+  console.log("\n✓ CI VERIFY OK (mock of real payloads) — 8 wrappers return parsed schema types; dual headers, cache, refresh, network guard asserted.");
 }
 
 main().catch((err) => {

@@ -1,31 +1,50 @@
-{
-  "epochDay": 20624,
-  "hourOfDay": 19,
-  "interval": 3,
-  "ticks": [
-    {
-      "fixtureId": "wc26-1041",
-      "seq": 4408,
-      "ts": "2026-06-20T19:02:00Z",
-      "market": "1X2",
-      "odds": {
-        "H": 1.8,
-        "D": 3.5,
-        "A": 4.9
-      },
-      "stable": true
-    },
-    {
-      "fixtureId": "wc26-1041",
-      "seq": 4410,
-      "ts": "2026-06-20T19:03:00Z",
-      "market": "1X2",
-      "odds": {
-        "H": 1.72,
-        "D": 3.6,
-        "A": 5.2
-      },
-      "stable": true
-    }
-  ]
-}
+[
+  {
+    "FixtureId": 18193785,
+    "MessageId": "1836662304:00003:000084-10021-stab",
+    "Ts": 1783388400116,
+    "Bookmaker": "TXLineStablePriceDemargined",
+    "BookmakerId": 10021,
+    "SuperOddsType": "OVERUNDER_PARTICIPANT_GOALS",
+    "GameState": null,
+    "InRunning": true,
+    "MarketParameters": "line=5",
+    "MarketPeriod": null,
+    "PriceNames": [
+      "over",
+      "under"
+    ],
+    "Prices": [
+      2998,
+      1501
+    ],
+    "Pct": [
+      "33.356",
+      "66.622"
+    ]
+  },
+  {
+    "FixtureId": 18193785,
+    "MessageId": "1836662304:00003:000083-10021-stab",
+    "Ts": 1783388400116,
+    "Bookmaker": "TXLineStablePriceDemargined",
+    "BookmakerId": 10021,
+    "SuperOddsType": "OVERUNDER_PARTICIPANT_GOALS",
+    "GameState": null,
+    "InRunning": true,
+    "MarketParameters": "line=4.5",
+    "MarketPeriod": null,
+    "PriceNames": [
+      "over",
+      "under"
+    ],
+    "Prices": [
+      1687,
+      2456
+    ],
+    "Pct": [
+      "59.277",
+      "40.717"
+    ]
+  }
+]

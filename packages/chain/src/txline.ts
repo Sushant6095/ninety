@@ -1,38 +1,84 @@
-import { PublicKey, TransactionInstruction } from "@solana/web3.js";
-import { createHash } from "node:crypto";
+import { PublicKey, SystemProgram, TransactionInstruction } from "@solana/web3.js";
 
-// txoracle.subscribe(level, weeks) instruction. CLAUDE.md law: only packages/chain builds Solana txs,
-// so the TxLINE auth flow (packages/txline) delegates subscribe-tx construction here.
-// The subscriber then signs + sends it with the app wallet and hands the signature back to the client.
+// txoracle.subscribe(service_level_id, weeks) — built from the on-chain IDL (packages/txline/txoracle.json,
+// program 6pW64gN1…, v1.4.2) and verified LIVE on devnet (ADR-015). CLAUDE.md law: only packages/chain
+// builds Solana txs, so packages/txline's auth flow delegates subscribe-tx construction here.
 
-// Anchor instruction discriminator = sha256("global:<ix>")[0..8].
-function anchorDiscriminator(name: string): Buffer {
-  return createHash("sha256").update(`global:${name}`).digest().subarray(0, 8);
+export const TOKEN_2022_PROGRAM_ID = new PublicKey("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb");
+export const ASSOCIATED_TOKEN_PROGRAM_ID = new PublicKey("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL");
+// authoritative discriminator from the IDL (NOT sha256("global:subscribe"))
+const SUBSCRIBE_DISCRIMINATOR = Buffer.from([254, 28, 191, 138, 156, 179, 183, 53]);
+
+/** Token-2022 associated token account for (mint, owner). */
+function ata(mint: PublicKey, owner: PublicKey): PublicKey {
+  return PublicKey.findProgramAddressSync([owner.toBuffer(), TOKEN_2022_PROGRAM_ID.toBuffer(), mint.toBuffer()], ASSOCIATED_TOKEN_PROGRAM_ID)[0];
+}
+
+export interface SubscribeAccounts {
+  pricingMatrix: PublicKey;
+  tokenTreasuryPda: PublicKey;
+  tokenTreasuryVault: PublicKey;
+  userTokenAccount: PublicKey;
+}
+
+/** Derive the shared subscribe accounts (PDAs + Token-2022 ATAs) for a wallet. */
+export function deriveSubscribeAccounts(txoracleProgram: PublicKey, txlMint: PublicKey, user: PublicKey): SubscribeAccounts {
+  const [pricingMatrix] = PublicKey.findProgramAddressSync([Buffer.from("pricing_matrix")], txoracleProgram);
+  const [tokenTreasuryPda] = PublicKey.findProgramAddressSync([Buffer.from("token_treasury_v2")], txoracleProgram);
+  return {
+    pricingMatrix,
+    tokenTreasuryPda,
+    tokenTreasuryVault: ata(txlMint, tokenTreasuryPda),
+    userTokenAccount: ata(txlMint, user),
+  };
 }
 
 export interface BuildSubscribeInput {
-  txoracleProgram: PublicKey; // NETWORKS[cluster].txoracleProgram
-  subscriber: PublicKey; // the wallet subscribing (fee payer + signer)
-  level: number; // service level (WC26 free tier: 12)
-  weeks: number; // subscription length
-  subscriptionPda?: PublicKey; // ⚠ Day-0: derive from txoracle IDL; included when known
+  txoracleProgram: PublicKey;
+  txlMint: PublicKey;
+  user: PublicKey; // fee payer + signer
+  serviceLevelId: number; // devnet free tier: 1 (60s delay); mainnet real-time: 12
+  weeks: number;
+}
+
+/** Build the `subscribe(service_level_id: u16, weeks: u8)` instruction (9 accounts in IDL order). */
+export function buildSubscribeIx(input: BuildSubscribeInput): TransactionInstruction {
+  const a = deriveSubscribeAccounts(input.txoracleProgram, input.txlMint, input.user);
+  const args = Buffer.alloc(3);
+  args.writeUInt16LE(input.serviceLevelId & 0xffff, 0);
+  args.writeUInt8(input.weeks & 0xff, 2);
+  return new TransactionInstruction({
+    programId: input.txoracleProgram,
+    keys: [
+      { pubkey: input.user, isSigner: true, isWritable: true },
+      { pubkey: a.pricingMatrix, isSigner: false, isWritable: false },
+      { pubkey: input.txlMint, isSigner: false, isWritable: false },
+      { pubkey: a.userTokenAccount, isSigner: false, isWritable: true },
+      { pubkey: a.tokenTreasuryVault, isSigner: false, isWritable: true },
+      { pubkey: a.tokenTreasuryPda, isSigner: false, isWritable: false },
+      { pubkey: TOKEN_2022_PROGRAM_ID, isSigner: false, isWritable: false },
+      { pubkey: SystemProgram.programId, isSigner: false, isWritable: false },
+      { pubkey: ASSOCIATED_TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
+    ],
+    data: Buffer.concat([SUBSCRIBE_DISCRIMINATOR, args]),
+  });
 }
 
 /**
- * Build the `txoracle.subscribe(level, weeks)` instruction.
- * ⚠ Day-0 (TXLINE-MAP §4): arg encoding (level u8 / weeks u16 LE assumed) and the full account list
- * are pending confirmation from the txoracle IDL — extend `keys` with the subscription PDA + system
- * program once verified. The program id + discriminator layout are correct today.
+ * The user's Token-2022 ATA for the TxL mint must exist before `subscribe` (the program does not create
+ * it — verified live: AccountNotInitialized otherwise). Prepend this idempotent create to the subscribe tx.
  */
-export function buildSubscribeIx(input: BuildSubscribeInput): TransactionInstruction {
-  const level = Buffer.alloc(1);
-  level.writeUInt8(input.level & 0xff);
-  const weeks = Buffer.alloc(2);
-  weeks.writeUInt16LE(input.weeks & 0xffff);
-  const data = Buffer.concat([anchorDiscriminator("subscribe"), level, weeks]);
-
-  const keys = [{ pubkey: input.subscriber, isSigner: true, isWritable: true }];
-  if (input.subscriptionPda) keys.push({ pubkey: input.subscriptionPda, isSigner: false, isWritable: true });
-
-  return new TransactionInstruction({ programId: input.txoracleProgram, keys, data });
+export function buildCreateUserAtaIx(txlMint: PublicKey, user: PublicKey): TransactionInstruction {
+  return new TransactionInstruction({
+    programId: ASSOCIATED_TOKEN_PROGRAM_ID,
+    keys: [
+      { pubkey: user, isSigner: true, isWritable: true }, // payer
+      { pubkey: ata(txlMint, user), isSigner: false, isWritable: true }, // ata to create
+      { pubkey: user, isSigner: false, isWritable: false }, // owner
+      { pubkey: txlMint, isSigner: false, isWritable: false },
+      { pubkey: SystemProgram.programId, isSigner: false, isWritable: false },
+      { pubkey: TOKEN_2022_PROGRAM_ID, isSigner: false, isWritable: false },
+    ],
+    data: Buffer.from([1]), // createIdempotent
+  });
 }

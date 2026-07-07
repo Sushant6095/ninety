@@ -1,20 +1,19 @@
-// statKey encodings (K1 — scores/soccer-feed). ⚠ Day-0: extract the FULL table from the soccer-feed
-// page; the two below are confirmed in TxLINE's own example and are the ones settlement relies on
-// (final home/away goals → 1X2 result derivation, TXLINE-MAP §3).
-export const STAT_KEYS = {
-  HOME_GOALS: 1002,
-  AWAY_GOALS: 1003,
-} as const;
+// statKey encodings (K1 — scores/soccer-feed). REALITY CORRECTION (verified live, ADR-015):
+// the map guessed 1002/1003 ≈ home/away goals, but the live scores feed shows goals live in
+// Score.{Participant1,Participant2}.Total.Goals — NOT in the numeric Stats map. So for settlement
+// (TXLINE-MAP §3) read goals from the Score object; the Stats map keys mean other metrics whose
+// exact meanings still need the soccer-feed table.
 
-export type StatKeyName = keyof typeof STAT_KEYS;
-export type StatKey = (typeof STAT_KEYS)[StatKeyName];
-
-const NAME_BY_ID: Record<number, StatKeyName> = { 1002: "HOME_GOALS", 1003: "AWAY_GOALS" };
-
-/** Human label for a statKey id (falls back to `stat_<id>` for keys not yet in the table). */
-export function statKeyName(id: number): string {
-  return NAME_BY_ID[id] ?? `stat_${id}`;
+/** Read final goals for a fixture from a live ScoreState's Score.*.Total.Goals (the source of truth). */
+export function goalsFromScore(score: {
+  Participant1?: { Total?: { Goals?: number } };
+  Participant2?: { Total?: { Goals?: number } };
+} | undefined): { home: number; away: number } | null {
+  const h = score?.Participant1?.Total?.Goals;
+  const a = score?.Participant2?.Total?.Goals;
+  return typeof h === "number" && typeof a === "number" ? { home: h, away: a } : null;
 }
 
-/** The two statKeys needed to derive a 1X2 result from a final score (TXLINE-MAP §3). */
-export const RESULT_STAT_KEYS = [STAT_KEYS.HOME_GOALS, STAT_KEYS.AWAY_GOALS] as const;
+// ⚠ Day-0: the numeric Stats map key → metric table (scores/soccer-feed) is not yet transcribed.
+// Live samples show keys like 1..8, 1001..1008, 2001..2008, etc. Do NOT assume any key is goals.
+export const STAT_KEY_TABLE_CONFIRMED = false;

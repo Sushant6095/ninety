@@ -11,6 +11,8 @@ Flow: `POST {apiOrigin}/auth/guest/start` → guest JWT → on-chain `txoracle.s
 Every data request carries BOTH headers: `Authorization: Bearer {jwt}` + `X-Api-Token: {apiToken}`.
 ⚠ Never mix networks: devnet tx must activate on txline-dev, mainnet on txline.
 
+VERIFIED LIVE 2026-07-07 (ADR-015): the full flow runs end-to-end on devnet. Reality corrections vs the notes above — devnet free tier is **service level 1** (60s delay); **SL12 is mainnet** real-time (SL12 → `InvalidServiceLevelId` on devnet). The user's Token-2022 ATA for the TxL mint must exist before `subscribe` (create it idempotently first). `subscribe` args are `(service_level_id: u16, weeks: u8)`; accounts + PDAs (`token_treasury_v2`, `pricing_matrix`) per the IDL at `packages/txline/txoracle.json`. `/api/token/activate` body is `{ txSig, walletSignature (base64 ed25519), leagues: number[] }` and returns the apiToken as a **bare string**. Live subscribe tx e.g. `2RMQS9tYsfgnRz42pUih4meEXTB6LeDSgtjfprG51vcAdKxVZJd9G7tEsZz8WzyjC9rjmLHCjQNFw9rZgYDPqqtX`.
+
 ## 1. Endpoint inventory
 
 | # | Endpoint | Kind | Status |
@@ -23,11 +25,11 @@ Every data request carries BOTH headers: `Authorization: Bearer {jwt}` + `X-Api-
 | S3 | `GET /api/scores/stream` (SSE) | stream | confirmed |
 | S4 | `GET /api/scores/stat-validation?fixtureId&seq&statKey[&statKey2]` | proof bundle | confirmed |
 | S5 | `txoracle.validateStat(ts, summary, proofs, predicate, stat1, stat2?, op?)` vs PDA `["daily_scores_roots", epochDay]` | on-chain verify | confirmed |
-| O1 | `GET /api/odds/snapshot/{fixtureId}?asOf=` | snapshot | ⚠ inferred (mirrors S1; confirm Day-0) → wrapper `oddsSnapshot` |
-| O2 | `GET /api/odds/updates/{epochDay}/{hourOfDay}/{interval}` | historical | ⚠ inferred (mirrors S2) → wrapper `oddsUpdates` |
-| O3 | `GET /api/odds/stream` (SSE, StablePrice) | stream | ⚠ inferred (mirrors S3) → wrapper `oddsStream` |
-| F1 | `GET /api/scores/schedule` | snapshot | ⚠ inferred (scores/schedule) → wrapper `fixtures` |
-| K1 | statKey encodings (1002 home goals · 1003 away goals) | reference | `packages/txline/src/statkeys.ts` (2 confirmed; ⚠ full table Day-0 from scores/soccer-feed) |
+| O1 | `GET /api/odds/snapshot/{fixtureId}?asOf=` | snapshot | confirmed (live) → wrapper `oddsSnapshot` |
+| O2 | `GET /api/odds/updates/{epochDay}/{hourOfDay}/{interval}` | historical | confirmed (live) → wrapper `oddsUpdates` |
+| O3 | `GET /api/odds/stream` (SSE, StablePrice) | stream | confirmed (live) → wrapper `oddsStream` |
+| F1 | `GET /api/fixtures/snapshot` | snapshot | confirmed (live; earlier `scores/schedule` guess was WRONG — ADR-015) → wrapper `fixtures` |
+| K1 | statKeys | reference | goals live in `Score.{Participant1,Participant2}.Total.Goals`, NOT in the numeric Stats map (the 1002/1003≈goals guess was wrong — ADR-015). Stats-map table ⚠ Day-0. `statkeys.ts` |
 
 ## 2. The map — endpoint → owner → features → screens
 

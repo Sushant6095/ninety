@@ -5,7 +5,7 @@ import { NETWORKS, assertOriginMatchesCluster, type Cluster } from "./network";
 import { z } from "zod";
 import { ScoresSnapshot, ScoresUpdates, ScoreEvent, StatValidation } from "./scores";
 import { OddsSnapshot, OddsUpdates, OddsTick } from "./odds";
-import { FixturesSchedule } from "./fixtures";
+import { FixturesSnapshot } from "./fixtures";
 
 // Consumers import the client + all wire schemas/types from the package entry.
 export * from "./scores";
@@ -39,9 +39,9 @@ export interface MessageSigner {
 export interface TxLineClientOptions {
   cluster?: Cluster; // default: SOLANA_CLUSTER env or "devnet"
   apiOrigin?: string; // default: the cluster's registered origin (TXLINE_BASE_URL only if it matches)
-  serviceLevel?: number; // WC26 free tier: 12
+  serviceLevel?: number; // free WC tier: devnet SL1 (60s delay), mainnet SL12 (real-time)
   weeks?: number; // subscription length
-  leagues?: string[]; // leagues covered by the subscription (signed into the activation message)
+  leagues?: number[]; // numeric league ids; [] = standard bundle (signed into the activation message)
   tokenTtlMs?: number; // proactive re-auth window (default ~50 min)
   fetch?: FetchLike; // default: global fetch
   subscriber: Subscriber;
@@ -61,7 +61,7 @@ export class TxLineClient {
   private readonly apiOrigin: string;
   private readonly serviceLevel: number;
   private readonly weeks: number;
-  private readonly leagues: string[];
+  private readonly leagues: number[];
   private readonly tokenTtlMs: number;
   private readonly fetchImpl: FetchLike;
   private readonly subscriber: Subscriber;
@@ -73,9 +73,9 @@ export class TxLineClient {
     this.cluster = opts.cluster ?? (process.env.SOLANA_CLUSTER as Cluster | undefined) ?? "devnet";
     this.apiOrigin = (opts.apiOrigin ?? process.env.TXLINE_BASE_URL ?? NETWORKS[this.cluster].apiOrigin).replace(/\/+$/, "");
     assertOriginMatchesCluster(this.apiOrigin, this.cluster); // fail fast: never mix networks
-    this.serviceLevel = opts.serviceLevel ?? 12;
+    this.serviceLevel = opts.serviceLevel ?? (this.cluster === "devnet" ? 1 : 12);
     this.weeks = opts.weeks ?? 4;
-    this.leagues = opts.leagues ?? ["wc26"];
+    this.leagues = opts.leagues ?? [];
     this.tokenTtlMs = opts.tokenTtlMs ?? DEFAULT_TTL_MS;
     const f = opts.fetch ?? globalThis.fetch;
     if (!f) throw new Error("TxLINE: no fetch available — pass opts.fetch");
@@ -131,17 +131,19 @@ export class TxLineClient {
     const res = await this.fetchImpl(`${this.apiOrigin}/api/token/activate`, {
       method: "POST",
       headers: { "content-type": "application/json", authorization: `Bearer ${input.jwt}` },
-      body: JSON.stringify({
-        txSig: input.txSig,
-        leagues: this.leagues,
-        signature: input.signature,
-        wallet: this.signer.publicKey,
-        cluster: this.cluster,
-      }),
+      body: JSON.stringify({ txSig: input.txSig, walletSignature: input.signature, leagues: this.leagues }),
     });
-    const body = (await this.readJson(res, "token/activate")) as { apiToken?: string; token?: string; api_token?: string };
-    const apiToken = body.apiToken ?? body.token ?? body.api_token;
-    if (typeof apiToken !== "string" || !apiToken) throw new Error("TxLINE token/activate returned no apiToken");
+    // Reality (ADR-015): /api/token/activate returns the apiToken as a BARE STRING, not JSON.
+    const text = await res.text();
+    if (!res.ok) throw new Error(`TxLINE token/activate failed: ${res.status} ${res.statusText} ${text.slice(0, 200)}`);
+    let apiToken: string | undefined;
+    try {
+      const j = JSON.parse(text) as string | { token?: string; apiToken?: string; api_token?: string };
+      apiToken = typeof j === "string" ? j : (j.token ?? j.apiToken ?? j.api_token);
+    } catch {
+      apiToken = text.trim(); // bare-string token
+    }
+    if (!apiToken) throw new Error("TxLINE token/activate returned no apiToken");
     return apiToken;
   }
 
@@ -188,22 +190,22 @@ export class TxLineClient {
     return this.getParsed(`/api/scores/stat-validation`, StatValidation, query);
   }
 
-  /** F1 — fixtures schedule. ⚠ Day-0: confirm exact path (examples/fetching-snapshots). */
-  fixtures(query?: Record<string, string | number | undefined>): Promise<FixturesSchedule> {
-    return this.getParsed(`/api/scores/schedule`, FixturesSchedule, query);
+  /** F1 — fixtures snapshot (verified live: /api/fixtures/snapshot). */
+  fixtures(query?: Record<string, string | number | undefined>): Promise<FixturesSnapshot> {
+    return this.getParsed(`/api/fixtures/snapshot`, FixturesSnapshot, query);
   }
 
-  /** O1 — odds snapshot for a fixture. ⚠ Day-0 path. */
+  /** O1 — odds snapshot for a fixture (verified live). */
   oddsSnapshot(fixtureId: string, asOf?: string): Promise<OddsSnapshot> {
     return this.getParsed(`/api/odds/snapshot/${encodeURIComponent(fixtureId)}`, OddsSnapshot, asOf ? { asOf } : undefined);
   }
 
-  /** O2 — historical odds ticks in a 5-minute bucket. ⚠ Day-0 path. */
+  /** O2 — historical odds ticks in a 5-minute bucket (verified live). */
   oddsUpdates(epochDay: number, hourOfDay: number, interval: number): Promise<OddsUpdates> {
     return this.getParsed(`/api/odds/updates/${epochDay}/${hourOfDay}/${interval}`, OddsUpdates);
   }
 
-  /** O3 — live StablePrice ticks (SSE). ⚠ Day-0 path. */
+  /** O3 — live StablePrice ticks (SSE). */
   oddsStream(opts?: StreamOptions): AsyncGenerator<OddsTick> {
     return this.stream(`/api/odds/stream`, OddsTick, undefined, opts);
   }
@@ -239,7 +241,7 @@ export class TxLineClient {
           const data = sseData(frame);
           if (data === null) continue; // heartbeat / comment frame
           const event = schema.parse(JSON.parse(data));
-          const seq = (event as { seq?: unknown }).seq;
+          const seq = (event as { Seq?: unknown; seq?: unknown }).Seq ?? (event as { seq?: unknown }).seq;
           if (typeof seq === "number") {
             if (opts?.onGap && lastSeq !== undefined && seq > lastSeq + 1) opts.onGap(lastSeq, seq);
             lastSeq = seq;
