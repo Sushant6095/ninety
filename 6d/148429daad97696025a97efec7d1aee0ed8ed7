@@ -1,0 +1,37 @@
+packages/txline/src/client.ts
+  s_82db0e7c9eb747::t_50014395c7161e 2-40,42-172
+packages/txline/src/mock.ts
+  s_82db0e7c9eb747::t_7cccce6367961b 1-94
+packages/txline/scripts/snapshot.ts
+  s_82db0e7c9eb747::t_e0d8a39ea9af96 1-72
+docs/adr/ADR-013-txline-client-transport-injectable-auth.md
+  s_82db0e7c9eb747::t_fa68a9bcedba7a 1-3
+docs/SUBMISSION.md
+  s_82db0e7c9eb747::t_071d0a27839dfa 4-6
+packages/chain/src/index.ts
+  s_82db0e7c9eb747::t_183e622fb69b45 2
+packages/txline/package.json
+  s_82db0e7c9eb747::t_70f137b7a55151 4-5
+packages/chain/src/txline.ts
+  s_82db0e7c9eb747::t_dd4921a7b71e0e 1-38
+packages/txline/src/network.ts
+  s_82db0e7c9eb747::t_7861c166bf2dc9 1-48
+.claude/context/NOW.md
+  s_82db0e7c9eb747::t_070d7ab9fef053 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "6d148429daad97696025a97efec7d1aee0ed8ed7",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
