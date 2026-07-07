@@ -19,6 +19,9 @@ export type FetchLike = (url: string, init?: RequestInit) => Promise<Response>;
 export interface StreamOptions {
   /** Fired when the seq field jumps (missed events) — the consumer should recover via a snapshot. */
   onGap?: (prevSeq: number, seq: number) => void;
+  /** Fired on any non-event frame (SSE comment / keepalive, e.g. bare `{Ts}`) — a liveness signal so a
+   *  heartbeat watchdog can tell "alive but quiet" apart from a real stall. */
+  onHeartbeat?: () => void;
   /** Abort the stream. */
   signal?: AbortSignal;
 }
@@ -239,17 +242,24 @@ export class TxLineClient {
           const frame = buf.slice(0, sep);
           buf = buf.slice(sep + 2);
           const data = sseData(frame);
-          if (data === null) continue; // comment / no-data frame
+          if (data === null) {
+            opts?.onHeartbeat?.(); // comment / no-data frame = liveness
+            continue;
+          }
           let raw: unknown;
           try {
             raw = JSON.parse(data);
           } catch {
+            opts?.onHeartbeat?.();
             continue;
           }
           // The live scores stream interleaves keepalive frames (e.g. bare `{Ts}`) with real events;
           // skip anything that isn't a valid event rather than throwing (never quote blind).
           const result = schema.safeParse(raw);
-          if (!result.success) continue;
+          if (!result.success) {
+            opts?.onHeartbeat?.(); // keepalive frame = liveness
+            continue;
+          }
           const event = result.data;
           const seq = (event as { Seq?: unknown; seq?: unknown }).Seq ?? (event as { seq?: unknown }).seq;
           if (typeof seq === "number") {
