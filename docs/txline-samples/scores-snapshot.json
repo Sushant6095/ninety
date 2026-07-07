@@ -1,0 +1,24 @@
+{
+  "fixtureId": "wc26-1041",
+  "competition": "FIFA World Cup 2026",
+  "stage": "group",
+  "group": "G",
+  "status": "in_play",
+  "minute": 63,
+  "home": {
+    "team": "Brazil",
+    "code": "BRA",
+    "goals": 2
+  },
+  "away": {
+    "team": "Serbia",
+    "code": "SRB",
+    "goals": 1
+  },
+  "asOf": "2026-06-20T19:03:00Z",
+  "seq": 8814,
+  "stats": {
+    "1002": 2,
+    "1003": 1
+  }
+}

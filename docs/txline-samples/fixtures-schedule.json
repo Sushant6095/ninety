@@ -1,0 +1,32 @@
+{
+  "competition": "FIFA World Cup 2026",
+  "updated": "2026-06-20T18:00:00Z",
+  "fixtures": [
+    {
+      "fixtureId": "wc26-1041",
+      "kickoff": "2026-06-20T18:00:00Z",
+      "stage": "group",
+      "group": "G",
+      "home": "Brazil",
+      "away": "Serbia",
+      "status": "in_play"
+    },
+    {
+      "fixtureId": "wc26-1042",
+      "kickoff": "2026-06-20T21:00:00Z",
+      "stage": "group",
+      "group": "G",
+      "home": "Switzerland",
+      "away": "Cameroon",
+      "status": "scheduled"
+    },
+    {
+      "fixtureId": "wc26-2003",
+      "kickoff": "2026-07-11T19:00:00Z",
+      "stage": "quarterfinal",
+      "home": "TBD",
+      "away": "TBD",
+      "status": "scheduled"
+    }
+  ]
+}
