@@ -1,0 +1,38 @@
+apps/worker-ingest/src/normalizer.ts
+  s_82db0e7c9eb747::t_4202a4a0c26f87 1-97
+apps/worker-ingest/src/ingest.test.ts
+  s_82db0e7c9eb747::t_d2e861b242c844 1-56
+apps/worker-ingest/package.json
+  s_82db0e7c9eb747::t_d1091051c973c3 3-5
+apps/worker-ingest/src/ingest.ts
+  s_82db0e7c9eb747::t_a325614245469d 1-4,6-39,41-118,120-124
+  s_82db0e7c9eb747::t_53fadf04f65b1b 40
+  s_82db0e7c9eb747::t_f98717cbeced42 119
+  s_82db0e7c9eb747::t_7af2119b14c200 5
+.claude/context/NOW.md
+  s_82db0e7c9eb747::t_2fe3f4bb2d534c 5
+apps/worker-ingest/src/main.ts
+  s_82db0e7c9eb747::t_f922e1493d3f9d 1-23
+docs/adr/ADR-018-ingest-normalization-odds-raw-match-events-fixtures-compacted-idempotency.md
+  s_82db0e7c9eb747::t_9a9fe9fbb3361f 1-3
+scripts/odds-probe.mjs
+  s_82db0e7c9eb747::t_38a8bbe7e1c177 1-54
+apps/worker-ingest/src/replayer.ts
+  s_82db0e7c9eb747::t_789bee95a599f3 1-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f45becb5510088f4522163046d68873e1fba884e",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
