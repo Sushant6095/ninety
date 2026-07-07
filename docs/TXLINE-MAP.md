@@ -23,11 +23,11 @@ Every data request carries BOTH headers: `Authorization: Bearer {jwt}` + `X-Api-
 | S3 | `GET /api/scores/stream` (SSE) | stream | confirmed |
 | S4 | `GET /api/scores/stat-validation?fixtureId&seq&statKey[&statKey2]` | proof bundle | confirmed |
 | S5 | `txoracle.validateStat(ts, summary, proofs, predicate, stat1, stat2?, op?)` vs PDA `["daily_scores_roots", epochDay]` | on-chain verify | confirmed |
-| O1 | odds snapshot | snapshot | ⚠ path from examples/fetching-snapshots |
-| O2 | odds updates (historical) | historical | ⚠ same page |
-| O3 | odds stream — StablePrice (SSE) | stream | ⚠ examples/streaming-data |
-| F1 | fixtures snapshot / schedule | snapshot | ⚠ fetching-snapshots + scores/schedule |
-| K1 | statKey encodings (e.g. 1002/1003 ≈ home/away goals in their example) | reference | ⚠ scores/soccer-feed |
+| O1 | `GET /api/odds/snapshot/{fixtureId}?asOf=` | snapshot | ⚠ inferred (mirrors S1; confirm Day-0) → wrapper `oddsSnapshot` |
+| O2 | `GET /api/odds/updates/{epochDay}/{hourOfDay}/{interval}` | historical | ⚠ inferred (mirrors S2) → wrapper `oddsUpdates` |
+| O3 | `GET /api/odds/stream` (SSE, StablePrice) | stream | ⚠ inferred (mirrors S3) → wrapper `oddsStream` |
+| F1 | `GET /api/scores/schedule` | snapshot | ⚠ inferred (scores/schedule) → wrapper `fixtures` |
+| K1 | statKey encodings (1002 home goals · 1003 away goals) | reference | `packages/txline/src/statkeys.ts` (2 confirmed; ⚠ full table Day-0 from scores/soccer-feed) |
 
 ## 2. The map — endpoint → owner → features → screens
 

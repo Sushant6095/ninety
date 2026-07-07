@@ -2,5 +2,6 @@
   "name": "@omnipitch/txline", "private": true, "version": "0.0.1",
   "main": "src/client.ts",
   "scripts": { "build": "tsc -p .", "lint": "echo lint", "test": "tsx scripts/snapshot.ts", "snapshot": "tsx scripts/snapshot.ts" },
+  "dependencies": { "zod": "^3.23.0" },
   "devDependencies": { "typescript": "^5.5.0", "tsx": "^4.16.0" }
 }

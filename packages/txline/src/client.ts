@@ -2,8 +2,26 @@
 // Auth flow (TXLINE-MAP §0): guest JWT → on-chain subscribe → sign "{txSig}:{leagues}:{jwt}" → activate.
 // Every data request carries BOTH headers: Authorization: Bearer {jwt} + X-Api-Token: {apiToken}.
 import { NETWORKS, assertOriginMatchesCluster, type Cluster } from "./network";
+import { z } from "zod";
+import { ScoresSnapshot, ScoresUpdates, ScoreEvent, StatValidation } from "./scores";
+import { OddsSnapshot, OddsUpdates, OddsTick } from "./odds";
+import { FixturesSchedule } from "./fixtures";
+
+// Consumers import the client + all wire schemas/types from the package entry.
+export * from "./scores";
+export * from "./odds";
+export * from "./fixtures";
+export * from "./statkeys";
+export * from "./network";
 
 export type FetchLike = (url: string, init?: RequestInit) => Promise<Response>;
+
+export interface StreamOptions {
+  /** Fired when the seq field jumps (missed events) — the consumer should recover via a snapshot. */
+  onGap?: (prevSeq: number, seq: number) => void;
+  /** Abort the stream. */
+  signal?: AbortSignal;
+}
 
 /** Builds + sends the on-chain txoracle.subscribe(level, weeks) tx (via packages/chain, the only place
  *  allowed to build Solana txs) and returns the confirmed signature. Injected so the client stays
@@ -143,15 +161,95 @@ export class TxLineClient {
     return { authorization: `Bearer ${s.jwt}`, "x-api-token": s.apiToken };
   }
 
-  // --- typed endpoint wrappers (TXLINE-MAP §1) ---
-  /** S1 — scores snapshot for a fixture (confirmed path). asOf → historical point-in-time. */
-  scoresSnapshot<T = unknown>(fixtureId: string, asOf?: string): Promise<T> {
-    return this.get<T>(`/api/scores/snapshot/${encodeURIComponent(fixtureId)}`, asOf ? { asOf } : undefined);
+  private async getParsed<T>(path: string, schema: z.ZodType<T>, query?: Record<string, string | number | undefined>): Promise<T> {
+    return schema.parse(await this.get(path, query));
   }
 
-  /** F1 — fixtures schedule / snapshot. ⚠ Day-0: confirm exact path from examples/fetching-snapshots. */
-  fixtures<T = unknown>(query?: Record<string, string | number | undefined>): Promise<T> {
-    return this.get<T>(`/api/scores/schedule`, query);
+  // --- typed endpoint wrappers (TXLINE-MAP §1) — every one returns a parsed schema type ---
+
+  /** S1 — scores snapshot for a fixture. asOf → historical point-in-time. */
+  scoresSnapshot(fixtureId: string, asOf?: string): Promise<ScoresSnapshot> {
+    return this.getParsed(`/api/scores/snapshot/${encodeURIComponent(fixtureId)}`, ScoresSnapshot, asOf ? { asOf } : undefined);
+  }
+
+  /** S2 — historical score events in a 5-minute bucket. */
+  scoresUpdates(epochDay: number, hourOfDay: number, interval: number): Promise<ScoresUpdates> {
+    return this.getParsed(`/api/scores/updates/${epochDay}/${hourOfDay}/${interval}`, ScoresUpdates);
+  }
+
+  /** S3 — live score events (SSE). Yields parsed events; onGap fires on a seq gap. */
+  scoresStream(opts?: StreamOptions): AsyncGenerator<ScoreEvent> {
+    return this.stream(`/api/scores/stream`, ScoreEvent, undefined, opts);
+  }
+
+  /** S4 — Merkle proof bundle for a stat (feeds on-chain validateStat, §3). */
+  statValidation(fixtureId: string, seq: number, statKey: number, statKey2?: number): Promise<StatValidation> {
+    const query: Record<string, string | number | undefined> = { fixtureId, seq, statKey, statKey2 };
+    return this.getParsed(`/api/scores/stat-validation`, StatValidation, query);
+  }
+
+  /** F1 — fixtures schedule. ⚠ Day-0: confirm exact path (examples/fetching-snapshots). */
+  fixtures(query?: Record<string, string | number | undefined>): Promise<FixturesSchedule> {
+    return this.getParsed(`/api/scores/schedule`, FixturesSchedule, query);
+  }
+
+  /** O1 — odds snapshot for a fixture. ⚠ Day-0 path. */
+  oddsSnapshot(fixtureId: string, asOf?: string): Promise<OddsSnapshot> {
+    return this.getParsed(`/api/odds/snapshot/${encodeURIComponent(fixtureId)}`, OddsSnapshot, asOf ? { asOf } : undefined);
+  }
+
+  /** O2 — historical odds ticks in a 5-minute bucket. ⚠ Day-0 path. */
+  oddsUpdates(epochDay: number, hourOfDay: number, interval: number): Promise<OddsUpdates> {
+    return this.getParsed(`/api/odds/updates/${epochDay}/${hourOfDay}/${interval}`, OddsUpdates);
+  }
+
+  /** O3 — live StablePrice ticks (SSE). ⚠ Day-0 path. */
+  oddsStream(opts?: StreamOptions): AsyncGenerator<OddsTick> {
+    return this.stream(`/api/odds/stream`, OddsTick, undefined, opts);
+  }
+
+  // SSE reader: authenticated GET, parses each frame's `data:` payload with `schema`, yields typed events.
+  private async *stream<T>(
+    path: string,
+    schema: z.ZodType<T>,
+    query?: Record<string, string | number | undefined>,
+    opts?: StreamOptions,
+  ): AsyncGenerator<T> {
+    const url = this.buildUrl(path, query);
+    const session = await this.authenticate();
+    const res = await this.fetchImpl(url, {
+      method: "GET",
+      headers: { ...this.authHeaders(session), accept: "text/event-stream" },
+      signal: opts?.signal,
+    });
+    if (!res.ok || !res.body) throw new Error(`TxLINE ${path} stream failed: ${res.status} ${res.statusText}`);
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let buf = "";
+    let lastSeq: number | undefined;
+    try {
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += decoder.decode(value, { stream: true });
+        let sep: number;
+        while ((sep = buf.indexOf("\n\n")) >= 0) {
+          const frame = buf.slice(0, sep);
+          buf = buf.slice(sep + 2);
+          const data = sseData(frame);
+          if (data === null) continue; // heartbeat / comment frame
+          const event = schema.parse(JSON.parse(data));
+          const seq = (event as { seq?: unknown }).seq;
+          if (typeof seq === "number") {
+            if (opts?.onGap && lastSeq !== undefined && seq > lastSeq + 1) opts.onGap(lastSeq, seq);
+            lastSeq = seq;
+          }
+          yield event;
+        }
+      }
+    } finally {
+      reader.releaseLock();
+    }
   }
 
   private buildUrl(path: string, query?: Record<string, string | number | undefined>): string {
@@ -170,4 +268,15 @@ export class TxLineClient {
       throw new Error(`TxLINE ${ctx} returned non-JSON: ${text.slice(0, 200)}`);
     }
   }
+}
+
+/** Extract the joined `data:` payload from an SSE frame; null for comment/heartbeat frames. */
+function sseData(frame: string): string | null {
+  const data = frame
+    .split("\n")
+    .map((l) => l.replace(/\r$/, ""))
+    .filter((l) => l.startsWith("data:"))
+    .map((l) => l.slice(5).replace(/^ /, ""))
+    .join("\n");
+  return data.length > 0 ? data : null;
 }
