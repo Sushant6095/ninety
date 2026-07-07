@@ -11,7 +11,7 @@
 - Every page must visually match its reference in `design/screens/*.png`.
 
 ## Architecture law
-- Events only: services communicate via `packages/bus` using types from `packages/schema`. Direct service-to-service calls are forbidden.
+- ALL inter-service communication flows through packages/bus. Two planes: domain events (AnyEvent, existing topics) and system signals (SysEvent, sys.* topics). Raw Redis/Kafka access is forbidden outside packages/bus — with two named intra-service exceptions that are storage, not communication: the engine journal and WS resume buffers.
 - `apps/api/src/engine` is the single writer of market state. It must not import from `http/` or `ws/`. Journal-then-ack.
 - Only `packages/txline` may call TxLINE. Only `packages/chain` may build Solana txs.
 - The Anchor program verifies TxLINE proofs on-chain (`proof.rs`). There is NO admin result path. Do not add one.

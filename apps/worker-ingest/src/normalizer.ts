@@ -27,13 +27,14 @@ const nowIso = () => new Date().toISOString();
 const tsIso = (ts: number | undefined): string => (typeof ts === "number" ? new Date(ts < 1e12 ? ts * 1000 : ts).toISOString() : nowIso());
 
 /** Raw odds tick → odds.raw Envelope. source_seq derived from MessageId (stable per tick).
- *  `recovered` marks events re-emitted during gap recovery (they still carry the CANONICAL source
- *  and source_seq, so they dedupe against a live counterpart — the flag only survives on truly-missed ones). */
-export function normalizeOdds(tick: OddsTick, recovered = false): Envelope {
+ *  `recovered` marks events re-emitted during gap recovery (they dedupe against a live counterpart).
+ *  `replay` stamps source=replay so replayed events are DISTINGUISHABLE from live data on the shared topics —
+ *  a consumer (e.g. the engine) must never let a replay of a currently-live match move real market state. */
+export function normalizeOdds(tick: OddsTick, recovered = false, replay = false): Envelope {
   const id = tick.MessageId ?? `${tick.FixtureId}:${tick.Ts}`;
   return Envelope.parse({
     event_id: randomUUID(),
-    source: SRC_ODDS,
+    source: replay ? SRC_REPLAY : SRC_ODDS,
     source_seq: seqFromId(id),
     match_id: String(tick.FixtureId),
     ts_source: tsIso(tick.Ts),
@@ -58,7 +59,7 @@ export function normalizeOdds(tick: OddsTick, recovered = false): Envelope {
 /** ScoreState → discrete match events (goals) by diffing vs the previous state for that fixture.
  *  Returns [] for a no-change update. GameState→kickoff/ht/ft mapping is deferred (devnet GameState is
  *  unreliable — "scheduled" with a running clock, see ADR-015). */
-export function normalizeScore(state: ScoreState, prev: ScoreState | undefined, recovered = false): Envelope[] {
+export function normalizeScore(state: ScoreState, prev: ScoreState | undefined, recovered = false, replay = false): Envelope[] {
   const matchId = String(state.FixtureId);
   const baseSeq = state.Seq ?? seqFromId(`${matchId}:${state.Ts ?? 0}`);
   const hg = state.Score?.Participant1?.Total?.Goals ?? 0;
@@ -72,7 +73,7 @@ export function normalizeScore(state: ScoreState, prev: ScoreState | undefined, 
   const goal = (team: "home" | "away", index: number) =>
     Envelope.parse({
       event_id: randomUUID(),
-      source: SRC_SCORE,
+      source: replay ? SRC_REPLAY : SRC_SCORE,
       source_seq: baseSeq * GOAL_SEQ_BLOCK + (team === "away" ? GOAL_SEQ_BLOCK / 2 : 0) + index,
       match_id: matchId,
       ts_source: tsIso(state.Ts),

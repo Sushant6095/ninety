@@ -1,8 +1,9 @@
 import { describe, it, beforeAll, afterEach, expect } from "vitest";
-import type { Bus, ConsumeOptions } from "./index";
+import type { Bus, ConsumeOptions, PayloadOf } from "./index";
 import type { RedisBus } from "./redis";
 import type { KafkaBus } from "./kafka";
-import type { Envelope, Topic } from "@omnipitch/schema";
+import { TOPICS } from "@omnipitch/schema";
+import type { Envelope, SysEvent, Topic } from "@omnipitch/schema";
 
 // Driver-agnostic Bus contract. Any Bus implementation must satisfy these behaviours
 // (ADR-007: one interface, two drivers). Point it at a driver via a ContractHarness.
@@ -12,6 +13,21 @@ import type { Envelope, Topic } from "@omnipitch/schema";
 type Conforms<T extends Bus> = T;
 export type _RedisConforms = Conforms<RedisBus>;
 export type _KafkaConforms = Conforms<KafkaBus>;
+
+// PayloadOf binds each topic to its plane's payload (ADR-020): sys.* → SysEvent, everything else → Envelope.
+// These type-level assertions fail the build if the binding ever regresses to a single type.
+export type _SysPlaneBinds = PayloadOf<typeof TOPICS.sysSignals> extends SysEvent ? true : never;
+export type _DomainPlaneBinds = PayloadOf<typeof TOPICS.matchEvents> extends Envelope ? true : never;
+const _planesBind: [_SysPlaneBinds, _DomainPlaneBinds] = [true, true];
+void _planesBind;
+
+// And the realistic protection: a sys consumer's handler param is INFERRED as SysEvent, so reaching for a
+// domain field (SysEvent has `kind`, not `type`) — the "silent never fires" trap — is a compile error.
+export const _sysHandlerInfersSysEvent = (b: Bus): Promise<void> =>
+  b.consume(TOPICS.sysSignals, "g", async (sig) => {
+    // @ts-expect-error — SysEvent has no `type`; a domain-shaped read on the system plane must not compile.
+    void sig.type;
+  });
 
 export interface ContractHarness {
   /** A fresh bus instance (own connections). */

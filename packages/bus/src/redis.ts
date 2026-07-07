@@ -1,7 +1,7 @@
 import Redis from "ioredis";
 import { hostname } from "node:os";
 import { randomBytes } from "node:crypto";
-import type { Bus, ConsumeOptions } from "./index";
+import type { Bus, ConsumeOptions, PayloadOf } from "./index";
 import type { Envelope, Topic } from "@omnipitch/schema";
 
 // Redis Streams driver (ADR-007). XADD per topic; consumer groups give at-least-once.
@@ -31,20 +31,22 @@ export class RedisBus implements Bus {
     this.pub = new Redis(url, { maxRetriesPerRequest: null });
   }
 
-  async publish(topic: Topic, key: string, e: Envelope): Promise<void> {
+  async publish<T extends Topic>(topic: T, key: string, e: PayloadOf<T>): Promise<void> {
     await this.pub.xadd(topic, "MAXLEN", "~", MAXLEN, "*", "key", key, "data", JSON.stringify(e));
   }
 
-  async consume(
-    topic: Topic,
+  async consume<T extends Topic>(
+    topic: T,
     group: string,
-    handler: (e: Envelope) => Promise<void>,
+    handler: (e: PayloadOf<T>) => Promise<void>,
     opts: ConsumeOptions = {},
   ): Promise<void> {
     // Create at "0": a freshly-created group replays the retained stream, so events
     // published before this consumer joined are still delivered (BUSYGROUP = already exists).
     await this.ensureGroup(topic, group);
-    const loop = this.runLoop(topic, group, handler, opts);
+    // The transport is untyped JSON; PayloadOf<T> is the caller's compile-time view. Internals stay
+    // Envelope-shaped (they only forward the decoded object to the handler), so bridge the handler type here.
+    const loop = this.runLoop(topic, group, handler as unknown as (e: Envelope) => Promise<void>, opts);
     this.loops.add(loop);
     void loop.finally(() => this.loops.delete(loop));
   }

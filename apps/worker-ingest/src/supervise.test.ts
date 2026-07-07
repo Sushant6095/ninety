@@ -2,19 +2,40 @@
 // Deterministic, in-memory (capturing bus, mock streams, instant backoff). No Redis/network needed.
 import { describe, it, expect } from "vitest";
 import type { Bus } from "@omnipitch/bus";
-import type { Envelope } from "@omnipitch/schema";
+import { TOPICS, parseSysEvent, type Envelope, type SysEvent } from "@omnipitch/schema";
 import type { ScoreState } from "@omnipitch/txline";
-import { createPipeline } from "./ingest";
+import { createPipeline, feedGapSignal } from "./ingest";
 import { superviseStream, type GapInfo } from "./supervise";
 
 function captureBus() {
   const published: { topic: string; key: string; env: Envelope }[] = [];
   const bus: Bus = {
-    publish: async (topic, key, env) => void published.push({ topic: topic as string, key, env }),
+    // Mocks implement the generic Bus method, so the payload arrives as the type param — cast to the domain plane's Envelope.
+    publish: async (topic, key, env) => void published.push({ topic: topic as string, key, env: env as unknown as Envelope }),
     consume: async () => {},
     close: async () => {},
   };
   return { bus, published };
+}
+
+// Minimal in-memory Bus: publish fans out to live consumers (and replays prior entries on subscribe).
+// Enough to prove a signal published on one plane is consumed VIA the bus, without Redis.
+function memBus(): Bus {
+  const log = new Map<string, unknown[]>();
+  const subs = new Map<string, ((e: unknown) => Promise<void>)[]>();
+  const push = <T>(m: Map<string, T[]>, k: string, v: T): void => void (m.get(k) ?? m.set(k, []).get(k)!).push(v);
+  return {
+    publish: async (topic, _key, e) => {
+      push(log, topic, e as unknown);
+      for (const h of subs.get(topic) ?? []) await h(e as unknown);
+    },
+    consume: async (topic, _group, handler) => {
+      const h = handler as (e: unknown) => Promise<void>;
+      push(subs, topic, h);
+      for (const e of log.get(topic) ?? []) await h(e);
+    },
+    close: async () => {},
+  };
 }
 
 // Minimal ScoreState with only the fields the normalizer reads.
@@ -179,11 +200,12 @@ describe("exactly-once goal semantics", () => {
     let failGoal = true;
     const bus: Bus = {
       publish: async (_t, _k, env) => {
-        if (failGoal && env.type === "goal") {
+        const e = env as unknown as Envelope;
+        if (failGoal && e.type === "goal") {
           failGoal = false;
           throw new Error("bus down");
         }
-        void published.push({ env });
+        void published.push({ env: e });
       },
       consume: async () => {},
       close: async () => {},
@@ -249,5 +271,46 @@ describe("exactly-once goal semantics", () => {
       onGap: async () => void ac.abort(),
     });
     expect(returned).toBe(true); // catch called iterator.return(), like every other exit path
+  });
+});
+
+// ADR-020: feed.gap rides the bus system plane (sys.signals.v1), not a raw side stream. Prove a simulated
+// gap produces a feed_gap SysEvent that a bus consumer receives and parses.
+describe("feed.gap on the system plane", () => {
+  it("a gap publishes a feed_gap SysEvent consumed via the bus", async () => {
+    const bus = memBus();
+    const received: SysEvent[] = [];
+    await bus.consume(TOPICS.sysSignals, "ops", async (sig) => void received.push(parseSysEvent(sig)));
+    const pipe = createPipeline(bus);
+    const ac = new AbortController();
+    async function* killStream(): AsyncGenerator<ScoreState> {
+      yield state(1, 0, 0, 1); // 0-0
+      throw new Error("ECONNRESET (network kill)"); // dies before the goal
+    }
+    const snapshot = state(1, 1, 0, 2); // recovery snapshot: the goal happened during the gap
+
+    await superviseStream<ScoreState>({
+      name: "scores",
+      signal: ac.signal,
+      live: true,
+      silenceMs: 60_000,
+      backoffBaseMs: 1,
+      clock: instant,
+      open: () => killStream(),
+      onEvent: async (s) => void (await pipe.ingestScore(s)),
+      recover: async () => pipe.ingestScore(snapshot, true),
+      onGap: async (info) => {
+        await bus.publish(TOPICS.sysSignals, info.stream, feedGapSignal(info)); // system plane, same Bus
+        ac.abort();
+      },
+    });
+
+    expect(received).toHaveLength(1); // consumed via the bus
+    const sig = received[0];
+    expect(sig.kind).toBe("feed_gap");
+    if (sig.kind !== "feed_gap") throw new Error("expected feed_gap");
+    expect(sig.payload.stream).toBe("scores");
+    expect(sig.payload.recovered).toBe(1); // the missed goal was recovered during the gap
+    expect(sig.severity).toBe("warn"); // recovered > 0 → warn
   });
 });

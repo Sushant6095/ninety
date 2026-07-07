@@ -9,5 +9,7 @@ export const TOPICS = {
   positions: "positions.v1",
   commentary: "commentary.v1",
   settlement: "settlement.v1",
+  // System/ops plane (sys.*, ADR-020) — carries SysEvent signals, never domain data. Same Bus, distinct plane.
+  sysSignals: "sys.signals.v1",
 } as const;
 export type Topic = (typeof TOPICS)[keyof typeof TOPICS];

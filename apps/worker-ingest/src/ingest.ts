@@ -1,16 +1,27 @@
 // Ingest pipeline: SSE (odds/scores via packages/txline) → normalizer → dedup → publish (odds.raw / match.events).
 // Fixtures polled → compacted upserts (Redis hash, ADR-018). Per-stream heartbeat watchdog + gap recovery
 // via superviseStream: on >20s silence or a dropped connection, fetch a snapshot, re-emit missed events
-// (recovered:true, deduped), publish the feed.gap system event, reconnect with backoff+jitter.
+// (recovered:true, deduped), publish a feed_gap SysEvent on the system plane, reconnect with backoff+jitter.
 import Redis from "ioredis";
-import { TOPICS, type Envelope, type Topic } from "@omnipitch/schema";
+import { randomUUID } from "node:crypto";
+import { TOPICS, type Envelope, type Topic, type SysEvent } from "@omnipitch/schema";
 import type { Bus } from "@omnipitch/bus";
 import type { TxLineClient, OddsTick, ScoreState, Fixture } from "@omnipitch/txline";
 import { normalizeOdds, normalizeScore, Dedup } from "./normalizer";
 import { superviseStream, type GapInfo } from "./supervise";
 
 const FIXTURES_HASH = "fixtures:current"; // compacted: field = fixtureId, value = latest fixture json
-export const FEED_GAP_STREAM = "feed.gap.v1"; // system/ops stream (not a domain AnyEvent) — feed gap alerts
+
+/** A gap → a feed_gap system signal (ADR-019/020). Rides the Bus on sys.signals.v1 — NOT a raw side stream. */
+export function feedGapSignal(info: GapInfo): SysEvent {
+  return {
+    sig_id: randomUUID(),
+    ts: info.at,
+    severity: info.recovered > 0 ? "warn" : "info", // recovered missed events → warn; a clean gap → info
+    kind: "feed_gap",
+    payload: { stream: info.stream, reason: info.reason, detail: info.detail, silentMs: info.silentMs, recovered: info.recovered },
+  };
+}
 
 export interface IngestStats {
   processed: number;
@@ -31,9 +42,10 @@ export interface Pipeline {
   stats: IngestStats;
 }
 
-export function createPipeline(bus: Bus, redis?: Redis, opts: { logEvery?: number } = {}): Pipeline {
+export function createPipeline(bus: Bus, redis?: Redis, opts: { logEvery?: number; replay?: boolean } = {}): Pipeline {
   const dedup = new Dedup();
   const logEvery = opts.logEvery ?? 100;
+  const replay = opts.replay ?? false; // replay pipelines stamp source=replay so events are distinguishable from live
   const prevScore = new Map<string, ScoreState>();
   const seen = new Set<string>(); // fixtureIds seen — recovery targets these
   const stats: IngestStats = { processed: 0, published: 0, dropped: 0, odds: 0, scores: 0, fixturesUpserted: 0, gaps: 0, recovered: 0 };
@@ -64,7 +76,7 @@ export function createPipeline(bus: Bus, redis?: Redis, opts: { logEvery?: numbe
     async ingestOdds(tick, recovered = false) {
       stats.odds++;
       seen.add(String(tick.FixtureId));
-      return (await publish(normalizeOdds(tick, recovered), TOPICS.oddsRaw)) ? 1 : 0;
+      return (await publish(normalizeOdds(tick, recovered, replay), TOPICS.oddsRaw)) ? 1 : 0;
     },
     async ingestScore(state, recovered = false) {
       stats.scores++;
@@ -80,7 +92,7 @@ export function createPipeline(bus: Bus, redis?: Redis, opts: { logEvery?: numbe
       // ponytail: if a later goal in a multi-goal delta fails to publish, prevScore isn't advanced so recovery
       // re-derives the whole delta — an earlier same-team goal could then re-emit. Only reachable on a recovery
       // snapshot (live sends one goal per state); tighten to per-goal journaling if that partial-failure bites.
-      for (const env of normalizeScore(state, prev, recovered)) if (await publish(env, TOPICS.matchEvents)) n++;
+      for (const env of normalizeScore(state, prev, recovered, replay)) if (await publish(env, TOPICS.matchEvents)) n++;
       prevScore.set(key, state); // advance only after the delta's goals are published (journal-then-ack)
       return n;
     },
@@ -145,7 +157,7 @@ export async function runIngest(
   const onGap = async (info: GapInfo): Promise<void> => {
     pipe.stats.gaps++;
     pipe.stats.recovered += info.recovered;
-    await redis.xadd(FEED_GAP_STREAM, "MAXLEN", "~", 10_000, "*", "data", JSON.stringify(info));
+    await bus.publish(TOPICS.sysSignals, info.stream, feedGapSignal(info)); // system plane, same Bus — no side stream
     console.log(JSON.stringify({ evt: "feed.gap", ...info }));
   };
 
