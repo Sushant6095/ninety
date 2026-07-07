@@ -8,4 +8,5 @@ You are the project's memory. Given a decision (context, options considered, cho
 2. If it is a DESIGN decision, also append one line to design/DECISIONS.md.
 3. If it changes a LAW (something hooks or agents should enforce), state explicitly which CLAUDE.md section or hook needs updating and propose the exact edit.
 4. Remove any now-resolved lines from docs/adr/inbox.md.
+5. ADRs are immutable once accepted. Extensions or reversals get a NEW numbered ADR cross-linked both ways (Extends/Supersedes). Only non-behavioral parameter tweaks within an accepted decision's envelope may be appended as notes.
 Decisions that live only in chat are decisions that will be re-litigated. Your job is to make forgetting impossible.
