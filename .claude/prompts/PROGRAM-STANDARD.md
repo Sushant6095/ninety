@@ -24,6 +24,7 @@ Why: a plausible-but-unverified integration ("the code is right, I just can't re
 | 06 | live data-spine world-verify (SSE streams + odds + freshness) | **GREEN (world-verified)** | LIVE 2026-07-07: in-play WC fixtures (GameState=1); captured real OddsTick stream (~90 real ticks/min) + transport ≈0.7–1.2s (fresh); scores stream `{Ts}` keepalives skipped; samples in docs/txline-samples (ADR-016). Live runner `scripts/txline-live.mjs`. |
 | 07 | settlement proof spike (validateStat CPI) | — | requires 05+06 GREEN ✓; spec at `.claude/prompts/1-data-spine/07-proof-spike.md` (STEP 0 = statKey/goals/FINISHED discovery) |
 | 08 | — | — | requires 05+06 GREEN ✓ |
+| 52B | EarlyWhistle Telegram live match cards (incl. 52 alert wire, fused) | GREEN | 25 worker-jobs tests: renderer golden snapshot, scheduler (25/s + events>edits + 4s throttle + 429 backoff + never-drop-event), state machine, 2-match isolation. Adversarial 4-lens/15-agent review found 9 defects (1 critical MdV2, 3 high), all fixed w/ regression tests (ADR-023). NOTE: deps-gate OVERRIDE — Session 52 did not exist; built 52+52B from scratch this session, so there is no separately-verified 52 alert-wire baseline. |
 
 ## World-gated prompts
 

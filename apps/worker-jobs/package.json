@@ -1,6 +1,6 @@
 {
   "name": "@omnipitch/worker-jobs", "private": true,
-  "scripts": { "dev": "tsx watch src/main.ts", "build": "tsc -p .", "lint": "echo lint", "test": "echo ok" },
+  "scripts": { "dev": "tsx watch src/main.ts", "build": "tsc -p .", "lint": "echo lint", "test": "vitest run" },
   "dependencies": { "@omnipitch/chain": "workspace:*", "@omnipitch/txline": "workspace:*", "@omnipitch/schema": "workspace:*", "@omnipitch/bus": "workspace:*" },
-  "devDependencies": { "typescript": "^5.5.0", "tsx": "^4.16.0" }
+  "devDependencies": { "typescript": "^5.5.0", "tsx": "^4.16.0", "vitest": "^2.0.0" }
 }
