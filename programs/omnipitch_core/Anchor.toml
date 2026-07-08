@@ -7,4 +7,4 @@ omnipitch_core = "6ps8ao7CVhacnRajvFXWTmkknsRnHfEbWmtQ3nDCdBkj"
 cluster = "devnet"
 wallet = "~/.config/solana/id.json"
 [scripts]
-test = "yarn ts-mocha -p ./tsconfig.json tests/**/*.ts"
+test = "npx ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"

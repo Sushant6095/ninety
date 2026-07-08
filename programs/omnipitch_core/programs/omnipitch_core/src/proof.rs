@@ -31,4 +31,9 @@ pub fn verify_txline_proof(_result: u8, _proof: &[u8]) -> Result<()> {
     err!(OmniError::ProofNotImplemented)
 }
 #[error_code]
-pub enum OmniError { #[msg("proof verification not implemented")] ProofNotImplemented, #[msg("invalid proof")] InvalidProof, #[msg("already settled")] AlreadySettled }
+pub enum OmniError {
+    #[msg("proof verification not implemented")] ProofNotImplemented,
+    #[msg("invalid proof")] InvalidProof,
+    #[msg("already settled")] AlreadySettled,
+    #[msg("unauthorized")] Unauthorized,
+}

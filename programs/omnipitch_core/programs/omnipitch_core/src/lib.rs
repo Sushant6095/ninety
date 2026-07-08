@@ -1,5 +1,5 @@
 use anchor_lang::prelude::*;
-pub mod state; pub mod proof; pub mod instructions;
+pub mod state; pub mod proof; pub mod merkle; pub mod instructions;
 use instructions::*;
 
 declare_id!("6ps8ao7CVhacnRajvFXWTmkknsRnHfEbWmtQ3nDCdBkj");
@@ -9,6 +9,10 @@ declare_id!("6ps8ao7CVhacnRajvFXWTmkknsRnHfEbWmtQ3nDCdBkj");
 pub mod omnipitch_core {
     use super::*;
     pub fn initialize_market(ctx: Context<InitializeMarket>, match_id: String, kickoff: i64) -> Result<()> { instructions::initialize_market::handler(ctx, match_id, kickoff) }
+    /// One-time config: set the authority allowed to post leaderboard roots.
+    pub fn init_config(ctx: Context<InitConfig>, authority: Pubkey) -> Result<()> { instructions::init_config::handler(ctx, authority) }
+    /// Create the points mint (authority = PDA) + vault and mint the claim supply into it.
+    pub fn init_vault(ctx: Context<InitVault>) -> Result<()> { instructions::init_vault::handler(ctx) }
     /// Permissionless, one-shot. Verifies TxLINE's validation proof (proof.rs) BEFORE writing the result.
     /// There is deliberately no admin result path — do not add one.
     pub fn settle_market(ctx: Context<SettleMarket>, result: u8, proof: Vec<u8>) -> Result<()> { instructions::settle_market::handler(ctx, result, proof) }
