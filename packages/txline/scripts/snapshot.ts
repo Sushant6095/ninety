@@ -56,6 +56,7 @@ async function main(): Promise<void> {
   assert.equal(settlement.result, 1, "home 2 – away 1 ⇒ result HOME (1)");
   assert.equal(settlement.home, 2);
   assert.equal(settlement.away, 1);
+  assert.equal(settlement.levelScore, false, "2–1 is not level (ADR-037 Q3 shootout guard)");
   assert.ok(settlement.proof.statProof.length > 0, "settlement proof carries Merkle nodes");
   assert.equal(resultFromGoals(0, 0), 2, "0–0 ⇒ DRAW");
   assert.equal(resultFromGoals(1, 3), 3, "1–3 ⇒ AWAY");

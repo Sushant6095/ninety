@@ -30,8 +30,23 @@ pub const STAT_KEY_AWAY_GOALS: u32 = 2;
 //       the sanctioned validateStatV2 instruction, whose interface/accounts are NOT in our IDL (recon-blocked).
 //   (2) SHOOTOUT DECISION: statKeys 1,2 are TOTAL GOALS, so a penalty win reads level (e.g. 1–1 won on pens) → the
 //       home−away predicate returns DRAW for a match that has a winner. Needs the game_finalised decision/winner stat.
-// Flipping SETTLEMENT_LIVE to true ALSO requires re-pointing the CPI at validateStatV2 (disc + args from the updated IDL).
+// Flipping SETTLEMENT_LIVE to true ALSO requires re-pointing the CPI at validateStatV2 (disc + args below).
 pub const SETTLEMENT_LIVE: bool = false;
+
+// validate_stat_v2 — the sanctioned settle instruction (confirmed from the TxLINE repo IDL, examples/devnet/idl,
+// vendored at packages/txline/txoracle.json). Interface, for when SETTLEMENT_LIVE flips (do NOT wire until Q2 below):
+//   disc = VALIDATE_STAT_V2_DISC; account = [daily_scores_merkle_roots] (same PDA as v1); returns BOOL (read via return_data).
+//   arg 0 payload: StatValidationInput { ts:i64, fixture_summary:ScoresBatchSummary, fixture_proof:Vec<ProofNode>,
+//         main_tree_proof:Vec<ProofNode>, event_stat_root:[u8;32], stats:Vec<StatLeaf{ stat:ScoreStat, stat_proof:Vec<ProofNode> }> }
+//   arg 1 strategy: NDimensionalStrategy { geometric_targets:Vec<GeometricTarget>, distance_predicate:Option<TraderPredicate>,
+//         discrete_predicates:Vec<StatPredicate> }.  stats[] order maps to predicate indices 0..N (statKey 1 → index 0, 2 → 1).
+//   OUR settle predicate (from the repo's strategyDraw example): ONE discrete StatPredicate::Binary { index_a:0 (home,statKey1),
+//         index_b:1 (away,statKey2), op:Subtract, predicate:TraderPredicate{ threshold:0, comparison_for(result) } }.
+//   ⚠ Q2 (the gate): the ENTIRE IDL has NO finality/status/game_finalised field, and the repo's own v2 example hardcodes a
+//   caller-chosen seq — so validate_stat_v2 verifies a stat is anchored in ANY batch, NOT that it is the finalised record.
+//   The mid-match seq-selection forge stands. LEAD: txoracle's own settle_trade/claim_via_resolution use a RESOLUTION root
+//   (publish_resolution_root), which may be the intended finality surface — confirm with the admin before enabling.
+pub const VALIDATE_STAT_V2_DISC: [u8; 8] = [208, 215, 194, 214, 241, 71, 246, 178];
 
 // --- txoracle types (borsh layout MUST match the IDL) ---
 #[derive(AnchorSerialize, AnchorDeserialize, Clone)]

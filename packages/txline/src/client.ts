@@ -21,7 +21,13 @@ export interface SettlementProof {
   seq: number;
   home: number;
   away: number;
-  result: 1 | 2 | 3; // ⚠ from TOTAL GOALS: a penalty-shootout win reads level → DRAW; needs the decision stat (ADR-037)
+  result: 1 | 2 | 3; // from TOTAL GOALS
+  /**
+   * true when home === away. A level total-goals score is AMBIGUOUS: a genuine draw OR a penalty-shootout win
+   * (ADR-037 Q3). Callers settling a KNOCKOUT must NOT trust result===2 (DRAW) while this is true — hold until the
+   * game_finalised decision/winner stat is known. Group-stage draws are genuine; the caller supplies the stage.
+   */
+  levelScore: boolean;
   proof: StatValidation;
 }
 
@@ -222,16 +228,30 @@ export class TxLineClient {
    */
   async settlementProof(fixtureId: string): Promise<SettlementProof | null> {
     const states = await this.scoresSnapshot(fixtureId);
+    // ADR-037 Q5: game_finalised is read from the SNAPSHOT (S1). If TxLINE emits it stream-only, this is null for a
+    // finished fixture — the CALLER (saga) MUST alert on null-after-FT, never wait silently (ADR-035 proof-not-found
+    // path). TODO(Q5): if confirmed stream-only, add an S2 /scores/updates fallback here.
     const finals = states.filter((s) => s.Action === GAME_FINALISED_ACTION);
-    if (finals.length === 0) return null; // not finalised yet
+    if (finals.length === 0) return null; // not finalised yet (caller alerts if this persists past FT)
     // The LATEST game_finalised record wins — a VAR correction may re-finalise at a higher Seq (ADR-037 Q2).
     const final = finals.reduce((a, b) => ((b.Seq ?? -1) > (a.Seq ?? -1) ? b : a));
     if (final.Seq === undefined) throw new Error(`game_finalised record for fixture ${fixtureId} has no Seq`);
     if (final.FixtureId !== Number(fixtureId)) throw new Error(`game_finalised fixtureId ${final.FixtureId} != requested ${fixtureId}`);
+    // ADR-037 Q8: a shut-out side must still have an anchored 0-goals leaf. If either side's Total.Goals is absent,
+    // throw LOUDLY (market flagged unsettleable) rather than settle on a partial score. TODO(Q8): once the V2 two-stat
+    // response shape is confirmed, also assert the returned bundle carries a proof leaf for BOTH statKey 1 and 2.
     const goals = goalsFromScore(final.Score);
-    if (!goals) throw new Error(`game_finalised record for fixture ${fixtureId} has no Score.*.Total.Goals`);
+    if (!goals) throw new Error(`game_finalised record for fixture ${fixtureId} missing a side's Score.*.Total.Goals — unsettleable`);
     const proof = await this.statValidation(fixtureId, final.Seq, STAT_KEY_HOME_GOALS, STAT_KEY_AWAY_GOALS);
-    return { fixtureId: final.FixtureId, seq: final.Seq, home: goals.home, away: goals.away, result: resultFromGoals(goals.home, goals.away), proof };
+    return {
+      fixtureId: final.FixtureId,
+      seq: final.Seq,
+      home: goals.home,
+      away: goals.away,
+      result: resultFromGoals(goals.home, goals.away),
+      levelScore: goals.home === goals.away, // ADR-037 Q3: knockout callers must not trust DRAW while true
+      proof,
+    };
   }
 
   /** F1 — fixtures snapshot (verified live: /api/fixtures/snapshot). */
