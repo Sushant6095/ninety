@@ -31,7 +31,7 @@ export interface SagaDeps {
   creditOnce(marketId: string, userId: string, amount: number): Promise<boolean>; // idempotent per (marketId, userId)
   computeMatchdayRoot(matchday: number): Promise<Uint8Array>;
   postRoot(matchday: number, root: Uint8Array): Promise<string>;
-  mintMoments?(marketId: string): Promise<void>; // MOMENTS_ONCHAIN is cut (ADR-032) → usually a no-op
+  mintMoments?(marketId: string): Promise<void>; // prod = moments.runMomentsStep (PNG card always; on-chain mint gated by MOMENTS_ONCHAIN, cut per ADR-041)
   alert(marketId: string, msg: string): void;
 }
 
