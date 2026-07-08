@@ -32,6 +32,11 @@ const vec32 = (items: Uint8Array[]): Buffer => Buffer.concat([u32(items.length),
 const ixData = (name: string, ...args: Buffer[]): Buffer => Buffer.concat([anchorDiscriminator(name), ...args]);
 
 // Exported instruction-data encoders (the typed IDL surface). result: 1=H 2=D 3=A.
+// ⚠ STALE — DO NOT USE FOR A REAL SETTLE. ADR-036 changed settle_market's on-chain args from (result u8, proof Vec<u8>)
+// to structured (result u8, ts i64, fixture_summary, fixture_proof, main_tree_proof, stat_home, stat_away). This old
+// encoder builds an ix the program can no longer deserialize. Rebuild it as part of the STEP-0 live-wiring (the saga
+// sendSettle impl) once the real statKeys land — it's dead until then (settlement is fail-closed). Helius detection is
+// unaffected: it keys on the discriminator + the market PDA (first account), not the arg layout.
 export const settleData = (result: number, proof: Buffer): Buffer => ixData("settle_market", u8(result), bytesVec(proof));
 export const postRootData = (epoch: number, root: Uint8Array): Buffer => ixData("post_leaderboard_root", u32(epoch), Buffer.from(root));
 export const claimData = (epoch: number, amount: bigint | number, merkleProof: Uint8Array[]): Buffer => ixData("claim_points", u32(epoch), u64(amount), vec32(merkleProof));
