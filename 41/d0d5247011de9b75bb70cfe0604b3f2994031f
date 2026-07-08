@@ -1,0 +1,40 @@
+docs/adr/ADR-036-settle-market-txoracle-cpi-statkey-binding.md
+  s_82db0e7c9eb747::t_9f8cbcf4bd99af 13,15-20
+  s_82db0e7c9eb747::t_9ce8f2166f3d06 1-12,14,21
+  s_82db0e7c9eb747::t_cf827b8cbc4d7c 22
+.claude/context/overnight-log.md
+  s_82db0e7c9eb747::t_0580b9c534705f 52-53
+programs/omnipitch_core/programs/omnipitch_core/src/txoracle_cpi.rs
+  s_82db0e7c9eb747::t_c09f3b5a202c44 17-28
+  s_82db0e7c9eb747::t_ccd4ddfc4a0d84 29
+  s_82db0e7c9eb747::t_0f40a6003e3a53 1-12,14-16,30-110
+  s_82db0e7c9eb747::t_db7ae7cd112fb0 13
+.claude/context/NOW.md
+  s_82db0e7c9eb747::t_53bbec181e250c 18-19
+programs/omnipitch_core/programs/omnipitch_core/src/instructions/settle_market.rs
+  s_82db0e7c9eb747::t_6d6a5addbbbd1c 42-44,47-50
+  s_82db0e7c9eb747::t_c66ff8be840481 4
+  s_82db0e7c9eb747::t_8f0527c6d2218f 45-46
+  s_82db0e7c9eb747::t_257f43db8f3c72 1-3,5-6,8-29,31-41,51-59
+programs/omnipitch_core/programs/omnipitch_core/src/lib.rs
+  s_82db0e7c9eb747::t_862daa5759e054 17-22
+  s_82db0e7c9eb747::t_c54181a571d1bb 2,4
+packages/chain/src/builders.ts
+  s_82db0e7c9eb747::t_3e4e8f442fd0ed 35-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "41d0d5247011de9b75bb70cfe0604b3f2994031f",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
