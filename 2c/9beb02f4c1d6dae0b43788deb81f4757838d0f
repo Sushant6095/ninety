@@ -1,0 +1,61 @@
+.claude/context/NOW.md
+  s_82db0e7c9eb747::t_e199a31782f35b 14-15
+programs/omnipitch_core/programs/omnipitch_core/src/state.rs
+  s_82db0e7c9eb747::t_42b640f5b63caf 12-13,15-33
+programs/omnipitch_core/programs/omnipitch_core/src/proof.rs
+  s_82db0e7c9eb747::t_8d107243c7baec 34-39
+programs/omnipitch_core/programs/omnipitch_core/src/instructions/mod.rs
+  s_82db0e7c9eb747::t_c91e003bdd1581 1-2
+programs/omnipitch_core/programs/omnipitch_core/src/instructions/init_vault.rs
+  s_82db0e7c9eb747::t_377687a5d9049a 1-40
+programs/omnipitch_core/programs/omnipitch_core/src/lib.rs
+  s_82db0e7c9eb747::t_67ad0b199fe670 12-15
+  s_82db0e7c9eb747::t_b62b09c30fff60 2
+programs/omnipitch_core/Anchor.toml
+  s_82db0e7c9eb747::t_38d90e59548503 10
+programs/omnipitch_core/scripts/init-vault.ts
+  s_82db0e7c9eb747::t_da3db6e9ee4137 20
+  s_82db0e7c9eb747::t_b47a81228a2691 1-19,21-30
+programs/omnipitch_core/programs/omnipitch_core/src/merkle.rs
+  s_82db0e7c9eb747::t_983b636ce664fa 1-65
+programs/omnipitch_core/programs/omnipitch_core/Cargo.toml
+  s_82db0e7c9eb747::t_ab9e00f1a52b0a 8,11
+programs/omnipitch_core/programs/omnipitch_core/src/instructions/init_config.rs
+  s_82db0e7c9eb747::t_4379c7c71ad2b9 4-8
+  s_82db0e7c9eb747::t_5fa296a621316e 1-3,9-23
+programs/omnipitch_core/programs/omnipitch_core/src/instructions/post_leaderboard_root.rs
+  s_82db0e7c9eb747::t_70b2c102bd6c0b 14
+  s_82db0e7c9eb747::t_3ffea30850ab7b 2-13,15-25
+programs/omnipitch_core/programs/omnipitch_core/src/instructions/claim_points.rs
+  s_82db0e7c9eb747::t_c1fccb5dbd1f34 2-12,14-15,17-57
+  s_82db0e7c9eb747::t_2f969a757a8fb8 13,16
+programs/omnipitch_core/package.json
+  s_82db0e7c9eb747::t_60c94313556491 1-24
+docs/adr/ADR-031-leaderboard-claim-merkle-receipt-pda-vault.md
+  s_82db0e7c9eb747::t_41fe794d07695c 3
+  s_82db0e7c9eb747::t_8553c9ba330a28 1-2
+programs/omnipitch_core/tests/omnipitch_core.ts
+  s_82db0e7c9eb747::t_da10c129f02e5e 8,10
+  s_82db0e7c9eb747::t_fb4e9ba1f5339b 4-5
+  s_82db0e7c9eb747::t_b3d318c2b0d4be 44
+  s_82db0e7c9eb747::t_35a42cce16f362 55
+  s_82db0e7c9eb747::t_51abf350c4300d 1-3,6-7,9,11-43,45-54,56-99
+programs/omnipitch_core/tsconfig.json
+  s_82db0e7c9eb747::t_39141f2ab19ada 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "2c9beb02f4c1d6dae0b43788deb81f4757838d0f",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
