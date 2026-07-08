@@ -1,0 +1,40 @@
+packages/chain/src/builders.ts
+  s_82db0e7c9eb747::t_0f7ab1a5e1ed82 1-53
+packages/chain/package.json
+  s_82db0e7c9eb747::t_406485b275f181 4
+  s_82db0e7c9eb747::t_4317a54cdb689f 5-6
+packages/chain/src/helius.ts
+  s_82db0e7c9eb747::t_fcb9ee25f15884 1-59
+  s_82db0e7c9eb747::t_0e159aef694354 60-83
+docs/adr/ADR-034-tx-builders-helius-webhook-chain-events.md
+  s_82db0e7c9eb747::t_008da37f46522a 1-3
+packages/chain/src/chain.test.ts
+  s_82db0e7c9eb747::t_e534bae99fce78 1-73
+apps/api/src/http/routes/webhooks.test.ts
+  s_82db0e7c9eb747::t_e54f38eef15ffa 1-25
+packages/chain/src/index.ts
+  s_82db0e7c9eb747::t_40c9add0ca4ae5 3-4
+apps/api/src/http/server.ts
+  s_82db0e7c9eb747::t_f9d1c5d6cfbe28 6
+  s_82db0e7c9eb747::t_cc9b69fdec84e9 19-21
+apps/api/src/http/routes/webhooks.ts
+  s_82db0e7c9eb747::t_56a51650f72d7d 1-42
+.claude/context/NOW.md
+  s_82db0e7c9eb747::t_379b7188d03d25 16-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "922a1dc86e894ae3034f9258569a93ec97759186",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
