@@ -1,0 +1,54 @@
+programs/omnipitch_core/programs/omnipitch_core/src/proof.rs
+  s_82db0e7c9eb747::t_c7985eda1ef8ee 39
+packages/txline/src/client.ts
+  s_82db0e7c9eb747::t_5ac6619b70e0de 9-26
+  s_82db0e7c9eb747::t_689338e06e471f 221,225-230
+  s_82db0e7c9eb747::t_011d8bdbfdd080 210-212
+  s_82db0e7c9eb747::t_678597f8ab829f 216-220,222-224,231-236
+docs/TXLINE-MAP.md
+  s_82db0e7c9eb747::t_3df7c381d5a82a 30-31
+packages/txline/src/mock.ts
+  s_82db0e7c9eb747::t_67a465cfcacc3d 38-43
+  s_82db0e7c9eb747::t_c5d0d600da573a 18
+  s_82db0e7c9eb747::t_4d6c49de35567b 47-48
+  s_82db0e7c9eb747::t_2e812413689c30 64
+programs/omnipitch_core/programs/omnipitch_core/src/txoracle_cpi.rs
+  s_82db0e7c9eb747::t_13ea74f647282c 14-16
+  s_82db0e7c9eb747::t_650534cf7cd459 20-34
+.claude/context/NOW.md
+  s_82db0e7c9eb747::t_26b248d3c81a46 18
+.claude/context/overnight-log.md
+  s_82db0e7c9eb747::t_393f5f9426e7d2 54-55
+docs/adr/ADR-037-settle-statkeys-1-2-game-finalised-failclosed.md
+  s_82db0e7c9eb747::t_8030e275ae5c4c 19-23
+  s_82db0e7c9eb747::t_e956ef445d71d4 1-18,24-29
+packages/txline/src/scores.ts
+  s_82db0e7c9eb747::t_55fc3a5b5444aa 25
+packages/txline/src/statkeys.ts
+  s_82db0e7c9eb747::t_9217ac900b6111 20-26
+packages/txline/scripts/snapshot.ts
+  s_82db0e7c9eb747::t_97f932854040ca 27
+  s_82db0e7c9eb747::t_bc593e80a5a680 62-64
+  s_82db0e7c9eb747::t_8b4f4fde95b69e 6
+  s_82db0e7c9eb747::t_54c47726d98fcc 54-61
+programs/omnipitch_core/programs/omnipitch_core/src/instructions/settle_market.rs
+  s_82db0e7c9eb747::t_f781f8dff7e80b 4
+  s_82db0e7c9eb747::t_48624bf7fd7cf7 30-33
+  s_82db0e7c9eb747::t_cf99f32513d4c3 46-50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "c75001cca7a6ea1d44434ab37ddf4dfbab3b48e6",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
