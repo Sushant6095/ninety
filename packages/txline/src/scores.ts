@@ -22,6 +22,7 @@ export const ScoreState = z
   .object({
     FixtureId: z.number(),
     GameState: z.union([z.string(), z.number()]),
+    Action: z.string().optional(), // e.g. "free_kick", "shot", "game_finalised" — settlement selects the game_finalised record
     Seq: z.number().optional(),
     Ts: z.number().optional(),
     StatusId: z.number().optional(),

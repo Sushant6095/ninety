@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 use crate::proof::OmniError;
 use crate::state::Market;
-use crate::txoracle_cpi::{self, daily_scores_roots_pda, ProofNode, ScoresBatchSummary, StatTerm, EPOCH_DAY_SECS, PERIOD_FINAL, STAT_KEY_AWAY_GOALS, STAT_KEY_HOME_GOALS, TXORACLE_ID};
+use crate::txoracle_cpi::{self, daily_scores_roots_pda, ProofNode, ScoresBatchSummary, StatTerm, EPOCH_DAY_SECS, SETTLEMENT_LIVE, STAT_KEY_AWAY_GOALS, STAT_KEY_HOME_GOALS, TXORACLE_ID};
 
 // Permissionless, one-shot settlement. The ONLY gate is txoracle.validate_stat (CPI) — no admin result path.
 #[derive(Accounts)]
@@ -27,6 +27,10 @@ pub fn handler(
     stat_home: StatTerm,
     stat_away: StatTerm,
 ) -> Result<()> {
+    // FAIL-CLOSED: settlement is hard-disabled until the on-chain finality gate + validateStatV2 land (ADR-037).
+    // With SETTLEMENT_LIVE=false EVERY settle is rejected here — nothing below can run, so no result is ever written.
+    require!(SETTLEMENT_LIVE, OmniError::SettlementDisabled);
+
     let m = &mut ctx.accounts.market;
     require!(m.status < 3, OmniError::AlreadySettled); // one-shot: a second settle no-ops (idempotent for the saga)
 
@@ -39,15 +43,13 @@ pub fn handler(
     // C2 — the roots account MUST be the txoracle PDA for this epochDay (the program is pinned via #[account(address)]).
     require_keys_eq!(ctx.accounts.daily_scores_roots.key(), daily_scores_roots_pda(epoch_day), OmniError::Unauthorized);
 
-    // C-1 (stat identity) — bind WHICH stat is home vs away: stat_home MUST be the FINAL home-goals key and stat_away
-    // the FINAL away-goals key. Without this a caller could pass any two anchored stats (or the goal stats SWAPPED) and
-    // settle an arbitrary result with genuine proofs. C3 (extra-time trap) — both stats MUST be the FINAL/finished
-    // period, so a 90'/HT snapshot cannot settle. The key/period constants are IMPOSSIBLE SENTINELS today
-    // (txoracle_cpi.rs) → settlement is fail-closed/disabled until STEP-0 lands the real encodings. See ADR-036.
+    // C-1 (stat identity) — bind WHICH stat is home vs away: stat_home MUST be statKey 1 (home total goals) and
+    // stat_away MUST be statKey 2 (away total goals). Without this a caller could pass any two anchored stats (or the
+    // goal stats SWAPPED) and settle an arbitrary result with genuine proofs. NOTE: this does NOT prove the record is
+    // game_finalised — that finality gate is unresolved on-chain (see SETTLEMENT_LIVE in txoracle_cpi.rs / ADR-037),
+    // which is why the hard gate above keeps settlement disabled.
     require!(stat_home.stat_to_prove.key == STAT_KEY_HOME_GOALS, OmniError::InvalidProof);
     require!(stat_away.stat_to_prove.key == STAT_KEY_AWAY_GOALS, OmniError::InvalidProof);
-    require!(stat_home.stat_to_prove.period == PERIOD_FINAL, OmniError::InvalidProof);
-    require!(stat_away.stat_to_prove.period == PERIOD_FINAL, OmniError::InvalidProof);
 
     // The Merkle score-proof verification happens INSIDE txoracle.validate_stat via CPI; false/None/other-program
     // ⇒ reject. The predicate (home−away vs 0, comparison from `result`) is built on-chain. Only then write the result.

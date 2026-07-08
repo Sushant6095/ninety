@@ -15,7 +15,7 @@ export const WC26_FIXTURE_ID = String((FIXTURES.find((f) => f.CompetitionId === 
 export interface MockCalls {
   guestStart: number;
   activate: number;
-  data: Array<{ path: string; bearer: string | null; apiToken: string | null }>;
+  data: Array<{ path: string; search: string; bearer: string | null; apiToken: string | null }>;
   expireNextToken: boolean;
 }
 
@@ -35,11 +35,17 @@ export function mockTxLine(): MockTxLine {
   const JWT = "jwt.guest.demo.eyJ";
   const API_TOKEN = "txoracle_api_mockdemo"; // activate returns this as a BARE STRING (matches reality)
   const calls: MockCalls = { guestStart: 0, activate: 0, data: [], expireNextToken: false };
-  const scores = sample("scores-snapshot") as unknown[];
+  // Real snapshot samples + a synthetic FINISHED record (the live feed emits Action:"game_finalised" at FT) so
+  // settlementProof has a finalised record to select. Home 2 – Away 1 ⇒ result HOME. Appended (not prepended) so
+  // scores[0]/stream slices are unaffected.
+  const finalisedFixtureId = (FIXTURES.find((f) => f.CompetitionId === 72) ?? FIXTURES[0]).FixtureId;
+  const finalised = { FixtureId: finalisedFixtureId, GameState: "finished", Action: "game_finalised", Seq: 999_999, Score: { Participant1: { Total: { Goals: 2 } }, Participant2: { Total: { Goals: 1 } } } };
+  const scores = [...(sample("scores-snapshot") as unknown[]), finalised];
   const oddsTicks = sample("odds-updates") as unknown[];
 
   const fetch: FetchLike = async (url, init) => {
-    const path = new URL(url).pathname;
+    const u = new URL(url);
+    const path = u.pathname;
     const headers = new Headers(init?.headers);
 
     if (path === "/auth/guest/start") {
@@ -55,7 +61,7 @@ export function mockTxLine(): MockTxLine {
     // data endpoints — must carry BOTH headers
     const bearer = headers.get("authorization");
     const apiToken = headers.get("x-api-token");
-    calls.data.push({ path, bearer, apiToken });
+    calls.data.push({ path, search: u.search, bearer, apiToken });
     if (bearer !== `Bearer ${JWT}` || apiToken !== API_TOKEN) return json({ error: "unauthorized" }, 401);
     if (calls.expireNextToken) {
       calls.expireNextToken = false;

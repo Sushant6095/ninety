@@ -11,21 +11,27 @@ use crate::proof::OmniError;
 
 /// Pinned trust surface (proof-auditor C2): the devnet txoracle program. NEVER caller-supplied.
 pub const TXORACLE_ID: Pubkey = anchor_lang::pubkey!("6pW64gN1s2uqjHkn1unFeEjAwJkPGHoppGvS715wyP2J");
+// ⚠ This is the OLD `validate_stat` discriminator (the only one in our stale IDL). TxLINE now directs settlement to
+// `validateStatV2` (sanctioned path; manual Merkle verify / Plan B is unsupported until they publish the hash spec).
+// Before flipping SETTLEMENT_LIVE, replace this disc + ValidateStatArgs with validateStatV2's from the updated IDL.
 const VALIDATE_STAT_DISC: [u8; 8] = [107, 197, 232, 90, 191, 136, 105, 185];
 pub const EPOCH_DAY_SECS: i64 = 86_400;
 
-// FINAL home/away-goals statKeys + FINISHED period — the stat identity the two-stat predicate is built on.
-// ⚠ SETTLEMENT IS DELIBERATELY DISABLED (fail-closed) until STEP-0. These are IMPOSSIBLE SENTINELS, not the real
-// encodings: no leaf in daily_scores_roots is keyed u32::MAX / period i32::MAX, so txoracle can never validate a proof
-// for them → EVERY settle is rejected. This is intentional. ADR-017/ADR-015 observed the live 1002/1003 stats are REAL
-// but are NOT goals (1002=2,1003=1 while the score was 1–3); pinning 1002/1003 would let an attacker forge a result
-// with a GENUINE proof for a real-but-wrong stat (proof-auditor C-1 re-verify refuted the "unconfirmed ⇒ fail-closed"
-// claim — a real-but-wrong key is strictly MORE dangerous than an impossible one). STEP-0 must confirm the true FINAL
-// home/away-goals keys + the terminal (finished-incl-ET, uniquely-anchored) period and replace these three values;
-// only then does settlement go live. Until then the CPI path is wired + reviewed but cannot settle anything. See ADR-036.
-pub const STAT_KEY_HOME_GOALS: u32 = u32::MAX;
-pub const STAT_KEY_AWAY_GOALS: u32 = u32::MAX - 1;
-pub const PERIOD_FINAL: i32 = i32::MAX;
+// The home/away total-goals statKeys (K1 scores feed, admin-confirmed 2026-07-08): statKey 1 = Participant 1 (home)
+// total goals, statKey 2 = Participant 2 (away) total goals. "Final" is NOT a period value — it is the score record
+// whose Action == "game_finalised", selected OFF-CHAIN when fetching the proof (packages/txline finalisedStatProof).
+pub const STAT_KEY_HOME_GOALS: u32 = 1;
+pub const STAT_KEY_AWAY_GOALS: u32 = 2;
+
+// SETTLEMENT REMAINS DISABLED (fail-closed) until two on-chain-unresolved gates land — see ADR-037:
+//   (1) FINALITY: validate_stat proves a stat is anchored in SOME event sub-tree (any match moment), NOT that the
+//       record is game_finalised. A permissionless caller could prove statKey 1 from a MID-MATCH batch where the home
+//       side led → wrong-result forge via batch/seq selection. Enforcing "this proof IS the finalised record" needs
+//       the sanctioned validateStatV2 instruction, whose interface/accounts are NOT in our IDL (recon-blocked).
+//   (2) SHOOTOUT DECISION: statKeys 1,2 are TOTAL GOALS, so a penalty win reads level (e.g. 1–1 won on pens) → the
+//       home−away predicate returns DRAW for a match that has a winner. Needs the game_finalised decision/winner stat.
+// Flipping SETTLEMENT_LIVE to true ALSO requires re-pointing the CPI at validateStatV2 (disc + args from the updated IDL).
+pub const SETTLEMENT_LIVE: bool = false;
 
 // --- txoracle types (borsh layout MUST match the IDL) ---
 #[derive(AnchorSerialize, AnchorDeserialize, Clone)]

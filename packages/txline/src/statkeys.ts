@@ -17,3 +17,10 @@ export function goalsFromScore(score: {
 // ⚠ Day-0: the numeric Stats map key → metric table (scores/soccer-feed) is not yet transcribed.
 // Live samples show keys like 1..8, 1001..1008, 2001..2008, etc. Do NOT assume any key is goals.
 export const STAT_KEY_TABLE_CONFIRMED = false;
+
+// SETTLEMENT statKeys (admin-confirmed 2026-07-08, K1 scores feed): the txoracle-anchored stat-validation tree keys
+// TOTAL GOALS as statKey 1 = Participant 1 (home), statKey 2 = Participant 2 (away). This is the anchored-proof tree,
+// distinct from the live SSE Stats map (which carries no goals — see above). Settlement proves these from the score
+// record whose Action === "game_finalised" (ADR-037). ⚠ Total goals read LEVEL for a penalty-shootout win.
+export const STAT_KEY_HOME_GOALS = 1;
+export const STAT_KEY_AWAY_GOALS = 2;

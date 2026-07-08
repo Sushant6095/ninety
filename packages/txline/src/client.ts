@@ -6,6 +6,24 @@ import { z } from "zod";
 import { ScoresSnapshot, ScoresUpdates, ScoreEvent, StatValidation } from "./scores";
 import { OddsSnapshot, OddsUpdates, OddsTick } from "./odds";
 import { FixturesSnapshot } from "./fixtures";
+import { goalsFromScore, STAT_KEY_HOME_GOALS, STAT_KEY_AWAY_GOALS } from "./statkeys";
+
+/** The Action value on the score record that marks a match complete — settlement proves goals from THIS record only. */
+export const GAME_FINALISED_ACTION = "game_finalised";
+
+/** HOME=1 · DRAW=2 · AWAY=3 — matches the on-chain settle_market `result` encoding + txoracle predicate mapping. */
+export function resultFromGoals(home: number, away: number): 1 | 2 | 3 {
+  return home > away ? 1 : home < away ? 3 : 2;
+}
+
+export interface SettlementProof {
+  fixtureId: number;
+  seq: number;
+  home: number;
+  away: number;
+  result: 1 | 2 | 3; // ⚠ from TOTAL GOALS: a penalty-shootout win reads level → DRAW; needs the decision stat (ADR-037)
+  proof: StatValidation;
+}
 
 // Consumers import the client + all wire schemas/types from the package entry.
 export * from "./scores";
@@ -189,8 +207,31 @@ export class TxLineClient {
 
   /** S4 — Merkle proof bundle for a stat (feeds on-chain validateStat, §3). */
   statValidation(fixtureId: string, seq: number, statKey: number, statKey2?: number): Promise<StatValidation> {
-    const query: Record<string, string | number | undefined> = { fixtureId, seq, statKey, statKey2 };
+    // admin-confirmed wire form (ADR-037): ?fixtureId&seq&statKeys=1,2 — a single comma-joined `statKeys` param.
+    const statKeys = [statKey, statKey2].filter((k): k is number => k !== undefined).join(",");
+    const query: Record<string, string | number | undefined> = { fixtureId, seq, statKeys };
     return this.getParsed(`/api/scores/stat-validation`, StatValidation, query);
+  }
+
+  /**
+   * Settlement proof bundle for a FINISHED fixture (ADR-037 recipe). Finds the score record whose
+   * Action === "game_finalised", then proves statKey 1 (home total goals) + statKey 2 (away total goals) from THAT
+   * record's Seq — never a mid-match snapshot. Returns null if the fixture is not yet finalised.
+   * ⚠ `result` is derived from TOTAL GOALS, so it is DRAW for a penalty-shootout win — do NOT settle knockouts on it
+   * until the game_finalised decision/winner stat is confirmed (ADR-037 open item).
+   */
+  async settlementProof(fixtureId: string): Promise<SettlementProof | null> {
+    const states = await this.scoresSnapshot(fixtureId);
+    const finals = states.filter((s) => s.Action === GAME_FINALISED_ACTION);
+    if (finals.length === 0) return null; // not finalised yet
+    // The LATEST game_finalised record wins — a VAR correction may re-finalise at a higher Seq (ADR-037 Q2).
+    const final = finals.reduce((a, b) => ((b.Seq ?? -1) > (a.Seq ?? -1) ? b : a));
+    if (final.Seq === undefined) throw new Error(`game_finalised record for fixture ${fixtureId} has no Seq`);
+    if (final.FixtureId !== Number(fixtureId)) throw new Error(`game_finalised fixtureId ${final.FixtureId} != requested ${fixtureId}`);
+    const goals = goalsFromScore(final.Score);
+    if (!goals) throw new Error(`game_finalised record for fixture ${fixtureId} has no Score.*.Total.Goals`);
+    const proof = await this.statValidation(fixtureId, final.Seq, STAT_KEY_HOME_GOALS, STAT_KEY_AWAY_GOALS);
+    return { fixtureId: final.FixtureId, seq: final.Seq, home: goals.home, away: goals.away, result: resultFromGoals(goals.home, goals.away), proof };
   }
 
   /** F1 — fixtures snapshot (verified live: /api/fixtures/snapshot). */

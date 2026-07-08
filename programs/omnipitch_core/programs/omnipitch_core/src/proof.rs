@@ -36,4 +36,5 @@ pub enum OmniError {
     #[msg("invalid proof")] InvalidProof,
     #[msg("already settled")] AlreadySettled,
     #[msg("unauthorized")] Unauthorized,
+    #[msg("settlement disabled pending on-chain finality gate (ADR-037)")] SettlementDisabled,
 }

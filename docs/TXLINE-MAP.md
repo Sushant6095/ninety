@@ -27,8 +27,8 @@ FRESHNESS (06-LIVE, 2026-07-07): **devnet SL1 stream transport latency ≈ 0.7�
 | S1 | `GET /api/scores/snapshot/{fixtureId}?asOf=` | snapshot | confirmed |
 | S2 | `GET /api/scores/updates/{epochDay}/{hourOfDay}/{interval}` | historical (5-min buckets) | confirmed |
 | S3 | `GET /api/scores/stream` (SSE) | stream | confirmed |
-| S4 | `GET /api/scores/stat-validation?fixtureId&seq&statKey[&statKey2]` | proof bundle | confirmed |
-| S5 | `txoracle.validateStat(ts, summary, proofs, predicate, stat1, stat2?, op?)` vs PDA `["daily_scores_roots", epochDay]` | on-chain verify | confirmed |
+| S4 | `GET /api/scores/stat-validation?fixtureId&seq&statKeys=1,2` (comma-joined; statKey 1=home goals, 2=away goals — ADR-037) | proof bundle | confirmed |
+| S5 | `txoracle.validateStatV2(...)` — sanctioned settle instruction (interface = STEP-0/ADR-037); settle on the `Action=="game_finalised"` record vs PDA `["daily_scores_roots", epochDay]`. Manual Merkle verify (Plan B) unsupported until TxLINE publishes the hash spec. | on-chain verify | V2 iface ⚠ |
 | O1 | `GET /api/odds/snapshot/{fixtureId}?asOf=` | snapshot | confirmed (live) → wrapper `oddsSnapshot` |
 | O2 | `GET /api/odds/updates/{epochDay}/{hourOfDay}/{interval}` | historical | confirmed (live) → wrapper `oddsUpdates` |
 | O3 | `GET /api/odds/stream` (SSE, StablePrice) | stream | confirmed (live) → wrapper `oddsStream` |
