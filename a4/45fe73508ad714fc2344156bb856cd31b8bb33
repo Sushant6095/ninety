@@ -1,0 +1,25 @@
+apps/worker-jobs/src/swing-card.ts
+  s_82db0e7c9eb747::t_b36cca12a990ce 1-119
+docs/adr/ADR-040-moment-swing-card.md
+  s_82db0e7c9eb747::t_7c1a4dd4d712eb 1-12
+apps/worker-jobs/src/swing-card.test.ts
+  s_82db0e7c9eb747::t_8689522a9e1572 1-93
+.claude/context/NOW.md
+  s_82db0e7c9eb747::t_5de0a1a85210fc 21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a445fe73508ad714fc2344156bb856cd31b8bb33",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
