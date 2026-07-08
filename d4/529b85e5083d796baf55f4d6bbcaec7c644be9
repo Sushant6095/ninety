@@ -1,0 +1,28 @@
+apps/worker-jobs/src/booth-filter.test.ts
+  s_82db0e7c9eb747::t_467b23dd92a468 1-44
+apps/worker-jobs/src/booth.test.ts
+  s_82db0e7c9eb747::t_6ca7e98da2d7ea 6
+  s_82db0e7c9eb747::t_4a934a9ee1b46a 165-201
+apps/worker-jobs/src/booth-filter.ts
+  s_82db0e7c9eb747::t_c70e641c2b41ce 1-38
+docs/adr/ADR-039-booth-post-llm-filter.md
+  s_82db0e7c9eb747::t_da5a004f514436 1-11
+.claude/context/NOW.md
+  s_82db0e7c9eb747::t_debe8d903f558d 20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "d4529b85e5083d796baf55f4d6bbcaec7c644be9",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
