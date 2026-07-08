@@ -1,0 +1,63 @@
+apps/api/src/auth/challenge.ts
+  s_82db0e7c9eb747::t_d6c6e27ba8cbf9 1-5,7-10,12-31
+  s_82db0e7c9eb747::t_f36bf1c8b6a526 6,11
+apps/api/src/auth/middleware.ts
+  s_82db0e7c9eb747::t_b0f19a97c5ce8e 1-25
+apps/api/src/auth/otp.ts
+  s_82db0e7c9eb747::t_c4f43e9a019504 1-51,58-63
+  s_82db0e7c9eb747::t_85c82ff6008376 52-57
+apps/api/src/http/routes/markets.ts
+  s_82db0e7c9eb747::t_486e99e3716e31 2-14,17-19
+  s_82db0e7c9eb747::t_489dfddf8441f1 15-16
+.claude/context/NOW.md
+  s_82db0e7c9eb747::t_0d787f3194324e 15-16
+apps/api/src/auth/jwt.ts
+  s_82db0e7c9eb747::t_82442c2f5760e6 4,7
+  s_82db0e7c9eb747::t_b6fc16156b0d62 1-3,5-6,8-42
+apps/api/package.json
+  s_82db0e7c9eb747::t_6a24ce979cdb99 8
+apps/api/src/http/routes/auth.ts
+  s_82db0e7c9eb747::t_b04ec699bd5c24 22-25,28-37
+  s_82db0e7c9eb747::t_a1384a9a85829a 6,43-44,46-47,50-61,67
+  s_82db0e7c9eb747::t_50103836ef0b39 7
+  s_82db0e7c9eb747::t_506f798667f533 1-5,8-21,26-27,38-42,45,48-49,62-66,68-79
+apps/api/src/http/server.ts
+  s_82db0e7c9eb747::t_0bbc58a9df0815 17
+  s_82db0e7c9eb747::t_317242b0610e5a 4
+  s_82db0e7c9eb747::t_855ac636f10f73 5
+  s_82db0e7c9eb747::t_2d54750e895e05 6-7,10,14-16
+apps/api/src/auth/auth.test.ts
+  s_82db0e7c9eb747::t_effbc12972eadf 50,52,57,59
+  s_82db0e7c9eb747::t_1413c7a10c2f48 6
+  s_82db0e7c9eb747::t_9f300cdff4d0e5 65-77
+  s_82db0e7c9eb747::t_daf37fb0d74bc7 46-49,51,53-56,58,60-64
+  s_82db0e7c9eb747::t_e889fe3b58c8f9 1-5,8-45,78-105
+  s_82db0e7c9eb747::t_464ddf8164dcec 7
+docs/adr/ADR-033-hybrid-auth-embedded-external-jwt-per-match-grant.md
+  s_82db0e7c9eb747::t_4e3114f60ffe40 1-2
+  s_82db0e7c9eb747::t_40fe9f76ad6681 3
+apps/api/src/auth/secrets.ts
+  s_82db0e7c9eb747::t_5cf5c5970d126c 1-25
+apps/api/src/auth/grant.ts
+  s_82db0e7c9eb747::t_9b485a0d5669e4 1-51
+apps/api/src/auth/wallet.ts
+  s_82db0e7c9eb747::t_7a2ecba7c141cd 1-6,8-15,17-31
+  s_82db0e7c9eb747::t_710336c9cbf05c 7
+  s_82db0e7c9eb747::t_64229393a0bca9 16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "ac9aba1e356088261d02a95f1eca7237d74b169b",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
