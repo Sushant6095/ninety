@@ -8,6 +8,7 @@ export const EventSource = z.enum([
   "txline.proofs",
   "engine",
   "cortex", // pricing/quant worker — devigged marks on prices.marks (ADR-022)
+  "booth", // AI booth narration worker — commentary.v1 (ADR-038)
   "chain",
   "user",
   "replay",

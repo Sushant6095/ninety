@@ -3,13 +3,21 @@
 // fixture/leaderboard/moment lookups left as a follow-up (Redis-backed) — see earlywhistle.ts.
 import { createBus } from "@omnipitch/bus";
 import { startEarlyWhistle } from "./earlywhistle";
+import { startBooth } from "./booth";
+import { makeBoothLLM } from "./booth-llm";
 import { FetchTelegram } from "./tg";
 
 async function main() {
+  const bus = await createBus();
+
+  // AI Booth: narrates swings + events onto commentary.v1 (→ EarlyWhistle cards, → web BoothBubble). Runs always;
+  // uses the real Claude narrator when ANTHROPIC_API_KEY is set, else a deterministic template narrator.
+  await startBooth({ bus, llm: makeBoothLLM() });
+  console.log(JSON.stringify({ evt: "booth.ready", model: process.env.ANTHROPIC_API_KEY ? "anthropic" : "template" }));
+
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const channelId = process.env.EARLYWHISTLE_CHANNEL;
   if (token && channelId) {
-    const bus = await createBus();
     await startEarlyWhistle({
       bus,
       telegram: new FetchTelegram(token),
