@@ -37,3 +37,5 @@ On-chain DEPLOY is a genuine env blocker → do NOT stall the whole run at promp
 
 ### BUILD UNBLOCKED (2026-07-08) — ADR-030
 `anchor build` CLEAN: 6 Cargo.lock pins (blake3 1.5.5, zeroize_derive 1.4.2, proc-macro-crate 3.1.0, indexmap 2.6.0, jobserver 0.1.32, unicode-segmentation 1.12.0) dropped the edition2024/MSRV crates out of the SBF graph + idl-build feature. Produces omnipitch_core.so + IDL. The whole on-chain phase (19-22) is now anchor-test-able for REAL. ADR-017/029 blocker RESOLVED.
+
+PROMPT 20 GREEN — 2c9beb0 — leaderboard claim: sorted-pair keccak merkle inclusion + receipt-PDA double-claim guard + PDA-owned SPL vault; anchor test 5/5 on localnet (valid/replay-X/wrong-proof-X/foreign-leaf-X/authority-X) + host merkle cargo test + anchor build clean. proof-auditor no CRITICAL/HIGH. (Foundation: ADR-030 anchor-build unblock.)
