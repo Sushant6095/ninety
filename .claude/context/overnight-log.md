@@ -47,3 +47,5 @@ PROMPT 22 BLOCKED (recorded, not faked) — the settle negative-path suite needs
 PROMPT 25 GREEN — ac9aba1 — hybrid auth: embedded(email+OTP)/external(Phantom sig) -> User+HS256 JWT; REST+WS middleware (unauthed rejected); per-match 1000-credit grant idempotent. security-reviewer 2 CRITICAL+1 HIGH fixed (OTP ownership, boot secrets, grant-after-validate). 9 auth tests, 131 api, gate 9/9/9 (ADR-033).
 
 PROMPT 23 GREEN — 922a1dc — tx builders (settle/post_root/claim/mint + priority fee + confirm-retry, IDL surface exported) + POST /webhooks/helius (verify secret → chain_events upsert → publish settled envelope to bus). chain 5 tests + api webhook route, 132 api, gate 9/9/9. Devnet-fired-settle E2E needs prompt 19 (path mock-tested; polling fallback documented) (ADR-034).
+
+PROMPT 24 GREEN — 8d8c7f2 — settlement saga: 7-step idempotent + persisted + resumable (crash resumes from last step), credit winners qty*100 zero-double-credit (per-user idempotent), one-shot tx, proof-404 alert+never-fabricate, stuck>120s alert. 7 saga tests, worker-jobs 34, gate 9/9/9. Devnet Solscan E2E needs prompt 19 (logic fully mock-tested) (ADR-035).
