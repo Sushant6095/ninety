@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { MomentumRiver } from "../../components/ui/MomentumRiver";
+import { Flag } from "../../components/ui/Flag";
 import { LivePrice, useLiveMarket } from "./LiveMarkets";
 import { routes } from "../../lib/routes";
 import type { MarketRow, Outcome } from "../../lib/types";
@@ -35,14 +36,14 @@ export function FeaturedPanel({ market }: { market: MarketRow }) {
 
       <div className="flex items-center justify-between px-4 py-3">
         <span className="flex flex-col items-center gap-1.5">
-          <span className="grid h-10 w-10 place-items-center rounded-full bg-bg text-[20px] ring-1 ring-inset ring-hairline">{live.homeFlag}</span>
+          <Flag code={live.homeCode} size={40} />
           <span className="text-[10px] font-medium tracking-wide text-lo">{live.homeCode}</span>
         </span>
         <span className="num font-display text-[34px] font-extrabold leading-none tabular-nums text-hi">
           {live.score?.home}<span className="px-1.5 text-lo">–</span>{live.score?.away}
         </span>
         <span className="flex flex-col items-center gap-1.5">
-          <span className="grid h-10 w-10 place-items-center rounded-full bg-bg text-[20px] ring-1 ring-inset ring-hairline">{live.awayFlag}</span>
+          <Flag code={live.awayCode} size={40} />
           <span className="text-[10px] font-medium tracking-wide text-lo">{live.awayCode}</span>
         </span>
       </div>

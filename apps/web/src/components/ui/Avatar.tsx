@@ -4,17 +4,21 @@ interface AvatarProps {
   className?: string;
 }
 
-/** Neutral monogram disc. Brand colors are semantic (up/down = price, chain = on-chain) so avatars stay
- *  neutral by design law; real user photos would slot in here once an image host + CSP allow-list exist. */
+/** Real photo avatar (deterministic per handle via pravatar seed) over an initials fallback that shows while
+ *  loading or if the image fails. Plain <img> — external CDN, no optimization needed. */
 export function Avatar({ handle, size = 32, className = "" }: AvatarProps) {
+  const seed = encodeURIComponent(handle.replace(/^@/, "").toLowerCase());
   const initials = handle.replace(/^@/, "").slice(0, 2).toUpperCase();
   return (
     <span
-      aria-hidden
-      className={`grid shrink-0 place-items-center rounded-full bg-hairline/50 font-semibold text-hi ring-1 ring-inset ring-hairline ${className}`}
-      style={{ width: size, height: size, fontSize: Math.round(size * 0.36) }}
+      className={`relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-hairline/60 ring-1 ring-inset ring-hairline ${className}`}
+      style={{ width: size, height: size }}
     >
-      {initials}
+      <span aria-hidden className="num absolute inset-0 grid place-items-center font-semibold text-lo" style={{ fontSize: Math.round(size * 0.34) }}>
+        {initials}
+      </span>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={`https://i.pravatar.cc/${size * 2}?u=${seed}`} alt="" width={size} height={size} loading="lazy" decoding="async" className="relative h-full w-full object-cover" />
     </span>
   );
 }

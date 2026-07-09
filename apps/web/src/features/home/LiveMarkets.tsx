@@ -47,6 +47,11 @@ export function useLiveMarket(matchId: string): MarketRow | null {
   return markets?.find((m) => m.matchId === matchId) ?? null;
 }
 
+/** The full live market array, or null before the provider mounts. */
+export function useLiveMarkets(): MarketRow[] | null {
+  return useContext(LiveCtx);
+}
+
 // ── LivePrice ────────────────────────────────────────────────────────────────
 // A mono number that flashes up/down for one 220ms tick when its value changes (design law).
 

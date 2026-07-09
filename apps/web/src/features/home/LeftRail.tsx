@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { RailCard } from "../../components/ui/RailCard";
+import { Flag } from "../../components/ui/Flag";
 import { routes } from "../../lib/routes";
 import { MARKETS } from "../../lib/fixtures";
 
@@ -13,10 +14,10 @@ const STAGES = [
 ];
 
 const FOLLOWED = [
-  { name: "Canada", flag: "🇨🇦", state: "LIVE", live: true },
-  { name: "United States", flag: "🇺🇸", state: "22:00", live: false },
-  { name: "Mexico", flag: "🇲🇽", state: "LIVE", live: true },
-  { name: "Morocco", flag: "🇲🇦", state: "LIVE", live: true },
+  { name: "Canada", code: "CAN", state: "LIVE", live: true },
+  { name: "United States", code: "USA", state: "22:00", live: false },
+  { name: "Mexico", code: "MEX", state: "LIVE", live: true },
+  { name: "Morocco", code: "MAR", state: "LIVE", live: true },
 ];
 
 export function LeftRail() {
@@ -62,7 +63,7 @@ export function LeftRail() {
           {FOLLOWED.map((t) => (
             <li key={t.name}>
               <Link href={routes.competition} className="flex items-center gap-2.5 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/30">
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-bg text-[13px] ring-1 ring-inset ring-hairline">{t.flag}</span>
+                <Flag code={t.code} size={22} />
                 <span className="text-[13px] font-medium text-hi">{t.name}</span>
                 <span className={`num ml-auto text-[10px] font-semibold tracking-wide ${t.live ? "text-up" : "text-lo"}`}>{t.state}</span>
               </Link>

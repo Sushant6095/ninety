@@ -5,8 +5,10 @@ import { useLiveMarket } from "../../features/home/LiveMarkets";
 import type { MarketRow, Outcome } from "../../lib/types";
 import { Sparkline } from "./Sparkline";
 import { PriceChip } from "./PriceChip";
+import { Flag } from "./Flag";
 
 const OUTCOMES: Outcome[] = ["H", "D", "A"];
+const fmtVol = (n?: number): string => (n == null ? "" : n >= 1000 ? `${(n / 1000).toFixed(n >= 100000 ? 0 : 1)}k` : `${n}`);
 
 function leadOutcome(mark: Record<string, number> | null): Outcome | null {
   if (!mark) return null;
@@ -46,11 +48,11 @@ export function MatchCard({ market }: { market: MarketRow }) {
 
       <span className="min-w-0 flex-1">
         <span className="flex items-center gap-2">
-          <span className="text-[14px] leading-none">{m.homeFlag}</span>
+          <Flag code={m.homeCode} size={18} />
           <span className="truncate text-[13px] font-medium text-hi">{m.home}</span>
         </span>
         <span className="mt-2 flex items-center gap-2">
-          <span className="text-[14px] leading-none">{m.awayFlag}</span>
+          <Flag code={m.awayCode} size={18} />
           <span className="truncate text-[13px] font-medium text-hi">{m.away}</span>
         </span>
       </span>
@@ -59,6 +61,13 @@ export function MatchCard({ market }: { market: MarketRow }) {
         <span className="num block text-[13px] font-medium text-hi">{m.score?.home ?? ""}</span>
         <span className="num mt-2 block text-[13px] font-medium text-hi">{m.score?.away ?? ""}</span>
       </span>
+
+      {m.volume != null && (
+        <span className="hidden w-14 shrink-0 flex-col items-end lg:flex" title="Credits traded">
+          <span className="num text-[12px] font-medium tabular-nums text-hi/80">{fmtVol(m.volume)}</span>
+          <span className="text-[9px] uppercase tracking-wide text-lo">vol</span>
+        </span>
+      )}
 
       <span className="hidden shrink-0 opacity-90 sm:block">
         <Sparkline values={m.spark} up={rising} />

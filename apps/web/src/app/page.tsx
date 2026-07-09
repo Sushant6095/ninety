@@ -1,16 +1,23 @@
 import { HomeShell } from "../features/home/HomeShell";
 import { MatchList } from "../features/home/MatchList";
+import { TopMovers } from "../features/home/TopMovers";
+import { TradersWeek } from "../features/home/TradersWeek";
+import { NewsStrip } from "../features/home/NewsStrip";
+import { Reveal } from "../components/ui/Reveal";
 import { LiveMarketsProvider } from "../features/home/LiveMarkets";
 import { MARKETS } from "../lib/fixtures";
 
-// Home. Center hero = the grouped match list (chunks 2+4). The LiveMarketsProvider ticks the in-play markets so
-// prices flash and the River flows; the center list and the right-rail Featured hero share one live source.
-// Fixture-seeded; chunk 5 swaps MARKETS for GET /markets + the WS bus feed.
+// Home. Center hero = a full live-exchange feed (match list → biggest movers → traders of the week → booth
+// news). The LiveMarketsProvider ticks in-play markets so prices flash + the River flows across the whole
+// board. Fixture-seeded; chunk 5 swaps MARKETS for GET /markets + the WS bus feed.
 export default function Home() {
   return (
     <LiveMarketsProvider initial={MARKETS}>
       <HomeShell>
         <MatchList markets={MARKETS} />
+        <Reveal><TopMovers /></Reveal>
+        <Reveal><TradersWeek /></Reveal>
+        <Reveal><NewsStrip /></Reveal>
       </HomeShell>
     </LiveMarketsProvider>
   );

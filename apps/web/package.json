@@ -1,10 +1,26 @@
 {
   "name": "@omnipitch/web",
   "private": true,
-  "scripts": { "dev": "next dev", "build": "next build", "lint": "echo lint", "test": "echo 'no tests yet'" },
-  "dependencies": {
-    "next": "^15.0.0", "react": "^19.0.0", "react-dom": "^19.0.0",
-    "lightweight-charts": "^4.1.0", "@omnipitch/schema": "workspace:*"
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "lint": "echo lint",
+    "test": "echo 'no tests yet'"
   },
-  "devDependencies": { "typescript": "^5.5.0", "tailwindcss": "^3.4.0", "@types/react": "^19.0.0", "playwright": "^1.47.0" }
+  "dependencies": {
+    "@omnipitch/schema": "workspace:*",
+    "framer-motion": "^12.42.2",
+    "lightweight-charts": "^4.1.0",
+    "lucide-react": "^1.24.0",
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^3.9.2"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "playwright": "^1.47.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.5.0"
+  }
 }

@@ -21,6 +21,14 @@ export interface MarketRow {
   mark: Record<string, number> | null; // outcome → probability 0..1 (null until priced)
   spark: number[]; // recent fair[H]×100 series for the mini-river
   favourite: boolean;
+  volume?: number; // credits traded on this market (play-money) — a live-exchange metric
+}
+
+export interface NewsItem {
+  id: string;
+  tag: string; // "WORLD CUP" | "MOMENTS" | "SETTLEMENT"
+  title: string;
+  when: string; // "2h ago"
 }
 
 export interface LeaderRow {
