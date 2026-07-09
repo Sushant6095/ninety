@@ -1,4 +1,4 @@
-// OMNIPITCH design tokens — THE TYPED SOURCE OF TRUTH for the design system's SHAPE.
+// Ninety design tokens — THE TYPED SOURCE OF TRUTH for the design system's SHAPE. (Brand: Ninety, ADR-044.)
 //
 // RECONCILIATION NOTE (important): this repo's design-law hook forbids raw hex in code —
 // colors live exactly once, as CSS custom properties in tokens.css. So this file does NOT
