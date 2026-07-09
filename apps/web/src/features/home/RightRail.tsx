@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { RailCard } from "../../components/ui/RailCard";
+import { FeaturedPanel } from "./FeaturedPanel";
 import { routes } from "../../lib/routes";
-import { LEADERS } from "../../lib/fixtures";
+import { LEADERS, MARKETS } from "../../lib/fixtures";
 
 const fmtPnl = (n: number): string => (n >= 0 ? "+" : "−") + Math.abs(n).toLocaleString("en-US");
 
@@ -14,6 +15,8 @@ const STARTING = [
 export function RightRail() {
   return (
     <aside className="flex w-full flex-col gap-3">
+      <FeaturedPanel market={MARKETS[0]} />
+
       <RailCard
         label="Top traders today"
         action={<Link href={routes.leaders} className="text-[11px] text-lo transition-colors duration-200 hover:text-hi">All →</Link>}
