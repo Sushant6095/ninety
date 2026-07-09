@@ -1,0 +1,15 @@
+{
+  "_endpoint": "GET /markets/:matchId/quote?outcome=A&size=60&side=buy",
+  "_auth": "Bearer (guest or embedded)",
+  "_note": "Advisory mark-implied LMSR preview (ADR-046). q reconstructed from the live mark; server price wins at fill. Prices 0..100; a winning share pays 100 credits.",
+  "quote": {
+    "outcome": "A",
+    "side": "buy",
+    "size": 60,
+    "cost": 4083,
+    "avgPx": 68.1,
+    "maxPayout": 6000,
+    "spreadMult": 1,
+    "markImplied": true
+  }
+}

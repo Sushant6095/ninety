@@ -7,6 +7,7 @@ import { redis } from "../../redis";
 import { authFromBearer } from "../../auth/middleware";
 import { grantMatchCredits, PrismaGrantStore } from "../../auth/grant";
 import { getMark, getMarks, type MarkSnapshot } from "../../services/markets-read";
+import { quoteTrade, markImpliedQ, isOutcome } from "../../services/quote";
 
 type MarketWithMatch = Market & { match: Match };
 
@@ -49,13 +50,32 @@ export function registerMarketRoutes(app: FastifyInstance): void {
     if (!market) return reply.code(404).send({ error: "market not found" }); // validate BEFORE granting — no farming on bogus matchIds
     const { granted } = await grantMatchCredits(grantStore, user.userId, matchId); // fires once per (user, match)
     const mark = await getMark(redis, market.id);
+    const b = mark?.bHint ?? market.bParam;
     return {
       market: marketView(market, mark),
       granted,
-      // amm: `b` is real (the LMSR liquidity the live mark implies). `q` (shares outstanding) + `spread_mult` live
-      // ONLY in the engine's journaled state and are not yet exposed to a read store — a guarded engine-emit
-      // follow-up (ADR-042). Home doesn't need them; the trade sheet's local pricing (Match view) will.
-      amm: { q: null as number[] | null, b: mark?.bHint ?? market.bParam, spread_mult: null as number | null },
+      // amm: `b` is real. `q` is MARK-IMPLIED (q = b·ln(fair), ADR-046) — an advisory reconstruction for the trade
+      // sheet's cost preview, NOT the engine's exact q (that guarded engine-emit stays deferred until fills ship,
+      // ADR-042/ADR-026). `spread_mult` is 1 here (the lifecycle reopen-decay lives in the engine). markImplied flags it.
+      amm: { q: mark?.fair ? markImpliedQ(mark.fair, b) : null, b, spread_mult: 1, markImplied: true as const },
     };
+  });
+
+  // GET /markets/:matchId/quote?outcome=A&size=60&side=buy — advisory LMSR cost preview (ADR-046). Auth-gated.
+  // Reconstructs mark-implied q from the live mark and reuses the pure engine amm.buyCost. Server price wins at fill.
+  app.get("/markets/:matchId/quote", async (req, reply) => {
+    const user = authFromBearer(req.headers.authorization);
+    if (!user) return reply.code(401).send({ error: "unauthenticated" });
+    const { matchId } = req.params as { matchId: string };
+    const query = req.query as { outcome?: string; size?: string; side?: string };
+    if (!isOutcome(query.outcome)) return reply.code(400).send({ error: "outcome must be H, D or A" });
+    const size = Number(query.size);
+    if (!Number.isFinite(size) || size <= 0) return reply.code(400).send({ error: "size must be a positive number" });
+    const side = query.side === "sell" ? "sell" : "buy";
+    const market = (await prisma.market.findFirst({ where: { matchId }, include: { match: true } })) as MarketWithMatch | null;
+    if (!market) return reply.code(404).send({ error: "market not found" });
+    const mark = await getMark(redis, market.id);
+    if (!mark?.fair) return reply.code(409).send({ error: "market not priced yet" });
+    return { quote: quoteTrade(mark.fair, mark.bHint || market.bParam, query.outcome, size, side) };
   });
 }

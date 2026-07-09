@@ -1,0 +1,15 @@
+{
+  "_endpoint": "GET /portfolio",
+  "_auth": "Bearer (the caller's own positions)",
+  "_note": "Read model only (ADR-046 / ADR-027): Prisma Position ⨝ live marks + bal: cache. Prices 0..100; value/pnl in credits. free = uncommitted credits; equity = free + Σ position value at the live mark.",
+  "portfolio": {
+    "free": 2450,
+    "held": 6084,
+    "equity": 8534,
+    "positions": [
+      { "marketId": "wc26-aus-egy", "outcome": "A", "qty": 90, "avgPrice": 41.0, "markPct": 67.6, "value": 6084, "pnl": 2394, "pnlPct": 64.9 },
+      { "marketId": "wc26-can-mar", "outcome": "H", "qty": 120, "avgPrice": 44.0, "markPct": null, "value": null, "pnl": null, "pnlPct": null },
+      { "marketId": "wc26-par-fra", "outcome": "A", "qty": 40, "avgPrice": 61.2, "markPct": 63.0, "value": 2520, "pnl": 72, "pnlPct": 2.9 }
+    ]
+  }
+}
