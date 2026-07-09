@@ -27,9 +27,26 @@ body {
 /* Visible focus ring for keyboard nav (a11y). */
 :focus-visible { outline: 2px solid var(--up); outline-offset: 2px; border-radius: 4px; }
 
-/* 180ms price flash (design law) — applied by adding .flash-up / .flash-down for one tick. */
-@keyframes flashUp { from { color: var(--up); } to { color: var(--text-hi); } }
-@keyframes flashDown { from { color: var(--down); } to { color: var(--text-hi); } }
+/* Elevation system (NO gradients/glassmorphism — design law). Depth comes from a 1px top highlight +
+   ambient shadow so surfaces read as floating over the near-black bg instead of flat outlined boxes.
+   The black/white values are neutral ambient light, not palette colors. */
+.elev {
+  box-shadow:
+    inset 0 1px 0 0 rgba(245, 247, 250, 0.03),
+    0 1px 2px 0 rgba(0, 0, 0, 0.5),
+    0 12px 28px -16px rgba(0, 0, 0, 0.9);
+}
+.elev-hi {
+  box-shadow:
+    inset 0 1px 0 0 rgba(245, 247, 250, 0.045),
+    0 2px 4px 0 rgba(0, 0, 0, 0.55),
+    0 20px 44px -20px rgba(0, 0, 0, 0.95);
+}
+
+/* 180ms price flash (design law, matches motion.ts flash: 180) — .flash-up / .flash-down tint the number
+   green/pink for one tick on a live change, then it returns to its own color. */
+@keyframes flashUp { 0% { color: var(--up); } 100% { color: inherit; } }
+@keyframes flashDown { 0% { color: var(--down); } 100% { color: inherit; } }
 .flash-up { animation: flashUp 180ms ease-out; }
 .flash-down { animation: flashDown 180ms ease-out; }
 

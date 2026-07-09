@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { RailCard } from "../../components/ui/RailCard";
+import { Avatar } from "../../components/ui/Avatar";
 import { FeaturedPanel } from "./FeaturedPanel";
 import { routes } from "../../lib/routes";
 import { LEADERS, MARKETS } from "../../lib/fixtures";
 
 const fmtPnl = (n: number): string => (n >= 0 ? "+" : "−") + Math.abs(n).toLocaleString("en-US");
+const TOP_TRADERS = 5; // the rail shows the leaders' head; the full board lives at /leaderboard
 
 const STARTING = [
   { code: "ENG – SEN", venue: "R16 · Foxborough", inLabel: "in 1h 40m", matchId: "wc26-eng-sen" },
@@ -22,15 +24,13 @@ export function RightRail() {
         action={<Link href={routes.leaders} className="text-[11px] text-lo transition-colors duration-200 hover:text-hi">All →</Link>}
       >
         <ul>
-          {LEADERS.map((l) => (
+          {LEADERS.slice(0, TOP_TRADERS).map((l) => (
             <li key={l.handle}>
-              <Link href={routes.profile(l.handle)} className="flex items-center gap-3 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/30">
-                <span className="num w-3 text-[11px] text-lo">{l.rank}</span>
-                <span className="grid h-7 w-7 place-items-center rounded-full bg-bg text-[10px] font-semibold text-lo ring-1 ring-inset ring-hairline">
-                  {l.handle.replace(/^@/, "").slice(0, 2).toUpperCase()}
-                </span>
-                <span className="text-[13px] font-medium text-hi">{l.handle}</span>
-                <span className="num ml-auto text-[12px] font-medium text-up">{fmtPnl(l.pnl)}</span>
+              <Link href={routes.profile(l.handle)} className="flex items-center gap-2.5 rounded-lg px-2 py-1.5 transition-colors duration-200 hover:bg-hairline/30">
+                <span className="num w-3 text-[11px] tabular-nums text-lo">{l.rank}</span>
+                <Avatar handle={l.handle} size={28} />
+                <span className="truncate text-[13px] font-medium text-hi">{l.handle}</span>
+                <span className={`num ml-auto text-[12px] font-medium tabular-nums ${l.pnl >= 0 ? "text-up" : "text-down"}`}>{fmtPnl(l.pnl)}</span>
               </Link>
             </li>
           ))}

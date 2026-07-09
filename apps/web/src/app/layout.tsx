@@ -1,5 +1,11 @@
 import "../styles/globals.css";
 import type { Metadata } from "next";
+import { Archivo, Inter, IBM_Plex_Mono } from "next/font/google";
+
+// Self-hosted via next/font — reliable render (no FOUT / no system-font fallback that reads as "AI default").
+const archivo = Archivo({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-display", display: "swap" });
+const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-ui", display: "swap" });
+const plexMono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Ninety — live football exchange",
@@ -8,15 +14,7 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={`${archivo.variable} ${inter.variable} ${plexMono.variable}`}>
       <body>{children}</body>
     </html>
   );

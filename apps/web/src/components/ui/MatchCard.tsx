@@ -1,5 +1,7 @@
+"use client";
 import Link from "next/link";
 import { routes } from "../../lib/routes";
+import { useLiveMarket } from "../../features/home/LiveMarkets";
 import type { MarketRow, Outcome } from "../../lib/types";
 import { Sparkline } from "./Sparkline";
 import { PriceChip } from "./PriceChip";
@@ -14,9 +16,9 @@ function leadOutcome(mark: Record<string, number> | null): Outcome | null {
   return best;
 }
 
-/** One match row — the most reused piece. Whole row links to the match; prices/spark are display. */
+/** One match row — the most reused piece. Whole row links to the match; prices/spark tick off the live provider. */
 export function MatchCard({ market }: { market: MarketRow }) {
-  const m = market;
+  const m = useLiveMarket(market.matchId) ?? market;
   const lead = leadOutcome(m.mark);
   const rising = m.spark.length > 1 && m.spark[m.spark.length - 1] >= m.spark[0];
   const live = m.minute != null;
@@ -25,7 +27,7 @@ export function MatchCard({ market }: { market: MarketRow }) {
     <Link
       href={routes.match(m.matchId)}
       aria-label={`${m.home} vs ${m.away}${m.score ? `, ${m.score.home}–${m.score.away}` : ""} — open market`}
-      className="group flex items-center gap-2.5 px-3 py-3 outline-none transition-colors duration-200 hover:bg-hairline/20 focus-visible:bg-hairline/20 active:bg-hairline/35 sm:gap-3 sm:px-4"
+      className="group flex items-center gap-2.5 px-3 py-2.5 outline-none transition-colors duration-200 hover:bg-hairline/20 focus-visible:bg-hairline/20 active:bg-hairline/35 sm:gap-3 sm:px-4"
     >
       <span className={`w-4 shrink-0 text-center text-[13px] transition-transform duration-200 group-hover:scale-110 ${m.favourite ? "text-up" : "text-lo/35"}`} aria-hidden>
         ★

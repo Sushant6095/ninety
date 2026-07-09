@@ -23,7 +23,7 @@ export function CenterColumn({ children }: CenterColumnProps) {
   const [filter, setFilter] = useState<FilterKey>("live");
 
   return (
-    <div className="min-w-0 rounded-card border border-hairline bg-surface">
+    <div className="elev min-w-0 rounded-card border border-hairline/70 bg-surface">
       <div className="flex items-center gap-2 overflow-x-auto border-b border-hairline px-3 py-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <button
           aria-label="Previous day"

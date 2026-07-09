@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Header } from "../home/Header";
 import { Footer } from "../home/Footer";
+import { Avatar } from "../../components/ui/Avatar";
 import { routes } from "../../lib/routes";
 import { SESSION } from "../../lib/fixtures";
 import type { LeaderRow } from "../../lib/types";
@@ -19,9 +20,7 @@ function Row({ row, you }: { row: LeaderRow; you: boolean }) {
           {row.rank}
         </span>
         <span className="flex min-w-0 items-center gap-3">
-          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-bg text-[11px] font-semibold text-lo ring-1 ring-inset ring-hairline">
-            {row.handle.replace(/^@/, "").slice(0, 2).toUpperCase()}
-          </span>
+          <Avatar handle={row.handle} size={32} />
           <span className="truncate text-[14px] font-medium text-hi">{row.handle}</span>
           {you && <span className="rounded-chip bg-surface px-2 py-0.5 text-[10px] font-medium text-lo ring-1 ring-inset ring-hairline">you</span>}
         </span>

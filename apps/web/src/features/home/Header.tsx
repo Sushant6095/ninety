@@ -15,7 +15,7 @@ export function Header({ user }: HeaderProps) {
   const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
 
   return (
-    <header className="sticky top-0 z-30 border-b border-hairline bg-bg/85 backdrop-blur-md">
+    <header className="sticky top-0 z-30 border-b border-hairline bg-bg">
       <div className="mx-auto flex h-14 max-w-[1600px] items-center gap-3 px-4 sm:gap-6 sm:px-6">
         <Wordmark tag="WC26" />
 
@@ -27,7 +27,7 @@ export function Header({ user }: HeaderProps) {
                 key={item.label}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={`relative rounded-md px-3 py-2 text-[13px] font-medium transition-colors duration-200 hover:text-hi ${
+                className={`relative flex items-center rounded-md px-3 py-3 text-[13px] font-medium leading-none transition-colors duration-200 hover:text-hi ${
                   active ? "text-hi" : "text-lo"
                 }`}
               >
@@ -68,7 +68,7 @@ export function Header({ user }: HeaderProps) {
           <Link
             href={routes.settings}
             aria-label="Account"
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-surface text-[11px] font-semibold text-hi ring-1 ring-inset ring-hairline transition-colors duration-200 hover:ring-up/40 active:bg-hairline/40"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-surface text-[12px] font-semibold text-hi ring-1 ring-inset ring-hairline transition-colors duration-200 hover:ring-up/40 active:bg-hairline/40"
           >
             {user.handle.replace(/^@/, "").slice(0, 2).toUpperCase()}
           </Link>

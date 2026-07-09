@@ -1,10 +1,13 @@
+"use client";
+import { LivePrice } from "../../features/home/LiveMarkets";
+
 interface PriceChipProps {
   label: string; // "H" | "D" | "A"
   price: number; // 0..100
   lead?: boolean; // the leading outcome — slightly emphasized
 }
 
-/** One outcome's price cell (mono, one decimal). Highlights with the row on hover. */
+/** One outcome's price cell (mono, one decimal, flashes on change). Highlights with the row on hover. */
 export function PriceChip({ label, price, lead = false }: PriceChipProps) {
   return (
     <span
@@ -13,7 +16,7 @@ export function PriceChip({ label, price, lead = false }: PriceChipProps) {
       } group-hover:ring-up/30`}
     >
       <span className="text-[9px] font-medium uppercase tracking-wide text-lo">{label}</span>
-      <span className={`num text-[13px] font-semibold tabular-nums ${lead ? "text-hi" : "text-hi/90"}`}>{price.toFixed(1)}</span>
+      <LivePrice value={price} className={`text-[13px] font-semibold ${lead ? "text-hi" : "text-hi/90"}`} />
     </span>
   );
 }
