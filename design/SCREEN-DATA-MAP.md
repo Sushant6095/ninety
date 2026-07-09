@@ -30,3 +30,10 @@ the `/screen` command, and the UI-loop standard).
 > **Football depth** (lineups, stats, H2H, managers, referee, media) lives in **tabs INSIDE the
 > match view**, fed by the extras on `GET /markets/:match`. It is NEVER on the primary surface —
 > the market is the subject; football is context (see the `ui-craft` blend + restraint rules).
+
+## Real response shapes (built + verified 2026-07-09)
+Exact contracts live in `docs/api-samples/`. Built + live-verified this slice (Home data layer):
+- `GET /markets` → `{ markets: [{ marketId, matchId, kind, status, home, away, stage, kickoffAt, mark, hazard, markTs, settledOutcome, settleSig }] }` — `mark` = live price distribution from the markets-read Redis cache (`prices.marks` → Redis).
+- `GET /markets/:match` → `{ market, granted, amm:{ q, b, spread_mult } }`. **Reality note:** `amm.b` is real (from the mark's `b_hint`); `amm.q` + `spread_mult` are `null` pending a guarded engine-emit (ADR-042) — not needed for Home.
+- `GET /leaderboard` → `{ leaderboard: [{ rank, userId, pnl }] }` — reads the `lb:global` zset.
+- WS `m:{match}:prices` frame → `{ ch, seq, t, d:{ fair, hazard, bHint } }`.

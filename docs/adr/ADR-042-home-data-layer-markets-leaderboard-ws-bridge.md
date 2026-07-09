@@ -1,0 +1,18 @@
+# ADR 042 Home data layer — GET /markets (list) + GET /leaderboard + markets-read price cache + WS bridge (apps/api, Phase 4 frontend)
+
+Status: accepted 2026-07-09. Context: the frontend Home vertical slice needs real, connected data before any UI is built (the "backend first, verify against real replay" gate). The endpoints Home consumes were stubs; this ADR records building them for real + the contract.
+
+Correction: the API is **Fastify**, not NestJS (the request said NestJS). Built to the real stack.
+
+Decision (implemented; API build green; api suite 135 green; live verify 5/5):
+- **`markets-read` price cache (new read model).** The ADR-027 projection persists positions/credits/leaderboard but NOT prices — those ride `prices.marks` (cortex). A new consumer (`services/markets-read.ts`) persists the latest mark per market to Redis `market:{marketId}` = `{ matchId, fair, hazard, bHint, ts }`. Derived cache (README rule 3): rebuildable by replaying the retained `prices.marks` stream.
+- **`GET /markets` (list, public)** — Prisma `Market ⨝ Match` joined with the live marks → the discovery list.
+- **`GET /markets/:matchId`** — extended to return `{ market, granted, amm:{ q, b, spread_mult } }` (keeps the auth + first-open per-match grant).
+- **`GET /leaderboard` (public)** — reads the projection's `lb:global` zset → ranked `{ rank, userId, pnl }`.
+- **WS bridge** — split into `attachBridge(bus, publish)` (the transport-agnostic, testable topic→frame mapping: `prices.marks`→`m:{match}:prices`, `match.events`→`:events`, `commentary`→`:booth`, `credits`→`lb:global`, each seq'd) and `startWs(bus)` (the uWebSockets.js transport). Booted from `startHttp` (the serve layer).
+
+Key decisions:
+- **`amm.q` + `amm.spread_mult` deferred.** The LMSR shares-outstanding vector `q` and the spread live ONLY in the engine's journaled state (single-writer) and are not exposed to any read store. `amm.b` is returned real (the mark's `b_hint`); `q`/`spread_mult` are `null` pending a **guarded engine-emit** (the engine publishing a per-market amm snapshot → a read cache). Home does not need them; the trade sheet's local pricing (Match view) will — that's the task that earns the engine change (engine-guardian review). Not faked with a placeholder number.
+- **WS transport vs mapping split** so the mapping is verifiable without the transport. `uWebSockets.js` ships prebuilt binaries only for Node LTS 16/18/20; on newer Node it can't load — `startWs` degrades gracefully (HTTP stays up), and the bridge mapping is verified via `attachBridge`.
+
+Consequences / VERIFY (`scripts/verify-live.ts`, against LIVE Redis + bus, no secrets — **5/5 green**): (+) `prices.marks` → Redis `market:{id}` (H=0.614, b=420); `getMarks` batch; `lb:global` → ranked rows (hexfan #1, 2431); WS bridge `prices.marks` → seq'd `m:{match}:prices` frame in ~1ms (sub-second). Real samples in `docs/api-samples/`. Hermetic unit test for `planMark`. (~) `GET /markets` / `GET /markets/:match` read Postgres → need `DATABASE_URL` (`.env`); the security hook (correctly) blocks handling `.env`, so the running-server HTTP curl can't be done in this environment — shapes are typechecked + composed from the verified mark, and the operator can curl them by booting the API with its env on Node 18/20. Not faked. (−) Follow-ups: the guarded engine-emit for `amm.q`/`spread_mult`; `since`-based WS Redis-stream backfill (currently live-only fan-out); a debounced full-leaderboard WS push (currently a per-credit delta). Cross-refs: ADR-027 (the projection this sits beside), ADR-022 (`prices.marks` source), SCREEN-DATA-MAP (the shapes), the `ui-craft` skill (the screen that consumes this, next turn).

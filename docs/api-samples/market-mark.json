@@ -1,0 +1,12 @@
+{
+  "marketId": "wc26-can-mar:1x2",
+  "matchId": "wc26-can-mar",
+  "fair": {
+    "H": 0.614,
+    "D": 0.221,
+    "A": 0.165
+  },
+  "hazard": 0.4,
+  "bHint": 420,
+  "ts": 1783608638127
+}

@@ -1,0 +1,20 @@
+{
+  "_note": "GET /markets/:matchId — auth-gated; grants the per-match credits on first open. `market.mark` is the live price (markets-read cache, LIVE-VERIFIED). `amm.b` is real (from the mark's b_hint); `amm.q` + `amm.spread_mult` are null pending a guarded engine-emit (ADR-042) — Home doesn't need them; the trade sheet will. HTTP curl gated by DATABASE_URL.",
+  "market": {
+    "marketId": "wc26-can-mar:1x2",
+    "matchId": "wc26-can-mar",
+    "kind": "1X2",
+    "status": "LIVE",
+    "home": "Canada",
+    "away": "Morocco",
+    "stage": "Round of 16",
+    "kickoffAt": "2026-07-04T19:00:00.000Z",
+    "mark": { "H": 0.614, "D": 0.221, "A": 0.165 },
+    "hazard": 0.4,
+    "markTs": 1783387200000,
+    "settledOutcome": null,
+    "settleSig": null
+  },
+  "granted": false,
+  "amm": { "q": null, "b": 420, "spread_mult": null }
+}

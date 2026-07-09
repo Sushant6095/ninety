@@ -1,0 +1,20 @@
+{
+  "_note": "GET /markets — the Home discovery list. `mark` is the live price distribution from the markets-read Redis cache (LIVE-VERIFIED via verify-live.ts). The row wrapper below is the Prisma Market ⨝ Match shape; the HTTP curl is gated by DATABASE_URL (.env, security-hook) — the shape is exact, the values here mirror the verified mark.",
+  "markets": [
+    {
+      "marketId": "wc26-can-mar:1x2",
+      "matchId": "wc26-can-mar",
+      "kind": "1X2",
+      "status": "LIVE",
+      "home": "Canada",
+      "away": "Morocco",
+      "stage": "Round of 16",
+      "kickoffAt": "2026-07-04T19:00:00.000Z",
+      "mark": { "H": 0.614, "D": 0.221, "A": 0.165 },
+      "hazard": 0.4,
+      "markTs": 1783387200000,
+      "settledOutcome": null,
+      "settleSig": null
+    }
+  ]
+}
