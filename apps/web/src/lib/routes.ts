@@ -10,6 +10,8 @@ export const routes = {
   howItWorks: "/how-it-works",
   onboarding: "/onboarding",
   settings: "/settings",
+  terminal: "/terminal",
+  proofs: "/proofs",
   match: (id: string): string => `/match/${id}`,
   profile: (handle: string): string => `/profile/${handle.replace(/^@/, "")}`,
   moment: (id: string): string => `/moments/${id}`,
