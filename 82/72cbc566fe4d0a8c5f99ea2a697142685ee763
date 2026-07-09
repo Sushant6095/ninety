@@ -1,0 +1,29 @@
+docs/adr/ADR-043-home-reference-locked.md
+  s_82db0e7c9eb747::t_5926aadf6f0489 2,4-5,8-34
+  s_82db0e7c9eb747::t_68f5d0e6815ffa 1,3,6-7
+docs/adr/ADR-044-brand-ninety-supersedes-omnipitch.md
+  s_82db0e7c9eb747::t_76fce1626dc3a7 1-17
+apps/web/src/design/tokens.ts
+  s_82db0e7c9eb747::t_2d024457e3214d 1
+.claude/context/AUTORUN-LOG.md
+  s_82db0e7c9eb747::t_f7744698068138 1-5
+  s_82db0e7c9eb747::t_48ccaa740d8920 6-7
+.claude/context/BLOCKED.md
+  s_82db0e7c9eb747::t_52ec5dc6a5182b 1-28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "8272cbc566fe4d0a8c5f99ea2a697142685ee763",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
