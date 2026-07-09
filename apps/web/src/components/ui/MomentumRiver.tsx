@@ -23,8 +23,11 @@ export function MomentumRiver({ data, up = true, height = 96, goalIndex, liveVal
   const ref = useRef<HTMLDivElement>(null);
   const seriesRef = useRef<AreaSeries | null>(null);
   const chartRef = useRef<Chart | null>(null);
-  const nextTimeRef = useRef<number>(0);
-  const toRef = useRef<number>(0); // right edge of the visible logical range — grows as the river flows
+  const dataRef = useRef<{ time: number; value: number }[]>([]); // rolling buffer (capped → bounded memory)
+  const timeRef = useRef<number>(0); // strictly-increasing time counter
+  const windowRef = useRef<number>(0); // number of points held in the visible window
+  const tailRef = useRef<number>(0); // empty unplayed bars kept on the right
+  const lastValueRef = useRef<number | null>(null);
   const upRef = useRef<boolean>(up);
   // Build once — read mutable props from refs so a live tick never tears down the chart.
   const initRef = useRef({ data, height, goalIndex, up });
@@ -69,14 +72,18 @@ export function MomentumRiver({ data, up = true, height = 96, goalIndex, liveVal
         crosshairMarkerVisible: false,
       });
       seriesRef.current = series;
-      series.setData(d0.map((v, i) => ({ time: (i + 1) as never, value: v })));
-      nextTimeRef.current = d0.length; // next append lands at length+1
+      const seed = d0.map((v, i) => ({ time: i + 1, value: v }));
+      dataRef.current = seed.slice();
+      timeRef.current = d0.length;
+      windowRef.current = Math.max(12, d0.length);
+      tailRef.current = Math.max(3, Math.round(windowRef.current * TAIL_FRACTION));
+      lastValueRef.current = d0.length ? d0[d0.length - 1] : null;
+      series.setData(seed.map((p) => ({ time: p.time as never, value: p.value })));
       if (gi != null && d0[gi] != null) {
         series.setMarkers([{ time: (gi + 1) as never, position: "aboveBar", color: line, shape: "circle", text: "goal" }]);
       }
-      // Plot toward full time; leave the unplayed tail empty on the right (DECISIONS.md) rather than stretching edge-to-edge.
-      toRef.current = d0.length + Math.max(3, Math.round(d0.length * TAIL_FRACTION));
-      chart.timeScale().setVisibleLogicalRange({ from: -0.5, to: toRef.current });
+      // Plot toward full time; leave the unplayed tail empty on the right (DECISIONS.md), never stretch edge-to-edge.
+      chart.timeScale().setVisibleLogicalRange({ from: -0.5, to: seed.length - 1 + tailRef.current });
       ro = new ResizeObserver(() => chart.applyOptions({ width: el.clientWidth }));
       ro.observe(el);
     })();
@@ -99,11 +106,17 @@ export function MomentumRiver({ data, up = true, height = 96, goalIndex, liveVal
       const line = (up ? resolveColor("up") : resolveColor("down")) || resolveColor("textHi");
       (series as unknown as { applyOptions: (o: object) => void }).applyOptions?.({ lineColor: line, topColor: line + "6e", bottomColor: line + "08" });
     }
-    nextTimeRef.current += 1;
-    series.update({ time: nextTimeRef.current as never, value: liveValue });
-    // Advance the right edge in lockstep so the newest point holds its position and the unplayed tail stays empty.
-    toRef.current += 1;
-    chartRef.current?.timeScale().setVisibleLogicalRange({ from: -0.5, to: toRef.current });
+    // Only append on a real value change (guards a duplicate point when only `up` flips).
+    if (lastValueRef.current != null && Math.abs(liveValue - lastValueRef.current) < 1e-9) return;
+    lastValueRef.current = liveValue;
+    // Fixed-width scrolling window over a capped buffer: push newest, drop oldest → bounded memory, and the
+    // newest point holds its position with a constant empty tail (never compresses over a long match).
+    timeRef.current += 1;
+    const buf = dataRef.current;
+    buf.push({ time: timeRef.current, value: liveValue });
+    if (buf.length > windowRef.current) buf.shift();
+    series.setData(buf.map((p) => ({ time: p.time as never, value: p.value })));
+    chartRef.current?.timeScale().setVisibleLogicalRange({ from: -0.5, to: buf.length - 1 + tailRef.current });
   }, [liveValue, up]);
 
   return <div ref={ref} style={{ height }} className="w-full" aria-hidden />;
