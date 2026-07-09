@@ -3,6 +3,22 @@
 What shipped, in order. Read this + BLOCKED.md + git log to see the state.
 Format: `TASK — GREEN/SKIPPED — <commit> — one line`.
 
+## SESSION SUMMARY (2026-07-09) — Home slice, Ninety-branded, at parity
+Shipped 8 web commits (8272cbc → d7b6442). The Home page renders live at 4 breakpoints, at parity with
+`design/screens/home.png`, fully Ninety-branded, tokens-only, every click → a real route (all 200).
+- **Brand fix:** OMNIPITCH → **Ninety** (ADR-044). Reference rebranded. (Internal `@omnipitch/*` package
+  namespace intentionally left — import churn, non-user-facing.)
+- **Infra fix found+fixed:** Tailwind never compiled (missing `postcss.config`). Now green.
+- **Built:** shell (ticker/header/rails/footer), MatchCard + grouped list, Featured panel + lightweight-charts
+  River, Leaderboard page, branded StubScreens. design-cop pass 1 (overflow, motion/token law, a11y, fidelity).
+- **NEXT (buildable):** chunk 6 live states (loading/empty/error + 180ms WS tick-flash); chunk 11 dead-code
+  sweep + full `text-[Npx]`→named-scale conversion (B4); upgrade the remaining bare stubs to StubScreen.
+- **BLOCKED (see BLOCKED.md):** chunk 5 live wiring — API can't boot here (DATABASE_URL/.env hook + uWS needs
+  Node 18/20), so Home is fixture-wired (fixtures mirror docs/api-samples/ 1:1 → swap is trivial once booted, B2);
+  chunk 10 third-party pass — shadcn/framer/lucide/sonner not installed (network, B3); Match view/Trade sheet —
+  ADR-042 amm.q null (B1). None faked; all logged.
+
+
 - **BRAND FIX — GREEN — <step0 commit> — product is "Ninety" (renamed from OMNIPITCH). design/screens/home.png rebranded; ADR-044 canonical. Internal @omnipitch/* namespace left as-is (import churn, non-user-facing).**
 - **STEP 0 · LOCK REFERENCE — GREEN — 8272cbc — design/screens/home.png locked = the Ninety Home (App mockup, our tokens, Sofascore = structure only). ADR-043.**
 - **FIX · Tailwind wiring — GREEN — <chunk1 commit> — Tailwind was never compiling (no postcss.config → @tailwind directives raw). Added apps/web/postcss.config.js. CSS now compiles (15KB utilities). Real blocker found + fixed.**
