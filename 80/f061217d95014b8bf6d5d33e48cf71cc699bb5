@@ -1,0 +1,53 @@
+apps/web/src/styles/tokens.css
+  s_82db0e7c9eb747::t_c9fbba5ebb7e08 1-4
+.github/workflows/ci.yml
+  s_82db0e7c9eb747::t_1c0572ba5c3aeb 14-26
+.claude/prompts/4-frontend/00-UI-LOOP-STANDARD.md
+  s_82db0e7c9eb747::t_3f3597c59f1a0b 1-25
+package.json
+  s_82db0e7c9eb747::t_3d05851be8d8a7 10
+apps/web/src/design/motion.ts
+  s_82db0e7c9eb747::t_edd619d0c32e5d 1-30
+.claude/commands/design-review.md
+  s_82db0e7c9eb747::t_9967a19892ef8c 1-13
+impeccable.config.mjs
+  s_82db0e7c9eb747::t_ca96b9264d4d20 1-59
+design/tokens.css
+  s_82db0e7c9eb747::t_15affd4eccb94d 1-3
+.claude/commands/screen.md
+  s_82db0e7c9eb747::t_9242deaed785b2 2,4-25
+design/screens/impl/.gitkeep
+  s_82db0e7c9eb747::t_79e39124812363 1-2
+.claude/agents/design-cop.md
+  s_82db0e7c9eb747::t_190aa25b3bd7f5 3,6-33
+design/SCREEN-DATA-MAP.md
+  s_82db0e7c9eb747::t_0b62120f9ec246 1-32
+apps/web/src/design/tokens.ts
+  s_82db0e7c9eb747::t_51d4153845454d 1-83
+.claude/skills/ui-craft/SKILL.md
+  s_82db0e7c9eb747::t_72f9b37686b851 1-100
+.claude/skills/proof-flow-viz/SKILL.md
+  s_82db0e7c9eb747::t_3d985096e2636b 1-36
+scripts/ui/screenshot.mjs
+  s_82db0e7c9eb747::t_552b4cb732e4c1 1-58
+.gitignore
+  s_82db0e7c9eb747::t_0173545dd93f71 16-18
+apps/web/package.json
+  s_82db0e7c9eb747::t_3c388799dab800 9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "80f061217d95014b8bf6d5d33e48cf71cc699bb5",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
