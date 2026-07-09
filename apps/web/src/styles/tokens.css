@@ -1,3 +1,7 @@
+/* OMNIPITCH palette — the raw hex lives HERE (the design-law hook's sanctioned home for color).
+   The TYPED authority + semantics + spacing/fonts are in apps/web/src/design/tokens.ts, which
+   references these vars by name. tailwind.config.ts maps its color keys to these vars. Keep in
+   sync with tokens.ts token NAMES; do not add a third palette copy. */
 :root {
   --bg:#0B0D10; --surface:#14171C; --hairline:#232A33;
   --text-hi:#F5F7FA; --text-lo:#97A0AF;

@@ -1,3 +1,6 @@
+/* Design-doc mirror of the OMNIPITCH palette (used by references + reports). The app's live
+   copy is apps/web/src/styles/tokens.css; the typed authority is apps/web/src/design/tokens.ts.
+   Same values everywhere — do not diverge. */
 :root {
   --bg:#0B0D10; --surface:#14171C; --hairline:#232A33;
   --text-hi:#F5F7FA; --text-lo:#97A0AF;

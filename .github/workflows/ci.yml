@@ -11,3 +11,16 @@ jobs:
         with: { node-version: 20, cache: pnpm }
       - run: pnpm install --frozen-lockfile=false
       - run: pnpm lint && pnpm build && pnpm test
+
+  # Anti-slop gate for the web UI (impeccable.style). REPORT-ONLY for now: it surfaces the
+  # baseline without failing the build. Once the whitelist is tuned against real screens,
+  # drop `continue-on-error` (and the `|| true`) to make slop a hard CI failure — the 13
+  # rules in impeccable.config.mjs match ui-craft law. ui-craft tokens win on any conflict.
+  design-slop:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npx --yes impeccable detect apps/web/src --config impeccable.config.mjs || true

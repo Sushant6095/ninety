@@ -13,3 +13,6 @@ test-ledger/
 .claude/trace/*.jsonl
 .claude/trace/*.log
 .claude/settings.local.json
+# ui-craft loop — generated screenshots (keep the dir, ignore the shots)
+design/screens/impl/*
+!design/screens/impl/.gitkeep
