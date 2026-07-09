@@ -2,7 +2,7 @@
 //
 // GOVERNING LAW: Impeccable enforces UNIVERSAL design-quality rules. OMNIPITCH's design system
 // (the ui-craft skill + apps/web/src/design/tokens.ts + motion.ts) is the HIGHER law. On any
-// conflict, Ninety's tokens and the trading-terminal domain WIN. The whitelist below exempts
+// conflict, OMNIPITCH's tokens and the trading-terminal domain WIN. The whitelist below exempts
 // intentional financial-terminal choices that a generic SaaS-landing-page linter would
 // misread as "slop." Everything not whitelisted is treated as a real gap.
 //
