@@ -1,0 +1,49 @@
+design/screens/lock-kit/README.md
+  s_82db0e7c9eb747::t_c43a8b739ba2cb 1-32
+design/UI-SYSTEM.md
+  s_1772db374f521b::t_700b0bc7c46f7a 1-66
+"design/screens/lock-kit/Omnipitch App (standalone)-print-1lsxqto.html"
+  s_82db0e7c9eb747::t_acc36caa807473 1-558
+"design/screens/lock-kit/Omnipitch App (standalone).html"
+  s_82db0e7c9eb747::t_ac5172faef2825 1-181
+"design/screens/lock-kit/Omnipitch App.dc.html"
+  s_82db0e7c9eb747::t_1c29c7038fed91 1-1378
+"design/screens/lock-kit/Omnipitch North Star (standalone).html"
+  s_82db0e7c9eb747::t_a0156240203fcd 1-181
+"design/screens/lock-kit/Omnipitch North Star-print-d2rmzd.dc.html"
+  s_82db0e7c9eb747::t_f1772d4583b3a6 1-999
+"design/screens/lock-kit/Omnipitch North Star.dc.html"
+  s_82db0e7c9eb747::t_2286238b6e9aa0 1-1798
+"design/screens/lock-kit/Omnipitch Terminal (standalone).html"
+  s_82db0e7c9eb747::t_b70a95a49916d7 1-181
+"design/screens/lock-kit/Omnipitch Terminal-print-y5be6k.dc.html"
+  s_82db0e7c9eb747::t_a7de94a0320e04 1-1333
+"design/screens/lock-kit/Omnipitch Terminal.dc.html"
+  s_82db0e7c9eb747::t_33b613a65f2594 1-1001
+design/screens/lock-kit/support.js
+  s_82db0e7c9eb747::t_48bbeb831b9674 1-1687
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "1fc199e2ed5c8c910a177a5ae88f0937b4eee8e8",
+  "prompts": {},
+  "sessions": {
+    "s_1772db374f521b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "88c1001f-142a-40d2-97ae-19ea723d79c2",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
