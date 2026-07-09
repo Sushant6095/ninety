@@ -54,4 +54,11 @@ export const LEADERS: LeaderRow[] = [
   { rank: 3, handle: "@atlasfox", pnl: 15290 },
   { rank: 4, handle: "@kdb_flow", pnl: 14105 },
   { rank: 5, handle: "@deltahedge", pnl: 13880 },
+  { rank: 6, handle: "@nilspread", pnl: 11420 },
+  { rank: 7, handle: "@late_swing", pnl: 9860 },
+  { rank: 8, handle: "@group_g_gm", pnl: 7315 },
+  { rank: 9, handle: "@maple_maxi", pnl: 5120 },
+  { rank: 10, handle: "@varhater", pnl: 3480 },
+  { rank: 11, handle: "@stoppage", pnl: 1290 },
+  { rank: 12, handle: "@own_goal", pnl: -640 },
 ];

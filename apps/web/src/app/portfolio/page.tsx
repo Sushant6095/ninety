@@ -1,1 +1,5 @@
-export default function Page() { return <main className="p-6">portfolio — see matching folder in src/features/</main>; }
+import { StubScreen } from "../../components/ui/StubScreen";
+
+export default function Page() {
+  return <StubScreen name="Portfolio" note="Your positions, P&L, and open markets. Next in the build — the route is live." />;
+}
