@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,100..900&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#10141B;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.dv-turn{padding:40px 44px 36px;border-bottom:1px solid rgba(255,255,255,.06);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 10px}
+.dv-tid{font:600 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#F5F7FA;color:#0B0D10;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 Inter,system-ui,sans-serif;color:#F5F7FA}
+.dv-lead{max-width:880px;font:400 12px/1.65 Inter,system-ui,sans-serif;color:#97A0AF;margin:0 0 26px}
+.dv-lead b{color:#F5F7FA;font-weight:600}
+.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:10px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px 'IBM Plex Mono',monospace;padding:3px 7px;background:rgba(255,255,255,.1);color:#F5F7FA;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 Inter,system-ui,sans-serif;color:#97A0AF}
+.dv-card{background:#0B0D10;border:1px solid #232A33;border-radius:20px;box-shadow:0 30px 70px rgba(0,0,0,.55);overflow:hidden}
+.dv-opt:target .dv-oid{background:#2BD97C;color:#062514}
+.dv-next{margin:28px 0 0;font:12px/1.6 Inter,system-ui,sans-serif;color:#97A0AF}
+@keyframes opPulse{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes opWave{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">North star — Match view · LIVE · 390×844</span></div>
+<div class="dv-lead">Per the Lock Kit: two contrasting takes on the same tokens and match state (CAN 1–0 MAR · 74&#8242; · R16 · H&nbsp;61.4 / D&nbsp;22.1 / A&nbsp;16.5), nothing else designed until one is locked. Both are live — prices tick every ~2.4s, numbers flash on change, chips / Buy–Sell / tabs / star all work. Assumptions: frameless product canvas (no OS chrome); monogram discs stand in for federation crests; the River plots to 90&#8242; so unplayed time reads as open space. <b><a class="dv-oid" href="#1a">1a</a> Terminal</b> — Hyperliquid discipline: single-probability River, chip grid, chat-style Booth. <b><a class="dv-oid" href="#1b">1b</a> Broadcast</b> — scoreboard header in Archivo Expanded, stacked 100% River, list pricing, split trade dock, Booth as ticker. Tweaks (top right): pause the sim, 1b band opacity, flash duration.</div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Terminal — chart-first, quiet chrome</div>
+<div class="dv-card" data-screen-label="1a — Match view LIVE (terminal)" style="width:390px;height:844px;display:flex;flex-direction:column;background:#0B0D10">
+
+  <div style="display:flex;align-items:center;gap:6px;padding:10px 10px 8px;border-bottom:1px solid #232A33;flex:none">
+    <div style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M15 5 L8 12 L15 19" stroke="#F5F7FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0">
+      <div style="font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;font-size:17px;letter-spacing:.02em;color:#F5F7FA;line-height:1">CAN&nbsp;&nbsp;1 – 0&nbsp;&nbsp;MAR</div>
+      <div style="display:flex;align-items:center;gap:6px">{{liveDot}}<span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#2BD97C">74'</span><span style="font-size:9px;color:#4A5364">·</span><span style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600">ROUND OF 16</span></div>
+    </div>
+    <div onClick="{{aGoStar}}" style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none;font-size:16px;color:{{aStarC}}">{{aStar}}</div>
+  </div>
+
+  <sc-if value="{{aTab_market}}" hint-placeholder-val="{{ true }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;padding:12px 16px 2px;flex:none">
+      <div style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600;padding-bottom:4px">MOMENTUM — CAN WIN %</div>
+      <div style="display:flex;align-items:baseline;gap:7px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:30px;line-height:1;font-variant-numeric:tabular-nums;color:{{hC}}">{{hP}}</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:{{hDeltaC}}">{{hDeltaTxt}}</span>
+      </div>
+    </div>
+    <div style="height:336px;flex:none">{{riverA}}</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:10px 14px 0;flex:none">
+      <div onClick="{{aSelH}}" style="cursor:pointer;border-radius:16px;padding:9px 11px 8px;background:{{aBgH}};border:1px solid {{aBcH}}">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9px;letter-spacing:.1em;color:#97A0AF;font-weight:600">HOME</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.14);border-radius:999px;padding:2px 6px">120</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:19px;margin-top:4px;font-variant-numeric:tabular-nums;color:{{hC}}">{{hP}}</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;margin-top:1px;color:{{hDeltaC}}">{{hDeltaTxt}}</div>
+      </div>
+      <div onClick="{{aSelD}}" style="cursor:pointer;border-radius:16px;padding:9px 11px 8px;background:{{aBgD}};border:1px solid {{aBcD}}">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9px;letter-spacing:.1em;color:#97A0AF;font-weight:600">DRAW</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:19px;margin-top:4px;font-variant-numeric:tabular-nums;color:{{dC}}">{{dPr}}</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;margin-top:1px;color:{{dDeltaC}}">{{dDeltaTxt}}</div>
+      </div>
+      <div onClick="{{aSelA}}" style="cursor:pointer;border-radius:16px;padding:9px 11px 8px;background:{{aBgA}};border:1px solid {{aBcA}}">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9px;letter-spacing:.1em;color:#97A0AF;font-weight:600">AWAY</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:19px;margin-top:4px;font-variant-numeric:tabular-nums;color:{{aC}}">{{aP}}</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;margin-top:1px;color:{{aDeltaC}}">{{aDeltaTxt}}</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 14px 0;flex:none">
+      <div onClick="{{aGoBuy}}" style="height:46px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;cursor:pointer;background:{{aBuyBg}};color:{{aBuyC}};border:1px solid {{aBuyBc}}">Buy</div>
+      <div onClick="{{aGoSell}}" style="height:46px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;cursor:pointer;background:{{aSellBg}};color:{{aSellC}};border:1px solid {{aSellBc}}">Sell</div>
+    </div>
+
+    <div style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:8px;padding:13px 14px 10px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex:none">
+        <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">THE BOOTH</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">AI COMMENTARY</span>
+      </div>
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:11px 13px;display:flex;flex-direction:column;gap:7px;flex:none">
+        <div style="display:flex;align-items:center;gap:8px">{{wave}}<span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#2BD97C">PLAYING · 74'</span></div>
+        <div style="font-size:12.5px;line-height:1.5;color:#F5F7FA">Morocco pushing — market trims Canada from 64 to 61 in four minutes.</div>
+      </div>
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:10px 13px;display:flex;flex-direction:column;gap:5px;opacity:.6;flex:none">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF">38'</div>
+        <div style="font-size:12px;line-height:1.5;color:#97A0AF">David finishes the counter — Canada reprices 41 → 63 inside ninety seconds.</div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{aTab_positions}}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;padding:16px 14px">
+    <div style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600;flex:none">OPEN POSITIONS — CAN–MAR</div>
+    <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:12px;flex:none">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.14);border-radius:999px;padding:3px 8px">HOME · CAN</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#97A0AF">120 sh · avg 54.2</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <div style="display:flex;align-items:baseline;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;color:#F5F7FA">{{posVal}}</span><span style="font-size:10px;color:#97A0AF">cr value</span></div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:{{posC}}">{{posPnl}} ({{posPct}})</span>
+      </div>
+      <div style="height:1px;background:#232A33"></div>
+      <div style="display:flex;gap:8px">
+        <div style="flex:1;height:38px;border-radius:999px;border:1px solid rgba(255,61,129,.5);color:#FF3D81;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;cursor:pointer">Sell</div>
+        <div style="flex:1;height:38px;border-radius:999px;border:1px solid rgba(43,217,124,.5);color:#2BD97C;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;cursor:pointer">Buy more</div>
+      </div>
+    </div>
+    <div style="font-size:10.5px;line-height:1.5;color:#97A0AF;display:flex;gap:6px;align-items:baseline"><span style="color:#9D6BFF;font-size:9px">◆</span><span>Settles on Solana at full time — proof posts automatically.</span></div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{aTab_chat}}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;padding:16px 14px 12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex:none">
+      <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">LIVE ROOM</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF">1,284 here</span>
+    </div>
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:12px;overflow:hidden">
+      <div style="display:flex;gap:9px">
+        <div style="width:24px;height:24px;border-radius:50%;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#97A0AF;flex:none">HX</div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div style="display:flex;align-items:center;gap:6px"><span style="font-size:11px;font-weight:600;color:#F5F7FA">@hexfan</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.12);border-radius:999px;padding:2px 6px">CAN · 120</span></div>
+          <div style="font-size:12px;line-height:1.45;color:#C9D1DC">national team arb — buy every Canada dip</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:9px">
+        <div style="width:24px;height:24px;border-radius:50%;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#97A0AF;flex:none">ML</div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div style="display:flex;align-items:center;gap:6px"><span style="font-size:11px;font-weight:600;color:#F5F7FA">@marlenko</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#97A0AF;background:rgba(151,160,175,.14);border-radius:999px;padding:2px 6px">DRAW · 60</span></div>
+          <div style="font-size:12px;line-height:1.45;color:#C9D1DC">Hakimi has been quiet since the goal — market is asleep on Morocco</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:baseline">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:#2BD97C;flex:none">BOOTH</span>
+        <div style="font-size:11.5px;line-height:1.45;color:#97A0AF;font-style:italic">Corner count 7–2 Morocco since 60' — pressure building.</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;flex:none">
+      <div style="flex:1;height:40px;border-radius:999px;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;padding:0 14px;font-size:12px;color:#4A5364">Say something…</div>
+      <div style="width:40px;height:40px;border-radius:50%;background:rgba(43,217,124,.14);color:#2BD97C;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;flex:none">→</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{aTab_stats}}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:14px;padding:16px 14px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex:none">
+      <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MATCH STATS</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">CAN ■ / MAR ■</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">42%</span><span style="font-size:10px;color:#97A0AF">Possession</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">58%</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:42;background:#2BD97C;border-radius:2px"></span><span style="flex:58;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">8</span><span style="font-size:10px;color:#97A0AF">Shots</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">13</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:8;background:#2BD97C;border-radius:2px"></span><span style="flex:13;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">4</span><span style="font-size:10px;color:#97A0AF">On target</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">5</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:4;background:#2BD97C;border-radius:2px"></span><span style="flex:5;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">1.12</span><span style="font-size:10px;color:#97A0AF">Expected goals</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">1.38</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:112;background:#2BD97C;border-radius:2px"></span><span style="flex:138;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">2</span><span style="font-size:10px;color:#97A0AF">Corners</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">7</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:2;background:#2BD97C;border-radius:2px"></span><span style="flex:7;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+  </div>
+  </sc-if>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #232A33;padding:5px 8px 9px;flex:none">
+    <div onClick="{{aGo_market}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 0"><span style="font-size:11px;font-weight:600;color:{{aTC_market}}">Market</span><span style="display:block;width:16px;height:2px;border-radius:2px;background:{{aTU_market}}"></span></div>
+    <div onClick="{{aGo_positions}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 0"><span style="font-size:11px;font-weight:600;color:{{aTC_positions}}">Positions</span><span style="display:block;width:16px;height:2px;border-radius:2px;background:{{aTU_positions}}"></span></div>
+    <div onClick="{{aGo_chat}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 0"><span style="font-size:11px;font-weight:600;color:{{aTC_chat}}">Chat</span><span style="display:block;width:16px;height:2px;border-radius:2px;background:{{aTU_chat}}"></span></div>
+    <div onClick="{{aGo_stats}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 0"><span style="font-size:11px;font-weight:600;color:{{aTC_stats}}">Stats</span><span style="display:block;width:16px;height:2px;border-radius:2px;background:{{aTU_stats}}"></span></div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Broadcast — scoreboard energy, stacked river</div>
+<div class="dv-card" data-screen-label="1b — Match view LIVE (broadcast)" style="width:390px;height:844px;display:flex;flex-direction:column;background:#0B0D10">
+
+  <div style="position:relative;padding:12px 14px 12px;border-bottom:1px solid #232A33;flex:none">
+    <div style="position:absolute;left:8px;top:10px;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M15 5 L8 12 L15 19" stroke="#F5F7FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></div>
+    <div onClick="{{bGoStar}}" style="position:absolute;right:8px;top:10px;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:{{bStarC}}">{{bStar}}</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:18px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px;width:64px">
+        <div style="width:36px;height:36px;border-radius:50%;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#F5F7FA">CAN</div>
+        <div style="font-size:9px;letter-spacing:.08em;color:#97A0AF;font-weight:600">CANADA</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:36px;line-height:1;color:#F5F7FA">1 – 0</div>
+        <div style="display:flex;align-items:center;gap:6px">{{liveDot}}<span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:#2BD97C">74' LIVE</span></div>
+        <div style="font-size:8.5px;letter-spacing:.14em;color:#4A5364;font-weight:600">R16 · BC PLACE</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px;width:64px">
+        <div style="width:36px;height:36px;border-radius:50%;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#F5F7FA">MAR</div>
+        <div style="font-size:9px;letter-spacing:.08em;color:#97A0AF;font-weight:600">MOROCCO</div>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{bTab_market}}" hint-placeholder-val="{{ true }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px 0;flex:none">
+      <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MOMENTUM RIVER</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">ALL OUTCOMES · 100%</span>
+    </div>
+    <div style="height:344px;flex:none">{{riverB}}</div>
+
+    <div style="display:flex;flex-direction:column;gap:7px;padding:10px 14px 0;flex:none">
+      <div onClick="{{bSelH}}" style="cursor:pointer;height:52px;border-radius:16px;padding:0 14px;display:flex;align-items:center;gap:10px;background:{{bBgH}};border:1px solid {{bBcH}}">
+        <span style="width:10px;height:10px;border-radius:3px;background:#2BD97C;flex:none"></span>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:12.5px;font-weight:600;color:#F5F7FA">Canada</div>
+          <div style="font-size:9.5px;color:#97A0AF">HOME · holding <span style="font-family:'IBM Plex Mono',monospace;color:#2BD97C">120</span></div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;font-variant-numeric:tabular-nums;color:{{hC}}">{{hP}}</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:{{hDeltaC}}">{{hDeltaTxt}}</div>
+        </div>
+      </div>
+      <div onClick="{{bSelD}}" style="cursor:pointer;height:52px;border-radius:16px;padding:0 14px;display:flex;align-items:center;gap:10px;background:{{bBgD}};border:1px solid {{bBcD}}">
+        <span style="width:10px;height:10px;border-radius:3px;background:#97A0AF;flex:none"></span>
+        <div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:600;color:#F5F7FA">Draw</div></div>
+        <div style="text-align:right">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;font-variant-numeric:tabular-nums;color:{{dC}}">{{dPr}}</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:{{dDeltaC}}">{{dDeltaTxt}}</div>
+        </div>
+      </div>
+      <div onClick="{{bSelA}}" style="cursor:pointer;height:52px;border-radius:16px;padding:0 14px;display:flex;align-items:center;gap:10px;background:{{bBgA}};border:1px solid {{bBcA}}">
+        <span style="width:10px;height:10px;border-radius:3px;background:#FF3D81;flex:none"></span>
+        <div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:600;color:#F5F7FA">Morocco</div><div style="font-size:9.5px;color:#97A0AF">AWAY</div></div>
+        <div style="text-align:right">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;font-variant-numeric:tabular-nums;color:{{aC}}">{{aP}}</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:{{aDeltaC}}">{{aDeltaTxt}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;padding:12px 14px 0;flex:none">
+      <div style="display:flex;background:#14171C;border:1px solid #232A33;border-radius:999px;padding:3px;flex:none">
+        <div onClick="{{bGoBuy}}" style="padding:0 16px;height:38px;border-radius:999px;display:flex;align-items:center;font-weight:700;font-size:12.5px;cursor:pointer;background:{{bBuyBg}};color:{{bBuyC}}">Buy</div>
+        <div onClick="{{bGoSell}}" style="padding:0 16px;height:38px;border-radius:999px;display:flex;align-items:center;font-weight:700;font-size:12.5px;cursor:pointer;background:{{bSellBg}};color:{{bSellC}}">Sell</div>
+      </div>
+      <div style="flex:1;height:44px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13.5px;cursor:pointer;background:{{bCtaBg}};color:{{bCtaC}}"><span style="font-family:'IBM Plex Mono',monospace">{{bCta}}</span></div>
+    </div>
+
+    <div style="flex:1;min-height:0;padding:12px 14px 10px">
+      <div style="height:100%;display:flex;align-items:center;gap:10px;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:0 13px;overflow:hidden">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:#2BD97C;flex:none">BOOTH</span>
+        {{wave}}
+        <div style="font-size:11.5px;color:#F5F7FA;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Morocco pushing — market trims Canada from 64 to 61 in four minutes.</div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{bTab_positions}}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;padding:16px 14px">
+    <div style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600;flex:none">OPEN POSITIONS — CAN–MAR</div>
+    <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:12px;flex:none">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.14);border-radius:999px;padding:3px 8px">HOME · CAN</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#97A0AF">120 sh · avg 54.2</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <div style="display:flex;align-items:baseline;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;color:#F5F7FA">{{posVal}}</span><span style="font-size:10px;color:#97A0AF">cr value</span></div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:{{posC}}">{{posPnl}} ({{posPct}})</span>
+      </div>
+      <div style="height:1px;background:#232A33"></div>
+      <div style="display:flex;gap:8px">
+        <div style="flex:1;height:38px;border-radius:999px;border:1px solid rgba(255,61,129,.5);color:#FF3D81;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;cursor:pointer">Sell</div>
+        <div style="flex:1;height:38px;border-radius:999px;border:1px solid rgba(43,217,124,.5);color:#2BD97C;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;cursor:pointer">Buy more</div>
+      </div>
+    </div>
+    <div style="font-size:10.5px;line-height:1.5;color:#97A0AF;display:flex;gap:6px;align-items:baseline"><span style="color:#9D6BFF;font-size:9px">◆</span><span>Settles on Solana at full time — proof posts automatically.</span></div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{bTab_chat}}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;padding:16px 14px 12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex:none">
+      <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">LIVE ROOM</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF">1,284 here</span>
+    </div>
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:12px;overflow:hidden">
+      <div style="display:flex;gap:9px">
+        <div style="width:24px;height:24px;border-radius:50%;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#97A0AF;flex:none">HX</div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div style="display:flex;align-items:center;gap:6px"><span style="font-size:11px;font-weight:600;color:#F5F7FA">@hexfan</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.12);border-radius:999px;padding:2px 6px">CAN · 120</span></div>
+          <div style="font-size:12px;line-height:1.45;color:#C9D1DC">national team arb — buy every Canada dip</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:9px">
+        <div style="width:24px;height:24px;border-radius:50%;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#97A0AF;flex:none">ML</div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div style="display:flex;align-items:center;gap:6px"><span style="font-size:11px;font-weight:600;color:#F5F7FA">@marlenko</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#97A0AF;background:rgba(151,160,175,.14);border-radius:999px;padding:2px 6px">DRAW · 60</span></div>
+          <div style="font-size:12px;line-height:1.45;color:#C9D1DC">Hakimi has been quiet since the goal — market is asleep on Morocco</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:baseline">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:#2BD97C;flex:none">BOOTH</span>
+        <div style="font-size:11.5px;line-height:1.45;color:#97A0AF;font-style:italic">Corner count 7–2 Morocco since 60' — pressure building.</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;flex:none">
+      <div style="flex:1;height:40px;border-radius:999px;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;padding:0 14px;font-size:12px;color:#4A5364">Say something…</div>
+      <div style="width:40px;height:40px;border-radius:50%;background:rgba(43,217,124,.14);color:#2BD97C;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;flex:none">→</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{bTab_stats}}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:14px;padding:16px 14px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex:none">
+      <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MATCH STATS</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">CAN ■ / MAR ■</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">42%</span><span style="font-size:10px;color:#97A0AF">Possession</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">58%</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:42;background:#2BD97C;border-radius:2px"></span><span style="flex:58;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">8</span><span style="font-size:10px;color:#97A0AF">Shots</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">13</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:8;background:#2BD97C;border-radius:2px"></span><span style="flex:13;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">4</span><span style="font-size:10px;color:#97A0AF">On target</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">5</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:4;background:#2BD97C;border-radius:2px"></span><span style="flex:5;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">1.12</span><span style="font-size:10px;color:#97A0AF">Expected goals</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">1.38</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:112;background:#2BD97C;border-radius:2px"></span><span style="flex:138;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">2</span><span style="font-size:10px;color:#97A0AF">Corners</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">7</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:2;background:#2BD97C;border-radius:2px"></span><span style="flex:7;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+  </div>
+  </sc-if>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #232A33;padding:5px 8px 9px;flex:none">
+    <div onClick="{{bGo_market}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 0"><span style="font-size:11px;font-weight:600;color:{{bTC_market}}">Market</span><span style="display:block;width:16px;height:2px;border-radius:2px;background:{{bTU_market}}"></span></div>
+    <div onClick="{{bGo_positions}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 0"><span style="font-size:11px;font-weight:600;color:{{bTC_positions}}">Positions</span><span style="display:block;width:16px;height:2px;border-radius:2px;background:{{bTU_positions}}"></span></div>
+    <div onClick="{{bGo_chat}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 0"><span style="font-size:11px;font-weight:600;color:{{bTC_chat}}">Chat</span><span style="display:block;width:16px;height:2px;border-radius:2px;background:{{bTU_chat}}"></span></div>
+    <div onClick="{{bGo_stats}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 0"><span style="font-size:11px;font-weight:600;color:{{bTC_stats}}">Stats</span><span style="display:block;width:16px;height:2px;border-radius:2px;background:{{bTU_stats}}"></span></div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt">
+<div class="dv-olabel">System check — ratify to lock</div>
+<div class="dv-card" data-screen-label="Lock notes" style="width:300px;padding:18px;display:flex;flex-direction:column;gap:16px">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;color:#97A0AF;font-weight:600">SYSTEM CHECK — V1 TOKENS</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+    <div style="display:flex;flex-direction:column;gap:4px"><span style="height:28px;border-radius:6px;background:#0B0D10;border:1px solid #232A33"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF">#0B0D10 bg</span></div>
+    <div style="display:flex;flex-direction:column;gap:4px"><span style="height:28px;border-radius:6px;background:#14171C;border:1px solid #232A33"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF">#14171C surf</span></div>
+    <div style="display:flex;flex-direction:column;gap:4px"><span style="height:28px;border-radius:6px;background:#2BD97C"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF">#2BD97C up</span></div>
+    <div style="display:flex;flex-direction:column;gap:4px"><span style="height:28px;border-radius:6px;background:#FF3D81"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF">#FF3D81 down</span></div>
+    <div style="display:flex;flex-direction:column;gap:4px"><span style="height:28px;border-radius:6px;background:#FFB020"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF">#FFB020 halt</span></div>
+    <div style="display:flex;flex-direction:column;gap:4px"><span style="height:28px;border-radius:6px;background:#9D6BFF"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF">#9D6BFF chain</span></div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:7px;border-top:1px solid #232A33;padding-top:14px">
+    <div style="font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;font-size:15px;color:#F5F7FA">ARCHIVO EXPANDED — HERO</div>
+    <div style="font-size:12px;color:#C9D1DC">Inter — UI and body copy</div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#2BD97C">IBM Plex Mono 61.4 ▲2.1</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:5px;border-top:1px solid #232A33;padding-top:14px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;color:#97A0AF;font-weight:600">CONTRAST ON #0B0D10 — WCAG</div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;line-height:1.7;color:#C9D1DC">up 10.5:1 ✓ &nbsp;down 5.8:1 ✓<br>halt 11.4:1 ✓ &nbsp;chain 5.5:1 ✓</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:6px;border-top:1px solid #232A33;padding-top:14px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;color:#97A0AF;font-weight:600">DECISIONS TO RATIFY</div>
+    <div style="font-size:10.5px;line-height:1.65;color:#97A0AF">
+      1&nbsp; PriceChip uses card radius 16 (3 data lines) — pills stay reserved for actions and badges. <span style="color:#F5F7FA">Flagged deviation from “chips full”.</span><br>
+      2&nbsp; Chart team mapping: CAN green · MAR magenta · draw neutral.<br>
+      3&nbsp; Hero scores may use Archivo Expanded; every tradable number stays Plex Mono tabular.<br>
+      4&nbsp; River timeline plots to 90&#8242; — unplayed time stays empty.<br>
+      5&nbsp; Violet appears only beside on-chain copy.
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: “lock <a class="dv-oid" href="#1a">1a</a> and show the HALTED goal state” · “<a class="dv-oid" href="#1a">1a</a> layout with <a class="dv-oid" href="#1b">1b</a>’s stacked river” · “two more takes: quieter / more broadcast”</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;live&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Market simulation&quot;},
+  &quot;flashMs&quot;: {&quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 180, &quot;min&quot;: 100, &quot;max&quot;: 420, &quot;step&quot;: 20, &quot;unit&quot;: &quot;ms&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Motion&quot;},
+  &quot;bandOpacity&quot;: {&quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 0.5, &quot;min&quot;: 0.25, &quot;max&quot;: 0.8, &quot;step&quot;: 0.05, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;River — 1b bands&quot;}
+}">
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    this.UP='#2BD97C'; this.DN='#FF3D81'; this.HI='#F5F7FA'; this.LO='#97A0AF';
+    this.LINE='#232A33'; this.SUR='#14171C'; this.BG='#0B0D10';
+    this.MONO="'IBM Plex Mono',monospace";
+    this.state={
+      series:this.buildSeries(),
+      hP:61.4, dP:22.1, aP:16.5,
+      hFl:null, dFl:null, aFl:null,
+      hDelta:2.1, dDelta:-1.4, aDelta:-0.7,
+      a:{tab:'market', sel:'H', side:'buy', star:true},
+      b:{tab:'market', sel:'H', side:'buy', star:true}
+    };
+    this.liveDot=React.createElement('span',{style:{display:'inline-block',width:'7px',height:'7px',borderRadius:'50%',background:this.UP,boxShadow:'0 0 8px rgba(43,217,124,.8)',animation:'opPulse 1.7s ease-in-out infinite',flex:'none'}});
+    const bars=[6,12,15,9,13,7,11].map((h,i)=>React.createElement('span',{key:i,style:{width:'2.5px',height:h+'px',borderRadius:'2px',background:'#F5F7FA',opacity:.85,transformOrigin:'center',animation:'opWave 1.1s ease-in-out '+(i*0.13)+'s infinite'}}));
+    this.wave=React.createElement('span',{style:{display:'inline-flex',alignItems:'center',gap:'2.5px',height:'16px',flex:'none'}},bars);
+  }
+
+  buildSeries(){
+    const pts=[];
+    for(let m=0;m<=74;m++){
+      let h,d;
+      if(m<38){
+        h=44+Math.sin(m/5.2)*1.7+Math.sin(m*0.9)*0.9-(m>28?(m-28)*0.38:0);
+        d=26+Math.sin(m/7)*1.1+(m>28?(m-28)*0.1:0);
+      }else{
+        const k=m-38;
+        h=63+Math.min(k*0.3,3.4)-(m>62?(m-62)*0.44:0)+Math.sin(m*0.8)*0.7;
+        d=21.6+(m>62?(m-62)*0.1:0)+Math.sin(m/6)*0.6;
+      }
+      h=Math.max(35,Math.min(68,h)); d=Math.max(18,Math.min(29,d));
+      pts.push({m:m,h:+h.toFixed(1),d:+d.toFixed(1),a:+(100-h-d).toFixed(1)});
+    }
+    pts[37]={m:37,h:41.0,d:26.8,a:32.2};
+    pts[38]={m:38,h:63.0,d:21.5,a:15.5};
+    pts[74]={m:74,h:61.4,d:22.1,a:16.5};
+    return pts;
+  }
+
+  componentDidMount(){ this._iv=setInterval(()=>this.tick(),2400); }
+  componentWillUnmount(){ clearInterval(this._iv); clearTimeout(this._ft); }
+
+  tick(){
+    if(this.props.live===false) return;
+    const st=this.state, s=st.series.slice(), prev=s[s.length-1];
+    let h=prev.h+(Math.random()-0.5)*0.6; h=Math.min(64.5,Math.max(58.5,h)); h=+h.toFixed(1);
+    let d=prev.d+(Math.random()-0.5)*0.35; d=Math.min(24.5,Math.max(20,d)); d=+d.toFixed(1);
+    const a=+(100-h-d).toFixed(1);
+    s[s.length-1]={m:prev.m,h:h,d:d,a:a};
+    const fl=(n,o)=>(n>o?this.UP:(n<o?this.DN:null));
+    this.setState({
+      series:s, hP:h, dP:d, aP:a,
+      hFl:fl(h,prev.h), dFl:fl(d,prev.d), aFl:fl(a,prev.a),
+      hDelta:+(st.hDelta+(h-prev.h)).toFixed(1),
+      dDelta:+(st.dDelta+(d-prev.d)).toFixed(1),
+      aDelta:+(st.aDelta+(a-prev.a)).toFixed(1)
+    });
+    clearTimeout(this._ft);
+    this._ft=setTimeout(()=>this.setState({hFl:null,dFl:null,aFl:null}), (this.props.flashMs!=null?this.props.flashMs:180));
+  }
+
+  setOpt(o,patch){ this.setState(s=>{ const next={}; next[o]=Object.assign({},s[o],patch); return next; }); }
+
+  frame(H){ const top=8, bot=26; return {top:top, bot:bot, y0:H-bot, x:(m)=>14+(m/90)*310, y:(v)=>top+(1-v/100)*(H-top-bot)}; }
+
+  axisEls(e,fr){
+    const els=[];
+    els.push(e('line',{key:'bl',x1:14,x2:324,y1:fr.y0,y2:fr.y0,stroke:this.LINE}));
+    [[0,"0'",'start'],[45,"45'",'middle'],[74,"74'",'middle'],[90,"90'",'end']].forEach(t=>{
+      els.push(e('line',{key:'tk'+t[0],x1:fr.x(t[0]),x2:fr.x(t[0]),y1:fr.y0,y2:fr.y0+4,stroke:this.LINE}));
+      els.push(e('text',{key:'tx'+t[0],x:fr.x(t[0]),y:fr.y0+15,textAnchor:t[2],fontFamily:this.MONO,fontSize:8.5,fontWeight:t[0]===74?600:400,fill:t[0]===74?this.UP:'#4A5364'},t[1]));
+    });
+    return els;
+  }
+
+  goalEls(e,fr){
+    const gx=fr.x(38), gy=fr.y(63), els=[];
+    els.push(e('line',{key:'gv',x1:gx,x2:gx,y1:fr.top+8,y2:fr.y0,stroke:'#F5F7FA',opacity:.13}));
+    els.push(e('rect',{key:'gc',x:gx-33,y:gy-46,width:66,height:29,rx:8,fill:'#14171C',stroke:this.LINE}));
+    els.push(e('text',{key:'gt1',x:gx,y:gy-34,textAnchor:'middle',fontFamily:this.MONO,fontSize:8.5,fontWeight:600,fill:this.HI},"GOAL 38'"));
+    els.push(e('text',{key:'gt2',x:gx,y:gy-23,textAnchor:'middle',fontFamily:this.MONO,fontSize:8.5,fill:this.UP},'41 → 63'));
+    els.push(e('circle',{key:'gr',cx:gx,cy:gy,r:6.5,fill:this.BG,stroke:this.UP,strokeWidth:2}));
+    els.push(e('circle',{key:'gd',cx:gx,cy:gy,r:2,fill:this.UP}));
+    return els;
+  }
+
+  riverArea(){
+    const e=React.createElement, st=this.state, pts=st.series, H=336, fr=this.frame(H);
+    const line=(key)=>pts.map((p,i)=>(i?'L':'M')+fr.x(p.m).toFixed(1)+' '+fr.y(p[key]).toFixed(1)).join(' ');
+    const hLine=line('h');
+    const els=[];
+    els.push(e('defs',{key:'df'},e('linearGradient',{id:'opgA',x1:'0',y1:'0',x2:'0',y2:'1'},
+      e('stop',{offset:'0%',stopColor:this.UP,stopOpacity:.3}),
+      e('stop',{offset:'100%',stopColor:this.UP,stopOpacity:.02}))));
+    els.push(e('rect',{key:'fut',x:fr.x(74),y:fr.top,width:fr.x(90)-fr.x(74),height:fr.y0-fr.top,fill:'#F5F7FA',opacity:.02}));
+    [25,50,75].forEach(v=>{
+      els.push(e('line',{key:'g'+v,x1:14,x2:324,y1:fr.y(v),y2:fr.y(v),stroke:this.LINE,strokeDasharray:'2 6',opacity:.6}));
+      els.push(e('text',{key:'gl'+v,x:16,y:fr.y(v)-4,fontFamily:this.MONO,fontSize:8,fill:'#3B4450'},String(v)));
+    });
+    els.push(e('path',{key:'ar',d:hLine+' L'+fr.x(74).toFixed(1)+' '+fr.y0+' L14 '+fr.y0+' Z',fill:'url(#opgA)'}));
+    els.push(e('path',{key:'dl',d:line('d'),fill:'none',stroke:'#97A0AF',strokeWidth:1.2,opacity:.45}));
+    els.push(e('path',{key:'al',d:line('a'),fill:'none',stroke:this.DN,strokeWidth:1.2,opacity:.6}));
+    els.push(e('path',{key:'hl',d:hLine,fill:'none',stroke:this.UP,strokeWidth:2,strokeLinejoin:'round',strokeLinecap:'round'}));
+    this.goalEls(e,fr).forEach(x=>els.push(x));
+    const nx=fr.x(74), ny=fr.y(st.hP);
+    els.push(e('line',{key:'nv',x1:nx,x2:nx,y1:ny,y2:fr.y0,stroke:this.UP,opacity:.22}));
+    els.push(e('circle',{key:'ng',cx:nx,cy:ny,r:8,fill:this.UP,opacity:.15}));
+    els.push(e('circle',{key:'nd',cx:nx,cy:ny,r:3.2,fill:this.UP,stroke:this.BG,strokeWidth:1.5}));
+    const items=[
+      {t:'H '+st.hP.toFixed(1),c:this.UP,y:fr.y(st.hP)},
+      {t:'D '+st.dP.toFixed(1),c:'#B8C0CD',y:fr.y(st.dP)},
+      {t:'A '+st.aP.toFixed(1),c:this.DN,y:fr.y(st.aP)}
+    ].sort((p,q)=>p.y-q.y);
+    for(let i=1;i<3;i++){ if(items[i].y-items[i-1].y<21) items[i].y=items[i-1].y+21; }
+    items.forEach((it,i)=>{
+      els.push(e('rect',{key:'c'+i,x:328,y:it.y-9,width:58,height:18,rx:9,fill:'#14171C',stroke:this.LINE}));
+      els.push(e('text',{key:'ct'+i,x:357,y:it.y+3,textAnchor:'middle',fontFamily:this.MONO,fontSize:9,fontWeight:600,fill:it.c},it.t));
+    });
+    this.axisEls(e,fr).forEach(x=>els.push(x));
+    return e('svg',{viewBox:'0 0 390 336',width:'100%',height:'336',style:{display:'block'}},els);
+  }
+
+  riverStream(){
+    const e=React.createElement, st=this.state, pts=st.series, H=344, fr=this.frame(H);
+    const op=(this.props.bandOpacity!=null?this.props.bandOpacity:0.5);
+    const fwd=(f)=>pts.map((p,i)=>(i?'L':'M')+fr.x(p.m).toFixed(1)+' '+fr.y(f(p)).toFixed(1)).join(' ');
+    const rev=(f)=>pts.slice().reverse().map(p=>'L'+fr.x(p.m).toFixed(1)+' '+fr.y(f(p)).toFixed(1)).join(' ');
+    const band=(tf,bf)=>fwd(tf)+' '+rev(bf)+' Z';
+    const els=[];
+    els.push(e('rect',{key:'fut',x:fr.x(74),y:fr.top,width:fr.x(90)-fr.x(74),height:fr.y0-fr.top,fill:'#F5F7FA',opacity:.02}));
+    els.push(e('path',{key:'bh',d:band(p=>p.h,()=>0),fill:'rgba(43,217,124,'+(op*0.55).toFixed(3)+')'}));
+    els.push(e('path',{key:'bd',d:band(p=>p.h+p.d,p=>p.h),fill:'rgba(151,160,175,'+(op*0.28).toFixed(3)+')'}));
+    els.push(e('path',{key:'ba',d:band(()=>100,p=>p.h+p.d),fill:'rgba(255,61,129,'+(op*0.45).toFixed(3)+')'}));
+    els.push(e('path',{key:'ed',d:fwd(p=>p.h+p.d),fill:'none',stroke:'#97A0AF',strokeWidth:1,opacity:.55}));
+    els.push(e('path',{key:'eh',d:fwd(p=>p.h),fill:'none',stroke:this.UP,strokeWidth:2,strokeLinejoin:'round',strokeLinecap:'round'}));
+    this.goalEls(e,fr).forEach(x=>els.push(x));
+    const nx=fr.x(74), ny=fr.y(st.hP);
+    els.push(e('circle',{key:'ng',cx:nx,cy:ny,r:8,fill:this.UP,opacity:.15}));
+    els.push(e('circle',{key:'nd',cx:nx,cy:ny,r:3.2,fill:this.UP,stroke:this.BG,strokeWidth:1.5}));
+    const items=[
+      {t:'CAN '+st.hP.toFixed(1),c:this.UP,y:fr.y(st.hP/2)},
+      {t:'DRW '+st.dP.toFixed(1),c:'#B8C0CD',y:fr.y(st.hP+st.dP/2)},
+      {t:'MAR '+st.aP.toFixed(1),c:'#FF7AA8',y:fr.y(100-st.aP/2)}
+    ];
+    items.forEach((it,i)=>{
+      els.push(e('rect',{key:'c'+i,x:322,y:it.y-9,width:64,height:18,rx:9,fill:'rgba(11,13,16,.78)',stroke:'rgba(255,255,255,.14)'}));
+      els.push(e('text',{key:'ct'+i,x:354,y:it.y+3,textAnchor:'middle',fontFamily:this.MONO,fontSize:9,fontWeight:600,fill:it.c},it.t));
+    });
+    this.axisEls(e,fr).forEach(x=>els.push(x));
+    return e('svg',{viewBox:'0 0 390 344',width:'100%',height:'344',style:{display:'block'}},els);
+  }
+
+  renderVals(){
+    const st=this.state;
+    const UP=this.UP, DN=this.DN, HI=this.HI, LO=this.LO, LINE=this.LINE;
+    const f1=(v)=>v.toFixed(1);
+    const dTxt=(v)=>(v>=0?'▲':'▼')+Math.abs(v).toFixed(1);
+    const dCol=(v)=>(v>=0?UP:DN);
+    const pnl=120*(st.hP-54.2);
+    const vals={
+      hP:f1(st.hP), dPr:f1(st.dP), aP:f1(st.aP),
+      hC:st.hFl||HI, dC:st.dFl||HI, aC:st.aFl||HI,
+      hDeltaTxt:dTxt(st.hDelta), dDeltaTxt:dTxt(st.dDelta), aDeltaTxt:dTxt(st.aDelta),
+      hDeltaC:dCol(st.hDelta), dDeltaC:dCol(st.dDelta), aDeltaC:dCol(st.aDelta),
+      liveDot:this.liveDot, wave:this.wave,
+      riverA:this.riverArea(), riverB:this.riverStream(),
+      posVal:Math.round(120*st.hP).toLocaleString('en-US'),
+      posPnl:(pnl>=0?'+':'−')+Math.abs(Math.round(pnl)).toLocaleString('en-US'),
+      posPct:(pnl>=0?'+':'−')+Math.abs((st.hP-54.2)/54.2*100).toFixed(1)+'%',
+      posC:pnl>=0?UP:DN
+    };
+    [['a',st.a],['b',st.b]].forEach(pair=>{
+      const o=pair[0], S=pair[1];
+      ['market','positions','chat','stats'].forEach(t=>{
+        vals[o+'Tab_'+t]=(S.tab===t);
+        vals[o+'TC_'+t]=(S.tab===t?HI:LO);
+        vals[o+'TU_'+t]=(S.tab===t?UP:'transparent');
+        vals[o+'Go_'+t]=()=>this.setOpt(o,{tab:t});
+      });
+      ['H','D','A'].forEach(k=>{
+        const sel=(S.sel===k);
+        vals[o+'Bc'+k]=sel?'rgba(43,217,124,.65)':LINE;
+        vals[o+'Bg'+k]=sel?'rgba(43,217,124,.06)':'#14171C';
+        vals[o+'Sel'+k]=()=>this.setOpt(o,{sel:k});
+      });
+      const buy=(S.side==='buy');
+      vals[o+'BuyBg']=buy?UP:'transparent';
+      vals[o+'BuyC']=buy?'#052014':LO;
+      vals[o+'BuyBc']=buy?UP:LINE;
+      vals[o+'SellBg']=!buy?DN:'transparent';
+      vals[o+'SellC']=!buy?'#2B0512':LO;
+      vals[o+'SellBc']=!buy?DN:LINE;
+      vals[o+'GoBuy']=()=>this.setOpt(o,{side:'buy'});
+      vals[o+'GoSell']=()=>this.setOpt(o,{side:'sell'});
+      vals[o+'Star']=S.star?'★':'☆';
+      vals[o+'StarC']=S.star?HI:'#4A5364';
+      vals[o+'GoStar']=()=>this.setOpt(o,{star:!S.star});
+      const nm=({H:'CAN',D:'Draw',A:'MAR'})[S.sel];
+      const pr=({H:st.hP,D:st.dP,A:st.aP})[S.sel];
+      vals[o+'Cta']=(buy?'Buy ':'Sell ')+nm+' · '+f1(pr);
+      vals[o+'CtaBg']=buy?UP:DN;
+      vals[o+'CtaC']=buy?'#052014':'#2B0512';
+    });
+    return vals;
+  }
+}
+</script>
+<script>
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "Omnipitch North Star";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Project support.js may predate runtime default-seeding; push via bridge.
+  if (isDc && window.__dcSetProps && window.__dcRootName) {
+    try {
+      const dpEl = document.querySelector('script[data-dc-script]');
+      const meta = JSON.parse((dpEl && dpEl.getAttribute('data-props')) || '{}');
+      const bag = {};
+      for (const k in meta)
+        if (k[0] !== '$' && meta[k] && meta[k].default !== undefined)
+          bag[k] = meta[k].default;
+      if (Object.keys(bag).length) {
+        window.__dcSetProps(window.__dcRootName(), bag);
+        await new Promise((r) => setTimeout(r, 50));
+      }
+    } catch (e) {}
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…}. Decks own their own @page.
+  // Wrappers (body, …) lose padding+margin so the frame sits at (0,0); the
+  // frame itself loses only margin — its padding is INSIDE the measured
+  // rect and must stay, or content shifts and leaves a gap at bottom/right.
+  var __m = null;
+  try { __m = (() => {
+  var STAMP = true;
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', source: 'declared', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false } };
+  }
+
+  // Declared kind: a doc-page tag names the kind outright, so no signal
+  // heuristics run (like the deck branch above, signals report false —
+  // they describe inferred classifications only). The tag alone is not
+  // trusted: the element must have upgraded (shadowRoot present), so a
+  // leftover tag whose script was deleted falls through to the heuristics
+  // that handle plain markup.
+  var stageSx = window.scrollX || 0, stageSy = window.scrollY || 0;
+  var dp = document.querySelector('doc-page');
+  if (dp && dp.shadowRoot) {
+    // Crop to the sheet, not the host — the desk around it is screen-only
+    // chrome that must not land in PNG exports.
+    var sheet = dp.shadowRoot.querySelector('.sheet');
+    var sr = (sheet || dp).getBoundingClientRect();
+    return { kind: 'paper-doc', source: 'declared', doc: doc,
+      frames: [{ left: sr.left + stageSx, top: sr.top + stageSy,
+        width: sr.width, height: sr.height }],
+      authored: [{ width: false, height: false }],
+      signals: { paperPage: false, pxPage: false } };
+  }
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage };
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body, rootPxW = false;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    if (STAMP) el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    rootPxW = authoredPx(el, 'width');
+    if (rootPxW) break;
+  }
+  if (!rootPxW) rootPxW = authoredPx(el, 'width');
+
+  // @page{size:letter} alone is a flowing doc; with a px-width root it's a
+  // fixed sheet pretending to be paper — fall through and size to render.
+  if (paperPage && !rootPxW) {
+    return { kind: 'paper-doc', source: 'inferred', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: ≥2 visible non-fixed children, each with authored px width
+  // AND height, all within ±2px of each other. Off unless the page opts in
+  // via data-om-multi-frame on the stop element — guards against card grids
+  // and pricing tables that match the geometry but aren't separate canvases.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var cands = [];
+    for (var k = 0; k < el.children.length; k++) {
+      var ch = el.children[k];
+      var cs; try { cs = getComputedStyle(ch); } catch (e) { continue; }
+      if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') continue;
+      var rc = rectOf(ch);
+      if (rc.width < 2 || rc.height < 2) continue;
+      if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+      cands.push(rc);
+    }
+    if (cands.length >= 2) {
+      var w0 = cands[0].width, h0 = cands[0].height, ok = true;
+      for (var q = 1; q < cands.length; q++)
+        if (Math.abs(cands[q].width - w0) > 2 || Math.abs(cands[q].height - h0) > 2) ok = false;
+      if (ok) return { kind: 'multi-frame', source: 'inferred', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  if (STAMP) el.setAttribute('data-om-frame', '');
+  return { kind: 'single-canvas', source: 'inferred', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: rootPxW, height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (__m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + Math.ceil(f.width) + 'px ' +
+        Math.ceil(f.height) + 'px;margin:0}' +
+        'html,body,[data-om-frame-wrap]{padding:0!important;margin:0!important;background:none!important}' +
+        '[data-om-frame]{margin:0!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          if (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always') {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>

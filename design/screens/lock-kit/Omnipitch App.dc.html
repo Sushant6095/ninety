@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#0B0D10">
+<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+<rect width="120" height="80" fill="#0B0D10"/>
+<rect x="34" y="24" width="52" height="32" rx="4" fill="none" stroke="#232A33" stroke-width="2"/>
+<polyline points="40,48 50,46 56,45 60,32 70,30 80,33" fill="none" stroke="#2BD97C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="60" cy="32" r="3.5" fill="#0B0D10" stroke="#2BD97C" stroke-width="2"/>
+</svg>
+</template>
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/ca.png" data-resource-id="fl_ca">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/ma.png" data-resource-id="fl_ma">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/es.png" data-resource-id="fl_es">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/jp.png" data-resource-id="fl_jp">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/ar.png" data-resource-id="fl_ar">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/mx.png" data-resource-id="fl_mx">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/gb-eng.png" data-resource-id="fl_gb_eng">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/sn.png" data-resource-id="fl_sn">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/de.png" data-resource-id="fl_de">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/co.png" data-resource-id="fl_co">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/br.png" data-resource-id="fl_br">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/us.png" data-resource-id="fl_us">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/py.png" data-resource-id="fl_py">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/fr.png" data-resource-id="fl_fr">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/au.png" data-resource-id="fl_au">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/eg.png" data-resource-id="fl_eg">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/jm.png" data-resource-id="fl_jm">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/ci.png" data-resource-id="fl_ci">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/kr.png" data-resource-id="fl_kr">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/hr.png" data-resource-id="fl_hr">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/no.png" data-resource-id="fl_no">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/at.png" data-resource-id="fl_at">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/uy.png" data-resource-id="fl_uy">
+<meta name="ext-resource-dependency" content="https://flagcdn.com/w40/pl.png" data-resource-id="fl_pl">
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#0B0D10;font-family:'Figtree',Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+input[type=range]{accent-color:#2BD97C}
+@keyframes opPulse{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes opWave{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+@keyframes opTick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#0B0D10;color:#F5F7FA;min-width:1280px">
+
+  <div style="height:32px;border-bottom:1px solid #232A33;display:flex;align-items:stretch;background:#0D1015;overflow:hidden">
+    <div style="display:flex;align-items:center;gap:7px;padding:0 14px;border-right:1px solid #232A33;flex:none">
+      <span style="width:6px;height:6px;border-radius:50%;background:#2BD97C;animation:opPulse 1.7s ease-in-out infinite"></span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.1em;color:#97A0AF">WC26 LIVE</span>
+    </div>
+    <div style="flex:1;overflow:hidden;display:flex;align-items:center">
+      <div style="display:flex;align-items:center;width:max-content;animation:opTick 60s linear infinite">
+        <sc-for list="{{tick}}" as="tk" hint-placeholder-count="8">
+          <div onClick="{{tk.go}}" style="display:flex;align-items:center;gap:8px;padding:3px 13px;margin:0 2px;border-radius:7px;background:{{tk.bg}};flex:none;cursor:pointer">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:{{tk.stC}}">{{tk.st}}</span>
+            <span style="font-size:10.5px;font-weight:600;color:#F5F7FA">{{tk.teams}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#97A0AF">{{tk.score}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:{{tk.pc}}">{{tk.pr}}</span>
+          </div>
+          <span style="width:1px;height:12px;background:#1C222B;flex:none"></span>
+        </sc-for>
+        <sc-for list="{{tick}}" as="tk" hint-placeholder-count="8">
+          <div onClick="{{tk.go}}" style="display:flex;align-items:center;gap:8px;padding:3px 13px;margin:0 2px;border-radius:7px;background:{{tk.bg}};flex:none;cursor:pointer">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:{{tk.stC}}">{{tk.st}}</span>
+            <span style="font-size:10.5px;font-weight:600;color:#F5F7FA">{{tk.teams}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#97A0AF">{{tk.score}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:{{tk.pc}}">{{tk.pr}}</span>
+          </div>
+          <span style="width:1px;height:12px;background:#1C222B;flex:none"></span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:56px;border-bottom:1px solid #232A33;display:flex;align-items:stretch;gap:18px;padding:0 20px;background:#0B0D10;position:sticky;top:0;z-index:50">
+    <div onClick="{{goHome}}" style="display:flex;align-items:center;gap:8px;cursor:pointer;flex:none">
+      <span style="font-family:'Figtree',sans-serif;font-weight:900;font-size:17px;letter-spacing:.03em;color:#F5F7FA">OMNIPITCH</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;letter-spacing:.08em;color:#97A0AF;border:1px solid #232A33;border-radius:5px;padding:2px 5px">WC26</span>
+    </div>
+    <div style="display:flex;align-items:stretch;gap:2px">
+      <sc-for list="{{nav}}" as="nv" hint-placeholder-count="6">
+        <div onClick="{{nv.go}}" style="display:flex;flex-direction:column;justify-content:center;gap:6px;padding:0 13px;cursor:pointer">
+          <span style="font-size:12.5px;font-weight:600;color:{{nv.c}};margin-top:8px">{{nv.l}}</span>
+          <span style="display:block;height:2.5px;border-radius:2px 2px 0 0;background:{{nv.u}}"></span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="flex:1"></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:250px;height:33px;border-radius:999px;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;gap:8px;padding:0 12px">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#97A0AF" stroke-width="2"></circle><path d="M20 20 L16.2 16.2" stroke="#97A0AF" stroke-width="2" stroke-linecap="round"></path></svg>
+        <span style="font-size:11px;color:#4A5364;flex:1">Search</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364;border:1px solid #232A33;border-radius:5px;padding:1px 5px">⌘K</span>
+      </div>
+      <div style="height:31px;border-radius:999px;background:rgba(43,217,124,.1);border:1px solid rgba(43,217,124,.35);display:flex;align-items:center;gap:7px;padding:0 12px">
+        <span style="width:6px;height:6px;border-radius:50%;background:#2BD97C"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:#2BD97C">2,450 CR</span>
+      </div>
+      <div onClick="{{goLead}}" style="height:31px;border-radius:999px;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;gap:6px;padding:0 12px;cursor:pointer">
+        <span style="font-size:8.5px;letter-spacing:.08em;color:#97A0AF;font-weight:600">RANK</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:#F5F7FA">#142</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#2BD97C">▲3</span>
+      </div>
+      <div onClick="{{goProfile}}" style="width:33px;height:33px;border-radius:50%;background:#232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#F5F7FA;cursor:pointer">VD</div>
+    </div>
+  </div>
+
+  <sc-if value="{{pgHome}}" hint-placeholder-val="{{ true }}">
+  <div data-screen-label="Home — live match list" style="display:grid;grid-template-columns:252px 1fr 316px;gap:12px;padding:12px 12px 4px;align-items:start;max-width:1512px;margin:0 auto">
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:12px 6px 6px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600;padding:0 8px 8px">MY MATCHES</div>
+        <sc-for list="{{myRows}}" as="mr" hint-placeholder-count="2">
+          <div onClick="{{mr.go}}" style="display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:9px;cursor:pointer" style-hover="background:#1A2028">
+            <span style="font-size:11px;color:#F5F7FA">★</span>
+            <span style="flex:1;font-size:11.5px;font-weight:600;color:#F5F7FA">{{mr.l}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:{{mr.sC}}">{{mr.s}}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:12px 6px 6px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600;padding:0 8px 8px">WORLD CUP 2026 — STAGES</div>
+        <sc-for list="{{stages}}" as="sg" hint-placeholder-count="6">
+          <div onClick="{{sg.go}}" style="display:flex;align-items:center;gap:9px;padding:7px 8px;border-radius:9px;cursor:pointer" style-hover="background:#1A2028">
+            <span style="width:7px;height:7px;border-radius:50%;background:{{sg.dot}};flex:none"></span>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:11.5px;font-weight:600;color:{{sg.c}}">{{sg.l}}</div>
+              <div style="font-size:9px;color:#4A5364;margin-top:1px">{{sg.s}}</div>
+            </div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">{{sg.n}}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:12px 6px 6px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600;padding:0 8px 8px">FOLLOWED TEAMS</div>
+        <sc-for list="{{fteams}}" as="ft" hint-placeholder-count="4">
+          <div onClick="{{ft.go}}" style="display:flex;align-items:center;gap:9px;padding:6px 8px;border-radius:9px;cursor:pointer" style-hover="background:#1A2028">
+            <span style="display:inline-block;width:22px;height:22px;border-radius:50%;flex:none;background-image:url({{ft.f}});background-size:cover;background-position:center"></span>
+            <span style="flex:1;font-size:11.5px;font-weight:600;color:#F5F7FA">{{ft.l}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">{{ft.s}}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;align-items:center;gap:7px"><span style="color:#9D6BFF;font-size:10px">◆</span><span style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600">SETTLEMENT — SOLANA</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;line-height:1.8;color:#97A0AF">devnet · slot 297,441,208<br>last proof <span style="color:#9D6BFF">JPN–CRO · 5Kx…9f2a ↗</span><br>feed latency 42 ms</div>
+      </div>
+    </div>
+
+    <div style="min-width:0;background:#14171C;border:1px solid #232A33;border-radius:16px;overflow:hidden;display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;gap:6px;padding:12px 14px;border-bottom:1px solid #1A2028">
+        <span style="width:26px;height:26px;border-radius:8px;border:1px solid #232A33;display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#97A0AF;cursor:pointer">‹</span>
+        <span style="height:26px;padding:0 12px;border-radius:8px;display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF;cursor:pointer">FRI JUL 4</span>
+        <span style="height:26px;padding:0 12px;border-radius:8px;background:#0B0D10;border:1px solid #232A33;display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#F5F7FA">TODAY · SAT JUL 5</span>
+        <span style="height:26px;padding:0 12px;border-radius:8px;display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF;cursor:pointer">SUN JUL 6</span>
+        <span style="width:26px;height:26px;border-radius:8px;border:1px solid #232A33;display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#97A0AF;cursor:pointer">›</span>
+        <span style="flex:1"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">KICK-OFF TIMES PT</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid #1A2028">
+        <div onClick="{{tabLiveGo}}" style="height:30px;padding:0 14px;border-radius:999px;border:1px solid {{tabLiveBc}};background:{{tabLiveBg}};color:{{tabLiveC}};display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;cursor:pointer"><span style="width:6px;height:6px;border-radius:50%;background:#2BD97C;animation:opPulse 1.7s ease-in-out infinite"></span>Live<span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px">3</span></div>
+        <div onClick="{{tabTodayGo}}" style="height:30px;padding:0 14px;border-radius:999px;border:1px solid {{tabTodayBc}};background:{{tabTodayBg}};color:{{tabTodayC}};display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;cursor:pointer">Today<span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px">8</span></div>
+        <div onClick="{{tabFinGo}}" style="height:30px;padding:0 14px;border-radius:999px;border:1px solid {{tabFinBc}};background:{{tabFinBg}};color:{{tabFinC}};display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;cursor:pointer">Finished<span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px">8</span></div>
+        <span style="flex:1"></span>
+        <span style="font-size:10px;color:#4A5364">Sorted by kick-off</span>
+      </div>
+      <sc-for list="{{groups}}" as="g" hint-placeholder-count="2">
+        <div style="display:flex;align-items:center;gap:9px;padding:10px 14px 7px;background:#11151B">
+          <span style="width:20px;height:20px;border-radius:6px;background:#0B0D10;border:1px solid #232A33;display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7px;font-weight:700;color:#97A0AF">{{g.ic}}</span>
+          <span style="font-size:10px;letter-spacing:.12em;color:#97A0AF;font-weight:700">{{g.t}}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">{{g.n}}</span>
+          <span style="flex:1"></span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364;cursor:pointer">⌄</span>
+        </div>
+        <sc-for list="{{g.rows}}" as="m" hint-placeholder-count="4">
+          <div onClick="{{m.go}}" style="display:grid;grid-template-columns:26px 46px 1fr 74px 172px;gap:10px;align-items:center;padding:8px 14px;border-bottom:1px solid #1A2028;cursor:pointer" style-hover="background:#171C22">
+            <span onClick="{{m.favGo}}" style="font-size:13px;color:{{m.favC}};text-align:center">{{m.fav}}</span>
+            <div style="display:flex;flex-direction:column;gap:2px;align-items:flex-start">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:{{m.stC}}">{{m.st}}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#4A5364">{{m.sub}}</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+              <div style="display:flex;align-items:center;gap:8px"><span style="display:inline-block;width:18px;height:18px;border-radius:50%;flex:none;background-image:url({{m.hf}});background-size:cover;background-position:center"></span><span style="flex:1;font-size:11.5px;font-weight:600;color:{{m.hnC}};overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{m.hn}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:{{m.hnC}}">{{m.hsc}}</span></div>
+              <div style="display:flex;align-items:center;gap:8px"><span style="display:inline-block;width:18px;height:18px;border-radius:50%;flex:none;background-image:url({{m.af}});background-size:cover;background-position:center"></span><span style="flex:1;font-size:11.5px;font-weight:600;color:{{m.anC}};overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{m.an}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:{{m.anC}}">{{m.asc}}</span></div>
+            </div>
+            <svg viewBox="0 0 64 26" width="64" height="26" style="display:block"><polyline points="{{m.spk}}" fill="none" stroke="{{m.spkC}}" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"></polyline></svg>
+            <div style="display:flex;gap:6px;justify-content:flex-end">
+              <div style="display:{{m.chDisp}};flex-direction:column;align-items:center;gap:1px;width:52px;height:36px;border:1px solid #232A33;border-radius:9px;background:#0B0D10;justify-content:center"><span style="font-size:7px;letter-spacing:.08em;color:#4A5364;font-weight:600">H</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;font-variant-numeric:tabular-nums;color:{{m.hC}}">{{m.h}}</span></div>
+              <div style="display:{{m.chDisp}};flex-direction:column;align-items:center;gap:1px;width:52px;height:36px;border:1px solid #232A33;border-radius:9px;background:#0B0D10;justify-content:center"><span style="font-size:7px;letter-spacing:.08em;color:#4A5364;font-weight:600">D</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;font-variant-numeric:tabular-nums;color:{{m.dC}}">{{m.d}}</span></div>
+              <div style="display:{{m.chDisp}};flex-direction:column;align-items:center;gap:1px;width:52px;height:36px;border:1px solid #232A33;border-radius:9px;background:#0B0D10;justify-content:center"><span style="font-size:7px;letter-spacing:.08em;color:#4A5364;font-weight:600">A</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;font-variant-numeric:tabular-nums;color:{{m.aC}}">{{m.a}}</span></div>
+              <div style="display:{{m.prDisp}};align-items:center;gap:7px;height:36px;border:1px solid rgba(157,107,255,.35);border-radius:9px;background:rgba(157,107,255,.07);padding:0 11px"><span style="color:#9D6BFF;font-size:9px">◆</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#C9B3FF">{{m.prTxt}}</span></div>
+            </div>
+          </div>
+        </sc-for>
+      </sc-for>
+      <div style="padding:11px 14px;display:flex;align-items:center;gap:8px">
+        <span style="font-size:10px;color:#4A5364">Quarter-finals begin Thu Jul 9 · Dallas & Atlanta</span>
+        <span style="flex:1"></span>
+        <span onClick="{{goComp}}" style="font-size:10.5px;font-weight:600;color:#97A0AF;cursor:pointer">View bracket →</span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600">FEATURED — LIVE</span>
+          <span style="flex:1"></span>
+          {{liveDot}}<span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C">{{fMin}}</span>
+        </div>
+        <div onClick="{{goMatch}}" style="display:flex;align-items:center;gap:10px;cursor:pointer">
+          <img src="https://flagcdn.com/w40/ca.png" alt="Canada" style="width:30px;height:30px;border-radius:50%;object-fit:cover;border:1px solid rgba(43,217,124,.45)">
+          <div style="flex:1;text-align:center"><span style="font-family:'Figtree',sans-serif;font-weight:900;font-size:21px;color:#F5F7FA">{{fScore}}</span></div>
+          <img src="https://flagcdn.com/w40/ma.png" alt="Morocco" style="width:30px;height:30px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,61,129,.45)">
+        </div>
+        <svg viewBox="0 0 288 84" width="100%" height="84" style="display:block">
+          <line x1="0" x2="288" y1="42" y2="42" stroke="#232A33" stroke-dasharray="2 5"></line>
+          <path d="{{featArea}}" fill="rgba(43,217,124,.14)"></path>
+          <path d="{{featLine}}" fill="none" stroke="#2BD97C" stroke-width="1.8" stroke-linejoin="round"></path>
+          <circle cx="238" cy="18" r="5" fill="#0B0D10" stroke="#2BD97C" stroke-width="1.6"></circle>
+          <circle cx="238" cy="18" r="1.6" fill="#2BD97C"></circle>
+          <text x="246" y="14" font-family="IBM Plex Mono, monospace" font-size="7.5" fill="#4A5364">GOAL</text>
+          <text x="246" y="23" font-family="IBM Plex Mono, monospace" font-size="7.5" fill="#2BD97C">38'</text>
+        </svg>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+          <div style="height:44px;border:1px solid #232A33;border-radius:10px;background:#0B0D10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-size:7px;letter-spacing:.08em;color:#4A5364;font-weight:600">HOME</span><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:{{fhC}}">{{fh}}</span></div>
+          <div style="height:44px;border:1px solid #232A33;border-radius:10px;background:#0B0D10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-size:7px;letter-spacing:.08em;color:#4A5364;font-weight:600">DRAW</span><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:{{fdC}}">{{fd}}</span></div>
+          <div style="height:44px;border:1px solid #232A33;border-radius:10px;background:#0B0D10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-size:7px;letter-spacing:.08em;color:#4A5364;font-weight:600">AWAY</span><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:{{faC}}">{{fa}}</span></div>
+        </div>
+        <div onClick="{{goMatch}}" style="height:38px;border-radius:999px;background:#2BD97C;color:#052014;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;cursor:pointer">Trade this match</div>
+      </div>
+
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:12px 6px 6px;display:flex;flex-direction:column;gap:2px">
+        <div style="display:flex;align-items:center;padding:0 8px 8px"><span style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600">TOP TRADERS TODAY</span><span style="flex:1"></span><span onClick="{{goLead}}" style="font-size:9.5px;color:#4A5364;cursor:pointer">All →</span></div>
+        <sc-for list="{{topTr}}" as="tt" hint-placeholder-count="5">
+          <div onClick="{{tt.go}}" style="display:flex;align-items:center;gap:9px;padding:6px 8px;border-radius:9px;cursor:pointer" style-hover="background:#1A2028">
+            <span style="width:16px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#4A5364;text-align:right">{{tt.r}}</span>
+            <span style="width:22px;height:22px;border-radius:50%;background:#0B0D10;background-image:{{tt.av}};background-size:cover;background-position:center;border:1px solid #232A33;flex:none"></span>
+            <span style="flex:1;font-size:11px;font-weight:600;color:#F5F7FA;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{tt.h}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#2BD97C">{{tt.p}}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:12px 6px 6px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600;padding:0 8px 8px">STARTING SOON</div>
+        <sc-for list="{{soon}}" as="sn" hint-placeholder-count="3">
+          <div onClick="{{sn.go}}" style="display:flex;align-items:center;gap:9px;padding:7px 8px;border-radius:9px;cursor:pointer" style-hover="background:#1A2028">
+            <div style="flex:1;min-width:0"><div style="font-size:11px;font-weight:600;color:#F5F7FA">{{sn.l}}</div><div style="font-size:9px;color:#4A5364;margin-top:1px">{{sn.s}}</div></div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#FFB020">{{sn.in}}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div onClick="{{goMoments}}" style="background:#14171C;border:1px solid rgba(157,107,255,.4);border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:8px;cursor:pointer">
+        <div style="display:flex;align-items:center;gap:7px"><span style="color:#9D6BFF;font-size:10px">◆</span><span style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MOMENT OF THE DAY</span></div>
+        <div style="font-family:'Figtree',sans-serif;font-weight:800;font-size:14px;color:#F5F7FA">THE 38TH MINUTE</div>
+        <div style="font-size:10px;color:#97A0AF">CAN–MAR · David repricing 41 → 63 · minted by @hexfan</div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{pgMatch}}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Match view" style="max-width:1512px;margin:0 auto;padding:12px 12px 4px">
+    <div style="display:flex;align-items:center;gap:8px;padding:0 4px 10px">
+      <span onClick="{{goHome}}" style="font-size:10.5px;color:#97A0AF;cursor:pointer">Matches</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">›</span>
+      <span onClick="{{goComp}}" style="font-size:10.5px;color:#97A0AF;cursor:pointer">World Cup 2026 — Round of 16</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">›</span>
+      <span style="font-size:10.5px;font-weight:600;color:#F5F7FA">Canada vs Morocco</span>
+      <span style="flex:1"></span>
+      <div onClick="{{toggleHalt}}" style="height:28px;padding:0 12px;border-radius:999px;border:1px solid {{tglBc}};color:{{tglC}};display:flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;cursor:pointer">{{tglTxt}}</div>
+    </div>
+
+    <sc-if value="{{haltOn}}" hint-placeholder-val="{{ false }}">
+    <div style="margin-bottom:12px;border:1px solid rgba(255,176,32,.5);background:linear-gradient(90deg,rgba(255,176,32,.14),rgba(255,176,32,.04));border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:12px">
+      <span style="width:9px;height:9px;border-radius:50%;background:#FFB020;animation:opPulse 1s ease-in-out infinite;flex:none"></span>
+      <span style="font-family:'Figtree',sans-serif;font-weight:800;font-size:14px;letter-spacing:.04em;color:#FFB020">GOAL — MARKET HALTED</span>
+      <span style="font-size:11.5px;color:#F5F7FA">David 76&#8242; · repricing Canada 61.4 → 78.9 · trading resumes in <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#FFB020">0:47</span></span>
+      <span style="flex:1"></span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;color:#FFB020;border:1px solid rgba(255,176,32,.4);border-radius:999px;padding:3px 9px">ORDERS QUEUED</span>
+    </div>
+    </sc-if>
+
+    <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 18px;display:flex;align-items:center;gap:14px">
+      <div onClick="{{goTeam}}" style="display:flex;align-items:center;gap:10px;flex:none;width:250px;cursor:pointer">
+        <img src="https://flagcdn.com/w80/ca.png" alt="Canada" style="width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid rgba(43,217,124,.45);flex:none">
+        <div><div style="font-size:14px;font-weight:700;color:#F5F7FA">Canada</div><div style="font-size:8.5px;letter-spacing:.12em;color:#97A0AF;font-weight:600;margin-top:2px">HOME · FIFA #28</div></div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">
+        <div style="font-family:'Figtree',sans-serif;font-weight:900;font-size:32px;line-height:1;color:#F5F7FA">{{mSc}}</div>
+        <div style="display:flex;align-items:center;gap:6px">{{liveDot}}<span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:{{mMinC}}">{{mMin}} {{mState}}</span></div>
+        <div style="font-size:8.5px;letter-spacing:.14em;color:#4A5364;font-weight:600">R16 · BC PLACE, VANCOUVER · TSN 4K</div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:flex-end;gap:10px;flex:none;width:250px">
+        <div style="text-align:right"><div style="font-size:14px;font-weight:700;color:#F5F7FA">Morocco</div><div style="font-size:8.5px;letter-spacing:.12em;color:#97A0AF;font-weight:600;margin-top:2px">AWAY · FIFA #12</div></div>
+        <img src="https://flagcdn.com/w80/ma.png" alt="Morocco" style="width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,61,129,.45);flex:none">
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:340px 1fr;gap:12px;padding-top:12px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MATCH PRICES</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">0–100 · LMSR</span></div>
+          <div style="display:grid;grid-template-columns:50px 1fr 1fr 1fr;gap:6px;align-items:center">
+            <span></span>
+            <span style="text-align:center;font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">HOME</span>
+            <span style="text-align:center;font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">DRAW</span>
+            <span style="text-align:center;font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">AWAY</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#97A0AF">OPEN</span>
+            <div style="height:38px;border:1px solid #232A33;border-radius:9px;background:#0B0D10;display:flex;align-items:center;justify-content:center"><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;color:#97A0AF">44.0</span></div>
+            <div style="height:38px;border:1px solid #232A33;border-radius:9px;background:#0B0D10;display:flex;align-items:center;justify-content:center"><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;color:#97A0AF">27.5</span></div>
+            <div style="height:38px;border:1px solid #232A33;border-radius:9px;background:#0B0D10;display:flex;align-items:center;justify-content:center"><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;color:#97A0AF">28.5</span></div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C">NOW</span>
+            <div style="height:44px;border:1px solid #232A33;border-radius:9px;background:#0B0D10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums;color:{{nowHC}}">{{nowH}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:{{dHC}}">{{dH}}</span></div>
+            <div style="height:44px;border:1px solid #232A33;border-radius:9px;background:#0B0D10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums;color:{{nowDC}}">{{nowD}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:{{dDC}}">{{dD}}</span></div>
+            <div style="height:44px;border:1px solid #232A33;border-radius:9px;background:#0B0D10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums;color:{{nowAC}}">{{nowA}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:{{dAC}}">{{dA}}</span></div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#97A0AF">PEAK</span>
+            <div style="height:38px;border:1px solid #232A33;border-radius:9px;background:#0B0D10;display:flex;align-items:center;justify-content:center;gap:5px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#97A0AF">64.5</span><span style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#4A5364">55'</span></div>
+            <div style="height:38px;border:1px solid #232A33;border-radius:9px;background:#0B0D10;display:flex;align-items:center;justify-content:center;gap:5px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#97A0AF">29.0</span><span style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#4A5364">30'</span></div>
+            <div style="height:38px;border:1px solid #232A33;border-radius:9px;background:#0B0D10;display:flex;align-items:center;justify-content:center;gap:5px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#97A0AF">37.2</span><span style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#4A5364">20'</span></div>
+          </div>
+        </div>
+
+        <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:9px">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">YOUR POSITION</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.14);border-radius:999px;padding:2px 8px">HOME · 120 SH</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <div style="display:flex;align-items:baseline;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;color:#F5F7FA">{{posVal}}</span><span style="font-size:9.5px;color:#97A0AF">cr value</span></div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;color:{{posC}}">{{posPnl}}</span>
+          </div>
+          <div style="font-size:9.5px;color:#4A5364">Avg entry 54.2 · opened 12&#8242; &amp; 39&#8242;</div>
+        </div>
+
+        <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MATCH SUMMARY</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#FFB020;border:1px solid rgba(255,176,32,.35);border-radius:999px;padding:2px 7px">ADDED TIME 4</span></div>
+          <sc-if value="{{haltOn}}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;align-items:center;gap:8px"><span style="width:24px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#FFB020;flex:none">76'</span><span style="width:9px;height:9px;border-radius:50%;background:#FFB020;flex:none"></span><span style="flex:1;font-size:10.5px;font-weight:600;color:#F5F7FA">David — second goal</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#FFB020">61 → 79</span></div>
+          </sc-if>
+          <div style="display:flex;align-items:center;gap:8px"><span style="width:24px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF;flex:none">73'</span><span style="width:6px;height:9px;border-radius:2px;background:#FFB020;flex:none"></span><span style="flex:1;font-size:10.5px;color:#F5F7FA">Bombito — booked</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">CAN</span></div>
+          <div style="display:flex;align-items:center;gap:8px"><span style="width:24px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF;flex:none">67'</span><span style="width:8px;height:8px;border-radius:50%;border:1.5px solid #97A0AF;box-sizing:border-box;flex:none"></span><span style="flex:1;font-size:10.5px;color:#F5F7FA">Corner surge 7–2</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">MAR</span></div>
+          <div style="display:flex;align-items:center;gap:8px"><span style="width:24px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF;flex:none">61'</span><span style="font-size:10px;color:#97A0AF;flex:none">⇄</span><span style="flex:1;font-size:10.5px;color:#F5F7FA">Boufal ⇄ Amallah</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">MAR</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:700;color:#4A5364">HT</span><div style="flex:1;height:1px;background:#232A33"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">1–0 · H 62.9</span></div>
+          <div style="display:flex;align-items:center;gap:8px"><span style="width:24px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF;flex:none">38'</span><span style="width:9px;height:9px;border-radius:50%;background:#2BD97C;flex:none"></span><span onClick="{{goPlayer}}" style="flex:1;font-size:10.5px;font-weight:600;color:#F5F7FA;cursor:pointer">David</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C">41 → 63</span></div>
+        </div>
+
+        <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:9px">
+          <div style="display:flex;align-items:center;gap:8px">{{wave}}<span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C">THE BOOTH · {{boothMin}}</span></div>
+          <div style="font-size:12px;line-height:1.55;color:#F5F7FA">{{boothTxt}}</div>
+          <div style="font-size:10.5px;line-height:1.5;color:#4A5364;border-top:1px solid #232A33;padding-top:8px">38' — David finishes the counter; Canada reprices 41 → 63 inside ninety seconds.</div>
+        </div>
+
+        <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:9px">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">VENUE</span>
+          <div style="display:flex;align-items:center;gap:9px">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 21 C12 21 5 14.5 5 9.5 C5 5.9 8.1 3 12 3 C15.9 3 19 5.9 19 9.5 C19 14.5 12 21 12 21 Z" stroke="#4A5364" stroke-width="2"></path><circle cx="12" cy="9.5" r="2.5" stroke="#4A5364" stroke-width="2"></circle></svg>
+            <div><div style="font-size:11.5px;font-weight:600;color:#F5F7FA">BC Place</div><div style="font-size:9px;color:#4A5364;margin-top:1px">Vancouver · 54,500 · roof closed</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="min-width:0;display:flex;flex-direction:column;gap:12px">
+        <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;overflow:hidden">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px 0">
+            <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MOMENTUM RIVER — CAN WIN %</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">TICK 2.5S · LMSR FEED</span>
+          </div>
+          {{riverEl}}
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+          <div onClick="{{selH}}" style="cursor:pointer;border-radius:16px;padding:12px 14px;background:#14171C;border:1px solid {{cHBc}}">
+            <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9px;letter-spacing:.1em;color:#97A0AF;font-weight:600">HOME · CAN</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.14);border-radius:999px;padding:2px 6px">120 SH</span></div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:24px;margin-top:6px;font-variant-numeric:tabular-nums;color:{{cHC}}">{{cH}}</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;margin-top:2px;color:{{cHSubC}}">{{cHSub}}</div>
+          </div>
+          <div onClick="{{selD}}" style="cursor:pointer;border-radius:16px;padding:12px 14px;background:#14171C;border:1px solid {{cDBc}}">
+            <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9px;letter-spacing:.1em;color:#97A0AF;font-weight:600">DRAW</span></div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:24px;margin-top:6px;font-variant-numeric:tabular-nums;color:{{cDC}}">{{cD}}</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;margin-top:2px;color:{{cDSubC}}">{{cDSub}}</div>
+          </div>
+          <div onClick="{{selA}}" style="cursor:pointer;border-radius:16px;padding:12px 14px;background:#14171C;border:1px solid {{cABc}}">
+            <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9px;letter-spacing:.1em;color:#97A0AF;font-weight:600">AWAY · MAR</span></div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:24px;margin-top:6px;font-variant-numeric:tabular-nums;color:{{cAC}}">{{cA}}</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;margin-top:2px;color:{{cASubC}}">{{cASub}}</div>
+          </div>
+        </div>
+
+        <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 16px;display:flex;align-items:center;gap:14px;opacity:{{dockOp}}">
+          <div style="display:flex;background:#0B0D10;border:1px solid #232A33;border-radius:999px;padding:3px;flex:none;pointer-events:{{dockPe}}">
+            <div onClick="{{goBuy}}" style="padding:0 18px;height:34px;border-radius:999px;display:flex;align-items:center;font-weight:700;font-size:12.5px;cursor:pointer;background:{{buyBg}};color:{{buyC}}">Buy</div>
+            <div onClick="{{goSell}}" style="padding:0 18px;height:34px;border-radius:999px;display:flex;align-items:center;font-weight:700;font-size:12.5px;cursor:pointer;background:{{sellBg}};color:{{sellC}}">Sell</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:4px;pointer-events:{{dockPe}}">
+            <input type="range" min="10" max="500" step="10" value="{{dockSh}}" onChange="{{dockOn}}" style="width:100%">
+            <div style="display:flex;justify-content:space-between"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">10</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">500 shares</span></div>
+          </div>
+          <div style="display:flex;gap:16px;flex:none">
+            <div style="text-align:right"><div style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">SIZE</div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">{{dockShTxt}} sh</div></div>
+            <div style="text-align:right"><div style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">COST</div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">{{dockCost}}</div></div>
+            <div style="text-align:right"><div style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">AVG PX</div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">{{dockAvg}}</div></div>
+            <div style="text-align:right"><div style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">MAX PAYOUT</div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#2BD97C">{{dockPay}}</div></div>
+          </div>
+          <div style="height:42px;padding:0 20px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;cursor:pointer;background:{{dockCtaBg}};color:{{dockCtaC}};flex:none;pointer-events:{{dockPe}}"><span style="font-family:'IBM Plex Mono',monospace">{{dockCta}}</span></div>
+        </div>
+
+        <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">CONFIRMED LINEUPS — 74'</span>
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-size:12px;font-weight:700;color:#F5F7FA">Canada</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.16);border-radius:6px;padding:2px 8px">7.21</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#97A0AF">4-3-3</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">vs</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#97A0AF">4-1-4-1</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:#C9D1DC;background:#242B34;border-radius:6px;padding:2px 8px">6.81</span>
+              <span style="font-size:12px;font-weight:700;color:#F5F7FA">Morocco</span>
+            </div>
+          </div>
+          <div style="position:relative;height:430px;border-radius:12px;border:1px solid #232A33;overflow:hidden;background:repeating-linear-gradient(90deg,rgba(43,217,124,.028) 0px,rgba(43,217,124,.028) 52px,rgba(43,217,124,0) 52px,rgba(43,217,124,0) 104px),#0C1015">
+            <div style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:#232A33"></div>
+            <div style="position:absolute;left:50%;top:50%;width:88px;height:88px;border:1px solid #232A33;border-radius:50%;transform:translate(-50%,-50%)"></div>
+            <div style="position:absolute;left:-1px;top:50%;transform:translateY(-50%);width:56px;height:230px;border:1px solid #232A33;border-radius:0 10px 10px 0"></div>
+            <div style="position:absolute;right:-1px;top:50%;transform:translateY(-50%);width:56px;height:230px;border:1px solid #232A33;border-radius:10px 0 0 10px"></div>
+            <sc-for list="{{pitch}}" as="pl" hint-placeholder-count="22">
+              <div onClick="{{goPlayer}}" style="position:absolute;left:{{pl.x}};top:{{pl.y}};transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;width:78px;cursor:pointer">
+                <div style="position:relative">
+                  <div style="width:30px;height:30px;border-radius:50%;background:#171C22;background-image:{{pl.phBg}};background-size:cover;background-position:top center;border:1.5px solid {{pl.bc}};display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#F5F7FA"><span style="display:{{pl.iniDisp}}">{{pl.ini}}</span></div>
+                  <div style="position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);padding:1px 5px;border-radius:5px;background:{{pl.rBg}};font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:{{pl.rC}}">{{pl.r}}</div>
+                  <div style="position:absolute;top:-3px;right:-5px;width:8px;height:8px;border-radius:50%;background:#2BD97C;border:1.5px solid #0C1015;display:{{pl.gDisp}}"></div>
+                  <div style="position:absolute;top:-3px;left:-6px;width:6px;height:9px;border-radius:2px;background:#FFB020;display:{{pl.yDisp}}"></div>
+                </div>
+                <div style="margin-top:10px;font-size:8.5px;color:#97A0AF;white-space:nowrap;max-width:78px;overflow:hidden;text-overflow:ellipsis"><span style="font-family:'IBM Plex Mono',monospace;color:#4A5364">{{pl.num}}</span> {{pl.n}}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start">
+          <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MATCH STATS</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">CAN ■ / MAR ■</span></div>
+            <sc-for list="{{stats}}" as="s" hint-placeholder-count="8">
+              <div style="display:flex;flex-direction:column;gap:5px">
+                <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#F5F7FA">{{s.av}}</span><span style="font-size:9.5px;color:#97A0AF">{{s.l}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#F5F7FA">{{s.bv}}</span></div>
+                <div style="display:flex;gap:2px;height:4px"><span style="flex:{{s.fa}};background:#2BD97C;border-radius:2px"></span><span style="flex:{{s.fb}};background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+              <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">HEAD-TO-HEAD</span>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+                <div style="height:44px;border:1px solid #232A33;border-radius:10px;background:#0B0D10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#2BD97C">0</span><span style="font-size:7.5px;letter-spacing:.08em;color:#4A5364;font-weight:600">CAN WINS</span></div>
+                <div style="height:44px;border:1px solid #232A33;border-radius:10px;background:#0B0D10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#C9D1DC">1</span><span style="font-size:7.5px;letter-spacing:.08em;color:#4A5364;font-weight:600">DRAWS</span></div>
+                <div style="height:44px;border:1px solid #232A33;border-radius:10px;background:#0B0D10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#FF3D81">2</span><span style="font-size:7.5px;letter-spacing:.08em;color:#4A5364;font-weight:600">MAR WINS</span></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:7px;border-top:1px solid #232A33;padding-top:9px">
+                <div style="display:flex;align-items:center;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364;width:52px">2022 WC</span><span style="flex:1;font-size:10.5px;color:#F5F7FA">Morocco 2 – 1 Canada</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">Group F</span></div>
+                <div style="display:flex;align-items:center;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364;width:52px">2016 FR</span><span style="flex:1;font-size:10.5px;color:#F5F7FA">Canada 1 – 1 Morocco</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">Friendly</span></div>
+                <div style="display:flex;align-items:center;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364;width:52px">2010 FR</span><span style="flex:1;font-size:10.5px;color:#F5F7FA">Morocco 3 – 0 Canada</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">Friendly</span></div>
+              </div>
+            </div>
+            <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+              <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">OFFICIALS &amp; BENCH</span>
+              <div style="display:flex;align-items:center;gap:8px"><div style="width:26px;height:26px;border-radius:50%;background:#171C22;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF;flex:none">FR</div><div style="flex:1"><div style="font-size:11px;font-weight:600;color:#F5F7FA">F. Ramos — referee</div><div style="font-size:8.5px;color:#4A5364;margin-top:1px">Uruguay · 4.8 yellows/gm</div></div></div>
+              <div style="display:flex;align-items:center;gap:8px"><div style="width:26px;height:26px;border-radius:50%;background:#171C22;border:1px solid rgba(43,217,124,.45);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF;flex:none">JM</div><div style="flex:1"><div style="font-size:11px;font-weight:600;color:#F5F7FA">J. Marsch</div><div style="font-size:8.5px;color:#4A5364;margin-top:1px">Canada manager</div></div></div>
+              <div style="display:flex;align-items:center;gap:8px"><div style="width:26px;height:26px;border-radius:50%;background:#171C22;border:1px solid rgba(255,61,129,.45);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF;flex:none">WR</div><div style="flex:1"><div style="font-size:11px;font-weight:600;color:#F5F7FA">W. Regragui</div><div style="font-size:8.5px;color:#4A5364;margin-top:1px">Morocco manager</div></div></div>
+              <div style="font-size:9px;line-height:1.7;color:#4A5364;border-top:1px solid #232A33;padding-top:8px">CAN bench — St. Clair · Osorio · Shaffelburg · Oluwaseyi<br>MAR bench — Munir · El Khannouss · Ezzalzouli · Boufal 61'</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{pgComp}}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Competition — WC26 bracket" style="max-width:1512px;margin:0 auto;padding:12px 12px 4px">
+    <div style="display:flex;align-items:center;gap:12px;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 18px">
+      <div style="width:42px;height:42px;border-radius:12px;background:#0B0D10;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;color:#F5F7FA">WC</div>
+      <div style="flex:1"><div style="font-family:'Figtree',sans-serif;font-weight:800;font-size:17px;color:#F5F7FA">FIFA WORLD CUP 2026 — KNOCKOUT</div><div style="font-size:10px;color:#97A0AF;margin-top:2px">USA · Canada · Mexico — Jun 11 → Jul 19 · 48 teams · 104 matches</div></div>
+      <div style="display:flex;align-items:center;gap:6px">{{liveDot}}<span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#2BD97C">3 LIVE</span></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 316px;gap:12px;padding-top:12px;align-items:start">
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">BRACKET — TAP A TIE TO TRADE</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">PRICES = HOME / DRAW / AWAY</span></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;align-items:start">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:8.5px;letter-spacing:.12em;color:#4A5364;font-weight:700;text-align:center">ROUND OF 16</div>
+            <sc-for list="{{r16Ties}}" as="q" hint-placeholder-count="8">
+              <div onClick="{{q.go}}" style="border:1px solid #232A33;border-radius:12px;background:#0B0D10;padding:9px 10px;display:flex;flex-direction:column;gap:6px;cursor:pointer" style-hover="border-color:#3B4450">
+                <div style="display:flex;align-items:center;gap:7px">
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:#F5F7FA">{{q.a}}</span>
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF">{{q.s}}</span>
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:#F5F7FA">{{q.b}}</span>
+                  <span style="flex:1"></span>
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:{{q.tC}}">{{q.t}}</span>
+                </div>
+                <div style="display:flex;gap:4px">
+                  <span style="flex:1;height:20px;border:1px solid #232A33;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:#F5F7FA">{{q.h}}</span>
+                  <span style="flex:1;height:20px;border:1px solid #232A33;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:#97A0AF">{{q.d}}</span>
+                  <span style="flex:1;height:20px;border:1px solid #232A33;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:#F5F7FA">{{q.p}}</span>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;padding-top:26px">
+            <div style="font-size:8.5px;letter-spacing:.12em;color:#4A5364;font-weight:700;text-align:center;margin-top:-26px">QUARTER-FINALS</div>
+            <sc-for list="{{qfTies}}" as="q" hint-placeholder-count="4">
+              <div style="border:1px dashed #232A33;border-radius:12px;background:transparent;padding:10px;display:flex;flex-direction:column;gap:5px;margin-top:34px">
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#97A0AF">{{q.a}}</div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#97A0AF">{{q.b}}</div>
+                <div style="font-size:8px;color:#4A5364">{{q.dt}}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;padding-top:26px">
+            <div style="font-size:8.5px;letter-spacing:.12em;color:#4A5364;font-weight:700;text-align:center;margin-top:-26px">SEMI-FINALS</div>
+            <sc-for list="{{sfTies}}" as="q" hint-placeholder-count="2">
+              <div style="border:1px dashed #232A33;border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:5px;margin-top:118px">
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#97A0AF">{{q.a}}</div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#97A0AF">{{q.b}}</div>
+                <div style="font-size:8px;color:#4A5364">{{q.dt}}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;padding-top:26px">
+            <div style="font-size:8.5px;letter-spacing:.12em;color:#4A5364;font-weight:700;text-align:center;margin-top:-26px">FINAL</div>
+            <div style="border:1px solid rgba(255,176,32,.35);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:6px;margin-top:250px;background:rgba(255,176,32,.04)">
+              <div style="font-family:'Figtree',sans-serif;font-weight:800;font-size:12px;color:#FFB020">THE FINAL</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF">Winner SF1 v Winner SF2</div>
+              <div style="font-size:8px;color:#4A5364">Jul 19 · MetLife Stadium, NY/NJ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:12px 6px 6px;display:flex;flex-direction:column;gap:2px">
+          <div style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600;padding:0 8px 8px">BIGGEST SWINGS — KNOCKOUT</div>
+          <sc-for list="{{swings}}" as="sw" hint-placeholder-count="5">
+            <div style="display:flex;align-items:center;gap:9px;padding:7px 8px;border-radius:9px" style-hover="background:#1A2028">
+              <div style="flex:1;min-width:0"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:#F5F7FA">{{sw.m}}</div><div style="font-size:9px;color:#4A5364;margin-top:1px">{{sw.ev}}</div></div>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:#2BD97C">{{sw.dl}}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="background:#14171C;border:1px solid rgba(157,107,255,.35);border-radius:16px;padding:12px 6px 6px;display:flex;flex-direction:column;gap:2px">
+          <div style="display:flex;align-items:center;gap:7px;padding:0 8px 8px"><span style="color:#9D6BFF;font-size:10px">◆</span><span style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600">SETTLEMENT LOG — DEVNET</span></div>
+          <sc-for list="{{slog}}" as="sl" hint-placeholder-count="6">
+            <div onClick="{{sl.go}}" style="display:flex;align-items:center;gap:9px;padding:6px 8px;border-radius:9px;cursor:pointer" style-hover="background:#1A2028">
+              <span style="flex:1;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#F5F7FA">{{sl.m}}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#97A0AF">{{sl.res}}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#9D6BFF">{{sl.sig}} ↗</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600">TOURNAMENT PULSE</span>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div style="border:1px solid #232A33;border-radius:10px;background:#0B0D10;padding:9px 10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;color:#F5F7FA">88,410</div><div style="font-size:8px;letter-spacing:.06em;color:#4A5364;font-weight:600;margin-top:2px">TRADERS</div></div>
+            <div style="border:1px solid #232A33;border-radius:10px;background:#0B0D10;padding:9px 10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;color:#F5F7FA">4.2M</div><div style="font-size:8px;letter-spacing:.06em;color:#4A5364;font-weight:600;margin-top:2px">TRADES</div></div>
+            <div style="border:1px solid #232A33;border-radius:10px;background:#0B0D10;padding:9px 10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;color:#9D6BFF">88</div><div style="font-size:8px;letter-spacing:.06em;color:#4A5364;font-weight:600;margin-top:2px">PROOFS POSTED</div></div>
+            <div style="border:1px solid #232A33;border-radius:10px;background:#0B0D10;padding:9px 10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;color:#F5F7FA">7,214</div><div style="font-size:8px;letter-spacing:.06em;color:#4A5364;font-weight:600;margin-top:2px">MOMENTS MINTED</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{pgTeam}}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Team — Canada" style="max-width:1512px;margin:0 auto;padding:12px 12px 4px">
+    <div style="display:flex;align-items:center;gap:8px;padding:0 4px 10px">
+      <span onClick="{{goHome}}" style="font-size:10.5px;color:#97A0AF;cursor:pointer">Matches</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">›</span>
+      <span style="font-size:10.5px;font-weight:600;color:#F5F7FA">Canada</span>
+    </div>
+    <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:16px 18px;display:flex;align-items:center;gap:16px">
+      <img src="https://flagcdn.com/w160/ca.png" alt="Canada" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:1px solid rgba(43,217,124,.5)">
+      <div style="flex:1">
+        <div style="font-family:'Figtree',sans-serif;font-weight:800;font-size:19px;color:#F5F7FA">CANADA</div>
+        <div style="font-size:10px;color:#97A0AF;margin-top:3px">FIFA #28 · Group B winners · Manager J. Marsch · Co-host</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px;align-items:flex-end">
+        <span style="font-size:8.5px;letter-spacing:.1em;color:#4A5364;font-weight:600">WC26 FORM</span>
+        <div style="display:flex;gap:4px">
+          <sc-for list="{{form}}" as="fm" hint-placeholder-count="5">
+            <span style="width:22px;height:22px;border-radius:7px;background:{{fm.bg}};color:{{fm.c}};display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700">{{fm.l}}</span>
+          </sc-for>
+        </div>
+      </div>
+      <div onClick="{{goMatch}}" style="height:38px;padding:0 16px;border-radius:999px;background:#2BD97C;color:#052014;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;cursor:pointer">{{liveDot}}LIVE · trade CAN–MAR</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:340px 1fr;gap:12px;padding-top:12px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">WORLD CUP PATH</span>
+          <sc-for list="{{path}}" as="pt" hint-placeholder-count="4">
+            <div style="display:flex;align-items:flex-start;gap:9px">
+              <span style="width:7px;height:7px;border-radius:50%;background:{{pt.stC}};margin-top:4px;flex:none"></span>
+              <div style="flex:1;min-width:0"><div style="font-size:11.5px;font-weight:600;color:#F5F7FA">{{pt.l}}</div><div style="font-size:9.5px;color:#4A5364;margin-top:2px;line-height:1.5">{{pt.s}}</div></div>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:{{pt.stC}}">{{pt.st}}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:9px">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">TOURNAMENT MARKET</span>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:11px;color:#F5F7FA">Canada to win WC26</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#F5F7FA">8.4</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:11px;color:#F5F7FA">Canada to reach final</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#F5F7FA">19.2</span>
+          </div>
+          <div style="font-size:9px;color:#4A5364;border-top:1px solid #232A33;padding-top:8px">Futures settle at tournament end · proofs on devnet</div>
+        </div>
+        <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">NEXT FIXTURE</span>
+          <div style="font-size:12px;font-weight:600;color:#F5F7FA">QF1 — vs ESP / JPN winner</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF">Thu Jul 9 · 18:00 CT · Dallas</div>
+        </div>
+      </div>
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">SQUAD — WC26 RATINGS</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">TAP A PLAYER</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 14px">
+          <sc-for list="{{squad}}" as="sq" hint-placeholder-count="16">
+            <div onClick="{{sq.go}}" style="display:flex;align-items:center;gap:9px;padding:7px 8px;border-radius:9px;cursor:pointer" style-hover="background:#1A2028">
+              <span style="width:26px;height:26px;border-radius:50%;background:#171C22;border:1.5px solid rgba(43,217,124,.45);display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#F5F7FA;flex:none">{{sq.ini}}</span>
+              <span style="flex:1;font-size:11.5px;font-weight:600;color:#F5F7FA;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{sq.n}}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364;width:24px">{{sq.pos}}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:{{sq.rC}};background:{{sq.rBg}};border-radius:5px;padding:1px 6px">{{sq.r}}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{pgPlayer}}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Player — Jonathan David" style="max-width:1512px;margin:0 auto;padding:12px 12px 4px">
+    <div style="display:flex;align-items:center;gap:8px;padding:0 4px 10px">
+      <span onClick="{{goHome}}" style="font-size:10.5px;color:#97A0AF;cursor:pointer">Matches</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">›</span>
+      <span onClick="{{goTeam}}" style="font-size:10.5px;color:#97A0AF;cursor:pointer">Canada</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">›</span>
+      <span style="font-size:10.5px;font-weight:600;color:#F5F7FA">Jonathan David</span>
+    </div>
+    <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:16px 18px;display:flex;align-items:center;gap:16px">
+      <div style="width:52px;height:52px;border-radius:50%;background:#171C22;background-image:{{pDavBg}};background-size:cover;background-position:top center;border:1.5px solid rgba(43,217,124,.55);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:#F5F7FA"><span style="display:{{pDavIniD}}">DV</span></div>
+      <div style="flex:1">
+        <div style="font-family:'Figtree',sans-serif;font-weight:800;font-size:19px;color:#F5F7FA">JONATHAN DAVID</div>
+        <div style="font-size:10px;color:#97A0AF;margin-top:3px">Canada · #9 · Striker · 26 yrs · Juventus</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <div style="border:1px solid #232A33;border-radius:12px;background:#0B0D10;padding:9px 14px;text-align:center"><div style="font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:#2BD97C">8.2</div><div style="font-size:7.5px;letter-spacing:.08em;color:#4A5364;font-weight:600;margin-top:2px">LIVE RATING</div></div>
+        <div style="border:1px solid #232A33;border-radius:12px;background:#0B0D10;padding:9px 14px;text-align:center"><div style="font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:#F5F7FA">4</div><div style="font-size:7.5px;letter-spacing:.08em;color:#4A5364;font-weight:600;margin-top:2px">WC26 GOALS</div></div>
+        <div style="border:1px solid #232A33;border-radius:12px;background:#0B0D10;padding:9px 14px;text-align:center"><div style="font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:#F5F7FA">7.6</div><div style="font-size:7.5px;letter-spacing:.08em;color:#4A5364;font-weight:600;margin-top:2px">AVG RATING</div></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 340px;gap:12px;padding-top:12px;align-items:start">
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:11px">
+        <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">WC26 SEASON</span>
+        <sc-for list="{{sbars}}" as="sb" hint-placeholder-count="5">
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:10px;color:#97A0AF">{{sb.l}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#F5F7FA">{{sb.v}}</span></div>
+            <div style="height:4px;background:#0B0D10;border-radius:2px"><span style="display:block;height:4px;width:{{sb.w}};background:#2BD97C;border-radius:2px"></span></div>
+          </div>
+        </sc-for>
+        <div style="border-top:1px solid #232A33;padding-top:10px;display:flex;flex-direction:column;gap:11px">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">ATTRIBUTES</span>
+          <sc-for list="{{attrs}}" as="ab" hint-placeholder-count="5">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="width:64px;font-size:10px;color:#97A0AF">{{ab.l}}</span>
+              <div style="flex:1;height:4px;background:#0B0D10;border-radius:2px"><span style="display:block;height:4px;width:{{ab.w}};background:#2BD97C;border-radius:2px;opacity:.85"></span></div>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:#F5F7FA;width:22px;text-align:right">{{ab.v}}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MATCHES — WC26</span>
+        <sc-for list="{{plast}}" as="pm" hint-placeholder-count="5">
+          <div onClick="{{goMatch}}" style="display:flex;align-items:center;gap:9px;padding:7px 8px;border-radius:9px;cursor:pointer;margin:0 -8px" style-hover="background:#1A2028">
+            <div style="flex:1;min-width:0"><div style="font-size:11.5px;font-weight:600;color:#F5F7FA">{{pm.m}}</div><div style="font-size:9px;color:#4A5364;margin-top:1px">{{pm.dt}} · {{pm.g}}</div></div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:{{pm.rC}};background:{{pm.rBg}};border-radius:5px;padding:2px 6px">{{pm.r}}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="background:#14171C;border:1px solid rgba(43,217,124,.35);border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:9px">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MARKET IMPACT — LIVE</span>
+          <div style="font-size:12px;line-height:1.55;color:#F5F7FA">His 38&#8242; goal repriced Canada <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#2BD97C">41 → 63</span> — the biggest single-player swing of the Round of 16.</div>
+          <div style="display:flex;align-items:center;gap:8px;border-top:1px solid #232A33;padding-top:9px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">SWING VALUE</span>
+            <span style="flex:1"></span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#2BD97C">+22.0 pts</span>
+          </div>
+        </div>
+        <div onClick="{{goMoments}}" style="background:#14171C;border:1px solid rgba(157,107,255,.4);border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:8px;cursor:pointer">
+          <div style="display:flex;align-items:center;gap:7px"><span style="color:#9D6BFF;font-size:10px">◆</span><span style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600">FEATURED IN MOMENTS</span></div>
+          <div style="font-family:'Figtree',sans-serif;font-weight:800;font-size:14px;color:#F5F7FA">THE 38TH MINUTE</div>
+          <div style="font-size:10px;color:#97A0AF">CAN–MAR · minted 214 times · floor 380 cr</div>
+        </div>
+        <div onClick="{{goTeam}}" style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;align-items:center;gap:10px;cursor:pointer">
+          <img src="https://flagcdn.com/w40/ca.png" alt="Canada" style="width:30px;height:30px;border-radius:50%;object-fit:cover;border:1px solid rgba(43,217,124,.45)">
+          <div style="flex:1"><div style="font-size:11.5px;font-weight:600;color:#F5F7FA">Canada squad</div><div style="font-size:9px;color:#4A5364;margin-top:1px">Full ratings &amp; path</div></div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#97A0AF">›</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{pgPort}}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Portfolio" style="max-width:1512px;margin:0 auto;padding:12px 12px 4px">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 280px;gap:12px">
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px"><div style="font-size:8.5px;letter-spacing:.1em;color:#4A5364;font-weight:600">AVAILABLE CREDITS</div><div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:#F5F7FA;margin-top:6px">2,450</div><div style="font-size:9px;color:#4A5364;margin-top:3px">Next daily claim in 4h 12m</div></div>
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px"><div style="font-size:8.5px;letter-spacing:.1em;color:#4A5364;font-weight:600">EQUITY</div><div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:#F5F7FA;margin-top:6px">{{eqVal}}</div><div style="font-size:9px;color:#4A5364;margin-top:3px">Credits + open positions at mark</div></div>
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px"><div style="font-size:8.5px;letter-spacing:.1em;color:#4A5364;font-weight:600">UNREALIZED P&amp;L</div><div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:{{eqPnlC}};margin-top:6px">{{eqPnl}}</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:{{eqPnlC}};margin-top:3px">{{eqPct}} on open cost</div></div>
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:12px 14px">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:8.5px;letter-spacing:.1em;color:#4A5364;font-weight:600">EQUITY — 7 DAYS</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#2BD97C">+34.8%</span></div>
+        <svg viewBox="0 0 252 60" width="100%" height="60" style="display:block;margin-top:4px">
+          <path d="{{eqArea}}" fill="rgba(43,217,124,.12)"></path>
+          <path d="{{eqPath}}" fill="none" stroke="#2BD97C" stroke-width="1.8" stroke-linejoin="round"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 340px;gap:12px;padding-top:12px;align-items:start">
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;overflow:hidden">
+        <div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid #1A2028"><span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">OPEN POSITIONS</span><span style="flex:1"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">MARKED TO LIVE PRICE</span></div>
+        <div style="display:grid;grid-template-columns:1.4fr 76px 56px 62px 70px 84px 90px 54px;gap:8px;padding:8px 16px;border-bottom:1px solid #1A2028">
+          <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">MATCH</span>
+          <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">OUTCOME</span>
+          <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600;text-align:right">SHARES</span>
+          <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600;text-align:right">AVG</span>
+          <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600;text-align:right">NOW</span>
+          <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600;text-align:right">VALUE</span>
+          <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600;text-align:right">P&amp;L</span>
+          <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600;text-align:right">STATE</span>
+        </div>
+        <sc-for list="{{posRows}}" as="p" hint-placeholder-count="4">
+          <div onClick="{{p.go}}" style="display:grid;grid-template-columns:1.4fr 76px 56px 62px 70px 84px 90px 54px;gap:8px;padding:11px 16px;border-bottom:1px solid #1A2028;cursor:pointer;align-items:center" style-hover="background:#171C22">
+            <span style="font-size:11.5px;font-weight:600;color:#F5F7FA">{{p.m}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:{{p.outC}}">{{p.out}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#F5F7FA;text-align:right">{{p.sh}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#97A0AF;text-align:right">{{p.avg}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;font-variant-numeric:tabular-nums;color:{{p.nowC}};text-align:right">{{p.now}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#F5F7FA;text-align:right">{{p.val}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:{{p.pnlC}};text-align:right">{{p.pnl}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:{{p.stC}};text-align:right">{{p.st}}</span>
+          </div>
+        </sc-for>
+        <div style="padding:11px 16px;display:flex;align-items:center;gap:8px">
+          <span style="font-size:9.5px;color:#4A5364">Positions settle automatically at full time — winning shares pay 100 cr.</span>
+          <span style="flex:1"></span>
+          <span style="color:#9D6BFF;font-size:9px">◆</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">PROOFS ON DEVNET</span>
+        </div>
+      </div>
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:12px 6px 6px;display:flex;flex-direction:column;gap:2px">
+        <div style="display:flex;align-items:center;padding:0 8px 8px"><span style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600">RECENT FILLS</span><span style="flex:1"></span><span onClick="{{goHist}}" style="font-size:9.5px;color:#4A5364;cursor:pointer">All →</span></div>
+        <sc-for list="{{pfills}}" as="fl" hint-placeholder-count="6">
+          <div style="display:flex;align-items:center;gap:9px;padding:7px 8px;border-radius:9px" style-hover="background:#1A2028">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364;width:48px">{{fl.t}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;color:{{fl.sideC}};width:38px">{{fl.side}}</span>
+            <div style="flex:1;min-width:0"><div style="font-size:10.5px;font-weight:600;color:#F5F7FA">{{fl.m}}</div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#4A5364;margin-top:1px">{{fl.out}} · {{fl.sh}} sh @ {{fl.px}}</div></div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF">{{fl.cost}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{pgLead}}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Leaderboard" style="max-width:1512px;margin:0 auto;padding:12px 12px 4px">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+      <sc-for list="{{top3}}" as="t3" hint-placeholder-count="3">
+        <div onClick="{{t3.go}}" style="background:#14171C;border:1px solid {{t3.bc}};border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer">
+          <span style="font-family:'Figtree',sans-serif;font-weight:900;font-size:22px;color:#F5F7FA;width:30px">{{t3.r}}</span>
+          <span style="width:34px;height:34px;border-radius:50%;background:#0B0D10;background-image:{{t3.av}};background-size:cover;background-position:center;border:1px solid #232A33;flex:none"></span>
+          <div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:700;color:#F5F7FA">{{t3.h}}</div><div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364;margin-top:2px">{{t3.tr}} trades · ROI {{t3.roi}}</div></div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#2BD97C">{{t3.p}}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;overflow:hidden;margin-top:12px">
+      <div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid #1A2028">
+        <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">TOURNAMENT LEADERBOARD</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364;margin-left:10px">88,410 TRADERS</span>
+        <span style="flex:1"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">P&amp;L IN CREDITS · RESETS NEVER</span>
+      </div>
+      <div style="display:grid;grid-template-columns:44px 1fr 110px 90px 80px 60px;gap:8px;padding:8px 16px;border-bottom:1px solid #1A2028">
+        <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">#</span>
+        <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">TRADER</span>
+        <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600;text-align:right">P&amp;L</span>
+        <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600;text-align:right">ROI</span>
+        <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600;text-align:right">TRADES</span>
+        <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600;text-align:right">24H</span>
+      </div>
+      <sc-for list="{{lb}}" as="r" hint-placeholder-count="22">
+        <div onClick="{{r.go}}" style="display:grid;grid-template-columns:44px 1fr 110px 90px 80px 60px;gap:8px;padding:9px 16px;border-bottom:1px solid #1A2028;cursor:pointer;align-items:center" style-hover="background:#171C22">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#4A5364">{{r.r}}</span>
+          <div style="display:flex;align-items:center;gap:9px"><span style="width:24px;height:24px;border-radius:50%;background:#0B0D10;background-image:{{r.av}};background-size:cover;background-position:center;border:1px solid #232A33;flex:none"></span><span style="font-size:11.5px;font-weight:600;color:#F5F7FA">{{r.h}}</span></div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:#2BD97C;text-align:right">{{r.p}}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#97A0AF;text-align:right">{{r.roi}}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#97A0AF;text-align:right">{{r.tr}}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:{{r.mvC}};text-align:right">{{r.mv}}</span>
+        </div>
+      </sc-for>
+      <div style="display:grid;grid-template-columns:44px 1fr 110px 90px 80px 60px;gap:8px;padding:11px 16px;align-items:center;background:rgba(43,217,124,.06);border-top:1px solid rgba(43,217,124,.3)">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#2BD97C">142</span>
+        <div style="display:flex;align-items:center;gap:9px"><span style="width:24px;height:24px;border-radius:50%;background:#232A33;display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#F5F7FA;flex:none">VD</span><span style="font-size:11.5px;font-weight:700;color:#F5F7FA">@you</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.14);border-radius:999px;padding:2px 7px">YOUR RANK</span></div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:#2BD97C;text-align:right">+1,214</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#97A0AF;text-align:right">+18.3%</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#97A0AF;text-align:right">23</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#2BD97C;text-align:right">▲3</span>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{pgMom}}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Moments gallery" style="max-width:1512px;margin:0 auto;padding:12px 12px 4px">
+    <div style="display:flex;align-items:center;gap:12px;background:#14171C;border:1px solid rgba(157,107,255,.35);border-radius:16px;padding:14px 18px">
+      <span style="color:#9D6BFF;font-size:14px">◆</span>
+      <div style="flex:1"><div style="font-family:'Figtree',sans-serif;font-weight:800;font-size:17px;color:#F5F7FA">MOMENTS</div><div style="font-size:10px;color:#97A0AF;margin-top:2px">Market swings minted as collectibles · 7,214 minted this tournament · proofs on Solana devnet</div></div>
+      <div style="display:flex;gap:6px">
+        <span style="height:28px;padding:0 12px;border-radius:999px;background:#F5F7FA;color:#0B0D10;display:inline-flex;align-items:center;font-size:10.5px;font-weight:600;cursor:pointer">All</span>
+        <span style="height:28px;padding:0 12px;border-radius:999px;border:1px solid #232A33;color:#97A0AF;display:inline-flex;align-items:center;font-size:10.5px;font-weight:600;cursor:pointer">Mine · 3</span>
+        <span style="height:28px;padding:0 12px;border-radius:999px;border:1px solid #232A33;color:#97A0AF;display:inline-flex;align-items:center;font-size:10.5px;font-weight:600;cursor:pointer">Epic</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding-top:12px">
+      <sc-for list="{{mom}}" as="mo" hint-placeholder-count="8">
+        <div style="background:#14171C;border:1px solid {{mo.bc}};border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:9px;cursor:pointer" style-hover="border-color:rgba(157,107,255,.7)">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.1em;color:{{mo.rC}};background:{{mo.rBg}};border-radius:999px;padding:2px 8px">{{mo.r}}</span>
+            <span style="color:#9D6BFF;font-size:9px">◆</span>
+          </div>
+          <svg viewBox="0 0 120 40" width="100%" height="52" style="display:block"><polyline points="{{mo.spk}}" fill="none" stroke="#9D6BFF" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" opacity=".9"></polyline></svg>
+          <div>
+            <div style="font-family:'Figtree',sans-serif;font-weight:800;font-size:13px;color:#F5F7FA">{{mo.t}}</div>
+            <div style="font-size:9px;color:#4A5364;margin-top:3px">{{mo.s}}</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;border-top:1px solid #232A33;padding-top:9px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#9D6BFF">{{mo.sw}}</span>
+            <span style="flex:1"></span>
+            <span style="font-size:9px;color:#97A0AF">{{mo.own}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#4A5364">{{mo.sig}}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{pgProfile}}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Trader profile" style="max-width:1512px;margin:0 auto;padding:12px 12px 4px">
+    <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:16px 18px;display:flex;align-items:center;gap:16px">
+      <div style="width:52px;height:52px;border-radius:50%;background:#0B0D10;background-image:url('https://randomuser.me/api/portraits/med/men/75.jpg');background-size:cover;background-position:center;border:1px solid #232A33;flex:none"></div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:10px"><span style="font-family:'Figtree',sans-serif;font-weight:800;font-size:19px;color:#F5F7FA">@hexfan</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.14);border-radius:999px;padding:2px 8px">RANK #2</span></div>
+        <div style="font-size:10px;color:#97A0AF;margin-top:3px">Trading since group stage · 1,204 followers · follows CAN, MAR, USA</div>
+      </div>
+      <div style="height:36px;padding:0 18px;border-radius:999px;background:#2BD97C;color:#052014;display:flex;align-items:center;font-size:12px;font-weight:700;cursor:pointer">Follow</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding-top:12px">
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 16px"><div style="font-size:8.5px;letter-spacing:.1em;color:#4A5364;font-weight:600">TOURNAMENT P&amp;L</div><div style="font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;color:#2BD97C;margin-top:5px">+16,810</div></div>
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 16px"><div style="font-size:8.5px;letter-spacing:.1em;color:#4A5364;font-weight:600">WIN RATE</div><div style="font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;color:#F5F7FA;margin-top:5px">61%</div></div>
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 16px"><div style="font-size:8.5px;letter-spacing:.1em;color:#4A5364;font-weight:600">BEST SWING</div><div style="font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;color:#F5F7FA;margin-top:5px">+842</div></div>
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 16px"><div style="font-size:8.5px;letter-spacing:.1em;color:#4A5364;font-weight:600">STREAK</div><div style="font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;color:#F5F7FA;margin-top:5px">6 <span style="font-size:10px;color:#2BD97C">settles</span></div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 340px;gap:12px;padding-top:12px;align-items:start">
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;overflow:hidden">
+        <div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid #1A2028"><span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">RECENT TRADES</span><span style="flex:1"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">PUBLIC</span></div>
+        <sc-for list="{{ptr}}" as="tr" hint-placeholder-count="6">
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid #1A2028" style-hover="background:#171C22">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364;width:52px">{{tr.t}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;color:{{tr.sideC}};width:44px">{{tr.side}}</span>
+            <span style="flex:1;font-size:11.5px;font-weight:600;color:#F5F7FA">{{tr.m}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#97A0AF">{{tr.out}} · {{tr.sh}} sh</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:#F5F7FA">@ {{tr.px}}</span>
+          </div>
+        </sc-for>
+        <div style="padding:10px 16px;font-size:9.5px;color:#4A5364">Position flair shows in match chat: "holding CAN · 120"</div>
+      </div>
+      <div style="background:#14171C;border:1px solid rgba(157,107,255,.35);border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:7px"><span style="color:#9D6BFF;font-size:10px">◆</span><span style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MOMENTS SHELF — 3</span></div>
+        <sc-for list="{{pmom}}" as="pm" hint-placeholder-count="3">
+          <div onClick="{{goMoments}}" style="border:1px solid #232A33;border-radius:12px;background:#0B0D10;padding:10px 12px;display:flex;align-items:center;gap:11px;cursor:pointer" style-hover="border-color:rgba(157,107,255,.5)">
+            <svg viewBox="0 0 84 30" width="84" height="30" style="display:block;flex:none"><polyline points="{{pm.spk}}" fill="none" stroke="#9D6BFF" stroke-width="1.6" stroke-linejoin="round" opacity=".9"></polyline></svg>
+            <div style="flex:1;min-width:0"><div style="font-family:'Figtree',sans-serif;font-weight:800;font-size:11px;color:#F5F7FA;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{pm.t}}</div><div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#9D6BFF;margin-top:2px">{{pm.sw}}</div></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{pgHist}}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Trade history" style="max-width:1512px;margin:0 auto;padding:12px 12px 4px">
+    <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;overflow:hidden">
+      <div style="display:flex;align-items:center;gap:6px;padding:12px 16px;border-bottom:1px solid #1A2028">
+        <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">TRADE HISTORY</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364;margin-left:6px">{{hCount}} FILLS · SAT JUL 5</span>
+        <span style="flex:1"></span>
+        <sc-for list="{{hf}}" as="hfc" hint-placeholder-count="6">
+          <span onClick="{{hfc.go}}" style="height:26px;padding:0 12px;border-radius:999px;border:1px solid {{hfc.bc}};background:{{hfc.bg}};color:{{hfc.c}};display:inline-flex;align-items:center;font-size:10px;font-weight:600;cursor:pointer">{{hfc.l}}</span>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:76px 56px 1fr 76px 76px 64px 72px 90px;gap:8px;padding:8px 16px;border-bottom:1px solid #1A2028">
+        <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">TIME</span>
+        <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">CLOCK</span>
+        <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">MATCH</span>
+        <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">SIDE</span>
+        <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">OUTCOME</span>
+        <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600;text-align:right">SHARES</span>
+        <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600;text-align:right">PRICE</span>
+        <span style="font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600;text-align:right">TOTAL CR</span>
+      </div>
+      <sc-for list="{{hrows}}" as="h" hint-placeholder-count="14">
+        <div onClick="{{h.go}}" style="display:grid;grid-template-columns:76px 56px 1fr 76px 76px 64px 72px 90px;gap:8px;padding:9px 16px;border-bottom:1px solid #1A2028;cursor:pointer;align-items:center" style-hover="background:#171C22">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#4A5364">{{h.t}}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF">{{h.min}}</span>
+          <span style="font-size:11.5px;font-weight:600;color:#F5F7FA">{{h.m}}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;color:{{h.sideC}}">{{h.side}}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF">{{h.out}}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#F5F7FA;text-align:right">{{h.sh}}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#F5F7FA;text-align:right">{{h.px}}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:#97A0AF;text-align:right">{{h.cost}}</span>
+        </div>
+      </sc-for>
+      <div style="padding:11px 16px;display:flex;align-items:center;gap:8px">
+        <span style="font-size:9.5px;color:#4A5364">SETTLE rows are automatic payouts — winning shares redeem at 100 cr.</span>
+        <span style="flex:1"></span>
+        <span style="color:#9D6BFF;font-size:9px">◆</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">EVERY SETTLEMENT HAS A DEVNET PROOF</span>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <div style="height:34px;border-top:1px solid #232A33;display:flex;align-items:center;gap:14px;padding:0 20px;margin-top:12px">
+    <span style="font-size:9.5px;color:#4A5364">OMNIPITCH is a free-to-play game. Credits are play money and have no cash value.</span>
+    <span style="flex:1"></span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.06em;color:#4A5364">LMSR PRICING · PROOFS ON SOLANA DEVNET · FEED 42 MS</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;live&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Market simulation&quot;},
+  &quot;flashMs&quot;: {&quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 200, &quot;min&quot;: 100, &quot;max&quot;: 420, &quot;step&quot;: 20, &quot;unit&quot;: &quot;ms&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Market simulation&quot;}
+}">
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    const UP='#2BD97C',DN='#FF3D81',HI='#F5F7FA',LO='#97A0AF',DIM='#4A5364',LINE='#232A33',AMB='#FFB020',VIO='#9D6BFF';
+    this.C={UP,DN,HI,LO,DIM,LINE,AMB,VIO};
+    this.MONO="'IBM Plex Mono',monospace";
+    this.ISO={CAN:'ca',MAR:'ma',ESP:'es',JPN:'jp',ARG:'ar',MEX:'mx',ENG:'gb-eng',SEN:'sn',GER:'de',COL:'co',BRA:'br',USA:'us',PAR:'py',FRA:'fr',AUS:'au',EGY:'eg',JAM:'jm',CIV:'ci',KOR:'kr',CRO:'hr',NOR:'no',AUT:'at',URU:'uy',POL:'pl'};
+    this.FL=(c)=>{const i=this.ISO[c];if(!i)return '';const r=(window.__resources||{})['fl_'+i.replace('-','_')];return r||('https://flagcdn.com/w40/'+i+'.png');};
+    this.state={page:'home',tab:'live',halted:false,h:61.4,d:22.1,a:16.5,hFl:null,dFl:null,aFl:null,
+      favs:{m1:true,m2:true},dockOut:'H',dockSide:'buy',dockSh:30,histF:'All'};
+    this.liveDot=React.createElement('span',{style:{display:'inline-block',width:'7px',height:'7px',borderRadius:'50%',background:UP,boxShadow:'0 0 8px rgba(43,217,124,.8)',animation:'opPulse 1.7s ease-in-out infinite',flex:'none'}});
+    const bars=[6,12,15,9,13,7,11].map((h,i)=>React.createElement('span',{key:i,style:{width:'2.5px',height:h+'px',borderRadius:'2px',background:HI,opacity:.85,transformOrigin:'center',animation:'opWave 1.1s ease-in-out '+(i*0.13)+'s infinite'}}));
+    this.wave=React.createElement('span',{style:{display:'inline-flex',alignItems:'center',gap:'2.5px',height:'16px',flex:'none'}},bars);
+
+    this.spark=(vals,w,h)=>{const n=vals.length;return vals.map((v,i)=>((i/(n-1))*w).toFixed(1)+','+(h-2-((v-10)/80)*(h-4)).toFixed(1)).join(' ');};
+
+    this.R16=[
+      {id:'m1',hc:'CAN',hn:'Canada',ac:'MAR',an:'Morocco',kind:'live',min:"74'",hs:'1',as:'0',sv:[44,45,43,42.5,41,63,64,63.4,62.6,61.8,61.4],tr:'up'},
+      {id:'m2',hc:'ESP',hn:'Spain',ac:'JPN',an:'Japan',kind:'live',min:"58'",hs:'2',as:'1',h:68.2,d:19.6,a:12.2,sv:[55,54,57,56,66,65,67,68,68.2],tr:'up'},
+      {id:'m3',hc:'ARG',hn:'Argentina',ac:'MEX',an:'Mexico',kind:'live',min:"12'",hs:'0',as:'0',h:44.1,d:28.7,a:27.2,sv:[45,44.6,44.9,44.4,44.2,44.1],tr:'flat'},
+      {id:'m4',hc:'ENG',hn:'England',ac:'SEN',an:'Senegal',kind:'up',time:'16:00',date:'Today',h:52.0,d:24.5,a:23.5},
+      {id:'m5',hc:'GER',hn:'Germany',ac:'COL',an:'Colombia',kind:'up',time:'19:00',date:'Today',h:48.5,d:25.0,a:26.5},
+      {id:'m6',hc:'BRA',hn:'Brazil',ac:'USA',an:'United States',kind:'up',time:'22:00',date:'Today',h:55.3,d:23.2,a:21.5},
+      {id:'m7',hc:'PAR',hn:'Paraguay',ac:'FRA',an:'France',kind:'up',time:'02:30',date:'Jul 6',h:17.5,d:19.5,a:63.0},
+      {id:'m8',hc:'AUS',hn:'Australia',ac:'EGY',an:'Egypt',kind:'up',time:'05:00',date:'Jul 6',h:33.8,d:29.0,a:37.2}
+    ];
+    this.R32=[
+      {id:'f1',hc:'CAN',hn:'Canada',ac:'JAM',an:'Jamaica',hs:'2',as:'0',out:'HOME',sig:'4gQx…7f2a'},
+      {id:'f2',hc:'MAR',hn:'Morocco',ac:'CIV',an:'Ivory Coast',hs:'1',as:'0',out:'HOME',sig:'8mTa…3c1d'},
+      {id:'f3',hc:'ESP',hn:'Spain',ac:'KOR',an:'South Korea',hs:'4',as:'1',out:'HOME',sig:'2vLp…8e4b'},
+      {id:'f4',hc:'JPN',hn:'Japan',ac:'CRO',an:'Croatia',hs:'2',as:'2',out:'DRAW',sig:'5Kxq…9f2a',note:'JPN on pens 5–4'},
+      {id:'f5',hc:'ENG',hn:'England',ac:'NOR',an:'Norway',hs:'3',as:'1',out:'HOME',sig:'7pRw…2a9c'},
+      {id:'f6',hc:'SEN',hn:'Senegal',ac:'AUT',an:'Austria',hs:'1',as:'0',out:'HOME',sig:'3nBy…6d8e'},
+      {id:'f7',hc:'USA',hn:'United States',ac:'URU',an:'Uruguay',hs:'2',as:'1',out:'HOME',sig:'9qFz…1b5f'},
+      {id:'f8',hc:'FRA',hn:'France',ac:'POL',an:'Poland',hs:'2',as:'0',out:'HOME',sig:'6wJk…4e7a'}
+    ];
+    this.LB=[['pitchwizard',18240,'41.2',38],['hexfan',16810,'38.7',44],['atlasfox',15290,'52.1',21],['kdb_flow',14105,'29.9',61],['deltahedge',13880,'33.4',29],['maplecap',12960,'44.8',33],['tikitaka',11740,'26.2',57],['xghunter',11215,'31.5',40],['northbank',10680,'24.9',52],['lavolpe',10240,'37.1',26],['counterpress',9815,'22.4',49],['riverrat',9410,'28.8',35],['monoline',8930,'19.6',63],['fullkit',8455,'25.3',31],['wavecap',8120,'21.7',45],['gegenpress',7770,'18.9',54],['flatback4',7365,'23.5',28],['ultra_north',7010,'17.2',59],['casemirofc',6640,'20.8',37],['pressline',6295,'15.4',66],['tradervic',5940,'19.1',42],['sofar',5610,'14.7',50],['looper',5285,'16.3',34],['marlenko',4970,'12.9',58],['nkoulou9',4655,'13.8',27]];
+    this.WIKI={"Crépeau":"Maxime Crépeau","Johnston":"Alistair Johnston","Vitória":"Steven Vitória","Bombito":"Moïse Bombito","Davies":"Alphonso Davies","Eustáquio":"Stephen Eustáquio","Koné":"Ismaël Koné","Ahmed":"Ali Ahmed (soccer)","Buchanan":"Tajon Buchanan","David":"Jonathan David","Larin":"Cyle Larin","Bounou":"Yassine Bounou","Hakimi":"Achraf Hakimi","Aguerd":"Nayef Aguerd","Abqar":"Abdel Abqar","Mazraoui":"Noussair Mazraoui","Amrabat":"Sofyan Amrabat","Ziyech":"Hakim Ziyech","Ounahi":"Azzedine Ounahi","Amallah":"Selim Amallah","Adli":"Amine Adli","En-Nesyri":"Youssef En-Nesyri"};
+    this.pKey=(n)=>n.replace(/ \(c\)| \d+′/g,'').replace(/^[A-Z]\. /,'');
+    this.AV={pitchwizard:'men/32',hexfan:'men/75',atlasfox:'women/44',kdb_flow:'men/12',deltahedge:'women/65',maplecap:'men/41',tikitaka:'men/8',xghunter:'women/21',northbank:'men/56',lavolpe:'men/19',counterpress:'women/37',riverrat:'men/64',monoline:'men/27',fullkit:'women/52',wavecap:'men/3',gegenpress:'men/88',flatback4:'women/12',ultra_north:'men/47',casemirofc:'men/71',pressline:'women/29',tradervic:'men/15',sofar:'women/58',looper:'men/36',marlenko:'women/8',nkoulou9:'men/60'};
+    this.avU=(h)=>'url("https://randomuser.me/api/portraits/med/'+(this.AV[h]||'men/5')+'.jpg")';
+    this.FILLS=[
+      ['19:41:22',"74'",'CAN–MAR','BUY','HOME','40','61.0','2,440'],
+      ['19:28:05',"62'",'CAN–MAR','SELL','DRAW','25','21.8','545'],
+      ['19:12:47',"48'",'ESP–JPN','BUY','HOME','45','61.0','2,745'],
+      ['18:55:31',"39'",'CAN–MAR','BUY','HOME','80','52.4','4,192'],
+      ['18:41:19',"25'",'ESP–JPN','BUY','DRAW','60','24.0','1,440'],
+      ['18:22:03',"8'",'CAN–MAR','SELL','AWAY','30','30.1','903'],
+      ['17:58:44','PRE','BRA–USA','BUY','AWAY','80','22.8','1,824'],
+      ['17:31:26','PRE','CAN–MAR','BUY','HOME','40','44.6','1,784'],
+      ['16:44:10','FT','JPN–CRO','SETTLE','DRAW','50','100.0','+5,000'],
+      ['15:20:38','PRE','ENG–SEN','BUY','HOME','20','51.2','1,024'],
+      ['14:05:52',"88'",'USA–URU','SELL','HOME','35','88.4','3,094'],
+      ['12:48:17',"51'",'USA–URU','BUY','HOME','35','64.0','2,240'],
+      ['11:30:09','PRE','PAR–FRA','BUY','AWAY','15','62.1','932'],
+      ['10:12:55','FT','CAN–JAM','SETTLE','HOME','60','100.0','+6,000']
+    ];
+    this.MOM=[
+      {t:'THE 38TH MINUTE',s:'CAN–MAR · R16 · Jul 4',r:'EPIC',sw:'41 → 63',own:'@hexfan',sig:'5Kx…9f2a',sv:[41,41,42,41,63,64,63,62.5]},
+      {t:'PENS IN THE RAIN',s:'JPN–CRO · R32 · Jul 3',r:'EPIC',sw:'12 → 50',own:'@tikitaka',sig:'8mT…3c1d',sv:[12,14,13,12,28,35,50,50]},
+      {t:'HEADER AT THE DEATH',s:'USA–URU · R32 · Jul 2',r:'RARE',sw:'64 → 88',own:'@atlasfox',sig:'2vL…8e4b',sv:[64,65,63,66,70,82,88,88]},
+      {t:'OPENING BLITZ',s:'ESP–KOR · R32 · Jul 2',r:'RARE',sw:'55 → 71',own:'@kdb_flow',sig:'7pR…2a9c',sv:[55,58,62,66,71,70,71,71]},
+      {t:'THE LONG SQUEEZE',s:'SEN–AUT · R32 · Jul 3',r:'COMMON',sw:'48 → 61',own:'@northbank',sig:'3nB…6d8e',sv:[48,50,52,54,56,58,60,61]},
+      {t:'RED CARD CLIFF',s:'FRA–POL · R32 · Jul 2',r:'RARE',sw:'71 → 84',own:'@deltahedge',sig:'9qF…1b5f',sv:[71,72,70,73,80,83,84,84]},
+      {t:'MAPLE WALL',s:'CAN–JAM · R32 · Jul 2',r:'COMMON',sw:'58 → 72',own:'@maplecap',sig:'6wJ…4e7a',sv:[58,60,62,63,66,69,71,72]},
+      {t:'ATLAS ROAR',s:'MAR–CIV · R32 · Jul 2',r:'COMMON',sw:'44 → 57',own:'@ultra_north',sig:'1aZ…5c3b',sv:[44,46,45,48,51,54,56,57]}
+    ];
+    const rS=(r)=>r>=8?{bg:'#2BD97C',c:'#052014'}:(r>=7?{bg:'rgba(43,217,124,.2)',c:'#2BD97C'}:(r>=6.5?{bg:'#242B34',c:'#C9D1DC'}:{bg:'rgba(255,61,129,.2)',c:'#FF7AA8'}));
+    this.rS=rS;
+    const wp=(x,y,ini,num,n,r,team,g,yc)=>{const s=rS(r);return{x:x+'%',y:y+'%',ini:ini,num:String(num),n:n,r:r.toFixed(1),rBg:s.bg,rC:s.c,bc:team==='CAN'?'rgba(43,217,124,.55)':'rgba(255,61,129,.55)',gDisp:g?'block':'none',yDisp:yc?'block':'none'};};
+    this.pitch=[
+      wp(5,50,'CR',16,'Crépeau',7.1,'CAN'), wp(15,15,'JO',22,'Johnston',6.9,'CAN'), wp(15,38,'VI',4,'Vitória',7.0,'CAN'), wp(15,62,'BO',15,'Bombito',6.6,'CAN',false,true), wp(15,85,'DA',19,'Davies (c)',7.8,'CAN'),
+      wp(27,25,'EU',8,'Eustáquio',7.2,'CAN'), wp(27,50,'KO',13,'Koné',7.4,'CAN'), wp(27,75,'AH',10,'Ahmed',6.8,'CAN'),
+      wp(40,18,'BU',11,'Buchanan',7.6,'CAN'), wp(40,50,'DV',9,'David',8.2,'CAN',true), wp(40,82,'LA',17,'Larin',6.7,'CAN'),
+      wp(95,50,'BN',1,'Bounou',6.9,'MAR'), wp(85,15,'HA',2,'Hakimi (c)',7.4,'MAR'), wp(85,38,'AG',5,'Aguerd',6.8,'MAR'), wp(85,62,'AB',18,'Abqar',6.5,'MAR'), wp(85,85,'MZ',3,'Mazraoui',7.0,'MAR'),
+      wp(75,50,'AM',4,'Amrabat',6.7,'MAR',false,true),
+      wp(64,15,'ZI',7,'Ziyech',7.1,'MAR'), wp(64,38,'OU',8,'Ounahi',7.2,'MAR'), wp(64,62,'AL',15,'Amallah',6.3,'MAR'), wp(64,85,'AD',26,'Adli',6.6,'MAR'),
+      wp(55,50,'EN',19,'En-Nesyri',6.4,'MAR')
+    ];
+    this.STATS=[
+      {l:'Ball possession',av:'42%',bv:'58%',fa:'42',fb:'58'},
+      {l:'Total shots',av:'8',bv:'13',fa:'8',fb:'13'},
+      {l:'Shots on target',av:'4',bv:'5',fa:'4',fb:'5'},
+      {l:'Expected goals',av:'1.12',bv:'1.38',fa:'112',fb:'138'},
+      {l:'Big chances',av:'2',bv:'3',fa:'2',fb:'3'},
+      {l:'Corner kicks',av:'2',bv:'7',fa:'2',fb:'7'},
+      {l:'Passes',av:'412',bv:'566',fa:'412',fb:'566'},
+      {l:'Duels won',av:'47%',bv:'53%',fa:'47',fb:'53'}
+    ];
+    this.SQUAD=[
+      ['CR','M. Crépeau','GK',7.1],['JO','A. Johnston','RB',6.9],['VI','S. Vitória','CB',7.0],['BO','M. Bombito','CB',6.6],['DA','A. Davies','LB',7.8],
+      ['EU','S. Eustáquio','DM',7.2],['KO','I. Koné','CM',7.4],['AH','A. Ahmed','AM',6.8],['BU','T. Buchanan','RW',7.6],['DV','J. David','ST',8.2],
+      ['LA','C. Larin','LW',6.7],['SC','D. St. Clair','GK',6.5],['OS','J. Osorio','CM',7.0],['SH','J. Shaffelburg','LW',6.9],['OG','I. Oluwaseyi','ST',6.6],['WA','D. Waterman','CB',6.4]
+    ].map(q=>{const s=rS(q[3]);return{ini:q[0],n:q[1],pos:q[2],r:q[3].toFixed(1),rBg:s.bg,rC:s.c};});
+    this.buildSeries();
+  }
+
+  buildSeries(){
+    const pts=[];
+    for(let m=0;m<=74;m++){
+      let h,d;
+      if(m<38){ h=44+Math.sin(m/5.2)*1.7+Math.sin(m*0.9)*0.9-(m>28?(m-28)*0.38:0); d=26+Math.sin(m/7)*1.1+(m>28?(m-28)*0.1:0); }
+      else{ const k=m-38; h=63+Math.min(k*0.3,3.4)-(m>62?(m-62)*0.44:0)+Math.sin(m*0.8)*0.7; d=21.6+(m>62?(m-62)*0.1:0)+Math.sin(m/6)*0.6; }
+      h=Math.max(35,Math.min(68,h)); d=Math.max(18,Math.min(29,d));
+      pts.push({m:m,h:+h.toFixed(1),d:+d.toFixed(1)});
+    }
+    pts[37]={m:37,h:41.0,d:26.8}; pts[38]={m:38,h:63.0,d:21.5}; pts[74]={m:74,h:61.4,d:22.1};
+    this.series=pts;
+  }
+
+  loadPhotos(){
+    const titles=Object.values(this.WIKI).filter((v,i,a)=>a.indexOf(v)===i);
+    fetch('https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&piprop=thumbnail&pithumbsize=120&redirects=1&format=json&formatversion=2&origin=*&titles='+encodeURIComponent(titles.join('|')))
+      .then(r=>r.json()).then(j=>{
+        const q=j.query||{},norm={},red={},img={};
+        (q.normalized||[]).forEach(x=>{norm[x.from]=x.to;});
+        (q.redirects||[]).forEach(x=>{red[x.from]=x.to;});
+        (q.pages||[]).forEach(p=>{ if(p.thumbnail&&p.thumbnail.source) img[p.title]=p.thumbnail.source; });
+        const photos={};
+        Object.keys(this.WIKI).forEach(k=>{ let t=this.WIKI[k]; t=norm[t]||t; t=red[t]||t; if(img[t]) photos[k]=img[t]; });
+        this.setState({photos:photos});
+      }).catch(()=>{});
+  }
+
+  componentDidMount(){ this.loadPhotos(); this._iv=setInterval(()=>this.tickSim(),2500); }
+  componentWillUnmount(){ clearInterval(this._iv); clearTimeout(this._ft); }
+
+  tickSim(){
+    if(this.props.live===false||this.state.halted) return;
+    const st=this.state;
+    let h=st.h+(Math.random()-0.5)*0.6; h=+Math.min(64.5,Math.max(58.5,h)).toFixed(1);
+    let d=st.d+(Math.random()-0.5)*0.35; d=+Math.min(24.5,Math.max(20,d)).toFixed(1);
+    const a=+(100-h-d).toFixed(1);
+    const fl=(n,o)=>(n>o?this.C.UP:(n<o?this.C.DN:null));
+    this.series[this.series.length-1]={m:74,h:h,d:d};
+    this.setState({h:h,d:d,a:a,hFl:fl(h,st.h),dFl:fl(d,st.d),aFl:fl(a,st.a)});
+    clearTimeout(this._ft);
+    this._ft=setTimeout(()=>this.setState({hFl:null,dFl:null,aFl:null}),(this.props.flashMs!=null?this.props.flashMs:200));
+  }
+
+  go(p){ return ()=>this.setState({page:p}); }
+
+  river(){
+    const e=React.createElement, C=this.C, st=this.state, halted=st.halted;
+    const W=1030,H=380,x=(m)=>46+(m/90)*950,y=(v)=>16+(1-v/100)*(H-46),y0=H-30;
+    let pts=this.series;
+    if(halted){ pts=pts.slice(0,75); pts=pts.concat([{m:75,h:62.0,d:21.8},{m:76,h:78.9,d:13.4}]); }
+    const line=(key)=>pts.map((p,i)=>(i?'L':'M')+x(p.m).toFixed(1)+' '+y(p[key]).toFixed(1)).join(' ');
+    const hL=line('h'), endM=halted?76:74;
+    const curH=halted?78.9:st.h, curD=halted?13.4:st.d, curA=+(100-curH-curD).toFixed(1);
+    const els=[];
+    els.push(e('defs',{key:'df'},e('linearGradient',{id:'apg',x1:'0',y1:'0',x2:'0',y2:'1'},e('stop',{offset:'0%',stopColor:C.UP,stopOpacity:.28}),e('stop',{offset:'100%',stopColor:C.UP,stopOpacity:.02}))));
+    els.push(e('rect',{key:'fut',x:x(endM),y:16,width:x(90)-x(endM),height:y0-16,fill:'#F5F7FA',opacity:.02}));
+    [25,50,75].forEach(v=>{ els.push(e('line',{key:'g'+v,x1:46,x2:996,y1:y(v),y2:y(v),stroke:C.LINE,strokeDasharray:'2 6',opacity:.6})); els.push(e('text',{key:'gl'+v,x:20,y:y(v)+3,fontFamily:this.MONO,fontSize:9,fill:'#3B4450'},String(v))); });
+    els.push(e('path',{key:'ar',d:hL+' L'+x(endM).toFixed(1)+' '+y0+' L46 '+y0+' Z',fill:'url(#apg)'}));
+    els.push(e('path',{key:'dl',d:line('d'),fill:'none',stroke:C.LO,strokeWidth:1.2,opacity:.4}));
+    els.push(e('path',{key:'hl',d:hL,fill:'none',stroke:C.UP,strokeWidth:2.2,strokeLinejoin:'round',strokeLinecap:'round'}));
+    const g1x=x(38),g1y=y(63);
+    els.push(e('line',{key:'gv',x1:g1x,x2:g1x,y1:24,y2:y0,stroke:'#F5F7FA',opacity:.12}));
+    els.push(e('rect',{key:'gc',x:g1x-38,y:g1y-52,width:76,height:32,rx:9,fill:'#14171C',stroke:C.LINE}));
+    els.push(e('text',{key:'gt1',x:g1x,y:g1y-39,textAnchor:'middle',fontFamily:this.MONO,fontSize:9.5,fontWeight:600,fill:C.HI},"GOAL 38'"));
+    els.push(e('text',{key:'gt2',x:g1x,y:g1y-27,textAnchor:'middle',fontFamily:this.MONO,fontSize:9.5,fill:C.UP},'41 → 63'));
+    els.push(e('circle',{key:'gr',cx:g1x,cy:g1y,r:7,fill:'#0B0D10',stroke:C.UP,strokeWidth:2.2}));
+    els.push(e('circle',{key:'gd',cx:g1x,cy:g1y,r:2.2,fill:C.UP}));
+    if(halted){
+      const g2x=x(76),g2y=y(78.9);
+      els.push(e('rect',{key:'hb',x:x(74),y:16,width:x(78)-x(74),height:y0-16,fill:C.AMB,opacity:.09}));
+      els.push(e('line',{key:'hv',x1:g2x,x2:g2x,y1:24,y2:y0,stroke:C.AMB,strokeDasharray:'4 4',opacity:.7}));
+      els.push(e('rect',{key:'hc2',x:g2x-44,y:g2y-54,width:88,height:32,rx:9,fill:'#1A150B',stroke:'rgba(255,176,32,.5)'}));
+      els.push(e('text',{key:'ht1',x:g2x,y:g2y-41,textAnchor:'middle',fontFamily:this.MONO,fontSize:9.5,fontWeight:600,fill:C.AMB},"GOAL 76'"));
+      els.push(e('text',{key:'ht2',x:g2x,y:g2y-29,textAnchor:'middle',fontFamily:this.MONO,fontSize:9.5,fill:C.AMB},'61 → 79'));
+      els.push(e('circle',{key:'hr',cx:g2x,cy:g2y,r:7,fill:'#0B0D10',stroke:C.AMB,strokeWidth:2.2}));
+      els.push(e('circle',{key:'hd2',cx:g2x,cy:g2y,r:2.2,fill:C.AMB}));
+    }
+    const nx=x(endM), ny=y(curH), nc=halted?C.AMB:C.UP;
+    els.push(e('line',{key:'nv',x1:nx,x2:nx,y1:ny,y2:y0,stroke:nc,opacity:.22}));
+    els.push(e('circle',{key:'ng',cx:nx,cy:ny,r:9,fill:nc,opacity:.15}));
+    els.push(e('circle',{key:'nd',cx:nx,cy:ny,r:3.4,fill:nc,stroke:'#0B0D10',strokeWidth:1.5}));
+    const items=[{t:'H '+curH.toFixed(1),c:halted?C.AMB:C.UP,y:y(curH)},{t:'D '+curD.toFixed(1),c:'#B8C0CD',y:y(curD)},{t:'A '+curA.toFixed(1),c:C.DN,y:y(curA)}].sort((p,q)=>p.y-q.y);
+    for(let i=1;i<3;i++){ if(items[i].y-items[i-1].y<22) items[i].y=items[i-1].y+22; }
+    items.forEach((it,i)=>{ els.push(e('rect',{key:'c'+i,x:940,y:it.y-10,width:62,height:20,rx:10,fill:'rgba(20,23,28,.9)',stroke:C.LINE})); els.push(e('text',{key:'ct'+i,x:971,y:it.y+3.5,textAnchor:'middle',fontFamily:this.MONO,fontSize:10,fontWeight:600,fill:it.c},it.t)); });
+    els.push(e('line',{key:'bl',x1:46,x2:996,y1:y0,y2:y0,stroke:C.LINE}));
+    [[0,"0'"],[45,"HT"],[90,"90'"]].forEach(t=>{ els.push(e('text',{key:'tx'+t[0],x:x(t[0]),y:y0+18,textAnchor:'middle',fontFamily:this.MONO,fontSize:9.5,fill:'#4A5364'},t[1])); });
+    els.push(e('text',{key:'txn',x:x(endM),y:y0+18,textAnchor:'middle',fontFamily:this.MONO,fontSize:9.5,fontWeight:600,fill:nc},(halted?"76'":"74'")));
+    return e('svg',{viewBox:'0 0 1030 380',width:'100%',height:'380',style:{display:'block'}},els);
+  }
+
+  renderVals(){
+    const st=this.state, C=this.C, f1=(v)=>v.toFixed(1);
+    const vals={liveDot:this.liveDot,wave:this.wave,riverEl:this.river()};
+    // nav
+    const navDef=[['Matches','home'],['Competition','comp'],['Portfolio','port'],['Leaders','lead'],['Moments','mom'],['History','hist']];
+    const sub={match:'home',team:'home',player:'home',profile:'lead'};
+    const active=sub[st.page]||st.page;
+    vals.nav=navDef.map(n=>({l:n[0],c:active===n[1]?C.HI:C.LO,u:active===n[1]?C.UP:'transparent',go:this.go(n[1])}));
+    vals.goHome=this.go('home'); vals.goMatch=this.go('match'); vals.goComp=this.go('comp'); vals.goLead=this.go('lead');
+    vals.goMoments=this.go('mom'); vals.goProfile=this.go('profile'); vals.goTeam=this.go('team'); vals.goPlayer=this.go('player'); vals.goPort=this.go('port'); vals.goHist=this.go('hist');
+    ['home','match','comp','team','player','port','lead','mom','profile','hist'].forEach(p=>{ vals['pg'+p.charAt(0).toUpperCase()+p.slice(1)]=(st.page===p); });
+    // ticker
+    const tks=[['74′','CAN–MAR','1–0','H '+f1(st.h),true],['58′','ESP–JPN','2–1','H 68.2',true],['12′','ARG–MEX','0–0','H 44.1',true],['16:00','ENG–SEN','–','H 52.0',false],['19:00','GER–COL','–','H 48.5',false],['22:00','BRA–USA','–','H 55.3',false],['02:30','PAR–FRA','–','A 63.0',false],['05:00','AUS–EGY','–','H 33.8',false]];
+    vals.tick=tks.map((t,i)=>({st:t[0],stC:t[4]?C.UP:C.DIM,teams:t[1],score:t[2],pr:t[3],pc:t[4]?C.HI:C.LO,bg:i===0?'rgba(43,217,124,.07)':'transparent',go:i===0?this.go('match'):this.go('home')}));
+    // home tabs
+    const tabs=['live','today','fin'];
+    tabs.forEach(t=>{ const on=st.tab===t; const K=t==='live'?'tabLive':(t==='today'?'tabToday':'tabFin');
+      vals[K+'Bg']=on?'#F5F7FA':'transparent'; vals[K+'C']=on?'#0B0D10':C.LO; vals[K+'Bc']=on?'#F5F7FA':C.LINE; vals[K+'Go']=()=>this.setState({tab:t}); });
+    // rows
+    const mkLive=(m)=>{ const isM1=m.id==='m1'; const h=isM1?st.h:m.h, d=isM1?st.d:m.d, a=isM1?st.a:m.a;
+      return {go:this.go(isM1?'match':'match'),fav:st.favs[m.id]?'★':'☆',favC:st.favs[m.id]?C.HI:'#3B4450',favGo:(e)=>{if(e&&e.stopPropagation)e.stopPropagation();this.setState(s=>{const f=Object.assign({},s.favs);f[m.id]=!f[m.id];return{favs:f};});},
+        st:m.min,stC:C.UP,sub:'LIVE',hc:m.hc,ac:m.ac,hf:this.FL(m.hc),af:this.FL(m.ac),hn:m.hn,an:m.an,hnC:C.HI,anC:C.HI,hsc:m.hs,asc:m.as,
+        spk:this.spark(m.sv,64,26),spkC:m.tr==='flat'?C.LO:C.UP,chDisp:'flex',prDisp:'none',
+        h:f1(h),d:f1(d),a:f1(a),hC:isM1?(st.hFl||C.HI):C.HI,dC:isM1?(st.dFl||C.HI):C.HI,aC:isM1?(st.aFl||C.HI):C.HI,prTxt:''}; };
+    const mkUp=(m)=>({go:this.go('match'),fav:st.favs[m.id]?'★':'☆',favC:st.favs[m.id]?C.HI:'#3B4450',favGo:(e)=>{if(e&&e.stopPropagation)e.stopPropagation();this.setState(s=>{const f=Object.assign({},s.favs);f[m.id]=!f[m.id];return{favs:f};});},
+      st:m.time,stC:C.LO,sub:m.date,hc:m.hc,ac:m.ac,hf:this.FL(m.hc),af:this.FL(m.ac),hn:m.hn,an:m.an,hnC:C.HI,anC:C.HI,hsc:'',asc:'',
+      spk:this.spark([50,50,50,50],64,26),spkC:'#2A323D',chDisp:'flex',prDisp:'none',h:f1(m.h),d:f1(m.d),a:f1(m.a),hC:C.HI,dC:C.HI,aC:C.HI,prTxt:''});
+    const mkFt=(m)=>({go:this.go('match'),fav:'☆',favC:'#3B4450',favGo:(e)=>{if(e&&e.stopPropagation)e.stopPropagation();},
+      st:'FT',stC:C.LO,sub:m.note?'PENS':'Jul 2–3',hc:m.hc,ac:m.ac,hf:this.FL(m.hc),af:this.FL(m.ac),hn:m.hn,an:m.an,
+      hnC:m.out==='HOME'?C.HI:C.LO,anC:m.out==='AWAY'?C.HI:C.LO,hsc:m.hs,asc:m.as,
+      spk:this.spark([50,52,55,60,68,80,95,100],64,26),spkC:'#2A323D',chDisp:'none',prDisp:'flex',h:'',d:'',a:'',hC:C.HI,dC:C.HI,aC:C.HI,prTxt:m.out+' 100 · '+m.sig});
+    const live=this.R16.filter(m=>m.kind==='live'), up=this.R16.filter(m=>m.kind==='up');
+    const isFav=(m)=>st.favs[m.id];
+    let groups=[];
+    if(st.tab==='fin'){ groups=[{ic:'R32',t:'ROUND OF 32 — SETTLED',n:'8 matches · proofs on-chain',rows:this.R32.map(mkFt)}]; }
+    else { const pool=st.tab==='live'?live:this.R16; const favRows=pool.filter(isFav), rest=pool.filter(m=>!isFav(m));
+      if(favRows.length) groups.push({ic:'★',t:'FAVOURITES',n:favRows.length+' matches',rows:favRows.map(m=>m.kind==='live'?mkLive(m):mkUp(m))});
+      groups.push({ic:'R16',t:'WORLD CUP — ROUND OF 16',n:rest.length+' matches',rows:rest.map(m=>m.kind==='live'?mkLive(m):mkUp(m))}); }
+    vals.groups=groups;
+    // sidebar
+    vals.myRows=[{l:'CAN – MAR',s:"74' · 1–0",sC:C.UP,go:this.go('match')},{l:'ESP – JPN',s:"58' · 2–1",sC:C.UP,go:this.go('match')}];
+    vals.stages=[
+      {l:'Round of 16',s:'Live now · Jul 4–6',n:'8',dot:C.UP,c:C.HI,go:this.go('home')},
+      {l:'Quarter-finals',s:'Jul 9–11',n:'4',dot:'#3B4450',c:C.LO,go:this.go('comp')},
+      {l:'Semi-finals',s:'Jul 14–15',n:'2',dot:'#3B4450',c:C.LO,go:this.go('comp')},
+      {l:'Final',s:'Jul 19 · MetLife',n:'1',dot:'#3B4450',c:C.LO,go:this.go('comp')},
+      {l:'Round of 32',s:'Settled · proofs posted',n:'16',dot:C.VIO,c:C.LO,go:this.go('home')},
+      {l:'Group stage',s:'Settled · Jun 11–27',n:'72',dot:C.VIO,c:C.LO,go:this.go('home')}
+    ];
+    vals.fteams=[{c:'CAN',l:'Canada',s:'LIVE',go:this.go('team')},{c:'USA',l:'United States',s:'22:00',go:this.go('team')},{c:'MEX',l:'Mexico',s:'LIVE',go:this.go('team')},{c:'MAR',l:'Morocco',s:'LIVE',go:this.go('team')}].map(t=>Object.assign(t,{f:this.FL(t.c)}));
+    // featured
+    vals.fMin=st.halted?"76' HALTED":"74'"; vals.fScore=st.halted?'2 – 0':'1 – 0';
+    vals.fh=f1(st.halted?78.9:st.h); vals.fd=f1(st.halted?13.4:st.d); vals.fa=f1(st.halted?7.7:st.a);
+    vals.fhC=st.hFl||C.HI; vals.fdC=st.dFl||C.HI; vals.faC=st.aFl||C.HI;
+    const fv=[44,45,43,42.5,41,63,64,63.4,62.6,61.8,st.h]; const n=fv.length;
+    const fpts=fv.map((v,i)=>[(i/(n-1))*288,80-((v-10)/80)*72]);
+    vals.featLine=fpts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+    vals.featArea=vals.featLine+' L288 82 L0 82 Z';
+    vals.topTr=this.LB.slice(0,5).map((r,i)=>({r:String(i+1),ini:r[0].slice(0,2).toUpperCase(),av:this.avU(r[0]),h:'@'+r[0],p:'+'+r[1].toLocaleString('en-US'),go:this.go('profile')}));
+    vals.soon=[{l:'ENG – SEN',s:'R16 · Foxborough',in:'in 1h 40m',go:this.go('match')},{l:'GER – COL',s:'R16 · Houston',in:'in 4h 40m',go:this.go('match')},{l:'BRA – USA',s:'R16 · Los Angeles',in:'in 7h 40m',go:this.go('match')}];
+    this.matchVals(vals); this.compVals(vals); this.teamVals(vals); this.playerVals(vals); this.portVals(vals); this.leadVals(vals); this.momVals(vals); this.profVals(vals); this.histVals(vals);
+    return vals;
+  }
+
+  matchVals(vals){
+    const st=this.state, C=this.C, f1=(v)=>v.toFixed(1), halted=st.halted;
+    const h=halted?78.9:st.h, d=halted?13.4:st.d, a=halted?7.7:st.a;
+    vals.mSc=halted?'2 – 0':'1 – 0';
+    vals.mMin=halted?"76'":"74'"; vals.mMinC=halted?C.AMB:C.UP;
+    vals.mState=halted?'HALTED':'LIVE'; vals.mStateC=halted?C.AMB:C.UP;
+    vals.haltOn=halted; vals.haltOff=!halted;
+    vals.toggleHalt=()=>this.setState(s=>({halted:!s.halted}));
+    vals.tglTxt=halted?'▶ Resume demo':'⏸ Demo: trigger goal halt';
+    vals.tglC=halted?C.UP:C.AMB; vals.tglBc=halted?'rgba(43,217,124,.4)':'rgba(255,176,32,.4)';
+    vals.cH=f1(h); vals.cD=f1(d); vals.cA=f1(a);
+    vals.cHC=halted?C.AMB:(st.hFl||C.HI); vals.cDC=halted?C.AMB:(st.dFl||C.HI); vals.cAC=halted?C.AMB:(st.aFl||C.HI);
+    const bc=(sel)=>halted?'rgba(255,176,32,.55)':(st.dockOut===sel?'rgba(43,217,124,.65)':C.LINE);
+    vals.cHBc=bc('H'); vals.cDBc=bc('D'); vals.cABc=bc('A');
+    vals.cHSub=halted?'61.4 → 78.9':'▲2.1 today'; vals.cDSub=halted?'22.1 → 13.4':'▼1.4 today'; vals.cASub=halted?'16.5 → 7.7':'▼0.7 today';
+    vals.cHSubC=halted?C.AMB:C.UP; vals.cDSubC=halted?C.AMB:C.DN; vals.cASubC=halted?C.AMB:C.DN;
+    vals.selH=()=>this.setState({dockOut:'H'}); vals.selD=()=>this.setState({dockOut:'D'}); vals.selA=()=>this.setState({dockOut:'A'});
+    vals.boothMin=halted?"76'":"74'";
+    vals.boothTxt=halted?'David again! Canada leaps 61 → 79. Market halted ninety seconds to reprice the second goal.':'Morocco pushing — market trims Canada from 64 to 61 in four minutes.';
+    const buy=st.dockSide==='buy';
+    vals.buyBg=buy?C.UP:'transparent'; vals.buyC=buy?'#052014':C.LO; vals.sellBg=!buy?C.DN:'transparent'; vals.sellC=!buy?'#2B0512':C.LO;
+    vals.goBuy=()=>this.setState({dockSide:'buy'}); vals.goSell=()=>this.setState({dockSide:'sell'});
+    const px=({H:h,D:d,A:a})[st.dockOut], nm=({H:'Home · CAN',D:'Draw',A:'Away · MAR'})[st.dockOut];
+    vals.dockSh=st.dockSh; vals.dockShTxt=String(st.dockSh);
+    vals.dockOn=(e)=>this.setState({dockSh:+e.target.value});
+    vals.dockCost=Math.round(st.dockSh*px).toLocaleString('en-US')+' cr';
+    vals.dockAvg=f1(px+st.dockSh*0.004); vals.dockPay=(st.dockSh*100).toLocaleString('en-US')+' cr';
+    vals.dockCta=(buy?'Buy ':'Sell ')+nm+' · '+f1(px);
+    vals.dockCtaBg=halted?'#232A33':(buy?C.UP:C.DN); vals.dockCtaC=halted?'#4A5364':(buy?'#052014':'#2B0512');
+    vals.dockPe=halted?'none':'auto'; vals.dockOp=halted?'.55':'1';
+    vals.nowH=f1(h); vals.nowD=f1(d); vals.nowA=f1(a);
+    vals.nowHC=vals.cHC; vals.nowDC=vals.cDC; vals.nowAC=vals.cAC;
+    vals.dH=(h>=44?'▲':'▼')+Math.abs(h-44).toFixed(1); vals.dHC=h>=44?C.UP:C.DN;
+    vals.dD=(d>=27.5?'▲':'▼')+Math.abs(d-27.5).toFixed(1); vals.dDC=d>=27.5?C.UP:C.DN;
+    vals.dA=(a>=28.5?'▲':'▼')+Math.abs(a-28.5).toFixed(1); vals.dAC=a>=28.5?C.UP:C.DN;
+    const PH=this.state.photos||{};
+    vals.pitch=this.pitch.map(p=>{const u=PH[this.pKey(p.n)];return Object.assign({},p,{phBg:u?'url("'+u+'")':'none',iniDisp:u?'none':'block'});});
+    vals.stats=this.STATS;
+    vals.posVal=Math.round(120*h).toLocaleString('en-US');
+    const pnl=120*(h-54.2);
+    vals.posPnl=(pnl>=0?'+':'−')+Math.abs(Math.round(pnl)).toLocaleString('en-US');
+    vals.posC=pnl>=0?C.UP:C.DN;
+  }
+
+  compVals(vals){
+    const st=this.state, C=this.C, f1=(v)=>v.toFixed(1);
+    vals.r16Ties=[
+      {a:'CAN',b:'MAR',s:'1–0',t:"74'",tC:C.UP,h:f1(st.h),d:f1(st.d),p:f1(st.a),go:this.go('match')},
+      {a:'ESP',b:'JPN',s:'2–1',t:"58'",tC:C.UP,h:'68.2',d:'19.6',p:'12.2',go:this.go('match')},
+      {a:'ARG',b:'MEX',s:'0–0',t:"12'",tC:C.UP,h:'44.1',d:'28.7',p:'27.2',go:this.go('match')},
+      {a:'ENG',b:'SEN',s:'–',t:'16:00',tC:C.LO,h:'52.0',d:'24.5',p:'23.5',go:this.go('match')},
+      {a:'GER',b:'COL',s:'–',t:'19:00',tC:C.LO,h:'48.5',d:'25.0',p:'26.5',go:this.go('match')},
+      {a:'BRA',b:'USA',s:'–',t:'22:00',tC:C.LO,h:'55.3',d:'23.2',p:'21.5',go:this.go('match')},
+      {a:'PAR',b:'FRA',s:'–',t:'02:30',tC:C.LO,h:'17.5',d:'19.5',p:'63.0',go:this.go('match')},
+      {a:'AUS',b:'EGY',s:'–',t:'05:00',tC:C.LO,h:'33.8',d:'29.0',p:'37.2',go:this.go('match')}
+    ];
+    vals.qfTies=[{a:'CAN / MAR',b:'ESP / JPN',dt:'QF1 · Jul 9 · Dallas'},{a:'ARG / MEX',b:'ENG / SEN',dt:'QF2 · Jul 10 · KC'},{a:'GER / COL',b:'BRA / USA',dt:'QF3 · Jul 10 · Atlanta'},{a:'PAR / FRA',b:'AUS / EGY',dt:'QF4 · Jul 11 · Miami'}];
+    vals.sfTies=[{a:'Winner QF1',b:'Winner QF2',dt:'SF1 · Jul 14 · Dallas'},{a:'Winner QF3',b:'Winner QF4',dt:'SF2 · Jul 15 · Atlanta'}];
+    vals.swings=[
+      {m:'CAN 41 → 63',ev:"38' David goal · CAN–MAR",dl:'+22.0'},
+      {m:'JPN 12 → 50',ev:'Pens · JPN–CRO R32',dl:'+38.0'},
+      {m:'USA 64 → 88',ev:"88' header · USA–URU",dl:'+24.0'},
+      {m:'ESP 55 → 71',ev:"44' opener · ESP–KOR",dl:'+16.0'},
+      {m:'FRA 71 → 84',ev:"52' red card · FRA–POL",dl:'+13.0'}
+    ];
+    vals.slog=this.R32.slice(0,6).map(m=>({m:m.hc+' – '+m.ac,res:m.out+' 100',sig:m.sig,go:this.go('mom')}));
+  }
+
+  teamVals(vals){
+    const C=this.C;
+    vals.form=[{l:'W',bg:'rgba(43,217,124,.2)',c:C.UP},{l:'W',bg:'rgba(43,217,124,.2)',c:C.UP},{l:'D',bg:'#242B34',c:'#C9D1DC'},{l:'W',bg:'rgba(43,217,124,.2)',c:C.UP},{l:'W',bg:'rgba(43,217,124,.2)',c:C.UP}];
+    vals.squad=this.SQUAD.map(p=>Object.assign({go:this.go('player')},p));
+    vals.path=[
+      {l:'Group B — winners',s:'W 2–0 QAT · W 3–1 BEL · D 1–1 SUI',st:'SETTLED',stC:C.VIO},
+      {l:'Round of 32',s:'W 2–0 vs Jamaica · proof 4gQx…7f2a',st:'SETTLED',stC:C.VIO},
+      {l:'Round of 16',s:'vs Morocco · leading 1–0 at 74′',st:'LIVE',stC:C.UP},
+      {l:'Quarter-final',s:'vs ESP / JPN winner · Jul 9 · Dallas',st:'NEXT',stC:C.LO}
+    ];
+  }
+
+  playerVals(vals){
+    const C=this.C, rS=this.rS;
+    const du=(this.state.photos||{})['David'];
+    vals.pDavBg=du?'url("'+du+'")':'none'; vals.pDavIniD=du?'none':'block';
+    vals.sbars=[{l:'Goals',v:'4',w:'80%'},{l:'Expected goals (xG)',v:'3.2',w:'64%'},{l:'Shots / on target',v:'14 / 8',w:'70%'},{l:'Conversion',v:'29%',w:'58%'},{l:'Avg rating',v:'7.6',w:'76%'}];
+    vals.plast=[
+      {m:'vs MAR · R16',dt:'Jul 4 · live',r:'8.2',g:'1 goal · 4 shots'},
+      {m:'vs JAM · R32',dt:'Jul 2',r:'8.1',g:'1 goal · 1 assist'},
+      {m:'vs SUI · Group',dt:'Jun 27',r:'6.9',g:'—'},
+      {m:'vs BEL · Group',dt:'Jun 21',r:'7.4',g:'1 goal'},
+      {m:'vs QAT · Group',dt:'Jun 15',r:'7.8',g:'1 goal'}
+    ].map(q=>{const s=rS(parseFloat(q.r));return Object.assign(q,{rBg:s.bg,rC:s.c});});
+    vals.attrs=[{l:'Attacking',v:'84',w:'84%'},{l:'Technical',v:'77',w:'77%'},{l:'Pace',v:'81',w:'81%'},{l:'Aerial',v:'68',w:'68%'},{l:'Defending',v:'42',w:'42%'}];
+  }
+
+  portVals(vals){
+    const st=this.state, C=this.C, f1=(v)=>v.toFixed(1);
+    const h=st.halted?78.9:st.h;
+    const rows=[
+      {m:'CAN – MAR',out:'HOME',outC:C.UP,sh:'120',avg:'54.2',now:f1(h),live:true},
+      {m:'ESP – JPN',out:'HOME',outC:C.UP,sh:'45',avg:'61.0',now:'68.2',live:true},
+      {m:'ESP – JPN',out:'DRAW',outC:C.LO,sh:'60',avg:'24.0',now:'19.6',live:true},
+      {m:'BRA – USA',out:'AWAY',outC:C.DN,sh:'80',avg:'22.8',now:'21.5',live:false}
+    ];
+    let totVal=0, totPnl=0;
+    vals.posRows=rows.map(r=>{ const now=parseFloat(r.now), avg=parseFloat(r.avg), sh=parseInt(r.sh,10);
+      const val=sh*now, pnl=sh*(now-avg); totVal+=val; totPnl+=pnl;
+      return {go:this.go('match'),m:r.m,out:r.out,outC:r.outC,sh:r.sh,avg:r.avg,now:r.now,nowC:r.m==='CAN – MAR'?(st.hFl||C.HI):C.HI,st:r.live?'LIVE':'PRE',stC:r.live?C.UP:C.LO,
+        val:Math.round(val).toLocaleString('en-US'),pnl:(pnl>=0?'+':'−')+Math.abs(Math.round(pnl)).toLocaleString('en-US'),pnlC:pnl>=0?C.UP:C.DN}; });
+    vals.eqVal=Math.round(2450+totVal).toLocaleString('en-US');
+    vals.eqPnl=(totPnl>=0?'+':'−')+Math.abs(Math.round(totPnl)).toLocaleString('en-US');
+    vals.eqPnlC=totPnl>=0?C.UP:C.DN;
+    vals.eqPct=(totPnl>=0?'+':'−')+Math.abs(totPnl/(totVal-totPnl)*100).toFixed(1)+'%';
+    const ev=[9.2,9.4,9.1,9.6,10.1,9.8,10.6,11.2,10.9,11.8,12.4,12.1,12.9];
+    const pts=ev.map((v,i)=>[(i/(ev.length-1))*252,58-((v-8.5)/5)*52]);
+    vals.eqPath=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+    vals.eqArea=vals.eqPath+' L252 60 L0 60 Z';
+    vals.pfills=this.FILLS.slice(0,6).map(fl=>({t:fl[0],m:fl[2],side:fl[3],sideC:fl[3]==='BUY'?this.C.UP:(fl[3]==='SELL'?this.C.DN:this.C.VIO),out:fl[4],sh:fl[5],px:fl[6],cost:fl[7]}));
+  }
+
+  leadVals(vals){
+    const C=this.C;
+    vals.top3=this.LB.slice(0,3).map((r,i)=>({r:String(i+1),ini:r[0].slice(0,2).toUpperCase(),av:this.avU(r[0]),h:'@'+r[0],p:'+'+r[1].toLocaleString('en-US'),roi:'+'+r[2]+'%',tr:String(r[3]),go:this.go('profile'),bc:i===0?'rgba(43,217,124,.5)':C.LINE}));
+    vals.lb=this.LB.slice(3).map((r,i)=>{ const idx=i+4, mv=idx%3===0?'▲'+(idx%4+1):(idx%3===1?'▼'+(idx%3+1):'—');
+      return {r:String(idx),h:'@'+r[0],ini:r[0].slice(0,2).toUpperCase(),av:this.avU(r[0]),p:'+'+r[1].toLocaleString('en-US'),roi:'+'+r[2]+'%',tr:String(r[3]),mv:mv,mvC:mv.charAt(0)==='▲'?C.UP:(mv.charAt(0)==='▼'?C.DN:'#4A5364'),go:this.go('profile')}; });
+  }
+
+  momVals(vals){
+    const C=this.C;
+    const rc={EPIC:{c:'#C9B3FF',bg:'rgba(157,107,255,.15)',bc:'rgba(157,107,255,.5)'},RARE:{c:'#9D6BFF',bg:'rgba(157,107,255,.09)',bc:'rgba(157,107,255,.35)'},COMMON:{c:'#97A0AF',bg:'rgba(151,160,175,.1)',bc:'#232A33'}};
+    vals.mom=this.MOM.map(m=>({t:m.t,s:m.s,r:m.r,rC:rc[m.r].c,rBg:rc[m.r].bg,bc:rc[m.r].bc,sw:m.sw,own:m.own,sig:m.sig,spk:this.spark(m.sv,120,40),go:this.go('mom')}));
+  }
+
+  profVals(vals){
+    vals.pmom=this.MOM.slice(0,3).map(m=>({t:m.t,sw:m.sw,spk:this.spark(m.sv,84,30)}));
+    vals.ptr=this.FILLS.slice(0,6).map(fl=>({t:fl[0],m:fl[2],side:fl[3],sideC:fl[3]==='BUY'?this.C.UP:(fl[3]==='SELL'?this.C.DN:this.C.VIO),out:fl[4],sh:fl[5],px:fl[6]}));
+  }
+
+  histVals(vals){
+    const st=this.state, C=this.C;
+    vals.hf=['All','CAN–MAR','ESP–JPN','Buys','Sells','Settlements'].map(fx=>({l:fx,bg:st.histF===fx?'#F5F7FA':'transparent',c:st.histF===fx?'#0B0D10':C.LO,bc:st.histF===fx?'#F5F7FA':C.LINE,go:()=>this.setState({histF:fx})}));
+    let rows=this.FILLS;
+    if(st.histF==='CAN–MAR'||st.histF==='ESP–JPN') rows=rows.filter(r=>r[2]===st.histF);
+    if(st.histF==='Buys') rows=rows.filter(r=>r[3]==='BUY');
+    if(st.histF==='Sells') rows=rows.filter(r=>r[3]==='SELL');
+    if(st.histF==='Settlements') rows=rows.filter(r=>r[3]==='SETTLE');
+    vals.hrows=rows.map(fl=>({t:fl[0],min:fl[1],m:fl[2],side:fl[3],sideC:fl[3]==='BUY'?C.UP:(fl[3]==='SELL'?C.DN:C.VIO),out:fl[4],sh:fl[5],px:fl[6],cost:fl[7],go:this.go('match')}));
+    vals.hCount=String(rows.length);
+  }
+}
+</script>
+</body>
+</html>

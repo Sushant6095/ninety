@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#0B0D10">
+<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+<rect width="120" height="80" fill="#0B0D10"/>
+<polyline points="36,52 48,50 56,49 60,34 72,32 84,35" fill="none" stroke="#2BD97C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="36,44 52,46 60,55 72,57 84,55" fill="none" stroke="#FF3D81" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+<circle cx="60" cy="34" r="4" fill="#0B0D10" stroke="#2BD97C" stroke-width="2"/>
+</svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,100..900&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#10141B;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.dv-turn{padding:40px 44px 36px;border-bottom:1px solid rgba(255,255,255,.06);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 10px}
+.dv-tid{font:600 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#F5F7FA;color:#0B0D10;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 Inter,system-ui,sans-serif;color:#F5F7FA}
+.dv-lead{max-width:880px;font:400 12px/1.65 Inter,system-ui,sans-serif;color:#97A0AF;margin:0 0 26px}
+.dv-lead b{color:#F5F7FA;font-weight:600}
+.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:10px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px 'IBM Plex Mono',monospace;padding:3px 7px;background:rgba(255,255,255,.1);color:#F5F7FA;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 Inter,system-ui,sans-serif;color:#97A0AF}
+.dv-card{background:#0B0D10;border:1px solid #232A33;border-radius:20px;box-shadow:0 30px 70px rgba(0,0,0,.55);overflow:hidden}
+.dv-opt:target .dv-oid{background:#2BD97C;color:#062514}
+.dv-next{margin:28px 0 0;font:12px/1.6 Inter,system-ui,sans-serif;color:#97A0AF}
+@keyframes opPulse{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes opWave{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+@keyframes opTick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.dv-card ::-webkit-scrollbar{width:9px;height:9px}
+.dv-card ::-webkit-scrollbar-thumb{background:#232A33;border-radius:5px;border:2px solid #0B0D10}
+.dv-card ::-webkit-scrollbar-track{background:transparent}
+.dv-card *{scrollbar-width:thin;scrollbar-color:#232A33 transparent}
+input[type="range"]{-webkit-appearance:none;appearance:none;height:4px;border-radius:2px;outline:none;border:none;padding:0;margin:0}
+input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:15px;height:15px;border-radius:50%;background:#F5F7FA;box-shadow:0 1px 5px rgba(0,0,0,.6);cursor:pointer;border:none}
+input[type="range"]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:#F5F7FA;border:none;cursor:pointer}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important}}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Match page — Sofascore structure recreation · 1440</span></div>
+<div class="dv-lead">The attached match page's skeleton on our tokens — density and stacking rhythm kept; palette, branding, ads and bookmaker rows dropped. Breadcrumb → match header (crest discs · score · date / venue / broadcast meta · Favourite toggle) → 340/1fr split. Rail translations: odds grid → <b>MATCH PRICES</b> (open vs live now, deltas tick with the sim) · media explore card · Who-will-win → <b>CROWD VS MARKET</b> (vote to reveal crowd bars against the live price tick). Main: Market·Lineups·Stats·H2H·Media tabs, filter chips, horizontal pitch with all 22 initials-discs + rating chips, 4-3-3 vs 4-1-4-1, team averages 7.21 / 6.81 (also corrected in <a class="dv-oid" href="#2a">2a</a>). Same CAN–MAR 74&#8242; world as <a class="dv-oid" href="#1a">1a</a>. <b>Density pass applied</b> — all 16 audit gaps closed: rail now runs prices (open/now/peak) → media → vote (with pager) → Ask&nbsp;the&nbsp;Booth → live pitch → attack momentum → match summary → FIFA ranks → venue → featured-players radar → highest-rated; main adds Lineups/Player-stats toggle, embed button, ⓘ + kit glyphs, captain marks, and a referee / managers / substitutions stack under the pitch.</div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="3a">
+<div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>Match page — breadcrumb · rail modules · lineups pitch</div>
+<div class="dv-card" data-screen-label="3a — Match page (Sofascore structure)" style="width:1440px;display:flex;flex-direction:column;background:#0B0D10">
+
+  <div style="height:34px;border-bottom:1px solid #232A33;display:flex;align-items:stretch;flex:none;background:#0D1015;overflow:hidden">
+    <div style="display:flex;align-items:center;gap:7px;padding:0 14px;border-right:1px solid #232A33;flex:none">
+      <span style="width:6px;height:6px;border-radius:50%;background:#2BD97C;animation:opPulse 1.7s ease-in-out infinite"></span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.1em;color:#97A0AF">WC26 LIVE</span>
+    </div>
+    <div style="flex:1;overflow:hidden;display:flex;align-items:center">
+      <div style="display:flex;align-items:center;width:max-content;animation:opTick 60s linear infinite">
+        <sc-for list="{{ticker}}" as="tk" hint-placeholder-count="8">
+          <div style="display:flex;align-items:center;gap:8px;padding:4px 14px;margin:0 3px;border-radius:8px;background:{{tk.bg}};flex:none">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:{{tk.stC}}">{{tk.st}}</span>
+            <span style="font-size:10.5px;font-weight:600;color:#F5F7FA">{{tk.teams}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:{{tk.scC}}">{{tk.score}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:{{tk.pc}}">{{tk.pr}}</span>
+          </div>
+          <span style="width:1px;height:12px;background:#1C222B;flex:none"></span>
+        </sc-for>
+        <sc-for list="{{ticker}}" as="tk" hint-placeholder-count="8">
+          <div style="display:flex;align-items:center;gap:8px;padding:4px 14px;margin:0 3px;border-radius:8px;background:{{tk.bg}};flex:none">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:{{tk.stC}}">{{tk.st}}</span>
+            <span style="font-size:10.5px;font-weight:600;color:#F5F7FA">{{tk.teams}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:{{tk.scC}}">{{tk.score}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:{{tk.pc}}">{{tk.pr}}</span>
+          </div>
+          <span style="width:1px;height:12px;background:#1C222B;flex:none"></span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:58px;border-bottom:1px solid #232A33;display:flex;align-items:center;gap:16px;padding:0 18px;flex:none">
+    <div style="display:flex;align-items:baseline;gap:8px;flex:none">
+      <span style="font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:16.5px;letter-spacing:.03em;color:#F5F7FA">OMNIPITCH</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;letter-spacing:.08em;color:#97A0AF;border:1px solid #232A33;border-radius:5px;padding:2px 5px">WC26</span>
+    </div>
+    <div style="width:320px;height:34px;border-radius:999px;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;gap:8px;padding:0 13px">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#97A0AF" stroke-width="2"></circle><path d="M20 20 L16.2 16.2" stroke="#97A0AF" stroke-width="2" stroke-linecap="round"></path></svg>
+      <span style="font-size:11.5px;color:#4A5364;flex:1">Search matches, traders</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364;border:1px solid #232A33;border-radius:5px;padding:2px 5px">⌘K</span>
+    </div>
+    <div style="flex:1"></div>
+    <div style="height:32px;border-radius:999px;background:rgba(43,217,124,.1);border:1px solid rgba(43,217,124,.35);display:flex;align-items:center;gap:7px;padding:0 13px;flex:none">
+      <span style="width:6px;height:6px;border-radius:50%;background:#2BD97C"></span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#2BD97C">2,450 CR</span>
+    </div>
+    <div style="height:32px;border-radius:999px;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;gap:7px;padding:0 13px;flex:none">
+      <span style="font-size:9px;letter-spacing:.08em;color:#97A0AF;font-weight:600">RANK</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#F5F7FA">#142</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#2BD97C">▲3</span>
+    </div>
+    <div style="width:34px;height:34px;border-radius:50%;background:#232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#F5F7FA;flex:none;cursor:pointer">VD</div>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:8px;padding:12px 18px 0">
+    <span style="font-size:10.5px;color:#97A0AF;cursor:pointer">Football</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">›</span>
+    <span style="font-size:10.5px;color:#97A0AF;cursor:pointer">World Cup 2026</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">›</span>
+    <span style="font-size:10.5px;color:#97A0AF;cursor:pointer">Knockout — Round of 16</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">›</span>
+    <span style="font-size:10.5px;font-weight:600;color:#F5F7FA">Canada vs Morocco</span>
+  </div>
+
+  <div style="margin:12px 12px 0;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:16px 18px 12px;display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="display:flex;align-items:center;gap:10px;flex:none;width:230px">
+        <div style="width:44px;height:44px;border-radius:50%;background:#0B0D10;border:1px solid rgba(43,217,124,.45);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:#F5F7FA;flex:none">CAN</div>
+        <div><div style="font-size:14px;font-weight:700;color:#F5F7FA">Canada</div><div style="font-size:8.5px;letter-spacing:.12em;color:#97A0AF;font-weight:600;margin-top:2px">HOME · FIFA #28</div></div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">
+        <div style="font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:34px;line-height:1;color:#F5F7FA">1 – 0</div>
+        <div style="display:flex;align-items:center;gap:6px">{{liveDot}}<span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#2BD97C">74' LIVE</span></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:flex-end;gap:10px;flex:none;width:230px">
+        <div style="text-align:right"><div style="font-size:14px;font-weight:700;color:#F5F7FA">Morocco</div><div style="font-size:8.5px;letter-spacing:.12em;color:#97A0AF;font-weight:600;margin-top:2px">AWAY · FIFA #12</div></div>
+        <div style="width:44px;height:44px;border-radius:50%;background:#0B0D10;border:1px solid rgba(255,61,129,.45);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:#F5F7FA;flex:none">MAR</div>
+      </div>
+      <div style="margin-left:10px;width:38px;height:38px;border-radius:50%;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M8 20 V10 M16 20 V4 M4 20 H20" stroke="#97A0AF" stroke-width="2" stroke-linecap="round"></path></svg></div>
+      <div style="width:38px;height:38px;border-radius:50%;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 16 V10 A6 6 0 0 1 18 10 V16 L20 18 H4 Z" stroke="#97A0AF" stroke-width="2" stroke-linejoin="round"></path><path d="M10 21 H14" stroke="#97A0AF" stroke-width="2" stroke-linecap="round"></path></svg></div>
+      <div onClick="{{t3GoFav}}" style="height:38px;padding:0 16px;border-radius:999px;border:1px solid {{t3FavBc}};background:{{t3FavBg}};color:{{t3FavC}};display:flex;align-items:center;font-size:12px;font-weight:600;cursor:pointer;flex:none">{{t3FavTxt}}</div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;border-top:1px solid #232A33;padding-top:11px;flex-wrap:wrap">
+      <span style="display:flex;align-items:center;gap:6px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="4" y="6" width="16" height="14" rx="2" stroke="#4A5364" stroke-width="2"></rect><path d="M4 11 H20" stroke="#4A5364" stroke-width="2"></path><path d="M8 3 V7 M16 3 V7" stroke="#4A5364" stroke-width="2" stroke-linecap="round"></path></svg><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF">04/07/2026 · 19:00 PT</span></span>
+      <span style="width:3px;height:3px;border-radius:50%;background:#232A33"></span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF">WORLD CUP — ROUND OF 16</span>
+      <span style="width:3px;height:3px;border-radius:50%;background:#232A33"></span>
+      <span style="display:flex;align-items:center;gap:6px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21 C12 21 5 14.5 5 9.5 C5 5.9 8.1 3 12 3 C15.9 3 19 5.9 19 9.5 C19 14.5 12 21 12 21 Z" stroke="#4A5364" stroke-width="2"></path><circle cx="12" cy="9.5" r="2.5" stroke="#4A5364" stroke-width="2"></circle></svg><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF">BC PLACE, VANCOUVER</span></span>
+      <span style="width:3px;height:3px;border-radius:50%;background:#232A33"></span>
+      <span style="display:flex;align-items:center;gap:6px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="2" stroke="#4A5364" stroke-width="2"></rect><path d="M8 3 L12 7 L16 3" stroke="#4A5364" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#97A0AF;border:1px solid #232A33;border-radius:999px;padding:2px 8px">TSN · 4K</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#4A5364;border:1px solid #232A33;border-radius:999px;padding:2px 8px">+3</span></span>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:355px 1fr;gap:12px;padding:12px;align-items:start">
+
+    <div style="display:flex;flex-direction:column;gap:12px" data-screen-label="3a left rail">
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MATCH PRICES</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">0–100 · LMSR</span>
+        </div>
+        <div style="display:grid;grid-template-columns:52px 1fr 1fr 1fr;gap:6px;align-items:center">
+          <span></span>
+          <span style="text-align:center;font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">HOME</span>
+          <span style="text-align:center;font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">DRAW</span>
+          <span style="text-align:center;font-size:8px;letter-spacing:.08em;color:#4A5364;font-weight:600">AWAY</span>
+          <div style="display:flex;flex-direction:column;gap:1px"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#97A0AF">OPEN</span><span style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#4A5364">KO</span></div>
+          <div style="height:42px;border:1px solid #232A33;border-radius:10px;background:#0B0D10;display:flex;align-items:center;justify-content:center"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#97A0AF">44.0</span></div>
+          <div style="height:42px;border:1px solid #232A33;border-radius:10px;background:#0B0D10;display:flex;align-items:center;justify-content:center"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#97A0AF">27.5</span></div>
+          <div style="height:42px;border:1px solid #232A33;border-radius:10px;background:#0B0D10;display:flex;align-items:center;justify-content:center"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#97A0AF">28.5</span></div>
+          <div style="display:flex;flex-direction:column;gap:1px"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C">NOW</span><span style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#4A5364">74'</span></div>
+          <div style="height:48px;border:1px solid #232A33;border-radius:10px;background:#0B0D10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:{{hC}}">{{hP}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:{{t3DHC}}">{{t3DH}}</span></div>
+          <div style="height:48px;border:1px solid #232A33;border-radius:10px;background:#0B0D10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:{{dC}}">{{dPr}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:{{t3DDC}}">{{t3DD}}</span></div>
+          <div style="height:48px;border:1px solid #232A33;border-radius:10px;background:#0B0D10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:{{aC}}">{{aP}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:{{t3DAC}}">{{t3DA}}</span></div>
+          <div style="display:flex;flex-direction:column;gap:1px"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#97A0AF">PEAK</span><span style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#4A5364">SESSION</span></div>
+          <div style="height:42px;border:1px solid #232A33;border-radius:10px;background:#0B0D10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#97A0AF">64.5</span><span style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#4A5364">55'</span></div>
+          <div style="height:42px;border:1px solid #232A33;border-radius:10px;background:#0B0D10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#97A0AF">29.0</span><span style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#4A5364">30'</span></div>
+          <div style="height:42px;border:1px solid #232A33;border-radius:10px;background:#0B0D10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#97A0AF">37.2</span><span style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#4A5364">20'</span></div>
+        </div>
+        <div style="font-size:9.5px;color:#4A5364;cursor:pointer">Deltas vs open · full price history →</div>
+      </div>
+
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;align-items:center;gap:12px">
+        <div style="flex:1;display:flex;flex-direction:column;gap:10px">
+          <div style="font-size:12.5px;line-height:1.5;font-weight:600;color:#F5F7FA">Explore clips, Booth calls and swing replays from this match.</div>
+          <div style="height:32px;width:fit-content;padding:0 14px;border-radius:999px;border:1px solid #232A33;background:#0B0D10;color:#F5F7FA;display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;cursor:pointer"><span style="width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:6px solid #2BD97C"></span>View media</div>
+        </div>
+        <div style="position:relative;width:62px;height:40px;flex:none">
+          <div style="position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;background:#0B0D10;border:1px solid rgba(43,217,124,.45);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;color:#F5F7FA">CAN</div>
+          <div style="position:absolute;left:22px;top:0;width:38px;height:38px;border-radius:50%;background:#14171C;border:1px solid rgba(255,61,129,.45);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;color:#F5F7FA">MAR</div>
+        </div>
+      </div>
+
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">CROWD VS MARKET</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">{{t3Votes}}</span>
+        </div>
+        <div style="font-size:10px;line-height:1.5;color:#4A5364">Cast your vote, then see how fans lean against the live price.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+          <div onClick="{{t3VH}}" style="height:36px;border-radius:999px;border:1px solid {{t3VBcH}};background:{{t3VBgH}};color:{{t3VCH}};display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;cursor:pointer">CAN</div>
+          <div onClick="{{t3VD}}" style="height:36px;border-radius:999px;border:1px solid {{t3VBcD}};background:{{t3VBgD}};color:{{t3VCD}};display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;cursor:pointer">DRAW</div>
+          <div onClick="{{t3VA}}" style="height:36px;border-radius:999px;border:1px solid {{t3VBcA}};background:{{t3VBgA}};color:{{t3VCA}};display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;cursor:pointer">MAR</div>
+        </div>
+        <sc-if value="{{t3NotVoted}}" hint-placeholder-val="{{ true }}">
+          <div style="font-size:9.5px;color:#4A5364;border-top:1px solid #232A33;padding-top:9px">Crowd results hidden until you vote.</div>
+        </sc-if>
+        <sc-if value="{{t3Voted}}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:9px;border-top:1px solid #232A33;padding-top:10px">
+            <sc-for list="{{t3Rows}}" as="vr" hint-placeholder-count="3">
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <div style="display:flex;justify-content:space-between;align-items:baseline">
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:{{vr.c}}">{{vr.lab}}</span>
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#97A0AF">crowd {{vr.crowd}} · market {{vr.mkt}}</span>
+                </div>
+                <div style="position:relative;height:6px;background:#0B0D10;border-radius:3px">
+                  <span style="position:absolute;left:0;top:0;bottom:0;width:{{vr.cw}};background:{{vr.c}};opacity:.55;border-radius:3px"></span>
+                  <span style="position:absolute;left:{{vr.mw}};top:-2px;width:2px;height:10px;background:#F5F7FA;border-radius:1px"></span>
+                </div>
+              </div>
+            </sc-for>
+            <div style="font-size:8.5px;color:#4A5364">Filled bar = crowd share · white tick = market price</div>
+          </div>
+        </sc-if>
+        <div style="display:flex;align-items:center;gap:8px;border-top:1px solid #232A33;padding-top:9px">
+          <span style="font-size:10px;color:#4A5364;cursor:pointer">‹ Previous</span>
+          <span style="flex:1"></span>
+          <span style="width:6px;height:6px;border-radius:50%;background:#2BD97C"></span>
+          <span style="width:6px;height:6px;border-radius:50%;background:#232A33"></span>
+          <span style="width:6px;height:6px;border-radius:50%;background:#232A33"></span>
+          <span style="flex:1"></span>
+          <span style="font-size:10px;color:#97A0AF;cursor:pointer">Next ›</span>
+        </div>
+      </div>
+
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:11px 14px;display:flex;align-items:center;gap:10px;cursor:pointer">
+        {{wave}}
+        <span style="flex:1;font-size:11.5px;font-weight:600;color:#F5F7FA">Ask the Booth — analyse this match</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C">AI ›</span>
+      </div>
+
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">LIVE PITCH</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">BALL IN PLAY · 74'</span>
+        </div>
+        <div style="position:relative;height:84px;border-radius:10px;border:1px solid #232A33;overflow:hidden;background:repeating-linear-gradient(90deg,rgba(43,217,124,.035) 0px,rgba(43,217,124,.035) 26px,rgba(43,217,124,0) 26px,rgba(43,217,124,0) 52px),#0C1015">
+          <div style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:#232A33"></div>
+          <div style="position:absolute;left:50%;top:50%;width:34px;height:34px;border:1px solid #232A33;border-radius:50%;transform:translate(-50%,-50%)"></div>
+          <div style="position:absolute;left:30%;top:44%;width:8px;height:8px;border-radius:50%;background:#F5F7FA;box-shadow:0 0 8px rgba(245,247,250,.6)"></div>
+          <div style="position:absolute;left:12px;bottom:8px;display:flex;align-items:center;gap:6px"><span style="width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-right:9px solid #FF3D81"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#FF7AA8">MOROCCO ATTACKING</span></div>
+        </div>
+      </div>
+
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">ATTACK MOMENTUM</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">2ND HALF</span>
+        </div>
+        <svg viewBox="0 0 300 64" width="100%" height="64" style="display:block">
+          <rect x="4" y="32" width="7" height="8" fill="#FF3D81" opacity=".7"></rect>
+          <rect x="16" y="26" width="7" height="6" fill="#2BD97C" opacity=".8"></rect>
+          <rect x="28" y="32" width="7" height="12" fill="#FF3D81" opacity=".7"></rect>
+          <rect x="40" y="32" width="7" height="10" fill="#FF3D81" opacity=".7"></rect>
+          <rect x="52" y="18" width="7" height="14" fill="#2BD97C" opacity=".8"></rect>
+          <rect x="64" y="14" width="7" height="18" fill="#2BD97C" opacity=".8"></rect>
+          <rect x="76" y="22" width="7" height="10" fill="#2BD97C" opacity=".8"></rect>
+          <rect x="88" y="32" width="7" height="6" fill="#FF3D81" opacity=".7"></rect>
+          <rect x="100" y="10" width="7" height="22" fill="#2BD97C" opacity=".8"></rect>
+          <rect x="112" y="6" width="7" height="26" fill="#2BD97C" opacity=".8"></rect>
+          <rect x="124" y="16" width="7" height="16" fill="#2BD97C" opacity=".8"></rect>
+          <rect x="136" y="24" width="7" height="8" fill="#2BD97C" opacity=".8"></rect>
+          <rect x="148" y="32" width="7" height="10" fill="#FF3D81" opacity=".7"></rect>
+          <rect x="160" y="32" width="7" height="14" fill="#FF3D81" opacity=".7"></rect>
+          <rect x="172" y="26" width="7" height="6" fill="#2BD97C" opacity=".8"></rect>
+          <rect x="184" y="32" width="7" height="18" fill="#FF3D81" opacity=".7"></rect>
+          <rect x="196" y="32" width="7" height="22" fill="#FF3D81" opacity=".7"></rect>
+          <rect x="208" y="32" width="7" height="16" fill="#FF3D81" opacity=".7"></rect>
+          <rect x="220" y="32" width="7" height="24" fill="#FF3D81" opacity=".7"></rect>
+          <rect x="232" y="32" width="7" height="12" fill="#FF3D81" opacity=".7"></rect>
+          <rect x="244" y="24" width="7" height="8" fill="#2BD97C" opacity=".8"></rect>
+          <rect x="256" y="32" width="7" height="20" fill="#FF3D81" opacity=".7"></rect>
+          <rect x="268" y="32" width="7" height="26" fill="#FF3D81" opacity=".7"></rect>
+          <rect x="280" y="32" width="7" height="14" fill="#FF3D81" opacity=".7"></rect>
+          <line x1="2" x2="292" y1="32" y2="32" stroke="#232A33"></line>
+          <circle cx="115" cy="4" r="2.5" fill="#2BD97C"></circle>
+          <line x1="288" x2="288" y1="4" y2="60" stroke="#F5F7FA" opacity=".35" stroke-width="1.5"></line>
+        </svg>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span style="display:flex;align-items:center;gap:5px"><span style="width:7px;height:7px;border-radius:2px;background:#2BD97C"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF">CAN</span></span>
+          <span style="display:flex;align-items:center;gap:5px"><span style="width:7px;height:7px;border-radius:2px;background:#FF3D81;opacity:.85"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF">MAR</span></span>
+          <span style="flex:1"></span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#4A5364">LIVE · 74'</span>
+        </div>
+      </div>
+
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MATCH SUMMARY</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#FFB020;border:1px solid rgba(255,176,32,.35);border-radius:999px;padding:2px 7px">ADDED TIME 4</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px"><span style="width:24px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF;flex:none">73'</span><span style="width:6px;height:9px;border-radius:2px;background:#FFB020;flex:none"></span><span style="flex:1;font-size:10.5px;color:#F5F7FA">Bombito</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">CAN</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><span style="width:24px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF;flex:none">67'</span><span style="width:8px;height:8px;border-radius:50%;border:1.5px solid #97A0AF;box-sizing:border-box;flex:none"></span><span style="flex:1;font-size:10.5px;color:#F5F7FA">Corner surge 7–2</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">MAR</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><span style="width:24px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF;flex:none">61'</span><span style="font-size:10px;color:#97A0AF;flex:none">⇄</span><span style="flex:1;font-size:10.5px;color:#F5F7FA">Boufal ⇄ Amallah</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">MAR</span></div>
+        <div style="display:flex;align-items:center;gap:10px"><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:700;color:#4A5364">HT</span><div style="flex:1;height:1px;background:#232A33"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">1–0 · H 62.9</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><span style="width:24px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF;flex:none">38'</span><span style="width:9px;height:9px;border-radius:50%;background:#2BD97C;flex:none"></span><span style="flex:1;font-size:10.5px;font-weight:600;color:#F5F7FA">David</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C">41 → 63</span></div>
+      </div>
+
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:12px 14px">
+        <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:30px;height:30px;border-radius:50%;background:#0B0D10;border:1px solid rgba(43,217,124,.45);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:700;color:#F5F7FA;flex:none">CAN</div>
+            <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#F5F7FA">FIFA #28</div><div style="font-size:8.5px;color:#4A5364;margin-top:1px">Canada</div></div>
+          </div>
+          <span style="width:1px;height:26px;background:#232A33"></span>
+          <div style="display:flex;align-items:center;justify-content:flex-end;gap:8px">
+            <div style="text-align:right"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#F5F7FA">FIFA #12</div><div style="font-size:8.5px;color:#4A5364;margin-top:1px">Morocco</div></div>
+            <div style="width:30px;height:30px;border-radius:50%;background:#0B0D10;border:1px solid rgba(255,61,129,.45);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:700;color:#F5F7FA;flex:none">MAR</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:9px">
+        <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">VENUE</span>
+        <div style="display:flex;align-items:center;gap:9px">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 21 C12 21 5 14.5 5 9.5 C5 5.9 8.1 3 12 3 C15.9 3 19 5.9 19 9.5 C19 14.5 12 21 12 21 Z" stroke="#4A5364" stroke-width="2"></path><circle cx="12" cy="9.5" r="2.5" stroke="#4A5364" stroke-width="2"></circle></svg>
+          <div><div style="font-size:11.5px;font-weight:600;color:#F5F7FA">BC Place</div><div style="font-size:9px;color:#4A5364;margin-top:1px">Vancouver, Canada · 54,500 capacity</div></div>
+        </div>
+        <div style="font-size:10px;color:#4A5364;cursor:pointer;border-top:1px solid #232A33;padding-top:8px">See more details ›</div>
+      </div>
+
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">FEATURED PLAYERS</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">THIS MATCH</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="display:flex;align-items:center;gap:7px;flex:1">
+            <div style="width:26px;height:26px;border-radius:50%;background:#171C22;border:1.5px solid rgba(43,217,124,.55);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:#F5F7FA;flex:none">DV</div>
+            <div><div style="font-size:10.5px;font-weight:600;color:#F5F7FA">J. David</div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#2BD97C">8.2</div></div>
+          </div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">VS</span>
+          <div style="display:flex;align-items:center;justify-content:flex-end;gap:7px;flex:1">
+            <div style="text-align:right"><div style="font-size:10.5px;font-weight:600;color:#F5F7FA">H. Ziyech</div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#FF7AA8">7.1</div></div>
+            <div style="width:26px;height:26px;border-radius:50%;background:#171C22;border:1.5px solid rgba(255,61,129,.55);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:#F5F7FA;flex:none">ZI</div>
+          </div>
+        </div>
+        <svg viewBox="0 0 120 90" width="100%" height="126" style="display:block">
+          <polygon points="60,15 25.4,75 94.6,75" fill="none" stroke="#232A33"></polygon>
+          <polygon points="60,35 42.7,65 77.3,65" fill="none" stroke="#232A33" stroke-dasharray="2 3"></polygon>
+          <line x1="60" y1="55" x2="60" y2="15" stroke="#232A33" opacity=".6"></line>
+          <line x1="60" y1="55" x2="25.4" y2="75" stroke="#232A33" opacity=".6"></line>
+          <line x1="60" y1="55" x2="94.6" y2="75" stroke="#232A33" opacity=".6"></line>
+          <polygon points="60,21.4 45.5,63.4 86.7,70.4" fill="rgba(43,217,124,.18)" stroke="#2BD97C" stroke-width="1.5"></polygon>
+          <polygon points="60,26.6 43.4,64.6 88.8,71.6" fill="rgba(255,61,129,.14)" stroke="#FF3D81" stroke-width="1.5"></polygon>
+          <text x="60" y="9" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="#4A5364">ATT 84·71</text>
+          <text x="22" y="84" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="#4A5364">DEF 42·48</text>
+          <text x="97" y="84" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="#4A5364">TEC 77·83</text>
+        </svg>
+      </div>
+
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:9px">
+        <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">HIGHEST-RATED — 74'</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 14px">
+          <div style="display:flex;align-items:center;gap:7px"><div style="width:22px;height:22px;border-radius:50%;background:#171C22;border:1.5px solid rgba(43,217,124,.55);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7.5px;font-weight:600;color:#F5F7FA;flex:none">DV</div><span style="flex:1;font-size:10.5px;font-weight:600;color:#F5F7FA;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">David</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#052014;background:#2BD97C;border-radius:5px;padding:1px 5px">8.2</span></div>
+          <div style="display:flex;align-items:center;gap:7px"><div style="width:22px;height:22px;border-radius:50%;background:#171C22;border:1.5px solid rgba(255,61,129,.55);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7.5px;font-weight:600;color:#F5F7FA;flex:none">HA</div><span style="flex:1;font-size:10.5px;font-weight:600;color:#F5F7FA;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Hakimi</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.2);border-radius:5px;padding:1px 5px">7.4</span></div>
+          <div style="display:flex;align-items:center;gap:7px"><div style="width:22px;height:22px;border-radius:50%;background:#171C22;border:1.5px solid rgba(43,217,124,.55);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7.5px;font-weight:600;color:#F5F7FA;flex:none">DA</div><span style="flex:1;font-size:10.5px;font-weight:600;color:#F5F7FA;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Davies</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.2);border-radius:5px;padding:1px 5px">7.8</span></div>
+          <div style="display:flex;align-items:center;gap:7px"><div style="width:22px;height:22px;border-radius:50%;background:#171C22;border:1.5px solid rgba(255,61,129,.55);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7.5px;font-weight:600;color:#F5F7FA;flex:none">OU</div><span style="flex:1;font-size:10.5px;font-weight:600;color:#F5F7FA;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Ounahi</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#C9D1DC;background:#242B34;border-radius:5px;padding:1px 5px">7.2</span></div>
+          <div style="display:flex;align-items:center;gap:7px"><div style="width:22px;height:22px;border-radius:50%;background:#171C22;border:1.5px solid rgba(43,217,124,.55);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7.5px;font-weight:600;color:#F5F7FA;flex:none">BU</div><span style="flex:1;font-size:10.5px;font-weight:600;color:#F5F7FA;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Buchanan</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.2);border-radius:5px;padding:1px 5px">7.6</span></div>
+          <div style="display:flex;align-items:center;gap:7px"><div style="width:22px;height:22px;border-radius:50%;background:#171C22;border:1.5px solid rgba(255,61,129,.55);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7.5px;font-weight:600;color:#F5F7FA;flex:none">ZI</div><span style="flex:1;font-size:10.5px;font-weight:600;color:#F5F7FA;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Ziyech</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#C9D1DC;background:#242B34;border-radius:5px;padding:1px 5px">7.1</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="min-width:0;display:flex;flex-direction:column;gap:12px" data-screen-label="3a main column">
+      <div style="display:flex;gap:2px;border-bottom:1px solid #232A33;padding:0 2px">
+        <div style="padding:8px 14px 0;display:flex;flex-direction:column;gap:7px;align-items:center;cursor:pointer"><span style="font-size:11.5px;font-weight:600;color:#97A0AF">Market</span><span style="display:block;width:100%;height:2px;background:transparent"></span></div>
+        <div style="padding:8px 14px 0;display:flex;flex-direction:column;gap:7px;align-items:center;cursor:pointer"><span style="font-size:11.5px;font-weight:600;color:#F5F7FA">Lineups</span><span style="display:block;width:100%;height:2px;border-radius:2px 2px 0 0;background:#2BD97C"></span></div>
+        <div style="padding:8px 14px 0;display:flex;flex-direction:column;gap:7px;align-items:center;cursor:pointer"><span style="font-size:11.5px;font-weight:600;color:#97A0AF">Stats</span><span style="display:block;width:100%;height:2px;background:transparent"></span></div>
+        <div style="padding:8px 14px 0;display:flex;flex-direction:column;gap:7px;align-items:center;cursor:pointer"><span style="font-size:11.5px;font-weight:600;color:#97A0AF">H2H</span><span style="display:block;width:100%;height:2px;background:transparent"></span></div>
+        <div style="padding:8px 14px 0;display:flex;flex-direction:column;gap:7px;align-items:center;cursor:pointer"><span style="font-size:11.5px;font-weight:600;color:#97A0AF">Media</span><span style="display:block;width:100%;height:2px;background:transparent"></span></div>
+      </div>
+
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">CONFIRMED LINEUPS — 74'</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="display:flex;background:#0B0D10;border:1px solid #232A33;border-radius:999px;padding:3px">
+              <div style="padding:0 14px;height:24px;border-radius:999px;background:#F5F7FA;color:#0B0D10;display:flex;align-items:center;font-size:10.5px;font-weight:600;cursor:pointer">Lineups</div>
+              <div style="padding:0 14px;height:24px;border-radius:999px;color:#97A0AF;display:flex;align-items:center;font-size:10.5px;font-weight:600;cursor:pointer">Player stats</div>
+            </div>
+            <div style="height:30px;padding:0 14px;border-radius:999px;border:1px solid #232A33;color:#97A0AF;display:flex;align-items:center;font-size:11px;font-weight:600;cursor:pointer">Share</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <sc-for list="{{t3Chips}}" as="ch" hint-placeholder-count="5">
+            <div onClick="{{ch.go}}" style="height:30px;padding:0 14px;border-radius:999px;border:1px solid {{ch.bc}};background:{{ch.bg}};color:{{ch.c}};font-size:11px;font-weight:600;display:flex;align-items:center;cursor:pointer">{{ch.l}}</div>
+          </sc-for>
+          <span style="flex:1"></span>
+          <div style="width:30px;height:30px;border-radius:8px;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#97A0AF;cursor:pointer">&lt;/&gt;</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:13px;font-weight:700;color:#F5F7FA">Canada</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.16);border-radius:6px;padding:2px 8px">7.21</span>
+          <span style="width:13px;height:13px;border-radius:50%;border:1px solid #232A33;display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#4A5364">i</span>
+          <span style="flex:1"></span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M8 3 L10 2 C10.5 3.2 13.5 3.2 14 2 L16 3 L21 6.5 L18.5 10 L16.5 8.8 V21 H7.5 V8.8 L5.5 10 L3 6.5 Z" fill="#2BD97C" opacity="0.9"></path></svg>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#97A0AF">4-3-3</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">vs</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#97A0AF">4-1-4-1</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M8 3 L10 2 C10.5 3.2 13.5 3.2 14 2 L16 3 L21 6.5 L18.5 10 L16.5 8.8 V21 H7.5 V8.8 L5.5 10 L3 6.5 Z" fill="#FF3D81" opacity="0.75"></path></svg>
+          <span style="flex:1"></span>
+          <span style="width:13px;height:13px;border-radius:50%;border:1px solid #232A33;display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#4A5364">i</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#C9D1DC;background:#242B34;border-radius:6px;padding:2px 8px">6.81</span>
+          <span style="font-size:13px;font-weight:700;color:#F5F7FA">Morocco</span>
+        </div>
+        <div style="position:relative;height:470px;border-radius:12px;border:1px solid #232A33;overflow:hidden;background:repeating-linear-gradient(90deg,rgba(43,217,124,.028) 0px,rgba(43,217,124,.028) 52px,rgba(43,217,124,0) 52px,rgba(43,217,124,0) 104px),#0C1015">
+          <div style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:#232A33"></div>
+          <div style="position:absolute;left:50%;top:50%;width:92px;height:92px;border:1px solid #232A33;border-radius:50%;transform:translate(-50%,-50%)"></div>
+          <div style="position:absolute;left:-1px;top:50%;transform:translateY(-50%);width:58px;height:250px;border:1px solid #232A33;border-radius:0 10px 10px 0"></div>
+          <div style="position:absolute;right:-1px;top:50%;transform:translateY(-50%);width:58px;height:250px;border:1px solid #232A33;border-radius:10px 0 0 10px"></div>
+          <sc-for list="{{pitchWide}}" as="pl" hint-placeholder-count="22">
+            <div style="position:absolute;left:{{pl.x}};top:{{pl.y}};transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;width:78px">
+              <div style="position:relative">
+                <div style="width:30px;height:30px;border-radius:50%;background:#171C22;border:1.5px solid {{pl.bc}};display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#F5F7FA">{{pl.ini}}</div>
+                <div style="position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);padding:1px 5px;border-radius:5px;background:{{pl.rBg}};font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:{{pl.rC}}">{{pl.r}}</div>
+                <div style="position:absolute;top:-3px;right:-5px;width:8px;height:8px;border-radius:50%;background:#2BD97C;border:1.5px solid #0C1015;display:{{pl.gDisp}}"></div>
+                <div style="position:absolute;top:-3px;left:-6px;width:6px;height:9px;border-radius:2px;background:#FFB020;display:{{pl.yDisp}}"></div>
+              </div>
+              <div style="margin-top:10px;font-size:8.5px;color:#97A0AF;white-space:nowrap;max-width:78px;overflow:hidden;text-overflow:ellipsis"><span style="font-family:'IBM Plex Mono',monospace;color:#4A5364">{{pl.num}}</span> {{pl.n}}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+          <div style="background:#0B0D10;border:1px solid #232A33;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:9px">
+            <span style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600">REFEREE</span>
+            <div style="display:flex;align-items:center;gap:8px">
+              <div style="width:26px;height:26px;border-radius:50%;background:#171C22;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF;flex:none">FR</div>
+              <div><div style="font-size:11px;font-weight:600;color:#F5F7FA">F. Ramos</div><div style="font-size:8.5px;color:#4A5364;margin-top:1px">Uruguay</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #1A2028;padding-top:8px">
+              <span style="display:flex;align-items:center;gap:5px"><span style="width:6px;height:9px;border-radius:2px;background:#FFB020"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#97A0AF">4.8/gm</span></span>
+              <span style="display:flex;align-items:center;gap:5px"><span style="width:6px;height:9px;border-radius:2px;background:#FF3D81"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#97A0AF">0.2/gm</span></span>
+            </div>
+          </div>
+          <div style="background:#0B0D10;border:1px solid #232A33;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:9px">
+            <span style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MANAGERS</span>
+            <div style="display:flex;align-items:center;gap:8px">
+              <div style="width:26px;height:26px;border-radius:50%;background:#171C22;border:1px solid rgba(43,217,124,.45);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF;flex:none">JM</div>
+              <div><div style="font-size:11px;font-weight:600;color:#F5F7FA">J. Marsch</div><div style="font-size:8.5px;color:#4A5364;margin-top:1px">Canada</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <div style="width:26px;height:26px;border-radius:50%;background:#171C22;border:1px solid rgba(255,61,129,.45);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF;flex:none">WR</div>
+              <div><div style="font-size:11px;font-weight:600;color:#F5F7FA">W. Regragui</div><div style="font-size:8.5px;color:#4A5364;margin-top:1px">Morocco</div></div>
+            </div>
+          </div>
+          <div style="background:#0B0D10;border:1px solid #232A33;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:9px">
+            <span style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600">SUBSTITUTIONS</span>
+            <div style="display:flex;align-items:center;gap:7px"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#97A0AF;flex:none">61'</span><span style="font-size:10px;color:#97A0AF;flex:none">⇄</span><div style="flex:1;min-width:0"><div style="font-size:10.5px;font-weight:600;color:#F5F7FA">Boufal in · Amallah out</div><div style="font-size:8.5px;color:#4A5364;margin-top:1px">Morocco</div></div></div>
+            <div style="font-size:9px;line-height:1.7;color:#4A5364;border-top:1px solid #1A2028;padding-top:7px">CAN bench — St. Clair · Osorio · Shaffelburg<br>MAR bench — Munir · El Khannouss · Ezzalzouli</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:30px;border-top:1px solid #232A33;display:flex;align-items:center;gap:14px;padding:0 18px;flex:none">
+    <span style="font-size:9.5px;color:#4A5364">OMNIPITCH is a free-to-play game. Credits are play money and have no cash value.</span>
+    <span style="flex:1"></span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.06em;color:#4A5364">LMSR PRICING · PROOFS ON SOLANA DEVNET · FEED 42 MS</span>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: “same structure, PRE-MATCH state” · “vertical pitch variant” · “lock <a class="dv-oid" href="#3a">3a</a> and continue the page factory”</p>
+</section>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Desktop Match View — LIVE · 1440×900</span></div>
+<div class="dv-lead">Sofascore's skeleton on OMNIPITCH skin, wired to the same live sim as turn 1 (ticks ~2.4s, 180ms flashes; chips, tabs, star, ticker all work). New here: a working size slider with live LMSR cost / fee / max, demo-fill toast, per-event <b>market impact</b> in the timeline, and a leaderboard pinned row that re-ranks live as your P&amp;L moves. Fills 80&nbsp;@&nbsp;52.1 + 40&nbsp;@&nbsp;58.4 reconcile to the locked 54.2 avg. Flagged: clock frozen at 74&#8242; for continuity; monogram crests; R16 slate dated Jul 4–5; violet only on settlement / proof / Moment. 22 distinct handles, no lorem, no ads. See <a class="dv-oid" href="#2a">2a</a>; north star <a class="dv-oid" href="#1a">1a</a> unchanged below.</div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Terminal desktop — ticker · 320/760/320 · full depth</div>
+<div class="dv-card" data-screen-label="2a — Desktop match view LIVE" style="width:1440px;height:900px;display:flex;flex-direction:column;background:#0B0D10">
+
+  <div style="height:34px;border-bottom:1px solid #232A33;display:flex;align-items:stretch;flex:none;background:#0D1015;overflow:hidden">
+    <div style="display:flex;align-items:center;gap:7px;padding:0 14px;border-right:1px solid #232A33;flex:none">
+      <span style="width:6px;height:6px;border-radius:50%;background:#2BD97C;animation:opPulse 1.7s ease-in-out infinite"></span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.1em;color:#97A0AF">WC26 LIVE</span>
+    </div>
+    <div style="flex:1;overflow:hidden;display:flex;align-items:center">
+      <div style="display:flex;align-items:center;width:max-content;animation:opTick 60s linear infinite">
+        <sc-for list="{{ticker}}" as="tk" hint-placeholder-count="8">
+          <div style="display:flex;align-items:center;gap:8px;padding:4px 14px;margin:0 3px;border-radius:8px;background:{{tk.bg}};flex:none">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:{{tk.stC}}">{{tk.st}}</span>
+            <span style="font-size:10.5px;font-weight:600;color:#F5F7FA">{{tk.teams}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:{{tk.scC}}">{{tk.score}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:{{tk.pc}}">{{tk.pr}}</span>
+          </div>
+          <span style="width:1px;height:12px;background:#1C222B;flex:none"></span>
+        </sc-for>
+        <sc-for list="{{ticker}}" as="tk" hint-placeholder-count="8">
+          <div style="display:flex;align-items:center;gap:8px;padding:4px 14px;margin:0 3px;border-radius:8px;background:{{tk.bg}};flex:none">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:{{tk.stC}}">{{tk.st}}</span>
+            <span style="font-size:10.5px;font-weight:600;color:#F5F7FA">{{tk.teams}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:{{tk.scC}}">{{tk.score}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:{{tk.pc}}">{{tk.pr}}</span>
+          </div>
+          <span style="width:1px;height:12px;background:#1C222B;flex:none"></span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:58px;border-bottom:1px solid #232A33;display:flex;align-items:center;gap:16px;padding:0 18px;flex:none">
+    <div style="display:flex;align-items:baseline;gap:8px;flex:none">
+      <span style="font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:16.5px;letter-spacing:.03em;color:#F5F7FA">OMNIPITCH</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;letter-spacing:.08em;color:#97A0AF;border:1px solid #232A33;border-radius:5px;padding:2px 5px">WC26</span>
+    </div>
+    <div style="width:320px;height:34px;border-radius:999px;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;gap:8px;padding:0 13px">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#97A0AF" stroke-width="2"></circle><path d="M20 20 L16.2 16.2" stroke="#97A0AF" stroke-width="2" stroke-linecap="round"></path></svg>
+      <span style="font-size:11.5px;color:#4A5364;flex:1">Search matches, traders</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364;border:1px solid #232A33;border-radius:5px;padding:2px 5px">⌘K</span>
+    </div>
+    <div style="flex:1"></div>
+    <div style="height:32px;border-radius:999px;background:rgba(43,217,124,.1);border:1px solid rgba(43,217,124,.35);display:flex;align-items:center;gap:7px;padding:0 13px;flex:none">
+      <span style="width:6px;height:6px;border-radius:50%;background:#2BD97C"></span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#2BD97C">2,450 CR</span>
+    </div>
+    <div style="height:32px;border-radius:999px;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;gap:7px;padding:0 13px;flex:none">
+      <span style="font-size:9px;letter-spacing:.08em;color:#97A0AF;font-weight:600">RANK</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#F5F7FA">#142</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#2BD97C">▲3</span>
+    </div>
+    <div style="width:34px;height:34px;border-radius:50%;background:#232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#F5F7FA;flex:none;cursor:pointer">VD</div>
+  </div>
+
+  <div style="flex:1;min-height:0;display:grid;grid-template-columns:320px 1fr 320px;gap:10px;padding:10px">
+
+    <div style="min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:6px;padding-right:2px" data-screen-label="2a left rail">
+      <div style="display:flex;align-items:baseline;gap:8px;padding:2px 4px">
+        <span style="font-size:9px;letter-spacing:.14em;font-weight:700;color:#97A0AF">FAVOURITES</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">2</span>
+      </div>
+      <sc-for list="{{railFav}}" as="m" hint-placeholder-count="2">
+        <div style="border-radius:16px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;cursor:pointer;background:{{m.bg}};border:1px solid {{m.bc}}">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="width:36px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:{{m.minC}};flex:none">{{m.min}}</span>
+            <span style="font-size:11.5px;font-weight:600;color:#F5F7FA">{{m.t1}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:{{m.scC}}">{{m.score}}</span>
+            <span style="font-size:11.5px;font-weight:600;color:#F5F7FA">{{m.t2}}</span>
+            <span style="flex:1"></span>
+            <span style="font-size:12px;color:{{m.starC}}">{{m.star}}</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:36px;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#4A5364;flex:none">{{m.sub}}</span>
+            {{m.spark}}
+            <span style="flex:1"></span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;font-variant-numeric:tabular-nums;color:{{m.hc}}">{{m.h}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-variant-numeric:tabular-nums;color:{{m.dc}}">{{m.d}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-variant-numeric:tabular-nums;color:{{m.ac}}">{{m.a}}</span>
+          </div>
+        </div>
+      </sc-for>
+      <div style="display:flex;align-items:baseline;gap:8px;padding:8px 4px 2px">
+        <span style="font-size:9px;letter-spacing:.14em;font-weight:700;color:#97A0AF">WORLD CUP 2026 — ROUND OF 16</span>
+        <span style="flex:1"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">JUL 4–5</span>
+      </div>
+      <sc-for list="{{railR16}}" as="m" hint-placeholder-count="6">
+        <div style="border-radius:16px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;cursor:pointer;background:{{m.bg}};border:1px solid {{m.bc}}">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="width:36px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:{{m.minC}};flex:none">{{m.min}}</span>
+            <span style="font-size:11.5px;font-weight:600;color:#F5F7FA">{{m.t1}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:{{m.scC}}">{{m.score}}</span>
+            <span style="font-size:11.5px;font-weight:600;color:#F5F7FA">{{m.t2}}</span>
+            <span style="flex:1"></span>
+            <span style="font-size:12px;color:{{m.starC}}">{{m.star}}</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:36px;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#4A5364;flex:none">{{m.sub}}</span>
+            {{m.spark}}
+            <span style="flex:1"></span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;font-variant-numeric:tabular-nums;color:{{m.hc}}">{{m.h}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-variant-numeric:tabular-nums;color:{{m.dc}}">{{m.d}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-variant-numeric:tabular-nums;color:{{m.ac}}">{{m.a}}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="position:relative;min-height:0;display:flex;flex-direction:column">
+      <div style="flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-right:2px" data-screen-label="2a center column">
+
+        <div style="flex:none;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 18px;display:flex;align-items:center;gap:14px">
+          <div style="display:flex;align-items:center;gap:10px;width:200px;flex:none">
+            <div style="width:42px;height:42px;border-radius:50%;background:#0B0D10;border:1px solid rgba(43,217,124,.45);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:700;color:#F5F7FA;flex:none">CAN</div>
+            <div><div style="font-size:13.5px;font-weight:700;color:#F5F7FA">Canada</div><div style="font-size:8.5px;letter-spacing:.12em;color:#97A0AF;font-weight:600">HOME · YOU 120 SH</div></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">
+            <div style="font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:38px;line-height:1;color:#F5F7FA">1 – 0</div>
+            <div style="display:flex;align-items:center;gap:6px">{{liveDot}}<span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:#2BD97C">74' LIVE</span></div>
+            <div style="font-size:8.5px;letter-spacing:.14em;color:#4A5364;font-weight:600">ROUND OF 16 · BC PLACE, VANCOUVER</div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:flex-end;gap:10px;width:200px;flex:none">
+            <div style="text-align:right"><div style="font-size:13.5px;font-weight:700;color:#F5F7FA">Morocco</div><div style="font-size:8.5px;letter-spacing:.12em;color:#97A0AF;font-weight:600">AWAY</div></div>
+            <div style="width:42px;height:42px;border-radius:50%;background:#0B0D10;border:1px solid rgba(255,61,129,.45);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:700;color:#F5F7FA;flex:none">MAR</div>
+            <div onClick="{{dGoStar}}" style="width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;color:{{dStarC}};flex:none">{{dStar}}</div>
+          </div>
+        </div>
+
+        <div style="flex:none;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:12px 15px 8px;display:flex;flex-direction:column;gap:2px">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between">
+            <div style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600;padding-bottom:6px">MOMENTUM RIVER — CAN WIN %</div>
+            <div style="display:flex;align-items:baseline;gap:8px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:32px;line-height:1;font-variant-numeric:tabular-nums;color:{{hC}}">{{hP}}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:{{hDeltaC}}">{{hDeltaTxt}}</span>
+            </div>
+          </div>
+          {{riverD}}
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;flex:none">
+          <div onClick="{{dSelH}}" style="cursor:pointer;border-radius:16px;padding:11px 14px 10px;background:{{dBgH}};border:1px solid {{dBcH}}">
+            <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9px;letter-spacing:.1em;color:#97A0AF;font-weight:600">HOME — CANADA</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.14);border-radius:999px;padding:2px 7px">YOU · 120</span></div>
+            <div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:23px;font-variant-numeric:tabular-nums;color:{{hC}}">{{hP}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:{{hDeltaC}}">{{hDeltaTxt}}</span></div>
+          </div>
+          <div onClick="{{dSelD}}" style="cursor:pointer;border-radius:16px;padding:11px 14px 10px;background:{{dBgD}};border:1px solid {{dBcD}}">
+            <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9px;letter-spacing:.1em;color:#97A0AF;font-weight:600">DRAW</span></div>
+            <div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:23px;font-variant-numeric:tabular-nums;color:{{dC}}">{{dPr}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:{{dDeltaC}}">{{dDeltaTxt}}</span></div>
+          </div>
+          <div onClick="{{dSelA}}" style="cursor:pointer;border-radius:16px;padding:11px 14px 10px;background:{{dBgA}};border:1px solid {{dBcA}}">
+            <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9px;letter-spacing:.1em;color:#97A0AF;font-weight:600">AWAY — MOROCCO</span></div>
+            <div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:23px;font-variant-numeric:tabular-nums;color:{{aC}}">{{aP}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:{{aDeltaC}}">{{aDeltaTxt}}</span></div>
+          </div>
+        </div>
+
+        <div style="flex:none;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:14px">
+            <div style="display:flex;background:#0B0D10;border:1px solid #232A33;border-radius:999px;padding:3px;flex:none">
+              <div onClick="{{dGoBuy}}" style="padding:0 18px;height:34px;border-radius:999px;display:flex;align-items:center;font-weight:700;font-size:12.5px;cursor:pointer;background:{{dBuyBg}};color:{{dBuyC}}">Buy</div>
+              <div onClick="{{dGoSell}}" style="padding:0 18px;height:34px;border-radius:999px;display:flex;align-items:center;font-weight:700;font-size:12.5px;cursor:pointer;background:{{dSellBg}};color:{{dSellC}}">Sell</div>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:6px;flex:none">
+              <span style="font-size:11px;color:#97A0AF">{{dSideWord}}</span>
+              <span style="font-size:13px;font-weight:700;color:#F5F7FA">{{dSelNm}}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:{{dSelPxC}}">@ {{dSelPx}}</span>
+            </div>
+            <div style="flex:1;display:flex;align-items:center;gap:10px;min-width:120px">
+              <input type="range" min="5" max="200" step="1" value="{{dSliderVal}}" onChange="{{dOnSize}}" style="flex:1;background:{{dSliderBg}}">
+              <span style="width:52px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#F5F7FA">{{dSize}} sh</span>
+            </div>
+            <div style="display:flex;gap:6px;flex:none">
+              <div onClick="{{dQ10}}" style="height:28px;padding:0 10px;border-radius:999px;border:1px solid #232A33;display:flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#97A0AF;cursor:pointer">+10</div>
+              <div onClick="{{dQ25}}" style="height:28px;padding:0 10px;border-radius:999px;border:1px solid #232A33;display:flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#97A0AF;cursor:pointer">+25</div>
+              <div onClick="{{dQMax}}" style="height:28px;padding:0 10px;border-radius:999px;border:1px solid #232A33;display:flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#97A0AF;cursor:pointer">MAX</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:20px;border-top:1px solid #232A33;padding-top:10px">
+            <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:8px;letter-spacing:.1em;color:#4A5364;font-weight:600">AVG PRICE</span><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#F5F7FA">{{dAvg}}</span></div>
+            <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:8px;letter-spacing:.1em;color:#4A5364;font-weight:600">{{dCostLabel}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#F5F7FA">{{dCost}} cr</span></div>
+            <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:8px;letter-spacing:.1em;color:#4A5364;font-weight:600">FEE 0.5%</span><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#97A0AF">{{dFee}}</span></div>
+            <div style="flex:1;font-size:10px;line-height:1.5;color:#4A5364">{{dNote}}</div>
+            <div onClick="{{dDoConfirm}}" style="height:42px;padding:0 22px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;cursor:pointer;background:{{dCtaBg}};color:{{dCtaC}};flex:none"><span style="font-family:'IBM Plex Mono',monospace">{{dConfirmTxt}}</span></div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:2px;border-bottom:1px solid #232A33;flex:none;padding:0 2px">
+          <div onClick="{{dGo_market}}" style="cursor:pointer;padding:8px 14px 0;display:flex;flex-direction:column;gap:7px;align-items:center"><span style="font-size:11.5px;font-weight:600;color:{{dTC_market}}">Market</span><span style="display:block;width:100%;height:2px;border-radius:2px 2px 0 0;background:{{dTU_market}}"></span></div>
+          <div onClick="{{dGo_positions}}" style="cursor:pointer;padding:8px 14px 0;display:flex;flex-direction:column;gap:7px;align-items:center"><span style="font-size:11.5px;font-weight:600;color:{{dTC_positions}}">Positions · 1</span><span style="display:block;width:100%;height:2px;border-radius:2px 2px 0 0;background:{{dTU_positions}}"></span></div>
+          <div onClick="{{dGo_chat}}" style="cursor:pointer;padding:8px 14px 0;display:flex;flex-direction:column;gap:7px;align-items:center"><span style="font-size:11.5px;font-weight:600;color:{{dTC_chat}}">Chat · 1,284</span><span style="display:block;width:100%;height:2px;border-radius:2px 2px 0 0;background:{{dTU_chat}}"></span></div>
+          <div onClick="{{dGo_stats}}" style="cursor:pointer;padding:8px 14px 0;display:flex;flex-direction:column;gap:7px;align-items:center"><span style="font-size:11.5px;font-weight:600;color:{{dTC_stats}}">Stats</span><span style="display:block;width:100%;height:2px;border-radius:2px 2px 0 0;background:{{dTU_stats}}"></span></div>
+        </div>
+
+        <sc-if value="{{dTab_market}}" hint-placeholder-val="{{ true }}">
+        <div style="flex:none;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MATCH STATS — 74'</span>
+            <span style="display:flex;align-items:center;gap:12px"><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:#2BD97C"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#97A0AF">CAN</span></span><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:#FF3D81;opacity:.85"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#97A0AF">MAR</span></span></span>
+          </div>
+          <sc-for list="{{statsMini}}" as="sr" hint-placeholder-count="4">
+            <div style="display:flex;flex-direction:column;gap:5px">
+              <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">{{sr.v1}}</span><span style="font-size:10px;color:#97A0AF">{{sr.l}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">{{sr.v2}}</span></div>
+              <div style="display:flex;gap:2px;height:4px"><span style="flex:{{sr.f1}};background:#2BD97C;border-radius:2px"></span><span style="flex:{{sr.f2}};background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="flex:none;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px 12px;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">LINEUPS · AVG RATINGS</span>
+            <span style="display:flex;align-items:center;gap:14px">
+              <span style="display:flex;align-items:center;gap:5px"><span style="width:7px;height:7px;border-radius:2px;background:#FF3D81;opacity:.85"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#97A0AF">MAR 4-1-4-1 · 6.81</span></span>
+              <span style="display:flex;align-items:center;gap:5px"><span style="width:7px;height:7px;border-radius:2px;background:#2BD97C"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#97A0AF">CAN 4-3-3 · 7.21</span></span>
+            </span>
+          </div>
+          <div style="position:relative;height:430px;border-radius:12px;border:1px solid #232A33;overflow:hidden;background:repeating-linear-gradient(0deg,rgba(43,217,124,.028) 0px,rgba(43,217,124,.028) 43px,rgba(43,217,124,0) 43px,rgba(43,217,124,0) 86px),#0C1015">
+            <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:#232A33"></div>
+            <div style="position:absolute;left:50%;top:50%;width:84px;height:84px;border:1px solid #232A33;border-radius:50%;transform:translate(-50%,-50%)"></div>
+            <div style="position:absolute;left:50%;top:-1px;transform:translateX(-50%);width:240px;height:54px;border:1px solid #232A33;border-radius:0 0 8px 8px"></div>
+            <div style="position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);width:240px;height:54px;border:1px solid #232A33;border-radius:8px 8px 0 0"></div>
+            <sc-for list="{{pitchAll}}" as="pl" hint-placeholder-count="22">
+              <div style="position:absolute;left:{{pl.x}};top:{{pl.y}};transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px;width:64px">
+                <div style="position:relative">
+                  <div style="width:26px;height:26px;border-radius:50%;background:#171C22;border:1.5px solid {{pl.bc}};display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#F5F7FA">{{pl.num}}</div>
+                  <div style="position:absolute;top:-6px;right:-17px;padding:1px 4px;border-radius:5px;background:{{pl.rBg}};font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:{{pl.rC}}">{{pl.r}}</div>
+                  <div style="position:absolute;bottom:-2px;right:-7px;width:8px;height:8px;border-radius:50%;background:#2BD97C;border:1.5px solid #0C1015;display:{{pl.gDisp}}"></div>
+                  <div style="position:absolute;bottom:-3px;left:-7px;width:6px;height:9px;border-radius:2px;background:#FFB020;display:{{pl.yDisp}}"></div>
+                </div>
+                <div style="font-size:8px;color:#97A0AF;white-space:nowrap;max-width:64px;overflow:hidden;text-overflow:ellipsis">{{pl.n}}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px"><span style="font-size:10px;color:#4A5364;line-height:1">⇄</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">61' BOUFAL ON · AMALLAH OFF (MAR)</span></div>
+        </div>
+
+        <div style="flex:none;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px 8px;display:flex;flex-direction:column">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:6px">
+            <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">EVENTS</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">MARKET IMPACT →</span>
+          </div>
+          <sc-for list="{{events2h}}" as="ev" hint-placeholder-count="4">
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #1A2028">
+              <span style="width:28px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#97A0AF;flex:none">{{ev.m}}</span>
+              <span style="width:14px;display:flex;justify-content:center;flex:none">{{ev.g}}</span>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:11.5px;font-weight:600;color:#F5F7FA">{{ev.t}}</div>
+                <div style="font-size:9.5px;color:#97A0AF;margin-top:1px">{{ev.sub}}</div>
+              </div>
+              <div style="text-align:right;flex:none">
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:{{ev.impC}}">{{ev.imp}}</div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364;margin-top:1px">{{ev.px}}</div>
+              </div>
+            </div>
+          </sc-for>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 0">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;color:#4A5364;flex:none">HT</span>
+            <div style="flex:1;height:1px;background:#232A33"></div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364;flex:none">1–0 · H 62.9</span>
+          </div>
+          <sc-for list="{{events1h}}" as="ev" hint-placeholder-count="4">
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #1A2028">
+              <span style="width:28px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#97A0AF;flex:none">{{ev.m}}</span>
+              <span style="width:14px;display:flex;justify-content:center;flex:none">{{ev.g}}</span>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:11.5px;font-weight:600;color:#F5F7FA">{{ev.t}}</div>
+                <div style="font-size:9.5px;color:#97A0AF;margin-top:1px">{{ev.sub}}</div>
+              </div>
+              <div style="text-align:right;flex:none">
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:{{ev.impC}}">{{ev.imp}}</div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364;margin-top:1px">{{ev.px}}</div>
+              </div>
+            </div>
+          </sc-for>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 0">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;color:#4A5364;flex:none">KO</span>
+            <div style="flex:1;height:1px;background:#232A33"></div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364;flex:none">OPEN · H 44.0</span>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{dTab_positions}}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;gap:10px;flex:none">
+          <div style="flex:1;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.14);border-radius:999px;padding:3px 8px">HOME · CAN</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#97A0AF">120 sh · avg 54.2</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline">
+              <div style="display:flex;align-items:baseline;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;color:#F5F7FA">{{posVal}}</span><span style="font-size:10px;color:#97A0AF">cr value</span></div>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:{{posC}}">{{posPnl}} ({{posPct}})</span>
+            </div>
+            <div style="height:1px;background:#232A33"></div>
+            <div style="display:flex;gap:8px">
+              <div style="flex:1;height:36px;border-radius:999px;border:1px solid rgba(255,61,129,.5);color:#FF3D81;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;cursor:pointer">Sell</div>
+              <div style="flex:1;height:36px;border-radius:999px;border:1px solid rgba(43,217,124,.5);color:#2BD97C;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;cursor:pointer">Buy more</div>
+            </div>
+          </div>
+          <div style="flex:1;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:9px">
+            <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">FILLS — THIS MATCH</span>
+            <sc-for list="{{fills}}" as="fl" hint-placeholder-count="2">
+              <div style="display:flex;align-items:center;gap:10px;border-bottom:1px solid #1A2028;padding-bottom:8px">
+                <span style="width:26px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF;flex:none">{{fl.m}}</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.12);border-radius:999px;padding:2px 7px;flex:none">{{fl.side}}</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#F5F7FA">{{fl.q}} {{fl.px}}</span>
+                <span style="flex:1"></span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#97A0AF">{{fl.cost}}</span>
+              </div>
+            </sc-for>
+            <div style="display:flex;justify-content:space-between;align-items:baseline">
+              <span style="font-size:9.5px;color:#4A5364">Average entry 54.2 · 6,504 cr in</span>
+              <span style="font-size:9.5px;color:#9D6BFF">◆ settles on Solana at FT</span>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{dTab_chat}}" hint-placeholder-val="{{ false }}">
+        <div style="flex:none;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600;margin-right:6px">LIVE ROOM</span>
+            <sc-for list="{{presence}}" as="p" hint-placeholder-count="6">
+              <span style="display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#97A0AF;background:#0B0D10;border:1px solid #232A33;border-radius:999px;padding:3px 8px">{{p}}</span>
+            </sc-for>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">+1,278 here</span>
+          </div>
+          <sc-for list="{{chatMsgs}}" as="c" hint-placeholder-count="5">
+            <div style="display:flex;gap:9px">
+              <div style="width:24px;height:24px;border-radius:50%;background:#0B0D10;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#97A0AF;flex:none">{{c.av}}</div>
+              <div style="display:flex;flex-direction:column;gap:3px">
+                <div style="display:flex;align-items:center;gap:6px"><span style="font-size:11px;font-weight:600;color:#F5F7FA">{{c.h}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:{{c.flC}};background:{{c.flBg}};border-radius:999px;padding:2px 6px">{{c.fl}}</span></div>
+                <div style="font-size:12px;line-height:1.45;color:#C9D1DC">{{c.t}}</div>
+              </div>
+            </div>
+          </sc-for>
+          <div style="display:flex;gap:9px;align-items:baseline">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:#2BD97C;flex:none">BOOTH</span>
+            <div style="font-size:11.5px;line-height:1.45;color:#97A0AF;font-style:italic">Corner count 7–2 Morocco since 60' — pressure building.</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <div style="flex:1;height:38px;border-radius:999px;background:#0B0D10;border:1px solid #232A33;display:flex;align-items:center;padding:0 14px;font-size:12px;color:#4A5364">Say something…</div>
+            <div style="width:38px;height:38px;border-radius:50%;background:rgba(43,217,124,.14);color:#2BD97C;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;flex:none">→</div>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{dTab_stats}}" hint-placeholder-val="{{ false }}">
+        <div style="flex:none;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">FULL STATS — 74'</span>
+            <span style="display:flex;align-items:center;gap:12px"><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:#2BD97C"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#97A0AF">CAN</span></span><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:#FF3D81;opacity:.85"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#97A0AF">MAR</span></span></span>
+          </div>
+          <sc-for list="{{statsFull}}" as="sr" hint-placeholder-count="7">
+            <div style="display:flex;flex-direction:column;gap:5px">
+              <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">{{sr.v1}}</span><span style="font-size:10px;color:#97A0AF">{{sr.l}}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">{{sr.v2}}</span></div>
+              <div style="display:flex;gap:2px;height:4px"><span style="flex:{{sr.f1}};background:#2BD97C;border-radius:2px"></span><span style="flex:{{sr.f2}};background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+            </div>
+          </sc-for>
+        </div>
+        </sc-if>
+
+      </div>
+      <sc-if value="{{toastOn}}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;left:50%;bottom:16px;transform:translateX(-50%);background:#14171C;border:1px solid rgba(43,217,124,.5);border-radius:999px;padding:9px 16px;display:flex;align-items:center;gap:8px;box-shadow:0 12px 32px rgba(0,0,0,.55);z-index:5;white-space:nowrap">
+          <span style="width:7px;height:7px;border-radius:50%;background:#2BD97C"></span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#F5F7FA">{{toastTxt}}</span>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-right:2px" data-screen-label="2a right rail">
+
+      <div style="flex:none;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">THE BOOTH</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">AI COMMENTARY · LIVE</span>
+        </div>
+        <div style="background:rgba(43,217,124,.05);border:1px solid rgba(43,217,124,.3);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:7px">
+          <div style="display:flex;align-items:center;gap:8px">{{wave}}<span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C">PLAYING · 74'</span><span style="flex:1"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#FF3D81">64 → 61</span></div>
+          <div style="font-size:12px;line-height:1.5;color:#F5F7FA">Morocco pushing — market trims Canada from 64 to 61 in four minutes.</div>
+        </div>
+        <sc-for list="{{boothOld}}" as="bo" hint-placeholder-count="3">
+          <div style="display:flex;gap:9px;opacity:.72">
+            <span style="width:26px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF;flex:none">{{bo.m}}</span>
+            <div style="flex:1;font-size:11px;line-height:1.5;color:#97A0AF">{{bo.t}}</div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:{{bo.impC}};flex:none">{{bo.imp}}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="flex:none;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:4px">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MATCH LEADERBOARD</span>
+          <span style="display:flex;align-items:center;gap:5px"><span style="width:5px;height:5px;border-radius:50%;background:#2BD97C;animation:opPulse 1.7s ease-in-out infinite"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">LIVE P&L</span></span>
+        </div>
+        <sc-for list="{{lbRows}}" as="r" hint-placeholder-count="10">
+          <div style="display:flex;align-items:center;gap:8px;padding:4px 0">
+            <span style="width:18px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#4A5364;flex:none">{{r.r}}</span>
+            <span style="width:7px;height:7px;border-radius:2px;background:{{r.sc}};opacity:.85;flex:none"></span>
+            <span style="flex:1;font-size:11px;font-weight:600;color:#F5F7FA;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{r.h}}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;font-variant-numeric:tabular-nums;color:{{r.pc}}">{{r.p}}</span>
+          </div>
+        </sc-for>
+        <div style="margin-top:2px;border:1px solid rgba(43,217,124,.4);background:rgba(43,217,124,.06);border-radius:10px;padding:7px 10px;display:flex;align-items:center;gap:8px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;color:#2BD97C;flex:none">{{myRank}}</span>
+          <span style="width:7px;height:7px;border-radius:2px;background:#2BD97C;opacity:.85;flex:none"></span>
+          <span style="font-size:11px;font-weight:600;color:#F5F7FA">@vanislander</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;font-weight:700;letter-spacing:.08em;color:#0B0D10;background:#2BD97C;border-radius:4px;padding:1px 4px">YOU</span>
+          <span style="flex:1"></span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;font-variant-numeric:tabular-nums;color:{{myPnlC}}">{{myPnl}}</span>
+        </div>
+      </div>
+
+      <div style="flex:none;background:#14171C;border:1px solid rgba(157,107,255,.45);border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:10px;box-shadow:0 0 24px rgba(157,107,255,.08)">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">BIGGEST SWING</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:#9D6BFF">◆ MOMENT</span>
+        </div>
+        <div>
+          <div style="font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;font-size:15px;color:#F5F7FA">THE 38TH MINUTE</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#97A0AF;margin-top:2px">CAN vs MAR · R16 · 30'–45'</div>
+        </div>
+        <div style="position:relative;background:#0B0D10;border:1px solid #232A33;border-radius:10px;padding:8px">
+          {{momentSpark}}
+          <span style="position:absolute;top:7px;right:8px;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C;background:rgba(11,13,16,.85);border:1px solid #232A33;border-radius:999px;padding:2px 7px">41 → 63</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:10.5px;color:#97A0AF">Top trader <span style="color:#F5F7FA;font-weight:600">@hexfan</span> · <span style="font-family:'IBM Plex Mono',monospace;color:#2BD97C">+842</span></span>
+          <span style="flex:1"></span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#9D6BFF;border:1px solid rgba(157,107,255,.4);border-radius:999px;padding:2px 7px">RARE · Δ22.0</span>
+        </div>
+        <div style="height:34px;border-radius:999px;border:1px solid rgba(157,107,255,.5);color:#9D6BFF;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:600;cursor:pointer">View Moment</div>
+      </div>
+
+      <div style="flex:none;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:9px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">SETTLEMENT</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#9D6BFF;border:1px solid rgba(157,107,255,.4);border-radius:999px;padding:2px 7px">◆ SOLANA · DEVNET</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:9.5px;color:#4A5364">Market account</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#9D6BFF">omn1kQ…9k3xR</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:9.5px;color:#4A5364">Oracle</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#2BD97C">● FIFA feed · listening</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:9.5px;color:#4A5364">Settles</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#F5F7FA">at full-time whistle</span></div>
+        <div style="border-top:1px solid #232A33;padding-top:8px;font-size:9.5px;line-height:1.5;color:#4A5364">Winning shares redeem at 100 cr. The proof link posts here at FT.</div>
+      </div>
+
+      <div style="flex:none;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:13px 14px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600;padding-bottom:6px">UP NEXT — R16</div>
+        <sc-for list="{{nextM}}" as="n" hint-placeholder-count="2">
+          <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-top:1px solid #1A2028;cursor:pointer">
+            <div style="flex:1"><div style="font-size:11.5px;font-weight:600;color:#F5F7FA">{{n.t1}} – {{n.t2}}</div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#4A5364;margin-top:2px">{{n.when}}</div></div>
+            <div style="text-align:right"><div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF">{{n.h}} · {{n.d}} · {{n.a}}</div><div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#2BD97C;margin-top:2px">{{n.cd}}</div></div>
+          </div>
+        </sc-for>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="height:30px;border-top:1px solid #232A33;display:flex;align-items:center;gap:14px;padding:0 18px;flex:none">
+    <span style="font-size:9.5px;color:#4A5364">OMNIPITCH is a free-to-play game. Credits are play money and have no cash value.</span>
+    <span style="flex:1"></span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.06em;color:#4A5364">LMSR PRICING · PROOFS ON SOLANA DEVNET · FEED 42 MS</span>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: “desktop HALTED goal state” · “tighten the left rail” · “lock <a class="dv-oid" href="#2a">2a</a> and fork Home desktop”</p>
+</section>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">North star — Match view · LIVE · 390×844</span></div>
+<div class="dv-lead">Per the Lock Kit: two contrasting takes on the same tokens and match state (CAN 1–0 MAR · 74&#8242; · R16 · H&nbsp;61.4 / D&nbsp;22.1 / A&nbsp;16.5), nothing else designed until one is locked. Both are live — prices tick every ~2.4s, numbers flash on change, chips / Buy–Sell / tabs / star all work. Assumptions: frameless product canvas (no OS chrome); monogram discs stand in for federation crests; the River plots to 90&#8242; so unplayed time reads as open space. <b><a class="dv-oid" href="#1a">1a</a> Terminal</b> — Hyperliquid discipline: single-probability River, chip grid, chat-style Booth. <b><a class="dv-oid" href="#1b">1b</a> Broadcast</b> — scoreboard header in Archivo Expanded, stacked 100% River, list pricing, split trade dock, Booth as ticker. Tweaks (top right): pause the sim, 1b band opacity, flash duration.</div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Terminal — chart-first, quiet chrome</div>
+<div class="dv-card" data-screen-label="1a — Match view LIVE (terminal)" style="width:390px;height:844px;display:flex;flex-direction:column;background:#0B0D10">
+
+  <div style="display:flex;align-items:center;gap:6px;padding:10px 10px 8px;border-bottom:1px solid #232A33;flex:none">
+    <div style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M15 5 L8 12 L15 19" stroke="#F5F7FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0">
+      <div style="font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;font-size:17px;letter-spacing:.02em;color:#F5F7FA;line-height:1">CAN&nbsp;&nbsp;1 – 0&nbsp;&nbsp;MAR</div>
+      <div style="display:flex;align-items:center;gap:6px">{{liveDot}}<span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#2BD97C">74'</span><span style="font-size:9px;color:#4A5364">·</span><span style="font-size:9px;letter-spacing:.14em;color:#97A0AF;font-weight:600">ROUND OF 16</span></div>
+    </div>
+    <div onClick="{{aGoStar}}" style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none;font-size:16px;color:{{aStarC}}">{{aStar}}</div>
+  </div>
+
+  <sc-if value="{{aTab_market}}" hint-placeholder-val="{{ true }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;padding:12px 16px 2px;flex:none">
+      <div style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600;padding-bottom:4px">MOMENTUM — CAN WIN %</div>
+      <div style="display:flex;align-items:baseline;gap:7px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:30px;line-height:1;font-variant-numeric:tabular-nums;color:{{hC}}">{{hP}}</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:{{hDeltaC}}">{{hDeltaTxt}}</span>
+      </div>
+    </div>
+    <div style="height:336px;flex:none">{{riverA}}</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:10px 14px 0;flex:none">
+      <div onClick="{{aSelH}}" style="cursor:pointer;border-radius:16px;padding:9px 11px 8px;background:{{aBgH}};border:1px solid {{aBcH}}">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9px;letter-spacing:.1em;color:#97A0AF;font-weight:600">HOME</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.14);border-radius:999px;padding:2px 6px">120</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:19px;margin-top:4px;font-variant-numeric:tabular-nums;color:{{hC}}">{{hP}}</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;margin-top:1px;color:{{hDeltaC}}">{{hDeltaTxt}}</div>
+      </div>
+      <div onClick="{{aSelD}}" style="cursor:pointer;border-radius:16px;padding:9px 11px 8px;background:{{aBgD}};border:1px solid {{aBcD}}">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9px;letter-spacing:.1em;color:#97A0AF;font-weight:600">DRAW</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:19px;margin-top:4px;font-variant-numeric:tabular-nums;color:{{dC}}">{{dPr}}</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;margin-top:1px;color:{{dDeltaC}}">{{dDeltaTxt}}</div>
+      </div>
+      <div onClick="{{aSelA}}" style="cursor:pointer;border-radius:16px;padding:9px 11px 8px;background:{{aBgA}};border:1px solid {{aBcA}}">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9px;letter-spacing:.1em;color:#97A0AF;font-weight:600">AWAY</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:19px;margin-top:4px;font-variant-numeric:tabular-nums;color:{{aC}}">{{aP}}</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;margin-top:1px;color:{{aDeltaC}}">{{aDeltaTxt}}</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 14px 0;flex:none">
+      <div onClick="{{aGoBuy}}" style="height:46px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;cursor:pointer;background:{{aBuyBg}};color:{{aBuyC}};border:1px solid {{aBuyBc}}">Buy</div>
+      <div onClick="{{aGoSell}}" style="height:46px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;cursor:pointer;background:{{aSellBg}};color:{{aSellC}};border:1px solid {{aSellBc}}">Sell</div>
+    </div>
+
+    <div style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:8px;padding:13px 14px 10px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex:none">
+        <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">THE BOOTH</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">AI COMMENTARY</span>
+      </div>
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:11px 13px;display:flex;flex-direction:column;gap:7px;flex:none">
+        <div style="display:flex;align-items:center;gap:8px">{{wave}}<span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#2BD97C">PLAYING · 74'</span></div>
+        <div style="font-size:12.5px;line-height:1.5;color:#F5F7FA">Morocco pushing — market trims Canada from 64 to 61 in four minutes.</div>
+      </div>
+      <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:10px 13px;display:flex;flex-direction:column;gap:5px;opacity:.6;flex:none">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF">38'</div>
+        <div style="font-size:12px;line-height:1.5;color:#97A0AF">David finishes the counter — Canada reprices 41 → 63 inside ninety seconds.</div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{aTab_positions}}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;padding:16px 14px">
+    <div style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600;flex:none">OPEN POSITIONS — CAN–MAR</div>
+    <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:12px;flex:none">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.14);border-radius:999px;padding:3px 8px">HOME · CAN</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#97A0AF">120 sh · avg 54.2</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <div style="display:flex;align-items:baseline;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;color:#F5F7FA">{{posVal}}</span><span style="font-size:10px;color:#97A0AF">cr value</span></div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:{{posC}}">{{posPnl}} ({{posPct}})</span>
+      </div>
+      <div style="height:1px;background:#232A33"></div>
+      <div style="display:flex;gap:8px">
+        <div style="flex:1;height:38px;border-radius:999px;border:1px solid rgba(255,61,129,.5);color:#FF3D81;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;cursor:pointer">Sell</div>
+        <div style="flex:1;height:38px;border-radius:999px;border:1px solid rgba(43,217,124,.5);color:#2BD97C;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;cursor:pointer">Buy more</div>
+      </div>
+    </div>
+    <div style="font-size:10.5px;line-height:1.5;color:#97A0AF;display:flex;gap:6px;align-items:baseline"><span style="color:#9D6BFF;font-size:9px">◆</span><span>Settles on Solana at full time — proof posts automatically.</span></div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{aTab_chat}}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;padding:16px 14px 12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex:none">
+      <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">LIVE ROOM</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF">1,284 here</span>
+    </div>
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:12px;overflow:hidden">
+      <div style="display:flex;gap:9px">
+        <div style="width:24px;height:24px;border-radius:50%;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#97A0AF;flex:none">HX</div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div style="display:flex;align-items:center;gap:6px"><span style="font-size:11px;font-weight:600;color:#F5F7FA">@hexfan</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.12);border-radius:999px;padding:2px 6px">CAN · 120</span></div>
+          <div style="font-size:12px;line-height:1.45;color:#C9D1DC">national team arb — buy every Canada dip</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:9px">
+        <div style="width:24px;height:24px;border-radius:50%;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#97A0AF;flex:none">ML</div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div style="display:flex;align-items:center;gap:6px"><span style="font-size:11px;font-weight:600;color:#F5F7FA">@marlenko</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#97A0AF;background:rgba(151,160,175,.14);border-radius:999px;padding:2px 6px">DRAW · 60</span></div>
+          <div style="font-size:12px;line-height:1.45;color:#C9D1DC">Hakimi has been quiet since the goal — market is asleep on Morocco</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:baseline">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:#2BD97C;flex:none">BOOTH</span>
+        <div style="font-size:11.5px;line-height:1.45;color:#97A0AF;font-style:italic">Corner count 7–2 Morocco since 60' — pressure building.</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;flex:none">
+      <div style="flex:1;height:40px;border-radius:999px;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;padding:0 14px;font-size:12px;color:#4A5364">Say something…</div>
+      <div style="width:40px;height:40px;border-radius:50%;background:rgba(43,217,124,.14);color:#2BD97C;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;flex:none">→</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{aTab_stats}}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:14px;padding:16px 14px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex:none">
+      <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MATCH STATS</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">CAN ■ / MAR ■</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">42%</span><span style="font-size:10px;color:#97A0AF">Possession</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">58%</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:42;background:#2BD97C;border-radius:2px"></span><span style="flex:58;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">8</span><span style="font-size:10px;color:#97A0AF">Shots</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">13</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:8;background:#2BD97C;border-radius:2px"></span><span style="flex:13;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">4</span><span style="font-size:10px;color:#97A0AF">On target</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">5</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:4;background:#2BD97C;border-radius:2px"></span><span style="flex:5;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">1.12</span><span style="font-size:10px;color:#97A0AF">Expected goals</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">1.38</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:112;background:#2BD97C;border-radius:2px"></span><span style="flex:138;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">2</span><span style="font-size:10px;color:#97A0AF">Corners</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">7</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:2;background:#2BD97C;border-radius:2px"></span><span style="flex:7;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+  </div>
+  </sc-if>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #232A33;padding:5px 8px 9px;flex:none">
+    <div onClick="{{aGo_market}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 0"><span style="font-size:11px;font-weight:600;color:{{aTC_market}}">Market</span><span style="display:block;width:16px;height:2px;border-radius:2px;background:{{aTU_market}}"></span></div>
+    <div onClick="{{aGo_positions}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 0"><span style="font-size:11px;font-weight:600;color:{{aTC_positions}}">Positions</span><span style="display:block;width:16px;height:2px;border-radius:2px;background:{{aTU_positions}}"></span></div>
+    <div onClick="{{aGo_chat}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 0"><span style="font-size:11px;font-weight:600;color:{{aTC_chat}}">Chat</span><span style="display:block;width:16px;height:2px;border-radius:2px;background:{{aTU_chat}}"></span></div>
+    <div onClick="{{aGo_stats}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 0"><span style="font-size:11px;font-weight:600;color:{{aTC_stats}}">Stats</span><span style="display:block;width:16px;height:2px;border-radius:2px;background:{{aTU_stats}}"></span></div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Broadcast — scoreboard energy, stacked river</div>
+<div class="dv-card" data-screen-label="1b — Match view LIVE (broadcast)" style="width:390px;height:844px;display:flex;flex-direction:column;background:#0B0D10">
+
+  <div style="position:relative;padding:12px 14px 12px;border-bottom:1px solid #232A33;flex:none">
+    <div style="position:absolute;left:8px;top:10px;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M15 5 L8 12 L15 19" stroke="#F5F7FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></div>
+    <div onClick="{{bGoStar}}" style="position:absolute;right:8px;top:10px;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:{{bStarC}}">{{bStar}}</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:18px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px;width:64px">
+        <div style="width:36px;height:36px;border-radius:50%;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#F5F7FA">CAN</div>
+        <div style="font-size:9px;letter-spacing:.08em;color:#97A0AF;font-weight:600">CANADA</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:36px;line-height:1;color:#F5F7FA">1 – 0</div>
+        <div style="display:flex;align-items:center;gap:6px">{{liveDot}}<span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:#2BD97C">74' LIVE</span></div>
+        <div style="font-size:8.5px;letter-spacing:.14em;color:#4A5364;font-weight:600">R16 · BC PLACE</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:5px;width:64px">
+        <div style="width:36px;height:36px;border-radius:50%;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;color:#F5F7FA">MAR</div>
+        <div style="font-size:9px;letter-spacing:.08em;color:#97A0AF;font-weight:600">MOROCCO</div>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{bTab_market}}" hint-placeholder-val="{{ true }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px 0;flex:none">
+      <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MOMENTUM RIVER</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#4A5364">ALL OUTCOMES · 100%</span>
+    </div>
+    <div style="height:344px;flex:none">{{riverB}}</div>
+
+    <div style="display:flex;flex-direction:column;gap:7px;padding:10px 14px 0;flex:none">
+      <div onClick="{{bSelH}}" style="cursor:pointer;height:52px;border-radius:16px;padding:0 14px;display:flex;align-items:center;gap:10px;background:{{bBgH}};border:1px solid {{bBcH}}">
+        <span style="width:10px;height:10px;border-radius:3px;background:#2BD97C;flex:none"></span>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:12.5px;font-weight:600;color:#F5F7FA">Canada</div>
+          <div style="font-size:9.5px;color:#97A0AF">HOME · holding <span style="font-family:'IBM Plex Mono',monospace;color:#2BD97C">120</span></div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;font-variant-numeric:tabular-nums;color:{{hC}}">{{hP}}</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:{{hDeltaC}}">{{hDeltaTxt}}</div>
+        </div>
+      </div>
+      <div onClick="{{bSelD}}" style="cursor:pointer;height:52px;border-radius:16px;padding:0 14px;display:flex;align-items:center;gap:10px;background:{{bBgD}};border:1px solid {{bBcD}}">
+        <span style="width:10px;height:10px;border-radius:3px;background:#97A0AF;flex:none"></span>
+        <div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:600;color:#F5F7FA">Draw</div></div>
+        <div style="text-align:right">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;font-variant-numeric:tabular-nums;color:{{dC}}">{{dPr}}</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:{{dDeltaC}}">{{dDeltaTxt}}</div>
+        </div>
+      </div>
+      <div onClick="{{bSelA}}" style="cursor:pointer;height:52px;border-radius:16px;padding:0 14px;display:flex;align-items:center;gap:10px;background:{{bBgA}};border:1px solid {{bBcA}}">
+        <span style="width:10px;height:10px;border-radius:3px;background:#FF3D81;flex:none"></span>
+        <div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:600;color:#F5F7FA">Morocco</div><div style="font-size:9.5px;color:#97A0AF">AWAY</div></div>
+        <div style="text-align:right">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;font-variant-numeric:tabular-nums;color:{{aC}}">{{aP}}</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:{{aDeltaC}}">{{aDeltaTxt}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;padding:12px 14px 0;flex:none">
+      <div style="display:flex;background:#14171C;border:1px solid #232A33;border-radius:999px;padding:3px;flex:none">
+        <div onClick="{{bGoBuy}}" style="padding:0 16px;height:38px;border-radius:999px;display:flex;align-items:center;font-weight:700;font-size:12.5px;cursor:pointer;background:{{bBuyBg}};color:{{bBuyC}}">Buy</div>
+        <div onClick="{{bGoSell}}" style="padding:0 16px;height:38px;border-radius:999px;display:flex;align-items:center;font-weight:700;font-size:12.5px;cursor:pointer;background:{{bSellBg}};color:{{bSellC}}">Sell</div>
+      </div>
+      <div style="flex:1;height:44px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13.5px;cursor:pointer;background:{{bCtaBg}};color:{{bCtaC}}"><span style="font-family:'IBM Plex Mono',monospace">{{bCta}}</span></div>
+    </div>
+
+    <div style="flex:1;min-height:0;padding:12px 14px 10px">
+      <div style="height:100%;display:flex;align-items:center;gap:10px;background:#14171C;border:1px solid #232A33;border-radius:16px;padding:0 13px;overflow:hidden">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:#2BD97C;flex:none">BOOTH</span>
+        {{wave}}
+        <div style="font-size:11.5px;color:#F5F7FA;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Morocco pushing — market trims Canada from 64 to 61 in four minutes.</div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{bTab_positions}}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;padding:16px 14px">
+    <div style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600;flex:none">OPEN POSITIONS — CAN–MAR</div>
+    <div style="background:#14171C;border:1px solid #232A33;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:12px;flex:none">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.14);border-radius:999px;padding:3px 8px">HOME · CAN</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#97A0AF">120 sh · avg 54.2</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <div style="display:flex;align-items:baseline;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;color:#F5F7FA">{{posVal}}</span><span style="font-size:10px;color:#97A0AF">cr value</span></div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:{{posC}}">{{posPnl}} ({{posPct}})</span>
+      </div>
+      <div style="height:1px;background:#232A33"></div>
+      <div style="display:flex;gap:8px">
+        <div style="flex:1;height:38px;border-radius:999px;border:1px solid rgba(255,61,129,.5);color:#FF3D81;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;cursor:pointer">Sell</div>
+        <div style="flex:1;height:38px;border-radius:999px;border:1px solid rgba(43,217,124,.5);color:#2BD97C;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;cursor:pointer">Buy more</div>
+      </div>
+    </div>
+    <div style="font-size:10.5px;line-height:1.5;color:#97A0AF;display:flex;gap:6px;align-items:baseline"><span style="color:#9D6BFF;font-size:9px">◆</span><span>Settles on Solana at full time — proof posts automatically.</span></div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{bTab_chat}}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;padding:16px 14px 12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex:none">
+      <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">LIVE ROOM</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#97A0AF">1,284 here</span>
+    </div>
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:12px;overflow:hidden">
+      <div style="display:flex;gap:9px">
+        <div style="width:24px;height:24px;border-radius:50%;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#97A0AF;flex:none">HX</div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div style="display:flex;align-items:center;gap:6px"><span style="font-size:11px;font-weight:600;color:#F5F7FA">@hexfan</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#2BD97C;background:rgba(43,217,124,.12);border-radius:999px;padding:2px 6px">CAN · 120</span></div>
+          <div style="font-size:12px;line-height:1.45;color:#C9D1DC">national team arb — buy every Canada dip</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:9px">
+        <div style="width:24px;height:24px;border-radius:50%;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#97A0AF;flex:none">ML</div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div style="display:flex;align-items:center;gap:6px"><span style="font-size:11px;font-weight:600;color:#F5F7FA">@marlenko</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;color:#97A0AF;background:rgba(151,160,175,.14);border-radius:999px;padding:2px 6px">DRAW · 60</span></div>
+          <div style="font-size:12px;line-height:1.45;color:#C9D1DC">Hakimi has been quiet since the goal — market is asleep on Morocco</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:baseline">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;color:#2BD97C;flex:none">BOOTH</span>
+        <div style="font-size:11.5px;line-height:1.45;color:#97A0AF;font-style:italic">Corner count 7–2 Morocco since 60' — pressure building.</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;flex:none">
+      <div style="flex:1;height:40px;border-radius:999px;background:#14171C;border:1px solid #232A33;display:flex;align-items:center;padding:0 14px;font-size:12px;color:#4A5364">Say something…</div>
+      <div style="width:40px;height:40px;border-radius:50%;background:rgba(43,217,124,.14);color:#2BD97C;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;flex:none">→</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{bTab_stats}}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:14px;padding:16px 14px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex:none">
+      <span style="font-size:9.5px;letter-spacing:.14em;color:#97A0AF;font-weight:600">MATCH STATS</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4A5364">CAN ■ / MAR ■</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">42%</span><span style="font-size:10px;color:#97A0AF">Possession</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">58%</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:42;background:#2BD97C;border-radius:2px"></span><span style="flex:58;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">8</span><span style="font-size:10px;color:#97A0AF">Shots</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">13</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:8;background:#2BD97C;border-radius:2px"></span><span style="flex:13;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">4</span><span style="font-size:10px;color:#97A0AF">On target</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">5</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:4;background:#2BD97C;border-radius:2px"></span><span style="flex:5;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">1.12</span><span style="font-size:10px;color:#97A0AF">Expected goals</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">1.38</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:112;background:#2BD97C;border-radius:2px"></span><span style="flex:138;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">2</span><span style="font-size:10px;color:#97A0AF">Corners</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#F5F7FA">7</span></div>
+      <div style="display:flex;gap:2px;height:4px"><span style="flex:2;background:#2BD97C;border-radius:2px"></span><span style="flex:7;background:#FF3D81;border-radius:2px;opacity:.8"></span></div>
+    </div>
+  </div>
+  </sc-if>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #232A33;padding:5px 8px 9px;flex:none">
+    <div onClick="{{bGo_market}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 0"><span style="font-size:11px;font-weight:600;color:{{bTC_market}}">Market</span><span style="display:block;width:16px;height:2px;border-radius:2px;background:{{bTU_market}}"></span></div>
+    <div onClick="{{bGo_positions}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 0"><span style="font-size:11px;font-weight:600;color:{{bTC_positions}}">Positions</span><span style="display:block;width:16px;height:2px;border-radius:2px;background:{{bTU_positions}}"></span></div>
+    <div onClick="{{bGo_chat}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 0"><span style="font-size:11px;font-weight:600;color:{{bTC_chat}}">Chat</span><span style="display:block;width:16px;height:2px;border-radius:2px;background:{{bTU_chat}}"></span></div>
+    <div onClick="{{bGo_stats}}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 0"><span style="font-size:11px;font-weight:600;color:{{bTC_stats}}">Stats</span><span style="display:block;width:16px;height:2px;border-radius:2px;background:{{bTU_stats}}"></span></div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt">
+<div class="dv-olabel">System check — ratify to lock</div>
+<div class="dv-card" data-screen-label="Lock notes" style="width:300px;padding:18px;display:flex;flex-direction:column;gap:16px">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;color:#97A0AF;font-weight:600">SYSTEM CHECK — V1 TOKENS</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+    <div style="display:flex;flex-direction:column;gap:4px"><span style="height:28px;border-radius:6px;background:#0B0D10;border:1px solid #232A33"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF">#0B0D10 bg</span></div>
+    <div style="display:flex;flex-direction:column;gap:4px"><span style="height:28px;border-radius:6px;background:#14171C;border:1px solid #232A33"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF">#14171C surf</span></div>
+    <div style="display:flex;flex-direction:column;gap:4px"><span style="height:28px;border-radius:6px;background:#2BD97C"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF">#2BD97C up</span></div>
+    <div style="display:flex;flex-direction:column;gap:4px"><span style="height:28px;border-radius:6px;background:#FF3D81"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF">#FF3D81 down</span></div>
+    <div style="display:flex;flex-direction:column;gap:4px"><span style="height:28px;border-radius:6px;background:#FFB020"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF">#FFB020 halt</span></div>
+    <div style="display:flex;flex-direction:column;gap:4px"><span style="height:28px;border-radius:6px;background:#9D6BFF"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#97A0AF">#9D6BFF chain</span></div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:7px;border-top:1px solid #232A33;padding-top:14px">
+    <div style="font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;font-size:15px;color:#F5F7FA">ARCHIVO EXPANDED — HERO</div>
+    <div style="font-size:12px;color:#C9D1DC">Inter — UI and body copy</div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#2BD97C">IBM Plex Mono 61.4 ▲2.1</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:5px;border-top:1px solid #232A33;padding-top:14px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;color:#97A0AF;font-weight:600">CONTRAST ON #0B0D10 — WCAG</div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;line-height:1.7;color:#C9D1DC">up 10.5:1 ✓ &nbsp;down 5.8:1 ✓<br>halt 11.4:1 ✓ &nbsp;chain 5.5:1 ✓</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:6px;border-top:1px solid #232A33;padding-top:14px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;color:#97A0AF;font-weight:600">DECISIONS TO RATIFY</div>
+    <div style="font-size:10.5px;line-height:1.65;color:#97A0AF">
+      1&nbsp; PriceChip uses card radius 16 (3 data lines) — pills stay reserved for actions and badges. <span style="color:#F5F7FA">Flagged deviation from “chips full”.</span><br>
+      2&nbsp; Chart team mapping: CAN green · MAR magenta · draw neutral.<br>
+      3&nbsp; Hero scores may use Archivo Expanded; every tradable number stays Plex Mono tabular.<br>
+      4&nbsp; River timeline plots to 90&#8242; — unplayed time stays empty.<br>
+      5&nbsp; Violet appears only beside on-chain copy.
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: “lock <a class="dv-oid" href="#1a">1a</a> and show the HALTED goal state” · “<a class="dv-oid" href="#1a">1a</a> layout with <a class="dv-oid" href="#1b">1b</a>’s stacked river” · “two more takes: quieter / more broadcast”</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;live&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Market simulation&quot;},
+  &quot;flashMs&quot;: {&quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 180, &quot;min&quot;: 100, &quot;max&quot;: 420, &quot;step&quot;: 20, &quot;unit&quot;: &quot;ms&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Motion&quot;},
+  &quot;bandOpacity&quot;: {&quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 0.5, &quot;min&quot;: 0.25, &quot;max&quot;: 0.8, &quot;step&quot;: 0.05, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;River — 1b bands&quot;}
+}">
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    this.UP='#2BD97C'; this.DN='#FF3D81'; this.HI='#F5F7FA'; this.LO='#97A0AF';
+    this.LINE='#232A33'; this.SUR='#14171C'; this.BG='#0B0D10';
+    this.MONO="'IBM Plex Mono',monospace";
+    this.state={
+      series:this.buildSeries(),
+      hP:61.4, dP:22.1, aP:16.5,
+      hFl:null, dFl:null, aFl:null,
+      hDelta:2.1, dDelta:-1.4, aDelta:-0.7,
+      a:{tab:'market', sel:'H', side:'buy', star:true},
+      b:{tab:'market', sel:'H', side:'buy', star:true},
+      d:{tab:'market', sel:'H', side:'buy', size:25, star:true},
+      t3:{fav:true, filter:'Performance', vote:null},
+      toast:null
+    };
+    this.liveDot=React.createElement('span',{style:{display:'inline-block',width:'7px',height:'7px',borderRadius:'50%',background:this.UP,boxShadow:'0 0 8px rgba(43,217,124,.8)',animation:'opPulse 1.7s ease-in-out infinite',flex:'none'}});
+    const bars=[6,12,15,9,13,7,11].map((h,i)=>React.createElement('span',{key:i,style:{width:'2.5px',height:h+'px',borderRadius:'2px',background:'#F5F7FA',opacity:.85,transformOrigin:'center',animation:'opWave 1.1s ease-in-out '+(i*0.13)+'s infinite'}}));
+    this.wave=React.createElement('span',{style:{display:'inline-flex',alignItems:'center',gap:'2.5px',height:'16px',flex:'none'}},bars);
+    this.buildDesk();
+  }
+
+  buildSeries(){
+    const pts=[];
+    for(let m=0;m<=74;m++){
+      let h,d;
+      if(m<38){
+        h=44+Math.sin(m/5.2)*1.7+Math.sin(m*0.9)*0.9-(m>28?(m-28)*0.38:0);
+        d=26+Math.sin(m/7)*1.1+(m>28?(m-28)*0.1:0);
+      }else{
+        const k=m-38;
+        h=63+Math.min(k*0.3,3.4)-(m>62?(m-62)*0.44:0)+Math.sin(m*0.8)*0.7;
+        d=21.6+(m>62?(m-62)*0.1:0)+Math.sin(m/6)*0.6;
+      }
+      h=Math.max(35,Math.min(68,h)); d=Math.max(18,Math.min(29,d));
+      pts.push({m:m,h:+h.toFixed(1),d:+d.toFixed(1),a:+(100-h-d).toFixed(1)});
+    }
+    pts[37]={m:37,h:41.0,d:26.8,a:32.2};
+    pts[38]={m:38,h:63.0,d:21.5,a:15.5};
+    pts[74]={m:74,h:61.4,d:22.1,a:16.5};
+    return pts;
+  }
+
+  componentDidMount(){ this._iv=setInterval(()=>this.tick(),2400); }
+  componentWillUnmount(){ clearInterval(this._iv); clearTimeout(this._ft); clearTimeout(this._tt); }
+
+  tick(){
+    if(this.props.live===false) return;
+    const st=this.state, s=st.series.slice(), prev=s[s.length-1];
+    let h=prev.h+(Math.random()-0.5)*0.6; h=Math.min(64.5,Math.max(58.5,h)); h=+h.toFixed(1);
+    let d=prev.d+(Math.random()-0.5)*0.35; d=Math.min(24.5,Math.max(20,d)); d=+d.toFixed(1);
+    const a=+(100-h-d).toFixed(1);
+    s[s.length-1]={m:prev.m,h:h,d:d,a:a};
+    const fl=(n,o)=>(n>o?this.UP:(n<o?this.DN:null));
+    this.setState({
+      series:s, hP:h, dP:d, aP:a,
+      hFl:fl(h,prev.h), dFl:fl(d,prev.d), aFl:fl(a,prev.a),
+      hDelta:+(st.hDelta+(h-prev.h)).toFixed(1),
+      dDelta:+(st.dDelta+(d-prev.d)).toFixed(1),
+      aDelta:+(st.aDelta+(a-prev.a)).toFixed(1)
+    });
+    clearTimeout(this._ft);
+    this._ft=setTimeout(()=>this.setState({hFl:null,dFl:null,aFl:null}), (this.props.flashMs!=null?this.props.flashMs:180));
+  }
+
+  setOpt(o,patch){ this.setState(s=>{ const next={}; next[o]=Object.assign({},s[o],patch); return next; }); }
+
+  frame(H){ const top=8, bot=26; return {top:top, bot:bot, y0:H-bot, x:(m)=>14+(m/90)*310, y:(v)=>top+(1-v/100)*(H-top-bot)}; }
+
+  axisEls(e,fr){
+    const els=[];
+    els.push(e('line',{key:'bl',x1:14,x2:324,y1:fr.y0,y2:fr.y0,stroke:this.LINE}));
+    [[0,"0'",'start'],[45,"45'",'middle'],[74,"74'",'middle'],[90,"90'",'end']].forEach(t=>{
+      els.push(e('line',{key:'tk'+t[0],x1:fr.x(t[0]),x2:fr.x(t[0]),y1:fr.y0,y2:fr.y0+4,stroke:this.LINE}));
+      els.push(e('text',{key:'tx'+t[0],x:fr.x(t[0]),y:fr.y0+15,textAnchor:t[2],fontFamily:this.MONO,fontSize:8.5,fontWeight:t[0]===74?600:400,fill:t[0]===74?this.UP:'#4A5364'},t[1]));
+    });
+    return els;
+  }
+
+  goalEls(e,fr){
+    const gx=fr.x(38), gy=fr.y(63), els=[];
+    els.push(e('line',{key:'gv',x1:gx,x2:gx,y1:fr.top+8,y2:fr.y0,stroke:'#F5F7FA',opacity:.13}));
+    els.push(e('rect',{key:'gc',x:gx-33,y:gy-46,width:66,height:29,rx:8,fill:'#14171C',stroke:this.LINE}));
+    els.push(e('text',{key:'gt1',x:gx,y:gy-34,textAnchor:'middle',fontFamily:this.MONO,fontSize:8.5,fontWeight:600,fill:this.HI},"GOAL 38'"));
+    els.push(e('text',{key:'gt2',x:gx,y:gy-23,textAnchor:'middle',fontFamily:this.MONO,fontSize:8.5,fill:this.UP},'41 → 63'));
+    els.push(e('circle',{key:'gr',cx:gx,cy:gy,r:6.5,fill:this.BG,stroke:this.UP,strokeWidth:2}));
+    els.push(e('circle',{key:'gd',cx:gx,cy:gy,r:2,fill:this.UP}));
+    return els;
+  }
+
+  sparkEl(arr,color,w,h,fill){
+    const e=React.createElement;
+    const mn=Math.min.apply(null,arr), mx=Math.max.apply(null,arr);
+    const rng=Math.max(0.8,mx-mn);
+    const x=(i)=>1+(i/(arr.length-1))*(w-2);
+    const y=(v)=>h-3-((v-mn)/rng)*(h-6);
+    const d=arr.map((v,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+y(v).toFixed(1)).join(' ');
+    const els=[];
+    if(fill!==false){ els.push(e('path',{key:'a',d:d+' L'+x(arr.length-1).toFixed(1)+' '+(h-1)+' L1 '+(h-1)+' Z',fill:color,opacity:.12})); }
+    els.push(e('path',{key:'l',d:d,fill:'none',stroke:color,strokeWidth:1.4,strokeLinecap:'round',strokeLinejoin:'round'}));
+    return e('svg',{viewBox:'0 0 '+w+' '+h,width:w,height:h,style:{display:'block',flex:'none'}},els);
+  }
+
+  buildDesk(){
+    const e=React.createElement, UP=this.UP, DN=this.DN, HI=this.HI, LO=this.LO;
+    const VIO='#9D6BFF', AMB='#FFB020', SUR='#14171C', LN='#232A33', DIM='#39424F';
+    this.VIO=VIO; this.AMB=AMB;
+    this.spFlat=[33.2,33.8,33.1,33.9,33.4,34,33.6,33.8];
+    this.spVol=[38,42,40,47,52,49,55,58,54,57,55.2];
+    this.spDone=[34,38,42,41,56,58,61,68,77,86,93,100];
+    this.spCliff=[43,42.6,41.9,41.2,41,41,56,63,63.6,63.2,63.8,64.1,63.7,64,63.8,64.2];
+    this.railR16=[
+      {min:"4'",minC:UP,sub:'HOU',score:'0 – 0',scC:HI,t1:'AUS',t2:'EGY',star:'☆',starC:DIM,h:'33.8',d:'29.0',a:'37.2',hc:HI,dc:HI,ac:HI,bg:SUR,bc:LN,spark:this.sparkEl(this.spFlat,LO,92,22)},
+      {min:"58'",minC:UP,sub:'ATL',score:'2 – 1',scC:HI,t1:'JPN',t2:'GER',star:'☆',starC:DIM,h:'55.2',d:'28.4',a:'16.4',hc:HI,dc:HI,ac:HI,bg:SUR,bc:LN,spark:this.sparkEl(this.spVol,UP,92,22)},
+      {min:'FT',minC:LO,sub:'DAL',score:'2 – 1',scC:LO,t1:'USA',t2:'NED',star:'☆',starC:DIM,h:'100.0',d:'0.0',a:'0.0',hc:UP,dc:DIM,ac:DIM,bg:SUR,bc:LN,spark:this.sparkEl(this.spDone,LO,92,22)},
+      {min:'22:00',minC:HI,sub:'NYC',score:'vs',scC:DIM,t1:'ENG',t2:'SEN',star:'☆',starC:DIM,h:'48.2',d:'27.5',a:'24.3',hc:LO,dc:LO,ac:LO,bg:SUR,bc:LN,spark:this.sparkEl([48,48.1,48,48.2,48.1,48.2],DIM,92,22,false)},
+      {min:'JUL 5',minC:HI,sub:'01:00',score:'vs',scC:DIM,t1:'ARG',t2:'MEX',star:'☆',starC:DIM,h:'44.6',d:'28.9',a:'26.5',hc:LO,dc:LO,ac:LO,bg:SUR,bc:LN,spark:this.sparkEl([44.5,44.6,44.4,44.7,44.6,44.6],DIM,92,22,false)},
+      {min:'JUL 5',minC:HI,sub:'04:00',score:'vs',scC:DIM,t1:'BRA',t2:'POR',star:'☆',starC:DIM,h:'51.7',d:'26.1',a:'22.2',hc:LO,dc:LO,ac:LO,bg:SUR,bc:LN,spark:this.sparkEl([51.5,51.7,51.6,51.8,51.7,51.7],DIM,92,22,false)}
+    ];
+    this.railFavStatic={min:'JUL 5',minC:HI,sub:'02:30',score:'vs',scC:DIM,t1:'PAR',t2:'FRA',star:'★',starC:HI,h:'30.1',d:'27.4',a:'42.5',hc:LO,dc:LO,ac:LO,bg:SUR,bc:LN,spark:this.sparkEl([30,30.1,30,30.2,30.1,30.1],DIM,92,22,false)};
+    this.lb=[
+      {r:'1',h:'@hexfan',s:'CAN',sc:UP,p:'+2,431',pc:UP},
+      {r:'2',h:'@maple_maxi',s:'CAN',sc:UP,p:'+1,876',pc:UP},
+      {r:'3',h:'@casablanca_kid',s:'MAR',sc:DN,p:'+1,540',pc:UP},
+      {r:'4',h:'@xg_merchant',s:'DRW',sc:LO,p:'+1,102',pc:UP},
+      {r:'5',h:'@nightshift',s:'CAN',sc:UP,p:'+988',pc:UP},
+      {r:'6',h:'@atlaslion',s:'MAR',sc:DN,p:'+740',pc:UP},
+      {r:'7',h:'@draw_enjoyer',s:'DRW',sc:LO,p:'+513',pc:UP},
+      {r:'8',h:'@tickertape',s:'CAN',sc:UP,p:'+388',pc:UP},
+      {r:'9',h:'@lowblock',s:'MAR',sc:DN,p:'+201',pc:UP},
+      {r:'10',h:'@premium_tears',s:'MAR',sc:DN,p:'−44',pc:DN}
+    ];
+    this._lbVals=[2431,1876,1540,1102,988,740,513,388,201,-44];
+    const gGoal=e('span',{style:{width:'9px',height:'9px',borderRadius:'50%',background:UP,flex:'none',boxShadow:'0 0 6px rgba(43,217,124,.6)'}});
+    const gYC=e('span',{style:{width:'7px',height:'10px',borderRadius:'2px',background:AMB,flex:'none'}});
+    const gSub=e('span',{style:{fontSize:'11px',color:LO,lineHeight:1,flex:'none'}},'⇄');
+    const gShot=e('span',{style:{width:'8px',height:'8px',borderRadius:'50%',border:'1.5px solid '+LO,flex:'none',boxSizing:'border-box'}});
+    this.events2h=[
+      {m:"73'",g:gYC,t:'Yellow card — Bombito',sub:'CAN · stops the Atlas counter',imp:'▼0.8',impC:DN,px:'H 62.1'},
+      {m:"67'",g:gShot,t:'Corner surge — Morocco',sub:"7–2 corners since 60'",imp:'▼1.2',impC:DN,px:'H 62.9'},
+      {m:"61'",g:gSub,t:'Sub — Boufal on, Amallah off',sub:'MAR · fresh legs wide left',imp:'▼0.4',impC:DN,px:'H 64.1'},
+      {m:"52'",g:gShot,t:'Big chance — En-Nesyri heads over',sub:'MAR · six yards, unmarked',imp:'▼1.1',impC:DN,px:'H 64.5'}
+    ];
+    this.events1h=[
+      {m:"38'",g:gGoal,t:'GOAL — Jonathan David',sub:'CAN · Buchanan cutback, first time',imp:'41 → 63',impC:UP,px:'+22.0'},
+      {m:"23'",g:gYC,t:'Yellow card — Amrabat',sub:'MAR · late on Eustáquio',imp:'▲0.6',impC:UP,px:'H 43.1'},
+      {m:"12'",g:gShot,t:'Free kick — Ziyech, saved',sub:'MAR · full stretch from Crépeau',imp:'▼0.9',impC:DN,px:'H 42.6'},
+      {m:"8'",g:gShot,t:'Shot — Buchanan, wide',sub:'CAN · cut in from the right',imp:'▲0.4',impC:UP,px:'H 44.2'}
+    ];
+    const rS=(r)=>r>=8?{bg:UP,c:'#052014'}:(r>=7.3?{bg:'rgba(43,217,124,.2)',c:UP}:(r>=6.8?{bg:'#242B34',c:'#C9D1DC'}:{bg:'rgba(255,61,129,.16)',c:'#FF7AA8'}));
+    const mk=(x,y,num,n,r,team,g,yc)=>{const s=rS(r);return{x:x+'%',y:y+'%',num:String(num),n:n,r:r.toFixed(1),rBg:s.bg,rC:s.c,bc:team==='CAN'?'rgba(43,217,124,.55)':'rgba(255,61,129,.55)',gDisp:g?'block':'none',yDisp:yc?'block':'none'};};
+    this.pitchAll=[
+      mk(50,7,1,'Bounou',6.9,'MAR'), mk(14,17,2,'Hakimi',7.4,'MAR'), mk(38,16,5,'Aguerd',6.8,'MAR'), mk(62,16,18,'Abqar',6.5,'MAR'), mk(86,17,3,'Mazraoui',7.0,'MAR'),
+      mk(50,25,4,'Amrabat',6.7,'MAR',false,true), mk(12,34,7,'Ziyech',7.1,'MAR'), mk(37,33,8,'Ounahi',7.2,'MAR'), mk(63,33,15,'Amallah',6.3,'MAR'), mk(88,34,26,'Adli',6.6,'MAR'), mk(50,43,19,'En-Nesyri',6.4,'MAR'),
+      mk(15,57,11,'Buchanan',7.6,'CAN'), mk(50,55,9,'David',8.2,'CAN',true), mk(85,57,17,'Larin',6.7,'CAN'),
+      mk(28,68,8,'Eustáquio',7.2,'CAN'), mk(50,66,13,'Koné',7.4,'CAN'), mk(72,68,10,'Ahmed',6.8,'CAN'),
+      mk(14,82,22,'Johnston',6.9,'CAN'), mk(38,83,4,'Vitória',7.0,'CAN'), mk(62,83,15,'Bombito',6.6,'CAN',false,true), mk(86,81,19,'Davies',7.8,'CAN'),
+      mk(50,93,16,'Crépeau',7.1,'CAN')
+    ];
+    this.boothOld=[
+      {m:"67'",t:'Corner count 7–2 Morocco since the hour — pressure without product, but the tape leans away from Canada.',imp:'▼1.2',impC:DN},
+      {m:"52'",t:'En-Nesyri free at the back post and heads over. The market barely blinks — sellers were early.',imp:'▼0.3',impC:DN},
+      {m:"38'",t:'David finishes the counter — Canada reprices 41 → 63 inside ninety seconds.',imp:'41 → 63',impC:UP}
+    ];
+    this.nextM=[
+      {t1:'ENG',t2:'SEN',when:'TODAY 22:00 · NYC',cd:'in 3h 40m',h:'48.2',d:'27.5',a:'24.3'},
+      {t1:'ARG',t2:'MEX',when:'JUL 5 01:00 · MEX',cd:'in 6h 40m',h:'44.6',d:'28.9',a:'26.5'}
+    ];
+    this.chatMsgs=[
+      {av:'ML',h:'@marlenko',fl:'DRAW · 60',flC:LO,flBg:'rgba(151,160,175,.14)',t:'Hakimi has been quiet since the goal — market is asleep on Morocco'},
+      {av:'DS',h:'@davies_szn',fl:'CAN · 200',flC:UP,flBg:'rgba(43,217,124,.12)',t:'Davies is cooking Hakimi on every carry, I buy every dip from here'},
+      {av:'RR',h:'@riyad_red',fl:'MAR · 85',flC:'#FF7AA8',flBg:'rgba(255,61,129,.12)',t:'one corner from Away doubling — 16.5 is a gift if this tips into chaos'},
+      {av:'SP',h:'@stoppage',fl:'DRW · 40',flC:LO,flBg:'rgba(151,160,175,.14)',t:"legs gone on both sides. this drifts toward a draw price by 85'"},
+      {av:'FK',h:'@fullkit',fl:'CAN · 60',flC:UP,flBg:'rgba(43,217,124,.12)',t:'61 is cheap for a lead plus the best transition player on the pitch'}
+    ];
+    this.presence=['@scalpel','@tundra','@limitorder','@ninetyplus','@xherdan','@bcplace_szn'];
+    this.fills=[
+      {m:"12'",side:'BUY HOME',q:'80 sh',px:'@ 52.1',cost:'−4,168 cr'},
+      {m:"39'",side:'BUY HOME',q:'40 sh',px:'@ 58.4',cost:'−2,336 cr'}
+    ];
+    this.statsMini=[
+      {l:'Possession',v1:'42%',v2:'58%',f1:'42',f2:'58'},
+      {l:'Expected goals',v1:'1.12',v2:'1.38',f1:'112',f2:'138'},
+      {l:'Shots',v1:'8',v2:'13',f1:'8',f2:'13'},
+      {l:'Corners',v1:'2',v2:'7',f1:'2',f2:'7'}
+    ];
+    this.statsFull=this.statsMini.concat([
+      {l:'Shots on target',v1:'4',v2:'5',f1:'4',f2:'5'},
+      {l:'Fouls',v1:'14',v2:'9',f1:'14',f2:'9'},
+      {l:'Passes completed',v1:'318',v2:'452',f1:'318',f2:'452'}
+    ]);
+    this.momentSpark=this.sparkEl(this.spCliff,UP,272,64);
+    this.t3Chips=['Performance','Club','Age','Value','Height'];
+    const wp=(x,y,ini,num,n,r,team,g,yc)=>{const s=rS(r);return{x:x+'%',y:y+'%',ini:ini,num:String(num),n:n,r:r.toFixed(1),rBg:s.bg,rC:s.c,bc:team==='CAN'?'rgba(43,217,124,.55)':'rgba(255,61,129,.55)',gDisp:g?'block':'none',yDisp:yc?'block':'none'};};
+    this.pitchWide=[
+      wp(5,50,'CR',16,'Crépeau',7.1,'CAN'), wp(15,15,'JO',22,'Johnston',6.9,'CAN'), wp(15,38,'VI',4,'Vitória',7.0,'CAN'), wp(15,62,'BO',15,'Bombito',6.6,'CAN',false,true), wp(15,85,'DA',19,'Davies (c)',7.8,'CAN'),
+      wp(27,25,'EU',8,'Eustáquio',7.2,'CAN'), wp(27,50,'KO',13,'Koné',7.4,'CAN'), wp(27,75,'AH',10,'Ahmed',6.8,'CAN'),
+      wp(40,18,'BU',11,'Buchanan',7.6,'CAN'), wp(40,50,'DV',9,'David',8.2,'CAN',true), wp(40,82,'LA',17,'Larin',6.7,'CAN'),
+      wp(95,50,'BN',1,'Bounou',6.9,'MAR'), wp(85,15,'HA',2,'Hakimi (c)',7.4,'MAR'), wp(85,38,'AG',5,'Aguerd',6.8,'MAR'), wp(85,62,'AB',18,'Abqar',6.5,'MAR'), wp(85,85,'MZ',3,'Mazraoui',7.0,'MAR'),
+      wp(75,50,'AM',4,'Amrabat',6.7,'MAR',false,true),
+      wp(64,15,'ZI',7,'Ziyech',7.1,'MAR'), wp(64,38,'OU',8,'Ounahi',7.2,'MAR'), wp(64,62,'AL',15,'Amallah',6.3,'MAR'), wp(64,85,'AD',26,'Adli',6.6,'MAR'),
+      wp(55,50,'EN',19,'En-Nesyri',6.4,'MAR')
+    ];
+    this.tickerStatic=[
+      {st:"4'",stC:UP,teams:'AUS – EGY',score:'0–0',scC:HI,pr:'33.8 · 29.0 · 37.2',pc:LO,bg:'transparent'},
+      {st:"58'",stC:UP,teams:'JPN – GER',score:'2–1',scC:HI,pr:'55.2 · 28.4 · 16.4',pc:LO,bg:'transparent'},
+      {st:'FT',stC:LO,teams:'USA – NED',score:'2–1',scC:LO,pr:'settled · proof verified',pc:VIO,bg:'transparent'},
+      {st:'22:00',stC:LO,teams:'ENG – SEN',score:'vs',scC:LO,pr:'48.2 · 27.5 · 24.3',pc:LO,bg:'transparent'},
+      {st:'01:00',stC:LO,teams:'ARG – MEX',score:'vs',scC:LO,pr:'44.6 · 28.9 · 26.5',pc:LO,bg:'transparent'},
+      {st:'02:30',stC:LO,teams:'PAR – FRA',score:'vs',scC:LO,pr:'30.1 · 27.4 · 42.5',pc:LO,bg:'transparent'},
+      {st:'04:00',stC:LO,teams:'BRA – POR',score:'vs',scC:LO,pr:'51.7 · 26.1 · 22.2',pc:LO,bg:'transparent'}
+    ];
+  }
+
+  riverDesk(){
+    const e=React.createElement, st=this.state, pts=st.series;
+    const W=728,H=300,padL=16,padR=92,top=12,bot=24,y0=H-bot;
+    const x=(m)=>padL+(m/90)*(W-padL-padR);
+    const y=(v)=>top+(1-v/100)*(H-top-bot);
+    const line=(key)=>pts.map((p,i)=>(i?'L':'M')+x(p.m).toFixed(1)+' '+y(p[key]).toFixed(1)).join(' ');
+    const hLine=line('h');
+    const els=[];
+    els.push(e('defs',{key:'df'},e('linearGradient',{id:'opgD',x1:'0',y1:'0',x2:'0',y2:'1'},
+      e('stop',{offset:'0%',stopColor:this.UP,stopOpacity:.28}),
+      e('stop',{offset:'100%',stopColor:this.UP,stopOpacity:.02}))));
+    els.push(e('rect',{key:'fut',x:x(74),y:top,width:x(90)-x(74),height:y0-top,fill:'#F5F7FA',opacity:.02}));
+    [25,50,75].forEach(v=>{
+      els.push(e('line',{key:'g'+v,x1:padL,x2:W-padR,y1:y(v),y2:y(v),stroke:this.LINE,strokeDasharray:'2 6',opacity:.6}));
+      els.push(e('text',{key:'gl'+v,x:padL+2,y:y(v)-5,fontFamily:this.MONO,fontSize:8.5,fill:'#3B4450'},String(v)));
+    });
+    els.push(e('path',{key:'ar',d:hLine+' L'+x(74).toFixed(1)+' '+y0+' L'+padL+' '+y0+' Z',fill:'url(#opgD)'}));
+    els.push(e('path',{key:'dl',d:line('d'),fill:'none',stroke:'#97A0AF',strokeWidth:1.2,opacity:.45}));
+    els.push(e('path',{key:'al',d:line('a'),fill:'none',stroke:this.DN,strokeWidth:1.2,opacity:.6}));
+    els.push(e('path',{key:'hl',d:hLine,fill:'none',stroke:this.UP,strokeWidth:2.2,strokeLinejoin:'round',strokeLinecap:'round'}));
+    this.goalEls(e,{x:x,y:y,top:top,y0:y0}).forEach(g=>els.push(g));
+    const nx=x(74), ny=y(st.hP);
+    els.push(e('line',{key:'nv',x1:nx,x2:nx,y1:ny,y2:y0,stroke:this.UP,opacity:.22}));
+    els.push(e('circle',{key:'ng',cx:nx,cy:ny,r:9,fill:this.UP,opacity:.15}));
+    els.push(e('circle',{key:'nd',cx:nx,cy:ny,r:3.4,fill:this.UP,stroke:this.BG,strokeWidth:1.5}));
+    const items=[
+      {t:'H '+st.hP.toFixed(1),c:this.UP,y:y(st.hP)},
+      {t:'D '+st.dP.toFixed(1),c:'#B8C0CD',y:y(st.dP)},
+      {t:'A '+st.aP.toFixed(1),c:this.DN,y:y(st.aP)}
+    ].sort((p,q)=>p.y-q.y);
+    for(let i=1;i<3;i++){ if(items[i].y-items[i-1].y<22) items[i].y=items[i-1].y+22; }
+    items.forEach((it,i)=>{
+      els.push(e('rect',{key:'c'+i,x:W-84,y:it.y-10,width:72,height:20,rx:10,fill:'#14171C',stroke:this.LINE}));
+      els.push(e('text',{key:'ct'+i,x:W-48,y:it.y+3.5,textAnchor:'middle',fontFamily:this.MONO,fontSize:10,fontWeight:600,fill:it.c},it.t));
+    });
+    els.push(e('line',{key:'bl',x1:padL,x2:W-padR,y1:y0,y2:y0,stroke:this.LINE}));
+    [[0,'KO'],[15,"15'"],[30,"30'"],[45,'HT'],[60,"60'"],[74,"74'"],[90,"90'"]].forEach(t=>{
+      els.push(e('line',{key:'tk'+t[0],x1:x(t[0]),x2:x(t[0]),y1:y0,y2:y0+4,stroke:this.LINE}));
+      els.push(e('text',{key:'tx'+t[0],x:x(t[0]),y:y0+15,textAnchor:t[0]===0?'start':(t[0]===90?'end':'middle'),fontFamily:this.MONO,fontSize:9,fontWeight:t[0]===74?600:400,fill:t[0]===74?this.UP:'#4A5364'},t[1]));
+    });
+    return e('svg',{viewBox:'0 0 728 300',width:'100%',height:'300',style:{display:'block'}},els);
+  }
+
+  riverArea(){
+    const e=React.createElement, st=this.state, pts=st.series, H=336, fr=this.frame(H);
+    const line=(key)=>pts.map((p,i)=>(i?'L':'M')+fr.x(p.m).toFixed(1)+' '+fr.y(p[key]).toFixed(1)).join(' ');
+    const hLine=line('h');
+    const els=[];
+    els.push(e('defs',{key:'df'},e('linearGradient',{id:'opgA',x1:'0',y1:'0',x2:'0',y2:'1'},
+      e('stop',{offset:'0%',stopColor:this.UP,stopOpacity:.3}),
+      e('stop',{offset:'100%',stopColor:this.UP,stopOpacity:.02}))));
+    els.push(e('rect',{key:'fut',x:fr.x(74),y:fr.top,width:fr.x(90)-fr.x(74),height:fr.y0-fr.top,fill:'#F5F7FA',opacity:.02}));
+    [25,50,75].forEach(v=>{
+      els.push(e('line',{key:'g'+v,x1:14,x2:324,y1:fr.y(v),y2:fr.y(v),stroke:this.LINE,strokeDasharray:'2 6',opacity:.6}));
+      els.push(e('text',{key:'gl'+v,x:16,y:fr.y(v)-4,fontFamily:this.MONO,fontSize:8,fill:'#3B4450'},String(v)));
+    });
+    els.push(e('path',{key:'ar',d:hLine+' L'+fr.x(74).toFixed(1)+' '+fr.y0+' L14 '+fr.y0+' Z',fill:'url(#opgA)'}));
+    els.push(e('path',{key:'dl',d:line('d'),fill:'none',stroke:'#97A0AF',strokeWidth:1.2,opacity:.45}));
+    els.push(e('path',{key:'al',d:line('a'),fill:'none',stroke:this.DN,strokeWidth:1.2,opacity:.6}));
+    els.push(e('path',{key:'hl',d:hLine,fill:'none',stroke:this.UP,strokeWidth:2,strokeLinejoin:'round',strokeLinecap:'round'}));
+    this.goalEls(e,fr).forEach(x=>els.push(x));
+    const nx=fr.x(74), ny=fr.y(st.hP);
+    els.push(e('line',{key:'nv',x1:nx,x2:nx,y1:ny,y2:fr.y0,stroke:this.UP,opacity:.22}));
+    els.push(e('circle',{key:'ng',cx:nx,cy:ny,r:8,fill:this.UP,opacity:.15}));
+    els.push(e('circle',{key:'nd',cx:nx,cy:ny,r:3.2,fill:this.UP,stroke:this.BG,strokeWidth:1.5}));
+    const items=[
+      {t:'H '+st.hP.toFixed(1),c:this.UP,y:fr.y(st.hP)},
+      {t:'D '+st.dP.toFixed(1),c:'#B8C0CD',y:fr.y(st.dP)},
+      {t:'A '+st.aP.toFixed(1),c:this.DN,y:fr.y(st.aP)}
+    ].sort((p,q)=>p.y-q.y);
+    for(let i=1;i<3;i++){ if(items[i].y-items[i-1].y<21) items[i].y=items[i-1].y+21; }
+    items.forEach((it,i)=>{
+      els.push(e('rect',{key:'c'+i,x:328,y:it.y-9,width:58,height:18,rx:9,fill:'#14171C',stroke:this.LINE}));
+      els.push(e('text',{key:'ct'+i,x:357,y:it.y+3,textAnchor:'middle',fontFamily:this.MONO,fontSize:9,fontWeight:600,fill:it.c},it.t));
+    });
+    this.axisEls(e,fr).forEach(x=>els.push(x));
+    return e('svg',{viewBox:'0 0 390 336',width:'100%',height:'336',style:{display:'block'}},els);
+  }
+
+  riverStream(){
+    const e=React.createElement, st=this.state, pts=st.series, H=344, fr=this.frame(H);
+    const op=(this.props.bandOpacity!=null?this.props.bandOpacity:0.5);
+    const fwd=(f)=>pts.map((p,i)=>(i?'L':'M')+fr.x(p.m).toFixed(1)+' '+fr.y(f(p)).toFixed(1)).join(' ');
+    const rev=(f)=>pts.slice().reverse().map(p=>'L'+fr.x(p.m).toFixed(1)+' '+fr.y(f(p)).toFixed(1)).join(' ');
+    const band=(tf,bf)=>fwd(tf)+' '+rev(bf)+' Z';
+    const els=[];
+    els.push(e('rect',{key:'fut',x:fr.x(74),y:fr.top,width:fr.x(90)-fr.x(74),height:fr.y0-fr.top,fill:'#F5F7FA',opacity:.02}));
+    els.push(e('path',{key:'bh',d:band(p=>p.h,()=>0),fill:'rgba(43,217,124,'+(op*0.55).toFixed(3)+')'}));
+    els.push(e('path',{key:'bd',d:band(p=>p.h+p.d,p=>p.h),fill:'rgba(151,160,175,'+(op*0.28).toFixed(3)+')'}));
+    els.push(e('path',{key:'ba',d:band(()=>100,p=>p.h+p.d),fill:'rgba(255,61,129,'+(op*0.45).toFixed(3)+')'}));
+    els.push(e('path',{key:'ed',d:fwd(p=>p.h+p.d),fill:'none',stroke:'#97A0AF',strokeWidth:1,opacity:.55}));
+    els.push(e('path',{key:'eh',d:fwd(p=>p.h),fill:'none',stroke:this.UP,strokeWidth:2,strokeLinejoin:'round',strokeLinecap:'round'}));
+    this.goalEls(e,fr).forEach(x=>els.push(x));
+    const nx=fr.x(74), ny=fr.y(st.hP);
+    els.push(e('circle',{key:'ng',cx:nx,cy:ny,r:8,fill:this.UP,opacity:.15}));
+    els.push(e('circle',{key:'nd',cx:nx,cy:ny,r:3.2,fill:this.UP,stroke:this.BG,strokeWidth:1.5}));
+    const items=[
+      {t:'CAN '+st.hP.toFixed(1),c:this.UP,y:fr.y(st.hP/2)},
+      {t:'DRW '+st.dP.toFixed(1),c:'#B8C0CD',y:fr.y(st.hP+st.dP/2)},
+      {t:'MAR '+st.aP.toFixed(1),c:'#FF7AA8',y:fr.y(100-st.aP/2)}
+    ];
+    items.forEach((it,i)=>{
+      els.push(e('rect',{key:'c'+i,x:322,y:it.y-9,width:64,height:18,rx:9,fill:'rgba(11,13,16,.78)',stroke:'rgba(255,255,255,.14)'}));
+      els.push(e('text',{key:'ct'+i,x:354,y:it.y+3,textAnchor:'middle',fontFamily:this.MONO,fontSize:9,fontWeight:600,fill:it.c},it.t));
+    });
+    this.axisEls(e,fr).forEach(x=>els.push(x));
+    return e('svg',{viewBox:'0 0 390 344',width:'100%',height:'344',style:{display:'block'}},els);
+  }
+
+  renderVals(){
+    const st=this.state;
+    const UP=this.UP, DN=this.DN, HI=this.HI, LO=this.LO, LINE=this.LINE;
+    const f1=(v)=>v.toFixed(1);
+    const dTxt=(v)=>(v>=0?'▲':'▼')+Math.abs(v).toFixed(1);
+    const dCol=(v)=>(v>=0?UP:DN);
+    const pnl=120*(st.hP-54.2);
+    const vals={
+      hP:f1(st.hP), dPr:f1(st.dP), aP:f1(st.aP),
+      hC:st.hFl||HI, dC:st.dFl||HI, aC:st.aFl||HI,
+      hDeltaTxt:dTxt(st.hDelta), dDeltaTxt:dTxt(st.dDelta), aDeltaTxt:dTxt(st.aDelta),
+      hDeltaC:dCol(st.hDelta), dDeltaC:dCol(st.dDelta), aDeltaC:dCol(st.aDelta),
+      liveDot:this.liveDot, wave:this.wave,
+      riverA:this.riverArea(), riverB:this.riverStream(),
+      posVal:Math.round(120*st.hP).toLocaleString('en-US'),
+      posPnl:(pnl>=0?'+':'−')+Math.abs(Math.round(pnl)).toLocaleString('en-US'),
+      posPct:(pnl>=0?'+':'−')+Math.abs((st.hP-54.2)/54.2*100).toFixed(1)+'%',
+      posC:pnl>=0?UP:DN
+    };
+    [['a',st.a],['b',st.b],['d',st.d]].forEach(pair=>{
+      const o=pair[0], S=pair[1];
+      ['market','positions','chat','stats'].forEach(t=>{
+        vals[o+'Tab_'+t]=(S.tab===t);
+        vals[o+'TC_'+t]=(S.tab===t?HI:LO);
+        vals[o+'TU_'+t]=(S.tab===t?UP:'transparent');
+        vals[o+'Go_'+t]=()=>this.setOpt(o,{tab:t});
+      });
+      ['H','D','A'].forEach(k=>{
+        const sel=(S.sel===k);
+        vals[o+'Bc'+k]=sel?'rgba(43,217,124,.65)':LINE;
+        vals[o+'Bg'+k]=sel?'rgba(43,217,124,.06)':'#14171C';
+        vals[o+'Sel'+k]=()=>this.setOpt(o,{sel:k});
+      });
+      const buy=(S.side==='buy');
+      vals[o+'BuyBg']=buy?UP:'transparent';
+      vals[o+'BuyC']=buy?'#052014':LO;
+      vals[o+'BuyBc']=buy?UP:LINE;
+      vals[o+'SellBg']=!buy?DN:'transparent';
+      vals[o+'SellC']=!buy?'#2B0512':LO;
+      vals[o+'SellBc']=!buy?DN:LINE;
+      vals[o+'GoBuy']=()=>this.setOpt(o,{side:'buy'});
+      vals[o+'GoSell']=()=>this.setOpt(o,{side:'sell'});
+      vals[o+'Star']=S.star?'★':'☆';
+      vals[o+'StarC']=S.star?HI:'#4A5364';
+      vals[o+'GoStar']=()=>this.setOpt(o,{star:!S.star});
+      const nm=({H:'CAN',D:'Draw',A:'MAR'})[S.sel];
+      const pr=({H:st.hP,D:st.dP,A:st.aP})[S.sel];
+      vals[o+'Cta']=(buy?'Buy ':'Sell ')+nm+' · '+f1(pr);
+      vals[o+'CtaBg']=buy?UP:DN;
+      vals[o+'CtaC']=buy?'#052014':'#2B0512';
+    });
+    // ---- desktop (2a) ----
+    const dsk=st.d, dBuy=dsk.side==='buy';
+    vals.riverD=this.riverDesk();
+    const dPrices={H:st.hP,D:st.dP,A:st.aP};
+    const dNames={H:'Canada',D:'Draw',A:'Morocco'};
+    const dAbbr={H:'CAN',D:'DRW',A:'MAR'};
+    const dp=dPrices[dsk.sel];
+    const dAvg=Math.max(0.5,dp+(dBuy?1:-1)*dsk.size*0.014);
+    const dCost=Math.round(dsk.size*dAvg);
+    const dMax=dBuy?Math.floor(2450/(dp*1.005)):120;
+    vals.dSideWord=dBuy?'Buying':'Selling';
+    vals.dSelNm=dNames[dsk.sel];
+    vals.dSelPx=f1(dp);
+    vals.dSelPxC=({H:vals.hC,D:vals.dC,A:vals.aC})[dsk.sel];
+    vals.dSize=String(dsk.size);
+    vals.dAvg=dAvg.toFixed(1);
+    vals.dCost=dCost.toLocaleString('en-US');
+    vals.dFee=(dCost*0.005).toFixed(1);
+    vals.dCostLabel=dBuy?'COST':'PROCEEDS';
+    vals.dNote=dBuy?('Pays '+(dsk.size*100).toLocaleString('en-US')+' cr if '+dNames[dsk.sel]+' wins · bal 2,450 cr · max '+dMax+' sh'):'Closes up to 120 sh Home · proceeds credit instantly';
+    vals.dSliderVal=dsk.size;
+    const dAcc=dBuy?UP:DN;
+    const dPct=((dsk.size-5)/195*100).toFixed(1);
+    vals.dSliderBg='linear-gradient(90deg,'+dAcc+' '+dPct+'%,#232A33 '+dPct+'%)';
+    vals.dOnSize=(ev)=>{const v=Math.max(5,Math.min(200,Math.round(+ev.target.value)));this.setState(s=>({d:Object.assign({},s.d,{size:v})}));};
+    vals.dQ10=()=>this.setState(s=>({d:Object.assign({},s.d,{size:Math.min(200,s.d.size+10)})}));
+    vals.dQ25=()=>this.setState(s=>({d:Object.assign({},s.d,{size:Math.min(200,s.d.size+25)})}));
+    vals.dQMax=()=>this.setState(s=>({d:Object.assign({},s.d,{size:Math.max(5,Math.min(200,dMax))})}));
+    vals.dConfirmTxt=(dBuy?'Buy ':'Sell ')+dsk.size+' '+dAbbr[dsk.sel]+' · '+dCost.toLocaleString('en-US')+' cr';
+    vals.dDoConfirm=()=>{
+      clearTimeout(this._tt);
+      this.setState({toast:(dBuy?'Filled — bought ':'Filled — sold ')+dsk.size+' '+dNames[dsk.sel]+' @ '+dAvg.toFixed(1)+' avg · demo'});
+      this._tt=setTimeout(()=>this.setState({toast:null}),2400);
+    };
+    vals.toastOn=!!st.toast;
+    vals.toastTxt=st.toast||'';
+    const myPnl=Math.round(120*(st.hP-54.2));
+    vals.myRank='#'+(1+this._lbVals.filter(v=>v>myPnl).length);
+    vals.myPnl=(myPnl>=0?'+':'−')+Math.abs(myPnl).toLocaleString('en-US');
+    vals.myPnlC=myPnl>=0?UP:DN;
+    const liveArr=st.series.filter((p,i)=>i%4===0||i===st.series.length-1).map(p=>p.h);
+    vals.railFav=[
+      {min:"74'",minC:UP,sub:'VAN',score:'1 – 0',scC:HI,t1:'CAN',t2:'MAR',star:'★',starC:HI,h:f1(st.hP),d:f1(st.dP),a:f1(st.aP),hc:st.hFl||HI,dc:st.dFl||HI,ac:st.aFl||HI,bg:'rgba(43,217,124,.05)',bc:'rgba(43,217,124,.4)',spark:this.sparkEl(liveArr,UP,92,22)},
+      this.railFavStatic
+    ];
+    vals.railR16=this.railR16;
+    vals.ticker=[{st:"● 74'",stC:UP,teams:'CAN – MAR',score:'1–0',scC:HI,pr:f1(st.hP)+' · '+f1(st.dP)+' · '+f1(st.aP),pc:HI,bg:'rgba(43,217,124,.1)'}].concat(this.tickerStatic);
+    vals.lbRows=this.lb;
+    vals.events2h=this.events2h;
+    vals.events1h=this.events1h;
+    vals.pitchAll=this.pitchAll;
+    vals.boothOld=this.boothOld;
+    vals.nextM=this.nextM;
+    vals.chatMsgs=this.chatMsgs;
+    vals.fills=this.fills;
+    vals.statsMini=this.statsMini;
+    vals.statsFull=this.statsFull;
+    vals.momentSpark=this.momentSpark;
+    vals.presence=this.presence;
+    // ---- t3 (match page recreation) ----
+    const t3=st.t3;
+    vals.t3FavTxt=t3.fav?'★ Favourited':'☆ Favourite';
+    vals.t3FavC=t3.fav?'#2BD97C':HI;
+    vals.t3FavBc=t3.fav?'rgba(43,217,124,.5)':'#232A33';
+    vals.t3FavBg=t3.fav?'rgba(43,217,124,.08)':'transparent';
+    vals.t3GoFav=()=>this.setState(s=>({t3:Object.assign({},s.t3,{fav:!s.t3.fav})}));
+    vals.t3Chips=this.t3Chips.map(c=>({l:c,bg:t3.filter===c?'#F5F7FA':'transparent',c:t3.filter===c?'#0B0D10':'#97A0AF',bc:t3.filter===c?'#F5F7FA':'#232A33',go:()=>this.setState(s=>({t3:Object.assign({},s.t3,{filter:c})}))}));
+    vals.pitchWide=this.pitchWide;
+    vals.t3Voted=!!t3.vote;
+    vals.t3NotVoted=!t3.vote;
+    vals.t3Votes=t3.vote?'12,483 votes':'12,482 votes';
+    ['H','D','A'].forEach(k=>{
+      vals['t3V'+k]=()=>this.setState(s=>({t3:Object.assign({},s.t3,{vote:k})}));
+      vals['t3VBg'+k]=t3.vote===k?'rgba(43,217,124,.12)':'transparent';
+      vals['t3VBc'+k]=t3.vote===k?'rgba(43,217,124,.65)':'#232A33';
+      vals['t3VC'+k]=t3.vote===k?'#2BD97C':'#F5F7FA';
+    });
+    vals.t3Rows=[
+      {lab:'CAN',crowd:'54%',cw:'54%',mkt:f1(st.hP),mw:f1(st.hP)+'%',c:UP},
+      {lab:'DRAW',crowd:'17%',cw:'17%',mkt:f1(st.dP),mw:f1(st.dP)+'%',c:'#B8C0CD'},
+      {lab:'MAR',crowd:'29%',cw:'29%',mkt:f1(st.aP),mw:f1(st.aP)+'%',c:DN}
+    ];
+    vals.t3DH=(st.hP>=44?'▲':'▼')+Math.abs(st.hP-44).toFixed(1);
+    vals.t3DHC=st.hP>=44?UP:DN;
+    vals.t3DD=(st.dP>=27.5?'▲':'▼')+Math.abs(st.dP-27.5).toFixed(1);
+    vals.t3DDC=st.dP>=27.5?UP:DN;
+    vals.t3DA=(st.aP>=28.5?'▲':'▼')+Math.abs(st.aP-28.5).toFixed(1);
+    vals.t3DAC=st.aP>=28.5?UP:DN;
+    return vals;
+  }
+}
+</script>
+</body>
+</html>
