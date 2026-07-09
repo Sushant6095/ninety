@@ -1,0 +1,62 @@
+apps/web/src/features/home/MatchListSkeleton.tsx
+  s_82db0e7c9eb747::t_1770e694a491c7 1-21
+apps/web/src/components/ui/CreditPill.tsx
+  s_82db0e7c9eb747::t_dbd24b50268221 1-23
+apps/web/src/components/ui/Wordmark.tsx
+  s_82db0e7c9eb747::t_fbfefeb44ad76a 1-21
+apps/web/src/features/home/Ticker.tsx
+  s_82db0e7c9eb747::t_f56dbdb8a638de 1-36
+apps/web/src/lib/types.ts
+  s_82db0e7c9eb747::t_d78d530e08f0ac 12-13
+  s_82db0e7c9eb747::t_6d4b260f351cc7 1-11,14-37
+apps/web/tailwind.config.ts
+  s_82db0e7c9eb747::t_01fbd6d05d9084 5-13
+apps/web/src/lib/fixtures.ts
+  s_82db0e7c9eb747::t_ba380832e675eb 17
+  s_82db0e7c9eb747::t_b216e7cf79f927 1-16,18-23,25-30,32-57
+  s_82db0e7c9eb747::t_d5be6f59a65101 31
+  s_82db0e7c9eb747::t_36cb187a4e6ce5 24
+apps/web/src/features/home/Header.tsx
+  s_82db0e7c9eb747::t_b82ec164dfd1a3 1-79
+apps/web/src/components/ui/RailCard.tsx
+  s_82db0e7c9eb747::t_9c48702af1be8f 1-23
+apps/web/src/lib/routes.ts
+  s_82db0e7c9eb747::t_f24f18727427c4 1-30
+.claude/context/AUTORUN-LOG.md
+  s_82db0e7c9eb747::t_c591cc66cf4bec 7-9
+apps/web/src/features/home/LeftRail.tsx
+  s_82db0e7c9eb747::t_4dc95dbd9ff31b 1-33,35-104
+  s_82db0e7c9eb747::t_b44086945d30a2 34
+apps/web/src/features/home/CenterColumn.tsx
+  s_82db0e7c9eb747::t_de6a2230ed5bce 1-66
+apps/web/src/features/home/RightRail.tsx
+  s_82db0e7c9eb747::t_43d99852695965 1-67
+apps/web/src/features/home/HomeShell.tsx
+  s_82db0e7c9eb747::t_7ddb8dfd105c63 1-34
+apps/web/src/styles/globals.css
+  s_82db0e7c9eb747::t_899027b7adda90 2-38
+apps/web/src/app/layout.tsx
+  s_82db0e7c9eb747::t_fcfd39d9477cec 2-8,10-22
+apps/web/src/features/home/Footer.tsx
+  s_82db0e7c9eb747::t_a807b3cb446c2c 1-11
+apps/web/src/app/page.tsx
+  s_82db0e7c9eb747::t_5b6f3a2647a7fc 1-11
+apps/web/postcss.config.js
+  s_82db0e7c9eb747::t_c4ece874ce43cf 1-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "9037a4e55c663015764229f7535ce1b08f8d0e5a",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
