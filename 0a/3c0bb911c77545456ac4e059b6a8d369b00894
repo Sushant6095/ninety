@@ -1,0 +1,59 @@
+apps/api/src/services/markets-read.test.ts
+  s_82db0e7c9eb747::t_ce28d50bcfa137 1-30
+docs/api-samples/ws-prices-frame.json
+  s_82db0e7c9eb747::t_5fbe9328f0669b 1-14
+docs/api-samples/README.md
+  s_82db0e7c9eb747::t_444c930c19d328 1-33
+docs/adr/ADR-042-home-data-layer-markets-leaderboard-ws-bridge.md
+  s_82db0e7c9eb747::t_4c006576f61849 1-18
+apps/api/src/ws/gateway.ts
+  s_82db0e7c9eb747::t_a9039e5773ab14 1,6-7,9-17,47,49-53,58-70,72-73,75-79
+  s_82db0e7c9eb747::t_887b3de37e5a22 2-5,8,18-46,48,54-57,71,74
+apps/api/src/http/routes/markets.ts
+  s_82db0e7c9eb747::t_c8a6e7f1f932cc 1-2,4,6,9-30,34-43,48-49,51-59
+docs/api-samples/leaderboard.json
+  s_82db0e7c9eb747::t_35d2a3a4d08fa5 1-19
+apps/api/src/services/leaderboard.ts
+  s_82db0e7c9eb747::t_6de51bc9cd5a90 1-19
+docs/api-samples/market-mark.json
+  s_82db0e7c9eb747::t_35d2a3a4d08fa5 1-10,12
+  s_82db0e7c9eb747::t_5fbe9328f0669b 11
+apps/api/scripts/verify-live.ts
+  s_82db0e7c9eb747::t_29f75ab1ddc5fb 1-64
+  s_82db0e7c9eb747::t_6df14679203aa4 65-67
+.claude/context/NOW.md
+  s_82db0e7c9eb747::t_f71ab9bab90b79 20
+apps/api/src/http/server.ts
+  s_82db0e7c9eb747::t_963ecea783c7eb 6,10-12
+  s_82db0e7c9eb747::t_83847950425615 22-23,27,29
+apps/api/src/services/markets-read.ts
+  s_82db0e7c9eb747::t_b9b996a78c07cf 1-69
+docs/api-samples/market-detail.json
+  s_82db0e7c9eb747::t_783abdb0303f1b 1-20
+apps/api/src/http/routes/leaderboard.ts
+  s_82db0e7c9eb747::t_84f8e130ce0978 1-11
+design/SCREEN-DATA-MAP.md
+  s_82db0e7c9eb747::t_eea7417ab74fee 33-39
+apps/api/src/main.ts
+  s_82db0e7c9eb747::t_5530567d207e14 11
+docs/api-samples/markets-list.json
+  s_82db0e7c9eb747::t_06423760f00c04 1-20
+apps/api/src/redis.ts
+  s_82db0e7c9eb747::t_ec57acf0f17e35 1-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "0a3c0bb911c77545456ac4e059b6a8d369b00894",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
