@@ -26,11 +26,17 @@ export interface Portfolio {
   positions: PortfolioPosition[];
 }
 
-export async function getPortfolio(prisma: PrismaClient, redis: Redis, userId: string): Promise<Portfolio> {
-  const rows = await prisma.position.findMany({ where: { userId, qty: { not: 0 } } });
-  const marks = await getMarks(redis, [...new Set(rows.map((r) => r.marketId))]);
-  const free = Number((await redis.get(BAL_KEY(userId))) ?? 0);
+/** Position row shape (subset of Prisma Position) the pure computation needs. */
+export interface RawPosition {
+  marketId: string;
+  outcome: string;
+  qty: number;
+  avgPrice: number; // 0..1 (engine units)
+}
 
+/** Pure: positions ⨝ marks + free credits → the portfolio. Extracted from getPortfolio so the null-mark /
+ *  zero-cost / empty branches are unit-testable without a DB or Redis. */
+export function computePortfolio(rows: RawPosition[], marks: Map<string, { fair: Record<string, number> }>, free: number): Portfolio {
   let held = 0;
   const positions: PortfolioPosition[] = rows.map((r) => {
     const fair = marks.get(r.marketId)?.fair;
@@ -43,6 +49,12 @@ export async function getPortfolio(prisma: PrismaClient, redis: Redis, userId: s
     if (value != null) held += value;
     return { marketId: r.marketId, outcome: r.outcome, qty: r.qty, avgPrice, markPct, value, pnl, pnlPct };
   });
-
   return { free, held, equity: free + held, positions };
+}
+
+export async function getPortfolio(prisma: PrismaClient, redis: Redis, userId: string): Promise<Portfolio> {
+  const rows = await prisma.position.findMany({ where: { userId, qty: { not: 0 } } });
+  const marks = await getMarks(redis, [...new Set(rows.map((r) => r.marketId))]);
+  const free = Number((await redis.get(BAL_KEY(userId))) ?? 0);
+  return computePortfolio(rows, marks, free);
 }

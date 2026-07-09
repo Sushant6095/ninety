@@ -11,6 +11,8 @@ import { quoteTrade, markImpliedQ, isOutcome } from "../../services/quote";
 
 type MarketWithMatch = Market & { match: Match };
 
+const MAX_QUOTE_SIZE = 100_000; // advisory-quote size ceiling — far above any real order; guards LMSR overflow
+
 /** The market view the frontend consumes (SCREEN-DATA-MAP). `mark` = the live price distribution; null until priced. */
 function marketView(m: MarketWithMatch, mark?: MarkSnapshot | null) {
   return {
@@ -50,7 +52,8 @@ export function registerMarketRoutes(app: FastifyInstance): void {
     if (!market) return reply.code(404).send({ error: "market not found" }); // validate BEFORE granting — no farming on bogus matchIds
     const { granted } = await grantMatchCredits(grantStore, user.userId, matchId); // fires once per (user, match)
     const mark = await getMark(redis, market.id);
-    const b = mark?.bHint ?? market.bParam;
+    const b = mark?.bHint || market.bParam; // `||` not `??`: a mark with no b_hint stores bHint=0, which is a
+    // degenerate liquidity — fall back to bParam (matches the /quote route). `??` would leak b=0 → q=[0,0,0].
     return {
       market: marketView(market, mark),
       granted,
@@ -70,10 +73,13 @@ export function registerMarketRoutes(app: FastifyInstance): void {
     const query = req.query as { outcome?: string; size?: string; side?: string };
     if (!isOutcome(query.outcome)) return reply.code(400).send({ error: "outcome must be H, D or A" });
     const size = Number(query.size);
-    if (!Number.isFinite(size) || size <= 0) return reply.code(400).send({ error: "size must be a positive number" });
+    // Upper-bound size: an unbounded size drives the LMSR exp underflow → cost = ±Infinity/NaN, which JSON.stringify
+    // silently emits as `null` in a 200. Reject it with a clear 400 instead (MAX_QUOTE_SIZE ≫ any real order).
+    if (!Number.isFinite(size) || size <= 0 || size > MAX_QUOTE_SIZE) return reply.code(400).send({ error: `size must be a positive number ≤ ${MAX_QUOTE_SIZE}` });
     const side = query.side === "sell" ? "sell" : "buy";
     const market = (await prisma.market.findFirst({ where: { matchId }, include: { match: true } })) as MarketWithMatch | null;
     if (!market) return reply.code(404).send({ error: "market not found" });
+    if (market.status === "SETTLED" || market.status === "VOIDED") return reply.code(409).send({ error: "market not tradeable" }); // stale mark may linger; don't quote a decided market
     const mark = await getMark(redis, market.id);
     if (!mark?.fair) return reply.code(409).send({ error: "market not priced yet" });
     return { quote: quoteTrade(mark.fair, mark.bHint || market.bParam, query.outcome, size, side) };
