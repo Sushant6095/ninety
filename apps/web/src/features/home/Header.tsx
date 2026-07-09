@@ -16,7 +16,7 @@ export function Header({ user }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-30 border-b border-hairline bg-bg/85 backdrop-blur-md">
-      <div className="mx-auto flex h-14 max-w-[1600px] items-center gap-6 px-4 sm:px-6">
+      <div className="mx-auto flex h-14 max-w-[1600px] items-center gap-3 px-4 sm:gap-6 sm:px-6">
         <Wordmark tag="WC26" />
 
         <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
@@ -38,7 +38,7 @@ export function Header({ user }: HeaderProps) {
           })}
         </nav>
 
-        <div className="ml-auto flex items-center gap-2.5">
+        <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2.5">
           <label className="group relative hidden lg:block">
             <span className="sr-only">Search matches and traders</span>
             <svg viewBox="0 0 24 24" fill="none" className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-lo" aria-hidden>
@@ -68,7 +68,7 @@ export function Header({ user }: HeaderProps) {
           <Link
             href={routes.settings}
             aria-label="Account"
-            className="grid h-9 w-9 place-items-center rounded-full bg-surface text-[11px] font-semibold text-hi ring-1 ring-inset ring-hairline transition-colors duration-200 hover:ring-up/40 active:bg-hairline/40"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-surface text-[11px] font-semibold text-hi ring-1 ring-inset ring-hairline transition-colors duration-200 hover:ring-up/40 active:bg-hairline/40"
           >
             {user.handle.replace(/^@/, "").slice(0, 2).toUpperCase()}
           </Link>

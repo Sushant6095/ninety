@@ -22,7 +22,7 @@ export function Ticker() {
             {t.minute != null ? (
               <span className="num text-[11px] font-semibold text-up">{t.minute}&#39;</span>
             ) : (
-              <span className="num text-[11px] text-lo">{"—"}</span>
+              <span className="num text-[11px] text-lo">{t.time ?? "—"}</span>
             )}
             <span className="text-[11px] font-medium text-hi/90">{t.code}</span>
             {t.score && <span className="num text-[11px] text-hi">{t.score}</span>}

@@ -20,6 +20,15 @@ Each entry: what's blocked · why · the EXACT unblock. Skipped tasks are logged
 - **Unblock:** boot the API with its env on **Node 18/20** (`nvm use 18` → the app's dev command) so HTTP + the uWS
   socket are live; then re-point the Home data hooks from fixtures to the running origin.
 
+## B4 · design-cop residual (not blocking; polish backlog)
+- **Full type-scale conversion:** the `fontSize` scale is now wired in tailwind (base=13px, xs=11px, …), but
+  components still use arbitrary `text-[13px]`/`w-[260px]`/`min-w-[44px]` etc. Mechanical swap to named classes
+  across `apps/web/src/**` — do in the dead-code/polish sweep (task 11).
+- **Loading/error states:** async surfaces (River, MatchList, leaders) need skeleton + error fallbacks — lands in
+  chunk 6 (live states) alongside the API swap.
+- **44px hit targets:** bumped the worst (arrows 36, avatar 40); full ≥44px everywhere fights the dense-terminal
+  aesthetic — revisit with an explicit min-tap-target token if a mobile a11y pass demands it.
+
 ## B3 · Screenshot loop (scripts/ui/screenshot.mjs) — Playwright not installed
 - **Why:** Playwright is staged in devDependencies but not installed (network install was deferred, not confirmed).
   The loop's screenshot step needs it + a running `next dev`.

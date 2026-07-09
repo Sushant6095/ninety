@@ -46,7 +46,7 @@ export function RightRail() {
                   <span className="block text-[13px] font-medium text-hi">{s.code}</span>
                   <span className="block text-[10.5px] text-lo">{s.venue}</span>
                 </span>
-                <span className="num ml-auto text-[11px] text-halt">{s.inLabel}</span>
+                <span className="num ml-auto text-[11px] text-lo">{s.inLabel}</span>
               </Link>
             </li>
           ))}

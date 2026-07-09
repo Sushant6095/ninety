@@ -6,7 +6,7 @@ const spark = (from: number, to: number, n = 24): number[] =>
   Array.from({ length: n }, (_, i) => {
     const t = i / (n - 1);
     const eased = from + (to - from) * (t < 0.55 ? t * 0.3 : 0.165 + (t - 0.55) * 1.85);
-    return Math.round((eased + Math.sin(i * 1.7) * 0.4) * 10) / 10;
+    return Math.round((eased + Math.sin(i * 1.7) * 0.15) * 10) / 10;
   });
 
 export const SESSION: SessionUser = { handle: "@vd", credits: 2450, rank: 142, rankDelta: 3 };
@@ -36,16 +36,16 @@ export const MARKETS: MarketRow[] = [
 ];
 
 // Compact ticker line across the top (all live/upcoming markets).
-export interface TickerItem { matchId: string; code: string; score: string | null; lead: "H" | "D" | "A"; price: number; minute: number | null; }
+export interface TickerItem { matchId: string; code: string; score: string | null; lead: "H" | "D" | "A"; price: number; minute: number | null; time: string | null; }
 export const TICKER: TickerItem[] = [
-  { matchId: "wc26-can-mar", code: "CAN–MAR", score: "1–0", lead: "H", price: 61.4, minute: 74 },
-  { matchId: "wc26-esp-jpn", code: "ESP–JPN", score: "2–1", lead: "H", price: 68.2, minute: 58 },
-  { matchId: "wc26-arg-mex", code: "ARG–MEX", score: "0–0", lead: "H", price: 44.1, minute: 12 },
-  { matchId: "wc26-eng-sen", code: "ENG–SEN", score: null, lead: "H", price: 52.0, minute: null },
-  { matchId: "wc26-ger-col", code: "GER–COL", score: null, lead: "H", price: 48.5, minute: null },
-  { matchId: "wc26-bra-usa", code: "BRA–USA", score: null, lead: "H", price: 55.3, minute: null },
-  { matchId: "wc26-par-fra", code: "PAR–FRA", score: null, lead: "A", price: 63.0, minute: null },
-  { matchId: "wc26-aus-egy", code: "AUS–EGY", score: null, lead: "H", price: 33.8, minute: null },
+  { matchId: "wc26-can-mar", code: "CAN–MAR", score: "1–0", lead: "H", price: 61.4, minute: 74, time: null },
+  { matchId: "wc26-esp-jpn", code: "ESP–JPN", score: "2–1", lead: "H", price: 68.2, minute: 58, time: null },
+  { matchId: "wc26-arg-mex", code: "ARG–MEX", score: "0–0", lead: "H", price: 44.1, minute: 12, time: null },
+  { matchId: "wc26-eng-sen", code: "ENG–SEN", score: null, lead: "H", price: 52.0, minute: null, time: "16:00" },
+  { matchId: "wc26-ger-col", code: "GER–COL", score: null, lead: "H", price: 48.5, minute: null, time: "19:00" },
+  { matchId: "wc26-bra-usa", code: "BRA–USA", score: null, lead: "H", price: 55.3, minute: null, time: "22:00" },
+  { matchId: "wc26-par-fra", code: "PAR–FRA", score: null, lead: "A", price: 63.0, minute: null, time: "02:30" },
+  { matchId: "wc26-aus-egy", code: "AUS–EGY", score: null, lead: "H", price: 33.8, minute: null, time: "05:00" },
 ];
 
 export const LEADERS: LeaderRow[] = [

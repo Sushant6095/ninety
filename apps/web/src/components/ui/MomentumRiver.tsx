@@ -22,7 +22,12 @@ export function MomentumRiver({ data, up = true, height = 96, goalIndex }: Momen
     let ro: ResizeObserver | undefined;
 
     void (async () => {
-      const lc = await import("lightweight-charts");
+      let lc: typeof import("lightweight-charts");
+      try {
+        lc = await import("lightweight-charts");
+      } catch {
+        return; // chart lib failed to load — the row/panel still renders without the River (graceful)
+      }
       if (cancelled || !el) return;
       const line = (up ? resolveColor("up") : resolveColor("down")) || resolveColor("textHi");
       chart = lc.createChart(el, {

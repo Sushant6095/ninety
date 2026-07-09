@@ -25,7 +25,7 @@ export function MatchCard({ market }: { market: MarketRow }) {
     <Link
       href={routes.match(m.matchId)}
       aria-label={`${m.home} vs ${m.away}${m.score ? `, ${m.score.home}–${m.score.away}` : ""} — open market`}
-      className="group flex items-center gap-3 px-4 py-3 outline-none transition-colors duration-200 hover:bg-hairline/20 focus-visible:bg-hairline/20 active:bg-hairline/35"
+      className="group flex items-center gap-2.5 px-3 py-3 outline-none transition-colors duration-200 hover:bg-hairline/20 focus-visible:bg-hairline/20 active:bg-hairline/35 sm:gap-3 sm:px-4"
     >
       <span className={`w-4 shrink-0 text-center text-[13px] transition-transform duration-200 group-hover:scale-110 ${m.favourite ? "text-up" : "text-lo/35"}`} aria-hidden>
         ★
@@ -62,7 +62,7 @@ export function MatchCard({ market }: { market: MarketRow }) {
         <Sparkline values={m.spark} up={rising} />
       </span>
 
-      <span className="flex shrink-0 gap-1.5">
+      <span className="flex shrink-0 gap-1 sm:gap-1.5">
         {OUTCOMES.map((o) => (
           <PriceChip key={o} label={o} price={(m.mark?.[o] ?? 0) * 100} lead={lead === o} />
         ))}
