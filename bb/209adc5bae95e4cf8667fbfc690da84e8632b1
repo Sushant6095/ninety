@@ -1,0 +1,21 @@
+.claude/context/AUTORUN-LOG.md
+  s_82db0e7c9eb747::t_a6c608eadc6370 6-21
+.claude/context/NOW.md
+  s_82db0e7c9eb747::t_c8fdda95a16a92 20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "bb209adc5bae95e4cf8667fbfc690da84e8632b1",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
