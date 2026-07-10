@@ -103,3 +103,35 @@ export const ATTACK = {
 };
 
 export const SESSION_RANK = { rank: 142, handle: "@you", pnl: 1214, delta: 3 };
+
+// ── enhanced match-view detail (from the North Star) ─────────────────────────────
+export interface Player {
+  code: string; // monogram
+  name: string;
+  rating: number;
+  side: "home" | "away";
+  att: number; // 0..100 attributes for the radar
+  def: number;
+  tec: number;
+}
+export const FEATURED_PLAYERS: { home: Player; away: Player } = {
+  home: { code: "SO", name: "H. Souttar", rating: 7.1, side: "home", att: 58, def: 74, tec: 62 },
+  away: { code: "AS", name: "A. Ashour", rating: 8.2, side: "away", att: 84, def: 41, tec: 79 },
+};
+export const HIGHEST_RATED: Player[] = [
+  { code: "AS", name: "Ashour", rating: 8.2, side: "away", att: 84, def: 41, tec: 79 },
+  { code: "SA", name: "Salah", rating: 7.9, side: "away", att: 82, def: 38, tec: 88 },
+  { code: "HA", name: "Hafez", rating: 7.6, side: "away", att: 60, def: 66, tec: 74 },
+  { code: "SO", name: "Souttar", rating: 7.1, side: "home", att: 58, def: 74, tec: 62 },
+  { code: "IR", name: "Irvine", rating: 7.0, side: "home", att: 55, def: 64, tec: 66 },
+  { code: "MO", name: "Mohsen", rating: 7.2, side: "away", att: 76, def: 40, tec: 70 },
+];
+
+// The AI booth timeline — commentary + the market impact each event had (the North Star's richer booth).
+export interface BoothEvent { minute: number; text: string; delta: number; repriced?: string }
+export const BOOTH_TIMELINE: BoothEvent[] = [
+  { minute: 50, text: "Egypt win a corner — pressure without a clear chance; the market barely moves.", delta: 0.2 },
+  { minute: 46, text: "Baccus on for Bos pushes Australia to a back three; Egypt now count on the counter.", delta: -0.4 },
+  { minute: 38, text: "Egypt hold the 1–0 through the hour — sellers were early, buyers patient.", delta: 1.1 },
+  { minute: 13, text: "Ashour finishes the counter — reprices Egypt 31 → 55 inside ninety seconds.", delta: 24, repriced: "31 → 55" },
+];

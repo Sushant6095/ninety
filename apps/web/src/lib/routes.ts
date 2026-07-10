@@ -11,6 +11,7 @@ export const routes = {
   onboarding: "/onboarding",
   settings: "/settings",
   terminal: "/terminal",
+  northStar: "/north-star",
   proofs: "/proofs",
   match: (id: string): string => `/match/${id}`,
   profile: (handle: string): string => `/profile/${handle.replace(/^@/, "")}`,

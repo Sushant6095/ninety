@@ -5,7 +5,7 @@ import { BigRiver } from "./BigRiver";
 import { PriceCells } from "./PriceCells";
 import { TradePanel } from "./TradePanel";
 import { YourPosition } from "./YourPosition";
-import { BoothCall } from "./BoothCall";
+import { BoothTimeline } from "./BoothTimeline";
 import { useTerminalLive } from "./useTerminalLive";
 import { MATCH, POSITIONS } from "../../lib/terminal";
 import type { Outcome } from "../../lib/types";
@@ -33,7 +33,7 @@ export function MatchColumn() {
       />
       <TradePanel amm={MATCH.amm} selected={selected} code={codeFor(selected)} />
       {held && <YourPosition code={held.code} shares={held.shares} avgEntry={held.avgEntry} markPct={mark[held.outcome] * 100} opened="opened pre-match @ 22'" />}
-      <BoothCall />
+      <BoothTimeline />
     </section>
   );
 }

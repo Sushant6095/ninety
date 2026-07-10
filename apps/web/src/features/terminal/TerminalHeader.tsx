@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { Search, Star, Bell } from "lucide-react";
 import { CreditPill } from "../../components/ui/CreditPill";
 import { Avatar } from "../../components/ui/Avatar";
+import { ScreenSwitcher } from "../../components/ui/ScreenSwitcher";
 import { routes } from "../../lib/routes";
 import type { SessionUser } from "../../lib/types";
 
@@ -29,6 +30,8 @@ export function TerminalHeader({ user }: { user: SessionUser }) {
           <span className="font-display text-[19px] font-extrabold leading-none tracking-[-0.03em] text-hi transition-opacity duration-200 group-hover:opacity-80">Ninety</span>
           <span className="num rounded-[5px] bg-surface px-1.5 py-[3px] text-[10px] font-semibold uppercase leading-none tracking-[0.1em] text-lo ring-1 ring-inset ring-hairline">Terminal</span>
         </Link>
+
+        <ScreenSwitcher className="hidden lg:inline-flex" />
 
         <label className="group relative hidden min-w-0 flex-1 md:block">
           <span className="sr-only">Search matches, markets, traders, proofs</span>

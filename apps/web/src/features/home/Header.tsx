@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Wordmark } from "../../components/ui/Wordmark";
 import { CreditPill } from "../../components/ui/CreditPill";
+import { ScreenSwitcher } from "../../components/ui/ScreenSwitcher";
 import { NAV, routes } from "../../lib/routes";
 import type { SessionUser } from "../../lib/types";
 
@@ -18,6 +19,8 @@ export function Header({ user }: HeaderProps) {
     <header className="sticky top-0 z-30 border-b border-hairline bg-bg">
       <div className="mx-auto flex h-14 max-w-[1600px] items-center gap-3 px-4 sm:gap-6 sm:px-6">
         <Wordmark tag="WC26" />
+
+        <ScreenSwitcher className="hidden xl:inline-flex" />
 
         <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
           {NAV.map((item) => {
