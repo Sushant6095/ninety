@@ -1,0 +1,45 @@
+apps/web/src/features/terminal/TerminalScreen.tsx
+  s_82db0e7c9eb747::t_323f31ecbca2cd 7-8
+  s_82db0e7c9eb747::t_50c52398980f4f 29-30
+apps/web/src/features/terminal/TerminalHeader.tsx
+  s_82db0e7c9eb747::t_6584208c0564cc 7
+  s_82db0e7c9eb747::t_a8b80966fd7e20 34-35
+apps/web/src/features/terminal/MatchColumn.tsx
+  s_82db0e7c9eb747::t_27fadfa1d17792 8
+  s_82db0e7c9eb747::t_ac3ea7d6f2cb2d 36
+apps/web/src/features/terminal/HighestRated.tsx
+  s_82db0e7c9eb747::t_528ef40d36ca02 1-30
+apps/web/src/features/northstar/NorthStarScreen.tsx
+  s_82db0e7c9eb747::t_9832261228aab2 1-111
+apps/web/src/features/terminal/BoothTimeline.tsx
+  s_82db0e7c9eb747::t_910cf2c90ffa1b 1-40
+apps/web/src/features/home/Header.tsx
+  s_82db0e7c9eb747::t_d26052d5c3100a 6
+  s_82db0e7c9eb747::t_852332f3fb0407 23-24
+apps/web/src/app/north-star/page.tsx
+  s_82db0e7c9eb747::t_ac7dc1f361dfee 1-6
+apps/web/src/features/terminal/FeaturedPlayers.tsx
+  s_82db0e7c9eb747::t_51f4ed106bc576 1-43
+apps/web/src/components/ui/ScreenSwitcher.tsx
+  s_82db0e7c9eb747::t_48d7b0853e841c 1-32
+apps/web/src/lib/routes.ts
+  s_82db0e7c9eb747::t_f44f8f8ebd2df2 14
+apps/web/src/lib/terminal.ts
+  s_82db0e7c9eb747::t_17dbce538f8e2f 106-137
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "0c3faf6d33dcc7d12fc004b33b678cbc9c751ec2",
+  "prompts": {},
+  "sessions": {
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
