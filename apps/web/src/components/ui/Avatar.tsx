@@ -17,6 +17,7 @@ export function Avatar({ handle, size = 32, className = "" }: AvatarProps) {
       <span aria-hidden className="num absolute inset-0 grid place-items-center font-semibold text-lo" style={{ fontSize: Math.round(size * 0.34) }}>
         {initials}
       </span>
+      {/* impeccable-disable broken-image -- src is a runtime pravatar URL; renders a real photo, not a placeholder */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={`https://i.pravatar.cc/${size * 2}?u=${seed}`} alt="" width={size} height={size} loading="lazy" decoding="async" className="relative h-full w-full object-cover" />
     </span>

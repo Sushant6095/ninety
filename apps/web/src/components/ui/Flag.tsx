@@ -16,6 +16,7 @@ export function Flag({ code, size = 20, className = "" }: FlagProps) {
       style={{ width: size, height: size }}
     >
       {src ? (
+        // impeccable-disable broken-image -- src is a runtime flagcdn URL; renders a real flag PNG, not a placeholder
         // eslint-disable-next-line @next/next/no-img-element
         <img src={src} alt={code} width={size} height={size} loading="lazy" decoding="async" className="h-full w-full object-cover" />
       ) : (
