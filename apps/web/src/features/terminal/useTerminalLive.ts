@@ -9,9 +9,10 @@ const OUT: Outcome[] = ["H", "D", "A"];
 
 /** Drives the selected match live — drifts the mark (renormalized) each tick and extends the away-win% history,
  *  so the big River flows, the price cells flash, and the open-position P&L updates. Off under reduced motion. */
-export function useTerminalLive(mark0: Record<Outcome, number>, spark0: number[]) {
+export function useTerminalLive(mark0: Record<Outcome, number>, spark0: number[], homeSpark0: number[]) {
   const [mark, setMark] = useState<Record<Outcome, number>>(mark0);
   const [spark, setSpark] = useState<number[]>(spark0);
+  const [homeSpark, setHomeSpark] = useState<number[]>(homeSpark0);
   const markRef = useRef(mark0);
 
   useEffect(() => {
@@ -23,10 +24,12 @@ export function useTerminalLive(mark0: Record<Outcome, number>, spark0: number[]
       const next: Record<Outcome, number> = { H: r3(raw[0] / s), D: r3(raw[1] / s), A: r3(raw[2] / s) };
       markRef.current = next;
       setMark(next);
+      // Extend both win-% traces from the same tick so the EGY area and the AUS context line stay in lockstep.
       setSpark((sp) => [...sp.slice(-79), Math.round(next.A * 1000) / 10]);
+      setHomeSpark((sp) => [...sp.slice(-79), Math.round(next.H * 1000) / 10]);
     }, TICK_MS);
     return () => window.clearInterval(id);
   }, []);
 
-  return { mark, spark };
+  return { mark, spark, homeSpark };
 }

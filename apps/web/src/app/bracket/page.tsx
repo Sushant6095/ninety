@@ -1,1 +1,6 @@
-export default function Page() { return <main className="p-6">bracket — see matching folder in src/features/</main>; }
+import { BracketPage } from "../../features/bracket/BracketPage";
+
+// Competition bracket — knockout tree with live advance prices. Fixture-wired (GET /markets?stage).
+export default function Page() {
+  return <BracketPage />;
+}

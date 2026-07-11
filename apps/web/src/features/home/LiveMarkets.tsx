@@ -71,7 +71,7 @@ export function LivePrice({ value, decimals = 1, className = "" }: { value: numb
 
   return (
     <span className={`num tabular-nums ${flash === "up" ? "flash-up" : flash === "down" ? "flash-down" : ""} ${className}`}>
-      {value.toFixed(decimals)}
+      {value.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}
     </span>
   );
 }

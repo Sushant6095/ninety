@@ -11,12 +11,12 @@ interface PriceChipProps {
 export function PriceChip({ label, price, lead = false }: PriceChipProps) {
   return (
     <span
-      className={`flex min-w-[44px] flex-col items-center gap-0.5 rounded-md px-1.5 py-1.5 ring-1 ring-inset transition-colors duration-200 sm:min-w-[52px] sm:px-2 ${
+      className={`flex min-w-[44px] flex-col items-center gap-0.5 rounded-md px-1 py-1 ring-1 ring-inset transition-colors duration-200 sm:min-w-[52px] sm:px-2 ${
         lead ? "bg-hairline/40 ring-hairline" : "bg-bg/50 ring-hairline/60"
       } group-hover:ring-up/30`}
     >
-      <span className="text-[9px] font-medium uppercase tracking-wide text-lo">{label}</span>
-      <LivePrice value={price} className={`text-[13px] font-semibold ${lead ? "text-hi" : "text-hi/90"}`} />
+      <span className="text-label font-medium uppercase tracking-wide text-lo">{label}</span>
+      <LivePrice value={price} className={`text-body font-semibold ${lead ? "text-hi" : "text-hi/90"}`} />
     </span>
   );
 }

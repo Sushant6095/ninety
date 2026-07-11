@@ -21,7 +21,7 @@ export function TopMovers() {
 
   return (
     <section className="border-t border-hairline px-3 py-3 sm:px-4">
-      <h3 className="mb-2.5 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-lo">
+      <h3 className="mb-2 flex items-center gap-2 text-label font-semibold uppercase tracking-[0.1em] text-lo">
         Biggest movers
         <span className="h-1 w-1 rounded-full bg-up shadow-[0_0_5px_var(--up)]" />
         <span className="font-normal normal-case tracking-normal text-lo/70">live · home price</span>
@@ -35,15 +35,15 @@ export function TopMovers() {
               href={routes.match(m.matchId)}
               className="elev group flex flex-col gap-2 rounded-card border border-hairline/70 bg-surface p-3 transition-colors duration-200 hover:border-hairline"
             >
-              <span className="flex items-center gap-1.5">
+              <span className="flex items-center gap-1">
                 <Flag code={m.homeCode} size={18} />
-                <Flag code={m.awayCode} size={18} className="-ml-2.5" />
-                <span className="num ml-1 text-[11px] text-lo">{m.homeCode}–{m.awayCode}</span>
-                <span className="num ml-auto text-[10px] text-lo">{m.minute}&#39;</span>
+                <Flag code={m.awayCode} size={18} className="-ml-2" />
+                <span className="num ml-1 text-label text-lo">{m.homeCode}–{m.awayCode}</span>
+                <span className="num ml-auto text-label text-lo">{m.minute}&#39;</span>
               </span>
               <span className="flex items-end justify-between">
-                <LivePrice value={last} className="font-display text-[22px] font-bold leading-none text-hi" />
-                <span className={`num inline-flex items-center gap-0.5 text-[12px] font-semibold ${up ? "text-up" : "text-down"}`}>
+                <LivePrice value={last} className="font-display text-display font-bold leading-none text-hi" />
+                <span className={`num inline-flex items-center gap-0.5 text-caption font-semibold ${up ? "text-up" : "text-down"}`}>
                   {up ? <ArrowUpRight size={13} strokeWidth={2.5} /> : <ArrowDownRight size={13} strokeWidth={2.5} />}
                   {up ? "+" : "−"}{Math.abs(delta).toFixed(1)}
                 </span>

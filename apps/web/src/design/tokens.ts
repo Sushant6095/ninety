@@ -75,9 +75,38 @@ export const radius = {
   sm: "8px",
 } as const;
 
-export const tokens = { colors, cssVars, fonts, space, radius } as const;
+// ── Series-C foundation (WS1/WS2) ────────────────────────────────────────────
+// 8pt base with a 4pt sub-unit — the ONLY permitted spacing steps. No 6/10/14px strays.
+export const grid = {
+  1: "4px", 2: "8px", 3: "12px", 4: "16px", 6: "24px", 8: "32px", 12: "48px", 16: "64px",
+} as const;
+
+// Two-tier spacing rhythm: tight WITHIN a group, air BETWEEN groups. Premium feel lives here —
+// uniform padding everywhere is what reads as MVP. Density (WS4) tunes these, not the type scale.
+export const rhythm = {
+  intra: "8px", // gaps inside a group (rows in a list, label→value)
+  intraLoose: "12px", // a touch more air inside denser groups
+  inter: "24px", // between sibling groups / cards
+  interLoose: "32px", // between major regions
+  section: "48px", // page-level section breaks
+} as const;
+
+// The enforceable 6-step type scale — mirrors tailwind.config `fontSize`. 11px is the floor (nothing below).
+// display-xl (40px) is reserved for the big live score only. Change here AND in tailwind.config together.
+export const type = {
+  label: { size: "11px", lineHeight: "1.4" },
+  caption: { size: "12px", lineHeight: "1.45" },
+  body: { size: "13px", lineHeight: "1.5" },
+  strong: { size: "14px", lineHeight: "1.45" },
+  heading: { size: "19px", lineHeight: "1.15", letterSpacing: "-0.01em" },
+  display: { size: "26px", lineHeight: "1.1", letterSpacing: "-0.01em" },
+  displayXl: { size: "40px", lineHeight: "1", letterSpacing: "-0.02em" },
+} as const;
+
+export const tokens = { colors, cssVars, fonts, space, grid, rhythm, radius, type } as const;
 
 export type SpaceToken = keyof typeof space;
+export type TypeToken = keyof typeof type;
 export type Tokens = typeof tokens;
 
 export default tokens;

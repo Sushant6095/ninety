@@ -4,8 +4,6 @@ import { TerminalHeader } from "./TerminalHeader";
 import { CompetitionsRail } from "./CompetitionsRail";
 import { AttackMomentum } from "./AttackMomentum";
 import { LatestEvents } from "./LatestEvents";
-import { FeaturedPlayers } from "./FeaturedPlayers";
-import { HighestRated } from "./HighestRated";
 import { MatchColumn } from "./MatchColumn";
 import { MarketStatus } from "./MarketStatus";
 import { PortfolioCard } from "./PortfolioCard";
@@ -26,8 +24,6 @@ export function TerminalScreen() {
         <div className="hidden flex-col gap-3 xl:flex">
           <CompetitionsRail />
           <AttackMomentum />
-          <FeaturedPlayers />
-          <HighestRated />
           <LatestEvents />
         </div>
         <div className="min-w-0">

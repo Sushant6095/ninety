@@ -38,14 +38,14 @@ export function CompetitionBar() {
               key={t.label}
               href={t.href}
               aria-current={active ? "page" : undefined}
-              className={`group relative flex shrink-0 items-center gap-1.5 whitespace-nowrap px-3 py-2.5 text-[12px] font-medium transition-colors duration-200 ${
+              className={`group relative flex shrink-0 items-center gap-1 whitespace-nowrap px-3 py-2 text-caption font-medium transition-colors duration-200 ${
                 active ? "text-hi" : "text-lo hover:text-hi"
               }`}
             >
               <Icon size={15} strokeWidth={2} className={active ? "text-up" : "text-lo group-hover:text-hi"} aria-hidden />
               {t.label}
               {t.count != null && (
-                <span className={`num rounded-full px-1.5 text-[10px] font-semibold tabular-nums ring-1 ring-inset ${active ? "bg-up/15 text-up ring-up/25" : "bg-surface text-lo ring-hairline"}`}>
+                <span className={`num rounded-full px-1 text-label font-semibold tabular-nums ring-1 ring-inset ${active ? "bg-up/15 text-up ring-up/25" : "bg-surface text-lo ring-hairline"}`}>
                   {t.count}
                 </span>
               )}

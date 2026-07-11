@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import type { Metadata } from "next";
 import { Archivo, Inter, IBM_Plex_Mono } from "next/font/google";
+import { OfflineBanner } from "../components/ui/OfflineBanner";
+import { Toaster } from "../components/ui/Toaster";
 
 // Self-hosted via next/font — reliable render (no FOUT / no system-font fallback that reads as "AI default").
 const archivo = Archivo({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-display", display: "swap" });
@@ -15,7 +17,11 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${archivo.variable} ${inter.variable} ${plexMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        <OfflineBanner />
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }

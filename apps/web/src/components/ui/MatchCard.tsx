@@ -29,43 +29,43 @@ export function MatchCard({ market }: { market: MarketRow }) {
     <Link
       href={routes.match(m.matchId)}
       aria-label={`${m.home} vs ${m.away}${m.score ? `, ${m.score.home}–${m.score.away}` : ""} — open market`}
-      className="group flex items-center gap-2.5 px-3 py-2.5 outline-none transition-colors duration-200 hover:bg-hairline/20 focus-visible:bg-hairline/20 active:bg-hairline/35 sm:gap-3 sm:px-4"
+      className="group flex items-center gap-2 px-3 py-2 outline-none transition-colors duration-200 hover:bg-hairline/20 focus-visible:bg-hairline/20 active:bg-hairline/35 sm:gap-3 sm:px-4"
     >
-      <span className={`w-4 shrink-0 text-center text-[13px] transition-transform duration-200 group-hover:scale-110 ${m.favourite ? "text-up" : "text-lo/35"}`} aria-hidden>
+      <span className={`w-4 shrink-0 text-center text-body transition-transform duration-200 group-hover:scale-110 ${m.favourite ? "text-up" : "text-lo/35"}`} aria-hidden>
         ★
       </span>
 
       <span className="w-9 shrink-0 text-center">
         {live ? (
           <>
-            <span className="num block text-[12px] font-semibold leading-none text-up">{m.minute}&#39;</span>
-            <span className="mt-0.5 block text-[9px] font-medium tracking-[0.1em] text-lo">LIVE</span>
+            <span className="num block text-caption font-semibold leading-none text-up">{m.minute}&#39;</span>
+            <span className="mt-0.5 block text-label font-medium tracking-[0.1em] text-lo">LIVE</span>
           </>
         ) : (
-          <span className="text-[11px] text-lo">—</span>
+          <span className="text-label text-lo">—</span>
         )}
       </span>
 
       <span className="min-w-0 flex-1">
         <span className="flex items-center gap-2">
           <Flag code={m.homeCode} size={18} />
-          <span className="truncate text-[13px] font-medium text-hi">{m.home}</span>
+          <span className="truncate text-body font-medium text-hi">{m.home}</span>
         </span>
         <span className="mt-2 flex items-center gap-2">
           <Flag code={m.awayCode} size={18} />
-          <span className="truncate text-[13px] font-medium text-hi">{m.away}</span>
+          <span className="truncate text-body font-medium text-hi">{m.away}</span>
         </span>
       </span>
 
       <span className="w-5 shrink-0 text-right">
-        <span className="num block text-[13px] font-medium text-hi">{m.score?.home ?? ""}</span>
-        <span className="num mt-2 block text-[13px] font-medium text-hi">{m.score?.away ?? ""}</span>
+        <span className="num block text-body font-medium text-hi">{m.score?.home ?? ""}</span>
+        <span className="num mt-2 block text-body font-medium text-hi">{m.score?.away ?? ""}</span>
       </span>
 
       {m.volume != null && (
         <span className="hidden w-14 shrink-0 flex-col items-end lg:flex" title="Credits traded">
-          <span className="num text-[12px] font-medium tabular-nums text-hi/80">{fmtVol(m.volume)}</span>
-          <span className="text-[9px] uppercase tracking-wide text-lo">vol</span>
+          <span className="num text-caption font-medium tabular-nums text-hi/80">{fmtVol(m.volume)}</span>
+          <span className="text-label uppercase tracking-wide text-lo">vol</span>
         </span>
       )}
 
@@ -73,7 +73,7 @@ export function MatchCard({ market }: { market: MarketRow }) {
         <Sparkline values={m.spark} up={rising} />
       </span>
 
-      <span className="flex shrink-0 gap-1 sm:gap-1.5">
+      <span className="flex shrink-0 gap-1 sm:gap-1">
         {OUTCOMES.map((o) => (
           <PriceChip key={o} label={o} price={(m.mark?.[o] ?? 0) * 100} lead={lead === o} />
         ))}

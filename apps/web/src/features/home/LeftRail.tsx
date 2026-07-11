@@ -32,9 +32,9 @@ export function LeftRail() {
                 className="flex items-center gap-2 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/30"
               >
                 <span className="text-up">★</span>
-                <span className="text-[13px] font-medium text-hi">{m.homeCode} – {m.awayCode}</span>
-                <span className="num ml-auto text-[11px] text-up">{m.minute}&#39;</span>
-                <span className="num text-[12px] font-medium text-hi">{m.score?.home}-{m.score?.away}</span>
+                <span className="text-body font-medium text-hi">{m.homeCode} – {m.awayCode}</span>
+                <span className="num ml-auto text-label text-up">{m.minute}&#39;</span>
+                <span className="num text-caption font-medium text-hi">{m.score?.home}-{m.score?.away}</span>
               </Link>
             </li>
           ))}
@@ -45,13 +45,13 @@ export function LeftRail() {
         <ul>
           {STAGES.map((s) => (
             <li key={s.name}>
-              <Link href={routes.competition} className="flex items-center gap-2.5 rounded-lg px-2 py-1.5 transition-colors duration-200 hover:bg-hairline/30">
+              <Link href={routes.competition} className="flex items-center gap-2 rounded-lg px-2 py-1 transition-colors duration-200 hover:bg-hairline/30">
                 <span className={`mt-1 h-1.5 w-1.5 shrink-0 rounded-full ${s.live ? "bg-up shadow-[0_0_5px_var(--up)]" : "bg-hairline"}`} />
                 <span className="min-w-0">
-                  <span className="block text-[13px] font-medium text-hi">{s.name}</span>
-                  <span className="block text-[10.5px] text-lo">{s.sub}</span>
+                  <span className="block text-body font-medium text-hi">{s.name}</span>
+                  <span className="block text-label text-lo">{s.sub}</span>
                 </span>
-                <span className="num ml-auto text-[11px] text-lo">{s.count}</span>
+                <span className="num ml-auto text-label text-lo">{s.count}</span>
               </Link>
             </li>
           ))}
@@ -62,10 +62,10 @@ export function LeftRail() {
         <ul>
           {FOLLOWED.map((t) => (
             <li key={t.name}>
-              <Link href={routes.competition} className="flex items-center gap-2.5 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/30">
+              <Link href={routes.competition} className="flex items-center gap-2 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/30">
                 <Flag code={t.code} size={22} />
-                <span className="text-[13px] font-medium text-hi">{t.name}</span>
-                <span className={`num ml-auto text-[10px] font-semibold tracking-wide ${t.live ? "text-up" : "text-lo"}`}>{t.state}</span>
+                <span className="text-body font-medium text-hi">{t.name}</span>
+                <span className={`num ml-auto text-label font-semibold tracking-wide ${t.live ? "text-up" : "text-lo"}`}>{t.state}</span>
               </Link>
             </li>
           ))}
@@ -80,13 +80,13 @@ export function LeftRail() {
 /** Chain surface (violet, --chain) — read-only Solana settlement status. */
 function SettlementPanel() {
   return (
-    <section className="rounded-card border border-chain/25 bg-chain/[0.04] px-4 py-3.5">
-      <h2 className="mb-2 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-chain">
+    <section className="rounded-card border border-chain/25 bg-chain/[0.04] px-4 py-3">
+      <h2 className="mb-2 flex items-center gap-1 text-label font-semibold uppercase tracking-[0.12em] text-chain">
         <span className="text-chain">◆</span> Settlement — Solana
       </h2>
-      <dl className="num space-y-1 text-[11px] leading-relaxed text-lo">
+      <div className="num space-y-1 text-label leading-relaxed text-lo">
         <div>devnet · slot <span className="text-hi">297,441,208</span></div>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1">
           last proof
           <a
             href="https://solscan.io/?cluster=devnet"
@@ -99,7 +99,7 @@ function SettlementPanel() {
           </a>
         </div>
         <div>feed latency <span className="text-hi">42 ms</span></div>
-      </dl>
+      </div>
     </section>
   );
 }

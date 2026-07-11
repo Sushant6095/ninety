@@ -19,21 +19,21 @@ export function YourPosition({ code, shares, avgEntry, markPct, opened }: YourPo
 
   return (
     <div className="px-4 py-3">
-      <div className="mb-1.5 flex items-center justify-between">
-        <h3 className="text-[10px] font-semibold uppercase tracking-[0.12em] text-lo">Your position</h3>
-        <span className="num rounded bg-up/12 px-1.5 py-0.5 text-[9px] font-semibold text-up ring-1 ring-inset ring-up/25">{code} · {shares} SH</span>
+      <div className="mb-1 flex items-center justify-between">
+        <h3 className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Your position</h3>
+        <span className="num rounded bg-up/12 px-1 py-0.5 text-label font-semibold text-up ring-1 ring-inset ring-up/25">{code} · {shares} SH</span>
       </div>
       <div className="flex items-end justify-between gap-3">
         <div>
-          <LivePrice value={value} decimals={0} className="font-display text-[26px] font-bold leading-none text-hi" />
-          <span className="ml-1 text-[11px] text-lo">cr value</span>
+          <LivePrice value={value} decimals={0} className="font-display text-display font-bold leading-none text-hi" />
+          <span className="ml-1 text-label text-lo">cr value</span>
         </div>
-        <div className={`num text-right text-[13px] font-semibold ${up ? "text-up" : "text-down"}`}>
+        <div className={`num text-right text-body font-semibold ${up ? "text-up" : "text-down"}`}>
           {up ? "+" : "−"}{Math.abs(Math.round(pnl)).toLocaleString("en-US")}
-          <span className="ml-1 text-[11px]">({up ? "+" : "−"}{Math.abs(pct).toFixed(1)}%)</span>
+          <span className="ml-1 text-label">({up ? "+" : "−"}{Math.abs(pct).toFixed(1)}%)</span>
         </div>
       </div>
-      <div className="num mt-1.5 text-[10px] text-lo">Avg entry {avgEntry.toFixed(1)} · {opened}</div>
+      <div className="num mt-1 text-label text-lo">Avg entry {avgEntry.toFixed(1)} · {opened}</div>
     </div>
   );
 }

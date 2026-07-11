@@ -13,10 +13,16 @@ export default {
     borderRadius: { card: "var(--radius-card)", chip: "var(--radius-chip)" },
     spacing: { ...space }, // the intentional spacing scale from tokens.ts (p-md, gap-lg, …)
     fontSize: {
-      // named type scale (the terminal's precise sizes) — from tokens.ts intent; use over arbitrary text-[Npx].
-      micro: ["9px", "1.3"], "2xs": ["10px", "1.4"], xs: ["11px", "1.45"], sm: ["12px", "1.45"],
-      base: ["13px", "1.5"], md: ["14px", "1.5"], lg: ["17px", "1.2"], xl: ["19px", "1.1"],
-      "2xl": ["26px", "1.1"], "3xl": ["30px", "1.05"],
+      // The enforceable 6-step type scale (Series-C foundation). Use these named steps over arbitrary text-[Npx];
+      // line-height is baked in, tracking stays on classes (label/body carry none by default). 11px is the label
+      // floor — nothing renders below it. display-xl is reserved for hero score numbers only.
+      label: ["11px", "1.4"], // micro tags, uppercase meta — the floor
+      caption: ["12px", "1.45"], // secondary / meta
+      body: ["13px", "1.5"], // default UI text
+      strong: ["14px", "1.45"], // labels, buttons, active values
+      heading: ["19px", { lineHeight: "1.15", letterSpacing: "-0.01em" }], // panel titles (Archivo)
+      display: ["26px", { lineHeight: "1.1", letterSpacing: "-0.01em" }], // big data numbers — position, portfolio, movers (Archivo)
+      "display-xl": ["40px", { lineHeight: "1", letterSpacing: "-0.02em" }], // the big live match score only
     },
   } },
 } satisfies Config;

@@ -8,9 +8,12 @@ interface MomentumRiverProps {
   height?: number;
   goalIndex?: number; // index to mark with a goal glyph
   liveValue?: number; // latest fair×100 — appended to the river on change so it moves in real time
+  secondary?: number[]; // optional context trace (e.g. the losing side's win%), drawn as a thin --down line
+  secondaryLive?: number; // latest secondary value — appended in lockstep with liveValue so both traces align
 }
 
 type AreaSeries = { setData: (d: object[]) => void; setMarkers: (m: object[]) => void; update: (p: object) => void };
+type LineSeries = { setData: (d: object[]) => void };
 type TimeScale = { fitContent: () => void; setVisibleLogicalRange: (r: { from: number; to: number }) => void };
 type Chart = { remove: () => void; applyOptions: (o: object) => void; timeScale: () => TimeScale };
 
@@ -19,9 +22,11 @@ const TAIL_FRACTION = 0.22; // ~74'→90' of unplayed time stays empty on the ri
 /** The hero price River — the ONE lightweight-charts instance (ADR-045), and the signature element where all
  *  visual boldness lives: a filled momentum area, not a thin line. Lazy-imports the lib (off SSR). Built once;
  *  `liveValue` changes append a point via series.update() so the river flows without a costly rebuild. */
-export function MomentumRiver({ data, up = true, height = 96, goalIndex, liveValue }: MomentumRiverProps) {
+export function MomentumRiver({ data, up = true, height = 96, goalIndex, liveValue, secondary, secondaryLive }: MomentumRiverProps) {
   const ref = useRef<HTMLDivElement>(null);
   const seriesRef = useRef<AreaSeries | null>(null);
+  const secSeriesRef = useRef<LineSeries | null>(null); // optional context trace (losing side)
+  const secBufRef = useRef<{ time: number; value: number }[]>([]); // secondary rolling buffer, shifts with the primary
   const chartRef = useRef<Chart | null>(null);
   const dataRef = useRef<{ time: number; value: number }[]>([]); // rolling buffer (capped → bounded memory)
   const timeRef = useRef<number>(0); // strictly-increasing time counter
@@ -30,8 +35,8 @@ export function MomentumRiver({ data, up = true, height = 96, goalIndex, liveVal
   const lastValueRef = useRef<number | null>(null);
   const upRef = useRef<boolean>(up);
   // Build once — read mutable props from refs so a live tick never tears down the chart.
-  const initRef = useRef({ data, height, goalIndex, up });
-  initRef.current = { data, height, goalIndex, up };
+  const initRef = useRef({ data, height, goalIndex, up, secondary });
+  initRef.current = { data, height, goalIndex, up, secondary };
 
   useEffect(() => {
     const el = ref.current;
@@ -47,7 +52,7 @@ export function MomentumRiver({ data, up = true, height = 96, goalIndex, liveVal
         return; // chart lib failed to load — the panel still renders without the River (graceful)
       }
       if (cancelled || !el) return;
-      const { data: d0, height: h0, goalIndex: gi, up: up0 } = initRef.current;
+      const { data: d0, height: h0, goalIndex: gi, up: up0, secondary: sec0 } = initRef.current;
       const line = (up0 ? resolveColor("up") : resolveColor("down")) || resolveColor("textHi");
       const chart = lc.createChart(el, {
         width: el.clientWidth,
@@ -80,7 +85,22 @@ export function MomentumRiver({ data, up = true, height = 96, goalIndex, liveVal
       lastValueRef.current = d0.length ? d0[d0.length - 1] : null;
       series.setData(seed.map((p) => ({ time: p.time as never, value: p.value })));
       if (gi != null && d0[gi] != null) {
-        series.setMarkers([{ time: (gi + 1) as never, position: "aboveBar", color: line, shape: "circle", text: "goal" }]);
+        // Cliff dot only — the goal is named by the pill overlay in BigRiver, so no redundant marker text.
+        series.setMarkers([{ time: (gi + 1) as never, position: "inBar", color: line, shape: "circle" }]);
+      }
+      // Optional context trace (the losing side's win%) — a thin --down line over the area, on the same x-domain.
+      if (sec0 && sec0.length) {
+        const secLine = (chart as unknown as { addLineSeries: (o: object) => LineSeries }).addLineSeries({
+          color: resolveColor("down"),
+          lineWidth: 1,
+          priceLineVisible: false,
+          lastValueVisible: false,
+          crosshairMarkerVisible: false,
+        });
+        secSeriesRef.current = secLine;
+        const secSeed = sec0.map((v, i) => ({ time: i + 1, value: v }));
+        secBufRef.current = secSeed.slice();
+        secLine.setData(secSeed.map((p) => ({ time: p.time as never, value: p.value })));
       }
       // Plot toward full time; leave the unplayed tail empty on the right (DECISIONS.md), never stretch edge-to-edge.
       chart.timeScale().setVisibleLogicalRange({ from: -0.5, to: seed.length - 1 + tailRef.current });
@@ -94,6 +114,7 @@ export function MomentumRiver({ data, up = true, height = 96, goalIndex, liveVal
       chartRef.current?.remove();
       chartRef.current = null;
       seriesRef.current = null;
+      secSeriesRef.current = null;
     };
   }, []); // build once
 
@@ -116,8 +137,16 @@ export function MomentumRiver({ data, up = true, height = 96, goalIndex, liveVal
     buf.push({ time: timeRef.current, value: liveValue });
     if (buf.length > windowRef.current) buf.shift();
     series.setData(buf.map((p) => ({ time: p.time as never, value: p.value })));
+    // Extend the context trace on the SAME tick/time so both lines share the window and never drift apart.
+    const secSeries = secSeriesRef.current;
+    if (secSeries && secondaryLive != null) {
+      const sbuf = secBufRef.current;
+      sbuf.push({ time: timeRef.current, value: secondaryLive });
+      if (sbuf.length > windowRef.current) sbuf.shift();
+      secSeries.setData(sbuf.map((p) => ({ time: p.time as never, value: p.value })));
+    }
     chartRef.current?.timeScale().setVisibleLogicalRange({ from: -0.5, to: buf.length - 1 + tailRef.current });
-  }, [liveValue, up]);
+  }, [liveValue, up, secondaryLive]);
 
   return <div ref={ref} style={{ height }} className="w-full" aria-hidden />;
 }

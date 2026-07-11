@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-10T00:00:00Z",
+  "title": "Design System: Ninety",
+  "extensions": {
+    "colorMeta": {
+      "terminal-black": { "role": "neutral", "displayName": "Terminal Black", "canonical": "#0B0D10" },
+      "panel-slate": { "role": "neutral", "displayName": "Panel Slate", "canonical": "#14171C" },
+      "hairline": { "role": "neutral", "displayName": "Hairline", "canonical": "#232A33" },
+      "high-ink": { "role": "neutral", "displayName": "High Ink", "canonical": "#F5F7FA" },
+      "low-ink": { "role": "neutral", "displayName": "Low Ink", "canonical": "#97A0AF" },
+      "signal-green": { "role": "primary", "displayName": "Signal Green", "canonical": "#2BD97C" },
+      "signal-pink": { "role": "primary", "displayName": "Signal Pink", "canonical": "#FF3D81" },
+      "halt-amber": { "role": "secondary", "displayName": "Halt Amber", "canonical": "#FFB020" },
+      "chain-violet": { "role": "secondary", "displayName": "Chain Violet", "canonical": "#9D6BFF" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Archivo 800 — hero numbers and top-level headings." },
+      "headline": { "displayName": "Headline", "purpose": "Archivo 700 — panel titles and match headers." },
+      "title": { "displayName": "Title", "purpose": "Inter 600 — labels, active values, button text." },
+      "body": { "displayName": "Body", "purpose": "Inter 400/500 — default UI text; 65–75ch for prose." },
+      "label": { "displayName": "Label", "purpose": "Inter 500, tracked, often uppercase — micro tags." },
+      "mono": { "displayName": "Mono", "purpose": "IBM Plex Mono, tabular-nums — ALL numbers, prices one decimal." }
+    },
+    "shadows": [
+      { "name": "elev", "value": "inset 0 1px 0 0 rgba(245,247,250,0.03), 0 1px 2px 0 rgba(0,0,0,0.5), 0 12px 28px -16px rgba(0,0,0,0.9)", "purpose": "Default resting elevation for cards, panels, rails." },
+      { "name": "elev-hi", "value": "inset 0 1px 0 0 rgba(245,247,250,0.045), 0 2px 4px 0 rgba(0,0,0,0.55), 0 20px 44px -20px rgba(0,0,0,0.95)", "purpose": "Lifted state — featured panels, trade sheet, floating surfaces." }
+    ],
+    "motion": [
+      { "name": "flash", "value": "180ms", "purpose": "Price/number tick — the signature up/down colour pulse." },
+      { "name": "transition", "value": "200ms", "purpose": "Standard UI transition (hover, reveal, panel)." },
+      { "name": "fast", "value": "150ms", "purpose": "Fast affordance — focus ring, small state change." },
+      { "name": "slow", "value": "250ms", "purpose": "Deliberate reveal — proof badge on settle, sheet enter." },
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Expo-out easing for all CSS transitions. Calm, no bounce." },
+      { "name": "spring", "value": "stiffness 420, damping 34, mass 0.9", "purpose": "Framer spring for number rolls and badge pulse. Snappy, not bouncy." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Buy Button",
+      "kind": "button",
+      "refersTo": "button-buy",
+      "description": "Primary buy action — filled Signal Green, Black text, 44px touch target.",
+      "html": "<button class=\"ds-btn-buy\">Buy BRA @ 61.4</button>",
+      "css": ".ds-btn-buy{min-height:44px;padding:0 20px;border:none;border-radius:8px;background:#2BD97C;color:#0B0D10;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:filter .2s cubic-bezier(.16,1,.3,1),transform .2s cubic-bezier(.16,1,.3,1)}.ds-btn-buy:hover{filter:brightness(1.1)}.ds-btn-buy:active{transform:scale(.99)}.ds-btn-buy:focus-visible{outline:2px solid #2BD97C;outline-offset:2px}"
+    },
+    {
+      "name": "Sell Button",
+      "kind": "button",
+      "refersTo": "button-sell",
+      "description": "Primary sell action — filled Signal Pink, Black text, 44px touch target.",
+      "html": "<button class=\"ds-btn-sell\">Sell BRA @ 61.4</button>",
+      "css": ".ds-btn-sell{min-height:44px;padding:0 20px;border:none;border-radius:8px;background:#FF3D81;color:#0B0D10;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:filter .2s cubic-bezier(.16,1,.3,1),transform .2s cubic-bezier(.16,1,.3,1)}.ds-btn-sell:hover{filter:brightness(1.1)}.ds-btn-sell:active{transform:scale(.99)}.ds-btn-sell:focus-visible{outline:2px solid #FF3D81;outline-offset:2px}"
+    },
+    {
+      "name": "Price Chip",
+      "kind": "chip",
+      "refersTo": "price-chip",
+      "description": "One outcome's price cell — micro label over a mono price, hairline ring, hover previews green.",
+      "html": "<span class=\"ds-price-chip\"><span class=\"ds-price-chip__label\">H</span><span class=\"ds-price-chip__val\">61.4</span></span>",
+      "css": ".ds-price-chip{display:inline-flex;flex-direction:column;align-items:center;gap:2px;min-width:52px;padding:6px 8px;border-radius:6px;background:rgba(11,13,16,0.5);box-shadow:inset 0 0 0 1px rgba(35,42,51,0.6);transition:box-shadow .2s cubic-bezier(.16,1,.3,1)}.ds-price-chip:hover{box-shadow:inset 0 0 0 1px rgba(43,217,124,0.3)}.ds-price-chip__label{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:0.04em;color:#97A0AF}.ds-price-chip__val{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;font-size:13px;font-weight:600;color:#F5F7FA}"
+    },
+    {
+      "name": "Credit Pill",
+      "kind": "chip",
+      "refersTo": "credit-pill",
+      "description": "Play-money balance → portfolio. Glowing green dot, mono balance, 'CR' — never a currency symbol.",
+      "html": "<a class=\"ds-credit-pill\" href=\"#\"><span class=\"ds-credit-pill__dot\"></span><span class=\"ds-credit-pill__num\">1,000</span><span class=\"ds-credit-pill__cr\">CR</span></a>",
+      "css": ".ds-credit-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:#14171C;box-shadow:inset 0 0 0 1px #232A33;text-decoration:none;transition:box-shadow .2s cubic-bezier(.16,1,.3,1)}.ds-credit-pill:hover{box-shadow:inset 0 0 0 1px rgba(43,217,124,0.4)}.ds-credit-pill__dot{width:6px;height:6px;border-radius:999px;background:#2BD97C;box-shadow:0 0 6px #2BD97C}.ds-credit-pill__num{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;font-size:13px;font-weight:500;color:#F5F7FA}.ds-credit-pill__cr{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:11px;font-weight:500;letter-spacing:0.04em;color:#97A0AF}"
+    },
+    {
+      "name": "Rail Card",
+      "kind": "card",
+      "refersTo": "rail-card",
+      "description": "The quiet secondary container — Panel Slate, hairline border, elev shadow, optional label header.",
+      "html": "<section class=\"ds-rail-card\"><div class=\"ds-rail-card__label\">Top movers</div><div class=\"ds-rail-card__body\">Brazil <span class=\"ds-rail-card__up\">+3.2</span></div></section>",
+      "css": ".ds-rail-card{background:#14171C;border:1px solid rgba(35,42,51,0.7);border-radius:16px;box-shadow:inset 0 1px 0 0 rgba(245,247,250,0.03),0 1px 2px 0 rgba(0,0,0,0.5),0 12px 28px -16px rgba(0,0,0,0.9);padding:16px;color:#F5F7FA}.ds-rail-card__label{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.04em;color:#97A0AF;margin-bottom:12px}.ds-rail-card__body{display:flex;justify-content:space-between;align-items:center;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:13px}.ds-rail-card__up{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;font-weight:600;color:#2BD97C}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Terminal",
+    "overview": "Ninety is a still, near-black trading room where the only thing that moves is the market. The surface is calm and dense — an exchange for live World Cup football priced in play-money credits, where a fan reads the match and trades the moment. All the visual energy is spent, deliberately, in one place: the Momentum River, the live price line that runs green when a market climbs and pink when it falls. Because the room is quiet, that one live signal reads instantly. The system rejects the aesthetics of the thing it is legally not — not a sportsbook, not a crypto-casino, not a generic SaaS dashboard, not a cluttered live-scores portal. Depth comes from tonal layering and a single hairline-and-shadow elevation move, never from gradients or glass. Numbers are sacred: mono, tabular, one decimal, flashing their direction for 180ms on change.",
+    "keyCharacteristics": [
+      "Near-black terminal surface (#0B0D10) with a single elevated panel tone (#14171C).",
+      "One signature element — the Momentum River — carries all boldness; everything else stays quiet.",
+      "All numbers mono + tabular-nums; prices one decimal; 180ms up/down flash on change.",
+      "Semantic color only: green up, pink down, amber for halts, violet for on-chain. Never decorative.",
+      "Depth from a 1px top highlight + ambient shadow over near-black — no gradients, no glass, no light mode."
+    ],
+    "rules": [
+      { "name": "The Semantic-Only Rule", "body": "Green, pink, amber, and violet each carry exactly one meaning (up, down, halt, on-chain). A color never appears for flavor.", "section": "colors" },
+      { "name": "The One River Rule", "body": "Visual boldness lives in the Momentum River and nowhere else. If a second element competes with the River for attention, subtract it.", "section": "colors" },
+      { "name": "The Direction-Is-Never-Color-Alone Rule", "body": "Up/down is always reinforced with an arrow, sign, or position, never signalled by the green/pink pair alone.", "section": "colors" },
+      { "name": "The Every-Number-Is-Mono Rule", "body": "No number ever renders in Archivo or Inter. All numerics are IBM Plex Mono, tabular-nums; prices carry exactly one decimal.", "section": "typography" },
+      { "name": "The No-Gradient, No-Glass Rule", "body": "Depth is only ever tonal layering + the two elev shadows + hairline borders. No gradient fills, no backdrop-blur.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep every number in IBM Plex Mono with tabular-nums; render prices to exactly one decimal (61.4).",
+      "Do spend all visual boldness on the Momentum River and keep every other surface quiet.",
+      "Do use color semantically only — green up, pink down, amber for halts, violet for on-chain — and reinforce direction with an arrow, sign, or position, never color alone.",
+      "Do build depth from tonal layering + the two elev shadows + 1px hairline borders.",
+      "Do use the intentional spacing scale (4/8/12/16/24/40/64) so screens breathe; keep body prose to 65–75ch.",
+      "Do give every interactive element real hover, focus-visible, and active states, and a prefers-reduced-motion fallback for every animation."
+    ],
+    "donts": [
+      "Don't look like a sportsbook — no neon casino felt, gold coins, flashing odds boards, or 'BET NOW' urgency.",
+      "Don't use the words bet, stake, odds, or wager in product copy. Say price, trade, credits.",
+      "Don't use gradients, glassmorphism, or light mode (v1) — depth is tonal + hairline + elev only.",
+      "Don't ship a generic SaaS dashboard of identical icon-heading-text card grids, or nest cards inside cards.",
+      "Don't let the room get loud — if a second element competes with the River for attention, subtract it.",
+      "Don't render a number in Archivo or Inter, and never show a price with more than one decimal."
+    ]
+  }
+}

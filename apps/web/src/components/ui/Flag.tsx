@@ -20,7 +20,7 @@ export function Flag({ code, size = 20, className = "" }: FlagProps) {
         // eslint-disable-next-line @next/next/no-img-element
         <img src={src} alt={code} width={size} height={size} loading="lazy" decoding="async" className="h-full w-full object-cover" />
       ) : (
-        <span className="num text-[9px] font-semibold text-lo">{code.slice(0, 2)}</span>
+        <span className="num text-label font-semibold text-lo">{code.slice(0, 2)}</span>
       )}
     </span>
   );

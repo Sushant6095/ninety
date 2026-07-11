@@ -1,72 +1,107 @@
 "use client";
 import { useState, type ReactNode } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { motion as m } from "../../design/motion";
+import { MatchList } from "./MatchList";
+import type { MarketRow } from "../../lib/types";
 
-const DATES = [
-  { label: "Fri Jul 4", key: "fri" },
-  { label: "Today · Sat Jul 5", key: "today" },
-  { label: "Sun Jul 6", key: "sun" },
+type FilterKey = "live" | "upcoming" | "finished";
+
+// Real predicates over market status — the filter chips actually partition the slate.
+const isLive = (mk: MarketRow): boolean => mk.status === "LIVE" || mk.status === "HALTED";
+const isUpcoming = (mk: MarketRow): boolean => mk.status === "OPEN" || mk.status === "SCHEDULED";
+const isFinished = (mk: MarketRow): boolean => mk.status === "SETTLED" || mk.status === "VOIDED" || mk.status === "RESOLVING";
+
+const MATCHES: Record<FilterKey, (m: MarketRow) => boolean> = { live: isLive, upcoming: isUpcoming, finished: isFinished };
+const EMPTY_COPY: Record<FilterKey, string> = {
+  live: "No live matches right now.",
+  upcoming: "No upcoming matches on today’s slate.",
+  finished: "No settled matches yet today.",
+};
+const FILTERS: { key: FilterKey; label: string }[] = [
+  { key: "live", label: "Live" },
+  { key: "upcoming", label: "Today" },
+  { key: "finished", label: "Finished" },
 ];
-const FILTERS = [
-  { key: "live", label: "Live", count: 3 },
-  { key: "today", label: "Today", count: 8 },
-  { key: "finished", label: "Finished", count: 8 },
-] as const;
 
-type FilterKey = (typeof FILTERS)[number]["key"];
+// Three-day nav — the middle day is today (visual, like the lock-kit board).
+const DAYS = [
+  { label: "Fri Jul 4", today: false },
+  { label: "Today · Sat Jul 5", today: true },
+  { label: "Sun Jul 6", today: false },
+];
 
 interface CenterColumnProps {
-  children?: ReactNode; // the grouped match list (chunk 4)
+  markets: MarketRow[];
+  children?: ReactNode; // modules below the board (movers / traders / news)
 }
 
-export function CenterColumn({ children }: CenterColumnProps) {
-  const [date, setDate] = useState("today");
+export function CenterColumn({ markets, children }: CenterColumnProps) {
   const [filter, setFilter] = useState<FilterKey>("live");
+  const reduce = useReducedMotion();
+
+  const counts: Record<FilterKey, number> = {
+    live: markets.filter(isLive).length,
+    upcoming: markets.filter(isUpcoming).length,
+    finished: markets.filter(isFinished).length,
+  };
+  const filtered = markets.filter(MATCHES[filter]);
 
   return (
     <div className="elev min-w-0 rounded-card border border-hairline/70 bg-surface">
-      <div className="flex items-center gap-2 overflow-x-auto border-b border-hairline px-3 py-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        <button
-          aria-label="Previous day"
-          disabled={date === "fri"}
-          className="grid h-9 w-9 shrink-0 place-items-center rounded-md text-lo transition-colors duration-200 hover:bg-hairline/40 hover:text-hi disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
-        >
-          ‹
-        </button>
-        {DATES.map((d) => (
+      {/* Date nav */}
+      <div className="flex items-center gap-1 border-b border-hairline px-3 py-2">
+        <button aria-label="Previous day" className="grid h-7 w-7 place-items-center rounded-md text-body text-lo transition-colors duration-200 hover:bg-hairline/40 hover:text-hi">‹</button>
+        {DAYS.map((d) => (
           <button
-            key={d.key}
-            onClick={() => setDate(d.key)}
-            aria-pressed={date === d.key}
-            className={`num shrink-0 whitespace-nowrap rounded-md px-2.5 py-1 text-[11px] font-medium tracking-wide transition-colors duration-200 ${
-              date === d.key ? "bg-hairline/60 text-hi" : "text-lo hover:text-hi"
+            key={d.label}
+            aria-current={d.today ? "date" : undefined}
+            className={`num whitespace-nowrap rounded-md px-2.5 py-1 text-label font-medium uppercase tracking-wide transition-colors duration-200 ${
+              d.today ? "bg-hairline/60 text-hi" : "text-lo hover:text-hi"
             }`}
           >
-            {d.label.toUpperCase()}
+            {d.label}
           </button>
         ))}
-        <button aria-label="Next day" className="grid h-9 w-9 shrink-0 place-items-center rounded-md text-lo transition-colors duration-200 hover:bg-hairline/40 hover:text-hi">›</button>
-        <span className="num ml-auto hidden shrink-0 pl-3 text-[10px] tracking-wide text-lo sm:block">KICK-OFF TIMES PT</span>
+        <button aria-label="Next day" className="grid h-7 w-7 place-items-center rounded-md text-body text-lo transition-colors duration-200 hover:bg-hairline/40 hover:text-hi">›</button>
+        <span className="num ml-auto hidden text-label tracking-wide text-lo sm:block">KICK-OFF TIMES PT</span>
       </div>
 
+      {/* Filter pills */}
       <div className="flex items-center gap-2 overflow-x-auto px-3 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {FILTERS.map((f) => (
-          <button
-            key={f.key}
-            onClick={() => setFilter(f.key)}
-            aria-pressed={filter === f.key}
-            className={`inline-flex shrink-0 items-center gap-1.5 rounded-chip px-3 py-2 text-[12px] font-medium transition-colors duration-200 ${
-              filter === f.key ? "bg-hi text-bg" : "bg-bg text-lo ring-1 ring-inset ring-hairline hover:text-hi"
-            }`}
-          >
-            {f.key === "live" && <span className={`h-1.5 w-1.5 rounded-full ${filter === f.key ? "bg-up" : "bg-up"}`} />}
-            {f.label}
-            <span className="num opacity-70">{f.count}</span>
-          </button>
-        ))}
-        <span className="ml-auto shrink-0 whitespace-nowrap pl-3 text-[11px] text-lo">Sorted by kick-off</span>
+        {FILTERS.map((f) => {
+          const on = filter === f.key;
+          return (
+            <button
+              key={f.key}
+              onClick={() => setFilter(f.key)}
+              aria-pressed={on}
+              className={`relative inline-flex shrink-0 items-center gap-1 rounded-chip px-3 py-2 text-caption font-medium outline-none transition-[color,transform] duration-200 ease-out active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-up focus-visible:ring-offset-2 focus-visible:ring-offset-surface ${
+                on ? "text-bg" : "bg-bg text-lo ring-1 ring-inset ring-hairline hover:text-hi"
+              }`}
+            >
+              {on && (
+                <motion.span
+                  layoutId="homeFilterActive"
+                  className="absolute inset-0 rounded-chip bg-hi"
+                  transition={reduce ? { duration: 0 } : m.spring}
+                />
+              )}
+              <span className="relative z-10 inline-flex items-center gap-1">
+                {f.key === "live" && <span className={`h-1.5 w-1.5 rounded-full ${on ? "bg-bg" : "bg-up"}`} />}
+                {f.label}
+                <span className="num opacity-70">{counts[f.key]}</span>
+              </span>
+            </button>
+          );
+        })}
+        <span className="ml-auto shrink-0 whitespace-nowrap pl-3 text-label text-lo">Sorted by kick-off</span>
       </div>
 
-      <div className="min-h-[120px]">{children}</div>
+      <div className="min-h-[120px] border-t border-hairline">
+        <MatchList markets={filtered} emptyLabel={EMPTY_COPY[filter]} />
+        {children}
+      </div>
     </div>
   );
 }

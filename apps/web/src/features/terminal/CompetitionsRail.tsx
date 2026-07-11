@@ -21,32 +21,32 @@ function Row({ m }: { m: TermMarketRow }) {
       className={`group relative flex items-center gap-2 py-2 pl-3 pr-2 transition-colors duration-200 hover:bg-hairline/25 ${m.selected ? "bg-up/[0.06]" : ""}`}
     >
       {m.selected && <span className="absolute inset-y-1 left-0 w-[3px] rounded-full bg-up" />}
-      <span className={`w-3 shrink-0 text-center text-[12px] ${m.fav ? "text-up" : "text-lo/40"}`} aria-hidden>★</span>
+      <span className={`w-3 shrink-0 text-center text-caption ${m.fav ? "text-up" : "text-lo/40"}`} aria-hidden>★</span>
       <span className="w-9 shrink-0 text-center">
         {m.minute != null ? (
           <>
-            <span className="num block text-[11px] font-semibold leading-none text-up">{m.minute}&#39;</span>
-            <span className="mt-0.5 block text-[8px] font-medium tracking-[0.08em] text-lo">2H</span>
+            <span className="num block text-label font-semibold leading-none text-up">{m.minute}&#39;</span>
+            <span className="mt-0.5 block text-label font-medium tracking-[0.08em] text-lo">2H</span>
           </>
         ) : (
-          <span className="num text-[10px] text-lo">{m.time}</span>
+          <span className="num text-label text-lo">{m.time}</span>
         )}
       </span>
       <span className="min-w-0 flex-1">
-        <span className="flex items-center gap-1.5"><Flag code={m.homeCode} size={14} /><span className="text-[12px] font-medium text-hi">{m.homeCode}</span></span>
-        <span className="mt-1 flex items-center gap-1.5"><Flag code={m.awayCode} size={14} /><span className="text-[12px] font-medium text-hi">{m.awayCode}</span></span>
+        <span className="flex items-center gap-1"><Flag code={m.homeCode} size={14} /><span className="text-caption font-medium text-hi">{m.homeCode}</span></span>
+        <span className="mt-1 flex items-center gap-1"><Flag code={m.awayCode} size={14} /><span className="text-caption font-medium text-hi">{m.awayCode}</span></span>
       </span>
       {m.score && (
         <span className="w-3 shrink-0 text-right">
-          <span className="num block text-[12px] font-medium text-hi">{m.score[0]}</span>
-          <span className="num mt-1 block text-[12px] font-medium text-hi">{m.score[1]}</span>
+          <span className="num block text-caption font-medium text-hi">{m.score[0]}</span>
+          <span className="num mt-1 block text-caption font-medium text-hi">{m.score[1]}</span>
         </span>
       )}
       <span className="flex shrink-0 gap-1">
         {OUT.map((o) => (
           <span key={o} className={`flex min-w-[30px] flex-col items-center rounded px-1 py-1 ${lead === o ? "bg-hairline/50" : "bg-bg/40"}`}>
-            <span className="text-[8px] uppercase text-lo">{o}</span>
-            <LivePrice value={m.mark[o] * 100} className="text-[11px] font-semibold text-hi/90" />
+            <span className="text-label uppercase text-lo">{o}</span>
+            <LivePrice value={m.mark[o] * 100} className="text-label font-semibold text-hi/90" />
           </span>
         ))}
       </span>
@@ -64,18 +64,18 @@ export function CompetitionsRail() {
   }
   return (
     <section className="elev overflow-hidden rounded-card border border-hairline/70 bg-surface">
-      <div className="flex items-center justify-between border-b border-hairline px-3 py-2.5">
-        <h2 className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-lo">
+      <div className="flex items-center justify-between border-b border-hairline px-3 py-2">
+        <h2 className="flex items-center gap-1 text-label font-semibold uppercase tracking-[0.12em] text-lo">
           <span className="h-1.5 w-1.5 rounded-full bg-up shadow-[0_0_5px_var(--up)]" /> Live competitions
         </h2>
-        <span className="text-[9px] uppercase tracking-wide text-lo/70">All KO times PT</span>
+        <span className="text-label uppercase tracking-wide text-lo/70">All KO times PT</span>
       </div>
       {groups.map(([label, meta, rows]) => (
         <div key={label}>
-          <div className="flex items-center gap-2 bg-bg/40 px-3 py-1.5">
-            <span className="num rounded bg-bg px-1 text-[8px] font-semibold text-lo ring-1 ring-inset ring-hairline">R32</span>
-            <h3 className="text-[10px] font-semibold uppercase tracking-[0.08em] text-lo">{label}</h3>
-            <span className="text-[9px] text-lo/70">{meta}</span>
+          <div className="flex items-center gap-2 bg-bg/40 px-3 py-1">
+            <span className="num rounded bg-bg px-1 text-label font-semibold text-lo ring-1 ring-inset ring-hairline">R32</span>
+            <h3 className="text-label font-semibold uppercase tracking-[0.08em] text-lo">{label}</h3>
+            <span className="text-label text-lo/70">{meta}</span>
             <ChevronDown size={13} className="ml-auto text-lo/60" aria-hidden />
           </div>
           <div className="divide-y divide-hairline/50">
@@ -83,7 +83,7 @@ export function CompetitionsRail() {
           </div>
         </div>
       ))}
-      <Link href={routes.competition} className="block border-t border-hairline px-3 py-2 text-[11px] text-lo transition-colors duration-200 hover:text-hi">
+      <Link href={routes.competition} className="block border-t border-hairline px-3 py-2 text-label text-lo transition-colors duration-200 hover:text-hi">
         Tournament futures · 2 markets →
       </Link>
     </section>

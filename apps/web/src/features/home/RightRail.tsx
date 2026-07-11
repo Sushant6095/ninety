@@ -21,16 +21,16 @@ export function RightRail() {
 
       <RailCard
         label="Top traders today"
-        action={<Link href={routes.leaders} className="text-[11px] text-lo transition-colors duration-200 hover:text-hi">All →</Link>}
+        action={<Link href={routes.leaders} className="text-label text-lo transition-colors duration-200 hover:text-hi">All →</Link>}
       >
         <ul>
           {LEADERS.slice(0, TOP_TRADERS).map((l) => (
             <li key={l.handle}>
-              <Link href={routes.profile(l.handle)} className="flex items-center gap-2.5 rounded-lg px-2 py-1.5 transition-colors duration-200 hover:bg-hairline/30">
-                <span className="num w-3 text-[11px] tabular-nums text-lo">{l.rank}</span>
+              <Link href={routes.profile(l.handle)} className="flex items-center gap-2 rounded-lg px-2 py-1 transition-colors duration-200 hover:bg-hairline/30">
+                <span className="num w-3 text-label tabular-nums text-lo">{l.rank}</span>
                 <Avatar handle={l.handle} size={28} />
-                <span className="truncate text-[13px] font-medium text-hi">{l.handle}</span>
-                <span className={`num ml-auto text-[12px] font-medium tabular-nums ${l.pnl >= 0 ? "text-up" : "text-down"}`}>{fmtPnl(l.pnl)}</span>
+                <span className="truncate text-body font-medium text-hi">{l.handle}</span>
+                <span className={`num ml-auto text-caption font-medium tabular-nums ${l.pnl >= 0 ? "text-up" : "text-down"}`}>{fmtPnl(l.pnl)}</span>
               </Link>
             </li>
           ))}
@@ -41,12 +41,12 @@ export function RightRail() {
         <ul>
           {STARTING.map((s) => (
             <li key={s.matchId}>
-              <Link href={routes.match(s.matchId)} className="flex items-center gap-2.5 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/30">
+              <Link href={routes.match(s.matchId)} className="flex items-center gap-2 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/30">
                 <span className="min-w-0">
-                  <span className="block text-[13px] font-medium text-hi">{s.code}</span>
-                  <span className="block text-[10.5px] text-lo">{s.venue}</span>
+                  <span className="block text-body font-medium text-hi">{s.code}</span>
+                  <span className="block text-label text-lo">{s.venue}</span>
                 </span>
-                <span className="num ml-auto text-[11px] text-lo">{s.inLabel}</span>
+                <span className="num ml-auto text-label text-lo">{s.inLabel}</span>
               </Link>
             </li>
           ))}
@@ -55,13 +55,13 @@ export function RightRail() {
 
       <Link
         href={routes.moments}
-        className="group rounded-card border border-chain/25 bg-chain/[0.04] px-4 py-3.5 transition-colors duration-200 hover:border-chain/40"
+        className="group rounded-card border border-chain/25 bg-chain/[0.04] px-4 py-3 transition-colors duration-200 hover:border-chain/40"
       >
-        <h2 className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-chain">
+        <h2 className="mb-1 flex items-center gap-1 text-label font-semibold uppercase tracking-[0.12em] text-chain">
           <span aria-hidden>◆</span> Moment of the day
         </h2>
-        <p className="font-display text-[17px] font-bold leading-tight text-hi">The 38th minute</p>
-        <p className="num mt-1 text-[11px] text-lo">
+        <p className="font-display text-heading font-bold leading-tight text-hi">The 38th minute</p>
+        <p className="num mt-1 text-label text-lo">
           CAN–MAR · David repricing <span className="text-up">41 → 63</span> · minted by @hexfan
         </p>
       </Link>

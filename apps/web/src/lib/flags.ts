@@ -6,7 +6,8 @@ const FIFA_TO_ISO: Record<string, string> = {
   BRA: "br", PAR: "py", FRA: "fr", AUS: "au", EGY: "eg", CRO: "hr", NOR: "no",
   SUI: "ch", BEL: "be", POR: "pt", NED: "nl", ITA: "it", URU: "uy", NGA: "ng",
   KOR: "kr", GHA: "gh", SRB: "rs", DEN: "dk", SWE: "se", POL: "pl", UKR: "ua",
-  CPV: "cv",
+  CPV: "cv", KSA: "sa", ECU: "ec", CRC: "cr", TUN: "tn", CMR: "cm", QAT: "qa",
+  IRN: "ir", AUT: "at", TUR: "tr", HUN: "hu", CZE: "cz", SVK: "sk",
 };
 
 /** flagcdn slug for a FIFA code, or null if unmapped. */

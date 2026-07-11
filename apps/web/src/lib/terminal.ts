@@ -16,7 +16,7 @@ export interface TerminalMatch {
   todayDelta: Record<Outcome, number>; // Δ price vs open, points
   b: number; tick: number; // LMSR b + tick seconds
   amm: { q: number[]; b: number; spreadMult: number }; // ADR-046 guarded emit (q real, not null)
-  spark: number[]; goalIndex: number; goalLabel: string; // river = away(EGY) win% history
+  spark: number[]; homeSpark: number[]; goalIndex: number; goalLabel: string; // river = away(EGY) win% + home(AUS) context trace
 }
 
 const winSpark = (): number[] => {
@@ -24,6 +24,15 @@ const winSpark = (): number[] => {
   const pre = [30, 31, 30.5, 31, 32, 31.5, 32, 33]; // 0'..~12'
   const jump = [40, 48, 55, 54, 56]; // goal 13'
   const grind = Array.from({ length: 15 }, (_, i) => Math.round((56 + (67.6 - 56) * (i / 14) + Math.sin(i) * 0.5) * 10) / 10);
+  return [...pre, ...jump, ...grind];
+};
+
+const homeSpark = (): number[] => {
+  // AUS win% context trace (the reference's pink secondary line) — mirrors winSpark's domain: ~48 pre-goal,
+  // crashes as Egypt score at 13', grinds down to 7.4. Same segment lengths so it shares the x-axis exactly.
+  const pre = [49, 48, 49, 48, 47, 48, 47, 46]; // 0'..~12'
+  const jump = [38, 28, 20, 20, 18]; // goal 13' — the mirror of Egypt's jump
+  const grind = Array.from({ length: 15 }, (_, i) => Math.round((18 + (7.4 - 18) * (i / 14)) * 10) / 10);
   return [...pre, ...jump, ...grind];
 };
 
@@ -38,7 +47,7 @@ export const MATCH: TerminalMatch = {
   todayDelta: { H: -33.6, D: -2.5, A: 36.6 },
   b: 1200, tick: 2.2,
   amm: { q: [-1460, 0, 1194], b: 1200, spreadMult: 1 }, // q = b·ln(p) recentered → price(q,b) ≈ {.074,.25,.676}
-  spark: winSpark(), goalIndex: 8, goalLabel: "GOAL 13' ASHOUR · 31 → 55",
+  spark: winSpark(), homeSpark: homeSpark(), goalIndex: 8, goalLabel: "GOAL 13' ASHOUR · 31 → 55",
 };
 
 // ── left rail: live competitions (R32) ───────────────────────────────────────────
@@ -104,30 +113,7 @@ export const ATTACK = {
 
 export const SESSION_RANK = { rank: 142, handle: "@you", pnl: 1214, delta: 3 };
 
-// ── enhanced match-view detail (from the North Star) ─────────────────────────────
-export interface Player {
-  code: string; // monogram
-  name: string;
-  rating: number;
-  side: "home" | "away";
-  att: number; // 0..100 attributes for the radar
-  def: number;
-  tec: number;
-}
-export const FEATURED_PLAYERS: { home: Player; away: Player } = {
-  home: { code: "SO", name: "H. Souttar", rating: 7.1, side: "home", att: 58, def: 74, tec: 62 },
-  away: { code: "AS", name: "A. Ashour", rating: 8.2, side: "away", att: 84, def: 41, tec: 79 },
-};
-export const HIGHEST_RATED: Player[] = [
-  { code: "AS", name: "Ashour", rating: 8.2, side: "away", att: 84, def: 41, tec: 79 },
-  { code: "SA", name: "Salah", rating: 7.9, side: "away", att: 82, def: 38, tec: 88 },
-  { code: "HA", name: "Hafez", rating: 7.6, side: "away", att: 60, def: 66, tec: 74 },
-  { code: "SO", name: "Souttar", rating: 7.1, side: "home", att: 58, def: 74, tec: 62 },
-  { code: "IR", name: "Irvine", rating: 7.0, side: "home", att: 55, def: 64, tec: 66 },
-  { code: "MO", name: "Mohsen", rating: 7.2, side: "away", att: 76, def: 40, tec: 70 },
-];
-
-// The AI booth timeline — commentary + the market impact each event had (the North Star's richer booth).
+// The AI booth timeline — commentary + the market impact each event had.
 export interface BoothEvent { minute: number; text: string; delta: number; repriced?: string }
 export const BOOTH_TIMELINE: BoothEvent[] = [
   { minute: 50, text: "Egypt win a corner — pressure without a clear chance; the market barely moves.", delta: 0.2 },
