@@ -1,0 +1,525 @@
+apps/web/.gitignore
+  s_bfd5d0734070f7::t_df4dac62778209 1-21
+apps/web/src/features/terminal/MatchColumn.tsx
+  s_4b5135597bc1f3::t_33e748c220354c 23-26
+  s_4b5135597bc1f3::t_a8766ddc23f4da 33
+  s_4b5135597bc1f3::t_ef0141fe643667 136
+  s_4b5135597bc1f3::t_b211c2b3f8e209 2,7,14-16,19,21,27-28,34-35,38-45,47-52,54-69,72-83
+  s_4b5135597bc1f3::t_f8de85fb358a52 89-109,129-135
+  s_4b5135597bc1f3::t_9378511a5a6df1 110-128
+  s_becc951161ee98::t_2152153c0cd546 31,88
+  s_4b5135597bc1f3::t_c16b00d3d07e75 9
+  s_4b5135597bc1f3::t_78a771fcdcf191 12
+  s_4b5135597bc1f3::t_2365360e837654 10-11
+  s_4b5135597bc1f3::t_6ea30cf2685f1a 36
+  s_4b5135597bc1f3::t_722ad0a7b98141 3,29,46,53,70-71
+  s_4b5135597bc1f3::t_1f47b824de4a2e 37
+apps/web/src/features/terminal/PortfolioCard.tsx
+  s_bfd5d0734070f7::t_04da284d94616c 18
+  s_bfd5d0734070f7::t_bfdef2f3ebb5c5 12,22,24
+  s_bfd5d0734070f7::t_ca280f8440c7ab 11
+  s_bfd5d0734070f7::t_35c9d52fdd7de6 19
+  s_bfd5d0734070f7::t_f82b70ca902708 10
+apps/web/src/lib/format.ts
+  s_4b5135597bc1f3::t_90241addf7c7b6 1-14
+apps/web/src/features/home/MatchList.tsx
+  s_bfd5d0734070f7::t_e7a25e85aa3555 8,12
+  s_bfd5d0734070f7::t_ea94c48358163e 34
+  s_bfd5d0734070f7::t_a7f11b701cd7db 50
+  s_bfd5d0734070f7::t_ff4041ba866d63 37-38
+  s_bfd5d0734070f7::t_397c9a2719afbf 51
+  s_bfd5d0734070f7::t_3ac677b6e333d3 23-24
+  s_bfd5d0734070f7::t_d2c46f4eb01d06 33,49
+apps/web/src/components/ui/MomentumRiver.tsx
+  s_becc951161ee98::t_a6968477dc24a5 91-103
+  s_becc951161ee98::t_cac245c2fe57db 25,28-29,38-39
+  s_becc951161ee98::t_0badca0a40f995 117
+  s_becc951161ee98::t_3f9db783c42b7b 55
+  s_becc951161ee98::t_c6504a7c684983 140-147,149
+  s_becc951161ee98::t_473aaaa3d608df 88-89
+  s_becc951161ee98::t_65e149815a96e7 11-12,16
+  s_df310847cea41d::t_c4c14bcb67fcd3 90
+apps/web/src/features/home/Footer.tsx
+  s_4b5135597bc1f3::t_b765df02c0dad0 5
+apps/web/src/features/moments/MomentDetail.tsx
+  s_4b5135597bc1f3::t_cbbf81b4eb32fd 5
+  s_4b5135597bc1f3::t_00261cebdfd5b3 40
+  s_4b5135597bc1f3::t_cb66247eb2dfd5 48
+  s_4b5135597bc1f3::t_7f9212db9bb7c5 1-4,6-39,41-47,49-102
+apps/web/src/features/terminal/MatchTabs.tsx
+  s_4b5135597bc1f3::t_b86768b365ceb6 1-3,7-13,17-19,21,23-25,28-30,33-34,39-41,43-63
+  s_4b5135597bc1f3::t_5dc1d58e7e894c 4-6,14-16,20,22,26-27,31-32,35-38,42
+apps/web/src/features/terminal/OpenPositions.tsx
+  s_bfd5d0734070f7::t_f2bde230517794 16
+  s_bfd5d0734070f7::t_33075cb008c05d 17
+  s_bfd5d0734070f7::t_90cee223f62bda 25
+  s_bfd5d0734070f7::t_9e718eb3a9753e 32,36
+  s_bfd5d0734070f7::t_2aa33ad460c398 7,18
+  s_bfd5d0734070f7::t_b261d6b8b5a4c1 9,29
+apps/web/src/app/loading.tsx
+  s_4b5135597bc1f3::t_05fd95c4ef5b98 1-6
+apps/web/.impeccable/live/config.json
+  s_bfd5d0734070f7::t_0cd1b68bce3c84 1-6
+apps/web/src/features/how/sections/Section.tsx
+  s_4b5135597bc1f3::t_d78030584b1dea 1-17
+design/screens/lock-kit/sofascore-capture/ASPECTS.md
+  s_82db0e7c9eb747::t_981bbc8bc256a5 1-108
+apps/web/src/components/ui/Tooltip.tsx
+  s_4b5135597bc1f3::t_dc44b33965abdb 1-20
+apps/web/src/app/bracket/page.tsx
+  s_4b5135597bc1f3::t_463ba1411088d4 1-6
+apps/web/src/components/ui/EquityCurve.tsx
+  s_4b5135597bc1f3::t_a3838ff91f0e1a 23,26
+  s_4b5135597bc1f3::t_ff67d3870ba6b2 1-22,24-25,27-30
+apps/web/src/features/terminal/LatestEvents.tsx
+  s_bfd5d0734070f7::t_d792f1816e2a3a 27
+  s_bfd5d0734070f7::t_d366185369c580 25
+  s_bfd5d0734070f7::t_75a6d75b4af3a6 17
+  s_bfd5d0734070f7::t_db0ad4d5f6c1c7 24
+apps/web/src/app/history/page.tsx
+  s_4b5135597bc1f3::t_ea0e33b27372b5 1-6
+apps/web/src/features/how/sections/ProofFlow.tsx
+  s_4b5135597bc1f3::t_1caf63cf91c405 1-103
+apps/web/src/app/profile/[handle]/page.tsx
+  s_4b5135597bc1f3::t_c50dca56aea157 1,3-4,7
+apps/web/src/features/home/LeftRail.tsx
+  s_bfd5d0734070f7::t_0ba6a46ff6381e 83
+  s_bfd5d0734070f7::t_3f4d5efce62d4b 36,54
+  s_bfd5d0734070f7::t_245e070b23645b 35,51,67
+  s_4b5135597bc1f3::t_056c009b5009ec 87
+  s_bfd5d0734070f7::t_64195d706c2bf7 84,89
+  s_bfd5d0734070f7::t_bf88cb482985de 65
+  s_bfd5d0734070f7::t_a150eac790aa79 68
+  s_bfd5d0734070f7::t_73a955167d92f3 52
+  s_bfd5d0734070f7::t_01facbaded2027 37
+  s_bfd5d0734070f7::t_e0a9e08ee67e01 48
+  s_4b5135597bc1f3::t_8525f46e41f9d4 102
+apps/web/src/components/ui/CreditPill.tsx
+  s_bfd5d0734070f7::t_6e65f1e419c04a 19-20
+  s_bfd5d0734070f7::t_0395cd8803ebad 16
+apps/web/src/app/layout.tsx
+  s_4b5135597bc1f3::t_f142e491649f21 5
+  s_4b5135597bc1f3::t_83dec8ab28a563 20-22,24
+  s_4b5135597bc1f3::t_9f68f371301b59 23
+  s_4b5135597bc1f3::t_feb31bd60dc464 4
+apps/web/src/features/home/MobileFeatured.tsx
+  s_bfd5d0734070f7::t_801674303be808 1-32
+apps/web/src/features/terminal/BoothTimeline.tsx
+  s_bfd5d0734070f7::t_e9f31708090851 21
+  s_becc951161ee98::t_0206e2ff404938 19
+  s_bfd5d0734070f7::t_3d2d77496e6f15 26
+  s_bfd5d0734070f7::t_69cfce77488a49 4,25
+  s_bfd5d0734070f7::t_b9d0cfba99440d 15
+  s_bfd5d0734070f7::t_08dac99f3cb2ea 29
+  s_bfd5d0734070f7::t_f9eac8fdac3b5a 7,32
+  s_bfd5d0734070f7::t_b84593d81d6701 33
+apps/web/src/components/ui/MomentCard.tsx
+  s_4b5135597bc1f3::t_b4559b8cead056 2-4,6-7,9-14,16-55
+apps/web/src/styles/globals.css
+  s_4b5135597bc1f3::t_9fee2f24bf8826 53-58
+apps/web/src/app/moments/[id]/page.tsx
+  s_4b5135597bc1f3::t_bde2f4bfc7b1b2 1-11
+apps/web/src/features/home/NewsStrip.tsx
+  s_bfd5d0734070f7::t_ece36280cbcb32 19
+  s_bfd5d0734070f7::t_b5fc041c08d732 18,37
+  s_bfd5d0734070f7::t_8678df47621ff2 17
+  s_bfd5d0734070f7::t_744150aaedc295 39
+  s_bfd5d0734070f7::t_653824992b780c 36
+apps/web/src/lib/portfolio.ts
+  s_4b5135597bc1f3::t_5be543e2248bc8 1-69
+apps/web/src/features/terminal/YourPosition.tsx
+  s_bfd5d0734070f7::t_f52d6f854a412c 22
+  s_bfd5d0734070f7::t_abe7b63d234d63 28
+  s_bfd5d0734070f7::t_4151c1acbc3fed 31
+  s_bfd5d0734070f7::t_ede8e32e858527 23
+  s_bfd5d0734070f7::t_ad141e42a8a7df 24
+  s_bfd5d0734070f7::t_7f4790ae4811fa 36
+  s_bfd5d0734070f7::t_02961b7b0cd6a9 29,33
+apps/web/src/features/home/GroupStandings.tsx
+  s_4b5135597bc1f3::t_253676555f2415 1-70
+apps/web/src/components/ui/RailCard.tsx
+  s_bfd5d0734070f7::t_232d9a8589b6b5 15
+  s_bfd5d0734070f7::t_feff2e281a31f5 16
+apps/web/src/features/home/CompetitionBar.tsx
+  s_bfd5d0734070f7::t_fa702f6476259e 48
+  s_bfd5d0734070f7::t_72922e89fb909a 41
+apps/web/src/features/home/RightRail.tsx
+  s_bfd5d0734070f7::t_3484037558b670 63
+  s_bfd5d0734070f7::t_28efb4dfb99c37 44
+  s_bfd5d0734070f7::t_be1cd5973ff63a 33
+  s_bfd5d0734070f7::t_ca192fdf63bcb5 58
+  s_bfd5d0734070f7::t_1fb49ccdbc5e53 47
+  s_bfd5d0734070f7::t_8474818dd8bb84 29
+  s_bfd5d0734070f7::t_edc7e9327f6b5d 24,30,49,64
+  s_bfd5d0734070f7::t_84d283f46dc0a9 60
+  s_bfd5d0734070f7::t_81e959dcdcbc18 32,46
+apps/web/src/app/portfolio/page.tsx
+  s_4b5135597bc1f3::t_94142ecc6407c6 1,3-4,6
+apps/web/src/features/how/sections/OpenSource.tsx
+  s_4b5135597bc1f3::t_34b97013835009 2-34,36-40
+  s_4b5135597bc1f3::t_55934d316c0f49 35
+  s_4b5135597bc1f3::t_7b679f9d04c9cf 1
+apps/web/src/components/ui/Skeleton.tsx
+  s_4b5135597bc1f3::t_ec9fc5964e9e10 1-2,4-6,8-9,11-16,18-33,36-43,45
+apps/web/src/components/ui/Toaster.tsx
+  s_4b5135597bc1f3::t_986b2578e8255b 1-29
+apps/web/.impeccable/critique/2026-07-10T07-50-19Z__src-app-north-star-page-tsx.md
+  s_bfd5d0734070f7::t_217fdaf8ac24be 1-70
+apps/web/src/features/moments/MomentsGallery.tsx
+  s_4b5135597bc1f3::t_e190ae9daa9bcb 2,5-9,11-12,14-16,19,21-25,27-29,31-37,39-40,43,45-56,58-63
+  s_4b5135597bc1f3::t_33b6d1bc1cf9d7 20
+  s_4b5135597bc1f3::t_a4c57bb0bed8ab 4
+apps/web/src/components/ui/PriceChip.tsx
+  s_bfd5d0734070f7::t_88eb18f691923e 14
+  s_bfd5d0734070f7::t_18a124edd063cf 18-19
+apps/web/DESIGN.md
+  s_bfd5d0734070f7::t_ef892ec2f8defe 232-233
+  s_bfd5d0734070f7::t_adec6a3a0a7abb 245
+  s_bfd5d0734070f7::t_b533cc5680405e 151,153
+  s_bfd5d0734070f7::t_5aa22a25ca3811 172-173
+  s_bfd5d0734070f7::t_06a0ca1d9ed562 230
+  s_bfd5d0734070f7::t_7334843bdf6caf 243
+  s_bfd5d0734070f7::t_0824d1817b8088 1-150,152,154-164,175-176,179,182-229,231,234-242,244
+  s_bfd5d0734070f7::t_548fab4ae6d95c 165-171,174,177-178,180-181
+apps/web/.impeccable/design.json
+  s_bfd5d0734070f7::t_3ced7cd2541235 1-120
+apps/web/src/app/how-it-works/page.tsx
+  s_4b5135597bc1f3::t_1acff658f16023 1-6
+apps/web/src/features/terminal/depth/H2H.tsx
+  s_4b5135597bc1f3::t_a63a85cecd32e5 1-49
+apps/web/src/features/bracket/BracketPage.tsx
+  s_4b5135597bc1f3::t_e51c152b44489e 1,3-31,33-50,52-76
+  s_4b5135597bc1f3::t_5a6926ce8ff24d 2
+  s_4b5135597bc1f3::t_22285d46667f49 51
+  s_4b5135597bc1f3::t_d5b10988ec97f1 32
+apps/web/src/features/how/sections/ProofFlowLazy.tsx
+  s_4b5135597bc1f3::t_7b2a74e31972d4 1-17
+apps/web/src/features/onboarding/OnboardingPage.tsx
+  s_4b5135597bc1f3::t_41737b0731757f 85
+  s_4b5135597bc1f3::t_95190dc922d2bc 1-84,86-123
+apps/web/src/features/terminal/MatchHeader.tsx
+  s_bfd5d0734070f7::t_81460cb2806f22 52
+  s_becc951161ee98::t_a8867c2e4098ba 27,44
+  s_bfd5d0734070f7::t_805b7bcbc9ada2 16,28,45
+  s_bfd5d0734070f7::t_7f786e2ac14aa1 17
+  s_bfd5d0734070f7::t_1fab09d1fee58a 51
+  s_bfd5d0734070f7::t_c6dad83dc882ac 36
+  s_bfd5d0734070f7::t_ac8af2f205c948 33
+  s_bfd5d0734070f7::t_7b3eb92e4817c4 10
+apps/web/src/lib/fixtures.ts
+  s_4b5135597bc1f3::t_a49d7c98048daa 34-38
+  s_4b5135597bc1f3::t_220936b05c6dc7 67-70
+  s_4b5135597bc1f3::t_b419ef75c06700 57,65,71,76-83
+  s_4b5135597bc1f3::t_32aacbdee6c7c9 22-25
+  s_4b5135597bc1f3::t_bb63c22403dc20 72-75
+  s_4b5135597bc1f3::t_bc542c79f3716c 58-62,64
+apps/web/src/features/portfolio/PortfolioPage.tsx
+  s_4b5135597bc1f3::t_631af4bf18f426 1,3-78,80-140
+  s_4b5135597bc1f3::t_c6f1f768549ef5 2
+  s_4b5135597bc1f3::t_c27421f604966c 79
+apps/web/src/lib/terminal.ts
+  s_becc951161ee98::t_994959c68819b4 19,30-35
+  s_becc951161ee98::t_932b3469ec0f9d 116
+  s_becc951161ee98::t_a1336907946584 50
+  s_1772db374f521b::t_54667064e0b9e9 36-38
+apps/web/src/features/terminal/TradePanel.tsx
+  s_4b5135597bc1f3::t_eb1ab59d992475 2,6,12-18,24-27,30-32,34-35,41-50,61,67,77,88-108,111,113,117,124,126,132-133
+  s_becc951161ee98::t_390f0b485fa759 120
+  s_bfd5d0734070f7::t_9268320b854dff 125,127-131,134
+  s_bfd5d0734070f7::t_d514f01f23c9e2 36
+  s_bfd5d0734070f7::t_7e152133b7cc3c 56-60,62,64-66,68-71
+  s_becc951161ee98::t_06eb33f43aec45 63
+  s_bfd5d0734070f7::t_711ec013da8562 3-4
+  s_becc951161ee98::t_ec4e83835030c6 10
+  s_bfd5d0734070f7::t_580cbcad48e94d 83
+  s_becc951161ee98::t_208f2ae31968c2 39
+  s_bfd5d0734070f7::t_20f4f6b8586137 112,118
+  s_bfd5d0734070f7::t_73d868c2c61e55 82
+apps/web/src/components/ui/HaltBanner.tsx
+  s_4b5135597bc1f3::t_9ef5000c92bbfc 1-31
+apps/web/src/components/ui/HoverCard.tsx
+  s_4b5135597bc1f3::t_77e3048fe76dd2 1-22
+apps/web/src/features/home/HomeShell.tsx
+  s_4b5135597bc1f3::t_f975730c03ffe2 3
+  s_bfd5d0734070f7::t_9705aa0db87260 7,10,13-14,18
+  s_4b5135597bc1f3::t_1935137c0e1ece 22
+  s_bfd5d0734070f7::t_0bc7440c5eb637 23
+  s_bfd5d0734070f7::t_09226adf2b14ef 28-29
+apps/web/src/features/how/sections/UserGuide.tsx
+  s_4b5135597bc1f3::t_8e5d770459e40b 1-36
+apps/web/src/features/terminal/TerminalHeader.tsx
+  s_bfd5d0734070f7::t_7111a0cbc9c8a5 91
+  s_bfd5d0734070f7::t_28090478635650 45
+  s_bfd5d0734070f7::t_a3bfa18a77aafc 84
+  s_bfd5d0734070f7::t_d6138e302d0e18 86
+  s_bfd5d0734070f7::t_91100481d15afa 93
+  s_4b5135597bc1f3::t_844a25a5d3db72 32-39,41-42
+  s_4b5135597bc1f3::t_1a9c0f66ee450c 7
+  s_4b5135597bc1f3::t_9d76d81e220447 98-100
+  s_bfd5d0734070f7::t_4f113cbadbb6ff 60
+  s_4b5135597bc1f3::t_16f234adc54516 2,6
+  s_becc951161ee98::t_a22044ec2fff02 46
+  s_4b5135597bc1f3::t_26d6cae71e33c2 67-72
+  s_4b5135597bc1f3::t_a4ecd4695c4749 13-14,20,24,28-29,80-82
+  s_bfd5d0734070f7::t_c9001ff51d88e2 62
+  s_4b5135597bc1f3::t_7c971630d5fa87 49-58
+apps/web/src/features/terminal/TournamentLeaderboard.tsx
+  s_bfd5d0734070f7::t_563ef8c7d43b38 16,23,37
+  s_bfd5d0734070f7::t_91cc5ae64fd54f 15,42
+  s_bfd5d0734070f7::t_af8a1c3818f00d 40
+  s_bfd5d0734070f7::t_49c76ad42a0c9c 22,35
+  s_bfd5d0734070f7::t_36d26b625ed1ad 14
+  s_bfd5d0734070f7::t_a44d2f69dae3e8 25,39
+  s_bfd5d0734070f7::t_cfb495323396ab 26
+apps/web/src/app/onboarding/page.tsx
+  s_4b5135597bc1f3::t_a2ccb1be7e8889 1-6
+apps/web/src/features/how/sections/Hero.tsx
+  s_4b5135597bc1f3::t_4b2628308f3ae4 1-36
+apps/web/src/app/page.tsx
+  s_bfd5d0734070f7::t_ca158f9df3f99b 16
+  s_4b5135597bc1f3::t_77bb6a100b487b 18-19
+  s_4b5135597bc1f3::t_0bd7f3e6bdb326 11-12
+  s_4b5135597bc1f3::t_7ddf4c4942e741 5-6
+apps/web/src/lib/matchdepth.ts
+  s_4b5135597bc1f3::t_74b62336dd8bf4 1-84
+apps/web/src/features/profile/ProfilePage.tsx
+  s_4b5135597bc1f3::t_7ed973871a90bc 2
+  s_4b5135597bc1f3::t_2c4bc81746ee78 1,3-30,32-80
+  s_4b5135597bc1f3::t_d5821c42ae0bbc 31
+apps/web/src/components/ui/OfflineBanner.tsx
+  s_4b5135597bc1f3::t_0e20af1c7486da 1-28
+apps/web/tailwind.config.ts
+  s_bfd5d0734070f7::t_9c66846d0eb540 24-25
+  s_bfd5d0734070f7::t_40a46d597ce5a3 16-23
+apps/web/src/features/how/sections/TheLoop.tsx
+  s_4b5135597bc1f3::t_dcb163c9b46e53 1-37
+apps/web/src/features/how/sections/Faq.tsx
+  s_4b5135597bc1f3::t_345c14d6dd0d3d 1-49
+apps/web/src/features/how/sections/TxLineSection.tsx
+  s_4b5135597bc1f3::t_15983f874e7b26 1-68
+apps/web/src/components/ui/MatchCard.tsx
+  s_bfd5d0734070f7::t_fb8a0e8ede9954 32
+  s_bfd5d0734070f7::t_c86ee2e87349c8 34,52,56,61-62
+  s_bfd5d0734070f7::t_f23533a2f5ca45 45
+  s_bfd5d0734070f7::t_5ea691338650ac 76
+  s_bfd5d0734070f7::t_891a8b44a242b1 42,68
+  s_bfd5d0734070f7::t_849e73de409859 41,67
+apps/web/src/app/moments/page.tsx
+  s_4b5135597bc1f3::t_3745ace890e2e6 1-6
+apps/web/src/features/how/sections/Architecture.tsx
+  s_4b5135597bc1f3::t_5eaa515a3aec3d 1-41
+apps/web/src/components/ui/StubScreen.tsx
+  s_bfd5d0734070f7::t_a9bf56c0343879 21
+  s_bfd5d0734070f7::t_7cafd2b52c372a 23
+  s_bfd5d0734070f7::t_eff7c5396037f6 22
+  s_bfd5d0734070f7::t_f97f28b9c73a2e 26
+apps/web/src/features/terminal/AttackMomentum.tsx
+  s_bfd5d0734070f7::t_9e2a1fc03ebe81 5-6
+  s_bfd5d0734070f7::t_e2d7b5005f643f 15
+  s_bfd5d0734070f7::t_e81761bc4d5f01 14
+  s_bfd5d0734070f7::t_e4ccdd091abad0 27
+  s_bfd5d0734070f7::t_740d53ec9e9a0b 13,35,38
+  s_bfd5d0734070f7::t_f19b85e199d667 12
+apps/web/src/features/settings/SettingsPage.tsx
+  s_4b5135597bc1f3::t_20135e4a7b6d03 47
+  s_4b5135597bc1f3::t_7d22ee1fea84c2 1-4,6-46,48-102
+  s_4b5135597bc1f3::t_be152ab6dfec73 5
+apps/web/.impeccable/critique/2026-07-10T07-50-19Z__src-app-terminal-page-tsx.md
+  s_bfd5d0734070f7::t_217fdaf8ac24be 1-68
+apps/web/src/design/tokens.ts
+  s_bfd5d0734070f7::t_081217c83008d3 102
+  s_bfd5d0734070f7::t_37c1a6314c8890 78-101,103-106,109
+apps/web/src/app/settings/page.tsx
+  s_4b5135597bc1f3::t_6919da3029f89a 1-6
+apps/web/.impeccable/critique/2026-07-10T07-50-19Z__src-app-page-tsx.md
+  s_bfd5d0734070f7::t_217fdaf8ac24be 1-69
+apps/web/src/lib/bracket.ts
+  s_4b5135597bc1f3::t_1f5d1a123198e2 1-43
+apps/web/src/features/home/TopMovers.tsx
+  s_bfd5d0734070f7::t_5924135ba5f982 40
+  s_bfd5d0734070f7::t_d2acd704ad36ee 46
+  s_bfd5d0734070f7::t_33bc54b8a6fa4f 45
+  s_bfd5d0734070f7::t_1128d6d0e77a97 42
+  s_bfd5d0734070f7::t_f5820e9737fc22 41
+  s_bfd5d0734070f7::t_cbb9f72b46780d 24
+  s_bfd5d0734070f7::t_f0093b160cc3e2 38
+apps/web/src/features/portfolio/HistoryPage.tsx
+  s_4b5135597bc1f3::t_a5f06a58820865 65
+  s_4b5135597bc1f3::t_2c15fabe5c9eaa 1-3,5-64,66-117
+  s_4b5135597bc1f3::t_bcf36c59c5e48f 4
+apps/web/src/features/terminal/PriceCells.tsx
+  s_bfd5d0734070f7::t_09c5679ee00532 46
+  s_becc951161ee98::t_313e7062d4ef02 40
+  s_bfd5d0734070f7::t_8160e4d5063025 47
+  s_4b5135597bc1f3::t_3dd3df14b1675b 42-43
+  s_becc951161ee98::t_00200bbf799c50 38-39,41,44
+  s_4b5135597bc1f3::t_ceff4b757cfda8 13
+  s_4b5135597bc1f3::t_6c0f7b8d98467c 14-15,18-20,22,29,33-34,36
+apps/web/src/features/terminal/depth/MatchStats.tsx
+  s_4b5135597bc1f3::t_383a24c0dd2231 1,3-10,12-22,26,28-32,34-37
+apps/web/src/features/terminal/depth/Lineups.tsx
+  s_4b5135597bc1f3::t_7030cf64560bb2 1-60
+apps/web/src/components/ui/Wordmark.tsx
+  s_bfd5d0734070f7::t_0d1b19e75b495c 11
+  s_bfd5d0734070f7::t_ede4fc71af5d90 15
+apps/web/PRODUCT.md
+  s_bfd5d0734070f7::t_4288f0cb84bf36 1-45
+apps/web/src/features/how/HowItWorksPage.tsx
+  s_4b5135597bc1f3::t_25fabb55ea6db8 2-3,15-17,28-32
+  s_4b5135597bc1f3::t_8e1eac05eea499 1
+  s_4b5135597bc1f3::t_7a3c12a5cfe25b 18
+  s_4b5135597bc1f3::t_4653e3a96492c7 4-14,19-27
+apps/web/src/lib/profile.ts
+  s_4b5135597bc1f3::t_567fe69b9d2fd6 1-50
+apps/web/src/features/leaderboard/LeaderboardPage.tsx
+  s_bfd5d0734070f7::t_53fdd8df42c6d4 88
+  s_bfd5d0734070f7::t_c27786165c4175 78,83-84
+  s_4b5135597bc1f3::t_54131e1a263ba9 2
+  s_bfd5d0734070f7::t_bb7a55128f6143 77
+  s_4b5135597bc1f3::t_feec2edc65ef8d 5,8-9,15-44,48-66
+  s_4b5135597bc1f3::t_a79552eff4be38 74
+apps/web/src/components/ui/Flag.tsx
+  s_bfd5d0734070f7::t_4962693f7b4e6c 23
+apps/web/src/components/ui/ProofBadge.tsx
+  s_4b5135597bc1f3::t_39865a42fd7250 1-29
+apps/web/src/features/home/Ticker.tsx
+  s_bfd5d0734070f7::t_03545c8e14c61b 36,38,40-43
+  s_bfd5d0734070f7::t_f2be999f477c03 25
+apps/web/src/lib/moments.ts
+  s_4b5135597bc1f3::t_7a1e661f54e454 1-52,54-59
+  s_4b5135597bc1f3::t_53dbdf49492d96 53
+apps/web/src/components/ui/TradeSheet.tsx
+  s_4b5135597bc1f3::t_b37c248a0fad25 1-45
+apps/web/src/features/terminal/TodaysMovers.tsx
+  s_bfd5d0734070f7::t_2f2716d50c369d 21,26
+  s_bfd5d0734070f7::t_7eb142e46be346 18
+  s_bfd5d0734070f7::t_3b7e11e3109a87 9
+  s_bfd5d0734070f7::t_c122fd91a02730 27
+  s_bfd5d0734070f7::t_3151b68b449975 10-11,24
+apps/web/package.json
+  s_4b5135597bc1f3::t_740102bad6e613 26
+  s_4b5135597bc1f3::t_2abca4635c2f64 12
+  s_4b5135597bc1f3::t_af1a9b1cb0d179 13,18,21-22
+apps/web/src/features/terminal/MarketStatus.tsx
+  s_bfd5d0734070f7::t_5f3186867f4e8c 16-17
+  s_bfd5d0734070f7::t_af793fddbc55f2 24
+  s_bfd5d0734070f7::t_ce46cdf0450b0b 15
+  s_bfd5d0734070f7::t_028bfcd7f0425d 25
+  s_bfd5d0734070f7::t_4232e879e8029a 23
+apps/web/src/lib/flags.ts
+  s_4b5135597bc1f3::t_4884cd8bc8f713 9-10
+apps/web/src/features/home/LiveMarkets.tsx
+  s_becc951161ee98::t_a187027881c06a 74
+apps/web/src/features/home/FeaturedPanel.tsx
+  s_bfd5d0734070f7::t_923dc81029a8c4 61
+  s_bfd5d0734070f7::t_b7065724f80c60 11,64
+  s_bfd5d0734070f7::t_ed7c9f9615c09b 30,40,47
+  s_bfd5d0734070f7::t_982f530056f3a1 31,38,45,55
+  s_bfd5d0734070f7::t_bbe8a57d8c3bb9 42
+  s_bfd5d0734070f7::t_cc77395e6fb6a0 13
+  s_bfd5d0734070f7::t_95777bcf5ab27a 43
+  s_bfd5d0734070f7::t_bc95fe5e35c9b1 29
+  s_bfd5d0734070f7::t_c8962d2f8ba432 12
+apps/web/src/features/home/TradersWeek.tsx
+  s_bfd5d0734070f7::t_3a23e593f6c6c3 14
+  s_bfd5d0734070f7::t_8064751284ec17 32
+  s_bfd5d0734070f7::t_fbea60e7302de4 31
+  s_bfd5d0734070f7::t_64eb8aefc33ec9 15,27
+  s_bfd5d0734070f7::t_325cb83114afd3 16
+apps/web/src/components/ui/CommandMenu.tsx
+  s_4b5135597bc1f3::t_53512ef80f4826 1-76
+apps/web/src/features/home/PowerRankings.tsx
+  s_4b5135597bc1f3::t_1bcf8184830cd0 1-35
+apps/web/src/features/terminal/BigRiver.tsx
+  s_becc951161ee98::t_511ae11710c59a 29
+  s_bfd5d0734070f7::t_04c754b6099a17 40
+  s_becc951161ee98::t_855372189f623e 9,11
+  s_becc951161ee98::t_ed1a63b62d00f5 24
+  s_bfd5d0734070f7::t_c8689c1a83e819 21
+  s_bfd5d0734070f7::t_90f6e497821380 35,41
+  s_becc951161ee98::t_0efab57f64e2fd 49
+  s_becc951161ee98::t_9ad619759c51d2 38,42,46
+apps/web/src/lib/rankings.ts
+  s_4b5135597bc1f3::t_6c4767a0d18f36 1-53
+apps/web/src/features/terminal/MatchStates.tsx
+  s_4b5135597bc1f3::t_ae5cbd71a4c41f 1-142
+apps/web/src/features/home/CenterColumn.tsx
+  s_bfd5d0734070f7::t_ee34de4ac7bbfa 5-6,8-9,14-22,24,35-36,39,43-48,72-78,81-82,95-97,102-104
+  s_bfd5d0734070f7::t_350f4ddbae3d77 3-4
+  s_4b5135597bc1f3::t_23269a304d4e58 10-13,23,27-32,52-55,57-60,63,66,70,101
+  s_bfd5d0734070f7::t_5fc87779f4ec15 80,83-89,91-94
+  s_bfd5d0734070f7::t_20f8a713c46833 67
+  s_bfd5d0734070f7::t_6bd83817f30ba4 41
+  s_bfd5d0734070f7::t_d749e50488d778 79,90
+  s_bfd5d0734070f7::t_21eed42f543813 98
+  s_bfd5d0734070f7::t_2a3c4ba0381f77 42
+apps/web/src/features/terminal/useTerminalLive.ts
+  s_becc951161ee98::t_5106196ac62d11 12,15,27,29,34
+apps/web/src/features/terminal/CompetitionsRail.tsx
+  s_bfd5d0734070f7::t_425d7d120d83d0 24,41-42
+  s_bfd5d0734070f7::t_c4d7a52506165f 36-37,68
+  s_bfd5d0734070f7::t_ee64c99ba4401a 67
+  s_bfd5d0734070f7::t_f59690b52a7741 75
+  s_bfd5d0734070f7::t_632f7e2ee3b3a1 71,78
+  s_bfd5d0734070f7::t_a7d02178b371de 32,77
+  s_bfd5d0734070f7::t_52091faf30d072 29,48,76
+  s_bfd5d0734070f7::t_563be7c07dc195 28,49,86
+pnpm-lock.yaml
+  s_4b5135597bc1f3::t_7a961a25da5ce0 75-80,93-95,105-107,112-114,570-584,849-856,858-861,863,865,868-879,881-892,894-905,907-918,920-931,933-944,946-957,959-970,972-979,981-992,994-1001,1003-1014,1016-1023,1025-1036,1038-1049,1051-1058,1060-1071,1073-1084,1086-1097,1099-1106,1108-1119,1121-1132,1134-1145,1147-1148,1150-1158,1160-1161,1163-1171,1173-1174,1176-1184,1186-1698,1752-1754,1767-1769,1779-1784,1838-1853,1898-1901,1913-1916,1998-2000,2016-2021,2072-2079,2100-2103,2120-2129,2158-2160,2339-2342,2685-2697,2718-2747,2858-2863,3014-3033,3176-3190,3341-3561,3563,3565-3568,3570,3572-3574,3576,3578,3580-3585,3587-3591,3593-3595,3597-3600,3603,3605,3607,3609-3613,3615-3629,3631,3633-3641,3643,3645-3649,3651-3657,3659-3667,3669,3671-3682,3684,3686-3699,3701-3710,3712-3716,3718-3728,3730-3734,3736-3755,3757-3761,3763-3773,3775-3787,3789-3793,3795-3801,3803,3805-3814,3816,3818-3830,3832,3834-3837,3839,3841-3845,3847,3849-3870,3872,3874-3887,3889,3891-3908,3910,3912-3931,3933-3944,3946-3966,3968-3983,3985-4000,4002-4008,4010,4012-4017,4019-4034,4036-4052,4054-4068,4070-4097,4099-4105,4107-4123,4125-4130,4132-4144,4146-4159,4161-4178,4180-4192,4194-4202,4204,4206-4216,4218-4235,4237,4239-4241,4243,4245-4249,4251-4256,4258-4261,4263,4265-4269,4271-4275,4277,4279-4281,4283,4285-4288,4290,4292-4295,4297,4299-4305,4476-4479,4492-4493,4502-4510,4575-4598,4635-4638,4648-4649,4733-4734,4748-4759,4801-4807,4826-4827,4842-4858,4874-4875,5093-5094,5449-5510,5527-5553,5722-5726,5875-5889,6033-6040
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "b6e3f068db5e99f9763e3411cfaeace6b4152549",
+  "prompts": {},
+  "sessions": {
+    "s_1772db374f521b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "88c1001f-142a-40d2-97ae-19ea723d79c2",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_4b5135597bc1f3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "22b833cf-09b7-4b38-ab11-ce1219a3fda4",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_82db0e7c9eb747": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acb60e67-2693-40fc-a1b3-b4ad3da1b245",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_becc951161ee98": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f287407a-cf90-41a1-a8b3-a21874b4f020",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_bfd5d0734070f7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2869e471-bf84-4295-ae4e-980798eae403",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_df310847cea41d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "df5e3b07-f390-4287-9f1b-44ae343ccc66",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
