@@ -9,6 +9,8 @@ __pycache__/
 target/
 .anchor/
 test-ledger/
+.DS_Store
+.playwright-mcp/
 # appended by AI-native layer
 .claude/trace/*.jsonl
 .claude/trace/*.log
