@@ -1,0 +1,65 @@
+apps/web/src/features/terminal/BoothTimeline.tsx
+  s_c9a5063cddd265::t_3764588fccbb8f 1-3,12-14,16-26,36,40-45,49
+apps/web/src/components/ui/MomentumRiver.tsx
+  s_c9a5063cddd265::t_59c1f6499dacd4 6,13,16,18,21-22,25-32,35,38-40,56,83,98,100-101,116-117,120,124,126-130
+apps/web/src/lib/terminal.ts
+  s_c9a5063cddd265::t_1a36a276f93eb5 63-66,68-72
+  s_c9a5063cddd265::t_31e50e912661c8 28,31-32
+  s_c9a5063cddd265::t_9cfdc3bfd684b9 27
+  s_c9a5063cddd265::t_eb6d861d0e0c1e 55-56,58,75-76,79-83
+  s_c9a5063cddd265::t_6078515ec98ec3 95,98,100
+  s_c9a5063cddd265::t_254f68dd517c3c 6-10,18
+  s_c9a5063cddd265::t_6e5f65e37c4bc6 43-44
+  s_c9a5063cddd265::t_2bd92f9f25fee3 106-107,110-113,115-122
+  s_c9a5063cddd265::t_e142edbc897d3d 33
+apps/web/src/features/terminal/BigRiver.tsx
+  s_c9a5063cddd265::t_ecf8e3aefec3d3 66-70,73-74,76-80
+  s_c9a5063cddd265::t_9495b1565f2611 104,108-110,113-117
+  s_c9a5063cddd265::t_d39b21131f81e2 26-33,38-41
+  s_c9a5063cddd265::t_d968088f329ced 35-37
+  s_c9a5063cddd265::t_9f192e1370efb6 86-87,89
+  s_c9a5063cddd265::t_bed71a2fbc71f0 6
+  s_c9a5063cddd265::t_04a970bae4cd7e 15
+  s_c9a5063cddd265::t_f690ca16513dbf 34
+  s_c9a5063cddd265::t_c077f90022c6e6 118-121
+apps/web/src/features/live/MatchLiveProvider.tsx
+  s_c9a5063cddd265::t_974203b513c1e7 3,5-6,8-10,14-19
+apps/web/src/features/terminal/MatchColumn.tsx
+  s_c9a5063cddd265::t_e43770141fae02 14-18,30-34,36,38-40,42-49,55-61,64,68-72,75,79,82-86,88
+  s_c9a5063cddd265::t_49eea6fb9b790a 148
+  s_c9a5063cddd265::t_46e3479de39751 168
+apps/web/src/features/terminal/MatchHeader.tsx
+  s_c9a5063cddd265::t_006ba0f6998a63 5-10,14-18
+apps/web/src/features/terminal/AttackMomentum.tsx
+  s_c9a5063cddd265::t_ed2a471bafc97b 2
+  s_c9a5063cddd265::t_92303131615d04 65
+  s_c9a5063cddd265::t_4c1352361eff27 15-18,29
+apps/web/src/features/terminal/LatestEvents.tsx
+  s_c9a5063cddd265::t_4515e313627ade 1,4-5,14-18,20-27,31,34,39
+apps/web/src/features/terminal/TodaysMovers.tsx
+  s_c9a5063cddd265::t_c5445438d6237f 1-2,4,8-10,12-16,18,21-22,30
+  s_c9a5063cddd265::t_eb65e292361638 17,19-20
+apps/web/src/features/live/matchLiveStore.ts
+  s_c9a5063cddd265::t_5c23eb9d92518b 2-5,9,11-19,25,35-37,41-43,71-111,116-117,121,123-128,132-134,155,163-205,209-228,242,251
+apps/web/src/features/home/FeaturedPanel.tsx
+  s_c9a5063cddd265::t_bb1073c0519f72 6
+  s_c9a5063cddd265::t_e7a9d921e2c626 56-57
+apps/web/src/features/terminal/CompetitionsRail.tsx
+  s_c9a5063cddd265::t_0199acc9611b26 1,6,17-18,20-25,35,37-38,48,50-51,58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "a6409515fa127d249159f1ca358e536644613523",
+  "prompts": {},
+  "sessions": {
+    "s_c9a5063cddd265": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "508b2dec-5928-401d-98aa-3611db8a5c1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
