@@ -10,6 +10,8 @@ interface MomentumRiverProps {
   liveValue?: number; // latest fair×100 — appended to the river on change so it moves in real time
   secondary?: number[]; // optional context trace (e.g. the losing side's win%), drawn as a thin --down line
   secondaryLive?: number; // latest secondary value — appended in lockstep with liveValue so both traces align
+  yRange?: [number, number]; // pin the price axis (e.g. [0,100]) so a value maps to a FIXED height — needed so an
+  // SVG cliff overlay can align to the canvas; without it lightweight-charts autoscales to the data range
 }
 
 type AreaSeries = { setData: (d: object[]) => void; setMarkers: (m: object[]) => void; update: (p: object) => void };
@@ -22,7 +24,7 @@ const TAIL_FRACTION = 0.22; // ~74'→90' of unplayed time stays empty on the ri
 /** The hero price River — the ONE lightweight-charts instance (ADR-045), and the signature element where all
  *  visual boldness lives: a filled momentum area, not a thin line. Lazy-imports the lib (off SSR). Built once;
  *  `liveValue` changes append a point via series.update() so the river flows without a costly rebuild. */
-export function MomentumRiver({ data, up = true, height = 96, goalIndex, liveValue, secondary, secondaryLive }: MomentumRiverProps) {
+export function MomentumRiver({ data, up = true, height = 96, goalIndex, liveValue, secondary, secondaryLive, yRange }: MomentumRiverProps) {
   const ref = useRef<HTMLDivElement>(null);
   const seriesRef = useRef<AreaSeries | null>(null);
   const secSeriesRef = useRef<LineSeries | null>(null); // optional context trace (losing side)
@@ -35,8 +37,8 @@ export function MomentumRiver({ data, up = true, height = 96, goalIndex, liveVal
   const lastValueRef = useRef<number | null>(null);
   const upRef = useRef<boolean>(up);
   // Build once — read mutable props from refs so a live tick never tears down the chart.
-  const initRef = useRef({ data, height, goalIndex, up, secondary });
-  initRef.current = { data, height, goalIndex, up, secondary };
+  const initRef = useRef({ data, height, goalIndex, up, secondary, yRange });
+  initRef.current = { data, height, goalIndex, up, secondary, yRange };
 
   useEffect(() => {
     const el = ref.current;
@@ -52,7 +54,7 @@ export function MomentumRiver({ data, up = true, height = 96, goalIndex, liveVal
         return; // chart lib failed to load — the panel still renders without the River (graceful)
       }
       if (cancelled || !el) return;
-      const { data: d0, height: h0, goalIndex: gi, up: up0, secondary: sec0 } = initRef.current;
+      const { data: d0, height: h0, goalIndex: gi, up: up0, secondary: sec0, yRange: yr0 } = initRef.current;
       const line = (up0 ? resolveColor("up") : resolveColor("down")) || resolveColor("textHi");
       const chart = lc.createChart(el, {
         width: el.clientWidth,
@@ -75,6 +77,8 @@ export function MomentumRiver({ data, up = true, height = 96, goalIndex, liveVal
         priceLineVisible: false,
         lastValueVisible: false,
         crosshairMarkerVisible: false,
+        // Pin the price axis when asked so a value maps to a FIXED pixel height (the SVG cliff overlay aligns to it).
+        ...(yr0 ? { autoscaleInfoProvider: () => ({ priceRange: { minValue: yr0[0], maxValue: yr0[1] } }) } : {}),
       });
       seriesRef.current = series;
       const seed = d0.map((v, i) => ({ time: i + 1, value: v }));

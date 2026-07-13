@@ -25,11 +25,13 @@ interface TradePanelProps {
   free: number; // uncommitted credits — buying power
   heldShares: number; // shares held of the selected outcome — sell ceiling
   onPlace: (side: "buy" | "sell", size: number) => PlaceResult; // server-verified analog; applies optimistically
+  disabled?: boolean; // market halted — controls lock, greyed + inert (the felt-freeze during the halt)
 }
 
 /** Buy/Sell + size (slider + quick amounts) → live LMSR quote → confirm. On confirm the parent applies the fill
- *  optimistically (or rejects — insufficient credits / oversell — via toast). Client previews; the store verifies. */
-export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPlace }: TradePanelProps) {
+ *  optimistically (or rejects — insufficient credits / oversell — via toast). Client previews; the store verifies.
+ *  `disabled` (halt) makes the whole panel inert + greyed so the user FEELS trading was taken away, then restored. */
+export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPlace, disabled = false }: TradePanelProps) {
   const [side, setSide] = useState<"buy" | "sell">("buy");
   const [size, setSize] = useState(20);
   const [result, setResult] = useState<PlaceResult | null>(null);
@@ -50,7 +52,7 @@ export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPl
   const submit = () => setResult(onPlace(side, size));
 
   return (
-    <div className="border-b border-hairline px-4 py-3">
+    <div aria-disabled={disabled} className={`border-b border-hairline px-4 py-3 ${disabled ? "pointer-events-none select-none opacity-60" : ""}`}>
       <div className="flex flex-wrap items-center gap-3">
         <div className="inline-flex rounded-lg bg-bg p-0.5 ring-1 ring-inset ring-hairline">
           {(["buy", "sell"] as const).map((s) => {
@@ -73,7 +75,7 @@ export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPl
 
         <div className="flex min-w-[180px] flex-1 items-center gap-3">
           <input
-            type="range" min={MIN} max={MAX} step={STEP} value={size}
+            type="range" min={MIN} max={MAX} step={STEP} value={size} disabled={disabled}
             onChange={(e) => setSz(Number(e.target.value))}
             aria-label="Order size in shares"
             className="h-1.5 flex-1 cursor-pointer appearance-none rounded-full bg-hairline accent-up"
@@ -115,9 +117,10 @@ export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPl
 
         <button
           onClick={submit}
-          className={`min-h-[44px] shrink-0 rounded-lg px-5 text-strong font-semibold text-bg transition-[filter,transform] duration-200 ease-out hover:brightness-110 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface ${side === "buy" ? "bg-up focus-visible:ring-up" : "bg-down focus-visible:ring-down"}`}
+          disabled={disabled}
+          className={`min-h-[44px] shrink-0 rounded-lg px-5 text-strong font-semibold text-bg transition-[filter,transform] duration-200 ease-out hover:brightness-110 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:cursor-not-allowed ${side === "buy" ? "bg-up focus-visible:ring-up" : "bg-down focus-visible:ring-down"}`}
         >
-          {side === "buy" ? "Buy" : "Sell"} {label} @ {markPx.toFixed(1)}
+          {disabled ? "Trading paused" : `${side === "buy" ? "Buy" : "Sell"} ${label} @ ${markPx.toFixed(1)}`}
         </button>
       </div>
 

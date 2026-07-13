@@ -13,22 +13,31 @@
     "wc26:refresh": "node scripts/fetch-wc26.mjs"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@react-three/fiber": "^9.6.1",
+    "@shadergradient/react": "^2.4.20",
     "@xyflow/react": "^12.11.2",
+    "camera-controls": "^3.1.2",
     "cmdk": "^1.1.1",
     "framer-motion": "^12.42.2",
+    "gsap": "^3.15.0",
     "lightweight-charts": "^4.1.0",
     "lucide-react": "^1.24.0",
     "next": "^15.0.0",
     "radix-ui": "^1.6.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sonner": "^2.0.7"
+    "sonner": "^2.0.7",
+    "three": "^0.185.1",
+    "three-stdlib": "^2.36.1"
   },
   "devDependencies": {
     "@types/node": "^20.17.6",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.185.1",
     "axe-core": "^4.12.1",
+    "cssstudio": "^1.2.0",
     "playwright": "^1.47.0",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.5.0"

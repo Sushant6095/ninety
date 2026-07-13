@@ -1,6 +1,11 @@
-import { BracketPage } from "../../features/bracket/BracketPage";
+import { AppShell } from "../../components/ui/AppShell";
+import { BracketB } from "../../features/bracket/BracketB";
 
-// Competition bracket — knockout tree with live advance prices. Fixture-wired (GET /markets?stage).
+// Competition bracket — the real 104-match WC26 knockout tree (road to the Final).
 export default function Page() {
-  return <BracketPage />;
+  return (
+    <AppShell>
+      <BracketB />
+    </AppShell>
+  );
 }
