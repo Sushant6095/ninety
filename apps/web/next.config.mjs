@@ -5,8 +5,9 @@ import path from "node:path";
 export default {
   reactStrictMode: true,
   devIndicators: false,
-  // Pin the monorepo root — Next otherwise mis-detects a stray ~/package-lock.json and traces the wrong tree.
-  outputFileTracingRoot: path.join(import.meta.dirname, "../.."),
+  // Local monorepo dev pins the workspace root (Next otherwise mis-detects a stray ~/package-lock.json);
+  // a standalone Vercel deploy uploads only apps/web, so root at the app itself there.
+  outputFileTracingRoot: process.env.VERCEL ? import.meta.dirname : path.join(import.meta.dirname, "../.."),
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "flagcdn.com" }, // real country flags (cross-platform, replaces emoji)
