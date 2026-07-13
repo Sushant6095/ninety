@@ -35,12 +35,21 @@ async function main() {
   const outDir = "design/screens/impl";
   await mkdir(outDir, { recursive: true });
 
+  // /terminal and / autoplay the halt money-shot on mount, so `networkidle` alone catches the market MID-STORY
+  // — a flat, goalless, pre-goal frame the user sees for barely a second. Shoot the RESTING state instead: wait
+  // for the choreography to land and settle. Override with SETTLE=0 for a static route you want captured fast.
+  const settle = Number(process.env.SETTLE ?? 7000);
+  // Mobile is out of scope for the current gates — ONLY=lg,xl skips the breakpoints nobody is judging.
+  const only = process.env.ONLY?.split(",").map((s) => s.trim()).filter(Boolean);
+  const sizes = Object.entries(SIZES).filter(([k]) => !only || only.includes(k));
+
   const browser = await chromium.launch();
   try {
-    for (const [key, size] of Object.entries(SIZES)) {
+    for (const [key, size] of sizes) {
       const page = await browser.newPage({ viewport: size, deviceScaleFactor: 2 });
       const url = base + route;
       await page.goto(url, { waitUntil: "networkidle" });
+      if (settle) await page.waitForTimeout(settle);
       const path = `${outDir}/${name}.${key}.png`;
       // sm = above-the-fold (viewport) so the phone hero is judged as seen; md/lg/xl = fullPage.
       await page.screenshot({ path, fullPage: key !== "sm" });

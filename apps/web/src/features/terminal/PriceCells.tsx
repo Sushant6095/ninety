@@ -1,5 +1,6 @@
 "use client";
 import { LivePrice } from "../../components/ui/LivePrice";
+import { Delta } from "../../components/ui/Delta";
 import type { Outcome } from "../../lib/types";
 
 const LABEL: Record<Outcome, string> = { H: "Home", D: "Draw", A: "Away" };
@@ -37,16 +38,14 @@ export function PriceCells({ mark, todayDelta, codes, selected, onSelect, heldSh
           >
             <span className="flex items-center justify-between gap-1">
               <span className="min-w-0 truncate text-label font-semibold uppercase tracking-[0.08em] text-lo">
-                {LABEL[o]}{sub && <span className="hidden text-lo/70 sm:inline"> · {sub}</span>}
+                {LABEL[o]}{sub && <span className="hidden text-lo sm:inline"> · {sub}</span>}
               </span>
               {(heldShares?.[o] ?? 0) > 0 && (
                 <span className="num shrink-0 rounded bg-up/15 px-1 text-label font-semibold text-up ring-1 ring-inset ring-up/25">{heldShares?.[o]} SH</span>
               )}
             </span>
             <LivePrice value={mark[o] * 100} className="font-display text-display font-bold leading-none text-hi" />
-            <span className={`num text-label ${dl >= 0 ? "text-up" : "text-down"}`}>
-              {dl >= 0 ? "▲" : "▼"}{Math.abs(dl).toFixed(1)} today
-            </span>
+            <Delta value={dl} suffix="today" className="text-label" />
           </button>
         );
       })}

@@ -3,7 +3,7 @@ import { RotateCcw } from "lucide-react";
 import { MomentumRiver } from "../../components/ui/MomentumRiver";
 import { LivePrice } from "../../components/ui/LivePrice";
 import { BoothLine } from "./BoothLine";
-import { FULL_TIME } from "../live/matchLiveStore";
+import { FULL_TIME, MONEY_SHOT } from "../live/matchLiveStore";
 import type { TerminalMatch } from "../../lib/terminal";
 import type { Outcome } from "../../lib/types";
 
@@ -23,18 +23,25 @@ interface BigRiverProps {
  *  PLUS the Tier-0 halt choreography's DOM overlays (flash / sweep / wash / cliff glyph — all outside the chart
  *  canvas), the spread indicator, and the persistent Booth line. Reuses the one lightweight-charts River
  *  (ADR-045); the overlays are absolutely-positioned chrome driven by the GSAP timeline via their data-halt hooks. */
+// The price axis is PINNED (never autoscaled) so the SVG cliff overlay can align to the canvas it draws over.
+// It stops at 70, not 100: this market lives between ~14 and ~55 (Egypt 31 → 55 on the goal, Australia 48 → 31),
+// and a 0–100 domain spent half the hero on white space no trace will ever reach. 70 keeps ~15 points of headroom
+// above the post-goal mark — enough for the drift, tight enough that the River actually fills its box.
+const Y_MAX = 70;
 // Where a win-% value lands inside the chart box, as a % from the top. lightweight-charts insets the plot by its
-// default 10% price-scale margins, so 100 sits at 10.4% and 0 at 89.5%. Tags, the y-axis ticks and the SVG cliff
-// all map through this ONE function — that is why the AUS badge sits exactly on the AUS line, and why the cliff
-// (31 → 55) lands on the canvas it is drawn over.
-const PLOT_TOP = 10.4; // y% of value 100
+// default 10% price-scale margins, so Y_MAX sits at 10.4% and 0 at 89.5%. The outcome tags, the y-axis ticks and
+// the SVG cliff ALL map through this ONE function — that is why the AUS badge sits exactly on the AUS line.
+const PLOT_TOP = 10.4; // y% of value Y_MAX
 const PLOT_BOT = 89.5; // y% of value 0
-const yFor = (v: number): number => PLOT_BOT - (v / 100) * (PLOT_BOT - PLOT_TOP);
+const yFor = (v: number): number => PLOT_BOT - (v / Y_MAX) * (PLOT_BOT - PLOT_TOP);
+const TICKS = [60, 40, 20];
 
 export function BigRiver({ match, mark, spark, homeSpark, minute, onReplay, replayBusy, boothQuote, boothDelta }: BigRiverProps) {
-  // Where the trace ends on the 0–90' axis. The NOW line and the minute label both hang off this one number,
-  // so they cannot drift from the series the chart actually drew.
+  // Where the trace ends on the 0–90' axis. The NOW line, the minute label AND the cliff all hang off this one
+  // number, so none of them can drift from the series the chart actually drew.
   const nowPct = Math.min(100, Math.max(0, (minute / FULL_TIME) * 100));
+  // The cliff: flat at the pre-goal mark, then the step up to the post-goal mark, ending exactly at the live edge.
+  const cliffPath = `M ${nowPct - 28} ${yFor(MONEY_SHOT.awayPre)} L ${nowPct - 8} ${yFor(MONEY_SHOT.awayPre)} L ${nowPct} ${yFor(MONEY_SHOT.awayPost)}`;
   const tags: { key: Outcome; label: string; cls: string }[] = [
     { key: "A", label: match.awayCode, cls: "text-up ring-up/30 bg-up/10" },
     { key: "D", label: "DRW", cls: "text-lo ring-hairline bg-bg/70" },
@@ -52,7 +59,11 @@ export function BigRiver({ match, mark, spark, homeSpark, minute, onReplay, repl
             type="button"
             onClick={onReplay}
             disabled={replayBusy}
-            className="inline-flex items-center gap-1.5 rounded-chip bg-bg px-2.5 py-1 text-label font-semibold uppercase tracking-wide text-halt ring-1 ring-inset ring-halt/40 outline-none transition-opacity duration-200 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-halt active:opacity-80 disabled:cursor-default disabled:opacity-50"
+            // A quiet control, NOT an amber one: amber is the halt signal (design law), and burning it on an
+            // idle button pre-spends the very cue the money-shot lands on. It only goes amber while it runs.
+            className={`inline-flex min-h-[32px] items-center gap-1.5 rounded-chip bg-bg px-2.5 py-1 text-label font-semibold uppercase tracking-wide ring-1 ring-inset outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-hi disabled:cursor-default ${
+              replayBusy ? "text-halt ring-halt/40" : "text-lo ring-hairline hover:text-hi hover:ring-hi/30"
+            }`}
           >
             <RotateCcw className="h-3 w-3" aria-hidden strokeWidth={2.5} /> Replay the halt
           </button>
@@ -63,9 +74,9 @@ export function BigRiver({ match, mark, spark, homeSpark, minute, onReplay, repl
       </div>
 
       <div className="relative">
-        {/* y-axis ticks — placed at their true heights, not spread evenly, so 50 really is the halfway line */}
+        {/* y-axis ticks — placed at their true heights via the same map the traces use, so a tick never lies */}
         <div className="num pointer-events-none absolute inset-0 left-0 z-10 text-label text-lo">
-          {[75, 50, 25].map((v) => (
+          {TICKS.map((v) => (
             <span key={v} className="absolute left-0 -translate-y-1/2" style={{ top: `${yFor(v)}%` }}>{v}</span>
           ))}
         </div>
@@ -83,21 +94,22 @@ export function BigRiver({ match, mark, spark, homeSpark, minute, onReplay, repl
           </div>
         ))}
 
-        {/* the River itself — pre-goal flat ~31 on a FIXED 0–100 price axis and a FIXED 0–90' time axis, so the
-            trace ends at the live minute and the rest of the match stays honest, empty space (ADR-055). */}
+        {/* the River itself — a FIXED 0–70 price axis and a FIXED 0–90' time axis, so the trace ends at the live
+            minute and the rest of the match stays honest, empty space (ADR-055). */}
         <div data-halt="chart">
-          <MomentumRiver data={spark} up height={300} secondary={homeSpark} yRange={[0, 100]} totalMinutes={FULL_TIME} />
+          <MomentumRiver data={spark} up height={300} secondary={homeSpark} yRange={[0, Y_MAX]} totalMinutes={FULL_TIME} />
         </div>
 
         {/* ── Halt choreography overlays (DOM only — never inside the chart canvas). Hidden until the GSAP timeline runs. ── */}
         {/* persistent amber HALT wash — bathes the whole frozen River for the entire halted phase, then fades on resume */}
         <div data-halt="wash" aria-hidden className="pointer-events-none invisible absolute inset-0 z-10 border-t-2 border-halt/70 bg-halt/15 opacity-0">
-          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-display-xl font-extrabold uppercase tracking-[0.2em] text-halt/25">Halted</span>
+          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-display-xl font-extrabold uppercase tracking-[0.2em] text-halt/40">Halted</span>
         </div>
-        {/* the cliff DRAWS ON — an SVG segment (pre-halt 31 → new mark 55) revealed via stroke-dashoffset, then the
-            canvas settles underneath and this fades out (blur-masked). Fixed 0–100 axis makes the y's align. */}
+        {/* the cliff DRAWS ON — an SVG segment (pre-goal 31 → new mark 55) revealed via stroke-dashoffset, then the
+            canvas settles underneath and this fades out. Its geometry is DERIVED (yFor + the live minute), never
+            hardcoded, so it lands on the canvas it is drawn over even as the axis or the clock changes. */}
         <svg data-halt="drawcliff" aria-hidden viewBox="0 0 100 100" preserveAspectRatio="none" className="pointer-events-none invisible absolute inset-0 z-20 h-full w-full opacity-0">
-          <path data-halt="drawcliff-path" d="M 54 65 L 74 65 L 82 46" className="fill-none stroke-up" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+          <path data-halt="drawcliff-path" d={cliffPath} className="fill-none stroke-up" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
         </svg>
         <div data-halt="flash" aria-hidden className="pointer-events-none invisible absolute inset-0 z-30 bg-halt opacity-0" />
         <div data-halt="sweep" aria-hidden className="pointer-events-none invisible absolute inset-y-0 left-0 z-30 w-1/3 bg-halt/50 opacity-0 blur-sm" />

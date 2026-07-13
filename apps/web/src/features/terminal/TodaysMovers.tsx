@@ -1,9 +1,8 @@
 "use client";
+import { Delta } from "../../components/ui/Delta";
 import { useMatchLiveList } from "../live/matchLiveStore";
 import { MOVERS } from "../../lib/terminal";
 import type { Outcome } from "../../lib/types";
-
-const fmtDelta = (n: number): string => (n >= 0 ? "+" : "−") + Math.abs(n).toFixed(1);
 
 /** Today's movers — biggest Δ vs open across the R32 board (right rail, bottom). Price and Δ are read from the
  *  ONE store and re-sorted every beat, so Ashour's counter visibly throws EGY to the top of this list while
@@ -40,9 +39,7 @@ export function TodaysMovers() {
                 <span className="block truncate text-label text-lo">{m.note}</span>
               </span>
               <span className="num text-body tabular-nums text-hi">{m.price.toFixed(1)}</span>
-              <span className={`num w-[52px] text-right text-caption tabular-nums ${m.delta >= 0 ? "text-up" : "text-down"}`}>
-                {fmtDelta(m.delta)}
-              </span>
+              <Delta value={m.delta} className="w-[52px] text-right text-caption" />
             </a>
           </li>
         ))}

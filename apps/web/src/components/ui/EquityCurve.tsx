@@ -6,9 +6,10 @@ interface EquityCurveProps {
   width?: number;
   height?: number;
   className?: string;
+  quiet?: boolean; // drop the fill + thin the stroke — for rails that sit BESIDE the River and must not rival it
 }
 
-export function EquityCurve({ values, up, width = 640, height = 120, className = "" }: EquityCurveProps) {
+export function EquityCurve({ values, up, width = 640, height = 120, className = "", quiet = false }: EquityCurveProps) {
   if (values.length < 2) return <svg width={width} height={height} aria-hidden className={className} />;
   const rising = up ?? values[values.length - 1] >= values[0];
   const min = Math.min(...values);
@@ -21,10 +22,12 @@ export function EquityCurve({ values, up, width = 640, height = 120, className =
   const area = `0,${height} ${line} ${width},${height}`;
   const stroke = rising ? "var(--up)" : "var(--down)";
   // Flat translucent fill (no gradient — design law); the stroke carries the read, the fill just seats it.
+  // `quiet` strips the fill and halves the stroke: on /terminal this curve sits a few hundred px from the
+  // Momentum River, and a filled area here simply out-rivers the hero (design law: boldness lives in the River).
   return (
     <svg width="100%" height={height} viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none" fill="none" aria-hidden className={className}>
-      <polygon points={area} fill={stroke} fillOpacity="0.07" />
-      <polyline points={line} stroke={stroke} strokeWidth="1.75" strokeLinejoin="round" strokeLinecap="round" />
+      {!quiet && <polygon points={area} fill={stroke} fillOpacity="0.07" />}
+      <polyline points={line} stroke={stroke} strokeWidth={quiet ? "1" : "1.75"} strokeOpacity={quiet ? "0.7" : "1"} strokeLinejoin="round" strokeLinecap="round" />
     </svg>
   );
 }

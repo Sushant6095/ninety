@@ -25,7 +25,7 @@ export function PortfolioCard() {
           </span>
         </div>
         <div className="mt-3 h-12">
-          <EquityCurve values={PORTFOLIO.spark} up height={48} className="h-12" />
+          <EquityCurve values={PORTFOLIO.spark} up height={48} className="h-12" quiet />
         </div>
       </div>
     </section>
