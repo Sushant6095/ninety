@@ -1,0 +1,40 @@
+apps/web/src/features/terminal/BigRiver.tsx
+  s_c9a5063cddd265::t_d5abbc16af81b7 62-66
+  s_c9a5063cddd265::t_ec620d961a0c69 6
+  s_c9a5063cddd265::t_2ca4c8de833c04 77,79
+  s_c9a5063cddd265::t_306cdc0185bd05 97-98,106,108-110,112
+  s_c9a5063cddd265::t_02a217064a9c27 100
+  s_c9a5063cddd265::t_f63dc34cf4c45b 26-30,32-34,36-37
+  s_c9a5063cddd265::t_c4e172cca44489 40-41,43-44
+apps/web/src/components/ui/Delta.tsx
+  s_c9a5063cddd265::t_9a563f22fbf424 1-16
+apps/web/src/features/terminal/PortfolioCard.tsx
+  s_c9a5063cddd265::t_13f1f7b07a9078 28
+scripts/ui/screenshot.mjs
+  s_c9a5063cddd265::t_284a465f8134c9 38-45,48,52
+apps/web/src/features/terminal/PriceCells.tsx
+  s_c9a5063cddd265::t_44da1c56f12835 3
+  s_c9a5063cddd265::t_034e973dbd97ec 41,48
+apps/web/src/features/terminal/TodaysMovers.tsx
+  s_c9a5063cddd265::t_5778dad6b511ae 2
+  s_c9a5063cddd265::t_43b3bea6fa8472 42
+apps/web/src/components/ui/EquityCurve.tsx
+  s_c9a5063cddd265::t_8ea39815cdf8e1 9,12
+  s_c9a5063cddd265::t_6ec71cb392877d 25-26,29-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "a888bd3f7c137a8c62da406dd00b14c1f9e2dbdf",
+  "prompts": {},
+  "sessions": {
+    "s_c9a5063cddd265": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "508b2dec-5928-401d-98aa-3611db8a5c1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
