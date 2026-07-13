@@ -1,0 +1,1 @@
+{"ts":1783970009,"event":"PostToolUse","tool":"Bash","file":null,"cmd":"cd \"/Users/vyapar/Downloads/omnipitch 2/docs/sofascore-research\" && echo \"=== components/ ===\" && ls components/ && echo \"=== screens/ ===\" && ls screens/ && echo \"=== _reference-shots/ ===\" && ls -R _reference-shots/ | head -20"}

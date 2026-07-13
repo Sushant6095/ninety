@@ -5,6 +5,7 @@
 - Palette: bg #0B0D10 · surface #14171C · hairline #232A33 · up #2BD97C · down #FF3D81 · halt #FFB020 (halts only) · chain #9D6BFF (on-chain UI only) · text #F5F7FA / #97A0AF.
 - ALL numbers: IBM Plex Mono, tabular-nums; prices one decimal (61.4); flash up/down color 180ms on change.
 - Type: Archivo (display/hero numbers) · Inter (UI). Motion 150–250ms ease-out; respect prefers-reduced-motion.
+- Animation libs (ADR-052): Framer Motion (micro-interactions) + GSAP (heavy choreography — River draw, scrollytelling, SplitText), imported from `apps/web/src/lib/gsap.ts`. Both obey the motion tokens; no third animation lib.
 - Signature element: the Momentum River. All visual boldness lives there; everything else stays quiet.
 - Copy voice: plain verbs, sentence case. NEVER the words bet / stake / odds / wager in product copy — say price, trade, credits.
 - No gradients, no glassmorphism, no lorem ipsum, no light mode (v1). Real WC26 data in every mock.
