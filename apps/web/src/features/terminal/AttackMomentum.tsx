@@ -1,12 +1,19 @@
 "use client";
-import { Bar, BarChart, Cell, ResponsiveContainer } from "recharts";
 import { ATTACK } from "../../lib/terminal";
 
 // Signed attack pressure over the last ~30 windows: positive = away/Egypt (bright ink), negative = home (muted ink).
 // Green/pink are reserved for price direction only (semantic-color law); the two teams read by ink brightness + sign.
-const data = ATTACK.bars.map((v, i) => ({ i, v }));
+// Inline SVG — NOT a chart lib. The hero Momentum River (lightweight-charts) is the only real chart (ADR-045).
+const BARS = ATTACK.bars;
+const VW = 300;
+const VH = 90;
+const GAP = 2;
+const MAX = Math.max(1, ...BARS.map((v) => Math.abs(v)));
 
 export function AttackMomentum() {
+  const n = BARS.length;
+  const barW = (VW - GAP * (n - 1)) / n;
+  const mid = VH / 2;
   return (
     <section className="elev rounded-card border border-hairline/70 bg-surface">
       <div className="flex items-center justify-between px-4 pt-3 pb-2">
@@ -20,15 +27,30 @@ export function AttackMomentum() {
 
       <div className="px-4">
         <div className="h-[90px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={data} barCategoryGap={2} margin={{ top: 2, right: 0, bottom: 2, left: 0 }}>
-              <Bar dataKey="v" isAnimationActive={false} radius={1}>
-                {data.map((d) => (
-                  <Cell key={d.i} fill={d.v >= 0 ? "var(--text-hi)" : "var(--text-lo)"} />
-                ))}
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
+          <svg
+            width="100%"
+            height="100%"
+            viewBox={`0 0 ${VW} ${VH}`}
+            preserveAspectRatio="none"
+            aria-hidden
+          >
+            {BARS.map((v, i) => {
+              const h = Math.max(0.5, (Math.abs(v) / MAX) * (mid - 2));
+              const x = i * (barW + GAP);
+              const y = v >= 0 ? mid - h : mid;
+              return (
+                <rect
+                  key={i}
+                  x={x}
+                  y={y}
+                  width={barW}
+                  height={h}
+                  rx={1}
+                  fill={v >= 0 ? "var(--text-hi)" : "var(--text-lo)"}
+                />
+              );
+            })}
+          </svg>
         </div>
 
         <div className="flex items-center justify-between pb-3 pt-1">

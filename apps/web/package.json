@@ -1,6 +1,9 @@
 {
   "name": "@omnipitch/web",
   "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -18,7 +21,6 @@
     "radix-ui": "^1.6.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "recharts": "^3.9.2",
     "sonner": "^2.0.7"
   },
   "devDependencies": {
