@@ -1,0 +1,24 @@
+apps/web/src/components/ui/PrototypeRibbon.tsx
+  s_6ab41d7b0271b9::t_ebe3a4747bb0e5 1-17
+apps/web/src/app/layout.tsx
+  s_6ab41d7b0271b9::t_b83755f0b5254f 5
+  s_6ab41d7b0271b9::t_2943abd43a5858 22
+apps/web/vercel.json
+  s_6ab41d7b0271b9::t_7bd04e8c790a13 1-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "f768ef1ee27e2163ff49abfd30db39e8916c4cc7",
+  "prompts": {},
+  "sessions": {
+    "s_6ab41d7b0271b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a5538f3a-206a-4aef-b98c-32f9c1580643",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
