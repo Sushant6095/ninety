@@ -1,0 +1,62 @@
+# Fly.io deploy for OMNIPITCH live services on a PERSISTENT machine (Track 2).
+# Why Fly and not Render: the uWebSockets.js live feed must never sleep — Render's free tier idles the machine
+# and drops every WS connection. Here `auto_stop_machines = "off"` + `min_machines_running = 1` keep each
+# process group's machine running 24/7.
+#
+# Runtimes: api + worker-ingest are Node 20 (uWS needs an LTS ABI); worker-cortex is Python 3.11. One image
+# (infra/fly/Dockerfile) carries both; Fly `[processes]` runs the three as separate process groups. Note: Fly
+# schedules each process group on its OWN machine — "one persistent stack", not literally one host — all kept
+# alive by the auto-stop/min-running settings below.
+#
+# Deploy from the REPO ROOT so the whole pnpm monorepo is the build context:
+#   fly deploy -c infra/fly/fly.toml
+#
+# Secrets are NEVER in this file — set them with `fly secrets set` (see the report / commands below):
+#   DATABASE_URL  (Supabase POOLER url: ...?pgbouncer=true&connection_limit=1)
+#   DIRECT_URL    (Supabase 5432 direct url — for prisma migrate deploy)
+#   REDIS_URL, TXLINE_TOKEN, TXLINE_BASE_URL,
+#   JWT_SECRET, EMBEDDED_WALLET_SECRET, ADMIN_TOKEN,
+#   ANTHROPIC_API_KEY (optional — booth uses a template narrator without it)
+
+app = "omnipitch"
+primary_region = "iad"
+
+[build]
+  dockerfile = "infra/fly/Dockerfile"
+
+[processes]
+  api    = "pnpm --filter @omnipitch/api exec tsx src/main.ts"
+  ingest = "pnpm --filter @omnipitch/worker-ingest exec tsx src/main.ts"
+  cortex = "sh -c 'cd apps/worker-cortex && PYTHONPATH=src .venv/bin/python -m cortex.main'"
+
+[env]
+  NODE_ENV   = "production"
+  BUS_DRIVER = "redis"
+  WS_PORT    = "4001"
+
+# REST (Fastify, :4000) — api process group only.
+[http_service]
+  internal_port       = 4000
+  force_https         = true
+  auto_stop_machines  = "off"
+  auto_start_machines = false
+  min_machines_running = 1
+  processes           = ["api"]
+
+# Live WS (uWebSockets.js, :4001) — dedicated TLS entrypoint, api process group only.
+[[services]]
+  internal_port      = 4001
+  protocol           = "tcp"
+  processes          = ["api"]
+  auto_stop_machines = "off"
+  min_machines_running = 1
+  [[services.ports]]
+    port     = 8443
+    handlers = ["tls"]
+
+# Persistent VM sizing for all three process groups.
+[[vm]]
+  cpu_kind  = "shared"
+  cpus      = 1
+  memory    = "1gb"
+  processes = ["api", "ingest", "cortex"]

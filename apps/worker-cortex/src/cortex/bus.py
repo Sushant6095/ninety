@@ -37,7 +37,10 @@ class Bus:
         consumer = f"{socket.gethostname()}-{os.getpid()}"
         streams = {t: ">" for t in handlers}
         while not self._stop:
-            resp = self.r.xreadgroup(group, consumer, streams, count=count, block=block_ms)
+            try:
+                resp = self.r.xreadgroup(group, consumer, streams, count=count, block=block_ms)
+            except redis.exceptions.TimeoutError:
+                continue  # redis-py 8.x surfaces an idle BLOCK window as a socket timeout — no entries, keep polling
             if not resp:
                 continue
             for stream, entries in resp:
