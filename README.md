@@ -2,13 +2,22 @@
 
 **A free-to-play, real-time prediction exchange for World Cup 2026.** Live consensus prices from TxLINE, AI commentary on every swing, and results designed to settle trustlessly on Solana by verifying TxODDS's own cryptographic proofs. Strictly play-money — you trade a live probability with credits, never money.
 
-![Track](https://img.shields.io/badge/track-Prediction%20Markets%20%26%20Settlement-2BD97C)
-![Solana](https://img.shields.io/badge/Solana-devnet-9D6BFF)
-![Play-money](https://img.shields.io/badge/play--money-no%20deposits%20·%20no%20payouts-FFB020)
-![Tests](https://img.shields.io/badge/tests-257%20passing-2BD97C)
-![Anchor](https://img.shields.io/badge/anchor-5%2F5%20localnet-2BD97C)
-![Data](https://img.shields.io/badge/data-TxLINE%20live%20on%20devnet-9D6BFF)
-![License](https://img.shields.io/badge/license-MIT-2BD97C)
+<p align="center">
+  <img src="https://img.shields.io/badge/Prediction%20Markets%20%26%20Settlement-track-2BD97C?style=for-the-badge" alt="Track">
+  <img src="https://img.shields.io/badge/Solana-devnet-9945FF?style=for-the-badge&logo=solana&logoColor=white" alt="Solana devnet">
+  <img src="https://img.shields.io/badge/play--money-no%20deposits%20·%20no%20payouts-FFB020?style=for-the-badge" alt="Play-money">
+  <img src="https://img.shields.io/badge/license-MIT-2BD97C?style=for-the-badge" alt="MIT license">
+</p>
+<p align="center">
+  <img src="https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Rust-Anchor%200.30-000000?logo=rust&logoColor=white" alt="Rust / Anchor">
+  <img src="https://img.shields.io/badge/Anchor-5%2F5%20tests-9945FF?logo=solana&logoColor=white" alt="Anchor 5/5">
+  <img src="https://img.shields.io/badge/Next.js-15-000000?logo=nextdotjs&logoColor=white" alt="Next.js">
+  <img src="https://img.shields.io/badge/Redis-bus-DC382D?logo=redis&logoColor=white" alt="Redis">
+  <img src="https://img.shields.io/badge/Postgres-truth-4169E1?logo=postgresql&logoColor=white" alt="Postgres">
+  <img src="https://img.shields.io/badge/tests-257%20passing-2BD97C" alt="257 tests passing">
+  <img src="https://img.shields.io/badge/TxLINE-live%20on%20devnet-9945FF" alt="TxLINE live">
+</p>
 
 <p align="center">
   <img src="design/screens/home.png" alt="Ninety — the live match board" width="100%">
@@ -42,6 +51,26 @@ At the whistle the settlement saga (ADR-035) fetches a TxLINE proof and submits 
 
 TxLINE/TxODDS is not a side input — **it feeds the prices, the scores, and the settlement proofs.** Every endpoint below is wrapped in `packages/txline/src/client.ts`, returns parsed Zod types, and was **verified live against `txline-dev` + devnet** (ADR-015/016), with one real captured payload per endpoint in [`docs/txline-samples/`](docs/txline-samples/). The live on-chain subscribe tx: [`2RMQS9tY…rZgYDPqqtX`](https://explorer.solana.com/tx/2RMQS9tYsfgnRz42pUih4meEXTB6LeDSgtjfprG51vcAdKxVZJd9G7tEsZz8WzyjC9rjmLHCjQNFw9rZgYDPqqtX?cluster=devnet).
 
+Three phases — authorize once, consume live, prove at full time:
+
+```mermaid
+flowchart LR
+  subgraph A["1 · Authorize (once)"]
+    direction TB
+    G["guest/start<br/>→ JWT"] --> SUB["subscribe()<br/>on-chain · Token-2022"] --> ACT["token/activate<br/>→ apiToken"]
+  end
+  subgraph B["2 · Consume (live)"]
+    direction TB
+    ODDS["odds/stream · O3"] --> DEVIG["cortex<br/>Shin de-vig"] --> MARK["fair mark<br/>→ LMSR price you trade"]
+    SCORE["scores/stream · S3"] --> HALT["engine<br/>goal → halt → reprice"]
+  end
+  subgraph C["3 · Prove (full time)"]
+    direction TB
+    STAT["stat-validation · S4<br/>Merkle proof"] --> SOL["Solana verifies<br/>on-chain"]
+  end
+  A ==>|"JWT + apiToken on every call"| B ==> C
+```
+
 | Code | Endpoint | Wrapper | Powers which surface |
 | :--- | :--- | :--- | :--- |
 | A1–A3 | `POST /auth/guest/start` · on-chain `subscribe` · `POST /api/token/activate` | auth flow | Gates **every** data call (guest JWT + apiToken headers) |
@@ -60,6 +89,22 @@ Integration feedback we filed for the sponsor is in [`docs/SUBMISSION.md`](docs/
 ## Built on Solana — the trust layer · primary highlight
 
 Ninety pushes onto Solana everything that must be trustless, and nothing that shouldn't be. The Anchor program **`omnipitch_core`** (Anchor 0.30.1) is deployed to devnet — [`6ps8ao7CVhacnRajvFXWTmkknsRnHfEbWmtQ3nDCdBkj`](https://explorer.solana.com/address/6ps8ao7CVhacnRajvFXWTmkknsRnHfEbWmtQ3nDCdBkj?cluster=devnet) — and `packages/chain` is the **only** place in the monorepo allowed to construct a Solana transaction (a repo law).
+
+How a result reaches the chain — permissionless, one-shot, and verified against TxODDS's own oracle:
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor Anyone as Anyone (permissionless)
+  participant Prog as omnipitch_core · Anchor
+  participant Oracle as TxODDS txoracle
+  Anyone->>Prog: settle_market(result, proof)
+  Note over Prog: require!(SETTLEMENT_LIVE) — false today → revert (fail-closed)
+  Prog->>Oracle: CPI validate_stat_v2(statKeys 1,2)
+  Oracle-->>Prog: bool · is the stat Merkle-anchored?
+  Note over Prog: predicate home − away · one-shot · NO admin path
+  Prog-->>Anyone: settled result (once the finality gate lands)
+```
 
 - **Trustless settlement, no admin path.** `settle_market` is permissionless and one-shot, and settles *only* by CPI-ing into TxODDS's on-chain oracle (`validate_stat_v2`) to verify a Merkle proof of the score — **no operator can decide a result** (ADR-017, ADR-036/037). It derives the outcome on-chain from goals (`home − away`) and is deliberately **fail-closed** today; see [The settlement story](#the-settlement-story).
 - **On-chain leaderboard claims — live and tested.** Points are earned off-chain, but each matchday's leaderboard is committed as a **Merkle root on-chain** (`post_leaderboard_root`), and players call `claim_points` by proving inclusion — guarded by a **receipt-PDA against double-claims** and paid from a **PDA-owned SPL vault** (ADR-003, ADR-031). This is the flow all **5/5 Anchor tests** cover (valid claim once · replay rejected · wrong proof rejected · tampered leaf rejected · root post authority-gated).
