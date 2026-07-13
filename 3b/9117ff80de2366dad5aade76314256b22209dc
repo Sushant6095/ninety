@@ -1,0 +1,21 @@
+docs/adr/ADR-054-terminal-ssot-halt-moneyshot-reconciliation.md
+  s_e6fe919b4d8a67::t_3fab27176f19b0 1-14
+design/DECISIONS.md
+  s_e6fe919b4d8a67::t_1ac9282453ffa5 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "3b9117ff80de2366dad5aade76314256b22209dc",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
