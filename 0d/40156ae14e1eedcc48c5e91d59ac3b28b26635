@@ -1,0 +1,30 @@
+apps/web/src/components/ui/AppShell.tsx
+  s_6ab41d7b0271b9::t_c32ffb0c9504cd 1-28
+apps/web/src/components/ui/MomentHero.tsx
+  s_6ab41d7b0271b9::t_5dafedfefcf28d 1-98
+apps/web/src/app/replay/[id]/page.tsx
+  s_6ab41d7b0271b9::t_3bb1ab81629b73 1-19
+apps/web/src/features/moments/MomentsGallery.tsx
+  s_6ab41d7b0271b9::t_36f7947dee693b 21
+  s_6ab41d7b0271b9::t_9857d6feb817ea 28-31
+  s_6ab41d7b0271b9::t_880c2d400c7717 67
+  s_6ab41d7b0271b9::t_f08c8dbd699653 15-18
+  s_6ab41d7b0271b9::t_87daf5cde336e7 6,8
+  s_6ab41d7b0271b9::t_5ae450b43dea6f 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "0d40156ae14e1eedcc48c5e91d59ac3b28b26635",
+  "prompts": {},
+  "sessions": {
+    "s_6ab41d7b0271b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a5538f3a-206a-4aef-b98c-32f9c1580643",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
