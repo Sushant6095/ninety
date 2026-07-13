@@ -18,6 +18,7 @@ const SUBNAV: { label: string; href: string; count?: number; home?: boolean }[] 
   { label: "Live", href: routes.home, count: 4 },
   { label: "Today", href: routes.home, count: 12 },
   { label: "Competition", href: routes.competition },
+  { label: "Bracket", href: routes.bracket },
   { label: "Portfolio", href: routes.portfolio },
   { label: "Leaders", href: routes.leaders },
   { label: "Moments", href: routes.moments },

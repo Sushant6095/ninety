@@ -2,7 +2,8 @@
 export const routes = {
   home: "/",
   matches: "/",
-  competition: "/bracket",
+  competition: "/competition",
+  bracket: "/bracket",
   portfolio: "/portfolio",
   leaders: "/leaderboard",
   moments: "/moments",
@@ -25,6 +26,7 @@ export interface NavItem {
 export const NAV: readonly NavItem[] = [
   { label: "Matches", href: routes.matches },
   { label: "Competition", href: routes.competition },
+  { label: "Bracket", href: routes.bracket },
   { label: "Portfolio", href: routes.portfolio },
   { label: "Leaders", href: routes.leaders },
   { label: "Moments", href: routes.moments },

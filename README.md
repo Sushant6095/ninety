@@ -192,6 +192,8 @@ pnpm dev                      # turbo runs web + api + workers
 ./scripts/replay.sh
 ```
 
+The football **context layer** (flags, team names, group tables, the 104-match bracket skeleton, stadiums) is baked from [worldcup26](https://github.com/rezarahiminia/worldcup2026) at build time into `apps/web/src/data/wc26/*.json` — **zero network at runtime** (ADR-051). Re-bake it with `pnpm --filter web wc26:refresh`. TxLINE still owns everything that moves (scores, prices, settlement); worldcup26 only fills in what sits still.
+
 Then read [`CLAUDE.md`](CLAUDE.md) (the laws) and skim [`docs/adr/`](docs/adr/). For the Anchor program: `anchor test` in `programs/omnipitch_core` (localnet). Demo script: [`docs/demo/script.md`](docs/demo/script.md).
 
 ## Team, license, and the play-money disclaimer
@@ -199,6 +201,8 @@ Then read [`CLAUDE.md`](CLAUDE.md) (the laws) and skim [`docs/adr/`](docs/adr/).
 Built for the **TxODDS World Cup Hackathon**, track **Prediction Markets & Settlement** (India Buildathon deadline Jul 13; global track to Jul 19).
 
 **License:** [MIT](LICENSE) — open source, use it freely. Contributions welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+**Credits:** live scores, prices, and settlement proofs from **TxLINE / TxODDS**. Static World Cup context — flags, team names, group tables, the bracket skeleton, and stadiums — from [**worldcup26**](https://github.com/rezarahiminia/worldcup2026) by Reza Rahiminia ([ISC](https://opensource.org/license/isc-license-txt)), baked at build time and never called at runtime.
 
 **Play-money, and it is locked.** Ninety uses credits with no cash value. There are no deposits, no withdrawals, and no cash payouts anywhere in the system — that is a design invariant, not a setting. Product copy never uses gambling vocabulary; the constraint is enforced in code, down to a filter on the AI Booth's output (ADR-039).
 
