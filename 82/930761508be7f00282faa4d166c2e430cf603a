@@ -1,0 +1,23 @@
+docs/adr/ADR-051-wc26-context-layer-txline-owns-movement.md
+  s_6ab41d7b0271b9::t_42ef8fb92e4f98 1-12
+design/DECISIONS.md
+  s_6ab41d7b0271b9::t_7ed273d4ca361a 7
+CLAUDE.md
+  s_6ab41d7b0271b9::t_f674746983f7f7 19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "82930761508be7f00282faa4d166c2e430cf603a",
+  "prompts": {},
+  "sessions": {
+    "s_6ab41d7b0271b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a5538f3a-206a-4aef-b98c-32f9c1580643",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
