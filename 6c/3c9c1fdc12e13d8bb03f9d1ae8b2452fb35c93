@@ -1,0 +1,21 @@
+docs/adr/ADR-050-consumer-layer-one-appshell-contract.md
+  s_6ab41d7b0271b9::t_d6a09671c1f2d6 1-11
+design/DECISIONS.md
+  s_6ab41d7b0271b9::t_75d7ae11f07801 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "6c3c9c1fdc12e13d8bb03f9d1ae8b2452fb35c93",
+  "prompts": {},
+  "sessions": {
+    "s_6ab41d7b0271b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a5538f3a-206a-4aef-b98c-32f9c1580643",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
