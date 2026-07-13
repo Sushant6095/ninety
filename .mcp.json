@@ -14,6 +14,22 @@
         "shadcn@latest",
         "mcp"
       ]
+    },
+    "css-studio": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "cssstudio"
+      ]
+    },
+    "magicui": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@magicuidesign/mcp@latest"
+      ],
+      "env": {}
     }
   }
 }

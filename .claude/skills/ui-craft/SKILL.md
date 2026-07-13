@@ -3,6 +3,36 @@ name: ui-craft
 description: The authoritative skill for ALL frontend work in apps/web — building or refining any screen, component, chart, or micro-interaction for the OMNIPITCH exchange. Use whenever you touch apps/web UI. Owns the subtract-then-elevate principle, the reference blend (Polymarket spine / Hyperliquid feel / Sofascore depth-in-tabs), the Momentum River hero, the screenshot→design-cop loop, the token/motion/library laws, and the definition of done.
 ---
 
+## §0 — THE ROUTER (read FIRST, every time)
+
+**You do not decide which tool to use. You look it up. One row, one tool.** ui-craft is the most
+reliably-triggered skill, so it is the dispatcher. Before building anything, find your row.
+
+| I am building… | Route to | Never |
+|---|---|---|
+| **Generic primitive** — dialog, tabs, tooltip, popover, accordion, hovercard, scroll-area, form | **radix-ui / shadcn MCP** — already installed, already in 7 files. Re-skin to tokens. | Hand-rolling. Re-fetching what you have. |
+| **Animated candy** — tickers, number-rolls, marquees, shimmer, bento, reveals | **magicui MCP** (Framer-based, drops straight in) | Hand-rolling a number ticker |
+| **Finished product surface** — nav, hero, pricing-grade layout | **21st.dev MCP** — **RATE-LIMITED: 2 get_component pulls/day.** Surgical only, for what shadcn + magicui cannot give. | Over-pulling and burning the quota |
+| **Layout accents** | **OriginKit MCP** — skews WebGL demo-ware. Any WebGL piece falls under the 3D quarantine (§7). | Putting an OriginKit shader near the tape |
+| **Interaction feel** — hover, press, focus, "why does this feel cheap" | **emil-design-eng skill** + **framer-motion** | Guessing at easing |
+| **Choreographed sequence** — the halt, celebration, Moment reveal, River draw-on, scrollytelling | **gsap-core/timeline/scrolltrigger/react skills** → GSAP via `src/lib/gsap.ts` (ADR-052) | framer-motion for multi-step timelines |
+| **UI state motion** — enter/exit, layout, tick-flash | **framer-motion** | GSAP for simple state |
+| **Page choreography** | **page-load-animations skill** | Everything appearing at once |
+| **Any chart** | **dataviz skill FIRST**, then **lightweight-charts** | Writing a chart blind |
+| **Any image** | **next/image**, always, explicit width/height | `<img>`. Zero exceptions. |
+| **Taste / anti-slop check** | **design-taste-frontend skill** | Shipping something that reads AI-generated |
+| **3D / shader** | `/how-it-works` + landing hero ONLY. Lazy-loaded. | Anywhere near a live price |
+| **Football-product structure** — tabs, what a fan expects | **`docs/sofascore-research/`** (29 files). Chrome MCP only to fill a gap it doesn't cover. | Taking their colours (light-mode). Re-scraping. |
+| **Ninety-specific** — MomentumRiver, MatchCard, PriceChip, trade ticket, ProofBadge, Booth | **Hand-build.** No registry has these. | Wasting a search |
+| **Library API question** | **context7 MCP** | Writing the API from memory |
+| **A11y** | **axe-core** (installed) + `a11y-architect` agent | Waiting for design-cop to catch it |
+| **Assembling components** | **frontend-composer** agent | Hand-rolling primitives |
+| **Every screen, last** | **design-cop** → **a11y-architect** → **MotionScore** | "Looks fine" |
+
+**Every non-Ninety component in a diff needs a `design/PROVENANCE.md` row** (Component · Router row · Tool
+called · Searched incl. misses · Sofascore ref · Re-skinned · Shot). No row = not done. `hand-rolled` is legal
+ONLY for the six Ninety pieces, and only with the searches logged. design-cop criterion 12 enforces this.
+
 # ui-craft — the OMNIPITCH frontend law
 
 ## 1. CORE PRINCIPLE — subtract, then elevate
@@ -63,11 +93,18 @@ authority — this skill does NOT restate any value; point components and the ju
 
 ## 7. LIBRARY LAW
 **CORE stack:** Next / React / TypeScript + Tailwind (tokens only) + shadcn/ui (copied in and
-re-skinned to tokens) + **lightweight-charts** (the ONLY chart lib) + **Framer Motion** (the ONLY
-animation lib) + **Lucide** icons + **Sonner** toasts.
+re-skinned to tokens) + **lightweight-charts** (the ONLY chart lib) + **Framer Motion** and **GSAP**
+(the two sanctioned animation libs — see the split below) + **Lucide** icons + **Sonner** toasts.
+- **Two animation libs, one split (ADR-052).** **Framer Motion** for micro-interactions: price flash,
+  number rolls, badge pulse, reveals, sheet/tooltip/dialog enters. **GSAP** for HEAVY choreography:
+  the River stroke draw (DrawSVGPlugin), how-it-works scrollytelling (ScrollTrigger/ScrollSmoother),
+  hero text (SplitText), complex timelines. Both obey the motion tokens — import gsap + useGSAP from
+  **`lib/gsap.ts`** (defaults pinned to the token ease), animate transform/opacity only, honor
+  `prefers-reduced-motion` (`gsap.matchMedia`), and never animate one element with both libs.
 - **Third-party primitives are the DEFAULT for generic UI** — dialog, tabs, tooltip, sheet,
-  command (⌘K), scroll-area, popover, dropdown, accordion. Pull them in (shadcn/ui or the
-  sanctioned 21st.dev source) and **RE-SKIN TO TOKENS**. Hand-building a generic primitive is a
+  command (⌘K), scroll-area, popover, dropdown, accordion. Pull them in from a sanctioned MCP-connected
+  source — **shadcn/ui**, **21st.dev**, or **Magic UI** (`@magicuidesign/mcp`, animated components on
+  framer-motion) — and **RE-SKIN TO TOKENS**. Hand-building a generic primitive is a
   DEFECT. The token law applies to the OUTPUT, not the moment of import — an imported component is
   compliant once its colors, spacing, radius, and motion all trace to the token system.
 - **Hand-build ONLY the Ninety-specific pieces** no library has: the Momentum River, MatchCard,
@@ -75,15 +112,19 @@ animation lib) + **Lucide** icons + **Sonner** toasts.
   generic around them is assembled from re-skinned primitives, never re-invented.
 - **React Flow** is allowed on EXACTLY ONE route — the how-it-works / proof-flow page —
   lazy-loaded, never in the shared bundle (see the `proof-flow-viz` skill).
-- **Spline / WebGL / any 3D is FORBIDDEN in the app** — GPU contention breaks the 150ms
-  tick-to-pixel path, and it reads as demo-ware.
+- **WebGL / 3D is ALLOWED (ADR-053).** `@shadergradient/react` + `@react-three/fiber` + `three`
+  (+ `three-stdlib`, `camera-controls`) are sanctioned for ambient/hero visuals — shader-gradient
+  backdrops, the North Star surface, hero scenes. Discipline (not a ban, but hold it): lazy-load
+  (`next/dynamic`, `ssr:false`), keep it OFF the live trading hot path so the River/tape stay
+  jank-free (MotionScore flagged GPU pressure at B), pause/teardown under `prefers-reduced-motion`
+  and when offscreen, and watch the GPU-layer/texture budget. Spline stays out (proprietary + heavy).
 - **Impeccable is the CI anti-slop gate.** It enforces universal design-quality rules; on any
   conflict, **ui-craft's tokens and the trading-terminal domain WIN** — dark theme, mono numbers,
   and the amber/violet accent tokens are whitelisted as intentional (a financial terminal, not a
   SaaS landing page). Treat an Impeccable failure as a REAL gap to fix UNLESS it flags a
   whitelisted token. Config: `impeccable.config` at repo root.
-- **Banned:** MUI / Chakra / Ant / Mantine, CSS-in-JS runtimes, Lottie, video backgrounds, and
-  any SECOND chart or animation library.
+- **Banned:** MUI / Chakra / Ant / Mantine, CSS-in-JS runtimes, Lottie, video backgrounds, any
+  SECOND chart library, and any animation lib beyond the two sanctioned ones (Framer Motion + GSAP).
 
 ## 8. MICRO-INTERACTIONS — where premium lives
 Small, precise, motion-token-driven: price flash on change; number roll via Framer Motion
