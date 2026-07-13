@@ -22,7 +22,7 @@ export function MatchHeader({ match }: { match: TerminalMatch }) {
         </nav>
         <div className="flex shrink-0 items-center gap-2">
           <span className={`rounded-chip bg-surface px-2 py-1 text-label font-semibold uppercase tracking-[0.1em] ring-1 ring-inset ${status === "HALTED" ? "text-halt ring-halt/40" : "text-lo ring-hairline"}`}>Market {status}</span>
-          <button className="inline-flex items-center gap-1 rounded-chip bg-surface px-2 py-1 text-label text-lo ring-1 ring-inset ring-hairline transition-colors duration-200 hover:text-hi">
+          <button className="inline-flex items-center gap-1 rounded-chip bg-surface px-2 py-1 text-label text-lo outline-none ring-1 ring-inset ring-hairline transition-colors duration-200 hover:text-hi focus-visible:ring-up active:text-hi/70">
             <Star size={12} className="text-up" aria-hidden /> Favourite
           </button>
         </div>

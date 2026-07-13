@@ -46,12 +46,12 @@ export function BigRiver({ match, mark, spark, homeSpark }: { match: TerminalMat
           </div>
         ))}
 
-        <MomentumRiver data={match.spark} up height={300} goalIndex={match.goalIndex} liveValue={latest} secondary={match.homeSpark} secondaryLive={homeLatest} />
+        <MomentumRiver data={spark} up height={300} goalIndex={match.goalIndex} liveValue={latest} secondary={homeSpark} secondaryLive={homeLatest} />
 
         {/* HALT watermark — amber (var(--halt), halts only), stamped over the frozen River. Static: no motion to honor. */}
         {halted && (
           <div className="pointer-events-none absolute inset-0 z-20 grid place-items-center" role="status" aria-live="polite">
-            <div className="absolute inset-0 bg-halt/[0.06]" aria-hidden />
+            <div className="absolute inset-0 bg-halt/5" aria-hidden />
             <div className="relative flex flex-col items-center gap-1 rounded-lg border border-halt/40 bg-bg/70 px-5 py-3 text-center">
               <span className="text-heading font-display font-extrabold uppercase tracking-[0.14em] text-halt">Market halted</span>
               <span className="text-caption text-hi/80">Prices are frozen while the goal is reviewed</span>
