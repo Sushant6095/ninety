@@ -1,0 +1,9 @@
+# GitHub Linguist language stats
+# design/ holds reference material — exported "lock-kit" HTML mockups, screenshots, and
+# token references — not application source. Exclude it so the language breakdown reflects
+# the actual TypeScript (apps/, packages/) + Rust (programs/) codebase, not 3.7 MB of design HTML.
+design/** linguist-vendored
+
+# Belt and braces: any standalone HTML export is a design/doc artifact, never app source
+# (the app is Next.js/TSX — it ships no hand-written .html).
+*.html linguist-vendored
