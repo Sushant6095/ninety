@@ -1,4 +1,5 @@
 "use client";
+import { useMatchLive, TERMINAL_MATCH_ID } from "../live/matchLiveStore";
 import { ATTACK } from "../../lib/terminal";
 
 // Signed attack pressure over the last ~30 windows: positive = away/Egypt (bright ink), negative = home (muted ink).
@@ -11,6 +12,10 @@ const GAP = 2;
 const MAX = Math.max(1, ...BARS.map((v) => Math.abs(v)));
 
 export function AttackMomentum() {
+  // The status word reads from the ONE store — a panel that says LIVE over a halted market is a lie.
+  const live = useMatchLive(TERMINAL_MATCH_ID);
+  const status = live?.status ?? "LIVE";
+  const halted = status === "HALTED";
   const n = BARS.length;
   const barW = (VW - GAP * (n - 1)) / n;
   const mid = VH / 2;
@@ -21,7 +26,7 @@ export function AttackMomentum() {
         <span className="num flex items-center gap-1 text-label tabular-nums text-lo">
           AUS <span aria-hidden className="text-lo">■</span> EGY <span aria-hidden className="text-hi">■</span>
           <span className="text-hairline">·</span>
-          <span className="text-up">LIVE</span>
+          <span className={halted ? "text-halt" : "text-up"}>{status}</span>
         </span>
       </div>
 
@@ -57,7 +62,7 @@ export function AttackMomentum() {
           <span className="text-label font-semibold uppercase tracking-[0.1em] text-hi">
             <span aria-hidden>▶</span> {ATTACK.attacking} attacking
           </span>
-          <span className="num text-label uppercase tracking-[0.1em] text-lo">Ball in play {ATTACK.ballInPlay}</span>
+          <span className="num text-label uppercase tracking-[0.1em] text-lo">Ball in play {live?.minute ?? 0}&#39;</span>
         </div>
       </div>
     </section>

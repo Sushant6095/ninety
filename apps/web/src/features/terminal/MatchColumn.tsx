@@ -10,10 +10,12 @@ import { MatchTabs } from "./MatchTabs";
 import { StateSwitcher, PreMatchPanel, SettledPanel, type MatchView } from "./MatchStates";
 import { HaltBanner } from "../../components/ui/HaltBanner";
 import { TradeSheet } from "../../components/ui/TradeSheet";
-import { useTerminalLive } from "./useTerminalLive";
 import { useHaltSequence, type HaltActions } from "./useHaltSequence";
-import { useMatchLive, setMatchStatus, TERMINAL_MATCH_ID } from "../live/matchLiveStore";
-import { MATCH, POSITIONS, PORTFOLIO, type PositionRow } from "../../lib/terminal";
+import {
+  useMatchLive, setMatchStatus, setScore, repriceMatch, settleSpark, rewindTerminal,
+  TERMINAL_MATCH_ID, MONEY_SHOT,
+} from "../live/matchLiveStore";
+import { MATCH, POSITIONS, PORTFOLIO, GOAL_MINUTE, type PositionRow } from "../../lib/terminal";
 import { quote as lmsrQuote } from "../../lib/lmsr";
 import { fmtCR } from "../../lib/format";
 import type { Outcome } from "../../lib/types";
@@ -25,59 +27,65 @@ const vsFor = (o: Outcome): string => (o === "H" ? MATCH.awayCode : o === "A" ? 
 // Settled-state result (the settle envelope in production). Egypt take it late; the proof posts to devnet.
 const SETTLED_RESULT = { winner: "A" as Outcome, winnerName: "Egypt", scoreLine: "0 – 2", settleSig: "7hNq…devnetAusEgy4kP" };
 
-// ── The halt money-shot — ONE consistent story (the demo's cold open) ─────────────────────────────
-// Ashour's counter at 13': pre-goal the away line (Egypt's win%) sits ~31; the goal reprices it to 55, the score
-// steps 0–0 → 0–1, and the Booth calls it. The pre-halt River seeds FLAT ~31 so the cold open reads pre-goal.
-const AWAY_PRE = 31;
-const AWAY_POST = 55;
+// ── The halt money-shot — ONE consistent story, ONE clock (ADR-055) ───────────────────────────────
+// Australia v Egypt is goalless at 74' and Egypt's win% has been flat ~31 all match. Ashour's counter lands AT
+// the live minute: the market halts, reprices 31 → 55, the score steps 0–0 → 0–1, and the Booth calls it. The
+// choreography writes ONLY to the store, so the header, River, rails, Booth and the / board all step together.
+const { awayPre: AWAY_PRE, awayPost: AWAY_POST } = MONEY_SHOT;
 const BOOTH_DELTA = AWAY_POST - AWAY_PRE; // +24
-const BOOTH_QUOTE = "Ashour's counter — Egypt 31 → 55";
-const GOAL_MINUTE = 13;
-const flatSpark = (base: number): number[] => Array.from({ length: 24 }, (_, i) => Math.round((base + Math.sin(i * 1.1) * 0.9) * 10) / 10);
-const HALT_MARK0: Record<Outcome, number> = { H: 0.48, D: 0.21, A: 0.31 }; // 0–0, Australia (home) narrow favourite
-const HALT_SPARK_A = flatSpark(31); // Egypt win% — flat pre-goal
-const HALT_SPARK_H = flatSpark(48); // Australia context trace
+const BOOTH_QUOTE = `Ashour's counter — Egypt ${AWAY_PRE} → ${AWAY_POST}`;
 
-/** Center trading column — owns the live tick, the selected outcome, AND the optimistic trade store: a confirmed
- *  order updates positions + free credits locally and reconciles on the fill frame (here: applied immediately;
- *  the reject path — insufficient credits / oversell — surfaces a Sonner toast). Badges read this one source. */
+/** Center trading column — owns the selected outcome AND the optimistic trade store: a confirmed order updates
+ *  positions + free credits locally and reconciles on the fill frame (here: applied immediately; the reject path
+ *  — insufficient credits / oversell — surfaces a Sonner toast). Every live number reads from the ONE store. */
 export function MatchColumn() {
-  const { mark, spark, homeSpark, freeze: freezeTicks, repriceCells, settleChart } = useTerminalLive(HALT_MARK0, HALT_SPARK_A, HALT_SPARK_H);
+  const live = useMatchLive(TERMINAL_MATCH_ID);
+  const view: MatchView = live?.status ?? "LIVE";
+  const mark = live?.prices ?? MONEY_SHOT.prices;
+  const spark = live?.spark ?? [];
+  const homeSpark = live?.homeSpark ?? [];
+  const minute = live?.minute ?? MONEY_SHOT.minute;
+  const score = live?.score ?? { home: 0, away: 0 };
+
   const [selected, setSelected] = useState<Outcome>("A");
-  // Status is the SSOT — read from the ONE store so header, switcher, MarketStatus and the board all agree.
-  const view: MatchView = useMatchLive(TERMINAL_MATCH_ID)?.status ?? "LIVE";
   const [positions, setPositions] = useState<PositionRow[]>(() => POSITIONS.filter((p) => p.marketId === MATCH.matchId));
   const [free, setFree] = useState(PORTFOLIO.free);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [replayBusy, setReplayBusy] = useState(false);
-  const [awayScore, setAwayScore] = useState(0); // 0–0 pre-goal; steps to 0–1 as Ashour's counter lands on the cliff
+
+  // Δ vs open — derived from the store, never seeded, so the cells can't claim a move the price didn't make.
+  const open = live?.openPrices ?? MONEY_SHOT.prices;
+  const todayDelta = useMemo(
+    () => ({ H: (mark.H - open.H) * 100, D: (mark.D - open.D) * 100, A: (mark.A - open.A) * 100 }) as Record<Outcome, number>,
+    [mark, open],
+  );
 
   // The Tier-0 halt money-shot — one GSAP timeline scoped to this section, driven off the data-halt hooks its
-  // children render. The callbacks only flip the market view + push the split reprice; GSAP owns all the travel.
+  // children render. The callbacks only write to the store; GSAP owns all the travel.
   const sectionRef = useRef<HTMLElement>(null);
   const haltActions = useMemo<HaltActions>(
     () => ({
-      reset: () => { setMatchStatus(TERMINAL_MATCH_ID, "LIVE"); freezeTicks(true); repriceCells(AWAY_PRE); settleChart(AWAY_PRE); setAwayScore(0); },
-      halt: () => setMatchStatus(TERMINAL_MATCH_ID, "HALTED"),
-      land: () => { repriceCells(AWAY_POST); setAwayScore(1); },
-      settle: () => settleChart(AWAY_POST),
-      resume: () => { setMatchStatus(TERMINAL_MATCH_ID, "LIVE"); freezeTicks(false); },
+      reset: rewindTerminal, // back to the known opening frame: 74', 0–0, Egypt flat at 31
+      halt: () => setMatchStatus(TERMINAL_MATCH_ID, "HALTED"), // freezes the clock, the River and the prices
+      land: () => { repriceMatch(TERMINAL_MATCH_ID, "A", AWAY_POST); setScore(TERMINAL_MATCH_ID, { home: 0, away: 1 }); },
+      settle: () => settleSpark(TERMINAL_MATCH_ID), // the canvas catches up after the SVG cliff has drawn on
+      resume: () => setMatchStatus(TERMINAL_MATCH_ID, "LIVE"),
       busy: setReplayBusy,
     }),
-    [freezeTicks, repriceCells, settleChart],
+    [],
   );
   const { replay } = useHaltSequence(sectionRef, haltActions);
 
-  // Header override — the money-shot story: minute 13', Ashour's goal, score 0–0 → 0–1, status LIVE/HALTED.
+  // The header restates the store — the scorer line appears only once the score actually says a goal exists.
   const headerLive = useMemo(
     () => ({
-      score: { home: 0, away: awayScore },
-      minute: GOAL_MINUTE,
-      phase: "1ST HALF",
-      scorer: awayScore > 0 ? "ASHOUR ← HAFEZ 13'" : "",
-      status: view === "HALTED" ? "HALTED" : "LIVE",
+      score,
+      minute,
+      phase: live?.phase ?? MONEY_SHOT.phase,
+      scorer: score.away > 0 ? `ASHOUR ← HAFEZ ${GOAL_MINUTE}'` : "",
+      status: view,
     }),
-    [awayScore, view],
+    [score, minute, live?.phase, view],
   );
 
   const heldShares: Partial<Record<Outcome, number>> = {};
@@ -137,6 +145,7 @@ export function MatchColumn() {
         mark={mark}
         spark={spark}
         homeSpark={homeSpark}
+        minute={minute}
         onReplay={replay}
         replayBusy={replayBusy}
         boothQuote={BOOTH_QUOTE}
@@ -156,7 +165,7 @@ export function MatchColumn() {
           <div data-halt="dim">
             <PriceCells
               mark={mark}
-              todayDelta={MATCH.todayDelta}
+              todayDelta={todayDelta}
               codes={{ H: MATCH.homeCode, A: MATCH.awayCode }}
               selected={selected}
               onSelect={setSelected}

@@ -1,9 +1,25 @@
+"use client";
+import { useMatchLiveList } from "../live/matchLiveStore";
 import { MOVERS } from "../../lib/terminal";
+import type { Outcome } from "../../lib/types";
 
 const fmtDelta = (n: number): string => (n >= 0 ? "+" : "−") + Math.abs(n).toFixed(1);
 
-/** Today's movers — biggest Δ vs open across the R32 board (right rail, bottom). */
+/** Today's movers — biggest Δ vs open across the R32 board (right rail, bottom). Price and Δ are read from the
+ *  ONE store and re-sorted every beat, so Ashour's counter visibly throws EGY to the top of this list while
+ *  AUS drops to the bottom. A movers list off a fixture is a movers list that never moves. */
 export function TodaysMovers() {
+  const live = useMatchLiveList();
+  const by = new Map(live.map((m) => [m.matchId, m]));
+
+  const rows = MOVERS.map((m) => {
+    const s = by.get(m.matchId);
+    if (!s) return m; // not on the live slate — show its seeded opening price, never a zero
+    const o: Outcome = m.outcome;
+    const price = s.prices[o] * 100;
+    return { ...m, price, delta: price - s.openPrices[o] * 100 };
+  }).sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta));
+
   return (
     <section className="elev rounded-card border border-hairline/70 bg-surface">
       <div className="flex items-center justify-between px-4 pt-3 pb-2">
@@ -11,7 +27,7 @@ export function TodaysMovers() {
         <span className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Δ vs open</span>
       </div>
       <ul className="px-2 pb-2">
-        {MOVERS.map((m) => (
+        {rows.map((m) => (
           <li key={`${m.code}-${m.vs}`}>
             <a
               href="/match"

@@ -3,6 +3,7 @@ import { RotateCcw } from "lucide-react";
 import { MomentumRiver } from "../../components/ui/MomentumRiver";
 import { LivePrice } from "../../components/ui/LivePrice";
 import { BoothLine } from "./BoothLine";
+import { FULL_TIME } from "../live/matchLiveStore";
 import type { TerminalMatch } from "../../lib/terminal";
 import type { Outcome } from "../../lib/types";
 
@@ -11,6 +12,7 @@ interface BigRiverProps {
   mark: Record<Outcome, number>;
   spark: number[];
   homeSpark: number[];
+  minute: number; // the live match minute — where the River's trace ENDS (it can never draw past this)
   onReplay: () => void; // fire the halt money-shot again
   replayBusy: boolean; // gate the button while the timeline runs
   boothQuote: string; // the reactive Booth call, bound to the real before→after away-win%
@@ -21,13 +23,22 @@ interface BigRiverProps {
  *  PLUS the Tier-0 halt choreography's DOM overlays (flash / sweep / wash / cliff glyph — all outside the chart
  *  canvas), the spread indicator, and the persistent Booth line. Reuses the one lightweight-charts River
  *  (ADR-045); the overlays are absolutely-positioned chrome driven by the GSAP timeline via their data-halt hooks. */
-export function BigRiver({ match, mark, spark, homeSpark, onReplay, replayBusy, boothQuote, boothDelta }: BigRiverProps) {
-  const latest = spark[spark.length - 1];
-  const homeLatest = homeSpark[homeSpark.length - 1];
-  const tags: { key: Outcome; label: string; cls: string; pos: string }[] = [
-    { key: "A", label: match.awayCode, cls: "text-up ring-up/30 bg-up/10", pos: "top-2" },
-    { key: "D", label: "DRW", cls: "text-lo ring-hairline bg-bg/70", pos: "top-1/2 -translate-y-1/2" },
-    { key: "H", label: match.homeCode, cls: "text-down ring-down/30 bg-down/10", pos: "bottom-2" },
+// Where a win-% value lands inside the chart box, as a % from the top. lightweight-charts insets the plot by its
+// default 10% price-scale margins, so 100 sits at 10.4% and 0 at 89.5%. Tags, the y-axis ticks and the SVG cliff
+// all map through this ONE function — that is why the AUS badge sits exactly on the AUS line, and why the cliff
+// (31 → 55) lands on the canvas it is drawn over.
+const PLOT_TOP = 10.4; // y% of value 100
+const PLOT_BOT = 89.5; // y% of value 0
+const yFor = (v: number): number => PLOT_BOT - (v / 100) * (PLOT_BOT - PLOT_TOP);
+
+export function BigRiver({ match, mark, spark, homeSpark, minute, onReplay, replayBusy, boothQuote, boothDelta }: BigRiverProps) {
+  // Where the trace ends on the 0–90' axis. The NOW line and the minute label both hang off this one number,
+  // so they cannot drift from the series the chart actually drew.
+  const nowPct = Math.min(100, Math.max(0, (minute / FULL_TIME) * 100));
+  const tags: { key: Outcome; label: string; cls: string }[] = [
+    { key: "A", label: match.awayCode, cls: "text-up ring-up/30 bg-up/10" },
+    { key: "D", label: "DRW", cls: "text-lo ring-hairline bg-bg/70" },
+    { key: "H", label: match.homeCode, cls: "text-down ring-down/30 bg-down/10" },
   ];
 
   return (
@@ -52,22 +63,30 @@ export function BigRiver({ match, mark, spark, homeSpark, onReplay, replayBusy, 
       </div>
 
       <div className="relative">
-        {/* y-axis ticks */}
-        <div className="num pointer-events-none absolute inset-y-0 left-0 z-10 flex flex-col justify-between py-3 text-label text-lo">
-          <span>75</span><span>50</span><span>25</span>
+        {/* y-axis ticks — placed at their true heights, not spread evenly, so 50 really is the halfway line */}
+        <div className="num pointer-events-none absolute inset-0 left-0 z-10 text-label text-lo">
+          {[75, 50, 25].map((v) => (
+            <span key={v} className="absolute left-0 -translate-y-1/2" style={{ top: `${yFor(v)}%` }}>{v}</span>
+          ))}
         </div>
 
-        {/* outcome tags on the right edge — all driven off the live mark so badge == price cell == trade price */}
+        {/* outcome tags on the right edge — driven off the live mark so badge == price cell == trade price, and
+            parked at the HEIGHT of their own trace, so the AUS badge can never float above the AUS line */}
         {tags.map((t) => (
-          <div key={t.key} className={`num pointer-events-none absolute right-1 z-20 flex items-center gap-1 rounded px-1 py-0.5 text-label font-semibold ring-1 ring-inset ${t.cls} ${t.pos}`}>
+          <div
+            key={t.key}
+            className={`num pointer-events-none absolute right-1 z-20 flex -translate-y-1/2 items-center gap-1 rounded px-1 py-0.5 text-label font-semibold ring-1 ring-inset ${t.cls}`}
+            style={{ top: `${yFor(mark[t.key] * 100)}%` }}
+          >
             <span className="text-label opacity-80">{t.label}</span>
             <LivePrice value={mark[t.key] * 100} />
           </div>
         ))}
 
-        {/* the River itself — pre-goal flat ~31 on a FIXED 0–100 axis; muted to ~0.6 under the amber wash while frozen */}
+        {/* the River itself — pre-goal flat ~31 on a FIXED 0–100 price axis and a FIXED 0–90' time axis, so the
+            trace ends at the live minute and the rest of the match stays honest, empty space (ADR-055). */}
         <div data-halt="chart">
-          <MomentumRiver data={spark} up height={300} liveValue={latest} secondary={homeSpark} secondaryLive={homeLatest} yRange={[0, 100]} />
+          <MomentumRiver data={spark} up height={300} secondary={homeSpark} yRange={[0, 100]} totalMinutes={FULL_TIME} />
         </div>
 
         {/* ── Halt choreography overlays (DOM only — never inside the chart canvas). Hidden until the GSAP timeline runs. ── */}
@@ -82,14 +101,24 @@ export function BigRiver({ match, mark, spark, homeSpark, onReplay, replayBusy, 
         </svg>
         <div data-halt="flash" aria-hidden className="pointer-events-none invisible absolute inset-0 z-30 bg-halt opacity-0" />
         <div data-halt="sweep" aria-hidden className="pointer-events-none invisible absolute inset-y-0 left-0 z-30 w-1/3 bg-halt/50 opacity-0 blur-sm" />
-        {/* the goal glyph — Ashour's counter at 13'; reveals ON the cliff (the goal being scored), matches the header step */}
+        {/* the goal glyph — Ashour's counter; reveals ON the cliff (the goal being scored), matches the header step */}
         <div data-halt="cliff" aria-hidden className="num pointer-events-none invisible absolute right-[14%] top-7 z-30 flex items-center gap-1 rounded-md border border-up/50 bg-bg/90 px-2 py-1 text-label font-semibold uppercase tracking-wide text-hi opacity-0">
           {match.goalLabel}
         </div>
+
+        {/* the NOW line — sits exactly where the trace ends, so the chart and the match clock are visibly one thing */}
+        <div aria-hidden className="pointer-events-none absolute inset-y-0 z-10 w-px bg-hairline" style={{ left: `${nowPct}%` }} />
       </div>
 
-      <div className="num mt-1 flex items-center justify-between px-4 text-label text-lo">
-        <span>0&#39;</span><span>HT</span><span>50&#39;</span><span>90&#39;</span>
+      {/* x-axis = real match time. Three labels on a 0–90 axis: HT is the exact midpoint, so they land true. */}
+      <div className="num relative mt-1 h-4 text-label text-lo">
+        <span className="absolute left-0">0&#39;</span>
+        <span className="absolute left-1/2 -translate-x-1/2">HT</span>
+        <span className="absolute right-0">90&#39;</span>
+        {/* the live minute rides the NOW line — suppressed near the fixed labels so they never collide */}
+        {minute > 8 && minute < 84 && Math.abs(minute - 45) > 5 && (
+          <span className="absolute -translate-x-1/2 font-semibold text-hi" style={{ left: `${nowPct}%` }}>{minute}&#39;</span>
+        )}
       </div>
 
       {/* spread indicator — widens on the halt, walks back to normal as liquidity returns (transform-only) */}

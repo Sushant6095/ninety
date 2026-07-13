@@ -3,7 +3,7 @@ import Link from "next/link";
 import { MomentumRiver } from "../../components/ui/MomentumRiver";
 import { Flag } from "../../components/ui/Flag";
 import { LivePrice } from "../../components/ui/LivePrice";
-import { useMatchLive } from "../live/matchLiveStore";
+import { useMatchLive, FULL_TIME } from "../live/matchLiveStore";
 import { routes } from "../../lib/routes";
 import type { MarketRow, Outcome } from "../../lib/types";
 
@@ -27,7 +27,6 @@ export function FeaturedPanel({ market }: { market: MarketRow }) {
   const halted = live?.status === "HALTED";
   const lead: Outcome = mk.H >= mk.D && mk.H >= mk.A ? "H" : mk.A >= mk.D ? "A" : "D";
   const rising = spark.length > 1 && spark[spark.length - 1] >= spark[0];
-  const latest = spark[spark.length - 1];
 
   return (
     <section className="elev-hi overflow-hidden rounded-card border border-hairline/70 bg-surface">
@@ -54,7 +53,8 @@ export function FeaturedPanel({ market }: { market: MarketRow }) {
       </div>
 
       <div className="px-1">
-        <MomentumRiver data={market.spark} up={rising} height={108} goalIndex={13} liveValue={latest} />
+        {/* the live spark, not the fixture's — and on the match-time axis, so it ends at the live minute */}
+        <MomentumRiver data={spark} up={rising} height={108} totalMinutes={FULL_TIME} />
       </div>
 
       <div className="grid grid-cols-3 gap-1 px-3 pt-1">

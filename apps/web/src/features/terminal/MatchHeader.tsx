@@ -2,23 +2,20 @@ import { Star } from "lucide-react";
 import { Flag } from "../../components/ui/Flag";
 import type { TerminalMatch } from "../../lib/terminal";
 
-interface LiveOverride {
-  score?: { home: number; away: number };
-  minute?: number;
-  phase?: string;
-  scorer?: string; // "" hides the scorer line (pre-goal)
-  status?: string; // "LIVE" | "HALTED" …
+interface MatchLive {
+  score: { home: number; away: number };
+  minute: number;
+  phase: string;
+  scorer: string; // "" hides the scorer line (pre-goal)
+  status: string; // "LIVE" | "HALTED" …
 }
 
 /** Center header for the selected market — breadcrumb, both sides with FIFA/group meta, live score + status.
- *  `live` overrides the fixture so the halt choreography can tell ONE consistent story: minute 13', Ashour's goal,
- *  score 0–0 → 0–1 as the cliff lands, and the market status flipping to HALTED and back. */
-export function MatchHeader({ match, live }: { match: TerminalMatch; live?: LiveOverride }) {
-  const score = live?.score ?? match.score;
-  const minute = live?.minute ?? match.minute;
-  const phase = live?.phase ?? match.phase;
-  const scorer = live?.scorer ?? match.scorer;
-  const status = live?.status ?? match.status;
+ *  `live` is REQUIRED and comes straight from the store: there is deliberately no fixture fallback, because a
+ *  fallback is how the header ends up narrating a different minute than the River (ADR-055). `match` holds only
+ *  the still parts — names, badges, venue. */
+export function MatchHeader({ match, live }: { match: TerminalMatch; live: MatchLive }) {
+  const { score, minute, phase, scorer, status } = live;
   return (
     <div className="border-b border-hairline px-4 py-3">
       <div className="mb-3 flex items-center justify-between gap-2">
