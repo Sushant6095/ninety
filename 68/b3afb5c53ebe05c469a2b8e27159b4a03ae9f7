@@ -1,0 +1,116 @@
+.agents/skills/design-taste-frontend/SKILL.md
+  s_6ab41d7b0271b9::t_b0602bd95401bd 1-1206
+.mcp.json
+  s_6ab41d7b0271b9::t_0de88ab4019fa1 17-23
+  s_6ab41d7b0271b9::t_c579c971756fbb 24-32,35
+.agents/skills/review-animations/STANDARDS.md
+  s_6ab41d7b0271b9::t_e565733c4264dd 1-188
+apps/web/.gemini/settings.json
+  s_6ab41d7b0271b9::t_2e43c1c174066c 1-11
+.claude/skills/ui-craft/SKILL.md
+  s_d96f6ff4022f43::t_f71261bed89fcb 6-35
+  s_6ab41d7b0271b9::t_f5194f00a10072 96-103
+  s_6ab41d7b0271b9::t_c932e3fb655790 115-120
+  s_6ab41d7b0271b9::t_2aa429e77f648d 126-127
+  s_6ab41d7b0271b9::t_f9fb43d7044cc0 105-107
+.agents/skills/emil-design-eng/SKILL.md
+  s_6ab41d7b0271b9::t_e565733c4264dd 1-679
+.agents/skills/improve-animations/SKILL.md
+  s_6ab41d7b0271b9::t_e565733c4264dd 1-101
+.agents/skills/excalidraw-diagram/SKILL.md
+  s_6ab41d7b0271b9::t_4a8a57508907ad 1-552
+.agents/skills/improve-animations/AUDIT.md
+  s_6ab41d7b0271b9::t_e565733c4264dd 1-116
+apps/web/config/mcporter.json
+  s_6ab41d7b0271b9::t_2e43c1c174066c 1-11
+.claude/skills/studio/SKILL.md
+  s_6ab41d7b0271b9::t_0de88ab4019fa1 1-138
+.claude/settings.json
+  s_d96f6ff4022f43::t_392aff1dd12859 16,20,22,26,28,31,34
+.agents/skills/improve-animations/PLAN-TEMPLATE.md
+  s_6ab41d7b0271b9::t_e565733c4264dd 1-73
+apps/web/opencode.json
+  s_6ab41d7b0271b9::t_2e43c1c174066c 1-14
+.claude/agents/design-cop.md
+  s_d96f6ff4022f43::t_c0fd81111adc50 42-48
+  s_d96f6ff4022f43::t_dd0d814d42aaa0 11
+  s_6ab41d7b0271b9::t_9735b72e0bbed5 27-29
+  s_6ab41d7b0271b9::t_c239106fc5096b 23-26
+.gitignore
+  s_e6fe919b4d8a67::t_3469bbb0f2f249 4
+.claude/prompts/4-frontend/WORLDCUP-CONTEXT-LAYER.md
+  s_6ab41d7b0271b9::t_b2e2b58740e57f 1-106
+.agents/skills/apple-design/SKILL.md
+  s_6ab41d7b0271b9::t_e565733c4264dd 1-282
+.agents/skills/animation-vocabulary/SKILL.md
+  s_6ab41d7b0271b9::t_e565733c4264dd 1-173
+apps/web/.vscode/mcp.json
+  s_6ab41d7b0271b9::t_2e43c1c174066c 1-11
+.agents/skills/review-animations/SKILL.md
+  s_6ab41d7b0271b9::t_e565733c4264dd 1-112
+apps/web/.codex/config.toml
+  s_6ab41d7b0271b9::t_2e43c1c174066c 1-3
+.agents/skills/studio/SKILL.md
+  s_6ab41d7b0271b9::t_0de88ab4019fa1 1-138
+skills-lock.json
+  s_6ab41d7b0271b9::t_4a8a57508907ad 28-33
+  s_6ab41d7b0271b9::t_b0602bd95401bd 1-3,16-20,45-47
+  s_6ab41d7b0271b9::t_e565733c4264dd 4-15,21-27,34-44
+apps/web/.zed/settings.json
+  s_6ab41d7b0271b9::t_2e43c1c174066c 1-13
+scripts/ui/capture-halt.mjs
+  s_d96f6ff4022f43::t_a0d84d7221db73 6,9-10
+  s_d96f6ff4022f43::t_8a87065d0b2562 1-5,7-8,11-34,36-48
+  s_d96f6ff4022f43::t_4b52934ef9b805 35
+.claude/skills/animation-vocabulary
+  s_6ab41d7b0271b9::t_f08ca372c8b1a6 1
+.claude/skills/apple-design
+  s_6ab41d7b0271b9::t_ff773ffa51da84 1
+.claude/skills/design-taste-frontend
+  s_6ab41d7b0271b9::t_b78a07d9944790 1
+.claude/skills/emil-design-eng
+  s_6ab41d7b0271b9::t_90559f43eeea4a 1
+.claude/skills/excalidraw-diagram
+  s_6ab41d7b0271b9::t_fa7a96938fafdf 1
+.claude/skills/improve-animations
+  s_6ab41d7b0271b9::t_599529e50821ae 1
+.claude/skills/review-animations
+  s_6ab41d7b0271b9::t_fa6b405048243b 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "68b3afb5c53ebe05c469a2b8e27159b4a03ae9f7",
+  "prompts": {},
+  "humans": {
+    "h_c7c0b86c89dccd": {
+      "author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  },
+  "sessions": {
+    "s_6ab41d7b0271b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a5538f3a-206a-4aef-b98c-32f9c1580643",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_d96f6ff4022f43": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ef778a23-a6af-4e5a-b061-dd5cb2891442",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
