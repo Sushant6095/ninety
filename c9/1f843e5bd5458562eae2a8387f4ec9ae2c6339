@@ -1,0 +1,23 @@
+design/PROVENANCE.md
+  s_d96f6ff4022f43::t_6ec77ce945596d 1-10
+  s_d96f6ff4022f43::t_2e9ad05fddcbe9 11-13
+design/BLUEPRINT.md
+  s_d96f6ff4022f43::t_d0b6fd681031d0 1-5,9-13,15-17,19-20,26-29,31,33,36,40,43,47,51,58,62,80,82,101-104,108-110,112-113,116,137-139,141-144
+  s_d96f6ff4022f43::t_c574ef29c30854 6-8,14,18,21-25,30,32,34-35,37-39,41-42,44-46,48-50,52-57,59-61,63-79,81,83-100,105-107,111,114-115,117-136,140
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "c91f843e5bd5458562eae2a8387f4ec9ae2c6339",
+  "prompts": {},
+  "sessions": {
+    "s_d96f6ff4022f43": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ef778a23-a6af-4e5a-b061-dd5cb2891442",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
