@@ -1,0 +1,20 @@
+README.md
+  s_e6fe919b4d8a67::t_f4097d18322e26 22-48
+  s_e6fe919b4d8a67::t_78f1fe830c2b3e 145
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "321b25ab2cdf8cb97c4f35bde66ef6ec11358b12",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
