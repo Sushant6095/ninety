@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     q: "What do the prices mean?",
-    a: "Each price is the market's live read of an outcome, from 0 to 100 — not odds. A price of 63 means the market rates that outcome at 63%. A winning share settles at 100 credits, so buying below the true chance is the edge.",
+    a: "Each price is the market's live read of an outcome, from 0 to 100 — a live probability, not a fixed line. A price of 63 means the market rates that outcome at 63%. A winning share settles at 100 credits, so buying below the true chance is the edge.",
   },
 ];
 

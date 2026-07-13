@@ -43,7 +43,7 @@ export function TerminalHeader({ user }: { user: SessionUser }) {
       <div className="mx-auto flex h-14 max-w-[1600px] items-center gap-3 px-4 sm:gap-5 sm:px-6">
         <Link href={routes.home} aria-label="Ninety — home" className="group inline-flex shrink-0 items-center gap-2">
           <span className="font-display text-heading font-extrabold leading-none tracking-[-0.03em] text-hi transition-opacity duration-200 group-hover:opacity-80">Ninety</span>
-          <span className="num rounded-md bg-surface px-1 py-0.5 text-label font-semibold uppercase leading-none tracking-[0.1em] text-lo ring-1 ring-inset ring-hairline">Terminal</span>
+          <span className="num rounded-md bg-surface px-1 py-0.5 text-label font-semibold uppercase leading-none tracking-[0.1em] text-lo ring-1 ring-inset ring-hairline">{path === "/" ? "WC26" : "Terminal"}</span>
         </Link>
 
         <button

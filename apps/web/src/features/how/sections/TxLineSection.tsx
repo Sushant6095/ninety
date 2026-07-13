@@ -2,14 +2,14 @@ import { Activity, Radio, ShieldCheck, ArrowRight } from "lucide-react";
 import { Section } from "./Section";
 
 const PROVIDES = [
-  { icon: Activity, title: "Consensus odds", body: "A live, book-consensus price for every outcome — the fair-value signal Ninety's LMSR market prices against." },
+  { icon: Activity, title: "Consensus prices", body: "A live, book-consensus price for every outcome — the fair-value signal Ninety's LMSR market prices against." },
   { icon: Radio, title: "Live scores", body: "Score events the instant they happen, including the game_finalised record that decides the result." },
   { icon: ShieldCheck, title: "Cryptographic proofs", body: "A Merkle stat-validation bundle for each score — the proof Solana verifies on-chain to settle." },
 ];
 
 // The real client surface (packages/txline) — the tech-doc endpoint list.
 const ENDPOINTS = [
-  { id: "O3", path: "/api/odds/stream", use: "live consensus odds (SSE) → LMSR price" },
+  { id: "O3", path: "/api/odds/stream", use: "live consensus prices (SSE) → LMSR price" },
   { id: "S3", path: "/api/scores/stream", use: "live goals (SSE) → the River + halts" },
   { id: "S1", path: "/api/scores/snapshot/:fixture", use: "point-in-time score + gap recovery" },
   { id: "S4", path: "/api/scores/stat-validation", use: "Merkle proof bundle → on-chain validateStat" },

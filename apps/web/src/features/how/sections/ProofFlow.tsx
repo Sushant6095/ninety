@@ -43,7 +43,7 @@ function PFNode({ data }: NodeProps) {
 const nodeTypes = { pf: PFNode };
 
 const NODES: Node[] = [
-  { id: "feed", type: "pf", position: { x: 0, y: 40 }, data: { label: "TxLINE feed", sub: "consensus odds + live scores", kind: "off", icon: Radio } },
+  { id: "feed", type: "pf", position: { x: 0, y: 40 }, data: { label: "TxLINE feed", sub: "consensus prices + live scores", kind: "off", icon: Radio } },
   { id: "score", type: "pf", position: { x: 232, y: 40 }, data: { label: "Score event", sub: "game_finalised at full time", kind: "off", icon: Flag } },
   { id: "proof", type: "pf", position: { x: 464, y: 40 }, data: { label: "Stat-validation", sub: "Merkle proof of the goals", kind: "off", icon: FileCheck2 } },
   { id: "chain", type: "pf", position: { x: 696, y: 40 }, data: { label: "validateStatV2", sub: "verified on Solana", kind: "chain", icon: Cpu } },

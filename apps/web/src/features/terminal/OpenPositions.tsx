@@ -22,7 +22,7 @@ export function OpenPositions() {
           <li key={p.marketId}>
             <a
               href={`/match/${p.marketId}`}
-              className="flex min-h-[36px] items-center gap-2 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/25 focus-visible:bg-hairline/25 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-hairline"
+              className="flex min-h-[44px] items-center gap-2 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/25 focus-visible:bg-hairline/25 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-hairline"
             >
               <Flag code={p.code} size={20} />
               <span className="min-w-0">
