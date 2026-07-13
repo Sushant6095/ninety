@@ -1,0 +1,34 @@
+apps/web/src/features/terminal/TerminalHeader.tsx
+  s_6ab41d7b0271b9::t_03e372db8d145b 21
+apps/web/src/features/competition/GroupTable.tsx
+  s_6ab41d7b0271b9::t_abd32c7f805997 1-64
+apps/web/src/app/competition/page.tsx
+  s_6ab41d7b0271b9::t_a113ed58707250 1-6
+apps/web/src/features/competition/CompetitionPage.tsx
+  s_6ab41d7b0271b9::t_c420ad89b5376d 1-25
+apps/web/src/features/home/Footer.tsx
+  s_6ab41d7b0271b9::t_72c3ba26feddc6 1-2,6-22
+README.md
+  s_6ab41d7b0271b9::t_ca650a342fd928 195-196
+  s_6ab41d7b0271b9::t_7e4b6ca6685d33 205
+  s_6ab41d7b0271b9::t_287b94979a4d48 206
+apps/web/src/lib/routes.ts
+  s_6ab41d7b0271b9::t_f9fc387f7d23cd 29
+  s_6ab41d7b0271b9::t_2d1bb844cbd85b 5-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "7a9b6a5c02a1a0c69190b8b3a8a5125cf6d6d0af",
+  "prompts": {},
+  "sessions": {
+    "s_6ab41d7b0271b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a5538f3a-206a-4aef-b98c-32f9c1580643",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
