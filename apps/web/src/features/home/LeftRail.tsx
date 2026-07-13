@@ -1,8 +1,32 @@
+"use client";
 import Link from "next/link";
 import { RailCard } from "../../components/ui/RailCard";
 import { Flag } from "../../components/ui/Flag";
 import { routes } from "../../lib/routes";
 import { MARKETS } from "../../lib/fixtures";
+import { useMatchLive } from "../live/matchLiveStore";
+import type { MarketRow } from "../../lib/types";
+
+/** A followed-match row — identity from the seed, minute/score from the ONE store. */
+function MyMatchRow({ market }: { market: MarketRow }) {
+  const live = useMatchLive(market.matchId);
+  const minute = live?.minute ?? market.minute;
+  const score = live?.score ?? market.score;
+  const halted = live?.status === "HALTED";
+  return (
+    <li>
+      <Link
+        href={routes.match(market.matchId)}
+        className="flex items-center gap-2 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/30"
+      >
+        <span className="text-up">★</span>
+        <span className="text-body font-medium text-hi">{market.homeCode} – {market.awayCode}</span>
+        {minute != null && <span className={`num ml-auto text-label ${halted ? "text-halt" : "text-up"}`}>{minute}&#39;</span>}
+        {score && <span className={`num text-caption font-medium text-hi ${minute == null ? "ml-auto" : ""}`}>{score.home}-{score.away}</span>}
+      </Link>
+    </li>
+  );
+}
 
 const STAGES = [
   { name: "Round of 16", sub: "Live now · Jul 4–6", count: 8, live: true },
@@ -26,17 +50,7 @@ export function LeftRail() {
       <RailCard label="My matches">
         <ul>
           {MARKETS.filter((m) => m.favourite).map((m) => (
-            <li key={m.matchId}>
-              <Link
-                href={routes.match(m.matchId)}
-                className="flex items-center gap-2 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/30"
-              >
-                <span className="text-up">★</span>
-                <span className="text-body font-medium text-hi">{m.homeCode} – {m.awayCode}</span>
-                <span className="num ml-auto text-label text-up">{m.minute}&#39;</span>
-                <span className="num text-caption font-medium text-hi">{m.score?.home}-{m.score?.away}</span>
-              </Link>
-            </li>
+            <MyMatchRow key={m.matchId} market={m} />
           ))}
         </ul>
       </RailCard>

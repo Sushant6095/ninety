@@ -12,6 +12,7 @@ import { HaltBanner } from "../../components/ui/HaltBanner";
 import { TradeSheet } from "../../components/ui/TradeSheet";
 import { useTerminalLive } from "./useTerminalLive";
 import { useHaltSequence, type HaltActions } from "./useHaltSequence";
+import { useMatchLive, setMatchStatus, TERMINAL_MATCH_ID } from "../live/matchLiveStore";
 import { MATCH, POSITIONS, PORTFOLIO, type PositionRow } from "../../lib/terminal";
 import { quote as lmsrQuote } from "../../lib/lmsr";
 import { fmtCR } from "../../lib/format";
@@ -43,7 +44,8 @@ const HALT_SPARK_H = flatSpark(48); // Australia context trace
 export function MatchColumn() {
   const { mark, spark, homeSpark, freeze: freezeTicks, repriceCells, settleChart } = useTerminalLive(HALT_MARK0, HALT_SPARK_A, HALT_SPARK_H);
   const [selected, setSelected] = useState<Outcome>("A");
-  const [view, setView] = useState<MatchView>("LIVE");
+  // Status is the SSOT — read from the ONE store so header, switcher, MarketStatus and the board all agree.
+  const view: MatchView = useMatchLive(TERMINAL_MATCH_ID)?.status ?? "LIVE";
   const [positions, setPositions] = useState<PositionRow[]>(() => POSITIONS.filter((p) => p.marketId === MATCH.matchId));
   const [free, setFree] = useState(PORTFOLIO.free);
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -55,11 +57,11 @@ export function MatchColumn() {
   const sectionRef = useRef<HTMLElement>(null);
   const haltActions = useMemo<HaltActions>(
     () => ({
-      reset: () => { setView("LIVE"); freezeTicks(true); repriceCells(AWAY_PRE); settleChart(AWAY_PRE); setAwayScore(0); },
-      halt: () => setView("HALTED"),
+      reset: () => { setMatchStatus(TERMINAL_MATCH_ID, "LIVE"); freezeTicks(true); repriceCells(AWAY_PRE); settleChart(AWAY_PRE); setAwayScore(0); },
+      halt: () => setMatchStatus(TERMINAL_MATCH_ID, "HALTED"),
       land: () => { repriceCells(AWAY_POST); setAwayScore(1); },
       settle: () => settleChart(AWAY_POST),
-      resume: () => { setView("LIVE"); freezeTicks(false); },
+      resume: () => { setMatchStatus(TERMINAL_MATCH_ID, "LIVE"); freezeTicks(false); },
       busy: setReplayBusy,
     }),
     [freezeTicks, repriceCells, settleChart],
@@ -141,7 +143,7 @@ export function MatchColumn() {
         boothDelta={BOOTH_DELTA}
       />
 
-      <StateSwitcher view={view} onChange={setView} />
+      <StateSwitcher view={view} onChange={(v) => setMatchStatus(TERMINAL_MATCH_ID, v)} />
 
       {view === "SETTLED" ? (
         <SettledPanel

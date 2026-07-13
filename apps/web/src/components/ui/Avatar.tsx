@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface AvatarProps {
   handle: string;
   size?: number; // px
@@ -5,7 +7,7 @@ interface AvatarProps {
 }
 
 /** Real photo avatar (deterministic per handle via pravatar seed) over an initials fallback that shows while
- *  loading or if the image fails. Plain <img> — external CDN, no optimization needed. */
+ *  loading or if the image fails. next/image (host allow-listed in next.config) with explicit dimensions. */
 export function Avatar({ handle, size = 32, className = "" }: AvatarProps) {
   const seed = encodeURIComponent(handle.replace(/^@/, "").toLowerCase());
   const initials = handle.replace(/^@/, "").slice(0, 2).toUpperCase();
@@ -18,8 +20,7 @@ export function Avatar({ handle, size = 32, className = "" }: AvatarProps) {
         {initials}
       </span>
       {/* impeccable-disable broken-image -- src is a runtime pravatar URL; renders a real photo, not a placeholder */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={`https://i.pravatar.cc/${size * 2}?u=${seed}`} alt="" width={size} height={size} loading="lazy" decoding="async" className="relative h-full w-full object-cover" />
+      <Image src={`https://i.pravatar.cc/${size * 2}?u=${seed}`} alt="" width={size} height={size} loading="lazy" className="relative h-full w-full object-cover" />
     </span>
   );
 }

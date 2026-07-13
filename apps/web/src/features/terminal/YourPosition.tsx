@@ -1,5 +1,5 @@
 "use client";
-import { LivePrice } from "../home/LiveMarkets";
+import { LivePrice } from "../../components/ui/LivePrice";
 
 interface YourPositionProps {
   code: string; // held outcome's code, e.g. "EGY"

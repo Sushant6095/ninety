@@ -1,7 +1,7 @@
 "use client";
 import { RotateCcw } from "lucide-react";
 import { MomentumRiver } from "../../components/ui/MomentumRiver";
-import { LivePrice } from "../home/LiveMarkets";
+import { LivePrice } from "../../components/ui/LivePrice";
 import { BoothLine } from "./BoothLine";
 import type { TerminalMatch } from "../../lib/terminal";
 import type { Outcome } from "../../lib/types";

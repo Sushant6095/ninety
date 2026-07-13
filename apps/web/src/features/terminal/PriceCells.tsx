@@ -1,5 +1,5 @@
 "use client";
-import { LivePrice } from "../home/LiveMarkets";
+import { LivePrice } from "../../components/ui/LivePrice";
 import type { Outcome } from "../../lib/types";
 
 const LABEL: Record<Outcome, string> = { H: "Home", D: "Draw", A: "Away" };

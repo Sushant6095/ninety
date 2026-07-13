@@ -6,6 +6,27 @@ import { Flag } from "./Flag";
 import { Avatar } from "./Avatar";
 import { MARKETS, LEADERS } from "../../lib/fixtures";
 import { routes, NAV } from "../../lib/routes";
+import { useMatchLive } from "../../features/live/matchLiveStore";
+import type { MarketRow } from "../../lib/types";
+
+/** ⌘K match result — identity from the seed row, live minute from the ONE store. */
+function MatchCommandItem({ market, onSelect }: { market: MarketRow; onSelect: () => void }) {
+  const live = useMatchLive(market.matchId);
+  const minute = live?.minute ?? market.minute;
+  const halted = live?.status === "HALTED";
+  return (
+    <Command.Item
+      value={`${market.home} ${market.away} ${market.homeCode} ${market.awayCode}`}
+      onSelect={onSelect}
+      className="flex cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-body text-hi data-[selected=true]:bg-hairline/60"
+    >
+      <Flag code={market.homeCode} size={18} />
+      <Flag code={market.awayCode} size={18} />
+      <span className="truncate">{market.home} <span className="text-lo">v</span> {market.away}</span>
+      {minute != null && <span className={`num ml-auto text-label font-semibold ${halted ? "text-halt" : "text-up"}`}>{minute}&#39;</span>}
+    </Command.Item>
+  );
+}
 
 /** ⌘K command palette — cmdk re-skinned to Ninety tokens. Searches matches, traders, and pages; navigates on
  *  select. cmdk owns the fuzzy filter + keyboard nav; we own the skin (surface card, hairlines, no glass/blur). */
@@ -34,17 +55,7 @@ export function CommandMenu({ open, onOpenChange }: { open: boolean; onOpenChang
 
         <Command.Group heading="Matches">
           {MARKETS.map((m) => (
-            <Command.Item
-              key={m.matchId}
-              value={`${m.home} ${m.away} ${m.homeCode} ${m.awayCode}`}
-              onSelect={() => go(routes.match(m.matchId))}
-              className="flex cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-body text-hi data-[selected=true]:bg-hairline/60"
-            >
-              <Flag code={m.homeCode} size={18} />
-              <Flag code={m.awayCode} size={18} />
-              <span className="truncate">{m.home} <span className="text-lo">v</span> {m.away}</span>
-              {m.minute != null && <span className="num ml-auto text-label font-semibold text-up">{m.minute}&#39;</span>}
-            </Command.Item>
+            <MatchCommandItem key={m.matchId} market={m} onSelect={() => go(routes.match(m.matchId))} />
           ))}
         </Command.Group>
 
