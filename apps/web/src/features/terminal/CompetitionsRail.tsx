@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { Flag } from "../../components/ui/Flag";
-import { LivePrice } from "../home/LiveMarkets";
+import { LivePrice } from "../../components/ui/LivePrice";
 import { routes } from "../../lib/routes";
 import { TERM_MARKETS, type TermMarketRow } from "../../lib/terminal";
 import type { Outcome } from "../../lib/types";

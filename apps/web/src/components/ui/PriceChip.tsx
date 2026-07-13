@@ -1,5 +1,5 @@
 "use client";
-import { LivePrice } from "../../features/home/LiveMarkets";
+import { LivePrice } from "./LivePrice";
 
 interface PriceChipProps {
   label: string; // "H" | "D" | "A"

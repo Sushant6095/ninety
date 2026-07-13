@@ -3,16 +3,13 @@ import { useState, type ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { motion as m } from "../../design/motion";
 import { MatchList } from "./MatchList";
+import { useMatchLiveList, type MatchStatus } from "../live/matchLiveStore";
 import type { MarketRow } from "../../lib/types";
 
 type FilterKey = "live" | "upcoming" | "finished";
 
-// Real predicates over market status — the filter chips actually partition the slate.
-const isLive = (mk: MarketRow): boolean => mk.status === "LIVE" || mk.status === "HALTED";
-const isUpcoming = (mk: MarketRow): boolean => mk.status === "OPEN" || mk.status === "SCHEDULED";
-const isFinished = (mk: MarketRow): boolean => mk.status === "SETTLED" || mk.status === "VOIDED" || mk.status === "RESOLVING";
-
-const MATCHES: Record<FilterKey, (m: MarketRow) => boolean> = { live: isLive, upcoming: isUpcoming, finished: isFinished };
+// The filter chip a match belongs to, derived from its ONE-store lifecycle status (never the seed row).
+const CATEGORY: Record<MatchStatus, FilterKey> = { LIVE: "live", HALTED: "live", PRE: "upcoming", SETTLED: "finished" };
 const EMPTY_COPY: Record<FilterKey, string> = {
   live: "No live matches right now.",
   upcoming: "No upcoming matches on today’s slate.",
@@ -40,12 +37,15 @@ export function CenterColumn({ markets, children }: CenterColumnProps) {
   const [filter, setFilter] = useState<FilterKey>("live");
   const reduce = useReducedMotion();
 
+  const statusById = new Map(useMatchLiveList().map((s) => [s.matchId, s.status]));
+  const catOf = (m: MarketRow): FilterKey => CATEGORY[statusById.get(m.matchId) ?? "PRE"];
+
   const counts: Record<FilterKey, number> = {
-    live: markets.filter(isLive).length,
-    upcoming: markets.filter(isUpcoming).length,
-    finished: markets.filter(isFinished).length,
+    live: markets.filter((m) => catOf(m) === "live").length,
+    upcoming: markets.filter((m) => catOf(m) === "upcoming").length,
+    finished: markets.filter((m) => catOf(m) === "finished").length,
   };
-  const filtered = markets.filter(MATCHES[filter]);
+  const filtered = markets.filter((m) => catOf(m) === filter);
 
   return (
     <div className="elev min-w-0 rounded-card border border-hairline/70 bg-surface">

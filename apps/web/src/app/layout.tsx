@@ -4,6 +4,7 @@ import { Archivo, Inter, IBM_Plex_Mono } from "next/font/google";
 import { OfflineBanner } from "../components/ui/OfflineBanner";
 import { PrototypeRibbon } from "../components/ui/PrototypeRibbon";
 import { Toaster } from "../components/ui/Toaster";
+import { MatchLiveProvider } from "../features/live/MatchLiveProvider";
 
 // Self-hosted via next/font — reliable render (no FOUT / no system-font fallback that reads as "AI default").
 const archivo = Archivo({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-display", display: "swap" });
@@ -21,7 +22,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <PrototypeRibbon />
         <OfflineBanner />
-        {children}
+        <MatchLiveProvider>{children}</MatchLiveProvider>
         <Toaster />
       </body>
     </html>

@@ -10,7 +10,7 @@ import { MatchTabs } from "./MatchTabs";
 import { StateSwitcher, PreMatchPanel, HaltCallout, SettledPanel, type MatchView } from "./MatchStates";
 import { HaltBanner } from "../../components/ui/HaltBanner";
 import { TradeSheet } from "../../components/ui/TradeSheet";
-import { useTerminalLive } from "./useTerminalLive";
+import { useMatchLive, setMatchStatus, TERMINAL_MATCH_ID } from "../live/matchLiveStore";
 import { MATCH, POSITIONS, PORTFOLIO, type PositionRow } from "../../lib/terminal";
 import { quote as lmsrQuote } from "../../lib/lmsr";
 import { fmtCR } from "../../lib/format";
@@ -28,9 +28,13 @@ const HALT_REASON = "Egypt think they've doubled the lead — the goal is under 
  *  order updates positions + free credits locally and reconciles on the fill frame (here: applied immediately;
  *  the reject path — insufficient credits / oversell — surfaces a Sonner toast). Badges read this one source. */
 export function MatchColumn() {
-  const { mark, spark, homeSpark } = useTerminalLive(MATCH.mark, MATCH.spark, MATCH.homeSpark);
+  // Status · score · minute · prices all flow from the ONE store — never local state or fixtures.
+  const live = useMatchLive(TERMINAL_MATCH_ID);
+  const mark = live?.prices ?? { H: 0, D: 0, A: 0 };
+  const spark = live?.spark ?? [];
+  const homeSpark = live?.homeSpark ?? [];
+  const view: MatchView = live?.status ?? "LIVE";
   const [selected, setSelected] = useState<Outcome>("A");
-  const [view, setView] = useState<MatchView>("LIVE");
   const [positions, setPositions] = useState<PositionRow[]>(() => POSITIONS.filter((p) => p.marketId === MATCH.matchId));
   const [free, setFree] = useState(PORTFOLIO.free);
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -88,7 +92,7 @@ export function MatchColumn() {
       <BigRiver match={MATCH} mark={mark} spark={spark} homeSpark={homeSpark} />
 
       {view === "HALTED" && <HaltBanner reason="Goal under VAR review — prices frozen" />}
-      <StateSwitcher view={view} onChange={setView} />
+      <StateSwitcher view={view} onChange={(v) => setMatchStatus(TERMINAL_MATCH_ID, v)} />
 
       {view === "SETTLED" ? (
         <SettledPanel

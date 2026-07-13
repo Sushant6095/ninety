@@ -2,18 +2,20 @@
 import Link from "next/link";
 import { ArrowUpRight, ArrowDownRight } from "lucide-react";
 import { Flag } from "../../components/ui/Flag";
-import { LivePrice, useLiveMarkets } from "./LiveMarkets";
+import { LivePrice } from "../../components/ui/LivePrice";
+import { useMatchLiveList } from "../live/matchLiveStore";
 import { routes } from "../../lib/routes";
 import { MARKETS } from "../../lib/fixtures";
 
 const MOVER_COUNT = 4;
+const MARKET_BY_ID = new Map(MARKETS.map((m) => [m.matchId, m])); // identity join — the store holds live values, not team codes
 
-/** Biggest live price swings right now — a real exchange metric, recomputed every tick off the live provider. */
+/** Biggest live price swings right now — a real exchange metric, recomputed every tick off the ONE live store. */
 export function TopMovers() {
-  const live = useLiveMarkets() ?? MARKETS;
+  const live = useMatchLiveList();
   const movers = live
-    .filter((m) => m.minute != null && m.mark && m.spark.length > 1)
-    .map((m) => ({ m, delta: m.spark[m.spark.length - 1] - m.spark[0], last: m.spark[m.spark.length - 1] }))
+    .filter((s) => s.status === "LIVE" && s.spark.length > 1 && MARKET_BY_ID.has(s.matchId))
+    .map((s) => ({ row: MARKET_BY_ID.get(s.matchId)!, minute: s.minute, delta: s.spark[s.spark.length - 1] - s.spark[0], last: s.spark[s.spark.length - 1] }))
     .sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta))
     .slice(0, MOVER_COUNT);
 
@@ -27,19 +29,19 @@ export function TopMovers() {
         <span className="font-normal normal-case tracking-normal text-lo/70">live · home price</span>
       </h3>
       <div className="grid grid-cols-2 gap-2 lg:grid-cols-4">
-        {movers.map(({ m, delta, last }) => {
+        {movers.map(({ row, minute, delta, last }) => {
           const up = delta >= 0;
           return (
             <Link
-              key={m.marketId}
-              href={routes.match(m.matchId)}
+              key={row.marketId}
+              href={routes.match(row.matchId)}
               className="elev group flex flex-col gap-2 rounded-card border border-hairline/70 bg-surface p-3 transition-colors duration-200 hover:border-hairline"
             >
               <span className="flex items-center gap-1">
-                <Flag code={m.homeCode} size={18} />
-                <Flag code={m.awayCode} size={18} className="-ml-2" />
-                <span className="num ml-1 text-label text-lo">{m.homeCode}–{m.awayCode}</span>
-                <span className="num ml-auto text-label text-lo">{m.minute}&#39;</span>
+                <Flag code={row.homeCode} size={18} />
+                <Flag code={row.awayCode} size={18} className="-ml-2" />
+                <span className="num ml-1 text-label text-lo">{row.homeCode}–{row.awayCode}</span>
+                <span className="num ml-auto text-label text-lo">{minute}&#39;</span>
               </span>
               <span className="flex items-end justify-between">
                 <LivePrice value={last} className="font-display text-display font-bold leading-none text-hi" />
