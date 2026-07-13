@@ -1,0 +1,19 @@
+.gitattributes
+  s_6ab41d7b0271b9::t_c6059ab1a281d8 1-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "1ca1b32329d433c6db1e4984015f92fdecb1f85c",
+  "prompts": {},
+  "sessions": {
+    "s_6ab41d7b0271b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a5538f3a-206a-4aef-b98c-32f9c1580643",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
