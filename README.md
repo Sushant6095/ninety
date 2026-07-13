@@ -19,6 +19,33 @@
   <img src="https://img.shields.io/badge/TxLINE-live%20on%20devnet-9945FF" alt="TxLINE live">
 </p>
 
+---
+
+## Read this first — the forge finding
+
+We built the whole result path to settle **on-chain, with no admin able to decide a result** — the program settles only by verifying a TxODDS cryptographic proof of the score. Then two adversarial `proof-auditor` passes found something worth stopping the demo for: **TxODDS's own sanctioned settle instruction, `validate_stat_v2`, does not bind finality on-chain.**
+
+The stat leaves carry no `Action`/finality field, and which record is `game_finalised` is chosen off-chain. So a permissionless caller could take a **100%-valid Merkle proof for statKey 1 (home goals) drawn from a mid-match batch where the home side happened to lead** and settle `result = HOME` — even though the match ended a draw or an away win. A wrong-result forge, built entirely from a genuine proof, by choosing the batch/`seq` (ADR-037). An earlier layer — feeding the `home − away` predicate two *swapped* or arbitrary anchored stats — was caught and pinned first (ADR-036).
+
+**Our call: settlement is fail-closed on purpose.** The first line of the handler is `require!(SETTLEMENT_LIVE, …)` with `SETTLEMENT_LIVE = false` — a real revert before any state write, not a sentinel trick. Every other on-chain defense is implemented and reviewed (market↔fixture binding, oracle-program pin, stat-identity pin, one-shot, no-admin-path); the single missing piece is a trustless gate binding the proof to the finalised record. **We will not ship a settle we can prove is forgeable — even in play-money, where no funds are ever at risk.** We filed it back to the sponsor as an open question (settle via `validate_stat_v2` over scores roots + a finality gate, or via txoracle's own resolution-root path?). Full write-up: [The settlement story](#the-settlement-story) · [ADR-036](docs/adr/ADR-036-settle-market-txoracle-cpi-statkey-binding.md) · [ADR-037](docs/adr/ADR-037-settle-statkeys-1-2-game-finalised-failclosed.md).
+
+## By the numbers
+
+Verified against the repo, not estimated.
+
+| | |
+| :--- | :--- |
+| **81** commits | over **7 days** (2026-07-07 → 2026-07-13) |
+| **51** ADRs | every architectural, product, and design call recorded in [`docs/adr/`](docs/adr/) |
+| **257** automated tests pass | 248 TypeScript (vitest, 6 packages) + 9 Python (pytest) |
+| **5 / 5** Anchor tests | on-chain leaderboard claim, localnet |
+| **TxLINE live on devnet** | subscribe → activate → snapshot ran authenticated against a real fixture |
+| **Settlement fail-closed** | on purpose — see the forge finding above |
+
+<sub>`git log --oneline | wc -l` → 81 · `ls docs/adr/ADR-*.md | wc -l` → 51 · first→last commit dates span 7 calendar days.</sub>
+
+---
+
 <p align="center">
   <img src="design/screens/home.png" alt="Ninety — the live match board" width="100%">
 </p>
@@ -115,7 +142,7 @@ sequenceDiagram
 
 ## Architecture
 
-The whole system is decided, not improvised — 47 ADRs in [`docs/adr/`](docs/adr/) record every call. Two laws hold it together: **all inter-service traffic flows through `packages/bus`** (no service calls another directly), and **the engine is the single writer of market state** (journal-then-ack, one logical writer per market).
+The whole system is decided, not improvised — 51 ADRs in [`docs/adr/`](docs/adr/) record every call. Two laws hold it together: **all inter-service traffic flows through `packages/bus`** (no service calls another directly), and **the engine is the single writer of market state** (journal-then-ack, one logical writer per market).
 
 **Every folder answers "which layer am I?"**
 
