@@ -1,0 +1,51 @@
+apps/web/src/features/live/useHaltSequence.ts
+  s_c9a5063cddd265::t_8c214a77a1a232 1-168
+apps/web/src/features/live/matchLiveStore.ts
+  s_c9a5063cddd265::t_7bc8de6b85219f 87-102
+  s_c9a5063cddd265::t_234757a46b16ba 142-144
+  s_c9a5063cddd265::t_dcb4389311fe8d 150,156-157
+  s_c9a5063cddd265::t_49d75e0934bf93 209-214
+  s_c9a5063cddd265::t_1e537639ae1ea9 158
+apps/web/src/features/home/RightRail.tsx
+  s_c9a5063cddd265::t_d60cc464aef9b2 59-61,63-64,66
+  s_c9a5063cddd265::t_bd53a20b75b3e8 1,6,12-13,15-21,24-34
+apps/web/src/features/home/FeaturedPanel.tsx
+  s_c9a5063cddd265::t_dbad1801113c98 2,7-10,14-17,19,26-32,43-67,69,92-105,108-111
+apps/web/src/styles/globals.css
+  s_c9a5063cddd265::t_21ed406a032958 25-27
+apps/web/src/lib/fixtures.ts
+  s_c9a5063cddd265::t_00f8a3f8184a40 114-116
+apps/web/src/features/home/TopMovers.tsx
+  s_c9a5063cddd265::t_21ed406a032958 29
+apps/web/src/features/home/MatchList.tsx
+  s_c9a5063cddd265::t_21ed406a032958 48,51
+  s_c9a5063cddd265::t_44a53a95d4e600 11-23
+apps/web/src/features/terminal/MatchColumn.tsx
+  s_c9a5063cddd265::t_8c214a77a1a232 13
+  s_c9a5063cddd265::t_09892c253de898 15
+  s_c9a5063cddd265::t_f45b6d1da8c6d0 68
+apps/web/src/features/home/CenterColumn.tsx
+  s_c9a5063cddd265::t_188d97e2509125 56-57,59,63-64,66-67,73
+  s_c9a5063cddd265::t_7741282bb5eeab 108-110,112
+  s_c9a5063cddd265::t_a43c61e8c4c4ca 51-55
+scripts/ui/screenshot.mjs
+  s_c9a5063cddd265::t_be010487b08aa9 53-66
+apps/web/src/features/home/HomeShell.tsx
+  s_c9a5063cddd265::t_85ad74672f120e 24-27,34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "09ac4b176ff83bbe95e2285768c56a7d6a9fa199",
+  "prompts": {},
+  "sessions": {
+    "s_c9a5063cddd265": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "508b2dec-5928-401d-98aa-3611db8a5c1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
