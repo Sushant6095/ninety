@@ -1,0 +1,109 @@
+docs/demo/SCRIPT-5min.md
+  s_6ab41d7b0271b9::t_b0602bd95401bd 1-164
+docs/sofascore-research/architecture.md
+  s_2dcc9bad3cff19::t_a3cee41c3f4d92 1-95
+docs/sofascore-research/components/controls.md
+  s_2dcc9bad3cff19::t_68b96666d0e1f2 1-48
+docs/sofascore-research/screens/team.md
+  s_2dcc9bad3cff19::t_0d20da4669ce6c 1-47
+docs/sofascore-research/components/data-viz.md
+  s_2dcc9bad3cff19::t_8b1a0ce55bd4ad 1-50
+docs/sofascore-research/components/match-list-and-row.md
+  s_2dcc9bad3cff19::t_9ee12d89495d8a 1-70
+docs/sofascore-research/design-system.md
+  s_2dcc9bad3cff19::t_da38ca03b3aa82 1-118
+docs/sofascore-research/screens/responsive.md
+  s_2dcc9bad3cff19::t_7e804269dc7a9e 1-64
+docs/sofascore-research/components/tabs.md
+  s_2dcc9bad3cff19::t_a2874ef5e9f51e 1-55
+CLAUDE.md
+  s_6ab41d7b0271b9::t_b448a099c0d61e 8
+docs/sofascore-research/components/search.md
+  s_2dcc9bad3cff19::t_2e4bbba13e6388 1-49
+docs/sofascore-research/README.md
+  s_2dcc9bad3cff19::t_c9fb449ab641b0 1-29,31-55
+  s_2dcc9bad3cff19::t_80c7c0b70f6665 30
+docs/sofascore-research/screens/search.md
+  s_2dcc9bad3cff19::t_7083f332e84029 1-52
+docs/adr/ADR-052-gsap-second-sanctioned-animation-lib.md
+  s_6ab41d7b0271b9::t_d973d431feebe2 1-13
+docs/adr/ADR-053-webgl-3d-allowed-shadergradient-r3f.md
+  s_6ab41d7b0271b9::t_1fcb6b1622ed85 1-14
+docs/sofascore-research/navigation.md
+  s_2dcc9bad3cff19::t_5f0c5e62ded36f 1-76
+docs/sofascore-research/components/rating-badge.md
+  s_2dcc9bad3cff19::t_0a64207c771ae6 1-66
+docs/sofascore-research/screens/player.md
+  s_2dcc9bad3cff19::t_d9e06e5ee616e2 1-58
+docs/sofascore-research/motion.md
+  s_2dcc9bad3cff19::t_d8617bfe7784a4 1-69
+docs/sofascore-research/components/vote-and-poll.md
+  s_2dcc9bad3cff19::t_afa794717e794f 1-58
+docs/sofascore-research/components/overlays.md
+  s_2dcc9bad3cff19::t_4526040cdebc33 1-56
+docs/sofascore-research/components/surfaces.md
+  s_2dcc9bad3cff19::t_225ae007f40c48 1-51
+docs/sofascore-research/screens/league.md
+  s_2dcc9bad3cff19::t_c27d921a92af43 1-60
+docs/sofascore-research/screens/settings.md
+  s_2dcc9bad3cff19::t_0a8c8fa9dc84c6 1-44
+docs/sofascore-research/colors.md
+  s_2dcc9bad3cff19::t_61c3367d24e758 64
+  s_2dcc9bad3cff19::t_0312cb73767207 1-63,65-103
+docs/sofascore-research/typography.md
+  s_2dcc9bad3cff19::t_1d2f5383d97ec6 1-65
+docs/sofascore-research/screens/match.md
+  s_2dcc9bad3cff19::t_22fd3f61028a28 1-75
+docs/sofascore-research/components/standings-table.md
+  s_2dcc9bad3cff19::t_ac188f348fb3cd 1-55
+docs/sofascore-research/screens/home.md
+  s_2dcc9bad3cff19::t_462d1515b0ec8a 1-74
+docs/sofascore-research/components/score-header.md
+  s_2dcc9bad3cff19::t_73df99efe72bf6 1-58
+docs/adr/inbox.md
+  s_d96f6ff4022f43::t_86dac1f30e71e6 3-19
+docs/sofascore-research/components/README.md
+  s_2dcc9bad3cff19::t_1ded6335e43362 1-30
+docs/sofascore-research/spacing.md
+  s_2dcc9bad3cff19::t_829bb5dd672363 1-62
+docs/sofascore-research/components/filters-and-chips.md
+  s_2dcc9bad3cff19::t_1ec1482a3d2ad8 1-50
+docs/NINETY-DESIGN-LAWS.md
+  s_2dcc9bad3cff19::t_2b37041b30abba 1-215
+docs/sofascore-research/components/incident-timeline.md
+  s_2dcc9bad3cff19::t_52aa3b55564b1e 1-61
+docs/sofascore-research/.claude/trace/actions.jsonl
+  s_6ab41d7b0271b9::t_496b116d9266c5 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "11dd6596b2f7de88c28afd723ca84868c0486121",
+  "prompts": {},
+  "sessions": {
+    "s_2dcc9bad3cff19": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a61e81f3-3de6-4d97-954d-0827d3665af2",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_6ab41d7b0271b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a5538f3a-206a-4aef-b98c-32f9c1580643",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_d96f6ff4022f43": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ef778a23-a6af-4e5a-b061-dd5cb2891442",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
