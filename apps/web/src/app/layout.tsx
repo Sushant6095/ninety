@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import type { Metadata } from "next";
 import { Archivo, Inter, IBM_Plex_Mono } from "next/font/google";
 import { OfflineBanner } from "../components/ui/OfflineBanner";
+import { PrototypeRibbon } from "../components/ui/PrototypeRibbon";
 import { Toaster } from "../components/ui/Toaster";
 
 // Self-hosted via next/font — reliable render (no FOUT / no system-font fallback that reads as "AI default").
@@ -18,6 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${archivo.variable} ${inter.variable} ${plexMono.variable}`}>
       <body>
+        <PrototypeRibbon />
         <OfflineBanner />
         {children}
         <Toaster />
