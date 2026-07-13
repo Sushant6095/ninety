@@ -1,0 +1,76 @@
+apps/web/src/features/terminal/MarketStatus.tsx
+  s_e6fe919b4d8a67::t_73c3bb70d0fc59 1-2,5,14-23,25-26,31-32
+apps/web/src/features/terminal/CompetitionsRail.tsx
+  s_e6fe919b4d8a67::t_901699414b5fa5 4
+apps/web/src/features/home/LeftRail.tsx
+  s_e6fe919b4d8a67::t_9d2782145ea2c9 1,7-29
+  s_e6fe919b4d8a67::t_49153276e3b992 53
+apps/web/src/components/ui/LivePrice.tsx
+  s_e6fe919b4d8a67::t_833dcd3e259ab4 1-24
+apps/web/src/app/page.tsx
+  s_e6fe919b4d8a67::t_7d708f95aebf1e 11-12,15-21
+apps/web/src/features/terminal/YourPosition.tsx
+  s_e6fe919b4d8a67::t_3ace5ba71d6b42 2
+apps/web/src/features/terminal/MatchColumn.tsx
+  s_e6fe919b4d8a67::t_73f7a8de8f7e5e 95
+  s_e6fe919b4d8a67::t_eb52c6ec1e37f2 13
+  s_e6fe919b4d8a67::t_ed854e6f3e8eb8 31-36
+apps/web/src/components/ui/PriceChip.tsx
+  s_e6fe919b4d8a67::t_2f0f30bc100fa5 2
+apps/web/src/app/layout.tsx
+  s_e6fe919b4d8a67::t_bf18ecd7101b8c 25
+  s_e6fe919b4d8a67::t_6c654e72a59980 7
+apps/web/src/features/terminal/MatchHeader.tsx
+  s_e6fe919b4d8a67::t_e4a3c0d37d32f6 24
+  s_e6fe919b4d8a67::t_0f9274d100aeea 42,45-50
+  s_e6fe919b4d8a67::t_75bc619cd93508 1,4,7-8,10-14
+apps/web/src/components/ui/MatchCard.tsx
+  s_e6fe919b4d8a67::t_d7b7bee72cca4d 4
+  s_e6fe919b4d8a67::t_9e9d866c9ed97d 21-22,24-32,36-37,40,45,47-48,57-58,61-62,67-68,71,73,79,84
+apps/web/src/features/home/TopMovers.tsx
+  s_e6fe919b4d8a67::t_2e41369d48b58d 5-6,11,13,15,17-18
+  s_e6fe919b4d8a67::t_d62f1a00ed6198 32,36-37,41-44
+apps/web/src/components/ui/CommandMenu.tsx
+  s_e6fe919b4d8a67::t_9b36478c0cae13 9-29
+  s_e6fe919b4d8a67::t_5c88f3cdda8b48 58
+apps/web/tsconfig.tsbuildinfo
+  s_e6fe919b4d8a67::t_277bd657a6d79c 1
+apps/web/src/features/live/MatchLiveProvider.tsx
+  s_e6fe919b4d8a67::t_b60650f80f675a 1-18
+apps/web/src/features/terminal/BigRiver.tsx
+  s_e6fe919b4d8a67::t_843319bcad3f7d 50-60
+  s_e6fe919b4d8a67::t_6199e5cbb5b78c 3-4,9-10,12
+apps/web/src/features/terminal/PriceCells.tsx
+  s_e6fe919b4d8a67::t_c2e03fb36a21ae 2
+apps/web/src/features/home/FeaturedPanel.tsx
+  s_e6fe919b4d8a67::t_d58e2708196eef 5-6
+  s_e6fe919b4d8a67::t_1e59a5287d95a5 22-27,29-30,35-38,44-45,48,51-52,68
+apps/web/src/components/ui/Avatar.tsx
+  s_e6fe919b4d8a67::t_cfbf33da795f83 1-2,10,23
+apps/web/src/features/home/CenterColumn.tsx
+  s_e6fe919b4d8a67::t_23865ce1de69f9 6,11-12
+  s_e6fe919b4d8a67::t_ae56259e098739 40-42,44-46,48
+apps/web/src/components/ui/Flag.tsx
+  s_e6fe919b4d8a67::t_6a5b41403daadd 1
+  s_e6fe919b4d8a67::t_aafde19fb104e8 11,21
+apps/web/src/features/live/matchLiveStore.ts
+  s_e6fe919b4d8a67::t_0a526231a041e6 1-154
+apps/web/src/features/home/Ticker.tsx
+  s_e6fe919b4d8a67::t_9b2bdb9e29822e 4-6,8-15,17-33,35-36,44-45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "3b7478a07cdf666858e8fd8a2fa14e38eddb1db1",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
