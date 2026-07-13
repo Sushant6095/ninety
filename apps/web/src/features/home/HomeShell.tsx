@@ -21,14 +21,17 @@ export function HomeShell({ markets, children }: HomeShellProps) {
       <Ticker />
       <TerminalHeader user={SESSION} />
       <main className="mx-auto grid w-full max-w-[1600px] flex-1 grid-cols-1 items-start gap-3 px-4 py-3 sm:px-6 xl:grid-cols-[280px_minmax(0,1fr)_340px]">
-        <div className="hidden xl:block">
+        {/* Both rails PIN. Their content is ~1000px and the centre column scrolls to ~2200, so unpinned they died
+            at 46% of the page and left a third of the board as two empty gutters. Sticky keeps the Featured
+            money-shot and the settlement panel in view for the whole scroll. */}
+        <div className="hidden xl:block xl:sticky xl:top-3">
           <LeftRail />
         </div>
         <div className="min-w-0">
           {markets[0] && <MobileFeatured market={markets[0]} />}
           <CenterColumn markets={markets}>{children}</CenterColumn>
         </div>
-        <div className="hidden xl:block">
+        <div className="hidden xl:block xl:sticky xl:top-3">
           <RightRail />
         </div>
       </main>

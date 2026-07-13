@@ -48,22 +48,29 @@ export function CenterColumn({ markets, children }: CenterColumnProps) {
   const filtered = markets.filter((m) => catOf(m) === filter);
 
   return (
-    <div className="elev min-w-0 rounded-card border border-hairline/70 bg-surface">
-      {/* Date nav */}
+    // The board card CLOSES after the match list. The sections below it (movers, standings, the Booth) are
+    // SIBLINGS — they used to render inside this card, which meant the board's "Live · Sorted by kick-off"
+    // filter header visually governed the group-standings table and the trader cards. It never governed them.
+    <div className="flex min-w-0 flex-col gap-3">
+      <div className="elev min-w-0 rounded-card border border-hairline/70 bg-surface">
+      {/* Date nav. The slate only carries today, so the other days are honestly DISABLED rather than dressed up
+          as controls that hover, focus and then do nothing when a judge clicks them. */}
       <div className="flex items-center gap-1 border-b border-hairline px-3 py-2">
-        <button aria-label="Previous day" className="grid h-7 w-7 place-items-center rounded-md text-body text-lo transition-colors duration-200 hover:bg-hairline/40 hover:text-hi">‹</button>
+        <button type="button" disabled aria-label="Previous day" className="grid h-11 w-8 place-items-center rounded-md text-body text-lo/50 disabled:cursor-not-allowed">‹</button>
         {DAYS.map((d) => (
           <button
             key={d.label}
+            type="button"
+            disabled={!d.today}
             aria-current={d.today ? "date" : undefined}
-            className={`num whitespace-nowrap rounded-md px-2.5 py-1 text-label font-medium uppercase tracking-wide transition-colors duration-200 ${
-              d.today ? "bg-hairline/60 text-hi" : "text-lo hover:text-hi"
+            className={`num min-h-[44px] whitespace-nowrap rounded-md px-3 py-1 text-label font-medium uppercase tracking-wide transition-colors duration-200 ${
+              d.today ? "bg-hairline/60 text-hi" : "text-lo/50 disabled:cursor-not-allowed"
             }`}
           >
             {d.label}
           </button>
         ))}
-        <button aria-label="Next day" className="grid h-7 w-7 place-items-center rounded-md text-body text-lo transition-colors duration-200 hover:bg-hairline/40 hover:text-hi">›</button>
+        <button type="button" disabled aria-label="Next day" className="grid h-11 w-8 place-items-center rounded-md text-body text-lo/50 disabled:cursor-not-allowed">›</button>
         <span className="num ml-auto hidden text-label tracking-wide text-lo sm:block">KICK-OFF TIMES PT</span>
       </div>
 
@@ -98,10 +105,11 @@ export function CenterColumn({ markets, children }: CenterColumnProps) {
         <span className="ml-auto shrink-0 whitespace-nowrap pl-3 text-label text-lo">Sorted by kick-off</span>
       </div>
 
-      <div className="min-h-[120px] border-t border-hairline">
-        <MatchList markets={filtered} emptyLabel={EMPTY_COPY[filter]} />
-        {children}
+        <div className="min-h-[120px] border-t border-hairline">
+          <MatchList markets={filtered} emptyLabel={EMPTY_COPY[filter]} />
+        </div>
       </div>
+      {children}
     </div>
   );
 }

@@ -69,7 +69,6 @@ export const MARKETS: MarketRow[] = [
   mkt({ hc: "DEN", ac: "SWE", comp: "World Cup — Round of 16", ko: "2026-07-05T23:30:00Z", min: null, mark: [0.47, 0.28, 0.25], from: 47, to: 47, vol: 6400 }),
   mkt({ hc: "POL", ac: "GHA", comp: "World Cup — Round of 16", ko: "2026-07-06T01:30:00Z", min: null, mark: [0.61, 0.23, 0.16], from: 60, to: 61, vol: 5200 }),
   // ── Group stage · final round ───────────────────────────────────────────────
-  mkt({ hc: "EGY", ac: "CPV", comp: "World Cup — Group stage", stage: "Group F", ko: "2026-07-04T21:00:00Z", min: 70, score: [1, 1], mark: [0.4, 0.3, 0.3], from: 31, to: 40, vol: 18200 }),
   mkt({ hc: "PAR", ac: "NOR", comp: "World Cup — Group stage", stage: "Group E", ko: "2026-07-06T03:00:00Z", min: null, mark: [0.3, 0.28, 0.42], from: 45, to: 44, vol: 5200 }),
   mkt({ hc: "KSA", ac: "ECU", comp: "World Cup — Group stage", stage: "Group H", ko: "2026-07-06T05:00:00Z", min: null, mark: [0.33, 0.3, 0.37], from: 40, to: 40, vol: 2900 }),
   mkt({ hc: "CRC", ac: "TUN", comp: "World Cup — Group stage", stage: "Group I", ko: "2026-07-06T06:30:00Z", min: null, mark: [0.45, 0.27, 0.28], from: 46, to: 45, vol: 3100 }),
@@ -112,7 +111,9 @@ export const LEADERS: LeaderRow[] = [
 ];
 
 export const NEWS: NewsItem[] = [
-  { id: "n1", tag: "WORLD CUP", title: "Canada hold the 1–0 as Morocco pile on late pressure", when: "6m ago" },
+  // No score in this headline: the featured match's score STEPS live when the halt lands, and a fixture that
+  // names a scoreline is a fixture that will contradict the board the moment it does.
+  { id: "n1", tag: "WORLD CUP", title: "Morocco pile on late pressure at BMO Field — Canada sitting deep", when: "6m ago" },
   { id: "n2", tag: "MOMENTS", title: "The 38th minute: David's goal repriced CAN from 41 → 63", when: "22m ago" },
   { id: "n3", tag: "SETTLEMENT", title: "England 3–1 Australia settled on-chain — proof posted to devnet", when: "1h ago" },
   { id: "n4", tag: "MARKETS", title: "Spain vs Japan is today's most-traded market at 231.8k CR", when: "2h ago" },

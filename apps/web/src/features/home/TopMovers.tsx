@@ -26,7 +26,7 @@ export function TopMovers() {
       <h3 className="mb-2 flex items-center gap-2 text-label font-semibold uppercase tracking-[0.1em] text-lo">
         Biggest movers
         <span className="h-1 w-1 rounded-full bg-up shadow-[0_0_5px_var(--up)]" />
-        <span className="font-normal normal-case tracking-normal text-lo/70">live · home price</span>
+        <span className="font-normal normal-case tracking-normal text-lo">live · home price</span>
       </h3>
       <div className="grid grid-cols-2 gap-2 lg:grid-cols-4">
         {movers.map(({ row, minute, delta, last }) => {

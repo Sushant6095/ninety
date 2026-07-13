@@ -10,9 +10,9 @@ import { MatchTabs } from "./MatchTabs";
 import { StateSwitcher, PreMatchPanel, SettledPanel, type MatchView } from "./MatchStates";
 import { HaltBanner } from "../../components/ui/HaltBanner";
 import { TradeSheet } from "../../components/ui/TradeSheet";
-import { useHaltSequence, type HaltActions } from "./useHaltSequence";
+import { useHaltSequence, type HaltActions } from "../live/useHaltSequence";
 import {
-  useMatchLive, setMatchStatus, setScore, repriceMatch, settleSpark, rewindTerminal,
+  useMatchLive, setMatchStatus, setScore, repriceMatch, settleSpark, rewindMatch,
   TERMINAL_MATCH_ID, MONEY_SHOT,
 } from "../live/matchLiveStore";
 import { MATCH, POSITIONS, PORTFOLIO, GOAL_MINUTE, type PositionRow } from "../../lib/terminal";
@@ -65,7 +65,7 @@ export function MatchColumn() {
   const sectionRef = useRef<HTMLElement>(null);
   const haltActions = useMemo<HaltActions>(
     () => ({
-      reset: rewindTerminal, // back to the known opening frame: 74', 0–0, Egypt flat at 31
+      reset: () => rewindMatch(TERMINAL_MATCH_ID), // back to the known opening frame: 74', 0–0, Egypt flat at 31
       halt: () => setMatchStatus(TERMINAL_MATCH_ID, "HALTED"), // freezes the clock, the River and the prices
       land: () => { repriceMatch(TERMINAL_MATCH_ID, "A", AWAY_POST); setScore(TERMINAL_MATCH_ID, { home: 0, away: 1 }); },
       settle: () => settleSpark(TERMINAL_MATCH_ID), // the canvas catches up after the SVG cliff has drawn on

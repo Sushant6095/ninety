@@ -1,20 +1,37 @@
+"use client";
 import Link from "next/link";
 import { RailCard } from "../../components/ui/RailCard";
 import { Avatar } from "../../components/ui/Avatar";
 import { FeaturedPanel } from "./FeaturedPanel";
+import { useMatchLiveList } from "../live/matchLiveStore";
 import { routes } from "../../lib/routes";
 import { LEADERS, MARKETS } from "../../lib/fixtures";
 
 const fmtPnl = (n: number): string => (n >= 0 ? "+" : "−") + Math.abs(n).toLocaleString("en-US");
 const TOP_TRADERS = 5; // the rail shows the leaders' head; the full board lives at /leaderboard
+const STARTING_SOON = 3;
+const HOUR = 3600_000;
 
-const STARTING = [
-  { code: "ENG – SEN", venue: "R16 · Foxborough", inLabel: "in 1h 40m", matchId: "wc26-eng-sen" },
-  { code: "GER – COL", venue: "R16 · Houston", inLabel: "in 4h 40m", matchId: "wc26-ger-col" },
-  { code: "BRA – USA", venue: "R16 · Los Angeles", inLabel: "in 7h 40m", matchId: "wc26-bra-usa" },
-];
+const MARKET_BY_ID = new Map(MARKETS.map((m) => [m.matchId, m]));
+
+/** "in 1h 40m" until kick-off, measured from the slate's own clock (the earliest kickoff on the board). */
+function untilLabel(kickoffAt: string, from: number): string {
+  const mins = Math.max(0, Math.round((Date.parse(kickoffAt) - from) / 60_000));
+  return mins < 60 ? `in ${mins}m` : `in ${Math.floor(mins / 60)}h ${mins % 60}m`;
+}
 
 export function RightRail() {
+  // Starting soon is DERIVED from the matches the store says are still to kick off. It used to be a hardcoded
+  // array, which drifted: it had Senegal kicking off against England in 1h 40m while Senegal was 41' into a live
+  // match against France on the same board. A rail that invents its own slate will always end up contradicting it.
+  const pre = useMatchLiveList()
+    .filter((s) => s.status === "PRE" && MARKET_BY_ID.has(s.matchId))
+    .map((s) => MARKET_BY_ID.get(s.matchId)!)
+    .sort((a, b) => Date.parse(a.kickoffAt) - Date.parse(b.kickoffAt));
+  // Anchor "now" to the slate itself so the labels never depend on the wall clock the demo happens to run at.
+  const now = pre.length ? Date.parse(pre[0].kickoffAt) - HOUR - 40 * 60_000 : 0;
+  const starting = pre.slice(0, STARTING_SOON);
+
   return (
     <aside className="flex w-full flex-col gap-3">
       <FeaturedPanel market={MARKETS[0]} />
@@ -39,14 +56,14 @@ export function RightRail() {
 
       <RailCard label="Starting soon">
         <ul>
-          {STARTING.map((s) => (
-            <li key={s.matchId}>
-              <Link href={routes.match(s.matchId)} className="flex items-center gap-2 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/30">
+          {starting.map((m) => (
+            <li key={m.matchId}>
+              <Link href={routes.match(m.matchId)} className="flex min-h-[44px] items-center gap-2 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/30">
                 <span className="min-w-0">
-                  <span className="block text-body font-medium text-hi">{s.code}</span>
-                  <span className="block text-label text-lo">{s.venue}</span>
+                  <span className="block text-body font-medium text-hi">{m.homeCode} – {m.awayCode}</span>
+                  <span className="block text-label text-lo">{m.stage}</span>
                 </span>
-                <span className="num ml-auto text-label text-lo">{s.inLabel}</span>
+                <span className="num ml-auto text-label text-lo">{untilLabel(m.kickoffAt, now)}</span>
               </Link>
             </li>
           ))}

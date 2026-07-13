@@ -8,6 +8,19 @@ interface MatchListProps {
   emptyLabel?: string; // shown when the active filter yields no matches
 }
 
+/** The round chip for a group. It used to be the literal string "R16" for EVERY group, so the group-stage
+ *  section proudly wore an R16 badge. Derive it from the stage the matches actually carry. */
+function badgeFor(label: string, first: MarketRow | undefined): string {
+  if (label === "Favourites") return "★";
+  const stage = first?.stage ?? "";
+  if (/^Group/i.test(stage)) return "GRP";
+  if (/Round of 32/i.test(stage)) return "R32";
+  if (/Quarter/i.test(stage)) return "QF";
+  if (/Semi/i.test(stage)) return "SF";
+  if (/Final/i.test(stage)) return "F";
+  return "R16";
+}
+
 /** The center hero — MatchCards grouped by competition (Sofascore structure, Ninety skin). */
 export function MatchList({ markets, emptyLabel = "No matches in this view." }: MatchListProps) {
   const groups: Array<[string, MarketRow[]]> = [];
@@ -32,10 +45,10 @@ export function MatchList({ markets, emptyLabel = "No matches in this view." }: 
         <section key={label}>
           <header className="flex items-center gap-2 border-t border-hairline px-4 py-2 first:border-t-0">
             <span className="grid h-[18px] min-w-[18px] place-items-center rounded bg-bg px-1 text-label font-semibold text-lo ring-1 ring-inset ring-hairline">
-              {label === "Favourites" ? "★" : "R16"}
+              {badgeFor(label, rows[0])}
             </span>
             <h3 className="text-label font-semibold uppercase tracking-[0.1em] text-lo">{label}</h3>
-            <span className="text-label text-lo/70">
+            <span className="text-label text-lo">
               {rows.length} match{rows.length === 1 ? "" : "es"}
             </span>
           </header>

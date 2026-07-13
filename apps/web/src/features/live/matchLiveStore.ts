@@ -84,6 +84,22 @@ function flatTrace(base: number, minutes: number): number[] {
   return Array.from({ length: minutes }, (_, i) => r1(base + Math.sin(i * 0.7) * 0.9));
 }
 
+/** Stretch a fixture's price history onto the minute axis, preserving its SHAPE.
+ *
+ *  The board's mini-sparks autoscale to their own min/max, so seeding them with a synthetic flat trace turns a
+ *  0.9-point wobble into a full-height sawtooth comb — the row reads as violent noise when the market is calm.
+ *  Resampling the real seeded trend keeps each row's story (and its scale) while still ending at the live minute. */
+function resample(src: number[], minutes: number): number[] {
+  if (minutes <= 1 || src.length < 2) return [src[src.length - 1] ?? 0];
+  const last = src.length - 1;
+  return Array.from({ length: minutes }, (_, i) => {
+    const p = (i / (minutes - 1)) * last;
+    const lo = Math.floor(p);
+    const hi = Math.min(last, lo + 1);
+    return r1(src[lo] + (src[hi] - src[lo]) * (p - lo));
+  });
+}
+
 // ── the terminal's money-shot seed (ADR-054/055): ONE story, ONE clock ────────────────────────────────
 // Australia v Egypt sits GOALLESS at 74'. Egypt's win% has been flat ~31 all match. Ashour's counter lands
 // AT the live minute — the market halts, reprices 31 → 55, the score steps 0–0 → 0–1, and the Booth calls
@@ -123,18 +139,22 @@ for (const m of MARKETS) {
     phase: minute == null ? "PRE-MATCH" : minute > 45 ? "2ND HALF" : "1ST HALF",
     prices,
     openPrices: { ...prices },
-    // The board's mini-river tracks the home-win %, on the same minute-indexed axis as the terminal's.
-    spark: minute == null ? m.spark.slice() : flatTrace(prices.H * 100, minute),
+    // The board's mini-river tracks the home-win %, on the same minute-indexed axis as the terminal's — but it
+    // keeps the fixture's real trend shape rather than a synthetic one (see resample).
+    spark: minute == null ? m.spark.slice() : resample(m.spark, minute),
     riverOutcome: "H",
   });
 }
 
 // The terminal's traded market overrides its board row with the money-shot frame — ONE entry, so /terminal
-// and the / board's Featured panel are literally the same object and can never disagree.
+// and the / board are literally reading the same object and can never disagree.
 map.set(MATCH.matchId, moneyShotFrame());
 
 /** The terminal's traded match id — consumers on /terminal read `useMatchLive(TERMINAL_MATCH_ID)`. */
 export const TERMINAL_MATCH_ID = MATCH.matchId;
+
+// The frozen opening frame of every match — what `rewindMatch` restores before a halt choreography replays.
+const seeds = new Map<string, MatchLiveState>([...map].map(([id, s]) => [id, { ...s }]));
 
 // ── subscription ──────────────────────────────────────────────────────────────────────────────────
 const listeners = new Set<() => void>();
@@ -186,9 +206,12 @@ export function settleSpark(matchId: string): void {
   emit();
 }
 
-/** Rewind the terminal match to the money-shot's opening frame, so the halt replays from a known state. */
-export function rewindTerminal(): void {
-  map.set(TERMINAL_MATCH_ID, moneyShotFrame());
+/** Rewind a match to its seeded opening frame, so a halt always replays from a known state (never from wherever
+ *  the drift happened to leave it). Both surfaces' choreographies start here. */
+export function rewindMatch(matchId: string): void {
+  const seed = seeds.get(matchId);
+  if (!seed) return;
+  map.set(matchId, { ...seed, prices: { ...seed.prices }, spark: seed.spark.slice(), homeSpark: seed.homeSpark?.slice() });
   emit();
 }
 

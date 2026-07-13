@@ -21,8 +21,10 @@ body {
 }
 
 /* All numbers are mono + tabular (design law). */
-.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
 .font-display { font-family: var(--font-display); }
+/* .num wins on purpose: a price is a price. Declared AFTER .font-display so `num font-display` (hero numbers
+   that still must be mono, e.g. the movers) resolves to the mono family — design law: ALL numbers are mono. */
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
 
 /* Visible focus ring for keyboard nav (a11y). */
 :focus-visible { outline: 2px solid var(--up); outline-offset: 2px; border-radius: 4px; }

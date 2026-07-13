@@ -50,6 +50,20 @@ async function main() {
       const url = base + route;
       await page.goto(url, { waitUntil: "networkidle" });
       if (settle) await page.waitForTimeout(settle);
+      // Sections wrapped in <Reveal> only appear once an IntersectionObserver fires. A fullPage screenshot never
+      // scrolls, so those sections stay at opacity 0 and the still shows a page that looks half-empty and broken
+      // — the home board lost ~1900px of real content this way. Scroll the page through, then return to the top.
+      if (key !== "sm") {
+        await page.evaluate(async () => {
+          const step = window.innerHeight * 0.8;
+          for (let y = 0; y < document.body.scrollHeight; y += step) {
+            window.scrollTo(0, y);
+            await new Promise((r) => setTimeout(r, 120));
+          }
+          window.scrollTo(0, 0);
+          await new Promise((r) => setTimeout(r, 400));
+        });
+      }
       const path = `${outDir}/${name}.${key}.png`;
       // sm = above-the-fold (viewport) so the phone hero is judged as seen; md/lg/xl = fullPage.
       await page.screenshot({ path, fullPage: key !== "sm" });
