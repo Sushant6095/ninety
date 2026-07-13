@@ -1,0 +1,28 @@
+apps/web/src/features/terminal/OpenPositions.tsx
+  s_6ab41d7b0271b9::t_02b72afdd99c31 25
+apps/web/src/features/how/sections/Faq.tsx
+  s_6ab41d7b0271b9::t_1676fabc71a4ba 25
+apps/web/src/features/how/sections/ProofFlow.tsx
+  s_6ab41d7b0271b9::t_9c00e05d73ba43 46
+apps/web/src/features/how/sections/TxLineSection.tsx
+  s_6ab41d7b0271b9::t_4d6a11048ad018 5
+  s_6ab41d7b0271b9::t_2b97e7dcb5edd9 12
+apps/web/src/features/terminal/TerminalHeader.tsx
+  s_6ab41d7b0271b9::t_0bf01e3a448cd5 46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "6e7737633318004bc88bf9d300e9de46b8346cd9",
+  "prompts": {},
+  "sessions": {
+    "s_6ab41d7b0271b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a5538f3a-206a-4aef-b98c-32f9c1580643",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
