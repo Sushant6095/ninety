@@ -9,7 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "echo lint",
-    "test": "echo 'no tests yet'"
+    "test": "echo 'no tests yet'",
+    "wc26:refresh": "node scripts/fetch-wc26.mjs"
   },
   "dependencies": {
     "@xyflow/react": "^12.11.2",
