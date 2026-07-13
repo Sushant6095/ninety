@@ -7,3 +7,10 @@ design/** linguist-vendored
 # Belt and braces: any standalone HTML export is a design/doc artifact, never app source
 # (the app is Next.js/TSX — it ships no hand-written .html).
 *.html linguist-vendored
+
+# Tooling, not shipped product: live TxLINE probes, deploy/replay/screenshot scripts, and
+# build configs. Excluding them lets the language bar reflect the app + on-chain program,
+# not dev ergonomics. (We do NOT vendor real source under apps/ or packages/.)
+scripts/** linguist-vendored
+*.config.js linguist-vendored
+*.config.mjs linguist-vendored
