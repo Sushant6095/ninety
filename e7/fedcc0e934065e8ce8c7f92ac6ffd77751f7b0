@@ -1,0 +1,25 @@
+.claude/agents/design-cop.md
+  s_6ab41d7b0271b9::t_90b69bd1f4d550 32-37
+  s_6ab41d7b0271b9::t_919f5d1d85c2cb 6,8-12
+docs/adr/ADR-049-design-reference-is-intent-not-pixel-target.md
+  s_6ab41d7b0271b9::t_b5f0590a68bfda 1-13
+.claude/skills/ui-craft/SKILL.md
+  s_6ab41d7b0271b9::t_a29c0dbc058fec 104-107
+  s_6ab41d7b0271b9::t_20c7f092bf7e32 68-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "e7fedcc0e934065e8ce8c7f92ac6ffd77751f7b0",
+  "prompts": {},
+  "sessions": {
+    "s_6ab41d7b0271b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a5538f3a-206a-4aef-b98c-32f9c1580643",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
