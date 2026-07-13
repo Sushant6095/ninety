@@ -1,0 +1,33 @@
+apps/web/package.json
+  s_6ab41d7b0271b9::t_ef6f6b9af48bee 12-13
+apps/web/src/data/wc26/groups.json
+  s_6ab41d7b0271b9::t_5b5869e32be362 1-590
+apps/web/src/data/wc26/teams.json
+  s_6ab41d7b0271b9::t_5b5869e32be362 1-386
+apps/web/src/data/wc26/index.ts
+  s_6ab41d7b0271b9::t_e57845ceb975e3 1-22
+apps/web/scripts/fetch-wc26.mjs
+  s_6ab41d7b0271b9::t_5ac3cee3cded7c 1-111
+apps/web/src/data/wc26/types.ts
+  s_6ab41d7b0271b9::t_0630406a247e61 1-52
+apps/web/src/data/wc26/games.json
+  s_6ab41d7b0271b9::t_5b5869e32be362 1-1146
+apps/web/src/data/wc26/stadiums.json
+  s_6ab41d7b0271b9::t_5b5869e32be362 1-146
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "f10c2327a760da84358fc37972db10076d3dded3",
+  "prompts": {},
+  "sessions": {
+    "s_6ab41d7b0271b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a5538f3a-206a-4aef-b98c-32f9c1580643",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
