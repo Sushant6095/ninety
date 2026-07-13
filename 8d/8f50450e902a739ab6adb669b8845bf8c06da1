@@ -1,0 +1,25 @@
+apps/web/package.json
+  s_6ab41d7b0271b9::t_0a143a7e5baa63 4-6
+apps/web/src/features/terminal/AttackMomentum.tsx
+  s_6ab41d7b0271b9::t_567495c39de55c 6-11,14-16,30-53
+apps/web/src/features/terminal/PortfolioCard.tsx
+  s_6ab41d7b0271b9::t_e5c8e164ac75f6 2,5,28
+pnpm-lock.yaml
+  s_6ab41d7b0271b9::t_7172a2b12b94c0 4924-4925
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "8d8f50450e902a739ab6adb669b8845bf8c06da1",
+  "prompts": {},
+  "sessions": {
+    "s_6ab41d7b0271b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a5538f3a-206a-4aef-b98c-32f9c1580643",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
