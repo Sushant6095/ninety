@@ -65,8 +65,14 @@ authority — this skill does NOT restate any value; point components and the ju
 **CORE stack:** Next / React / TypeScript + Tailwind (tokens only) + shadcn/ui (copied in and
 re-skinned to tokens) + **lightweight-charts** (the ONLY chart lib) + **Framer Motion** (the ONLY
 animation lib) + **Lucide** icons + **Sonner** toasts.
-- **21st.dev is a sanctioned copy-in source**, re-skinned to tokens. PREFER 21st.dev / shadcn
-  primitives over hand-rolling common components.
+- **Third-party primitives are the DEFAULT for generic UI** — dialog, tabs, tooltip, sheet,
+  command (⌘K), scroll-area, popover, dropdown, accordion. Pull them in (shadcn/ui or the
+  sanctioned 21st.dev source) and **RE-SKIN TO TOKENS**. Hand-building a generic primitive is a
+  DEFECT. The token law applies to the OUTPUT, not the moment of import — an imported component is
+  compliant once its colors, spacing, radius, and motion all trace to the token system.
+- **Hand-build ONLY the Ninety-specific pieces** no library has: the Momentum River, MatchCard,
+  PriceChip, the trade ticket, ProofBadge, and the Booth. Those are the product; everything
+  generic around them is assembled from re-skinned primitives, never re-invented.
 - **React Flow** is allowed on EXACTLY ONE route — the how-it-works / proof-flow page —
   lazy-loaded, never in the shared bundle (see the `proof-flow-viz` skill).
 - **Spline / WebGL / any 3D is FORBIDDEN in the app** — GPU contention breaks the 150ms
@@ -95,6 +101,7 @@ lives in **`design/SCREEN-DATA-MAP.md`**; consult the target screen's row before
 
 ## 10. DEFINITION OF DONE
 design-cop **all-PASS** across its rubric — hierarchy · tokens · restraint · blend · motion ·
-states · a11y · copy · fidelity — at all four breakpoints, on real replay data, with the hot
-path free of re-render storms (`series.update()` only, no prop-churn on the tape). Not "looks
-fine." Rubric-green, or it isn't done.
+states · a11y · copy · consistency · elevation · feeling (ADR-049) — on real replay data, with
+the hot path free of re-render storms (`series.update()` only, no prop-churn on the tape). Not
+"looks fine," and not "merely matches the reference" — the reference is INTENT, so a passing
+screen elevates on it and creates delight. Rubric-green, or it isn't done.
