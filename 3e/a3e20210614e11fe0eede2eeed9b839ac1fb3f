@@ -1,0 +1,21 @@
+infra/fly/fly.toml
+  s_e6fe919b4d8a67::t_16f6394a946543 1-62
+infra/fly/Dockerfile
+  s_e6fe919b4d8a67::t_462f8204e6b618 1-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "3ea3e20210614e11fe0eede2eeed9b839ac1fb3f",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
