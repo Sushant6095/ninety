@@ -1,3 +1,6 @@
+"use client";
+import { useRef } from "react";
+import { gsap, useGSAP } from "../../lib/gsap";
 import { GAMES, stadiumById, type WcGame } from "../../data/wc26";
 
 // Path B — hand-rolled. The real knockout tree, DERIVED from worldcup26's placeholder labels
@@ -127,8 +130,38 @@ function FinalNode({ g }: { g: WcGame }) {
 }
 
 export function BracketB() {
+  const scope = useRef<HTMLElement>(null);
+
+  // Reveal the rounds on load: the tree converges on the Final, so the rounds rise inward (R16 → QF → SF)
+  // and the Final lands LAST as the one hero, then the R32 feeders fill below. Transform/opacity only.
+  // Reduced motion leaves everything in place — the no-preference branch never runs, so the bracket
+  // (real content, must read without JS too) is never hidden.
+  useGSAP(
+    () => {
+      const pick = (sel: string): Element[] => (scope.current ? Array.from(scope.current.querySelectorAll(sel)) : []);
+      const r16 = pick('[data-round="r16"]');
+      const qf = pick('[data-round="qf"]');
+      const sf = pick('[data-round="sf"]');
+      const finale = pick('[data-round="final"]');
+      const grid = pick('[data-round="r32grid"]')[0];
+      const r32 = grid ? Array.from(grid.children) : [];
+
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap
+          .timeline()
+          .from(r16, { autoAlpha: 0, y: 12, duration: 0.35, stagger: 0.05 }, 0)
+          .from(qf, { autoAlpha: 0, y: 12, duration: 0.35, stagger: 0.05 }, "-=0.2")
+          .from(sf, { autoAlpha: 0, y: 12, duration: 0.35 }, "-=0.2")
+          .from(finale, { autoAlpha: 0, y: 12, scale: 0.985, duration: 0.4, stagger: 0.08 }, "-=0.15")
+          .from(r32, { autoAlpha: 0, y: 10, duration: 0.3, stagger: 0.03 }, "-=0.1");
+      });
+    },
+    { scope, dependencies: [] },
+  );
+
   return (
-    <main className="mx-auto w-full max-w-[1600px] flex-1 px-4 py-6 sm:px-6">
+    <main ref={scope} className="mx-auto w-full max-w-[1600px] flex-1 px-4 py-6 sm:px-6">
       <div className="mb-6">
         <h1 className="font-display text-display font-bold tracking-tight text-hi">The bracket</h1>
         <p className="mt-1 text-body text-lo">
@@ -141,13 +174,13 @@ export function BracketB() {
       <div className="overflow-x-auto pb-2" tabIndex={0} role="group" aria-label="Knockout bracket — scroll horizontally">
         <div className="flex min-w-[1120px] items-stretch gap-1">
           {LEFT.map((col, i) => (
-            <div key={`L${i}`} className="flex flex-1 items-stretch">
+            <div key={`L${i}`} data-round={col[0].type} className="flex flex-1 items-stretch">
               <RoundColumn matches={col} label={ROUND_LABEL[col[0].type] ?? col[0].type} />
               {i < LEFT.length - 1 ? <Elbows pairs={col.length / 2} side="left" /> : null}
             </div>
           ))}
 
-          <div className="flex w-[220px] shrink-0 flex-col justify-center gap-4 px-3">
+          <div data-round="final" className="flex w-[220px] shrink-0 flex-col justify-center gap-4 px-3">
             {FINAL ? <FinalNode g={FINAL} /> : null}
             {THIRD ? (
               <div className="rounded-card border border-hairline bg-surface px-3 py-2.5 text-center">
@@ -160,7 +193,7 @@ export function BracketB() {
           </div>
 
           {[...RIGHT].reverse().map((col, i, arr) => (
-            <div key={`R${i}`} className="flex flex-1 items-stretch">
+            <div key={`R${i}`} data-round={col[0].type} className="flex flex-1 items-stretch">
               {i > 0 ? <Elbows pairs={arr[i - 1].length} side="right" /> : null}
               <RoundColumn matches={col} label={ROUND_LABEL[col[0].type] ?? col[0].type} />
             </div>
@@ -174,7 +207,7 @@ export function BracketB() {
           <h2 className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Round of 32</h2>
           <span className="num text-label tabular-nums text-lo">{R32.length} matches · 28 Jun – 3 Jul</span>
         </div>
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <div data-round="r32grid" className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           {R32.map((g) => (
             <MatchNode key={g.id} g={g} />
           ))}
