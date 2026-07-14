@@ -1,0 +1,31 @@
+apps/web/src/design/motion.ts
+  s_b60ec3c6161754::t_e69b4700affb85 26-29
+apps/web/src/features/landing/LandingHero.tsx
+  s_b60ec3c6161754::t_6a44be48245082 72
+  s_b60ec3c6161754::t_198099b3cbfa0b 63-64,66
+apps/web/src/features/landing/LandingPage.tsx
+  s_b60ec3c6161754::t_7505c6e090f3fd 56
+  s_b60ec3c6161754::t_65cf1679f99595 35
+  s_b60ec3c6161754::t_02bfa2d7ccfa5f 13,15
+apps/web/src/features/live/useHaltSequence.ts
+  s_b60ec3c6161754::t_c0b57399cac2c4 166
+  s_b60ec3c6161754::t_a08b1c83f0bc5b 177
+  s_b60ec3c6161754::t_d356a27644f638 47
+  s_b60ec3c6161754::t_6230135fa6438d 128-130,132
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "4c0975f97791efa9a4dfa2f7dd7d4f01f56f1391",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
