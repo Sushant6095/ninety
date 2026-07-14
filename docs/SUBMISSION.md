@@ -55,7 +55,7 @@ Our decision: **settlement is fail-closed on purpose** (`SETTLEMENT_LIVE = false
 - **Counted, not estimated**: 257 tests pass (248 vitest across api/worker-jobs/worker-ingest/schema/bus/chain + 9 pytest in worker-cortex); 5/5 Anchor tests; Anchor program builds clean and deploys to devnet.
 
 **Honest scope (judges punish overclaiming, not honesty)**
-- The web frontend renders curated WC26 fixture data, not the live API yet (`lib/api.ts` exists, 0 importers; `lib/fixtures.ts` imported by 23 files). `apps/web` ships no tests yet.
+- The web frontend renders curated WC26 fixture data, not the live API yet (`lib/api.ts` exists, 0 importers; `lib/fixtures.ts` imported by 24 files). Every surface is built — the board, the Terminal with Sofascore-style depth tabs (lineups on a native SVG pitch, stats, H2H, a live incident timeline), the 104-match bracket, the group tables, the on-chain proofs log, Moments, leaderboard, and portfolio. `apps/web` ships no unit tests yet, but every route passes a full `axe-core` a11y sweep (0 violations, 14 routes) and is verified via a screenshot → design-cop loop.
 - On-chain settlement is fail-closed (`SETTLEMENT_LIVE = false`) pending the finality answer from the sponsor.
 - Moment cNFT minting was cut for v1 — `mint_moment` is a deliberate no-op; Moments ship as server-rendered PNGs (ADR-032/040/041).
 
