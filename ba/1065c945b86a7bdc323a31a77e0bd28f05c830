@@ -1,0 +1,26 @@
+apps/web/src/features/bracket/BracketB.tsx
+  s_e6fe919b4d8a67::t_98e1419a6ae80f 1-3
+  s_e6fe919b4d8a67::t_a172435a613c2c 210
+  s_e6fe919b4d8a67::t_44c352d8a8f5fb 183
+  s_e6fe919b4d8a67::t_8374c45e4877cf 177
+  s_e6fe919b4d8a67::t_7137c7e182aa02 196
+  s_e6fe919b4d8a67::t_85ea225f599430 133-162,164
+design/PROVENANCE.md
+  s_e6fe919b4d8a67::t_080561d41c8e92 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "ba1065c945b86a7bdc323a31a77e0bd28f05c830",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
