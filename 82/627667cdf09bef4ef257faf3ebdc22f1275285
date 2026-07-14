@@ -1,0 +1,55 @@
+apps/web/src/features/terminal/CompetitionsRail.tsx
+  s_338735e9af5335::t_392652378e8bc2 80
+  s_338735e9af5335::t_c1ef5e02c9e648 85
+apps/web/src/lib/moments.ts
+  s_338735e9af5335::t_c763445d36f768 53
+apps/web/src/features/terminal/TodaysMovers.tsx
+  s_338735e9af5335::t_8c127c55041db1 7
+apps/web/src/features/home/LeftRail.tsx
+  s_338735e9af5335::t_5d7dbeb64f5031 32
+  s_338735e9af5335::t_ba0fbab9ae36e4 42
+apps/web/src/lib/terminal.ts
+  s_338735e9af5335::t_7024eb18bf9d3b 72-73,77-80
+  s_338735e9af5335::t_c83fee4477ada7 7
+  s_338735e9af5335::t_637610a1d810f8 35-37,43-50,52-59
+  s_338735e9af5335::t_7a0e79972994e0 51
+  s_338735e9af5335::t_eece94cf14a577 5
+  s_338735e9af5335::t_c6a5b076ed462c 26
+  s_338735e9af5335::t_58cc3e3161610e 63,65,67-69
+apps/web/src/lib/portfolio.ts
+  s_338735e9af5335::t_c656b3c52fddac 25
+  s_338735e9af5335::t_e4f7f93bd00af4 22
+  s_338735e9af5335::t_8d50e0c9757021 56
+  s_338735e9af5335::t_a783568913103b 59
+.gitignore
+  s_338735e9af5335::t_1c3684748ae01f 6-7
+apps/web/src/lib/fixtures.ts
+  s_338735e9af5335::t_d4384ed232f424 16
+  s_338735e9af5335::t_11e1b65ba1775a 58-59
+  s_338735e9af5335::t_d333fe7ad64a87 132
+  s_338735e9af5335::t_668585e9e98e73 56-57,63-64
+  s_338735e9af5335::t_63077a968f4eb0 77,81-84,87-96,98-110
+apps/web/src/features/live/matchLiveStore.ts
+  s_338735e9af5335::t_81fa6d5d18446a 141-143
+apps/web/src/features/home/Ticker.tsx
+  s_338735e9af5335::t_7781ed6c2044d2 33
+  s_338735e9af5335::t_3c7306db108105 14-18
+apps/web/src/lib/proofs.ts
+  s_338735e9af5335::t_b12e262fdbeaf2 27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "82627667cdf09bef4ef257faf3ebdc22f1275285",
+  "prompts": {},
+  "sessions": {
+    "s_338735e9af5335": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93fac499-ebc1-4122-b865-8c9f3e20d6b6",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
