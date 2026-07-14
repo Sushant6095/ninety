@@ -3,9 +3,16 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// Supabase two-URL split (ITEM 11 / SETUP-LIVE.md). The app runs through the SUPABASE POOLER (PgBouncer,
+// transaction mode) so serverless/multi-process connections don't exhaust Postgres:
+//   DATABASE_URL = ...pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1
+// Migrations CANNOT run through PgBouncer (it can't hold the session-level advisory locks Prisma needs — they
+// hang forever), so `prisma migrate deploy` uses the DIRECT :5432 connection:
+//   DIRECT_URL   = ...db.<ref>.supabase.co:5432/postgres
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {

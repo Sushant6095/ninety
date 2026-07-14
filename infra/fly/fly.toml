@@ -24,10 +24,13 @@ primary_region = "iad"
 [build]
   dockerfile = "infra/fly/Dockerfile"
 
+# FOUR processes — a missing one silently breaks a whole capability (no cortex = no prices; no jobs = no
+# settlement/booth/moments). Fly schedules each group on its own machine, all kept alive below.
 [processes]
   api    = "pnpm --filter @omnipitch/api exec tsx src/main.ts"
   ingest = "pnpm --filter @omnipitch/worker-ingest exec tsx src/main.ts"
   cortex = "sh -c 'cd apps/worker-cortex && PYTHONPATH=src .venv/bin/python -m cortex.main'"
+  jobs   = "pnpm --filter @omnipitch/worker-jobs exec tsx src/main.ts"
 
 [env]
   NODE_ENV   = "production"
@@ -54,9 +57,9 @@ primary_region = "iad"
     port     = 8443
     handlers = ["tls"]
 
-# Persistent VM sizing for all three process groups.
+# Persistent VM sizing for all four process groups.
 [[vm]]
   cpu_kind  = "shared"
   cpus      = 1
   memory    = "1gb"
-  processes = ["api", "ingest", "cortex"]
+  processes = ["api", "ingest", "cortex", "jobs"]
