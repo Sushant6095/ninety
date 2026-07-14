@@ -1,0 +1,39 @@
+apps/web/src/app/play/matchSimHarness.ts
+  s_e6fe919b4d8a67::t_d91f176d00c070 1-55
+apps/web/src/features/games/PickPad.tsx
+  s_e6fe919b4d8a67::t_a657201c321e8d 1-134,136-182
+  s_e6fe919b4d8a67::t_8de3aab1edda0b 135
+apps/web/src/features/games/StreakRail.tsx
+  s_e6fe919b4d8a67::t_868fe242cc1230 1-54
+apps/web/src/features/games/nextGoalMachine.ts
+  s_e6fe919b4d8a67::t_664e7870f945de 1-113
+apps/web/src/features/games/Verdict.tsx
+  s_e6fe919b4d8a67::t_0e72bd0dee03ac 1-171
+apps/web/src/app/play/PlayScreen.tsx
+  s_e6fe919b4d8a67::t_3b5f758a5372b0 1-25,28-38
+  s_e6fe919b4d8a67::t_19f687c622fa3f 26-27
+apps/web/src/features/games/NextGoal.tsx
+  s_e6fe919b4d8a67::t_d6ab8d5bd6555a 1-86
+apps/web/src/app/play/page.tsx
+  s_e6fe919b4d8a67::t_6d8c1d0c667777 1-13
+apps/web/src/features/games/useNextGoalGame.ts
+  s_e6fe919b4d8a67::t_3dac41cded1b59 1-161
+apps/web/src/features/games/nextGoalMachine.test.ts
+  s_e6fe919b4d8a67::t_daaee20f1511f8 1-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "b860c99bd98e0f8b87361520ce7766c5162a3d25",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
