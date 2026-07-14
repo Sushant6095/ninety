@@ -23,9 +23,11 @@ const FILTERS: { key: FilterKey; label: string }[] = [
 
 // Three-day nav — the middle day is today (visual, like the lock-kit board).
 const DAYS = [
-  { label: "Fri Jul 4", today: false },
-  { label: "Today · Sat Jul 5", today: true },
-  { label: "Sun Jul 6", today: false },
+  // Today is Jul 4 — the live R16 kickoffs (fixtures.ts) are dated 2026-07-04; a strip that calls Jul 5
+  // "today" while matches kicked off "yesterday" fails the read-out-loud test.
+  { label: "Fri Jul 3", today: false },
+  { label: "Today · Sat Jul 4", today: true },
+  { label: "Sun Jul 5", today: false },
 ];
 
 interface CenterColumnProps {
@@ -71,7 +73,7 @@ export function CenterColumn({ markets, children }: CenterColumnProps) {
           </button>
         ))}
         <button type="button" disabled aria-label="Next day" className="grid h-11 w-8 place-items-center rounded-md text-body text-lo/50 disabled:cursor-not-allowed">›</button>
-        <span className="num ml-auto hidden text-label tracking-wide text-lo sm:block">KICK-OFF TIMES PT</span>
+        <span className="num ml-auto hidden text-label tracking-wide text-lo sm:block">KICK-OFF TIMES UTC</span>
       </div>
 
       {/* Filter pills */}
