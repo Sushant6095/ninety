@@ -1,0 +1,20 @@
+apps/web/src/components/ui/MomentumRiver.tsx
+  s_338735e9af5335::t_31f7ef6e335d40 58-63
+  s_338735e9af5335::t_d06d153c4ba827 106-107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "d499b7a0daafce55d013f03b8ea223bcc70d2dbd",
+  "prompts": {},
+  "sessions": {
+    "s_338735e9af5335": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93fac499-ebc1-4122-b865-8c9f3e20d6b6",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
