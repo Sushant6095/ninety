@@ -1,0 +1,21 @@
+design/PROVENANCE.md
+  s_b60ec3c6161754::t_d4f45e58ef2552 34-35
+apps/web/src/features/landing/LandingHero.tsx
+  s_b60ec3c6161754::t_103b98427fac1b 38-40,44-51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "f752598ec3fd71ffa7aa22470473fa3346323a18",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
