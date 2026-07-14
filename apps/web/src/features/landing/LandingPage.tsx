@@ -54,7 +54,7 @@ export function LandingPage() {
           {/* 3 — price is probability: one giant number does the explaining. The void (Originkit
               blackhole, re-skinned) orbits behind it — every stream collapses into the one number. */}
           <section aria-labelledby="price-h" className="relative border-b border-hairline">
-            <PriceVoid />
+            <PriceVoid className="hidden lg:block" />
             <div data-arrive className="relative z-10 mx-auto w-full max-w-[1180px] px-4 py-16 text-center sm:px-6 lg:py-24">
               <h2 data-arrive-item id="price-h" className="text-label font-semibold uppercase tracking-caps text-lo">
                 Price is probability
@@ -120,7 +120,7 @@ export function LandingPage() {
                 </div>
               ))}
               </dl>
-              <div data-arrive-item className="mx-auto h-[300px] w-[300px] lg:h-[340px] lg:w-[340px]">
+              <div data-arrive-item className="mx-auto hidden h-[340px] w-[340px] lg:block">
                 <WorldGlobeLazy className="h-full w-full" />
               </div>
             </div>
