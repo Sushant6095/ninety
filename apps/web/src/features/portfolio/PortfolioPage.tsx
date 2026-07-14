@@ -1,8 +1,10 @@
+"use client";
 import Link from "next/link";
 import { TerminalHeader } from "../terminal/TerminalHeader";
 import { Footer } from "../home/Footer";
 import { Flag } from "../../components/ui/Flag";
 import { EquityCurve } from "../../components/ui/EquityCurve";
+import { useMatchLiveList } from "../live/matchLiveStore";
 import { routes } from "../../lib/routes";
 import { SESSION } from "../../lib/fixtures";
 import { ACCOUNT, OPEN_POSITIONS, marketValue, costBasis, unrealized, type OpenPosition } from "../../lib/portfolio";
@@ -64,8 +66,16 @@ function PositionRow({ p }: { p: OpenPosition }) {
 }
 
 export function PortfolioPage() {
+  // The live store owns everything that MOVES for an in-play match (minute · mark) per ADR-051 — read it so a
+  // position shows the SAME minute/price as /terminal and the board, never a stale fixture. avgEntry/shares are
+  // the still, historical parts, left as booked. PRE positions and any match the store doesn't carry keep the seed.
+  const liveById = new Map(useMatchLiveList().map((s) => [s.matchId, s]));
   // Reconciles to the cent: equity = free + Σ market value; unrealized = Σ shares·(now − avg).
-  const positions = [...OPEN_POSITIONS].sort((a, b) => a.matchId.localeCompare(b.matchId)); // ponytail: same-match rows sit adjacent — degenerate grouping until a match holds >1 position
+  const positions = OPEN_POSITIONS.map((p): OpenPosition => {
+    const live = liveById.get(p.matchId);
+    if (p.status !== "LIVE" || !live || live.minute == null) return p;
+    return { ...p, minute: live.minute, markNow: Math.round(live.prices[p.outcome] * 1000) / 10 };
+  }).sort((a, b) => a.matchId.localeCompare(b.matchId)); // ponytail: same-match rows sit adjacent — degenerate grouping until a match holds >1 position
   const mv = positions.reduce((s, p) => s + marketValue(p), 0);
   const invested = positions.reduce((s, p) => s + costBasis(p), 0);
   const unreal = mv - invested;
