@@ -52,6 +52,9 @@ export function MomentumRiver({ data, up = true, height = 96, goalIndex, seconda
         return; // chart lib failed to load — the panel still renders without the River (graceful)
       }
       if (cancelled || !el) return;
+      // Belt-and-braces: a container can never host two charts. A ghost pane (default 300×150 canvas) was
+      // observed once in prod alongside the live one — whatever races us here, clearing first self-heals.
+      if (el.childElementCount > 0) el.replaceChildren();
       const { data: d0, height: h0, goalIndex: gi, up: up0, secondary: sec0, yRange: yr0, totalMinutes: tm0 } = propsRef.current;
       const line = (up0 ? resolveColor("up") : resolveColor("down")) || resolveColor("textHi");
       const chart = lc.createChart(el, {
