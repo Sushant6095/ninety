@@ -129,7 +129,7 @@ export function LandingPage() {
           {/* 6 — close: same funnel, identical labels. The prism grid (Originkit, re-skinned) is the
               footer moment's backdrop — the one rare surface with a delight budget; content sits above it. */}
           <section aria-labelledby="close-h" className="relative">
-            <PrismGrid pitch={26} boxSize={44} />
+            <PrismGrid pitch={26} boxSize={44} className="hidden lg:block" />
             {/* the play-money sticker (Originkit sticker-peel, re-skinned) — peels on hover/press;
                 the disclosure it carries is also plain text in the hero and the footer */}
             <StickerPeelLazy className="absolute right-[6%] top-8 z-20 hidden h-[190px] w-[190px] -rotate-6 lg:block" />
