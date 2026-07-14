@@ -142,7 +142,7 @@ sequenceDiagram
 
 ## Architecture
 
-The whole system is decided, not improvised — 51 ADRs in [`docs/adr/`](docs/adr/) record every call. Two laws hold it together: **all inter-service traffic flows through `packages/bus`** (no service calls another directly), and **the engine is the single writer of market state** (journal-then-ack, one logical writer per market).
+The whole system is decided, not improvised — 58 ADRs in [`docs/adr/`](docs/adr/) record every call. Two laws hold it together: **all inter-service traffic flows through `packages/bus`** (no service calls another directly), and **the engine is the single writer of market state** (journal-then-ack, one logical writer per market).
 
 **Every folder answers "which layer am I?"**
 
