@@ -1,0 +1,21 @@
+docs/adr/ADR-058-terminal-craft-autosize-screener-press-vocabulary.md
+  s_b60ec3c6161754::t_935dc8e5ccbd33 1-13
+design/DECISIONS.md
+  s_b60ec3c6161754::t_03966f81591d4d 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "7d606f545c1b4d3e68a8da811be11facb6bd7329",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
