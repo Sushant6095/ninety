@@ -11,7 +11,11 @@ function TickerCell({ item }: { item: TickerItem }) {
   const minute = live?.minute ?? item.minute;
   const score = live?.score ?? null;
   const scoreText = score ? `${score.home}–${score.away}` : item.score;
-  const price = live ? live.prices.H * 100 : item.price; // home-win % — matches the seed ticker price
+  // The lead outcome re-derives from LIVE prices: after a reprice the ticker must quote the side that now
+  // leads, not the side that led at kickoff (a static lead is how 0–1 gets quoted as "H").
+  const p = live?.prices;
+  const lead = p ? ((["H", "D", "A"] as const).reduce((a, b) => (p[b] > p[a] ? b : a)) as TickerItem["lead"]) : item.lead;
+  const price = p ? p[lead] * 100 : item.price;
   const halted = live?.status === "HALTED";
 
   return (
@@ -26,7 +30,7 @@ function TickerCell({ item }: { item: TickerItem }) {
       )}
       <span className="text-label font-medium text-hi/90">{item.code}</span>
       {scoreText && <span className="num text-label text-hi">{scoreText}</span>}
-      <span className="num text-label text-lo">{item.lead}</span>
+      <span className="num text-label text-lo">{lead}</span>
       <LivePrice value={price} className="text-label font-medium text-hi" />
     </Link>
   );

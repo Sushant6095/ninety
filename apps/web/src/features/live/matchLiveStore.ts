@@ -138,7 +138,9 @@ for (const m of MARKETS) {
     score: m.score,
     phase: minute == null ? "PRE-MATCH" : minute > 45 ? "2ND HALF" : "1ST HALF",
     prices,
-    openPrices: { ...prices },
+    // A live match's TRUE open is its trace's first point (home-win %), not the current mark — seeding open
+    // from the current mark makes every "Δ vs open" read 0.0 forever, and a movers list that never moves.
+    openPrices: minute == null ? { ...prices } : anchor(prices, "H", m.spark[0] ?? prices.H * 100),
     // The board's mini-river tracks the home-win %, on the same minute-indexed axis as the terminal's — but it
     // keeps the fixture's real trend shape rather than a synthetic one (see resample).
     spark: minute == null ? m.spark.slice() : resample(m.spark, minute),

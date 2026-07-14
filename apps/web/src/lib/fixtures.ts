@@ -13,7 +13,7 @@ const spark = (from: number, to: number, n = 24): number[] =>
 const EMOJI: Record<string, string> = {
   CAN: "🇨🇦", MAR: "🇲🇦", ESP: "🇪🇸", JPN: "🇯🇵", ARG: "🇦🇷", MEX: "🇲🇽", USA: "🇺🇸", NED: "🇳🇱",
   GER: "🇩🇪", COL: "🇨🇴", BRA: "🇧🇷", KOR: "🇰🇷", FRA: "🇫🇷", SEN: "🇸🇳", POR: "🇵🇹", URU: "🇺🇾",
-  ENG: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", AUS: "🇦🇺", CRO: "🇭🇷", BEL: "🇧🇪",
+  ENG: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", AUS: "🇦🇺", CRO: "🇭🇷", BEL: "🇧🇪", EGY: "🇪🇬",
 };
 const NAME: Record<string, string> = {
   CAN: "Canada", MAR: "Morocco", ESP: "Spain", JPN: "Japan", ARG: "Argentina", MEX: "Mexico", USA: "United States",
@@ -53,9 +53,15 @@ function mkt(s: Spec): MarketRow {
 
 export const SESSION: SessionUser = { handle: "@vd", credits: 2450, rank: 142, rankDelta: 3 };
 
+// ONE universe (A2): this array is the single fixture source for the whole app. The ticker below and the
+// terminal's rail (lib/terminal.ts) DERIVE from it — never a second hand-written slate. The Round of 16 is
+// exactly 16 matches / 32 unique teams: 8 live, 5 later today+tomorrow, 3 settled early kickoffs.
+// R32 is the settled past (proofs page); the bracket page carries the full skeleton.
 export const MARKETS: MarketRow[] = [
   // ── Round of 16 · live now ──────────────────────────────────────────────────
   mkt({ hc: "CAN", ac: "MAR", comp: "World Cup — Round of 16", ko: "2026-07-04T19:00:00Z", min: 74, score: [1, 0], mark: [0.614, 0.221, 0.165], from: 52, to: 61.4, fav: true, vol: 184200 }),
+  // The terminal's traded market — same store entry /terminal reads (goalless at 74', Egypt flat ~31).
+  mkt({ hc: "AUS", ac: "EGY", comp: "World Cup — Round of 16", ko: "2026-07-04T18:30:00Z", min: 74, score: [0, 0], mark: [0.48, 0.21, 0.31], from: 47, to: 48, fav: true, vol: 156300 }),
   mkt({ hc: "ESP", ac: "JPN", comp: "World Cup — Round of 16", ko: "2026-07-04T18:00:00Z", min: 58, score: [2, 1], mark: [0.682, 0.196, 0.122], from: 60, to: 68.2, fav: true, vol: 231800 }),
   mkt({ hc: "BRA", ac: "KOR", comp: "World Cup — Round of 16", ko: "2026-07-04T14:00:00Z", min: 55, score: [2, 0], mark: [0.86, 0.1, 0.04], from: 71, to: 86, fav: true, vol: 120400 }),
   mkt({ hc: "FRA", ac: "SEN", comp: "World Cup — Round of 16", ko: "2026-07-04T15:00:00Z", min: 41, score: [2, 0], mark: [0.74, 0.16, 0.1], from: 56, to: 74, fav: true, vol: 88100 }),
@@ -68,32 +74,40 @@ export const MARKETS: MarketRow[] = [
   mkt({ hc: "ITA", ac: "NGA", comp: "World Cup — Round of 16", ko: "2026-07-05T22:00:00Z", min: null, mark: [0.55, 0.26, 0.19], from: 54, to: 55, vol: 8100 }),
   mkt({ hc: "DEN", ac: "SWE", comp: "World Cup — Round of 16", ko: "2026-07-05T23:30:00Z", min: null, mark: [0.47, 0.28, 0.25], from: 47, to: 47, vol: 6400 }),
   mkt({ hc: "POL", ac: "GHA", comp: "World Cup — Round of 16", ko: "2026-07-06T01:30:00Z", min: null, mark: [0.61, 0.23, 0.16], from: 60, to: 61, vol: 5200 }),
-  // ── Group stage · final round ───────────────────────────────────────────────
-  mkt({ hc: "PAR", ac: "NOR", comp: "World Cup — Group stage", stage: "Group E", ko: "2026-07-06T03:00:00Z", min: null, mark: [0.3, 0.28, 0.42], from: 45, to: 44, vol: 5200 }),
-  mkt({ hc: "KSA", ac: "ECU", comp: "World Cup — Group stage", stage: "Group H", ko: "2026-07-06T05:00:00Z", min: null, mark: [0.33, 0.3, 0.37], from: 40, to: 40, vol: 2900 }),
-  mkt({ hc: "CRC", ac: "TUN", comp: "World Cup — Group stage", stage: "Group I", ko: "2026-07-06T06:30:00Z", min: null, mark: [0.45, 0.27, 0.28], from: 46, to: 45, vol: 3100 }),
-  // ── Finished today ──────────────────────────────────────────────────────────
+  // ── Finished today · R16 early kickoffs (a 1X2 settles on 90 minutes — a knockout draw settles D) ──
   mkt({ hc: "SRB", ac: "CMR", comp: "Finished today", ko: "2026-07-04T12:00:00Z", min: null, score: [2, 1], mark: [1, 0, 0], from: 48, to: 88, vol: 44000, status: "SETTLED" }),
   mkt({ hc: "QAT", ac: "IRN", comp: "Finished today", ko: "2026-07-04T10:00:00Z", min: null, score: [0, 2], mark: [0, 0, 1], from: 44, to: 9, vol: 38000, status: "SETTLED" }),
   mkt({ hc: "AUT", ac: "TUR", comp: "Finished today", ko: "2026-07-04T09:00:00Z", min: null, score: [1, 1], mark: [0, 1, 0], from: 30, to: 40, vol: 26000, status: "SETTLED" }),
-  // ── Earlier this week ───────────────────────────────────────────────────────
-  mkt({ hc: "HUN", ac: "CZE", comp: "Earlier this week", ko: "2026-07-02T18:00:00Z", min: null, score: [2, 0], mark: [1, 0, 0], from: 42, to: 90, vol: 51000, status: "SETTLED" }),
-  mkt({ hc: "SVK", ac: "UKR", comp: "Earlier this week", ko: "2026-07-02T15:00:00Z", min: null, score: [1, 2], mark: [0, 0, 1], from: 47, to: 12, vol: 33000, status: "SETTLED" }),
-  mkt({ hc: "AUS", ac: "BEL", comp: "Earlier this week", ko: "2026-07-01T20:00:00Z", min: null, score: [0, 3], mark: [0, 0, 1], from: 40, to: 6, vol: 47000, status: "SETTLED" }),
+  // ── Earlier this week · Round of 32 (settled — the proofs page carries their receipts) ─────────────
+  mkt({ hc: "HUN", ac: "CZE", comp: "Earlier this week", stage: "Round of 32", ko: "2026-07-02T18:00:00Z", min: null, score: [2, 0], mark: [1, 0, 0], from: 42, to: 90, vol: 51000, status: "SETTLED" }),
+  mkt({ hc: "SVK", ac: "UKR", comp: "Earlier this week", stage: "Round of 32", ko: "2026-07-02T15:00:00Z", min: null, score: [1, 2], mark: [0, 0, 1], from: 47, to: 12, vol: 33000, status: "SETTLED" }),
+  mkt({ hc: "CRO", ac: "BEL", comp: "Earlier this week", stage: "Round of 32", ko: "2026-07-01T20:00:00Z", min: null, score: [0, 3], mark: [0, 0, 1], from: 40, to: 6, vol: 47000, status: "SETTLED" }),
 ];
 
-// Compact ticker line across the top (all live/upcoming markets).
+/** Kick-off wall-clock "HH:MM" (UTC) for an ISO timestamp — the one formatter every KO label uses. */
+export function koClock(iso: string): string {
+  return new Date(iso).toISOString().slice(11, 16);
+}
+
+const leadOf = (mark: { H: number; D: number; A: number }): "H" | "D" | "A" =>
+  mark.H >= mark.D && mark.H >= mark.A ? "H" : mark.A >= mark.D ? "A" : "D";
+
+// Compact ticker line across the top — DERIVED from MARKETS (one universe, A2). A hand-written ticker is a
+// ticker that contradicts the board the moment a fixture changes.
 export interface TickerItem { matchId: string; code: string; score: string | null; lead: "H" | "D" | "A"; price: number; minute: number | null; time: string | null; }
-export const TICKER: TickerItem[] = [
-  { matchId: "wc26-can-mar", code: "CAN–MAR", score: "1–0", lead: "H", price: 61.4, minute: 74, time: null },
-  { matchId: "wc26-esp-jpn", code: "ESP–JPN", score: "2–1", lead: "H", price: 68.2, minute: 58, time: null },
-  { matchId: "wc26-ned-usa", code: "NED–USA", score: "1–1", lead: "H", price: 45.5, minute: 30, time: null },
-  { matchId: "wc26-arg-mex", code: "ARG–MEX", score: "0–0", lead: "H", price: 44.1, minute: 12, time: null },
-  { matchId: "wc26-ger-col", code: "GER–COL", score: null, lead: "H", price: 48.5, minute: null, time: "19:00" },
-  { matchId: "wc26-bra-kor", code: "BRA–KOR", score: null, lead: "H", price: 72.0, minute: null, time: "22:00" },
-  { matchId: "wc26-fra-sen", code: "FRA–SEN", score: null, lead: "H", price: 56.0, minute: null, time: "02:30" },
-  { matchId: "wc26-por-uru", code: "POR–URU", score: null, lead: "H", price: 47.0, minute: null, time: "05:00" },
-];
+export const TICKER: TickerItem[] = MARKETS.filter((m) => m.status === "LIVE" || m.status === "OPEN").map((m) => {
+  const mark = { H: m.mark?.H ?? 0, D: m.mark?.D ?? 0, A: m.mark?.A ?? 0 };
+  const lead = leadOf(mark);
+  return {
+    matchId: m.matchId,
+    code: `${m.homeCode}–${m.awayCode}`,
+    score: m.score ? `${m.score.home}–${m.score.away}` : null,
+    lead,
+    price: Math.round(mark[lead] * 1000) / 10,
+    minute: m.minute,
+    time: m.minute == null ? koClock(m.kickoffAt) : null,
+  };
+});
 
 export const LEADERS: LeaderRow[] = [
   { rank: 1, handle: "@pitchwizard", pnl: 18240 },
@@ -115,6 +129,6 @@ export const NEWS: NewsItem[] = [
   // names a scoreline is a fixture that will contradict the board the moment it does.
   { id: "n1", tag: "WORLD CUP", title: "Morocco pile on late pressure at BMO Field — Canada sitting deep", when: "6m ago" },
   { id: "n2", tag: "MOMENTS", title: "The 38th minute: David's goal repriced CAN from 41 → 63", when: "22m ago" },
-  { id: "n3", tag: "SETTLEMENT", title: "England 3–1 Australia settled on-chain — proof posted to devnet", when: "1h ago" },
+  { id: "n3", tag: "SETTLEMENT", title: "Serbia 2–1 Cameroon settled on-chain — proof posted to devnet", when: "1h ago" },
   { id: "n4", tag: "MARKETS", title: "Spain vs Japan is today's most-traded market at 231.8k CR", when: "2h ago" },
 ];

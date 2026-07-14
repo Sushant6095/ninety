@@ -24,7 +24,7 @@ export interface Proof {
 export const PROOFS_TOTAL = 88;
 
 export const PROOFS: Proof[] = [
-  { id: "p-eng-aus", matchId: "wc26-eng-aus", homeCode: "ENG", awayCode: "AUS", score: "3–1", outcome: "H", winnerCode: "ENG", stage: "Round of 32", settledAt: "1h ago", slot: 297_431_402, txSig: "5Kx7bQ…9f2aTx", volume: 214_800, traders: 3_910 },
+  { id: "p-srb-cmr", matchId: "wc26-srb-cmr", homeCode: "SRB", awayCode: "CMR", score: "2–1", outcome: "H", winnerCode: "SRB", stage: "Round of 16", settledAt: "1h ago", slot: 297_431_402, txSig: "5Kx7bQ…9f2aTx", volume: 214_800, traders: 3_910 },
   { id: "p-mex-rsa", matchId: "wc26-mex-rsa", homeCode: "MEX", awayCode: "RSA", score: "2–0", outcome: "H", winnerCode: "MEX", stage: "Group A", settledAt: "Jun 27", slot: 296_884_017, txSig: "7pR2mE…4kQ1Ln", volume: 168_300, traders: 3_120 },
   { id: "p-bra-hai", matchId: "wc26-bra-hai", homeCode: "BRA", awayCode: "HAI", score: "4–0", outcome: "H", winnerCode: "BRA", stage: "Group C", settledAt: "Jun 26", slot: 296_712_559, txSig: "9aL4nP…2mW8Rv", volume: 201_450, traders: 3_640 },
   { id: "p-ger-ecu", matchId: "wc26-ger-ecu", homeCode: "GER", awayCode: "ECU", score: "3–1", outcome: "H", winnerCode: "GER", stage: "Group E", settledAt: "Jun 25", slot: 296_540_921, txSig: "3hT8vD…7cX5Bq", volume: 152_900, traders: 2_870 },

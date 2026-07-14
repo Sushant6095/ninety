@@ -4,7 +4,7 @@ import { useMatchLiveList } from "../live/matchLiveStore";
 import { MOVERS } from "../../lib/terminal";
 import type { Outcome } from "../../lib/types";
 
-/** Today's movers — biggest Δ vs open across the R32 board (right rail, bottom). Price and Δ are read from the
+/** Today's movers — biggest Δ vs open across the R16 board (right rail, bottom). Price and Δ are read from the
  *  ONE store and re-sorted every beat, so Ashour's counter visibly throws EGY to the top of this list while
  *  AUS drops to the bottom. A movers list off a fixture is a movers list that never moves. */
 export function TodaysMovers() {

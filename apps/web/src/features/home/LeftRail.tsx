@@ -29,7 +29,7 @@ function MyMatchRow({ market }: { market: MarketRow }) {
 }
 
 const STAGES = [
-  { name: "Round of 16", sub: "Live now · Jul 4–6", count: 8, live: true },
+  { name: "Round of 16", sub: "Live now · Jul 4–6", count: 16, live: true },
   { name: "Quarter-finals", sub: "Jul 9–11", count: 4, live: false },
   { name: "Semi-finals", sub: "Jul 14–15", count: 2, live: false },
   { name: "Final", sub: "Jul 19 · MetLife", count: 1, live: false },
@@ -39,7 +39,7 @@ const STAGES = [
 
 const FOLLOWED = [
   { name: "Canada", code: "CAN", state: "LIVE", live: true },
-  { name: "United States", code: "USA", state: "22:00", live: false },
+  { name: "United States", code: "USA", state: "LIVE", live: true },
   { name: "Mexico", code: "MEX", state: "LIVE", live: true },
   { name: "Morocco", code: "MAR", state: "LIVE", live: true },
 ];

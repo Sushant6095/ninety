@@ -2,8 +2,9 @@
 //   GET /markets/:id (detail + amm{q,b,spread_mult}, ADR-046 guarded emit) · GET /markets/:id/quote ·
 //   GET /portfolio (positions + equity) · movers from market:{id}:open. Chunk-swappable 1:1 once the API boots.
 import type { Outcome } from "./types";
+import { koClock, MARKETS } from "./fixtures";
 
-// ── selected market detail (Australia vs Egypt · R32) ────────────────────────────
+// ── selected market detail (Australia vs Egypt · R16) ────────────────────────────
 // SEED ONLY. Everything that MOVES during the match — minute, phase, score, prices, the River — is owned by
 // the live store (features/live/matchLiveStore.ts), which seeds the money-shot frame: goalless at 74', Egypt
 // flat ~31, Ashour's counter landing AT the live minute. The fields below are the still parts: names, badges,
@@ -22,7 +23,7 @@ export const MATCH: TerminalMatch = {
   marketId: "wc26-aus-egy:1x2", matchId: "wc26-aus-egy",
   home: "Australia", away: "Egypt", homeCode: "AUS", awayCode: "EGY",
   homeMeta: "HOME · FIFA #24 · GRP F 2ND", awayMeta: "AWAY · FIFA #33 · GRP C 1ST",
-  stage: "Round of 32", competition: "World Cup 2026", venue: "Lumen Field",
+  stage: "Round of 16", competition: "World Cup 2026", venue: "Lumen Field",
   b: 1200, tick: 2.2,
   amm: { q: [-881, -1873, -1405], b: 1200, spreadMult: 1 }, // q = b·ln(p) → price(q,b) = {.480,.210,.310} pre-goal
   goalLabel: "GOAL 74' ASHOUR · 31 → 55",
@@ -31,45 +32,52 @@ export const MATCH: TerminalMatch = {
 /** The minute Ashour's counter lands — the live minute, because the goal happens NOW (the money shot). */
 export const GOAL_MINUTE = 74;
 
-// ── left rail: live competitions (R32) ───────────────────────────────────────────
+// ── left rail: live competitions — DERIVED from MARKETS (one universe, A2) ───────
+// The rail lists the SAME slate the board and ticker render; a second hand-written list here is how
+// Argentina ends up in two matches at once. Seed identity only — live cells read the store.
 export interface TermMarketRow {
   matchId: string; homeCode: string; awayCode: string; group: string; groupMeta: string;
   minute: number | null; time: string | null; score: [number, number] | null;
   mark: Record<Outcome, number>; fav: boolean; selected?: boolean;
 }
-const g1 = "WORLD CUP — ROUND OF 32", g1m = "TODAY · 4";
-const g2 = "ROUND OF 32", g2m = "SUN 6 JUL · 3";
-export const TERM_MARKETS: TermMarketRow[] = [
-  // The selected row is SEED ONLY — CompetitionsRail reads its minute/score/prices from the live store.
-  { matchId: "wc26-aus-egy", homeCode: "AUS", awayCode: "EGY", group: g1, groupMeta: g1m, minute: 74, time: null, score: [0, 0], mark: { H: 0.48, D: 0.21, A: 0.31 }, fav: true, selected: true },
-  { matchId: "wc26-arg-cpv", homeCode: "ARG", awayCode: "CPV", group: g1, groupMeta: g1m, minute: null, time: "03:30", score: null, mark: { H: 0.862, D: 0.098, A: 0.04 }, fav: false },
-  { matchId: "wc26-col-gha", homeCode: "COL", awayCode: "GHA", group: g1, groupMeta: g1m, minute: null, time: "07:00", score: null, mark: { H: 0.69, D: 0.196, A: 0.114 }, fav: false },
-  { matchId: "wc26-can-mar", homeCode: "CAN", awayCode: "MAR", group: g1, groupMeta: g1m, minute: null, time: "22:30", score: null, mark: { H: 0.44, D: 0.275, A: 0.285 }, fav: true },
-  { matchId: "wc26-bra-nor", homeCode: "BRA", awayCode: "NOR", group: g2, groupMeta: g2m, minute: null, time: "01:30", score: null, mark: { H: 0.784, D: 0.139, A: 0.077 }, fav: false },
-  { matchId: "wc26-par-fra", homeCode: "PAR", awayCode: "FRA", group: g2, groupMeta: g2m, minute: null, time: "02:30", score: null, mark: { H: 0.175, D: 0.195, A: 0.63 }, fav: false },
-  { matchId: "wc26-mex-eng", homeCode: "MEX", awayCode: "ENG", group: g2, groupMeta: g2m, minute: null, time: "05:30", score: null, mark: { H: 0.263, D: 0.225, A: 0.512 }, fav: false },
-];
+const railSlate = MARKETS.filter((m) => m.status === "LIVE" || m.status === "OPEN");
+const liveCount = railSlate.filter((m) => m.minute != null).length;
+export const TERM_MARKETS: TermMarketRow[] = railSlate
+  .map((m): TermMarketRow => ({
+    matchId: m.matchId,
+    homeCode: m.homeCode,
+    awayCode: m.awayCode,
+    group: m.minute != null ? "WORLD CUP — ROUND OF 16" : "ROUND OF 16",
+    groupMeta: m.minute != null ? `LIVE · ${liveCount}` : `5–6 JUL · ${railSlate.length - liveCount}`,
+    minute: m.minute,
+    time: m.minute == null ? koClock(m.kickoffAt) : null,
+    score: m.score ? [m.score.home, m.score.away] : null,
+    mark: { H: m.mark?.H ?? 0, D: m.mark?.D ?? 0, A: m.mark?.A ?? 0 },
+    fav: m.favourite,
+    selected: m.matchId === "wc26-aus-egy",
+  }))
+  .sort((a, b) => Number(b.selected ?? false) - Number(a.selected ?? false) || Number(b.minute != null) - Number(a.minute != null));
 
 // ── right rail data ──────────────────────────────────────────────────────────────
 export interface PositionRow { marketId: string; code: string; vs: string; outcome: Outcome; shares: number; avgEntry: number; pnl: number | null; live: boolean; pre?: boolean; }
-// Your EGY position was opened at 41.0 — under water at the pre-goal 31, and it flips green on Ashour's
+// Your EGY position averages 41.0 — under water at the pre-goal 31, and it flips green on Ashour's
 // counter. P&L is computed live off the store's mark, never seeded (a seeded P&L is a P&L that can lie).
+// Shares/entries MATCH lib/portfolio.ts (same account, two surfaces — they may never disagree).
 export const POSITIONS: PositionRow[] = [
-  { marketId: "wc26-aus-egy", code: "EGY", vs: "AUS", outcome: "A", shares: 90, avgEntry: 41.0, pnl: null, live: true },
-  { marketId: "wc26-can-mar", code: "CAN", vs: "MAR", outcome: "H", shares: 120, avgEntry: 44.0, pnl: null, live: false, pre: true },
-  { marketId: "wc26-par-fra", code: "FRA", vs: "PAR", outcome: "A", shares: 40, avgEntry: 61.2, pnl: 72, live: true },
+  { marketId: "wc26-aus-egy", code: "EGY", vs: "AUS", outcome: "A", shares: 60, avgEntry: 41.0, pnl: null, live: true },
+  { marketId: "wc26-can-mar", code: "CAN", vs: "MAR", outcome: "H", shares: 40, avgEntry: 52.0, pnl: null, live: true },
+  { marketId: "wc26-fra-sen", code: "FRA", vs: "SEN", outcome: "H", shares: 25, avgEntry: 63.0, pnl: null, live: true },
 ];
 
-// Movers — the notes/pairings are still. TodaysMovers reads price + Δ vs open from the live store when the
-// match is on it (the traded one always is); `price`/`delta` are the seed for the R32 rows the store doesn't
-// carry, so an unlisted match shows its real opening price rather than a zero.
+// Movers — the notes/pairings are still; every row is a MARKETS match, so TodaysMovers reads price + Δ vs
+// open from the live store for all of them (`price`/`delta` are only the pre-hydration seed).
 export interface MoverRow { matchId: string; code: string; vs: string; outcome: Outcome; price: number; delta: number; note: string; }
 export const MOVERS: MoverRow[] = [
   { matchId: "wc26-aus-egy", code: "EGY", vs: "AUS", outcome: "A", price: 31.0, delta: 0, note: "goalless at 74' — pressing" },
-  { matchId: "wc26-arg-cpv", code: "ARG", vs: "CPV", outcome: "H", price: 86.2, delta: 1.4, note: "heaviest favourite of R32" },
-  { matchId: "wc26-mex-eng", code: "ENG", vs: "MEX", outcome: "A", price: 51.2, delta: 2.8, note: "team news: Kane starts" },
-  { matchId: "wc26-col-gha", code: "GHA", vs: "COL", outcome: "A", price: 11.4, delta: -2.2, note: "Nkunku doubtful" },
-  { matchId: "wc26-can-mar", code: "CAN", vs: "MAR", outcome: "H", price: 61.4, delta: 4.1, note: "one goal up at the hour" },
+  { matchId: "wc26-bra-kor", code: "BRA", vs: "KOR", outcome: "H", price: 86.0, delta: 15.0, note: "two up before the hour" },
+  { matchId: "wc26-ned-usa", code: "USA", vs: "NED", outcome: "A", price: 26.4, delta: 8.0, note: "level after half an hour — USA bid" },
+  { matchId: "wc26-can-mar", code: "CAN", vs: "MAR", outcome: "H", price: 61.4, delta: 9.4, note: "a goal to the good" },
+  { matchId: "wc26-eng-sui", code: "ENG", vs: "SUI", outcome: "H", price: 52.0, delta: 0, note: "team news: Kane starts" },
 ];
 
 // The match feed. Goalless build-up — Ashour's counter at 74' is NOT here: it lands live, on the cliff, and
