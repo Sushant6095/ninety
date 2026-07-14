@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
 import { Flag } from "../../components/ui/Flag";
 import { LivePrice } from "../../components/ui/LivePrice";
 import { ScrollArea } from "../../components/ui/ScrollArea";
@@ -11,6 +10,10 @@ import { TERM_MARKETS, type TermMarketRow } from "../../lib/terminal";
 import type { Outcome } from "../../lib/types";
 
 const OUT: Outcome[] = ["H", "D", "A"];
+// One source of truth for the screener's column geometry — Row and the header row both consume these,
+// so a width edit can never misalign them. 456px = 8 rows (Hyperliquid watchlist cap).
+const COL = { star: "w-3", min: "w-9", price: "min-w-[34px]" } as const;
+const RAIL_MAX_H = "max-h-[456px]";
 type RailFilter = "all" | "live" | "faves";
 
 function leadOf(mark: Record<Outcome, number>): Outcome {
@@ -34,8 +37,8 @@ function Row({ m }: { m: TermMarketRow }) {
       className={`group relative flex items-center gap-2 py-2 pl-3 pr-2 outline-none transition-colors duration-200 hover:bg-hairline/25 focus-visible:bg-hairline/25 active:bg-hairline/40 ${m.selected ? "bg-up/[0.06]" : ""}`}
     >
       {m.selected && <span className="absolute inset-y-1 left-0 w-[3px] rounded-full bg-up" />}
-      <span className={`w-3 shrink-0 text-center text-caption ${m.fav ? "text-up" : "text-lo/40"}`} aria-hidden>★</span>
-      <span className="w-9 shrink-0 text-center">
+      <span className={`${COL.star} shrink-0 text-center text-caption ${m.fav ? "text-up" : "text-lo/40"}`} aria-hidden>★</span>
+      <span className={`${COL.min} shrink-0 text-center`}>
         {minute != null ? (
           <>
             <span className={`num block text-label font-semibold leading-none ${halted ? "text-halt" : "text-up"}`}>{minute}&#39;</span>
@@ -50,16 +53,16 @@ function Row({ m }: { m: TermMarketRow }) {
         <span className="mt-1 flex items-center gap-1"><Flag code={m.awayCode} size={14} /><span className="text-caption font-medium text-hi">{m.awayCode}</span></span>
       </span>
       {score ? (
-        <span className="w-3 shrink-0 text-right">
+        <span className={`${COL.star} shrink-0 text-right`}>
           <span className="num block text-caption font-medium text-hi">{score[0]}</span>
           <span className="num mt-1 block text-caption font-medium text-hi">{score[1]}</span>
         </span>
       ) : (
-        <span className="w-3 shrink-0" aria-hidden />
+        <span className={`${COL.star} shrink-0`} aria-hidden />
       )}
       <span className="flex shrink-0 gap-1">
         {OUT.map((o) => (
-          <span key={o} className={`flex min-w-[34px] items-center justify-center rounded px-1 py-1.5 ${lead === o ? "bg-hairline/50" : "bg-bg/40"}`}>
+          <span key={o} className={`flex ${COL.price} items-center justify-center rounded px-1 py-1.5 ${lead === o ? "bg-hairline/50" : "bg-bg/40"}`}>
             <LivePrice value={mark[o] * 100} className="text-caption font-semibold text-hi/90" />
           </span>
         ))}
@@ -110,7 +113,7 @@ export function CompetitionsRail() {
                 type="button"
                 aria-pressed={on}
                 onClick={() => setFilter(f.key)}
-                className={`whitespace-nowrap rounded-chip px-2 py-0.5 text-label font-medium outline-none transition-[color,background-color,transform] duration-200 focus-visible:ring-1 focus-visible:ring-up active:scale-[0.97] ${on ? "bg-hairline/60 text-hi" : "text-lo hover:text-hi"}`}
+                className={`hit whitespace-nowrap rounded-chip px-2 py-0.5 text-label font-medium outline-none transition-[color,background-color,transform] duration-200 focus-visible:ring-1 focus-visible:ring-up active:scale-[0.97] ${on ? "bg-hairline/60 text-hi" : "text-lo hover:text-hi"}`}
               >
                 {f.label} <span className="num tabular-nums">{counts[f.key]}</span>
               </button>
@@ -121,20 +124,20 @@ export function CompetitionsRail() {
 
       {/* Column header (screener pattern) — mirrors the row grid exactly; kick-offs are UTC. */}
       <div className="flex items-center gap-2 border-b border-hairline/70 bg-bg/30 py-1.5 pl-3 pr-2 text-label font-semibold uppercase tracking-micro text-lo" aria-hidden>
-        <span className="w-3 shrink-0" />
-        <span className="w-9 shrink-0 text-center">UTC</span>
+        <span className={`${COL.star} shrink-0`} />
+        <span className={`${COL.min} shrink-0 text-center`}>UTC</span>
         <span className="min-w-0 flex-1">Match</span>
-        <span className="w-3 shrink-0" />
+        <span className={`${COL.star} shrink-0`} />
         <span className="flex shrink-0 gap-1">
           {OUT.map((o) => (
-            <span key={o} className="min-w-[34px] text-center">{o}</span>
+            <span key={o} className={`${COL.price} text-center`}>{o}</span>
           ))}
         </span>
       </div>
 
       {/* The full R16 slate is 13 rows — cap the list at ~8 rows (Hyperliquid watchlist pattern) so Attack
           Momentum and the events feed stay on the first screen; the rail scrolls inside its own hairline bar. */}
-      <ScrollArea className="max-h-[456px]">
+      <ScrollArea className={RAIL_MAX_H}>
         {groups.length === 0 ? (
           <p className="px-3 py-6 text-center text-caption text-lo">No {filter === "faves" ? "favourites" : "live matches"} right now.</p>
         ) : (
@@ -144,7 +147,6 @@ export function CompetitionsRail() {
                 <span className="num rounded bg-bg px-1 text-label font-semibold text-lo ring-1 ring-inset ring-hairline">R16</span>
                 <h3 className="text-label font-semibold uppercase tracking-micro text-lo">{label}</h3>
                 <span className="text-label text-lo">{meta}</span>
-                <ChevronDown size={13} className="ml-auto text-lo/60" aria-hidden />
               </div>
               <div className="divide-y divide-hairline/50">
                 {rows.map((m) => <Row key={m.matchId} m={m} />)}
@@ -153,7 +155,7 @@ export function CompetitionsRail() {
           ))
         )}
       </ScrollArea>
-      <Link href={routes.competition} className="block border-t border-hairline px-3 py-2 text-label text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi active:opacity-70">
+      <Link href={routes.competition} className="flex min-h-11 items-center border-t border-hairline px-3 text-label text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi active:opacity-70">
         Tournament futures · 2 markets →
       </Link>
     </section>

@@ -118,7 +118,7 @@ export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPl
         <button
           onClick={submit}
           disabled={disabled}
-          className={`min-h-[44px] shrink-0 rounded-lg px-5 text-strong font-semibold text-bg transition-[filter,transform] duration-200 ease-out hover:brightness-110 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:cursor-not-allowed ${side === "buy" ? "bg-up focus-visible:ring-up" : "bg-down focus-visible:ring-down"}`}
+          className={`min-h-11 shrink-0 rounded-lg px-5 text-strong font-semibold text-bg transition-[filter,transform] duration-200 ease-out hover:brightness-110 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:cursor-not-allowed ${side === "buy" ? "bg-up focus-visible:ring-up" : "bg-down focus-visible:ring-down"}`}
         >
           {disabled ? "Trading paused" : `${side === "buy" ? "Buy" : "Sell"} ${label} @ ${markPx.toFixed(1)}`}
         </button>
