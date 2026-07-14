@@ -1,0 +1,21 @@
+docs/BUILD-LOG.md
+  s_338735e9af5335::t_fb95afe41b401e 89
+docs/SUBMISSION-FIELDS.md
+  s_338735e9af5335::t_f20e350593eeb0 13,51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "a2add27bca6cab66964694f814552f18efcb2d66",
+  "prompts": {},
+  "sessions": {
+    "s_338735e9af5335": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93fac499-ebc1-4122-b865-8c9f3e20d6b6",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
