@@ -1,0 +1,21 @@
+docs/adr/ADR-057-one-fixture-universe-design-law-pass.md
+  s_338735e9af5335::t_4ea88eb475f9e4 1-15
+design/DECISIONS.md
+  s_338735e9af5335::t_2f870788503552 10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "36851a27f152949f59f9461af39d9d645a2a74df",
+  "prompts": {},
+  "sessions": {
+    "s_338735e9af5335": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93fac499-ebc1-4122-b865-8c9f3e20d6b6",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
