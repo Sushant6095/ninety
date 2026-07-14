@@ -4,6 +4,7 @@ import { BoothTimeline } from "./BoothTimeline";
 import { MatchStats } from "./depth/MatchStats";
 import { Lineups } from "./depth/Lineups";
 import { H2H } from "./depth/H2H";
+import { EventsTimeline } from "./depth/EventsTimeline";
 import type { PositionRow } from "../../lib/terminal";
 import type { Outcome } from "../../lib/types";
 import { fmtPrice, signedCR } from "../../lib/format";
@@ -13,18 +14,19 @@ const TABS = [
   { v: "stats", l: "Stats" },
   { v: "lineups", l: "Lineups" },
   { v: "h2h", l: "H2H" },
+  { v: "events", l: "Events" },
   { v: "positions", l: "Positions" },
 ];
 
 const TRIGGER =
-  "relative shrink-0 px-3 py-2.5 text-caption font-medium text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi data-[state=active]:text-hi after:absolute after:inset-x-3 after:-bottom-px after:h-[2px] after:rounded-full after:bg-up after:opacity-0 data-[state=active]:after:opacity-100";
+  "relative inline-flex min-h-[44px] shrink-0 items-center rounded-md px-3 text-caption font-medium text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-up data-[state=active]:text-hi after:absolute after:inset-x-3 after:-bottom-px after:h-0.5 after:rounded-full after:bg-up after:opacity-0 data-[state=active]:after:opacity-100";
 
 function Empty({ text }: { text: string }) {
   return <p className="px-4 py-10 text-center text-body leading-relaxed text-lo">{text}</p>;
 }
 
 /** Match-view depth tabs (UI-LOCK §7.1) — Sofascore depth INSIDE the match view, never on the board: Market (the
- *  Booth) · Stats · Lineups · H2H · Positions. Re-skinned radix Tabs. Stats/Lineups/H2H swap 1:1 for api-football v3. */
+ *  Booth) · Stats · Lineups · H2H · Events · Positions. Re-skinned radix Tabs. Stats/Lineups/H2H swap 1:1 for api-football v3. */
 export function MatchTabs({ positions, mark }: { positions: PositionRow[]; mark: Record<Outcome, number> }) {
   return (
     <Tabs.Root defaultValue="market">
@@ -36,6 +38,7 @@ export function MatchTabs({ positions, mark }: { positions: PositionRow[]; mark:
       <Tabs.Content value="stats" className="outline-none"><MatchStats /></Tabs.Content>
       <Tabs.Content value="lineups" className="outline-none"><Lineups /></Tabs.Content>
       <Tabs.Content value="h2h" className="outline-none"><H2H /></Tabs.Content>
+      <Tabs.Content value="events" className="outline-none"><EventsTimeline /></Tabs.Content>
 
       <Tabs.Content value="positions" className="outline-none">
         {positions.length === 0 ? (

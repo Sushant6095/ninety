@@ -38,7 +38,7 @@ function Pitch({ l, tone }: { l: Lineup; tone: "up" | "down" }) {
         {positions(l).map((p) => (
           <span key={p.num} className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-0.5" style={{ left: `${p.x}%`, top: `${p.y}%` }}>
             <span className={`num grid h-6 w-6 place-items-center rounded-full text-label font-bold tabular-nums ring-1 ring-inset ${dot}`}>{p.num}</span>
-            <span className="max-w-[52px] truncate text-[9px] leading-none text-lo">{p.name}</span>
+            <span className="max-w-14 truncate text-label leading-none text-lo">{p.name}</span>
           </span>
         ))}
       </div>

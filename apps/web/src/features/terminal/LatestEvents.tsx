@@ -2,7 +2,7 @@
 import { ArrowLeftRight, Play, Square, Zap, type LucideIcon } from "lucide-react";
 import { RailCard } from "../../components/ui/RailCard";
 import { useMatchLive, TERMINAL_MATCH_ID } from "../live/matchLiveStore";
-import { EVENTS, GOAL_MINUTE, type EventRow } from "../../lib/terminal";
+import { EVENTS, GOAL_EVENT, type EventRow } from "../../lib/terminal";
 
 const ICON: Record<EventRow["kind"], { Icon: LucideIcon; tint: string }> = {
   goal: { Icon: Zap, tint: "text-up" },
@@ -10,8 +10,6 @@ const ICON: Record<EventRow["kind"], { Icon: LucideIcon; tint: string }> = {
   card: { Icon: Square, tint: "text-lo" },
   play: { Icon: Play, tint: "text-lo" },
 };
-
-const GOAL: EventRow = { minute: GOAL_MINUTE, text: "GOAL — Ashour (Egypt), assist Hafez", kind: "goal" };
 
 /** Latest events — the live match feed (goals, subs, cards, restarts) mirroring Sofascore's incident list.
  *  Bound to the ONE store: it lists only minutes the match has actually played, and the goal appears only once
@@ -21,7 +19,7 @@ export function LatestEvents() {
   const minute = live?.minute ?? 0;
   const scored = (live?.score?.away ?? 0) > 0;
 
-  const events = [...(scored ? [GOAL] : []), ...EVENTS]
+  const events = [...(scored ? [GOAL_EVENT] : []), ...EVENTS]
     .filter((e) => e.minute <= minute)
     .sort((a, b) => b.minute - a.minute);
 

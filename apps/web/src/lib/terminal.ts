@@ -83,6 +83,10 @@ export const EVENTS: EventRow[] = [
   { minute: 22, text: "Saved — Mohamed forces Ryan low to his right", kind: "play" },
 ];
 
+// The 74' goal is NOT in EVENTS — it lands live, on the cliff, the instant the score steps. Defined ONCE here so
+// the rail (LatestEvents) and the depth timeline (EventsTimeline) can never disagree on its minute or wording.
+export const GOAL_EVENT: EventRow = { minute: GOAL_MINUTE, text: "GOAL — Ashour (Egypt), assist Hafez", kind: "goal" };
+
 export const MARKET_STATUS = { status: "OPEN" as const, tick: 2.2, feedMs: 42, b: 1200, tradersIn: 3412 };
 
 export const PORTFOLIO = {
