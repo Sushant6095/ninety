@@ -25,7 +25,7 @@ export function Hero() {
           <Link href={routes.onboarding} className="inline-flex h-11 items-center justify-center gap-2 rounded-chip bg-up px-5 text-strong font-semibold text-bg outline-none transition-opacity duration-200 hover:opacity-90 focus-visible:opacity-90 active:opacity-80">
             Get 1,000 credits <ArrowRight className="h-4 w-4" aria-hidden strokeWidth={2.25} />
           </Link>
-          <Link href={routes.home} className="inline-flex h-11 items-center justify-center rounded-chip bg-surface px-5 text-strong font-medium text-hi ring-1 ring-inset ring-hairline outline-none transition-colors duration-200 hover:ring-up/40 focus-visible:ring-up/40">
+          <Link href={routes.matches} className="inline-flex h-11 items-center justify-center rounded-chip bg-surface px-5 text-strong font-medium text-hi ring-1 ring-inset ring-hairline outline-none transition-colors duration-200 hover:ring-up/40 focus-visible:ring-up/40">
             See tonight&#39;s matches
           </Link>
         </div>

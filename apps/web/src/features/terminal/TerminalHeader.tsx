@@ -14,9 +14,9 @@ import type { SessionUser } from "../../lib/types";
 // destination the old App nav had, plus the Terminal's live-market filters and proof status.
 const SUBNAV: { label: string; href: string; count?: number; home?: boolean }[] = [
   { label: "Trending", href: routes.moments },
-  { label: "WC26", href: routes.home, count: 80, home: true },
-  { label: "Live", href: routes.home, count: 4 },
-  { label: "Today", href: routes.home, count: 12 },
+  { label: "WC26", href: routes.board, count: 80, home: true },
+  { label: "Live", href: routes.board, count: 4 },
+  { label: "Today", href: routes.board, count: 12 },
   { label: "Competition", href: routes.competition },
   { label: "Bracket", href: routes.bracket },
   { label: "Portfolio", href: routes.portfolio },
@@ -44,7 +44,7 @@ export function TerminalHeader({ user }: { user: SessionUser }) {
       <div className="mx-auto flex h-14 max-w-[1600px] items-center gap-3 px-4 sm:gap-5 sm:px-6">
         <Link href={routes.home} aria-label="Ninety — home" className="group inline-flex shrink-0 items-center gap-2">
           <span className="font-display text-heading font-extrabold leading-none tracking-[-0.03em] text-hi transition-opacity duration-200 group-hover:opacity-80">Ninety</span>
-          <span className="num rounded-md bg-surface px-1 py-0.5 text-label font-semibold uppercase leading-none tracking-[0.1em] text-lo ring-1 ring-inset ring-hairline">{path === "/" ? "WC26" : "Terminal"}</span>
+          <span className="num rounded-md bg-surface px-1 py-0.5 text-label font-semibold uppercase leading-none tracking-[0.1em] text-lo ring-1 ring-inset ring-hairline">{path === routes.board ? "WC26" : "Terminal"}</span>
         </Link>
 
         <button
@@ -79,8 +79,8 @@ export function TerminalHeader({ user }: { user: SessionUser }) {
         <div className="mx-auto flex max-w-[1600px] items-center gap-1 overflow-x-auto px-2 sm:px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {SUBNAV.map((t) => {
             const active = t.home
-              ? path === "/" || path.startsWith(routes.terminal) || path.startsWith("/match")
-              : t.href !== routes.home && path.startsWith(t.href);
+              ? path === routes.board || path.startsWith(routes.terminal) || path.startsWith("/match")
+              : t.href !== routes.board && path.startsWith(t.href);
             return (
               <Link key={t.label} href={t.href} className={`group relative flex shrink-0 items-center gap-1 whitespace-nowrap px-3 py-2 text-caption font-medium transition-colors duration-200 ${active ? "text-hi" : "text-lo hover:text-hi"}`}>
                 {t.label}

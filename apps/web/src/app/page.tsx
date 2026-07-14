@@ -1,21 +1,13 @@
-import { HomeShell } from "../features/home/HomeShell";
-import { TopMovers } from "../features/home/TopMovers";
-import { NewsStrip } from "../features/home/NewsStrip";
-import { GroupStandings } from "../features/home/GroupStandings";
-import { PowerRankings } from "../features/home/PowerRankings";
-import { Reveal } from "../components/ui/Reveal";
-import { MARKETS } from "../lib/fixtures";
+import type { Metadata } from "next";
+import { LandingPage } from "../features/landing/LandingPage";
 
-// Home = the lock-kit App board: match board (live/today/finished, grouped) → biggest movers → traders → booth
-// news, with quiet rails. Live prices/scores flow from the ONE match store (seeded from MARKETS, drifted by
-// the MatchLiveProvider in the root layout) — the same store the /terminal reads.
-export default function Home() {
-  return (
-    <HomeShell markets={MARKETS}>
-      <Reveal><TopMovers /></Reveal>
-      <Reveal><GroupStandings /></Reveal>
-      <Reveal><PowerRankings /></Reveal>
-      <Reveal><NewsStrip /></Reveal>
-    </HomeShell>
-  );
+export const metadata: Metadata = {
+  title: "Ninety — every match is a market for ninety minutes",
+  description:
+    "A free-to-play live football exchange for World Cup 2026. Prices move with the game, the Booth explains the swings, Solana proves the result. Play money — no deposits, no cash payouts, ever.",
+};
+
+// The landing — where a visitor arrives. The board (the old /) lives at /board.
+export default function Landing() {
+  return <LandingPage />;
 }

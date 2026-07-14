@@ -61,7 +61,7 @@ export function MomentsGallery() {
         )}
 
         <p className="mt-6 text-caption text-lo">
-          Missed one live? <Link href={routes.home} className="text-up transition-opacity duration-200 hover:opacity-80">Watch tonight&#39;s matches →</Link>
+          Missed one live? <Link href={routes.matches} className="text-up transition-opacity duration-200 hover:opacity-80">Watch tonight&#39;s matches →</Link>
         </p>
       </main>
     </AppShell>

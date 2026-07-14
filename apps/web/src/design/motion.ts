@@ -14,6 +14,13 @@ export const motion = {
   fast: 150,
   /** Slow, deliberate reveal (ProofBadge on settle, sheet enter). */
   slow: 250,
+  /** Count-up reveal (NumberTicker) — the 500ms ceiling, spent deliberately on stat proof. */
+  count: 500,
+  /** Landing hero word reveal — per-word duration + stagger (hyperfoundation letter-reveal analog). */
+  heroWord: 400,
+  heroStagger: 45,
+  /** The River drawing itself — the one sanctioned loud beat outside the halt (ADR-052 signature). */
+  riverDraw: 1400,
   /** cubic-bezier for CSS transitions / Framer `ease` — expo-out, calm and premium. */
   easeOut: [0.16, 1, 0.3, 1] as [number, number, number, number],
   /** Framer Motion spring — number rolls, badge pulse. Snappy but not bouncy. */

@@ -81,7 +81,7 @@ export function LeaderboardPage({ leaders }: { leaders: LeaderRow[] }) {
         {leaders.length === 0 ? (
           <div className="grid place-items-center rounded-card border border-hairline bg-surface px-4 py-16 text-center">
             <p className="text-body text-lo">No traders ranked yet — be the first to open a market.</p>
-            <Link href={routes.home} className="mt-2 text-body text-up transition-opacity duration-200 hover:opacity-80">Browse matches →</Link>
+            <Link href={routes.matches} className="mt-2 text-body text-up transition-opacity duration-200 hover:opacity-80">Browse matches →</Link>
           </div>
         ) : (
           <div className="overflow-hidden rounded-card border border-hairline bg-surface">

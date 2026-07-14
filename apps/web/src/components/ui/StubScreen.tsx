@@ -22,7 +22,7 @@ export function StubScreen({ name, note }: StubScreenProps) {
           <h1 className="font-display text-display font-bold tracking-tight text-hi">{name}</h1>
           <p className="mt-2 text-body leading-relaxed text-lo">{note ?? "This screen is next in the build. The route is live, so nothing dead-ends."}</p>
           <Link
-            href={routes.home}
+            href={routes.matches}
             className="mt-5 inline-flex items-center gap-1 rounded-chip bg-surface px-4 py-2 text-body font-medium text-hi ring-1 ring-inset ring-hairline transition-colors duration-200 hover:ring-up/40"
           >
             ← Back to matches

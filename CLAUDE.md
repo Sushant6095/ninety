@@ -17,7 +17,7 @@
 - Only `packages/txline` may call TxLINE. Only `packages/chain` may build Solana txs.
 - The Anchor program verifies TxLINE proofs on-chain (`proof.rs`). There is NO admin result path. Do not add one.
 - Play-money invariant: no deposits, no cash payouts, ever. Do not build features that violate this.
-- WC26 two-source rule (ADR-051): TxLINE owns everything that MOVES during a match — scores, goals, halts, marks/prices, match state, results, who advances. worldcup26 (baked snapshot in `apps/web/src/data/wc26`) owns only what SITS STILL — flags, team metadata, groups/standings, the 104-match bracket skeleton, stadiums, fixtures. Tie-breaker: if a field moves during a match → TxLINE. worldcup26.ir is never a runtime dependency; re-bake via `pnpm --filter web wc26:refresh`.
+- WC26 two-source rule (ADR-051): TxLINE owns everything that MOVES during a match — scores, goals, halts, marks/prices, match state, results, who advances. worldcup26 (baked snapshot in `apps/web/src/data/wc26`) owns only what SITS STILL — flags, team metadata, groups/standings, the 104-match bracket skeleton, stadiums, fixtures. Tie-breaker: if a field moves during a match → TxLINE. worldcup26.ir is never a runtime dependency; re-bake via `pnpm --filter web wc26:refresh`. Flags are baked local PNGs in `apps/web/public/flags/` (re-bake `node apps/web/scripts/bake-flags.mjs` only when `FIFA_TO_ISO` in `src/lib/flags.ts` grows) — no runtime flag CDN; flagcdn stays OUT of `next.config.mjs` remotePatterns (ADR-055).
 - New decision? Write an ADR in `docs/adr/` before coding it.
 
 ## Commands

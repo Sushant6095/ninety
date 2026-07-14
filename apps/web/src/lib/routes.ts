@@ -1,7 +1,8 @@
 // The single route map — every click resolves through here, so nothing is a dead end (stub pages exist for all).
 export const routes = {
-  home: "/",
-  matches: "/",
+  home: "/", // the landing — where a visitor arrives
+  matches: "/board", // the board — where a trader goes
+  board: "/board",
   competition: "/competition",
   bracket: "/bracket",
   portfolio: "/portfolio",

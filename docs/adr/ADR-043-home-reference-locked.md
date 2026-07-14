@@ -1,6 +1,6 @@
 # ADR 043 Home reference locked — design/screens/home.png = the Ninety Home (from the App mockup); subtract-then-elevate build order (Phase 4 frontend, STEP 0)
 
-Status: accepted 2026-07-09. Context: STEP 0 of the frontend Home slice — lock the design-cop target before building any component. BRAND: the product is **Ninety** (renamed from the old "OMNIPITCH"; see ADR-044). The wordmark and all copy are Ninety.
+Status: accepted 2026-07-09. Context: STEP 0 of the frontend Home slice — lock the design-cop target before building any component. BRAND: the product is **Ninety** (renamed from the old "OMNIPITCH"; see ADR-044). The wordmark and all copy are Ninety. Extended by: ADR-056 (this screen is unchanged but now lives at `/board`; `/` is the landing).
 
 Decision:
 - **Reference = the App-mockup Home, rebranded to Ninety**, from the Lock Kit design export, rendered to

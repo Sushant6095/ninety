@@ -15,7 +15,7 @@ const require = createRequire(new URL("../../apps/web/package.json", import.meta
 const axePath = require.resolve("axe-core/axe.min.js");
 
 const ROUTES = [
-  "/", "/terminal", "/bracket", "/competition", "/portfolio", "/history",
+  "/", "/board", "/terminal", "/bracket", "/competition", "/portfolio", "/history",
   "/leaderboard", "/moments", "/proofs", "/how-it-works", "/onboarding", "/settings",
   "/match/wc26-can-mar", "/profile/pitchwizard",
 ];

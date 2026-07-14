@@ -116,7 +116,7 @@ export function PortfolioPage() {
           {positions.length === 0 ? (
             <div className="grid place-items-center rounded-card border border-hairline bg-surface px-4 py-14 text-center">
               <p className="text-body text-lo">No open positions yet.</p>
-              <Link href={routes.home} className="mt-2 text-body text-up transition-opacity duration-200 hover:opacity-80">Find a live match to trade →</Link>
+              <Link href={routes.matches} className="mt-2 text-body text-up transition-opacity duration-200 hover:opacity-80">Find a live match to trade →</Link>
             </div>
           ) : (
             <div className="overflow-hidden rounded-card border border-hairline bg-surface">
