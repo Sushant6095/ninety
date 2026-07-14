@@ -1,0 +1,25 @@
+apps/web/src/components/ui/Flag.tsx
+  s_b60ec3c6161754::t_358ae46e62453c 10-11,20
+apps/web/src/lib/flags.ts
+  s_b60ec3c6161754::t_6f296ab9caa0d0 1-4,13-14,17,19-23,26-27,29
+apps/web/scripts/bake-flags.mjs
+  s_b60ec3c6161754::t_c2f3c0d97beacd 1-2,4-19,28,38-39,42-47
+  s_b60ec3c6161754::t_6c577951952107 20-27,29-37,40-41
+  s_b60ec3c6161754::t_169a44d9c79ca8 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "c2a6c9476808ea11fc60490fd8ddfd65a0aa72e4",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
