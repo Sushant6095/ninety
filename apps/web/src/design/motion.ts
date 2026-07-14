@@ -23,8 +23,10 @@ export const motion = {
   riverDraw: 1400,
   /** cubic-bezier for CSS transitions / Framer `ease` — expo-out, calm and premium. */
   easeOut: [0.16, 1, 0.3, 1] as [number, number, number, number],
-  /** Framer Motion spring — number rolls, badge pulse. Snappy but not bouncy. */
-  spring: { type: "spring", stiffness: 420, damping: 34, mass: 0.9 } as const,
+  /** Framer Motion spring — selection indicators, number rolls, badge pulse. Apple-style duration/bounce
+   *  form (easier to reason about than stiffness/damping): fast settle with a breath of life, no wobble —
+   *  crisp terminal personality. Interruptible by nature; springs carry velocity when retargeted. */
+  spring: { type: "spring", duration: 0.3, bounce: 0.15 } as const,
   /** Reduced-motion budget: near-instant, no travel. Swap in when prefers-reduced-motion. */
   reduced: { duration: 0.01, ease: "linear" } as const,
 } as const;

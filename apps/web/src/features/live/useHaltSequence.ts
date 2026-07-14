@@ -44,6 +44,7 @@ export function useHaltSequence(scope: RefObject<HTMLElement | null>, actions: H
   const actionsRef = useRef(actions);
   actionsRef.current = actions;
   const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const autoplayRef = useRef<gsap.core.Tween | null>(null);
   const reducedRef = useRef(false);
   const applyResolvedRef = useRef<() => void>(() => {});
 
@@ -124,9 +125,11 @@ export function useHaltSequence(scope: RefObject<HTMLElement | null>, actions: H
         tl.to(flash, { autoAlpha: 0.5, duration: D.pulse }, AT.flash);
         tl.to(flash, { autoAlpha: 0, duration: D.pulse }, AT.flash + D.pulse);
 
-        // 2 · HALT band sweeps L→R (+80ms) — a crisp moving amber band; the wash + HALTED watermark fade in behind it
+        // 2 · HALT band sweeps L→R (+80ms) — a crisp moving amber band; the wash + HALTED watermark fade in behind it.
+        // The band is w-1/3: xPercent is element-relative, so 300 puts its left edge at the container's right edge —
+        // a FULL crossing (120 died at ~73% and popped out). Constant motion → linear, not the expo-out default.
         tl.set(sweep, { autoAlpha: 1 }, AT.sweep);
-        tl.fromTo(sweep, { xPercent: -100 }, { xPercent: 120, duration: D.sweep }, AT.sweep);
+        tl.fromTo(sweep, { xPercent: -100 }, { xPercent: 300, duration: D.sweep, ease: "none" }, AT.sweep);
         tl.to(wash, { autoAlpha: 1, duration: D.freeze }, AT.sweep + 0.06);
         tl.set(sweep, { autoAlpha: 0 }, AT.sweep + D.sweep);
 
@@ -160,7 +163,7 @@ export function useHaltSequence(scope: RefObject<HTMLElement | null>, actions: H
         tl.to([...wash, ...spread], { autoAlpha: 0, duration: D.decay }, AT.resume);
 
         tlRef.current = tl;
-        gsap.delayedCall(AUTOPLAY_DELAY, () => tl.play(0));
+        autoplayRef.current = gsap.delayedCall(AUTOPLAY_DELAY, () => tl.play(0));
       });
     },
     { scope, dependencies: [] },
@@ -171,6 +174,7 @@ export function useHaltSequence(scope: RefObject<HTMLElement | null>, actions: H
       applyResolvedRef.current();
       return;
     }
+    autoplayRef.current?.kill(); // a Replay inside the pre-autoplay window must not get yanked back by it
     tlRef.current?.restart();
   }, []);
 

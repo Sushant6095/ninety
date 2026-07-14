@@ -10,9 +10,9 @@ import { Footer } from "../home/Footer";
 import { routes } from "../../lib/routes";
 
 const PROOF_STEPS = [
-  { n: "01", title: "TxLINE signs the feed", copy: "Every goal, halt and final whistle arrives as a signed message — the data carries its own evidence." },
+  { n: "01", title: "TxLINE signs the feed", copy: "Every goal, halt and final whistle arrives as a signed message. The data carries its own evidence." },
   { n: "02", title: "The program verifies", copy: "The Solana program checks that signature before any market settles. There is no admin override, by design." },
-  { n: "03", title: "Settlement is public", copy: "Every settled market leaves a proof on devnet that anyone can open — no trust required, ever." },
+  { n: "03", title: "Settlement is public", copy: "Every settled market leaves a proof on devnet that anyone can open. No trust required, ever." },
 ] as const;
 
 /** The landing — where a visitor arrives (the board at /board is where a trader goes). Structure follows the
@@ -32,7 +32,7 @@ export function LandingPage() {
                 Goal. Halt. Reprice.
               </h2>
               <p className="mt-5 max-w-[48ch] text-strong leading-relaxed text-lo">
-                A goal freezes the market for a beat — the halt. Prices land at the new reality, the Booth
+                A goal freezes the market for a beat: the halt. Prices land at the new reality, the Booth
                 explains the move in plain words, and the result settles on-chain. Watch it happen, live,
                 on a real market:
               </p>
@@ -53,7 +53,7 @@ export function LandingPage() {
             </p>
             <p className="mx-auto mt-6 max-w-[52ch] text-strong leading-relaxed text-lo">
               A price of 61.4 means the market gives that side a 61.4% chance of winning. When the
-              goal goes in, the probability moves first — and you can trade it, every minute of the match.
+              goal goes in, the probability moves first, and you can trade it every minute of the match.
             </p>
           </Reveal>
         </section>

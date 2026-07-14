@@ -60,17 +60,16 @@ export function LandingHero() {
             How it works
           </Link>
           <Link
-            href={routes.matches}
-            className="inline-flex h-11 items-center rounded-chip bg-surface px-4 text-body font-medium text-hi ring-1 ring-inset ring-hairline outline-none transition-colors duration-200 hover:ring-up/40 focus-visible:ring-up/40 active:bg-hairline/40"
+            href={routes.onboarding}
+            className="inline-flex h-11 items-center rounded-chip bg-up px-4 text-body font-semibold text-bg outline-none transition-opacity duration-200 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-up focus-visible:ring-offset-2 focus-visible:ring-offset-bg active:opacity-80"
           >
-            Open the board
+            Get 1,000 credits
           </Link>
         </nav>
       </header>
 
       <div className="relative mx-auto w-full max-w-[1040px] px-4 pb-24 pt-16 sm:px-6 sm:pb-32 sm:pt-24">
-        <p className="text-label font-semibold uppercase tracking-[0.14em] text-up">Ninety · World Cup 2026</p>
-        <h1 id="hero-h" className="mt-4 max-w-[15ch] font-display text-[clamp(2.75rem,1.4rem+5.6vw,5.5rem)] font-bold leading-[1.02] tracking-[-0.02em] text-hi">
+        <h1 id="hero-h" className="max-w-[15ch] font-display text-[clamp(2.75rem,1.4rem+5.6vw,5.5rem)] font-bold leading-[1.02] tracking-[-0.02em] text-hi [text-wrap:balance]">
           <span className="sr-only">Every match is a market for ninety minutes.</span>
           <span aria-hidden>
             {HEADLINE.map((w, i) => (
