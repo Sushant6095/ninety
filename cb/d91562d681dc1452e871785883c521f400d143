@@ -1,0 +1,29 @@
+apps/web/src/features/home/RightRail.tsx
+  s_338735e9af5335::t_ab0edbdc5e566e 27-28,32-39
+apps/web/src/lib/fixtures.ts
+  s_338735e9af5335::t_dffd475b3704d6 16
+  s_338735e9af5335::t_fbbc293cdb45ef 62-63
+  s_338735e9af5335::t_c10e1b612fa79f 80-81
+apps/web/src/features/competition/CompetitionPage.tsx
+  s_338735e9af5335::t_3541aeae165522 14
+apps/web/src/features/home/GroupStandings.tsx
+  s_338735e9af5335::t_507b4ff60b2443 48
+apps/web/src/features/home/CenterColumn.tsx
+  s_338735e9af5335::t_03fddd1997951e 20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "cbd91562d681dc1452e871785883c521f400d143",
+  "prompts": {},
+  "sessions": {
+    "s_338735e9af5335": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93fac499-ebc1-4122-b865-8c9f3e20d6b6",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
