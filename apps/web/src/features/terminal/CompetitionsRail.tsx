@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { Flag } from "../../components/ui/Flag";
 import { LivePrice } from "../../components/ui/LivePrice";
+import { ScrollArea } from "../../components/ui/ScrollArea";
 import { useMatchLive } from "../live/matchLiveStore";
 import { routes } from "../../lib/routes";
 import { TERM_MARKETS, type TermMarketRow } from "../../lib/terminal";
@@ -79,19 +80,23 @@ export function CompetitionsRail() {
         </h2>
         <span className="text-label uppercase tracking-wide text-lo">All KO times UTC</span>
       </div>
-      {groups.map(([label, meta, rows]) => (
-        <div key={label}>
-          <div className="flex items-center gap-2 bg-bg/40 px-3 py-1">
-            <span className="num rounded bg-bg px-1 text-label font-semibold text-lo ring-1 ring-inset ring-hairline">R16</span>
-            <h3 className="text-label font-semibold uppercase tracking-[0.08em] text-lo">{label}</h3>
-            <span className="text-label text-lo">{meta}</span>
-            <ChevronDown size={13} className="ml-auto text-lo/60" aria-hidden />
+      {/* The full R16 slate is 13 rows — cap the list at ~8 rows (Hyperliquid watchlist pattern) so Attack
+          Momentum and the events feed stay on the first screen; the rail scrolls inside its own hairline bar. */}
+      <ScrollArea className="max-h-[480px]">
+        {groups.map(([label, meta, rows]) => (
+          <div key={label}>
+            <div className="flex items-center gap-2 bg-bg/40 px-3 py-1">
+              <span className="num rounded bg-bg px-1 text-label font-semibold text-lo ring-1 ring-inset ring-hairline">R16</span>
+              <h3 className="text-label font-semibold uppercase tracking-[0.08em] text-lo">{label}</h3>
+              <span className="text-label text-lo">{meta}</span>
+              <ChevronDown size={13} className="ml-auto text-lo/60" aria-hidden />
+            </div>
+            <div className="divide-y divide-hairline/50">
+              {rows.map((m) => <Row key={m.matchId} m={m} />)}
+            </div>
           </div>
-          <div className="divide-y divide-hairline/50">
-            {rows.map((m) => <Row key={m.matchId} m={m} />)}
-          </div>
-        </div>
-      ))}
+        ))}
+      </ScrollArea>
       <Link href={routes.competition} className="block border-t border-hairline px-3 py-2 text-label text-lo transition-colors duration-200 hover:text-hi">
         Tournament futures · 2 markets →
       </Link>

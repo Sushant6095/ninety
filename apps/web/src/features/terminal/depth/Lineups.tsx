@@ -16,8 +16,11 @@ function positions(l: Lineup): { num: number; name: string; x: number; y: number
   return out;
 }
 
-function Pitch({ l, tone }: { l: Lineup; tone: "up" | "down" }) {
-  const dot = tone === "up" ? "bg-up/20 text-hi ring-up/50" : "bg-down/20 text-hi ring-down/50";
+// Dots are NEUTRAL ink for both teams: up/down are price-direction tokens (design law), never team colors —
+// each pitch is identified by its flag + code header, so color carries nothing here (dataviz: identity is
+// already positional/labeled).
+function Pitch({ l }: { l: Lineup }) {
+  const dot = "bg-hairline text-hi ring-hairline";
   return (
     <div className="rounded-card border border-hairline bg-surface p-3">
       <div className="mb-2 flex items-center justify-between">
@@ -53,8 +56,8 @@ function Pitch({ l, tone }: { l: Lineup; tone: "up" | "down" }) {
 export function Lineups() {
   return (
     <div className="grid gap-3 p-4 sm:grid-cols-2">
-      <Pitch l={LINEUPS.home} tone="up" />
-      <Pitch l={LINEUPS.away} tone="down" />
+      <Pitch l={LINEUPS.home} />
+      <Pitch l={LINEUPS.away} />
     </div>
   );
 }
