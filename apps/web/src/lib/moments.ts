@@ -47,7 +47,8 @@ const seg = (from: number, to: number): number[] => {
 };
 
 export const MOMENTS: Moment[] = [
-  { id: "m-ashour-13", matchId: "wc26-aus-egy", homeCode: "AUS", awayCode: "EGY", title: "Ashour's counter", outcome: "A", pick: "EGY", minute: 13, fromPrice: 31, toPrice: 55, owner: "@vd", ts: "today", mintSig: "5xQ…devnetAshour", segment: seg(31, 55) },
+  // Ashour's counter is the 74' money-shot (GOAL_MINUTE on /terminal) — the minute must match there, not read 13'.
+  { id: "m-ashour-74", matchId: "wc26-aus-egy", homeCode: "AUS", awayCode: "EGY", title: "Ashour's counter", outcome: "A", pick: "EGY", minute: 74, fromPrice: 31, toPrice: 55, owner: "@vd", ts: "today", mintSig: "5xQ…devnetAshour", segment: seg(31, 55) },
   { id: "m-david-38", matchId: "wc26-can-mar", homeCode: "CAN", awayCode: "MAR", title: "David reprices Canada", outcome: "H", pick: "CAN", minute: 38, fromPrice: 41, toPrice: 63, owner: "@hexfan", ts: "today", mintSig: "8kR…devnetDavid", segment: seg(41, 63) },
   { id: "m-eng-76", matchId: "wc26-eng-aus", homeCode: "ENG", awayCode: "AUS", title: "England seal it", outcome: "H", pick: "ENG", minute: 76, fromPrice: 72, toPrice: 92, owner: "@maple_maxi", ts: "today", mintSig: "2aP…devnetEngland", segment: seg(72, 92) },
   { id: "m-cro-88", matchId: "wc26-cro-bel", homeCode: "CRO", awayCode: "BEL", title: "Croatia's late winner", outcome: "H", pick: "CRO", minute: 88, fromPrice: 45, toPrice: 78, owner: "@late_swing", ts: "today", mintSig: "3mW…devnetCroatia", segment: seg(45, 78) },

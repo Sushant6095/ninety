@@ -23,7 +23,7 @@ export function ProofBadge({ sig, label = "Proof on Solana", className = "" }: P
     >
       <ShieldCheck className="h-3.5 w-3.5 text-chain" aria-hidden strokeWidth={2.25} />
       <span className="text-label font-medium text-chain">{label}</span>
-      <span className="num text-label tabular-nums text-chain/80">{short(sig)}</span>
+      <span className="num text-label tabular-nums text-chain">{short(sig)}</span>
     </a>
   );
 }
