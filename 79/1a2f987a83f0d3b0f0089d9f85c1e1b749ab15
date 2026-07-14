@@ -1,0 +1,43 @@
+README.md
+  s_b60ec3c6161754::t_8eed3de049791c 3-5,14,19-20,24,27-39,56-57,61,64,82-83,166,176,182-207,222,232-233,239,244,251-253,255-271,277-279
+docs/github/GITHUB_TOPICS.md
+  s_b60ec3c6161754::t_a590696e080bd9 1-26
+CONTRIBUTING.md
+  s_b60ec3c6161754::t_52574fbbc3f03d 48-53
+SECURITY.md
+  s_b60ec3c6161754::t_2523d122b423f1 1-38
+API.md
+  s_b60ec3c6161754::t_8788defafc6464 1-76
+docs/github/SOCIAL_PREVIEW.md
+  s_b60ec3c6161754::t_6182c604180f70 1-22
+.env.example
+  s_b60ec3c6161754::t_3a6f6938034549 1,3,5-7,9-15,20,23,27-31,34
+FAQ.md
+  s_b60ec3c6161754::t_9c84063859442a 1-34
+CHANGELOG.md
+  s_b60ec3c6161754::t_c3ff9ace234eda 1-45
+ROADMAP.md
+  s_b60ec3c6161754::t_dcaa852460f691 1-32
+ARCHITECTURE.md
+  s_b60ec3c6161754::t_82b4da66446348 1-108
+docs/github/REPOSITORY_DESCRIPTION.md
+  s_b60ec3c6161754::t_3f3cb74b2817ca 1-17
+SETUP.md
+  s_b60ec3c6161754::t_6cf0145b9dae0e 1-112
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "791a2f987a83f0d3b0f0089d9f85c1e1b749ab15",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
