@@ -21,6 +21,10 @@ export default {
     },
     fontFamily: { display: ["var(--font-display)"], ui: ["var(--font-ui)"], mono: ["var(--font-mono)"] },
     borderRadius: { card: "var(--radius-card)", chip: "var(--radius-chip)" },
+    // Motion routed through the tokens (styles/tokens.css mirrors design/motion.ts): `duration-200`
+    // keeps working, and every transition utility now runs the ninety ease, not Tailwind's default.
+    transitionDuration: { fast: "var(--duration-fast)", DEFAULT: "var(--duration)", slow: "var(--duration-slow)" },
+    transitionTimingFunction: { DEFAULT: "var(--ease-out)" },
     spacing: { ...space }, // the intentional spacing scale from tokens.ts (p-md, gap-lg, …)
     fontSize: {
       // The enforceable 6-step type scale (Series-C foundation). Use these named steps over arbitrary text-[Npx];
@@ -33,6 +37,11 @@ export default {
       heading: ["19px", { lineHeight: "1.15", letterSpacing: "-0.01em" }], // panel titles (Archivo)
       display: ["26px", { lineHeight: "1.1", letterSpacing: "-0.01em" }], // big data numbers — position, portfolio, movers (Archivo)
       "display-xl": ["40px", { lineHeight: "1", letterSpacing: "-0.02em" }], // the big live match score only
+      // Marketing display steps (landing/how) — fluid clamps from tokens.css; line-height/tracking baked in.
+      hero: ["var(--text-hero)", { lineHeight: "1.02", letterSpacing: "-0.02em" }],
+      section: ["var(--text-section)", { lineHeight: "1.05", letterSpacing: "-0.02em" }],
+      stat: ["var(--text-stat)", { lineHeight: "1" }],
+      number: ["var(--text-number)", { lineHeight: "1", letterSpacing: "-0.03em" }],
     },
   } },
 } satisfies Config;

@@ -1,6 +1,6 @@
 # 001 — Retrigger the live price flash on every tick
 
-- **Status**: TODO
+- **Status**: DONE (landed with the landing depth pass, 2026-07-14)
 - **Commit**: 4c0975f
 - **Severity**: HIGH
 - **Category**: Interruptibility / Purpose & frequency

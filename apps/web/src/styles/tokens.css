@@ -7,4 +7,12 @@
   --text-hi:#F5F7FA; --text-lo:#97A0AF;
   --up:#2BD97C; --down:#FF3D81; --halt:#FFB020; --chain:#9D6BFF;
   --radius-card:16px; --radius-chip:999px;
+  /* Motion — mirrors design/motion.ts (the typed authority): change BOTH or neither. */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms; --duration: 200ms; --duration-slow: 250ms;
+  /* Marketing display scale (landing/how) — fluid clamps; the terminal keeps its fixed 6-step scale. */
+  --text-hero: clamp(2.75rem, 1.2rem + 5vw, 5rem);
+  --text-section: clamp(1.9rem, 1rem + 2.6vw, 3rem);
+  --text-stat: clamp(2.5rem, 1.6rem + 2.4vw, 3.5rem);
+  --text-number: clamp(4.5rem, 2rem + 9vw, 10rem);
 }

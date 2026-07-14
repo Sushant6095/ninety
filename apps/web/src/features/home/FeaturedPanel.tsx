@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { MomentumRiver } from "../../components/ui/MomentumRiver";
 import { Flag } from "../../components/ui/Flag";
@@ -30,7 +30,7 @@ function Cell({ label, price, lead, frozen }: { label: string; price: number; le
  *  at a smaller staging: goal flash, amber sweep, HALTED wash, the price landing, resume. There is no second
  *  timeline and no second copy of the state: the goal lands in the ONE store, so the match's row in the board list
  *  behind this panel steps its score and reprices on the very same frame. That ripple IS the point of the SSOT. */
-export function FeaturedPanel({ market }: { market: MarketRow }) {
+export function FeaturedPanel({ market, replayNonce = 0 }: { market: MarketRow; replayNonce?: number }) {
   const live = useMatchLive(market.matchId);
   const mk = (live?.prices ?? market.mark ?? { H: 0, D: 0, A: 0 }) as Record<Outcome, number>;
   const spark = live?.spark ?? market.spark;
@@ -63,7 +63,16 @@ export function FeaturedPanel({ market }: { market: MarketRow }) {
     }),
     [id, homePost], // eslint-disable-line react-hooks/exhaustive-deps
   );
-  useHaltSequence(sectionRef, haltActions);
+  const { replay } = useHaltSequence(sectionRef, haltActions);
+  // A bumped nonce re-fires the whole halt choreography — the landing uses it to replay the goal on
+  // every scroll-into-view without remounting (a remount could be photographed as the skeleton).
+  const lastNonce = useRef(replayNonce);
+  useEffect(() => {
+    if (replayNonce !== lastNonce.current) {
+      lastNonce.current = replayNonce;
+      replay();
+    }
+  }, [replayNonce, replay]);
 
   return (
     <section ref={sectionRef} className="elev-hi relative overflow-hidden rounded-card border border-hairline/70 bg-surface">

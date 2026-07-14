@@ -60,9 +60,15 @@ body {
 /* Accordion expand/collapse via radix's content-height var (no tailwindcss-animate dep). Transform/height only. */
 @keyframes accDown { from { height: 0; } to { height: var(--radix-accordion-content-height); } }
 @keyframes accUp { from { height: var(--radix-accordion-content-height); } to { height: 0; } }
-.acc-content[data-state="open"] { animation: accDown 200ms cubic-bezier(0.16, 1, 0.3, 1); }
-.acc-content[data-state="closed"] { animation: accUp 200ms cubic-bezier(0.16, 1, 0.3, 1); }
+.acc-content[data-state="open"] { animation: accDown var(--duration) var(--ease-out); }
+.acc-content[data-state="closed"] { animation: accUp var(--duration) var(--ease-out); }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important; /* infinite loops finish once and freeze instead of flickering */
+    transition-duration: 0.01ms !important;
+  }
+  /* The tick tint is information, not motion (color-only, zero travel) — reduced motion keeps it. */
+  .flash-up, .flash-down { animation-duration: 180ms !important; }
 }

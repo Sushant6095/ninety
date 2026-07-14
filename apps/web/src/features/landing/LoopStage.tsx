@@ -4,7 +4,8 @@ import { FeaturedPanel } from "../home/FeaturedPanel";
 import { useMatchLive } from "../live/matchLiveStore";
 import { MARKETS } from "../../lib/fixtures";
 
-const FEATURED = MARKETS.find((m) => m.matchId === "wc26-can-mar") ?? MARKETS[0];
+/** The one market the landing tells its story with — hero tape, halt stage, and legend all read it (SSOT). */
+export const FEATURED = MARKETS.find((m) => m.matchId === "wc26-can-mar") ?? MARKETS[0];
 
 const LOOP_STEPS = [
   { label: "Goal", halt: false },
@@ -46,30 +47,38 @@ export function LoopLegend() {
  *  halt choreography plays in front of the visitor, not offscreen. Fixed min-height kills CLS. */
 export function LoopStage() {
   const ref = useRef<HTMLDivElement>(null);
-  const [live, setLive] = useState(false);
+  const [stage, setStage] = useState({ live: false, nonce: 0 });
+  const wasOut = useRef(true);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(
       ([entry]) => {
+        // Mount ONCE on first entry (the panel's own autoplay plays the goal ~1.2s later, in view);
+        // after that, each re-entry bumps the nonce → FeaturedPanel replays the whole choreography.
+        // Never unmount: a remount window could be photographed as the skeleton mid-scroll.
         if (entry.isIntersecting) {
-          setLive(true);
-          io.disconnect();
+          if (wasOut.current) {
+            wasOut.current = false;
+            setStage((s) => (s.live ? { live: true, nonce: s.nonce + 1 } : { live: true, nonce: 0 }));
+          }
+        } else if (entry.intersectionRatio === 0) {
+          wasOut.current = true;
         }
       },
-      { rootMargin: "-15% 0px" },
+      { rootMargin: "-10% 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
   return (
-    <div ref={ref} className="min-h-[330px] w-full">
-      {live ? (
-        <FeaturedPanel market={FEATURED} />
+    <div ref={ref} className="min-h-[346px] w-full">
+      {stage.live ? (
+        <FeaturedPanel market={FEATURED} replayNonce={stage.nonce} />
       ) : (
-        <div aria-hidden className="h-[330px] w-full animate-pulse rounded-card border border-hairline/70 bg-surface motion-reduce:animate-none" />
+        <div aria-hidden className="h-[346px] w-full animate-pulse rounded-card border border-hairline/70 bg-surface motion-reduce:animate-none" />
       )}
     </div>
   );

@@ -5,9 +5,9 @@ Each plan is self-contained — an executor needs zero context beyond the plan f
 
 | # | Plan | Severity | Category | Status |
 |---|------|----------|----------|--------|
-| 001 | [Retrigger the live price flash on every tick](001-live-flash-retrigger.md) | HIGH | Interruptibility | TODO |
-| 002 | [Fix the global reduced-motion rule](002-reduced-motion-global-rule.md) | HIGH | Accessibility | TODO |
-| 003 | [Route Tailwind duration/ease through the motion tokens](003-tailwind-motion-token-plumbing.md) | HIGH | Cohesion & tokens | TODO |
+| 001 | [Retrigger the live price flash on every tick](001-live-flash-retrigger.md) | HIGH | Interruptibility | DONE |
+| 002 | [Fix the global reduced-motion rule](002-reduced-motion-global-rule.md) | HIGH | Accessibility | DONE |
+| 003 | [Route Tailwind duration/ease through the motion tokens](003-tailwind-motion-token-plumbing.md) | HIGH | Cohesion & tokens | DONE |
 | 004 | [Tokenize the stray motion literals](004-tokenize-stray-literals.md) | MEDIUM | Cohesion & tokens | TODO |
 | 005 | [Tooltip system: shared provider, skip-delay, origin](005-tooltip-system.md) | MEDIUM | Easing / Physicality | TODO |
 | 006 | [One press vocabulary: active states, hover gating](006-press-feedback-pass.md) | MEDIUM | Physicality / A11y / Perf | TODO |
