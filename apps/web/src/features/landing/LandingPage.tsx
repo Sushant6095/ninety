@@ -3,6 +3,9 @@ import { ArrowRight } from "lucide-react";
 import { LandingHero } from "./LandingHero";
 import { LandingScroll } from "./LandingScroll";
 import { PrismGrid } from "./PrismGrid";
+import { PriceVoid } from "./PriceVoid";
+import { WorldGlobeLazy } from "./WorldGlobeLazy";
+import { StickerPeelLazy } from "./StickerPeelLazy";
 import { LoopStage, LoopLegend } from "./LoopStage";
 import { PriceScrub } from "./PriceScrub";
 import { CtaPair } from "./Ctas";
@@ -48,9 +51,11 @@ export function LandingPage() {
             </div>
           </section>
 
-          {/* 3 — price is probability: one giant number does the explaining */}
-          <section aria-labelledby="price-h" className="border-b border-hairline">
-            <div data-arrive className="mx-auto w-full max-w-[1180px] px-4 py-16 text-center sm:px-6 lg:py-24">
+          {/* 3 — price is probability: one giant number does the explaining. The void (Originkit
+              blackhole, re-skinned) orbits behind it — every stream collapses into the one number. */}
+          <section aria-labelledby="price-h" className="relative border-b border-hairline">
+            <PriceVoid />
+            <div data-arrive className="relative z-10 mx-auto w-full max-w-[1180px] px-4 py-16 text-center sm:px-6 lg:py-24">
               <h2 data-arrive-item id="price-h" className="text-label font-semibold uppercase tracking-caps text-lo">
                 Price is probability
               </h2>
@@ -94,10 +99,13 @@ export function LandingPage() {
             </div>
           </section>
 
-          {/* 5 — the numbers band: no visible heading, the numbers ARE the headline */}
+          {/* 5 — the numbers band: no visible heading, the numbers ARE the headline. The globe
+              (Originkit, re-skinned; baked land mask, zero runtime network) carries the marker on
+              MetLife Stadium — the Jul 19 tile, literally on Earth. Drag to spin. */}
           <section aria-labelledby="numbers-h" className="border-b border-hairline">
             <h2 id="numbers-h" className="sr-only">World Cup 2026 in numbers</h2>
-            <dl data-arrive className="mx-auto grid w-full max-w-[1180px] grid-cols-2 gap-x-6 gap-y-10 px-4 py-16 sm:px-6 lg:grid-cols-4 lg:py-20">
+            <div data-arrive className="mx-auto grid w-full max-w-[1180px] items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_340px] lg:gap-16 lg:py-20">
+              <dl className="grid grid-cols-2 gap-x-6 gap-y-10">
               {(
                 [
                   { value: <NumberTicker value={104} className="text-stat font-bold text-hi" />, label: "Fixtures, group stage to final" },
@@ -111,13 +119,20 @@ export function LandingPage() {
                   <dt className="text-label uppercase tracking-label text-lo">{t.label}</dt>
                 </div>
               ))}
-            </dl>
+              </dl>
+              <div data-arrive-item className="mx-auto h-[300px] w-[300px] lg:h-[340px] lg:w-[340px]">
+                <WorldGlobeLazy className="h-full w-full" />
+              </div>
+            </div>
           </section>
 
           {/* 6 — close: same funnel, identical labels. The prism grid (Originkit, re-skinned) is the
               footer moment's backdrop — the one rare surface with a delight budget; content sits above it. */}
           <section aria-labelledby="close-h" className="relative">
             <PrismGrid pitch={26} boxSize={44} />
+            {/* the play-money sticker (Originkit sticker-peel, re-skinned) — peels on hover/press;
+                the disclosure it carries is also plain text in the hero and the footer */}
+            <StickerPeelLazy className="absolute right-[6%] top-8 z-20 hidden h-[190px] w-[190px] -rotate-6 lg:block" />
             <div data-arrive className="pointer-events-none relative z-10 mx-auto w-full max-w-[1180px] px-4 py-20 text-center sm:px-6 lg:py-28">
               <h2 data-arrive-item id="close-h" className="mx-auto max-w-[18ch] font-display text-section font-bold text-hi">
                 The whistle is the opening bell.
