@@ -1,0 +1,88 @@
+apps/web/src/features/landing/LandingPage.tsx
+  s_b60ec3c6161754::t_62d27a9112d70e 55-56
+  s_b60ec3c6161754::t_6042940b0737d1 82
+  s_b60ec3c6161754::t_85241f04838638 4-5
+  s_b60ec3c6161754::t_8cfd23f2037fd5 1-3,6-38,40-51,53-54,57-81,83-126
+  s_b60ec3c6161754::t_4a753fd6dd882d 39
+  s_b60ec3c6161754::t_b92d200e0708a5 52
+docs/adr/ADR-056-landing-owns-root-board-at-board.md
+  s_b60ec3c6161754::t_6afd649151414b 1-12
+apps/web/src/features/how/sections/Hero.tsx
+  s_b60ec3c6161754::t_d144b4c393dd3a 28
+apps/web/src/features/landing/Ctas.tsx
+  s_b60ec3c6161754::t_422cd043eee67a 1-32
+docs/adr/ADR-055-flags-baked-local-no-runtime-cdn.md
+  s_b60ec3c6161754::t_5b2dd9e5505acc 1-11
+apps/web/src/components/ui/NumberTicker.tsx
+  s_b60ec3c6161754::t_5daf446a2e8ae0 1-2,5-10,14-25,28,30-31,40,42-48
+  s_b60ec3c6161754::t_56cb1e79a53c6c 3-4,11-13,26-27,29,32-39,41
+apps/web/src/features/portfolio/PortfolioPage.tsx
+  s_b60ec3c6161754::t_b7618933f70a16 119
+apps/web/src/features/landing/LoopStage.tsx
+  s_b60ec3c6161754::t_45d0dddcc9fd3f 4,9-31,33-43,72
+  s_b60ec3c6161754::t_af11429f34a797 1-3,5-8,44-71,73-76
+  s_b60ec3c6161754::t_4b463c6e38c541 32
+apps/web/src/features/terminal/TerminalHeader.tsx
+  s_b60ec3c6161754::t_0ee61d3315ca5f 17-19
+  s_b60ec3c6161754::t_848fdd0514fb50 82-83
+  s_b60ec3c6161754::t_edd3baa804d088 47
+apps/web/src/design/motion.ts
+  s_b60ec3c6161754::t_0e07f99a18509a 17-23
+scripts/ui/axe.mjs
+  s_b60ec3c6161754::t_a34816e01254ca 18
+docs/adr/ADR-043-home-reference-locked.md
+  s_b60ec3c6161754::t_93703dfd453f89 3
+apps/web/src/app/page.tsx
+  s_b60ec3c6161754::t_6d87b05653e430 1-2,4-12
+design/DECISIONS.md
+  s_b60ec3c6161754::t_5abd69fc09ecf3 9
+apps/web/src/features/moments/MomentsGallery.tsx
+  s_b60ec3c6161754::t_7c528a689049f1 64
+apps/web/src/lib/routes.ts
+  s_b60ec3c6161754::t_41e1e205a9abe6 3-5
+apps/web/src/features/landing/LandingHero.tsx
+  s_b60ec3c6161754::t_1f25d340430ba8 1-4,6-25,28,31-36,38-54,60-63,65-95
+  s_b60ec3c6161754::t_95f3f151e61f33 5
+  s_b60ec3c6161754::t_036bf8888ac531 55-59,64
+  s_b60ec3c6161754::t_809e4d96ae057c 26-27,29-30,37
+apps/web/src/components/ui/StubScreen.tsx
+  s_b60ec3c6161754::t_295c49b4f74235 25
+apps/web/src/features/leaderboard/LeaderboardPage.tsx
+  s_b60ec3c6161754::t_b19765851ff270 84
+apps/web/src/features/landing/PriceScrub.tsx
+  s_b60ec3c6161754::t_e598a07e7db72f 4,8-11,24-26
+  s_b60ec3c6161754::t_e7ea3edbcdc379 1-3,5-7,12-23,27-41
+CLAUDE.md
+  s_b60ec3c6161754::t_959823a0fb5257 20
+design/PROVENANCE.md
+  s_e6323ad6256986::t_ead130e7efdc15 18
+  s_b60ec3c6161754::t_158f7d62976925 22-25
+  s_b60ec3c6161754::t_2a5f6658e5b764 27
+  s_b60ec3c6161754::t_959823a0fb5257 26
+apps/web/src/app/board/page.tsx
+  s_b60ec3c6161754::t_70a34e43088d25 1-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "1043a0fc76e19a68d5234a4d73cd97468492d65d",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_e6323ad6256986": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "42d27af0-dd13-4b98-9ffb-782bd5c4131a",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
