@@ -30,32 +30,15 @@ export function LandingHero() {
       const stagger = m.heroStagger / 1000;
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        // fromTo (explicit values, no computed-style read) + scoped will-change, cleared on complete —
-        // MotionScore flagged the from() reads as frame thrash and the un-promoted tweens as C-tier.
-        gsap.set("[data-hero-word], [data-hero-after]", { willChange: "transform, opacity" });
+        // fromTo (explicit start values, no computed-style read at start — from() reads were MotionScore
+        // frame thrash). No gsap.set(willChange) churn: managing will-change inside frame callbacks was
+        // itself a read/write in the rAF loop (MotionScore flagged willChange → getComputedStyle).
         gsap.fromTo("[data-hero-word]", { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: word, stagger, delay: TIMING.lead });
-        gsap.fromTo(
-          "[data-hero-after]",
-          { opacity: 0, y: 10 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: word,
-            delay: TIMING.lead + word + stagger * 2,
-            onComplete: () => gsap.set("[data-hero-word], [data-hero-after]", { clearProps: "willChange" }),
-          },
-        );
+        gsap.fromTo("[data-hero-after]", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: word, delay: TIMING.lead + word + stagger * 2 });
         gsap.fromTo(
           "[data-hero-river]",
-          { clipPath: "inset(0 100% 0 0)", opacity: 0.4, willChange: "clip-path, opacity" },
-          {
-            clipPath: "inset(0 0% 0 0)",
-            opacity: 1,
-            duration: m.riverDraw / 1000,
-            delay: TIMING.river,
-            ease: "ninety",
-            onComplete: () => gsap.set("[data-hero-river]", { clearProps: "willChange" }),
-          },
+          { clipPath: "inset(0 100% 0 0)", opacity: 0.4 },
+          { clipPath: "inset(0 0% 0 0)", opacity: 1, duration: m.riverDraw / 1000, delay: TIMING.river, ease: "ninety" },
         );
       });
     },

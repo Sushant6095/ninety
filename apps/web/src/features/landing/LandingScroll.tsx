@@ -24,9 +24,10 @@ export function LandingScroll({ children }: { children: ReactNode }) {
         gsap.utils.toArray<HTMLElement>("[data-arrive]").forEach((el) => {
           const items = el.querySelectorAll<HTMLElement>("[data-arrive-item]");
           const targets = items.length ? items : el;
-          // fromTo (no computed-style read at start — from() reads were MotionScore frame-thrash) with
-          // will-change promoted only WHILE the tween runs (pre-promoting every below-fold section
-          // would spend the GPU texture budget the audit grades S).
+          // fromTo (explicit start values, no computed-style read at start — from() reads were MotionScore
+          // frame-thrash). No gsap.set(willChange) churn: setting/clearing will-change inside the tween's
+          // frame callbacks was itself a read/write in the rAF loop (MotionScore flagged willChange →
+          // getComputedStyle). GSAP promotes what it animates; the compositor hint isn't worth the frame churn.
           gsap.fromTo(
             targets,
             { opacity: 0, y: ARRIVE.y },
@@ -37,8 +38,6 @@ export function LandingScroll({ children }: { children: ReactNode }) {
               stagger: m.heroStagger / 1000,
               ease: "ninety",
               scrollTrigger: { trigger: el, start: ARRIVE.start, once: true },
-              onStart: () => gsap.set(targets, { willChange: "transform, opacity" }),
-              onComplete: () => gsap.set(targets, { clearProps: "willChange" }),
             },
           );
         });
