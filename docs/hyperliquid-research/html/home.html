@@ -1,0 +1,257 @@
+<!--
+  ORIGINAL SEMANTIC BLUEPRINT — hyperfoundation.org landing page
+  =============================================================
+  This is an ORIGINAL, annotated semantic structure describing the page architecture.
+  It is NOT scraped DOM, NOT copied HTML/CSS, and contains no styling.
+  Purpose: let another frontend engineer rebuild the page architecture from this spec alone,
+  writing their own original code and styling.
+
+  GLOBAL SPEC (see hyperfoundation/layout.md for full tokens):
+    Content max-width 1200px, centered · 8pt grid (4px base)
+    Fonts: Teodor (serif display, headlines) + Inter (UI/body) + system mono (stat numbers)
+    Weights used: 300 / 400 only
+    Accent: mint #97FCE4 (spent ONLY on primary CTA + logo) on a teal→green brand ramp
+    Motion: 50–500ms, ease-out cubic-bezier(0,0,0.2,1); scroll is scrubbed/pinned
+    Scroll container: document.body (NOT window); hero is PINNED across a multi-viewport range
+-->
+<html lang="en">
+<body>
+
+  <!--
+    HEADER — floating pill nav
+    Purpose: persistent top-of-funnel nav + the primary CTA.
+    Visual hierarchy: brightest surface on the page (white pill on dark hero) → draws eye to CTA.
+    Spacing: 1200×56, radius ~37 (pill), pad 8/8/8/16, 20px from top, centered.
+    Sticky behavior: sits inside the pinned hero → reads as persistent through the hero, then
+      scrolls with the page. (Rebuild tip: make it position:sticky top:20 for simplicity.)
+    Responsive: <768px collapse to logo + menu button + Launch App; text links → sheet.
+    Animation: link/CTA hover 150ms color/fill.
+    A11y: <nav> landmark, real links + button, visible focus ring, logo has accessible name.
+  -->
+  <header>
+    <nav aria-label="Primary">
+      <a href="/" aria-label="Hyperliquid home">
+        <!-- logo mark (mint bowtie/hourglass) + wordmark: "Hyper" + italic "liquid" -->
+      </a>
+      <ul>
+        <li><a href="#stats">Stats</a></li>
+        <li><a href="/docs">Docs</a></li>          <!-- → external GitBook -->
+        <li><a href="/ecosystem">Ecosystem</a></li><!-- → GitBook / HyperEVM -->
+      </ul>
+      <a href="/app" role="button"><!-- Launch App — filled mint pill (primary CTA) --></a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!--
+      SECTION #hero — pinned scrollytelling stage (THE signature moment)
+      Purpose: state the thesis; deliver the emotional peak.
+      Visual hierarchy: mint logo mark → giant serif headline → subcopy → dual CTAs.
+      Spacing: full-bleed dark-green gradient bg; content centered in 1200 column.
+      Sticky/scroll: PINNED — a tall spacer holds the hero fixed while scroll progress (0→1) drives
+        the logo mark morph (bowtie⇄blob) + background blob drift. Only after progress=1 does the
+        page advance.
+      Animation: scroll-scrubbed morph + blob drift; headline participates in the reveal.
+      Responsive: headline clamps 90px→~40px; CTAs stack full-width on mobile; morph reduced/disabled
+        on mobile + prefers-reduced-motion (static hero art fallback).
+      A11y: real <h1>; keep the pin SKIPPABLE; ensure reduced-motion shows a static, readable hero.
+    -->
+    <section id="hero" aria-labelledby="hero-title">
+      <figure aria-hidden="true"><!-- animated blob/gradient background + morphing mint logo mark --></figure>
+      <h1 id="hero-title"><!-- Teodor ~90px/400: "The Blockchain To House All Finance" --></h1>
+      <p><!-- subcopy: "Crypto is fragmented today, but it doesn't need to be…" --></p>
+      <div role="group" aria-label="Primary actions">
+        <a href="/app" role="button"><!-- Start Trading — filled mint pill --></a>
+        <a href="/build" role="button"><!-- Start Building — outline pill --></a>
+      </div>
+    </section>
+
+    <!--
+      SECTION #flagship — the premier DECENTRALISED exchange
+      Purpose: sell the flagship product (perps/spot DEX) with 4 value props.
+      Visual hierarchy: animated word "DECENTRALISED" (per-letter reveal) headline → 4 feature blocks.
+      Spacing: 4-up feature grid in the 1200 column; generous vertical rhythm (space-16/20).
+      Scroll: headline word reveal on enter; feature blocks stagger-fade (~40–80ms stagger).
+      Responsive: 4 → 2×2 (md) → 1-col (sm).
+      A11y: keep full word "DECENTRALISED" in the accessible name behind the per-letter spans.
+      Component relationships: FeatureBlock ×4 (icon + label + copy) — flat, borderless.
+    -->
+    <section id="flagship" aria-labelledby="flagship-title">
+      <h2 id="flagship-title"><!-- "The flagship application: the premier DECENTRALISED exchange" --></h2>
+      <ul>
+        <li><!-- FeatureBlock: Low fees — "Zero gas and low fees on all orders." --></li>
+        <li><!-- FeatureBlock: Up to 40x leverage — "Trade with conviction…" --></li>
+        <li><!-- FeatureBlock: Transparent — "Fully onchain order book…" --></li>
+        <li><!-- FeatureBlock: Seamless — "One-click trading. No wallet approvals…" --></li>
+      </ul>
+    </section>
+
+    <!--
+      SECTION #stack — "The Stack" interactive architecture diagram (SIGNATURE VIZ)
+      Purpose: explain HyperCore ↔ HyperEVM as one unified state + HyperBFT consensus.
+      Visual hierarchy: intro copy → large SVG diagram of labeled blocks + connective arrows.
+      Spacing: full-width diagram; tall (~2 viewports) with scrubbed reveal.
+      Scroll: SCRUBBED — arrows draw (stroke-dashoffset) and blocks fade/scale in as you scroll; the
+        architecture "assembles itself." Likely per-block hover/focus emphasis.
+      Responsive: diagram collapses to a VERTICAL stack of concept blocks on mobile (arrows simplified
+        or dropped); animation reduced.
+      A11y: SVG needs a text alternative describing the architecture; focusable blocks if interactive.
+      Component relationships: this is the analog of Ninety's Momentum River — the one place heavy
+        custom viz is allowed.
+    -->
+    <section id="stack" aria-labelledby="stack-title">
+      <h2 id="stack-title"><!-- "The Stack" --></h2>
+      <p><!-- HyperCore / HyperEVM / HyperBFT explanation (3 copy blocks) --></p>
+      <figure aria-label="Hyperliquid architecture diagram">
+        <!-- inline SVG: blocks = vaults, perps, oracles, spot, governance, bridges, auctions;
+             arrows connect HyperCore <-> HyperEVM; text labels top/bottom left/right -->
+      </figure>
+    </section>
+
+    <!--
+      SECTION #stats — live performance proof band
+      Purpose: prove the thesis with real, large numbers.
+      Visual hierarchy: 4 metric tiles (big mono value + small label).
+      Spacing: 4-up row in 1200 column.
+      Scroll: count-up on first view (~1s ease-out).
+      Responsive: 4 → 2×2 → 1-col; numbers scale but stay mono/tabular.
+      A11y: value+label associated; if live, polite updates; readable without the count animation.
+      Data: block time 0.07s · users 2,261,901 · max TPS 200,000 · daily volume $9.1B.
+    -->
+    <section id="stats" aria-labelledby="stats-title">
+      <h2 id="stats-title" hidden><!-- "By the numbers" (visually implicit) --></h2>
+      <dl>
+        <div><dt>Block time</dt><dd><!-- 0.07 seconds --></dd></div>
+        <div><dt>Users</dt><dd><!-- 2,261,901 --></dd></div>
+        <div><dt>Max TPS</dt><dd><!-- 200,000 --></dd></div>
+        <div><dt>Daily volume</dt><dd><!-- $9.1B --></dd></div>
+      </dl>
+    </section>
+
+    <!--
+      SECTION #community — HYPE / ownership
+      Purpose: the values pitch + token/community ownership.
+      Visual hierarchy: serif headline "Community first." (90px, dark-green ink on LIGHT section) →
+        supporting copy → ownership statement.
+      Spacing: light-background section (contrast flip from the dark hero) → visual chapter break.
+      Scroll: headline fade/rise on enter.
+      Responsive: single-column copy; headline clamps.
+      A11y: <h2>; sufficient contrast on the light section.
+    -->
+    <section id="community" aria-labelledby="community-title">
+      <h2 id="community-title"><!-- "Community first." (Teodor 90px, brand-800 ink) --></h2>
+      <p><!-- "No investors. No paid market makers. No fees to any company." --></p>
+      <p><!-- "Anyone can own, govern, and secure Hyperliquid through HYPE…" --></p>
+    </section>
+
+    <!--
+      SECTION #closing-cta — final funnel
+      Purpose: convert — repeat the two primary actions at the end of the narrative.
+      Visual hierarchy: short serif line "Own a piece of Hyperliquid today." → dual CTAs.
+      Spacing: centered, generous padding before footer.
+      A11y: same CTAs as hero (consistent labels).
+    -->
+    <section id="closing-cta" aria-labelledby="closing-title">
+      <h2 id="closing-title"><!-- "Own a piece of Hyperliquid today." --></h2>
+      <div role="group" aria-label="Primary actions">
+        <a href="/app" role="button"><!-- Start Trading (mint) --></a>
+        <a href="/build" role="button"><!-- Start Building (outline) --></a>
+      </div>
+    </section>
+
+  </main>
+
+  <!--
+    FOOTER — legal + social exits
+    Purpose: reference links; not a second navigation surface.
+    Visual hierarchy: quiet, low-contrast, single row.
+    Spacing: compact; whiteAlpha text on dark.
+    Responsive: links wrap/stack on mobile.
+    A11y: <footer> landmark; social links have accessible names (icon-only).
+  -->
+  <footer>
+    <small><!-- © 2025 --></small>
+    <nav aria-label="Legal">
+      <a href="/termsOfService">Terms of Service</a>
+      <a href="/privacyPolicy">Privacy Policy</a>
+      <a href="/genesisEventTerms">Genesis Event Terms &amp; Conditions</a>
+      <a href="/nftTerms">NFT Terms &amp; License</a>
+    </nav>
+    <nav aria-label="Social">
+      <a href="https://t.me/hyperliquid_announcements" aria-label="Telegram"></a>
+      <a href="https://github.com/hyperliquid-dex" aria-label="GitHub"></a>
+      <a href="https://discord.gg/hyperliquid" aria-label="Discord"></a>
+      <a href="https://twitter.com/hyperliquidX" aria-label="X (Twitter)"></a>
+    </nav>
+  </footer>
+
+</body>
+</html>
+
+<!--
+  COMPONENT TREE
+  ==============
+  Page (landing)
+  ├── Header
+  │   └── Nav (floating white pill)
+  │       ├── Logo (mint mark + "Hyper" + italic "liquid")
+  │       ├── Links: Stats · Docs · Ecosystem
+  │       └── CTA: Launch App (mint pill)
+  ├── Main
+  │   ├── Hero (PINNED scrollytelling)
+  │   │   ├── Blob/gradient background + morphing logo mark
+  │   │   ├── Headline (Teodor ~90px)
+  │   │   ├── Subcopy
+  │   │   └── CTA group: Start Trading (mint) · Start Building (outline)
+  │   ├── Flagship
+  │   │   ├── Animated word headline ("DECENTRALISED")
+  │   │   └── FeatureBlock ×4 (Low fees · 40x leverage · Transparent · Seamless)
+  │   ├── Stack (SVG architecture diagram — signature viz)
+  │   │   ├── Intro copy (HyperCore / HyperEVM / HyperBFT)
+  │   │   └── Diagram blocks: vaults · perps · oracles · spot · governance · bridges · auctions + arrows
+  │   ├── Stats band (metric tile ×4, count-up, mono)
+  │   ├── Community / HYPE (serif headline + copy, light section)
+  │   └── Closing CTA (dual pill)
+  └── Footer (© · legal nav · social nav)
+
+
+  IMPLEMENTATION NOTES
+  ====================
+  - Reusable components: Nav pill, CTA button (mint/outline variants), FeatureBlock, MetricTile,
+    SerifHeadline, Footer. Build these once; the page is mostly composition.
+  - Server-render / SSG: the ENTIRE landing is static marketing → prerender for instant paint + SEO.
+  - Stream/data: only the Stats band needs data — SSR with revalidate, or fetch-on-idle then
+    count-up; guard with a graceful fallback (never render 0/NaN).
+  - Hydrate: only interactive/animated islands — the pinned hero, the diagram scrub, the stat
+    count-up, and the nav CTA (which lazy-loads the wallet SDK). Everything else can stay static.
+  - WebSockets: none needed on the landing (the live app uses them; the landing shows a snapshot).
+  - Virtualize: nothing (short page, few nodes).
+  - Lazy-load: wallet SDKs (Privy/WalletConnect) on CTA intent; the diagram + blob animation below
+    the fold; Teodor font (preload the one weight, font-display: swap).
+  - Optimistic updates: none (read-only page).
+  - Animations: hero morph + diagram build are scroll-SCRUBBED (rAF, progress-driven, transform/
+    opacity/stroke only); reveals ease-out; ALL gated behind prefers-reduced-motion.
+  - Accessibility: skippable pin; sr-only full words behind per-letter reveals; SVG text alternative;
+    visible focus; sufficient contrast on the light "Community" section.
+
+
+  FIGMA-LEVEL SPEC
+  ================
+  Visual rhythm:        one dark chapter (hero→stack→stats) then a light chapter (community) then CTA
+  8pt grid:             4px base; section padding ~space-16/20 (64–80px) vertical
+  Section heights @1440: hero ~1vh (pinned over ~2–3vh scroll) · flagship ~1.2vh · stack ~2vh ·
+                         stats ~0.7vh · community ~1vh · closing ~0.8vh · footer ~0.4vh
+                         (document total ≈ 8915px)
+  Content width:        1200px; side margin ~128px @1440
+  Max width:            ~1200px (narrative never stretches ultrawide)
+  Sticky offsets:       nav effectively pinned at top:20 during hero
+  Border radius:        pill (nav/CTA ~37/full) · 12–16 (cards/blocks)
+  Elevation:            minimal shadows; depth via gradient washes + blur glow (#97FCE4)
+  Shadow style:         Chakra sm–2xl, low-opacity black; not a defining element here
+  Typography scale:     Teodor 90 (display) · Inter 18/16/14 (body/labels) · mono (stats)
+  Component density:    LOW — spacious, editorial; lots of negative space
+  Responsive bps:       320 / 768(md pivot) / 960 / 1200 / 1500
+  Animation durations:  hover 150ms · reveals 300–500ms · stat count-up ~1000ms · hero/diagram scrubbed
+  Interaction timings:  ease-out cubic-bezier(0,0,0.2,1); scroll-scrubbed for signature moments
+-->

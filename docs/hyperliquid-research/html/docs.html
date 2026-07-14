@@ -1,0 +1,129 @@
+<!--
+  ORIGINAL SEMANTIC BLUEPRINT — hyperliquid.gitbook.io/hyperliquid-docs (GitBook docs)
+  =================================================================================
+  Original annotated structure. Not scraped/copied. No styling.
+  Dark theme, mint accent, 3-pane docs layout.
+-->
+<html lang="en">
+<body>
+
+  <!--
+    HEADER — docs top bar
+    Hierarchy: logo · section tabs · search(⌘K).
+    Sticky: yes.
+    A11y: <header>/<nav>; tabs aria-current; search is a dialog trigger with aria-keyshortcuts.
+  -->
+  <header>
+    <a href="/" aria-label="Hyperliquid Docs home"><!-- logo + "Hyperliquid Docs" --></a>
+    <nav aria-label="Doc spaces">
+      <a href="/docs" aria-current="page">Hyperliquid Docs</a>
+      <a href="/builder-tools">Builder Tools</a>
+      <a href="/support">Support</a>
+    </nav>
+    <button aria-label="Search" aria-keyshortcuts="Meta+K"><!-- Search… ⌘K --></button>
+  </header>
+
+  <!--
+    DOC SHELL — 3 columns: nav tree | article | on-this-page
+    Responsive: TOC drops on tablet; nav → drawer on mobile; article full-width.
+  -->
+  <div role="group" aria-label="Documentation">
+
+    <!--
+      LEFT — nav tree (collapsible, grouped)
+      Hierarchy: sections with chevrons; active item mint-highlighted; nested children; pinned footer badge.
+      Sticky: independent scroll; sticky within viewport.
+      A11y: <nav> "Docs"; tree items expandable (aria-expanded); current item aria-current.
+    -->
+    <nav aria-label="Docs navigation">
+      <ul>
+        <li><a aria-current="true">About Hyperliquid</a>
+          <ul><li><a>Hyperliquid 101 for non-crypto audiences</a></li></ul></li>
+        <li><button aria-expanded="false">Onboarding</button></li>
+        <li><button aria-expanded="false">HyperCore</button></li>
+        <li><button aria-expanded="false">HyperEVM</button></li>
+        <li><button aria-expanded="false">Hyperliquid Improvement Proposals (HIPs)</button></li>
+        <li><button aria-expanded="false">Trading</button></li>
+        <li><button aria-expanded="false">Validators</button></li>
+        <li><a>Referrals</a></li>
+        <li><a>Points</a></li>
+        <li><a>Historical data</a></li>
+        <li><a>Risks</a></li>
+        <li><a>Bug bounty program</a></li>
+        <li><a>Audits</a></li>
+        <li><a>Brand kit</a></li>
+      </ul>
+      <!-- group header: FOR DEVELOPERS · footer badge: Powered by GitBook -->
+    </nav>
+
+    <!--
+      CENTER — article
+      Hierarchy: breadcrumb → H1 → H2/H3 + prose; Copy(page-as-markdown) control top-right.
+      A11y: <main>/<article>; headings form the outline (mirrored by the TOC); code blocks labeled.
+    -->
+    <main>
+      <article>
+        <nav aria-label="Breadcrumb"><!-- Hyperliquid Docs --></nav>
+        <div role="group" aria-label="Page actions"><!-- Copy ▾ (copy page as Markdown) --></div>
+        <h1>About Hyperliquid</h1>
+        <h2 id="what-is-hyperliquid">What is Hyperliquid?</h2>
+        <p><!-- intro prose --></p>
+        <h2 id="technical-overview">Technical overview</h2>
+        <p><!-- prose; may include code blocks (with copy), callouts/hints, tabs, tables, images --></p>
+        <!-- PREV / NEXT page links at the bottom -->
+        <nav aria-label="Pagination"><!-- ‹ Prev · Next › --></nav>
+      </article>
+    </main>
+
+    <!--
+      RIGHT — on-this-page TOC (scroll-spy)
+      Hierarchy: "ON THIS PAGE" + anchor list mirroring the article headings; active item highlights on scroll.
+      A11y: <nav> "On this page"; links to heading ids; aria-current on active.
+    -->
+    <nav aria-label="On this page">
+      <p>ON THIS PAGE</p>
+      <ul>
+        <li><a href="#what-is-hyperliquid" aria-current="true">What is Hyperliquid?</a></li>
+        <li><a href="#technical-overview">Technical overview</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <!-- SEARCH DIALOG (⌘K) — modal fuzzy search over all pages -->
+  <dialog aria-label="Search docs"><input type="search" placeholder="Search…" /><!-- results list --></dialog>
+
+</body>
+</html>
+
+<!--
+  COMPONENT TREE
+  Docs
+  ├── Top bar (logo · section tabs · ⌘K search)
+  ├── Nav tree (collapsible, grouped, active item, footer badge)
+  ├── Article (breadcrumb · Copy-as-markdown · H1/H2/H3 · prose: code/callouts/tabs/tables · prev/next)
+  ├── On-this-page TOC (scroll-spy anchors)
+  └── Search dialog (⌘K)
+
+  IMPLEMENTATION NOTES
+  - Reusable: NavTree, TocScrollSpy, SearchDialog(⌘K), Callout, CodeBlock(copy), Tabs, CopyAsMarkdown,
+    Breadcrumb, PrevNext.
+  - Server-render / SSG every page → instant paint, SEO, cacheable at the edge.
+  - Stream: none.
+  - Hydrate: search dialog, nav collapse, TOC scroll-spy, copy buttons only.
+  - Virtualize: n/a (prose).
+  - Lazy-load: search index on ⌘K; images below fold.
+  - Optimistic: n/a.
+  - Animations: nav expand/collapse, modal fade+scale, smooth-scroll anchors, TOC active transition,
+    "copied!" toast.
+  - Accessibility: landmarks (nav/main/article), heading outline == TOC, aria-current, focus-trapped
+    search dialog, keyboardable tree, code blocks labeled, prev/next links.
+
+  FIGMA-LEVEL SPEC
+  Columns:     nav ~260 · content ~700–760 (measure ~65ch) · TOC ~220
+  Type:        sans; clear H1/H2/H3; generous line-height; comfortable reading
+  Colors:      dark surfaces · off-white body · MINT accent (active nav, links, TOC active)
+  Density:     LOW in prose; nav is denser
+  Responsive:  TOC drops (tablet) → nav becomes drawer, TOC inline disclosure (mobile), content full-width
+  Motion:      150–200ms nav/modal; smooth-scroll anchors; copied-confirmation
+-->

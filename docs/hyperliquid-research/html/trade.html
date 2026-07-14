@@ -1,0 +1,227 @@
+<!--
+  ORIGINAL SEMANTIC BLUEPRINT — app.hyperliquid.xyz/trade (perps/spot terminal)
+  ============================================================================
+  Original annotated structure. NOT scraped DOM, NOT copied HTML/CSS, no styling.
+  Mainnet & testnet render the identical UI.
+
+  GLOBAL SPEC (see trade/layout.md):
+    Fixed-viewport terminal; panels scroll internally; 1px hairline splits (#1F2937).
+    Font: "OurFont", weights 400/500, ~11–14px, tabular-nums EVERYWHERE.
+    Colors: near-black surfaces · text #D2DAD7 · up/long/bid #1FA67D · down/short/ask #ED7088 ·
+            mint highlight #F6FEFD · Privy accent hsl(172,47%,36%).
+    Motion: in-place live updates + value flashes; snappy 50–200ms; no reflow.
+    Data: WebSocket (book/trades/price/positions); canvas chart.
+-->
+<html lang="en">
+<body>
+
+  <!--
+    HEADER — persistent app shell nav (~56px, fixed)
+    Purpose: switch products; connect wallet.
+    Hierarchy: logo · product tabs (Trade active) · Connect (mint) · locale · settings.
+    Responsive: tabs collapse to a menu on small screens; Connect stays.
+    A11y: <nav> landmark, active tab aria-current, icon buttons labeled.
+  -->
+  <header>
+    <nav aria-label="Primary">
+      <a href="/" aria-label="Hyperliquid home"><!-- logo --></a>
+      <a href="/trade" aria-current="page">Trade</a>
+      <a href="/outcomes">Outcomes</a>
+      <a href="/portfolio">Portfolio</a>
+      <a href="/earn">Earn</a>
+      <a href="/vaults">Vaults</a>
+      <a href="/staking">Staking</a>
+      <a href="/referrals">Referrals</a>
+      <a href="/leaderboard">Leaderboard</a>
+      <button aria-haspopup="menu">More</button>
+      <button><!-- Connect (wallet, mint) --></button>
+      <button aria-label="Language"><!-- 🌐 --></button>
+      <button aria-label="Settings"><!-- ⚙ --></button>
+    </nav>
+  </header>
+
+  <!--
+    MAIN — the terminal (fixed height; 3 columns over a bottom dock)
+    Purpose: read a market and trade it without leaving the page.
+    Layout: chart (flex) | book/trades (~300px) | ticket (~320px); resizable splits.
+    Responsive: tablet → panels become tabs; mobile → single column + bottom-sheet ticket + Buy/Sell bar.
+  -->
+  <main>
+    <div role="group" aria-label="Trading terminal">
+
+      <!--
+        CHART PANEL
+        Hierarchy: market header + stat strip → chart.
+        Live: stat strip + live candle stream over WS (flash on change).
+        A11y: market header is the h1 of the view; chart needs a text summary + data table alt.
+      -->
+      <section aria-label="Chart">
+        <header>
+          <!-- pair switcher: "HYPE-USDC ▾" (searchable market list) + leverage badge "10x" -->
+          <dl aria-label="Market stats">
+            <div><dt>Mark</dt><dd><!-- 63.779 --></dd></div>
+            <div><dt>Oracle</dt><dd><!-- 63.739 --></dd></div>
+            <div><dt>24h Change</dt><dd><!-- -1.690 / -2.58% (red) --></dd></div>
+            <div><dt>24h Volume</dt><dd><!-- $394,141,242 --></dd></div>
+            <div><dt>Open Interest</dt><dd><!-- $1,370,495,231 --></dd></div>
+            <div><dt>Funding / Countdown</dt><dd><!-- 0.0013% / 00:xx --></dd></div>
+          </dl>
+          <!-- chart toolbar: timeframe (5m/1h/D) · Indicators · settings · fullscreen -->
+        </header>
+        <!-- left vertical drawing-tool rail: crosshair, trendline, fib, text, measure, zoom, magnet, lock -->
+        <figure aria-label="Price chart">
+          <!-- CANVAS candlestick chart; OHLC readout; bottom range strip (5y..1d); UTC clock; log/auto -->
+        </figure>
+      </section>
+
+      <!--
+        ORDER BOOK / TRADES PANEL
+        Hierarchy: tab switch (Order Book | Trades) → columns Price/Size/Total → asks / Spread / bids.
+        Live: highest-frequency WS component; rows patch in place; depth bars per row.
+        Interaction: click price → prefill ticket; precision selector groups the book.
+        A11y: table semantics; announce best bid/ask on request (polite), not every tick.
+        Perf: VIRTUALIZE; rAF-batch; patch cells, never rebuild.
+      -->
+      <section aria-label="Order book and trades">
+        <header role="tablist">
+          <button role="tab" aria-selected="true">Order Book</button>
+          <button role="tab">Trades</button>
+          <button aria-label="Book settings">⋮</button>
+        </header>
+        <!-- precision selector (0.001) + unit (HYPE) -->
+        <table aria-label="Order book">
+          <thead><tr><th>Price</th><th>Size</th><th>Total</th></tr></thead>
+          <tbody>
+            <!-- ASKS (pink #ED7088), descending, each row has a depth bar -->
+            <!-- SPREAD divider row: 0.001 / 0.002% -->
+            <!-- BIDS (green #1FA67D), each row has a depth bar -->
+          </tbody>
+        </table>
+      </section>
+
+      <!--
+        TRADE TICKET
+        Hierarchy: margin/leverage/account toggles → order-type tabs → side toggle → size → CTA.
+        States: connect-required / invalid / insufficient / submitting / filled(toast).
+        Interaction: % slider, Buy/Sell recolors CTA, Reduce Only + TP/SL reveal fields.
+        A11y: labeled inputs, radio-group toggles, slider value, disabled reason announced.
+        The CTA is the boldest control (semantic green/red / mint Connect).
+      -->
+      <aside aria-label="Order ticket">
+        <div role="group" aria-label="Margin and account">
+          <button>Cross</button><button>10x</button><button>Unified</button>
+        </div>
+        <div role="tablist" aria-label="Order type">
+          <button role="tab" aria-selected="true">Market</button>
+          <button role="tab">Limit</button>
+          <button role="tab">Pro</button>
+        </div>
+        <div role="radiogroup" aria-label="Side">
+          <button role="radio" aria-checked="true">Buy / Long</button>   <!-- green -->
+          <button role="radio">Sell / Short</button>                     <!-- red -->
+        </div>
+        <dl>
+          <div><dt>Available to Trade</dt><dd><!-- 0.00 USDC --></dd></div>
+          <div><dt>Current Position</dt><dd><!-- 0.00 HYPE --></dd></div>
+        </dl>
+        <label>Size <input inputmode="decimal" /><!-- unit selector HYPE --></label>
+        <input type="range" min="0" max="100" aria-label="Size percent" /><!-- step dots 25/50/75/100 -->
+        <label><input type="checkbox" /> Reduce Only</label>
+        <label><input type="checkbox" /> Take Profit / Stop Loss</label>
+        <button><!-- Connect (pre-auth) → Buy/Sell (post-auth), with est. liq price/fees --></button>
+      </aside>
+
+    </div>
+
+    <!--
+      BOTTOM DOCK — account state + activity
+      Hierarchy: tab bar → table for the active tab; Type/Side filters.
+      States: empty per tab; Positions shows live colored PnL; inline cancel/close.
+      A11y: tablist + tabpanel; tables with headers.
+      Perf: Positions live-subscribed; histories paginated/virtualized.
+    -->
+    <section aria-label="Account activity">
+      <div role="tablist">
+        <button role="tab">Balances</button>
+        <button role="tab">Positions</button>
+        <button role="tab">Outcomes</button>
+        <button role="tab" aria-selected="true">Open Orders</button>
+        <button role="tab">TWAP</button>
+        <button role="tab">Trade History</button>
+        <button role="tab">Funding History</button>
+        <button role="tab">Order History</button>
+        <!-- filters: Type ▾ · Side ▾ -->
+      </div>
+      <div role="tabpanel"><!-- table (empty state: "No open orders") --></div>
+    </section>
+  </main>
+
+  <!--
+    FLOATING: connection health + announcements + footer
+    ● Online (green) health pill (bottom-left).
+    Announcements popover (bottom-right, dismissible) — see ../announcements/.
+    Footer links: Docs · Support · Terms · Privacy Policy.
+  -->
+  <div aria-live="polite"><!-- ● Online --></div>
+  <aside aria-label="Announcements"><!-- dismissible news card --></aside>
+  <footer><a href="/docs">Docs</a><a href="/support">Support</a><a href="/terms">Terms</a><a href="/privacy">Privacy Policy</a></footer>
+
+</body>
+</html>
+
+<!--
+  COMPONENT TREE
+  ==============
+  Terminal
+  ├── AppShell Nav (products · Connect · locale · settings)
+  ├── Chart Panel
+  │   ├── Market switcher (searchable) + leverage badge
+  │   ├── Stat strip (Mark/Oracle/24hΔ/Vol/OI/Funding)
+  │   ├── Drawing-tool rail
+  │   └── Canvas chart (OHLC, timeframe, range strip, log/auto)
+  ├── Book/Trades Panel
+  │   ├── Tabs (Order Book | Trades)
+  │   ├── Precision + unit selectors
+  │   └── Rows: asks · Spread · bids (depth bars)
+  ├── Trade Ticket
+  │   ├── Margin/leverage/account toggles
+  │   ├── Order-type tabs (Market/Limit/Pro)
+  │   ├── Side toggle (Buy/Long · Sell/Short)
+  │   ├── Size input + % slider
+  │   ├── Reduce Only · TP/SL
+  │   └── CTA (Connect → Buy/Sell)
+  ├── Bottom Dock (Balances…Order History tabs + filters)
+  └── Floating: Online pill · Announcements popover · Footer
+
+
+  IMPLEMENTATION NOTES
+  ====================
+  - Reusable: StatStrip, MarketSwitcher, OrderBook (virtualized), TradeTape (virtualized), Ticket,
+    DockTable, Toast, ConnectButton/AccountChip, HealthPill.
+  - Server-render: the app shell + static chrome (SSR/skeleton) for instant paint.
+  - Stream: book, trades, price/mark/funding, positions/PnL → WebSocket; one connection, fan out.
+  - Hydrate: the whole terminal is an interactive island; the shell can be static.
+  - WebSockets: book/trades/price/positions — coalesce to rAF; buffer + resume on reconnect.
+  - Virtualize: order book, trade tape, positions, all histories.
+  - Lazy-load: canvas chart engine + wallet SDK (Privy) — keep out of the initial shell bundle;
+    lazy the ticket's "Pro" advanced fields.
+  - Optimistic: order placement + cancel (toast on ack; reconcile on error).
+  - Animations: value flashes (green/red) via class toggle; depth-bar width ease; NO layout reflow.
+  - Accessibility: polite/throttled live regions (fills, best bid/ask on request — not every tick);
+    table roles; labeled controls; visible focus; color never the only side signal.
+
+
+  FIGMA-LEVEL SPEC
+  ================
+  Shell:          fixed viewport; internal-scroll panels; 1px hairline (#1F2937) splits
+  Columns:        chart flex · book ~300 · ticket ~320 (fixed)
+  Bottom dock:    resizable height; tabbed tables
+  Type:           "OurFont", 400/500, 11–14px, tabular-nums everywhere
+  Colors:         near-black surfaces · #D2DAD7 text · #1FA67D up · #ED7088 down · #F6FEFD mint
+  Radii:          6–8px controls
+  Elevation:      flat; depth via surface steps + hairlines + order-book depth bars
+  Density:        HIGH (CEX-grade); book rows ~24px
+  Responsive:     desktop 4-zone → tablet panel-tabs → mobile single-col + Buy/Sell bottom bar + sheet ticket
+  Motion:         50–200ms; value flashes; no reflow; snappy tab/side switches
+  Interaction:    click book price → prefill ticket; % slider; progressive-disclosure ticket
+-->

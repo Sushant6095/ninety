@@ -1,0 +1,104 @@
+<!--
+  ORIGINAL SEMANTIC BLUEPRINT — app.hyperliquid.xyz/announcements
+  =============================================================
+  Original annotated structure. Not scraped/copied. No styling.
+  Shares the app shell + tokens (see html/trade.html). Testnet nav adds a "Faucet" tab.
+-->
+<html lang="en">
+<body>
+
+  <!-- HEADER: persistent app-shell nav (Trade…Leaderboard [Faucet on testnet] More · Connect). -->
+  <header><nav aria-label="Primary"><!-- see trade.html --></nav></header>
+
+  <main>
+    <h1>Announcements</h1>
+
+    <!--
+      TWO-COLUMN: category rail + feed list
+      Responsive: rail → chip strip / dropdown above the list on mobile.
+    -->
+    <div role="group" aria-label="Announcements">
+
+      <!--
+        CATEGORY RAIL (single-select filter)
+        A11y: a tablist or radiogroup; active item aria-current/selected.
+      -->
+      <nav aria-label="Categories">
+        <a aria-current="true">All Announcements</a>
+        <a>Listings</a>
+        <a>Delistings</a>
+        <a>Updates</a>
+      </nav>
+
+      <!--
+        FEED LIST (reverse-chronological)
+        Row anatomy: title · optional description · date · category badge (right).
+        Rows hairline-separated; whole row clickable → detail/market.
+        A11y: a list; each item an <article> with heading, time element, and a category tag.
+      -->
+      <section aria-label="Announcements feed">
+        <article>
+          <h2>New listing: CASHCAT-USDC perps</h2>
+          <span aria-label="Category">Listings</span>
+          <time datetime="2026-07-11">11/07/2026</time>
+        </article>
+        <article>
+          <h2>Added spot ANSEM</h2>
+          <p>ANSEM spot trading, deposits, and withdrawals are now live</p>
+          <span aria-label="Category">Listings</span>
+          <time datetime="2026-07-10">10/07/2026</time>
+        </article>
+        <article>
+          <h2>Hyperliquid and Trade[XYZ] data live on TradingView</h2>
+          <span aria-label="Category">Updates</span>
+          <time datetime="2026-07-02">02/07/2026</time>
+        </article>
+        <!-- … more: New listing GRAM-USDC [Listings] · Dreamcash HIP-3 DEX sunset [Delistings] ·
+             Validator vote to delist IP [Delistings] · Portfolio margin beta [Updates] · USDH sunset [Updates] -->
+        <!-- EMPTY STATE (per category): "No announcements" -->
+      </section>
+    </div>
+  </main>
+
+  <!--
+    COMPACT POPOVER VARIANT (shown on OTHER app pages, bottom-right)
+    Purpose: surface the latest few items in-context; dismissible; "seen" flag persists.
+    A11y: labeled region, dismiss button, non-blocking (aria-live polite for new items).
+  -->
+  <aside aria-label="Announcements" hidden>
+    <header>Announcements <button aria-label="Dismiss">✕</button></header>
+    <!-- latest 3 items (title + short desc) -->
+  </aside>
+
+  <footer><!-- Docs · Support · Terms · Privacy · ● Online --></footer>
+</body>
+</html>
+
+<!--
+  COMPONENT TREE
+  Page
+  ├── AppShell Nav (Faucet on testnet)
+  ├── Title "Announcements"
+  ├── Category rail (All · Listings · Delistings · Updates)
+  ├── Feed list (AnnouncementRow: title · desc? · date · category badge)
+  └── [global] Compact popover variant (latest items, dismissible)
+
+  IMPLEMENTATION NOTES
+  - Reusable: CategoryFilter, AnnouncementRow (title/desc/date/badge), CategoryBadge, AnnouncementsPopover.
+  - Server-render the feed (low-frequency content); cache; the popover reads a "latest seen id".
+  - Stream: not needed; periodic refresh; the popover can poll for new items (aria-live polite).
+  - Hydrate: category filter, popover dismiss/seen logic.
+  - Virtualize: only if the feed is very long (usually paginate/load-more).
+  - Optimistic: n/a.
+  - Animations: category cross-fade (~120ms), popover slide-in, row hover.
+  - Accessibility: <time> elements, category as text (not color-only), labeled dismiss, polite live
+    region for new items.
+
+  FIGMA-LEVEL SPEC
+  Type:        "OurFont"; bold title, muted desc/date; sans
+  Colors:      near-black surface · #D2DAD7 text · muted secondary · category-tinted badges · subtle contour bg
+  Layout:      category rail (~narrow) + feed list (wide); hairline row separators
+  Density:     medium; comfortable feed rows
+  Responsive:  rail → chip strip/dropdown; rows full-width on mobile
+  Motion:      120ms filter cross-fade; popover slide-in; row hover
+-->

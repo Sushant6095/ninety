@@ -1,0 +1,130 @@
+<!--
+  ORIGINAL SEMANTIC BLUEPRINT — hyperscreener.asxn.xyz/validators (ASXN analytics)
+  ==============================================================================
+  Original annotated structure. Not scraped/copied. No styling.
+  Dark+light themes; mint/teal accents on dark; mono for IPs/numbers.
+-->
+<html lang="en">
+<body>
+
+  <!--
+    HEADER — mega-menu analytics nav
+    Hierarchy: logo · dropdown sections · ⌘K search · theme toggle · Trade CTA.
+    Sticky: yes (persistent while scrolling dashboards).
+    A11y: <nav>; dropdown buttons aria-haspopup/expanded; command palette is a dialog; toggle labeled.
+  -->
+  <header>
+    <nav aria-label="Primary">
+      <a href="/" aria-label="Hyperliquid Analytics home"><!-- logo --></a>
+      <button aria-haspopup="menu" aria-expanded="true">HyperCore</button><!-- active; holds Validators -->
+      <button aria-haspopup="menu">Revenue</button>
+      <button aria-haspopup="menu">Perps</button>
+      <button aria-haspopup="menu">HIP-3</button>
+      <button aria-haspopup="menu">HIP-4</button>
+      <button aria-haspopup="menu">TradFi</button>
+      <button aria-haspopup="menu">Spot</button>
+      <button aria-haspopup="menu">HyperEVM</button>
+      <button aria-haspopup="menu">Traders</button>
+      <button aria-label="Search" aria-keyshortcuts="Meta+K"><!-- ⌘K command palette --></button>
+      <button aria-label="Toggle theme"><!-- dark/light --></button>
+      <a href="/trade" role="button"><!-- Trade · Save 4% (referral, mint) --></a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Validators</h1>
+
+    <!--
+      KPI STAT ROW — 4 tiles (big value + uppercase label), thin vertical dividers.
+      Responsive: 4 → 2×2 → stack.
+      A11y: each tile a term/definition pair.
+    -->
+    <section aria-label="Validator summary">
+      <dl>
+        <div><dt>Total Validators</dt><dd><!-- 33 --></dd></div>
+        <div><dt>Total Stake</dt><dd><!-- 439.21M --></dd></div>
+        <div><dt>Avg Commission</dt><dd><!-- 5.62% --></dd></div>
+        <div><dt>Avg APR</dt><dd><!-- 2.15% --></dd></div>
+      </dl>
+    </section>
+
+    <!--
+      PEERS MAP — geographic node visualization + drill-down
+      Hierarchy: sub-KPIs → [world map (left) | location detail (right)].
+      Interaction: hover marker → tooltip; click marker → location detail; zoom in/out.
+      Responsive: map stacks above detail; simplified/list fallback on mobile.
+      A11y: map needs a text-equivalent list of locations/operators; markers focusable.
+    -->
+    <section aria-labelledby="peers-title">
+      <h2 id="peers-title">Peers Map</h2>
+      <dl>
+        <div><dt>Total Nodes</dt><dd><!-- 28 --> <small>Operated by providers</small></dd></div>
+        <div><dt>Operators</dt><dd><!-- 15 --> <small>ASXN, B-Harvest, Enigma &amp; Others</small></dd></div>
+        <div><dt>Locations</dt><dd><!-- 4 --> <small>Japan, Singapore, South Korea &amp; Others</small></dd></div>
+      </dl>
+
+      <div role="group" aria-label="Node map and detail">
+        <figure aria-label="World map of validator nodes">
+          <!-- inline SVG: mint continents on dark; markers at Germany/Japan/South Korea/Singapore;
+               zoom in/out controls -->
+        </figure>
+        <aside aria-label="Location detail">
+          <h3><!-- Japan --></h3>
+          <p><!-- 22 nodes · 13 operators --></p>
+          <!-- OPERATOR CARD (repeat): name · N IPs · IP chips (mono) -->
+          <article><h4>ASXN</h4><p>2 IPs</p><code>64.31.48.111</code><code>64.31.51.137</code></article>
+          <article><h4>Nansen x HypurrCollective</h4><p>2 IPs</p><code>72.46.86.185</code></article>
+        </aside>
+      </div>
+    </section>
+
+    <!--
+      VALIDATOR TABLE (below the fold) — ranked validators
+      Columns (typical): Validator · Stake · Commission · APR · Uptime · Operator (sortable).
+      A11y: table roles, aria-sort; numbers tabular.
+    -->
+    <section aria-label="Validator list">
+      <table><thead><tr><th>Validator</th><th>Stake</th><th>Commission</th><th>APR</th><th>Uptime</th></tr></thead>
+        <tbody><!-- rows --></tbody></table>
+    </section>
+  </main>
+
+  <footer><!-- links · attribution --></footer>
+</body>
+</html>
+
+<!--
+  COMPONENT TREE
+  Page
+  ├── Mega-menu Nav (sections · ⌘K palette · theme toggle · Trade CTA)
+  ├── Title "Validators"
+  ├── KPI Row (Total Validators · Total Stake · Avg Commission · Avg APR)
+  ├── Peers Map
+  │   ├── Sub-KPIs (Nodes · Operators · Locations)
+  │   ├── World-map viz (SVG, markers, zoom)
+  │   └── Location detail (operator cards + IP chips)
+  └── Validator table (sortable)
+
+  IMPLEMENTATION NOTES
+  - Reusable: MegaMenuNav, CommandPalette(⌘K), ThemeToggle, KpiTile, MapViz(SVG), OperatorCard,
+    DataTable.
+  - Server-render/ISR the KPIs + validator table; refresh periodically (not high-frequency WS).
+  - Stream: not needed; scheduled revalidation is enough.
+  - Hydrate: map interactions, command palette, theme toggle, nav dropdowns, table sort.
+  - Virtualize: only if the validator table is long.
+  - Lazy-load: the map + any heavy charts below the fold.
+  - Optimistic: n/a (read-only analytics).
+  - Animations: marker hover/zoom, dropdown/palette open, theme cross-fade, KPI count-up.
+  - Accessibility: text-equivalent for the map (location/operator list), focusable markers, aria-sort,
+    labeled toggle + palette dialog with focus trap.
+
+  FIGMA-LEVEL SPEC
+  Type:        sans UI + mono for IPs/numbers; big KPI values
+  Colors:      dark surfaces · mint/teal continents+accents · off-white text (LIGHT theme available)
+  Cards:       ~12–16px radius; thin borders; faint dot-grid texture in header
+  KPI row:     4 tiles, big value + uppercase label, thin vertical dividers
+  Map:         inline SVG; mint continents on dark; zoomable; marker drill-down
+  Density:     medium; generous KPI header, denser tables below
+  Responsive:  KPIs 4→2×2→stack; map stacks above detail; mega-menu→drawer; ⌘K→icon
+  Motion:      150ms dropdown/palette; marker hover/zoom; theme cross-fade; KPI count-up
+-->

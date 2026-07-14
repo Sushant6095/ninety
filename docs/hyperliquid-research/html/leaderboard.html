@@ -1,0 +1,104 @@
+<!--
+  ORIGINAL SEMANTIC BLUEPRINT — app.hyperliquid.xyz/leaderboard
+  ============================================================
+  Original annotated structure. Not scraped/copied. No styling.
+  Shares the trade app's shell + tokens (see html/trade.html, trade/layout.md).
+-->
+<html lang="en">
+<body>
+
+  <!-- HEADER: same persistent app-shell nav; "Leaderboard" active. (see trade.html) -->
+  <header><nav aria-label="Primary"><!-- logo · Trade Outcomes Portfolio Earn Vaults Staking Referrals Leaderboard(active) More · Connect 🌐 ⚙ --></nav></header>
+
+  <main>
+    <!--
+      PAGE HEADER
+      Hierarchy: large "Leaderboard" title, left-aligned.
+      Background: subtle topographic contour lines (atmosphere, no color).
+    -->
+    <h1>Leaderboard</h1>
+
+    <!--
+      LEADERBOARD PANEL (card)
+      Purpose: ranked table with search + window filter + methodology.
+      Hierarchy: [search | window] → table → pager → footnote.
+      Responsive: filters stack on mobile; table sheds columns to Rank/Trader/PNL.
+      A11y: labeled search, table roles + sortable column headers (aria-sort), pager labels.
+    -->
+    <section aria-labelledby="lb-title">
+      <h2 id="lb-title" hidden>Trader rankings</h2>
+
+      <div role="group" aria-label="Filters">
+        <label>
+          <span class="sr-only">Search by wallet address</span>
+          <input type="search" placeholder="Search by wallet address…" />
+        </label>
+        <button aria-haspopup="listbox"><!-- time window: 30D ▾ (7D / 30D / all-time) --></button>
+      </div>
+
+      <table aria-label="Trader leaderboard">
+        <thead>
+          <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">Trader</th>
+            <th scope="col">Account Value</th>
+            <th scope="col" aria-sort="descending">PNL (30D)</th> <!-- default sort ▾ -->
+            <th scope="col">ROI (30D)</th>
+            <th scope="col">Volume (30D)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ROW (repeat): rank · trader(address→profile) · account value · PNL(±, colored) · ROI(±) · volume
+               numbers tabular + right-aligned; PNL/ROI green(+)/red(−) -->
+          <!-- EMPTY STATE: "1-0 of 0" when no rows match filters -->
+        </tbody>
+      </table>
+
+      <!--
+        PAGER: rows-per-page (10 ▾) · "1–N of M" · prev/next
+      -->
+      <nav aria-label="Pagination"><!-- Rows per page 10 ▾ · 1-0 of 0 · ‹ › --></nav>
+
+      <!--
+        METHODOLOGY FOOTNOTE (trust element)
+      -->
+      <p><small>Excludes accounts with &lt; 100k USDC value and &lt; 10M USDC volume.
+        ROI = PNL / max(100, starting value + max net deposits) for the window.</small></p>
+    </section>
+  </main>
+
+  <footer><!-- Docs · Support · Terms · Privacy · ● Online pill --></footer>
+</body>
+</html>
+
+<!--
+  COMPONENT TREE
+  Page
+  ├── AppShell Nav (Leaderboard active)
+  ├── Title "Leaderboard"
+  └── Leaderboard Panel
+      ├── Filters (Search-by-wallet · Time window 30D)
+      ├── Table (Rank · Trader · Account Value · PNL · ROI · Volume) — sortable
+      ├── Pager (rows-per-page · count · prev/next)
+      └── Methodology footnote
+
+  IMPLEMENTATION NOTES
+  - Reusable: DataTable (sortable, paginated), SearchInput, WindowSelect, Pager, MethodologyNote,
+    TraderCell (identity → profile link).
+  - Server-render page 1; ranking aggregated server-side, cached per window; paginate/virtualize depth.
+  - Stream: not required (periodic refresh is fine); values may flash if live.
+  - Hydrate: sort/search/pager controls; table body can be server-rendered.
+  - Virtualize: only if showing very long pages; default is server pagination.
+  - Optimistic: n/a (read-only).
+  - Animations: row re-order on sort (subtle); window-change cross-fade.
+  - Accessibility: aria-sort on the active column, labeled search, pager labels, colored values also
+    carry +/− signs (not color-only).
+
+  FIGMA-LEVEL SPEC
+  Type:        "OurFont", 400/500, tabular-nums; title large/white
+  Colors:      near-black surface · #D2DAD7 text · green(+)/red(−) metrics · subtle contour bg
+  Columns:     Rank | Trader | Account Value | PNL | ROI | Volume (right-aligned numerics)
+  Density:     medium; comfortable table rows
+  Responsive:  filters stack; columns shed to Rank/Trader/PNL on mobile
+  Motion:      sort re-order + window cross-fade only
+-->
