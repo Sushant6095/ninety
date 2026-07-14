@@ -1,0 +1,75 @@
+docs/hyperliquid-research/trade/performance.md
+  s_2dcc9bad3cff19::t_c49a1d4092c14d 1-36
+docs/hyperliquid-research/validators/overview.md
+  s_2dcc9bad3cff19::t_2ed40990c49998 1-82
+docs/hyperliquid-research/html/home.html
+  s_2dcc9bad3cff19::t_0c0489ae200525 1-257
+docs/hyperliquid-research/html/announcements.html
+  s_2dcc9bad3cff19::t_17054394e3873d 1-104
+docs/hyperliquid-research/html/trade.html
+  s_2dcc9bad3cff19::t_2da614fa6b685e 1-227
+docs/hyperliquid-research/hyperfoundation/navigation.md
+  s_2dcc9bad3cff19::t_78ba09c740072d 1-55
+docs/hyperliquid-research/announcements/overview.md
+  s_2dcc9bad3cff19::t_c06a42ebc11a8b 1-70
+docs/hyperliquid-research/trade/motion.md
+  s_2dcc9bad3cff19::t_165cb247ac920f 1-28
+docs/hyperliquid-research/leaderboard/overview.md
+  s_2dcc9bad3cff19::t_fbfd1fb99078aa 1-67
+docs/hyperliquid-research/html/leaderboard.html
+  s_2dcc9bad3cff19::t_1b7184fb8cfc2c 1-104
+docs/hyperliquid-research/html/validators.html
+  s_2dcc9bad3cff19::t_c48c0da54b6ace 1-130
+docs/hyperliquid-research/hyperfoundation/responsive.md
+  s_2dcc9bad3cff19::t_d932d96f47da26 1-50
+docs/hyperliquid-research/trade/screenshots/README.md
+  s_2dcc9bad3cff19::t_403e2c7d951a58 1-20
+docs/hyperliquid-research/trade/responsive.md
+  s_2dcc9bad3cff19::t_156d01cc861a78 1-42
+docs/hyperliquid-research/trade/overview.md
+  s_2dcc9bad3cff19::t_0555825ca9cb3e 1-70
+docs/hyperliquid-research/hyperfoundation/overview.md
+  s_2dcc9bad3cff19::t_8d059ea1a42105 1-66
+docs/hyperliquid-research/trade/components.md
+  s_2dcc9bad3cff19::t_a9fc3b88723d32 1-97
+docs/hyperliquid-research/trade/interaction.md
+  s_2dcc9bad3cff19::t_acf32110643086 1-46
+docs/hyperliquid-research/README.md
+  s_2dcc9bad3cff19::t_27b23d72aa879a 1-62
+docs/hyperliquid-research/docs/overview.md
+  s_2dcc9bad3cff19::t_ab5c762f3bcb21 1-79
+docs/hyperliquid-research/html/docs.html
+  s_2dcc9bad3cff19::t_3691a94663ab33 1-129
+docs/hyperliquid-research/hyperfoundation/screenshots/README.md
+  s_2dcc9bad3cff19::t_619da4487a2f72 1-29
+docs/hyperliquid-research/trade/layout.md
+  s_2dcc9bad3cff19::t_a9c982cc8aedb2 1-66
+docs/hyperliquid-research/hyperfoundation/motion.md
+  s_2dcc9bad3cff19::t_7dbeb8cc793906 1-52
+docs/hyperliquid-research/hyperfoundation/interaction.md
+  s_2dcc9bad3cff19::t_53c6b75b60f31c 1-47
+docs/hyperliquid-research/hyperfoundation/performance.md
+  s_2dcc9bad3cff19::t_a72cf8e9fad0c2 1-38
+docs/hyperliquid-research/hyperfoundation/layout.md
+  s_2dcc9bad3cff19::t_0c87beebfdaf6a 1-97
+docs/hyperliquid-research/hyperfoundation/components.md
+  s_2dcc9bad3cff19::t_85684257420b4d 1-95
+docs/hyperliquid-research/trade/navigation.md
+  s_2dcc9bad3cff19::t_6f579fbc56faac 1-51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "6fb69ccbfb3ffe3cb8f116932caf272c4b14ab4a",
+  "prompts": {},
+  "sessions": {
+    "s_2dcc9bad3cff19": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a61e81f3-3de6-4d97-954d-0827d3665af2",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
