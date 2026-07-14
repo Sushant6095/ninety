@@ -1,0 +1,32 @@
+apps/web/src/features/terminal/depth/Lineups.tsx
+  s_338735e9af5335::t_757a57469b3b30 59-60
+  s_338735e9af5335::t_513b50f5284cb7 19-23
+apps/web/components.json
+  s_338735e9af5335::t_709616806a0cc6 1-20
+apps/web/src/features/terminal/depth/MatchStats.tsx
+  s_338735e9af5335::t_bf048e9416f0bc 3,5-9,24-25,35,37
+apps/web/src/components/ui/ScrollArea.tsx
+  s_338735e9af5335::t_49cc8ab4f07f71 1-22
+design/PROVENANCE.md
+  s_338735e9af5335::t_6de741a0078e88 15-16
+  s_338735e9af5335::t_396aca621c9649 17-18
+apps/web/src/features/terminal/CompetitionsRail.tsx
+  s_338735e9af5335::t_69a5712b84057e 6
+  s_338735e9af5335::t_67f43bf868467a 83-96,98-99
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "4933dba82c92e9384cf2538aa9290b7e63f1d551",
+  "prompts": {},
+  "sessions": {
+    "s_338735e9af5335": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93fac499-ebc1-4122-b865-8c9f3e20d6b6",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
