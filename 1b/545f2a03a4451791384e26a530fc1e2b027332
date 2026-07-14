@@ -1,0 +1,28 @@
+apps/web/public/favicon.svg
+  s_338735e9af5335::t_94a0a220599078 1-7
+apps/web/src/features/landing/LandingHero.tsx
+  s_338735e9af5335::t_82fde5b5fe5dec 57,59-60,62
+  s_338735e9af5335::t_3c1bbf9feb36e4 4
+apps/web/src/features/landing/Ctas.tsx
+  s_338735e9af5335::t_7ed54756ae7890 6-7,12,15,18,21
+apps/web/src/app/layout.tsx
+  s_338735e9af5335::t_917e4c9756bccd 15-18,20-36
+.gitignore
+  s_338735e9af5335::t_caba80914ad289 23-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "1b545f2a03a4451791384e26a530fc1e2b027332",
+  "prompts": {},
+  "sessions": {
+    "s_338735e9af5335": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93fac499-ebc1-4122-b865-8c9f3e20d6b6",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
