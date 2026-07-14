@@ -21,6 +21,7 @@ export function TerminalScreen() {
       <Ticker />
       <TerminalHeader user={SESSION} />
       <main className="mx-auto grid w-full max-w-[1600px] flex-1 grid-cols-1 items-start gap-3 px-3 py-3 sm:px-4 xl:grid-cols-[300px_minmax(0,1fr)_340px]">
+        <h1 className="sr-only">Live match terminal</h1>
         <div className="hidden flex-col gap-3 xl:flex">
           <CompetitionsRail />
           <AttackMomentum />

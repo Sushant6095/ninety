@@ -5,9 +5,19 @@ export default {
   content: ["./src/**/*.{ts,tsx}"],
   theme: { extend: {
     colors: {
-      bg: "var(--bg)", surface: "var(--surface)", hairline: "var(--hairline)",
-      up: "var(--up)", down: "var(--down)", halt: "var(--halt)", chain: "var(--chain)",
-      hi: "var(--text-hi)", lo: "var(--text-lo)",
+      // color-mix + <alpha-value> so the slash-opacity modifier (bg-halt/15, text-hi/90, ring-hairline/60 …)
+      // actually applies alpha. A bare `var(--x)` makes `/NN` emit invalid `rgb(#hex / a)` → the browser drops
+      // it (transparent bg / gray-fallback border / inherited text) — proven broken across 294 usages. Solid
+      // usage (text-halt) resolves to 100% = the raw token, unchanged.
+      bg: "color-mix(in srgb, var(--bg) calc(<alpha-value> * 100%), transparent)",
+      surface: "color-mix(in srgb, var(--surface) calc(<alpha-value> * 100%), transparent)",
+      hairline: "color-mix(in srgb, var(--hairline) calc(<alpha-value> * 100%), transparent)",
+      up: "color-mix(in srgb, var(--up) calc(<alpha-value> * 100%), transparent)",
+      down: "color-mix(in srgb, var(--down) calc(<alpha-value> * 100%), transparent)",
+      halt: "color-mix(in srgb, var(--halt) calc(<alpha-value> * 100%), transparent)",
+      chain: "color-mix(in srgb, var(--chain) calc(<alpha-value> * 100%), transparent)",
+      hi: "color-mix(in srgb, var(--text-hi) calc(<alpha-value> * 100%), transparent)",
+      lo: "color-mix(in srgb, var(--text-lo) calc(<alpha-value> * 100%), transparent)",
     },
     fontFamily: { display: ["var(--font-display)"], ui: ["var(--font-ui)"], mono: ["var(--font-mono)"] },
     borderRadius: { card: "var(--radius-card)", chip: "var(--radius-chip)" },

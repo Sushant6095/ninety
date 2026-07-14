@@ -91,7 +91,7 @@ function Elbows({ pairs, side }: { pairs: number; side: "left" | "right" }) {
 function RoundColumn({ matches, label }: { matches: WcGame[]; label: string }) {
   return (
     <div className="flex min-w-[150px] flex-1 flex-col">
-      <h3 className="mb-2 text-center text-label font-semibold uppercase tracking-[0.12em] text-lo">{label}</h3>
+      <div className="mb-2 text-center text-label font-semibold uppercase tracking-[0.12em] text-lo">{label}</div>
       <div className="flex flex-1 flex-col justify-around gap-2">
         {matches.map((g) => (
           <MatchNode key={g.id} g={g} />
@@ -138,7 +138,7 @@ export function BracketB() {
       </div>
 
       {/* The road to the final: R16 → Final ← R16 */}
-      <div className="overflow-x-auto pb-2">
+      <div className="overflow-x-auto pb-2" tabIndex={0} role="group" aria-label="Knockout bracket — scroll horizontally">
         <div className="flex min-w-[1120px] items-stretch gap-1">
           {LEFT.map((col, i) => (
             <div key={`L${i}`} className="flex flex-1 items-stretch">

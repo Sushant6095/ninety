@@ -67,6 +67,10 @@ export function useHaltSequence(scope: RefObject<HTMLElement | null>, actions: H
         if (el) el.textContent = `spread ${v.toFixed(1)}`;
       };
 
+      // Promote the animated layers to the compositor for the ~2.5s the timeline runs, then release them
+      // (narrow will-change, removed on complete — ITEM 9 flagged the halt shot as real GPU work).
+      const willChangeTargets = [...flash, ...sweep, ...wash, ...chart, ...cliff, ...draw, ...booth, ...dim, ...spread, ...fill];
+
       const mm = gsap.matchMedia();
 
       // ── Reduced motion: no autoplay, no travel — apply the resolved LIVE-post-goal frame instantly ──────────
@@ -92,8 +96,14 @@ export function useHaltSequence(scope: RefObject<HTMLElement | null>, actions: H
         const proxy = { v: SPREAD_WIDE };
         const tl = gsap.timeline({
           paused: true,
-          onStart: () => actionsRef.current.busy(true),
-          onComplete: () => actionsRef.current.busy(false),
+          onStart: () => {
+            actionsRef.current.busy(true);
+            gsap.set(willChangeTargets, { willChange: "transform, opacity" });
+          },
+          onComplete: () => {
+            actionsRef.current.busy(false);
+            gsap.set(willChangeTargets, { willChange: "auto" });
+          },
         });
 
         // t0 — re-arm React + hide every overlay so Replay always starts clean (all positioned at absolute 0)

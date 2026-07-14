@@ -55,7 +55,7 @@ body {
 /* Booth "speaking" equalizer — thin bars pulsing on scaleY (transform-only, compositor-friendly). Staggered
    via inline animation-delay per bar. Reduced-motion freezes it via the global rule below. */
 @keyframes eq { 0%, 100% { transform: scaleY(0.35); } 50% { transform: scaleY(1); } }
-.eq-bar { transform-origin: bottom; animation: eq 900ms ease-in-out infinite; }
+.eq-bar { transform-origin: bottom; will-change: transform; animation: eq 900ms ease-in-out infinite; }
 
 /* Accordion expand/collapse via radix's content-height var (no tailwindcss-animate dep). Transform/height only. */
 @keyframes accDown { from { height: 0; } to { height: var(--radix-accordion-content-height); } }

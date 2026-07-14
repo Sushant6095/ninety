@@ -3,7 +3,8 @@
 export function PrototypeRibbon() {
   return (
     <div
-      role="note"
+      role="region"
+      aria-label="Prototype disclosure"
       className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 border-b border-hairline bg-surface px-4 py-1.5 text-center"
     >
       <span className="rounded-chip bg-bg px-1.5 py-0.5 text-label font-semibold uppercase tracking-[0.12em] text-lo ring-1 ring-inset ring-hairline">

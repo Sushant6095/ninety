@@ -33,7 +33,7 @@ export function RightRail() {
   const starting = pre.slice(0, STARTING_SOON);
 
   return (
-    <aside className="flex w-full flex-col gap-3">
+    <aside aria-label="Featured match and top traders" className="flex w-full flex-col gap-3">
       <FeaturedPanel market={MARKETS[0]} />
 
       <RailCard

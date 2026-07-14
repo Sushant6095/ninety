@@ -77,14 +77,14 @@ export function CompetitionsRail() {
         <h2 className="flex items-center gap-1 text-label font-semibold uppercase tracking-[0.12em] text-lo">
           <span className="h-1.5 w-1.5 rounded-full bg-up shadow-[0_0_5px_var(--up)]" /> Live competitions
         </h2>
-        <span className="text-label uppercase tracking-wide text-lo/70">All KO times PT</span>
+        <span className="text-label uppercase tracking-wide text-lo">All KO times PT</span>
       </div>
       {groups.map(([label, meta, rows]) => (
         <div key={label}>
           <div className="flex items-center gap-2 bg-bg/40 px-3 py-1">
             <span className="num rounded bg-bg px-1 text-label font-semibold text-lo ring-1 ring-inset ring-hairline">R32</span>
             <h3 className="text-label font-semibold uppercase tracking-[0.08em] text-lo">{label}</h3>
-            <span className="text-label text-lo/70">{meta}</span>
+            <span className="text-label text-lo">{meta}</span>
             <ChevronDown size={13} className="ml-auto text-lo/60" aria-hidden />
           </div>
           <div className="divide-y divide-hairline/50">

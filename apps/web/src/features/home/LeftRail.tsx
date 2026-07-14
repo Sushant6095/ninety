@@ -46,7 +46,7 @@ const FOLLOWED = [
 
 export function LeftRail() {
   return (
-    <aside className="flex w-full flex-col gap-3">
+    <aside aria-label="Your matches and standings" className="flex w-full flex-col gap-3">
       <RailCard label="My matches">
         <ul>
           {MARKETS.filter((m) => m.favourite).map((m) => (
