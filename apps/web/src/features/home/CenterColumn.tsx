@@ -17,7 +17,7 @@ const EMPTY_COPY: Record<FilterKey, string> = {
 };
 const FILTERS: { key: FilterKey; label: string }[] = [
   { key: "live", label: "Live" },
-  { key: "upcoming", label: "Today" },
+  { key: "upcoming", label: "Upcoming" },
   { key: "finished", label: "Finished" },
 ];
 

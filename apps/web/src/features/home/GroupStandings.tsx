@@ -45,7 +45,7 @@ export function GroupStandings() {
     <section className="elev mt-3 overflow-hidden rounded-card border border-hairline/70 bg-surface">
       <div className="flex items-center justify-between border-b border-hairline px-4 py-2.5">
         <h2 className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Group standings</h2>
-        <span className="text-label uppercase tracking-wide text-lo">Top 2 advance</span>
+        <span className="text-label uppercase tracking-wide text-lo">Top 2 + best thirds advance</span>
       </div>
       <Tabs.Root defaultValue={GROUP_STANDINGS[0].group}>
         <Tabs.List aria-label="Groups" className="flex items-center gap-1 overflow-x-auto border-b border-hairline px-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">

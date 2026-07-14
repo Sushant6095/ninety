@@ -13,7 +13,7 @@ const spark = (from: number, to: number, n = 24): number[] =>
 const EMOJI: Record<string, string> = {
   CAN: "🇨🇦", MAR: "🇲🇦", ESP: "🇪🇸", JPN: "🇯🇵", ARG: "🇦🇷", MEX: "🇲🇽", USA: "🇺🇸", NED: "🇳🇱",
   GER: "🇩🇪", COL: "🇨🇴", BRA: "🇧🇷", KOR: "🇰🇷", FRA: "🇫🇷", SEN: "🇸🇳", POR: "🇵🇹", URU: "🇺🇾",
-  ENG: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", AUS: "🇦🇺", CRO: "🇭🇷", BEL: "🇧🇪", EGY: "🇪🇬",
+  ENG: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", AUS: "🇦🇺", CRO: "🇭🇷", BEL: "🇧🇪", EGY: "🇪🇬", CPV: "🇨🇻",
 };
 const NAME: Record<string, string> = {
   CAN: "Canada", MAR: "Morocco", ESP: "Spain", JPN: "Japan", ARG: "Argentina", MEX: "Mexico", USA: "United States",
@@ -59,7 +59,8 @@ export const SESSION: SessionUser = { handle: "@vd", credits: 2450, rank: 142, r
 // R32 is the settled past (proofs page); the bracket page carries the full skeleton.
 export const MARKETS: MarketRow[] = [
   // ── Round of 16 · live now ──────────────────────────────────────────────────
-  mkt({ hc: "CAN", ac: "MAR", comp: "World Cup — Round of 16", ko: "2026-07-04T19:00:00Z", min: 74, score: [1, 0], mark: [0.614, 0.221, 0.165], from: 52, to: 61.4, fav: true, vol: 184200 }),
+  // from: 41 so the tape CONTAINS the story every caption tells (David at 38': 41 → 63, on to 61.4 at 74').
+  mkt({ hc: "CAN", ac: "MAR", comp: "World Cup — Round of 16", ko: "2026-07-04T19:00:00Z", min: 74, score: [1, 0], mark: [0.614, 0.221, 0.165], from: 41, to: 61.4, fav: true, vol: 184200 }),
   // The terminal's traded market — same store entry /terminal reads (goalless at 74', Egypt flat ~31).
   mkt({ hc: "AUS", ac: "EGY", comp: "World Cup — Round of 16", ko: "2026-07-04T18:30:00Z", min: 74, score: [0, 0], mark: [0.48, 0.21, 0.31], from: 47, to: 48, fav: true, vol: 156300 }),
   mkt({ hc: "ESP", ac: "JPN", comp: "World Cup — Round of 16", ko: "2026-07-04T18:00:00Z", min: 58, score: [2, 1], mark: [0.682, 0.196, 0.122], from: 60, to: 68.2, fav: true, vol: 231800 }),
@@ -76,7 +77,8 @@ export const MARKETS: MarketRow[] = [
   mkt({ hc: "POL", ac: "GHA", comp: "World Cup — Round of 16", ko: "2026-07-06T01:30:00Z", min: null, mark: [0.61, 0.23, 0.16], from: 60, to: 61, vol: 5200 }),
   // ── Finished today · R16 early kickoffs (a 1X2 settles on 90 minutes — a knockout draw settles D) ──
   mkt({ hc: "SRB", ac: "CMR", comp: "Finished today", ko: "2026-07-04T12:00:00Z", min: null, score: [2, 1], mark: [1, 0, 0], from: 48, to: 88, vol: 44000, status: "SETTLED" }),
-  mkt({ hc: "QAT", ac: "IRN", comp: "Finished today", ko: "2026-07-04T10:00:00Z", min: null, score: [0, 2], mark: [0, 0, 1], from: 44, to: 9, vol: 38000, status: "SETTLED" }),
+  // CPV, not QAT: Group A's table shows Qatar out on 1 point, so Qatar cannot be playing an R16 match.
+  mkt({ hc: "CPV", ac: "IRN", comp: "Finished today", ko: "2026-07-04T10:00:00Z", min: null, score: [0, 2], mark: [0, 0, 1], from: 44, to: 9, vol: 38000, status: "SETTLED" }),
   mkt({ hc: "AUT", ac: "TUR", comp: "Finished today", ko: "2026-07-04T09:00:00Z", min: null, score: [1, 1], mark: [0, 1, 0], from: 30, to: 40, vol: 26000, status: "SETTLED" }),
   // ── Earlier this week · Round of 32 (settled — the proofs page carries their receipts) ─────────────
   mkt({ hc: "HUN", ac: "CZE", comp: "Earlier this week", stage: "Round of 32", ko: "2026-07-02T18:00:00Z", min: null, score: [2, 0], mark: [1, 0, 0], from: 42, to: 90, vol: 51000, status: "SETTLED" }),

@@ -24,12 +24,19 @@ export function RightRail() {
   // Starting soon is DERIVED from the matches the store says are still to kick off. It used to be a hardcoded
   // array, which drifted: it had Senegal kicking off against England in 1h 40m while Senegal was 41' into a live
   // match against France on the same board. A rail that invents its own slate will always end up contradicting it.
-  const pre = useMatchLiveList()
+  const slate = useMatchLiveList();
+  const pre = slate
     .filter((s) => s.status === "PRE" && MARKET_BY_ID.has(s.matchId))
     .map((s) => MARKET_BY_ID.get(s.matchId)!)
     .sort((a, b) => Date.parse(a.kickoffAt) - Date.parse(b.kickoffAt));
-  // Anchor "now" to the slate itself so the labels never depend on the wall clock the demo happens to run at.
-  const now = pre.length ? Date.parse(pre[0].kickoffAt) - HOUR - 40 * 60_000 : 0;
+  // Anchor "now" to the slate's own clock — a LIVE match's kickoff + its minute (+HT). The old anchor
+  // ("first upcoming KO minus 1h40m") called a next-day 19:00 kickoff "in 1h 40m" on a board dated today.
+  const live = slate.filter((s) => s.status !== "PRE" && s.minute != null && MARKET_BY_ID.has(s.matchId));
+  const now = live.length
+    ? Math.max(...live.map((s) => Date.parse(MARKET_BY_ID.get(s.matchId)!.kickoffAt) + (s.minute! + (s.minute! > 45 ? 15 : 0)) * 60_000))
+    : pre.length
+      ? Date.parse(pre[0].kickoffAt) - HOUR - 40 * 60_000
+      : 0;
   const starting = pre.slice(0, STARTING_SOON);
 
   return (
