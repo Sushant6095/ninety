@@ -1,0 +1,116 @@
+apps/web/src/styles/tokens.css
+  s_b60ec3c6161754::t_291e393ab0cb03 10-12
+  s_b60ec3c6161754::t_0cbd1502c422c7 13-17
+apps/web/src/features/landing/LandingScroll.tsx
+  s_b60ec3c6161754::t_c1cce2b1269631 1-41
+plans/README.md
+  s_b60ec3c6161754::t_8f75ba71873d97 8-10
+apps/web/src/features/landing/LoopStage.tsx
+  s_b60ec3c6161754::t_deb7189ef55e89 70
+  s_b60ec3c6161754::t_df1f98e9c3b81c 7-8
+  s_b60ec3c6161754::t_9159412125060e 77,81
+  s_b60ec3c6161754::t_2ea503bd0a0219 50-51,58-60,62-67,78-79
+apps/web/src/features/landing/LandingHero.tsx
+  s_b60ec3c6161754::t_a4fa80a64bbc6a 9,13-22,30,32-38,45,47,65-66,68-84,87
+  s_b60ec3c6161754::t_9159412125060e 52,67
+apps/web/tailwind.config.ts
+  s_b60ec3c6161754::t_a1ec70bc583d8a 24-27
+  s_b60ec3c6161754::t_cef98196811dd4 40-44
+apps/web/src/features/landing/LandingPage.tsx
+  s_b60ec3c6161754::t_9159412125060e 32,57,73,88,102-105,119
+  s_b60ec3c6161754::t_e5055d4adec1b6 4,19-21,27-31,33-48,50-54,56,58-61,64,66-72,74-87,89-92,94,96-99,108,114,116-118,120-124,126-127
+apps/web/src/.claude/trace/actions.jsonl
+  s_b60ec3c6161754::t_5c3f1ab07459dc 60-62
+  s_b60ec3c6161754::t_ce76393ca7d88b 70-71
+  s_b60ec3c6161754::t_52c4d17dcab5a6 23
+  s_b60ec3c6161754::t_90174a93561a24 35
+  s_b60ec3c6161754::t_1a573d9c16e51e 22
+  s_b60ec3c6161754::t_7f116954fd8d1f 84
+  s_e6323ad6256986::t_e16cbf845d28e8 4-6
+  s_b60ec3c6161754::t_c1673e1d784da5 64-66
+  s_b60ec3c6161754::t_98caab115951cb 7-20
+  s_b60ec3c6161754::t_47f501029a3347 1
+  s_b60ec3c6161754::t_c6e894ce5ac3d9 30
+  s_b60ec3c6161754::t_f901c65b4903ad 21
+  s_b60ec3c6161754::t_68441bbe5ed31c 54-55
+  s_b60ec3c6161754::t_4ab75ac7eb3781 47
+  s_b60ec3c6161754::t_20fa59013d388f 52
+  s_b60ec3c6161754::t_135ecfd5e8113d 76
+  s_b60ec3c6161754::t_71ee80d31aaab7 59
+  s_b60ec3c6161754::t_668137867440c3 53
+  s_b60ec3c6161754::t_7f5e1f5094a5d5 36-38
+  s_b60ec3c6161754::t_3aff87ff01c039 50
+  s_b60ec3c6161754::t_5947f5a8b6a5bd 31
+  s_b60ec3c6161754::t_9a296ef36f8821 72
+  s_b60ec3c6161754::t_f4e5d415361205 45
+  s_b60ec3c6161754::t_ea9435b5c40db3 29
+  s_b60ec3c6161754::t_9c5a418a421451 2
+  s_b60ec3c6161754::t_142f9b005dbd27 32-34
+  s_b60ec3c6161754::t_0d4a63f4cf07b2 51
+  s_b60ec3c6161754::t_bc43657984cbc0 67
+  s_b60ec3c6161754::t_89748ba74c4c56 56-58
+  s_b60ec3c6161754::t_4dfc368882e73a 69
+  s_b60ec3c6161754::t_775175772d474d 24
+  s_b60ec3c6161754::t_408aaa72920c16 77-83
+  s_b60ec3c6161754::t_5cfe58c3c90f99 39-44
+  s_b60ec3c6161754::t_35d26486d48240 73-74
+  s_b60ec3c6161754::t_589ba24fc6a87b 3
+  s_b60ec3c6161754::t_ca2c7dbf32d47c 28
+  s_b60ec3c6161754::t_dde506ab4005f5 48-49
+  s_b60ec3c6161754::t_6a4b7e470b237e 75
+  s_b60ec3c6161754::t_ddaf39c020b42b 25
+  s_b60ec3c6161754::t_dfcf12cc3f44f9 46
+  s_b60ec3c6161754::t_f5295940910ec8 85-90
+  s_b60ec3c6161754::t_086451f1c5a60e 26-27
+  s_b60ec3c6161754::t_a3e0e89a664c90 63
+  s_b60ec3c6161754::t_7ab29302dd3f5a 68
+plans/002-reduced-motion-global-rule.md
+  s_b60ec3c6161754::t_8f75ba71873d97 3
+apps/web/src/styles/globals.css
+  s_b60ec3c6161754::t_723c3e5268d680 67-73
+  s_b60ec3c6161754::t_028332cf64df25 63-64
+design/PROVENANCE.md
+  s_b60ec3c6161754::t_8f75ba71873d97 28-29
+  s_b60ec3c6161754::t_3012c7a2496e9d 22,24,30
+apps/web/src/features/landing/HeroRiver.tsx
+  s_b60ec3c6161754::t_c640aeab08caf8 1-31,37-43
+  s_b60ec3c6161754::t_407e9f9650fa99 32-36
+apps/web/src/features/home/FeaturedPanel.tsx
+  s_b60ec3c6161754::t_d276cb8531a03a 33
+  s_b60ec3c6161754::t_323809a639a55c 66-75
+  s_b60ec3c6161754::t_43a8c1690bd511 2
+plans/001-live-flash-retrigger.md
+  s_b60ec3c6161754::t_8f75ba71873d97 3
+plans/003-tailwind-motion-token-plumbing.md
+  s_b60ec3c6161754::t_8f75ba71873d97 3
+apps/web/src/components/ui/LivePrice.tsx
+  s_b60ec3c6161754::t_d32f18d5437cf4 5-7,10,15-16,20-23
+design/reviews/landing-depth-pass-2026-07-14.md
+  s_b60ec3c6161754::t_1f594e93095ee1 1-29
+apps/web/src/features/landing/.claude/trace/actions.jsonl
+  s_b60ec3c6161754::t_cf530b2435fed2 1-2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "9cbdf011e9586766a24cc6e67e4ab21dba94fc2a",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_e6323ad6256986": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "42d27af0-dd13-4b98-9ffb-782bd5c4131a",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
