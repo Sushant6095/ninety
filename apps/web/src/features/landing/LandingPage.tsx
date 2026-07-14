@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { LandingHero } from "./LandingHero";
 import { LandingScroll } from "./LandingScroll";
+import { PrismGrid } from "./PrismGrid";
 import { LoopStage, LoopLegend } from "./LoopStage";
 import { PriceScrub } from "./PriceScrub";
 import { CtaPair } from "./Ctas";
@@ -113,13 +114,15 @@ export function LandingPage() {
             </dl>
           </section>
 
-          {/* 6 — close: same funnel, identical labels */}
-          <section aria-labelledby="close-h">
-            <div data-arrive className="mx-auto w-full max-w-[1180px] px-4 py-20 text-center sm:px-6 lg:py-28">
+          {/* 6 — close: same funnel, identical labels. The prism grid (Originkit, re-skinned) is the
+              footer moment's backdrop — the one rare surface with a delight budget; content sits above it. */}
+          <section aria-labelledby="close-h" className="relative">
+            <PrismGrid pitch={26} boxSize={44} />
+            <div data-arrive className="pointer-events-none relative z-10 mx-auto w-full max-w-[1180px] px-4 py-20 text-center sm:px-6 lg:py-28">
               <h2 data-arrive-item id="close-h" className="mx-auto max-w-[18ch] font-display text-section font-bold text-hi">
                 The whistle is the opening bell.
               </h2>
-              <div data-arrive-item className="mt-8 flex justify-center">
+              <div data-arrive-item className="pointer-events-auto mt-8 flex justify-center">
                 <CtaPair center />
               </div>
             </div>
