@@ -1,0 +1,30 @@
+apps/web/src/features/proofs/ProofsPage.tsx
+  s_e6fe919b4d8a67::t_e75cd1c99d7340 67-70
+  s_e6fe919b4d8a67::t_b0759cb023edbd 1-66,71-73
+design/PROVENANCE.md
+  s_e6fe919b4d8a67::t_91c994cee8f5cf 14
+apps/web/src/app/proofs/page.tsx
+  s_e6fe919b4d8a67::t_2e01c54655bbff 1-2,4-5,7-11
+apps/web/src/components/ui/ProofBadge.tsx
+  s_e6fe919b4d8a67::t_e83613cf944ecc 26
+apps/web/src/lib/moments.ts
+  s_e6fe919b4d8a67::t_d69d4abc025a47 50-51
+apps/web/src/lib/proofs.ts
+  s_e6fe919b4d8a67::t_9c7bf03ec053e4 1-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "fdc60dfb0141b8ecc97c669268cf3aea06fa9cd3",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
