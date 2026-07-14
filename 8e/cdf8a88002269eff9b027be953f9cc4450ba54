@@ -1,0 +1,61 @@
+plans/002-reduced-motion-global-rule.md
+  s_b60ec3c6161754::t_8f75ba71873d97 3
+apps/web/src/styles/globals.css
+  s_b60ec3c6161754::t_723c3e5268d680 67-73
+  s_b60ec3c6161754::t_028332cf64df25 63-64
+plans/README.md
+  s_b60ec3c6161754::t_8f75ba71873d97 8-10
+apps/web/tailwind.config.ts
+  s_b60ec3c6161754::t_cef98196811dd4 40-44
+  s_b60ec3c6161754::t_a1ec70bc583d8a 24-27
+apps/web/src/features/home/FeaturedPanel.tsx
+  s_b60ec3c6161754::t_323809a639a55c 66-75
+  s_b60ec3c6161754::t_43a8c1690bd511 2
+  s_b60ec3c6161754::t_d276cb8531a03a 33
+apps/web/src/features/landing/LandingScroll.tsx
+  s_b60ec3c6161754::t_c1cce2b1269631 1-41
+apps/web/src/styles/tokens.css
+  s_b60ec3c6161754::t_0cbd1502c422c7 13-17
+  s_b60ec3c6161754::t_291e393ab0cb03 10-12
+plans/003-tailwind-motion-token-plumbing.md
+  s_b60ec3c6161754::t_8f75ba71873d97 3
+apps/web/src/features/landing/LandingHero.tsx
+  s_b60ec3c6161754::t_9159412125060e 52,67
+  s_b60ec3c6161754::t_a4fa80a64bbc6a 9,13-22,30,32-38,45,47,65-66,68-84,87
+plans/001-live-flash-retrigger.md
+  s_b60ec3c6161754::t_8f75ba71873d97 3
+apps/web/src/features/landing/LoopStage.tsx
+  s_b60ec3c6161754::t_9159412125060e 77,81
+  s_b60ec3c6161754::t_deb7189ef55e89 70
+  s_b60ec3c6161754::t_2ea503bd0a0219 50-51,58-60,62-67,78-79
+  s_b60ec3c6161754::t_df1f98e9c3b81c 7-8
+apps/web/src/features/landing/LandingPage.tsx
+  s_b60ec3c6161754::t_e5055d4adec1b6 4,19-21,27-31,33-48,50-54,56,58-61,64,66-72,74-87,89-92,94,96-99,108,114,116-118,120-124,126-127
+  s_b60ec3c6161754::t_9159412125060e 32,57,73,88,102-105,119
+design/reviews/landing-depth-pass-2026-07-14.md
+  s_b60ec3c6161754::t_1f594e93095ee1 1-29
+apps/web/src/components/ui/LivePrice.tsx
+  s_b60ec3c6161754::t_d32f18d5437cf4 5-7,10,15-16,20-23
+apps/web/src/features/landing/HeroRiver.tsx
+  s_b60ec3c6161754::t_407e9f9650fa99 32-36
+  s_b60ec3c6161754::t_c640aeab08caf8 1-31,37-43
+design/PROVENANCE.md
+  s_b60ec3c6161754::t_3012c7a2496e9d 22,24,30
+  s_b60ec3c6161754::t_8f75ba71873d97 28-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "8ecdf8a88002269eff9b027be953f9cc4450ba54",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
