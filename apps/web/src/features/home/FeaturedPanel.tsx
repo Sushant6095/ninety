@@ -123,7 +123,7 @@ export function FeaturedPanel({ market, replayNonce = 0 }: { market: MarketRow; 
       <div className="p-3 pt-2">
         <Link
           href={routes.match(market.matchId)}
-          className="flex min-h-[44px] w-full items-center justify-center rounded-lg bg-up px-4 py-2 text-strong font-semibold text-bg transition-[filter,transform] duration-200 ease-out hover:brightness-110 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-up focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+          className="flex min-h-[44px] w-full items-center justify-center rounded-lg bg-up px-4 py-2 text-strong font-semibold text-bg transition-[filter,transform] duration-200 ease-out hover:brightness-110 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-up focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
         >
           Trade this match
         </Link>

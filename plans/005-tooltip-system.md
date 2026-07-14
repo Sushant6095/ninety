@@ -1,6 +1,6 @@
 # 005 — Tooltip system: shared provider, skip-delay, origin-aware entrance
 
-- **Status**: TODO
+- **Status**: DONE (landed in the terminal craft pass, 2026-07-15)
 - **Commit**: 4c0975f
 - **Severity**: MEDIUM
 - **Category**: Easing & duration / Physicality & origin

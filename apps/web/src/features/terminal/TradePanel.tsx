@@ -93,7 +93,7 @@ export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPl
           <button
             key={p}
             onClick={() => setSz(p)}
-            className={`hit num cursor-pointer rounded-chip px-3 py-1 text-caption font-medium ring-1 ring-inset outline-none transition-colors duration-200 focus-visible:ring-up ${size === p ? "bg-hairline/60 text-hi ring-hairline" : "bg-bg/50 text-lo ring-hairline/60 hover:text-hi"}`}
+            className={`hit num cursor-pointer rounded-chip px-3 py-1 text-caption font-medium ring-1 ring-inset outline-none transition-[color,background-color,transform] duration-200 focus-visible:ring-up active:scale-[0.97] ${size === p ? "bg-hairline/60 text-hi ring-hairline" : "bg-bg/50 text-lo ring-hairline/60 hover:text-hi"}`}
           >
             {p}
           </button>
@@ -101,7 +101,7 @@ export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPl
         <button
           onClick={() => setSz(maxSize)}
           disabled={maxSize < MIN}
-          className="hit num cursor-pointer rounded-chip bg-bg/50 px-3 py-1 text-caption font-medium text-lo ring-1 ring-inset ring-hairline/60 outline-none transition-colors duration-200 hover:text-hi focus-visible:ring-up disabled:cursor-not-allowed disabled:opacity-40"
+          className="hit num cursor-pointer rounded-chip bg-bg/50 px-3 py-1 text-caption font-medium text-lo ring-1 ring-inset ring-hairline/60 outline-none transition-[color,background-color,transform] duration-200 hover:text-hi focus-visible:ring-up active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-40"
         >
           Max
         </button>
@@ -118,7 +118,7 @@ export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPl
         <button
           onClick={submit}
           disabled={disabled}
-          className={`min-h-[44px] shrink-0 rounded-lg px-5 text-strong font-semibold text-bg transition-[filter,transform] duration-200 ease-out hover:brightness-110 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:cursor-not-allowed ${side === "buy" ? "bg-up focus-visible:ring-up" : "bg-down focus-visible:ring-down"}`}
+          className={`min-h-[44px] shrink-0 rounded-lg px-5 text-strong font-semibold text-bg transition-[filter,transform] duration-200 ease-out hover:brightness-110 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:cursor-not-allowed ${side === "buy" ? "bg-up focus-visible:ring-up" : "bg-down focus-visible:ring-down"}`}
         >
           {disabled ? "Trading paused" : `${side === "buy" ? "Buy" : "Sell"} ${label} @ ${markPx.toFixed(1)}`}
         </button>

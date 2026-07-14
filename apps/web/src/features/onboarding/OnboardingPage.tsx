@@ -26,7 +26,7 @@ export function OnboardingPage() {
           {/* progress */}
           <div className="mb-6 flex items-center justify-center gap-2" aria-hidden>
             {[0, 1, 2].map((i) => (
-              <span key={i} className={`h-1.5 rounded-full transition-all duration-200 ${i === step ? "w-6 bg-up" : i < step ? "w-6 bg-up/40" : "w-6 bg-hairline"}`} />
+              <span key={i} className={`h-1.5 rounded-full transition-colors duration-200 ${i === step ? "w-6 bg-up" : i < step ? "w-6 bg-up/40" : "w-6 bg-hairline"}`} />
             ))}
           </div>
 
@@ -93,7 +93,7 @@ export function OnboardingPage() {
                   <button
                     type="button"
                     onClick={() => setClaimed(true)}
-                    className="mt-4 inline-flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-chip bg-up px-4 text-strong font-semibold text-bg outline-none transition-opacity duration-200 hover:opacity-90 focus-visible:opacity-90 active:opacity-80"
+                    className="mt-4 inline-flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-chip bg-up px-4 text-strong font-semibold text-bg outline-none transition-[opacity,transform] duration-200 hover:opacity-90 focus-visible:opacity-90 active:scale-[0.97]"
                   >
                     Claim 1,000 credits
                   </button>

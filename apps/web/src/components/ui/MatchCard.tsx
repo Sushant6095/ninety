@@ -37,7 +37,7 @@ export function MatchCard({ market }: { market: MarketRow }) {
       aria-label={`${market.home} vs ${market.away}${score ? `, ${score.home}–${score.away}` : ""} — open market`}
       className="group flex items-center gap-2 px-3 py-2 outline-none transition-colors duration-200 hover:bg-hairline/20 focus-visible:bg-hairline/20 active:bg-hairline/35 sm:gap-3 sm:px-4"
     >
-      <span className={`w-4 shrink-0 text-center text-body transition-transform duration-200 group-hover:scale-110 ${market.favourite ? "text-up" : "text-lo/35"}`} aria-hidden>
+      <span className={`w-4 shrink-0 text-center text-body ${market.favourite ? "text-up" : "text-lo/35"}`} aria-hidden>
         ★
       </span>
 

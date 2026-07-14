@@ -61,7 +61,7 @@ export function BigRiver({ match, mark, spark, homeSpark, minute, onReplay, repl
             disabled={replayBusy}
             // A quiet control, NOT an amber one: amber is the halt signal (design law), and burning it on an
             // idle button pre-spends the very cue the money-shot lands on. It only goes amber while it runs.
-            className={`hit inline-flex min-h-8 items-center gap-1.5 rounded-chip bg-bg px-2.5 py-1 text-label font-semibold uppercase tracking-wide ring-1 ring-inset outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-hi disabled:cursor-default ${
+            className={`hit inline-flex min-h-8 items-center gap-1.5 rounded-chip bg-bg px-2.5 py-1 text-label font-semibold uppercase tracking-wide ring-1 ring-inset outline-none transition-[color,background-color,transform] duration-200 focus-visible:ring-2 focus-visible:ring-hi active:scale-[0.97] disabled:cursor-default ${
               replayBusy ? "text-halt ring-halt/40" : "text-lo ring-hairline hover:text-hi hover:ring-hi/30"
             }`}
           >

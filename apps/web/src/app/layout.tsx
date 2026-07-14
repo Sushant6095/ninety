@@ -6,6 +6,7 @@ import { PrototypeRibbon } from "../components/ui/PrototypeRibbon";
 import { Toaster } from "../components/ui/Toaster";
 import { CssStudio } from "../components/dev/CssStudio";
 import { MatchLiveProvider } from "../features/live/MatchLiveProvider";
+import { TooltipProvider } from "../components/ui/Tooltip";
 
 // Self-hosted via next/font — reliable render (no FOUT / no system-font fallback that reads as "AI default").
 const archivo = Archivo({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-display", display: "swap" });
@@ -42,7 +43,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <PrototypeRibbon />
         <OfflineBanner />
-        <MatchLiveProvider>{children}</MatchLiveProvider>
+        <MatchLiveProvider>
+          {/* One radix tooltip provider app-wide: sibling tooltips skip the open delay (the toolbar feels fast). */}
+          <TooltipProvider>{children}</TooltipProvider>
+        </MatchLiveProvider>
         <Toaster />
         {/* Dev-only visual editor — explicitly opt-in so it never renders in the demo, deploy, or screenshots. */}
         {process.env.NEXT_PUBLIC_CSS_STUDIO === "1" && <CssStudio />}

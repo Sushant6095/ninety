@@ -13,7 +13,7 @@ export function HoverCardContent({ children, align = "start", sideOffset = 8, cl
       <HC.Content
         align={align}
         sideOffset={sideOffset}
-        className={`elev-hi z-50 w-64 rounded-card border border-hairline bg-surface p-3 text-hi outline-none ${className}`}
+        className={`pop-content elev-hi z-50 w-64 rounded-card border border-hairline bg-surface p-3 text-hi outline-none ${className}`}
       >
         {children}
       </HC.Content>

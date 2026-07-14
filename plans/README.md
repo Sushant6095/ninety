@@ -9,8 +9,8 @@ Each plan is self-contained — an executor needs zero context beyond the plan f
 | 002 | [Fix the global reduced-motion rule](002-reduced-motion-global-rule.md) | HIGH | Accessibility | DONE |
 | 003 | [Route Tailwind duration/ease through the motion tokens](003-tailwind-motion-token-plumbing.md) | HIGH | Cohesion & tokens | DONE |
 | 004 | [Tokenize the stray motion literals](004-tokenize-stray-literals.md) | MEDIUM | Cohesion & tokens | TODO |
-| 005 | [Tooltip system: shared provider, skip-delay, origin](005-tooltip-system.md) | MEDIUM | Easing / Physicality | TODO |
-| 006 | [One press vocabulary: active states, hover gating](006-press-feedback-pass.md) | MEDIUM | Physicality / A11y / Perf | TODO |
+| 005 | [Tooltip system: shared provider, skip-delay, origin](005-tooltip-system.md) | MEDIUM | Easing / Physicality | DONE |
+| 006 | [One press vocabulary: active states, hover gating](006-press-feedback-pass.md) | MEDIUM | Physicality / A11y / Perf | DONE |
 | 007 | [Halt banner: CSS sweep, animated exit, eq-bar cleanup](007-halt-banner-polish.md) | MEDIUM | Performance / Interruptibility | TODO |
 | 008 | [The missed beats: score flash, settle reveal, tab fade, onboarding](008-missed-beats.md) | MEDIUM | Missed opportunities | TODO |
 

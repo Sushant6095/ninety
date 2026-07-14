@@ -34,7 +34,7 @@ export function PriceCells({ mark, todayDelta, codes, selected, onSelect, heldSh
             onClick={() => !inert && onSelect(o)}
             disabled={inert}
             aria-pressed={on}
-            className={`flex flex-col gap-1 rounded-lg px-3 py-2 text-left outline-none ring-1 ring-inset transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-up ${ring} ${inert ? "cursor-default" : ""}`}
+            className={`flex flex-col gap-1 rounded-lg px-3 py-2 text-left outline-none ring-1 ring-inset transition-[color,background-color,border-color,transform] duration-200 focus-visible:ring-2 focus-visible:ring-up ${ring} ${inert ? "cursor-default" : "active:scale-[0.97]"}`}
           >
             <span className="flex items-center justify-between gap-1">
               <span className="min-w-0 truncate text-label font-semibold uppercase tracking-micro text-lo">

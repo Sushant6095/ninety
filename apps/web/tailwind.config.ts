@@ -3,6 +3,8 @@ import { space, tracking } from "./src/design/tokens";
 // Colors are CSS vars (styles/tokens.css); the spacing rhythm + type live in src/design/tokens.ts (the authority).
 export default {
   content: ["./src/**/*.{ts,tsx}"],
+  // hover: variants compile behind @media (hover:hover) — touch taps stop triggering sticky hovers.
+  future: { hoverOnlyWhenSupported: true },
   theme: { extend: {
     colors: {
       // color-mix + <alpha-value> so the slash-opacity modifier (bg-halt/15, text-hi/90, ring-hairline/60 …)

@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { Flag } from "../../components/ui/Flag";
@@ -10,13 +11,15 @@ import { TERM_MARKETS, type TermMarketRow } from "../../lib/terminal";
 import type { Outcome } from "../../lib/types";
 
 const OUT: Outcome[] = ["H", "D", "A"];
+type RailFilter = "all" | "live" | "faves";
 
 function leadOf(mark: Record<Outcome, number>): Outcome {
   return mark.H >= mark.D && mark.H >= mark.A ? "H" : mark.A >= mark.D ? "A" : "D";
 }
 
 /** One rail row. Its minute, score and prices come from the ONE store — this rail lists the SAME match the
- *  centre column is trading, so a fixture read here is a guaranteed contradiction the moment the goal lands. */
+ *  centre column is trading, so a fixture read here is a guaranteed contradiction the moment the goal lands.
+ *  Column labels live in the header row (screener pattern), so each price cell is just the number — denser. */
 function Row({ m }: { m: TermMarketRow }) {
   const live = useMatchLive(m.matchId);
   const mark = live?.prices ?? m.mark;
@@ -28,7 +31,7 @@ function Row({ m }: { m: TermMarketRow }) {
     <Link
       href={routes.match(m.matchId)}
       aria-current={m.selected ? "true" : undefined}
-      className={`group relative flex items-center gap-2 py-2 pl-3 pr-2 transition-colors duration-200 hover:bg-hairline/25 ${m.selected ? "bg-up/[0.06]" : ""}`}
+      className={`group relative flex items-center gap-2 py-2 pl-3 pr-2 outline-none transition-colors duration-200 hover:bg-hairline/25 focus-visible:bg-hairline/25 active:bg-hairline/40 ${m.selected ? "bg-up/[0.06]" : ""}`}
     >
       {m.selected && <span className="absolute inset-y-1 left-0 w-[3px] rounded-full bg-up" />}
       <span className={`w-3 shrink-0 text-center text-caption ${m.fav ? "text-up" : "text-lo/40"}`} aria-hidden>★</span>
@@ -46,17 +49,18 @@ function Row({ m }: { m: TermMarketRow }) {
         <span className="flex items-center gap-1"><Flag code={m.homeCode} size={14} /><span className="text-caption font-medium text-hi">{m.homeCode}</span></span>
         <span className="mt-1 flex items-center gap-1"><Flag code={m.awayCode} size={14} /><span className="text-caption font-medium text-hi">{m.awayCode}</span></span>
       </span>
-      {score && (
+      {score ? (
         <span className="w-3 shrink-0 text-right">
           <span className="num block text-caption font-medium text-hi">{score[0]}</span>
           <span className="num mt-1 block text-caption font-medium text-hi">{score[1]}</span>
         </span>
+      ) : (
+        <span className="w-3 shrink-0" aria-hidden />
       )}
       <span className="flex shrink-0 gap-1">
         {OUT.map((o) => (
-          <span key={o} className={`flex min-w-[30px] flex-col items-center rounded px-1 py-1 ${lead === o ? "bg-hairline/50" : "bg-bg/40"}`}>
-            <span className="text-label uppercase text-lo">{o}</span>
-            <LivePrice value={mark[o] * 100} className="text-label font-semibold text-hi/90" />
+          <span key={o} className={`flex min-w-[34px] items-center justify-center rounded px-1 py-1.5 ${lead === o ? "bg-hairline/50" : "bg-bg/40"}`}>
+            <LivePrice value={mark[o] * 100} className="text-caption font-semibold text-hi/90" />
           </span>
         ))}
       </span>
@@ -64,40 +68,92 @@ function Row({ m }: { m: TermMarketRow }) {
   );
 }
 
-/** Left rail — live competitions grouped by round/day, each row a compact market with flags + mini H/D/A prices. */
+const FILTERS: Array<{ key: RailFilter; label: string }> = [
+  { key: "all", label: "All" },
+  { key: "live", label: "Live" },
+  { key: "faves", label: "Faves" },
+];
+
+/** Left rail — the market screener (hyperscreener structure, Ninety tokens): filter pills, a real column
+ *  header row, grouped dense rows. No column sorting on purpose — the round grouping IS the ordering that
+ *  carries information here, and Today's Movers already ranks by Δ. */
 export function CompetitionsRail() {
+  const [filter, setFilter] = useState<RailFilter>("all");
+  const match = (m: TermMarketRow): boolean =>
+    filter === "all" ? true : filter === "live" ? m.minute != null : m.fav;
+
   const groups: Array<[string, string, TermMarketRow[]]> = [];
   for (const m of TERM_MARKETS) {
+    if (!match(m)) continue;
     const g = groups.find(([label]) => label === m.group);
     if (g) g[2].push(m);
     else groups.push([m.group, m.groupMeta, [m]]);
   }
+  const counts: Record<RailFilter, number> = {
+    all: TERM_MARKETS.length,
+    live: TERM_MARKETS.filter((m) => m.minute != null).length,
+    faves: TERM_MARKETS.filter((m) => m.fav).length,
+  };
+
   return (
     <section className="elev overflow-hidden rounded-card border border-hairline/70 bg-surface">
-      <div className="flex items-center justify-between border-b border-hairline px-3 py-2">
-        <h2 className="flex items-center gap-1 text-label font-semibold uppercase tracking-label text-lo">
-          <span className="h-1.5 w-1.5 rounded-full bg-up shadow-[0_0_5px_var(--up)]" /> Live competitions
+      <div className="flex items-center justify-between gap-2 border-b border-hairline px-3 py-2">
+        <h2 className="flex min-w-0 items-center gap-1 truncate whitespace-nowrap text-label font-semibold uppercase tracking-label text-lo">
+          <span className="h-1.5 w-1.5 rounded-full bg-up shadow-[0_0_5px_var(--up)]" /> Markets
         </h2>
-        <span className="text-label uppercase tracking-wide text-lo">Kick-off times UTC</span>
+        <div role="group" aria-label="Filter markets" className="inline-flex shrink-0 gap-0.5 rounded-chip bg-bg/50 p-0.5 ring-1 ring-inset ring-hairline/60">
+          {FILTERS.map((f) => {
+            const on = filter === f.key;
+            return (
+              <button
+                key={f.key}
+                type="button"
+                aria-pressed={on}
+                onClick={() => setFilter(f.key)}
+                className={`whitespace-nowrap rounded-chip px-2 py-0.5 text-label font-medium outline-none transition-[color,background-color,transform] duration-200 focus-visible:ring-1 focus-visible:ring-up active:scale-[0.97] ${on ? "bg-hairline/60 text-hi" : "text-lo hover:text-hi"}`}
+              >
+                {f.label} <span className="num tabular-nums">{counts[f.key]}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
+
+      {/* Column header (screener pattern) — mirrors the row grid exactly; kick-offs are UTC. */}
+      <div className="flex items-center gap-2 border-b border-hairline/70 bg-bg/30 py-1.5 pl-3 pr-2 text-label font-semibold uppercase tracking-micro text-lo" aria-hidden>
+        <span className="w-3 shrink-0" />
+        <span className="w-9 shrink-0 text-center">UTC</span>
+        <span className="min-w-0 flex-1">Match</span>
+        <span className="w-3 shrink-0" />
+        <span className="flex shrink-0 gap-1">
+          {OUT.map((o) => (
+            <span key={o} className="min-w-[34px] text-center">{o}</span>
+          ))}
+        </span>
+      </div>
+
       {/* The full R16 slate is 13 rows — cap the list at ~8 rows (Hyperliquid watchlist pattern) so Attack
           Momentum and the events feed stay on the first screen; the rail scrolls inside its own hairline bar. */}
-      <ScrollArea className="max-h-[480px]">
-        {groups.map(([label, meta, rows]) => (
-          <div key={label}>
-            <div className="flex items-center gap-2 bg-bg/40 px-3 py-1">
-              <span className="num rounded bg-bg px-1 text-label font-semibold text-lo ring-1 ring-inset ring-hairline">R16</span>
-              <h3 className="text-label font-semibold uppercase tracking-micro text-lo">{label}</h3>
-              <span className="text-label text-lo">{meta}</span>
-              <ChevronDown size={13} className="ml-auto text-lo/60" aria-hidden />
+      <ScrollArea className="max-h-[456px]">
+        {groups.length === 0 ? (
+          <p className="px-3 py-6 text-center text-caption text-lo">No {filter === "faves" ? "favourites" : "live matches"} right now.</p>
+        ) : (
+          groups.map(([label, meta, rows]) => (
+            <div key={label}>
+              <div className="flex items-center gap-2 bg-bg/40 px-3 py-1">
+                <span className="num rounded bg-bg px-1 text-label font-semibold text-lo ring-1 ring-inset ring-hairline">R16</span>
+                <h3 className="text-label font-semibold uppercase tracking-micro text-lo">{label}</h3>
+                <span className="text-label text-lo">{meta}</span>
+                <ChevronDown size={13} className="ml-auto text-lo/60" aria-hidden />
+              </div>
+              <div className="divide-y divide-hairline/50">
+                {rows.map((m) => <Row key={m.matchId} m={m} />)}
+              </div>
             </div>
-            <div className="divide-y divide-hairline/50">
-              {rows.map((m) => <Row key={m.matchId} m={m} />)}
-            </div>
-          </div>
-        ))}
+          ))
+        )}
       </ScrollArea>
-      <Link href={routes.competition} className="block border-t border-hairline px-3 py-2 text-label text-lo transition-colors duration-200 hover:text-hi">
+      <Link href={routes.competition} className="block border-t border-hairline px-3 py-2 text-label text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi active:opacity-70">
         Tournament futures · 2 markets →
       </Link>
     </section>

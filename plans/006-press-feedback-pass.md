@@ -1,6 +1,6 @@
 # 006 — One press vocabulary: active states, hover gating, transition-all
 
-- **Status**: TODO
+- **Status**: DONE (landed in the terminal craft pass, 2026-07-15)
 - **Commit**: 4c0975f
 - **Severity**: MEDIUM
 - **Category**: Physicality & origin / Accessibility / Performance
