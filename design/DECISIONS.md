@@ -7,3 +7,4 @@
 - Standings/qualification highlights use a neutral tint; up-green and down-pink stay price-only (ADR-051).
 - The halt is the terminal's cold-open money-shot (GSAP cliff-draw/sweep/wash choreography), never reduced to a static amber watermark (ADR-054).
 - `/` is the landing (hyperfoundation restraint: one filled CTA per page, repeated verbatim, never multiplied; violet proof chapter is the page's only chain surface); the board lives at `/board` — board-intent links point there, wordmark/sign-out keep `/` (ADR-056).
+- One fixture universe: MARKETS in `lib/fixtures.ts` is the only slate (TICKER/TERM_MARKETS derive from it); up/down tint price direction only, never team identity; letter-spacing only via the `tracking` token scale (no arbitrary tracking-[…]); interactive targets ≥44px (min-h-11 or .hit); the landing's filled CTA is "Open the terminal" verbatim ×3 (ADR-057).
