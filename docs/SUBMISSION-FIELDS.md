@@ -10,7 +10,7 @@ Voice law: play-money only (price · trade · credits). Never bet/stake/odds/wag
 >
 > Then our proof-auditor found the sponsor's own settle path doesn't bind finality on-chain. So we fail-closed on purpose instead of shipping a forgeable settle.
 >
-> Play-money. 125 commits, 58 ADRs, 7 days. 🧵 _TODO_link
+> Play-money. 126 commits, 58 ADRs, 7 days. 🧵 _TODO_link
 
 **Shorter alt (< 280 chars):**
 
@@ -48,7 +48,7 @@ The product is one tight live loop: a TxLINE score event triggers a goal, the ma
 
 At full time the result is meant to settle on-chain by verifying a TxODDS cryptographic proof of the score, with no admin able to decide a result. Building it, we adversarially reviewed the settlement and found TxODDS's own sanctioned instruction (validate_stat_v2) does not bind finality on-chain — a permissionless caller could settle a wrong result with a genuine mid-match proof by selecting the batch. So settlement is fail-closed on purpose (SETTLEMENT_LIVE = false, an explicit revert), and we filed the finding back to the sponsor. We won't ship a settle we can prove is forgeable, even in play-money.
 
-Built in 7 days: 125 commits, 58 ADRs, 257 automated tests passing, 5/5 Anchor tests, TxLINE verified live on devnet.
+Built in 7 days: 126 commits, 58 ADRs, 257 automated tests passing, 5/5 Anchor tests, TxLINE verified live on devnet.
 ```
 
 **TxLINE / TxODDS endpoints used**

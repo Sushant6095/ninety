@@ -86,7 +86,7 @@ answered. We will not ship a settle we can prove is forgeable — even in play-m
 ## 5. The count (verified, not estimated)
 
 ```
-git rev-list --count HEAD   → 125 commits
+git rev-list --count HEAD   → 126 commits
 ls docs/adr/*.md | wc -l    → 58 ADRs
 ```
 
