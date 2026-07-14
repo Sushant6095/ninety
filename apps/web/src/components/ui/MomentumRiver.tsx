@@ -43,7 +43,6 @@ export function MomentumRiver({ data, up = true, height = 96, goalIndex, seconda
     const el = ref.current;
     if (!el) return;
     let cancelled = false;
-    let ro: ResizeObserver | undefined;
 
     void (async () => {
       let lc: typeof import("lightweight-charts");
@@ -56,7 +55,12 @@ export function MomentumRiver({ data, up = true, height = 96, goalIndex, seconda
       const { data: d0, height: h0, goalIndex: gi, up: up0, secondary: sec0, yRange: yr0, totalMinutes: tm0 } = propsRef.current;
       const line = (up0 ? resolveColor("up") : resolveColor("down")) || resolveColor("textHi");
       const chart = lc.createChart(el, {
-        width: el.clientWidth,
+        // autoSize (v4) hands sizing to lightweight-charts' own ResizeObserver, which sizes the pane the moment
+        // the container has width — self-healing the race where the async import() resolves before the grid
+        // track has resolved (a one-shot `width: el.clientWidth` read there is 0 → a blank 0×0 pane, the void).
+        // width/height stay as the fallback used only if ResizeObserver is unavailable (context7 v4 docs).
+        autoSize: true,
+        width: el.clientWidth || 320,
         height: h0,
         layout: { background: { type: lc.ColorType.Solid, color: "transparent" }, textColor: resolveColor("textLo"), attributionLogo: false },
         grid: { horzLines: { visible: false }, vertLines: { visible: false } },
@@ -99,13 +103,12 @@ export function MomentumRiver({ data, up = true, height = 96, goalIndex, seconda
       }
       // Minute 0 at the left edge, full time at the right — the unplayed tail is real, empty match time.
       chart.timeScale().setVisibleLogicalRange({ from: -1, to: tm0 - 1 });
-      ro = new ResizeObserver(() => chart.applyOptions({ width: el.clientWidth }));
-      ro.observe(el);
+      // No hand-rolled ResizeObserver: autoSize owns width now, and a second RO calling applyOptions({width})
+      // alongside LC's internal one just fights it. The logical range is re-pinned on data change (below).
     })();
 
     return () => {
       cancelled = true;
-      ro?.disconnect();
       chartRef.current?.remove();
       chartRef.current = null;
       seriesRef.current = null;
