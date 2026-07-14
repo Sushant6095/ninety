@@ -35,10 +35,20 @@ export function LandingHero() {
         // itself a read/write in the rAF loop (MotionScore flagged willChange → getComputedStyle).
         gsap.fromTo("[data-hero-word]", { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: word, stagger, delay: TIMING.lead });
         gsap.fromTo("[data-hero-after]", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: word, delay: TIMING.lead + word + stagger * 2 });
+        // Scoped will-change for the 1.4s draw (MotionScore flagged the clip-path reveal C-tier without it);
+        // released on complete — never left on (house perf law).
+        gsap.set("[data-hero-river]", { willChange: "clip-path, opacity" });
         gsap.fromTo(
           "[data-hero-river]",
           { clipPath: "inset(0 100% 0 0)", opacity: 0.4 },
-          { clipPath: "inset(0 0% 0 0)", opacity: 1, duration: m.riverDraw / 1000, delay: TIMING.river, ease: "ninety" },
+          {
+            clipPath: "inset(0 0% 0 0)",
+            opacity: 1,
+            duration: m.riverDraw / 1000,
+            delay: TIMING.river,
+            ease: "ninety",
+            onComplete: () => gsap.set("[data-hero-river]", { willChange: "auto" }),
+          },
         );
       });
     },
