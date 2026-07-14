@@ -83,3 +83,43 @@ Also required at FT: match `status` = finished from S3 before settling (don't se
 2. Rate limits per token on snapshots/streams?
 3. Does "sign up through Solana" refer to Superteam Earn registration, or must the app itself use wallet auth? (Our ADR-006 hybrid satisfies both; confirming anyway.)
 4. WC26 fixtureId list for knockout rounds — from schedule endpoint or a published mapping?
+
+## 6. Player data — VERDICT (ITEM 10, 2026-07-14): TxLINE does NOT carry lineups / squads / names
+
+We had never inspected TxLINE's payload depth for squads/lineups. Now we have — definitively, from the live
+envelope captured 2026-07-07 (ADR-015) and re-scanned by `scripts/player-probe.mjs` (evidence artifact:
+`docs/txline-samples/player-data-probe.json`). The probe deep-walks EVERY captured sample for any
+lineup / squad / formation / player-name / shirt-number / position key.
+
+**Finding — TxLINE carries NO stillness player data.** Across the whole envelope there are **zero**
+lineup, squad, formation, player-name, shirt-number, or position fields. The one and only player-level datum
+is `PlayerStats`, present on some score records:
+
+```json
+"PlayerStats": {
+  "Participant1": { "806561": { "yellowCards": 1 }, "10095637": { "goals": 1, "yellowCards": 1 } },
+  "Participant2": { "494854": { "goals": 1 }, "1204158": { "goals": 2 } }
+}
+```
+
+That is a map of **opaque numeric player IDs → in-match stat deltas** (`{goals, yellowCards, …}`), and only for
+players who registered an event — never the full XI. It has **no name, no shirt number, no position, no
+formation, no bench**. It cannot render a Lineups tab.
+
+**Two-source placement (ADR-051):** `PlayerStats` is data that MOVES during a match (goals/cards accumulate live)
+→ TxLINE owns it, and it may feed goal/card glyphs by player if we ever resolve those IDs. But everything a
+Lineups tab needs — names, numbers, formation, starting XI — SITS STILL, so by law it must come from a
+stillness source that is NOT TxLINE. `worldcup26` has no player endpoint. → **API-Football** (free tier).
+
+**Consequence for the build:**
+- The Lineups tab (ITEM 6) already ships formation + positions + numbered dots from static data; it does not
+  depend on TxLINE and does not need to.
+- Real names/numbers come from `scripts/bake-lineups.mjs` — a one-shot offline bake of API-Football lineups to
+  `apps/web/public/wc26/lineups.json`, gated behind `API_FOOTBALL_KEY`, **stillness-only** (an `assertNoMovement`
+  guard fails the bake if any score/goal/minute field leaks in), **never a runtime dependency** (ADR-051).
+- **BLOCKED — needs human credentials:** the free API-Football key must be created by a human. Steps +
+  env var are in `docs/SETUP-LIVE.md`. Wiring the baked file into the (frozen) `apps/web` tab is a follow-up.
+
+**Re-probe live:** `node scripts/txline-live.mjs` (needs a funded devnet wallet at `~/.config/solana/id.json`
+for the on-chain subscribe) refreshes `docs/txline-samples/*.json`; then `node scripts/player-probe.mjs`
+re-emits the verdict. The verdict is unlikely to change — TxLINE is a scores/odds oracle, not a squad feed.

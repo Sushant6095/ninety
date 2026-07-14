@@ -1,0 +1,45 @@
+{
+  "probedAt": "2026-07-14T09:57:47.088Z",
+  "source": "docs/txline-samples/*.json (live capture 2026-07-07, ADR-015)",
+  "filesScanned": [
+    "fixtures-snapshot.json",
+    "odds-snapshot.json",
+    "odds-stream-event.json",
+    "odds-updates.json",
+    "scores-snapshot.json",
+    "scores-stat-validation.json",
+    "scores-updates.json"
+  ],
+  "verdict": {
+    "carriesPlayerNamesOrLineups": false,
+    "carriesPlayerLevelStats": true,
+    "playerStatsAreIdOnly": true,
+    "summary": "TxLINE does NOT carry lineups, squads, formations, shirt numbers, or player names. The only player-level data is PlayerStats: a map of opaque numeric player IDs -> in-match stat deltas ({goals, yellowCards, ...}), present only for players who registered an event."
+  },
+  "lineupHits": [],
+  "playerStatHits": [
+    {
+      "file": "scores-snapshot.json",
+      "path": "$[0].PlayerStats"
+    }
+  ],
+  "playerStatSample": {
+    "Participant1": {
+      "806561": {
+        "yellowCards": 1
+      },
+      "10095637": {
+        "goals": 1,
+        "yellowCards": 1
+      }
+    },
+    "Participant2": {
+      "494854": {
+        "goals": 1
+      },
+      "1204158": {
+        "goals": 2
+      }
+    }
+  }
+}
