@@ -1,0 +1,145 @@
+apps/web/src/styles/globals.css
+  s_338735e9af5335::t_663840b54c2a0d 60-65
+apps/web/src/design/tokens.ts
+  s_338735e9af5335::t_9a2b1e371df83d 106-115,118-120
+  s_338735e9af5335::t_27e410bf2539fd 116-117
+apps/web/tailwind.config.ts
+  s_338735e9af5335::t_f80ce996e66053 29
+  s_338735e9af5335::t_1f6f3fc5101d2e 2
+apps/web/src/features/terminal/CompetitionsRail.tsx
+  s_338735e9af5335::t_c5d0450f2254e8 81
+  s_338735e9af5335::t_5a8ccdedd39be7 39,78,90
+apps/web/src/features/how/sections/Faq.tsx
+  s_338735e9af5335::t_a569027c3615e2 8
+design/verdicts/2026-07-14-session-finals.md
+  s_338735e9af5335::t_8bcca0342317ae 39
+  s_338735e9af5335::t_4949fe3385492d 1-38,40-49
+apps/web/src/components/ui/CommandMenu.tsx
+  s_338735e9af5335::t_cbd027f4e707c3 53
+apps/web/src/components/ui/HaltBanner.tsx
+  s_338735e9af5335::t_9a23e499a5aef1 35
+apps/web/src/components/ui/MatchCard.tsx
+  s_338735e9af5335::t_754323cb736d5d 48
+apps/web/src/components/ui/MomentCard.tsx
+  s_338735e9af5335::t_98d1c0a48e03fd 22
+apps/web/src/components/ui/MomentHero.tsx
+  s_338735e9af5335::t_54794afcdc0075 43,46
+apps/web/src/components/ui/PrototypeRibbon.tsx
+  s_338735e9af5335::t_daae4c1177aa65 10
+apps/web/src/components/ui/RailCard.tsx
+  s_338735e9af5335::t_fa0bb34d773f73 16
+apps/web/src/components/ui/Wordmark.tsx
+  s_338735e9af5335::t_6c7e7af5da6dcd 11
+apps/web/src/features/bracket/BracketB.tsx
+  s_338735e9af5335::t_089627ccb8d0c7 97,112,118,187,207
+apps/web/src/features/bracket/BracketPage.tsx
+  s_338735e9af5335::t_606ff8bbb93ba7 62
+apps/web/src/features/competition/GroupTable.tsx
+  s_338735e9af5335::t_093b67db9b4acd 14
+apps/web/src/features/home/FeaturedPanel.tsx
+  s_338735e9af5335::t_3b858a66d5127e 20,80,108
+apps/web/src/features/home/GroupStandings.tsx
+  s_338735e9af5335::t_a336909ed7f8a5 47
+apps/web/src/features/home/LeftRail.tsx
+  s_338735e9af5335::t_d9ee1ef8489294 20,62,79,98
+apps/web/src/features/home/MatchList.tsx
+  s_338735e9af5335::t_99c7e54f23c3f3 50
+apps/web/src/features/home/NewsStrip.tsx
+  s_338735e9af5335::t_3a2ada03e10d53 18,36
+apps/web/src/features/home/PowerRankings.tsx
+  s_338735e9af5335::t_ffb395c88223f3 11
+apps/web/src/features/home/RightRail.tsx
+  s_338735e9af5335::t_2ebf8c0712bdc5 53,84
+apps/web/src/features/home/Ticker.tsx
+  s_338735e9af5335::t_887fcdcd6b3781 44
+apps/web/src/features/home/TopMovers.tsx
+  s_338735e9af5335::t_c4aba3a7ff13aa 26
+apps/web/src/features/home/TradersWeek.tsx
+  s_338735e9af5335::t_20dee4b21d56dc 15
+apps/web/src/features/how/sections/Hero.tsx
+  s_338735e9af5335::t_35d9be431be91b 17-18
+apps/web/src/features/how/sections/OpenSource.tsx
+  s_338735e9af5335::t_578c6bbfe29e6a 29
+apps/web/src/features/how/sections/Section.tsx
+  s_338735e9af5335::t_569001491a45c5 10
+apps/web/src/features/how/sections/TxLineSection.tsx
+  s_338735e9af5335::t_a614113facc69a 38,51
+apps/web/src/features/landing/Ctas.tsx
+  s_338735e9af5335::t_e706d665a3cd39 29
+apps/web/src/features/landing/HeroRiver.tsx
+  s_338735e9af5335::t_051dc7ad3ac899 24,27,38
+apps/web/src/features/landing/LandingPage.tsx
+  s_338735e9af5335::t_71e038899be9c6 53,69,79,105,110
+apps/web/src/features/landing/LoopStage.tsx
+  s_338735e9af5335::t_0f3bf5ac4c74f0 28
+apps/web/src/features/leaderboard/LeaderboardPage.tsx
+  s_338735e9af5335::t_c38e551f6fd976 88
+apps/web/src/features/moments/MomentDetail.tsx
+  s_338735e9af5335::t_9c70cfaa5932c3 55
+apps/web/src/features/moments/MomentsGallery.tsx
+  s_338735e9af5335::t_d4e58ec1e88d5e 30
+apps/web/src/features/onboarding/OnboardingPage.tsx
+  s_338735e9af5335::t_48dde182af8be5 39,89
+apps/web/src/features/portfolio/HistoryPage.tsx
+  s_338735e9af5335::t_d4e8e55b4c86d4 73
+apps/web/src/features/portfolio/PortfolioPage.tsx
+  s_338735e9af5335::t_516bc312af3600 17,100
+apps/web/src/features/profile/ProfilePage.tsx
+  s_338735e9af5335::t_71684e552045c1 17,42
+apps/web/src/features/proofs/ProofsPage.tsx
+  s_338735e9af5335::t_afa0bcaad86f5f 53-54,58
+apps/web/src/features/settings/SettingsPage.tsx
+  s_338735e9af5335::t_b19c09ef5b921e 53,63,73
+apps/web/src/features/terminal/AttackMomentum.tsx
+  s_338735e9af5335::t_d3b32bea40e25b 25,62,65
+apps/web/src/features/terminal/BigRiver.tsx
+  s_338735e9af5335::t_0f38063e239edf 54,64,106
+apps/web/src/features/terminal/BoothLine.tsx
+  s_338735e9af5335::t_59fb8bfca8eef7 32
+apps/web/src/features/terminal/BoothTimeline.tsx
+  s_338735e9af5335::t_09abf8ff834250 30
+apps/web/src/features/terminal/MarketStatus.tsx
+  s_338735e9af5335::t_6009fd77a34d9f 30-31
+apps/web/src/features/terminal/MatchHeader.tsx
+  s_338735e9af5335::t_da4bacfac03a7a 28-29
+apps/web/src/features/terminal/MatchStates.tsx
+  s_338735e9af5335::t_af3fbc866ffb92 18,28,46,70,101,114
+apps/web/src/features/terminal/OpenPositions.tsx
+  s_338735e9af5335::t_2784811ced9df2 15,26
+apps/web/src/features/terminal/PortfolioCard.tsx
+  s_338735e9af5335::t_388716be9a346f 10
+apps/web/src/features/terminal/PriceCells.tsx
+  s_338735e9af5335::t_191800d31e1ae4 40
+apps/web/src/features/terminal/TerminalHeader.tsx
+  s_338735e9af5335::t_60a287f0d7eaf2 46-47
+apps/web/src/features/terminal/TodaysMovers.tsx
+  s_338735e9af5335::t_4f80e34684929f 25-26,33
+apps/web/src/features/terminal/TournamentLeaderboard.tsx
+  s_338735e9af5335::t_17a28eaf762176 15,22
+apps/web/src/features/terminal/TradePanel.tsx
+  s_338735e9af5335::t_25e83b67adaff5 96,104
+apps/web/src/features/terminal/YourPosition.tsx
+  s_338735e9af5335::t_b90317b765dc02 23
+apps/web/src/features/terminal/depth/CrowdCall.tsx
+  s_338735e9af5335::t_28071230b00d7f 23,35
+apps/web/src/features/terminal/depth/EventsTimeline.tsx
+  s_338735e9af5335::t_7ec2ecca63944a 36
+apps/web/src/features/terminal/depth/H2H.tsx
+  s_338735e9af5335::t_4de5a6e84fb835 25,32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "88c0014f33775b8c5cb82e010815b6c6ae2dfc3a",
+  "prompts": {},
+  "sessions": {
+    "s_338735e9af5335": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93fac499-ebc1-4122-b865-8c9f3e20d6b6",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
