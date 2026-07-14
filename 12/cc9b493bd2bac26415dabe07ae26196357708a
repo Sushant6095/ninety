@@ -1,0 +1,25 @@
+docs/BUILD-LOG.md
+  s_338735e9af5335::t_59fe5fbb07bb4e 1-88,90-93
+  s_338735e9af5335::t_0f52cb74e4ad29 89
+README.md
+  s_338735e9af5335::t_0ecc43db284a4c 145
+docs/SUBMISSION-FIELDS.md
+  s_338735e9af5335::t_5895887d03564a 13
+  s_338735e9af5335::t_5507259b436223 51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "12cc9b493bd2bac26415dabe07ae26196357708a",
+  "prompts": {},
+  "sessions": {
+    "s_338735e9af5335": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93fac499-ebc1-4122-b865-8c9f3e20d6b6",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
