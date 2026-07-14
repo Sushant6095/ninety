@@ -1,0 +1,52 @@
+apps/web/src/features/home/FeaturedPanel.tsx
+  s_b60ec3c6161754::t_c24d0dda9e40a3 126
+apps/web/src/app/layout.tsx
+  s_b60ec3c6161754::t_645604c064c423 9
+  s_b60ec3c6161754::t_3f29fe3af70025 46-49
+apps/web/src/features/terminal/CompetitionsRail.tsx
+  s_b60ec3c6161754::t_c01406d9ae7330 101,104,113
+  s_b60ec3c6161754::t_9ae50a93aca1c2 102
+  s_b60ec3c6161754::t_1a1f23a0f6b746 2,14,21-22,34,52,57-58,62-63,71-79,81-84,87,92-97,100,105-112,114-132,134,137-151,153-154,156
+apps/web/tailwind.config.ts
+  s_b60ec3c6161754::t_897aa303df3d9b 6-7
+apps/web/src/components/ui/MatchCard.tsx
+  s_b60ec3c6161754::t_c24d0dda9e40a3 40
+apps/web/src/features/terminal/BigRiver.tsx
+  s_b60ec3c6161754::t_64e23e186c2598 64
+apps/web/src/components/ui/HoverCard.tsx
+  s_b60ec3c6161754::t_094a8cb835525a 16
+apps/web/src/styles/globals.css
+  s_b60ec3c6161754::t_31d80ddd9d6c9e 72-81
+apps/web/src/features/onboarding/OnboardingPage.tsx
+  s_b60ec3c6161754::t_c24d0dda9e40a3 29,96
+apps/web/src/components/ui/Tooltip.tsx
+  s_b60ec3c6161754::t_17896c307fd2a8 5-11,13,16-23
+apps/web/src/features/terminal/TerminalHeader.tsx
+  s_b60ec3c6161754::t_64e23e186c2598 69,72
+apps/web/src/features/terminal/TradePanel.tsx
+  s_b60ec3c6161754::t_c24d0dda9e40a3 96,104,121
+apps/web/src/features/terminal/PriceCells.tsx
+  s_b60ec3c6161754::t_c24d0dda9e40a3 37
+plans/005-tooltip-system.md
+  s_b60ec3c6161754::t_956b8a1cc51d88 3
+plans/006-press-feedback-pass.md
+  s_b60ec3c6161754::t_6d2bb87347d51e 3
+plans/README.md
+  s_b60ec3c6161754::t_224567b98e4ec1 12-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "f6017d652462afa1fa1a3a01de1177e9b652c435",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
