@@ -1,0 +1,33 @@
+docs/txline-samples/player-data-probe.json
+  s_e6fe919b4d8a67::t_cfc84bdd099ad8 1-45
+scripts/player-probe.mjs
+  s_e6fe919b4d8a67::t_ce15a40abbdd4b 1-84
+scripts/bake-lineups.mjs
+  s_e6fe919b4d8a67::t_d97628c3303742 1-88
+docs/TXLINE-MAP.md
+  s_2581d452303f2d::t_ca908ae4f624c8 86-125
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "a463303b4ab5874a88ae78cc50beafebad5286d9",
+  "prompts": {},
+  "sessions": {
+    "s_2581d452303f2d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c1bbb14e-3547-4648-8e0c-2b088c6d0689",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
