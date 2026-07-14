@@ -23,14 +23,24 @@ export function LandingScroll({ children }: { children: ReactNode }) {
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         gsap.utils.toArray<HTMLElement>("[data-arrive]").forEach((el) => {
           const items = el.querySelectorAll<HTMLElement>("[data-arrive-item]");
-          gsap.from(items.length ? items : el, {
-            opacity: 0,
-            y: ARRIVE.y,
-            duration: m.slow / 1000,
-            stagger: m.heroStagger / 1000,
-            ease: "ninety",
-            scrollTrigger: { trigger: el, start: ARRIVE.start, once: true },
-          });
+          const targets = items.length ? items : el;
+          // fromTo (no computed-style read at start — from() reads were MotionScore frame-thrash) with
+          // will-change promoted only WHILE the tween runs (pre-promoting every below-fold section
+          // would spend the GPU texture budget the audit grades S).
+          gsap.fromTo(
+            targets,
+            { opacity: 0, y: ARRIVE.y },
+            {
+              opacity: 1,
+              y: 0,
+              duration: m.slow / 1000,
+              stagger: m.heroStagger / 1000,
+              ease: "ninety",
+              scrollTrigger: { trigger: el, start: ARRIVE.start, once: true },
+              onStart: () => gsap.set(targets, { willChange: "transform, opacity" }),
+              onComplete: () => gsap.set(targets, { clearProps: "willChange" }),
+            },
+          );
         });
       });
     },
