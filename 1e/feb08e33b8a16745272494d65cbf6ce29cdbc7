@@ -1,0 +1,35 @@
+plans/007-halt-banner-polish.md
+  s_b60ec3c6161754::t_8a259f0637fc63 1-77
+plans/003-tailwind-motion-token-plumbing.md
+  s_b60ec3c6161754::t_eee7a40fd82808 1-71
+plans/001-live-flash-retrigger.md
+  s_b60ec3c6161754::t_a2a5e6bd1de700 1-79
+plans/006-press-feedback-pass.md
+  s_b60ec3c6161754::t_b08f0220c14947 1-52
+plans/002-reduced-motion-global-rule.md
+  s_b60ec3c6161754::t_63c00e7fb59b51 1-60
+plans/README.md
+  s_b60ec3c6161754::t_9ba10da2fc190c 1-36
+plans/004-tokenize-stray-literals.md
+  s_b60ec3c6161754::t_8a2de8ffd46a94 1-70
+plans/008-missed-beats.md
+  s_b60ec3c6161754::t_7c6055d28d572d 1-52
+plans/005-tooltip-system.md
+  s_b60ec3c6161754::t_8fff85635506eb 1-67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "1efeb08e33b8a16745272494d65cbf6ce29cdbc7",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
