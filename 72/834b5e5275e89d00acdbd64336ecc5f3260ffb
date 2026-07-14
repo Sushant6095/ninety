@@ -1,0 +1,41 @@
+apps/web/src/features/landing/StickerPeel.tsx
+  s_b60ec3c6161754::t_86f02f9a770a31 1,4-1745
+  s_b60ec3c6161754::t_02d09e3e2f28c5 2-3
+apps/web/src/features/landing/WorldGlobe.tsx
+  s_b60ec3c6161754::t_cdd41b6d83c729 1-220
+apps/web/src/features/landing/StickerPeelLazy.tsx
+  s_b60ec3c6161754::t_4ffa4944ae6053 1-17
+apps/web/scripts/bake-sticker.mjs
+  s_b60ec3c6161754::t_4ae0897a08656c 1-23
+apps/web/scripts/bake-land.mjs
+  s_b60ec3c6161754::t_34e7f53568a854 1-37
+apps/web/src/features/landing/LandingPage.tsx
+  s_b60ec3c6161754::t_cb16c1cabb5ec5 133-135
+  s_b60ec3c6161754::t_0d6f429b51c1b6 8
+  s_b60ec3c6161754::t_91e29e2438b92d 6-7
+  s_b60ec3c6161754::t_a4a1b612df0125 54-58
+  s_b60ec3c6161754::t_9a5da889b6b4b4 102-104,107-108
+  s_b60ec3c6161754::t_674cd41f032370 122-126
+apps/web/src/features/landing/WorldGlobeLazy.tsx
+  s_b60ec3c6161754::t_7d32f0b0256a4c 1-13
+apps/web/src/features/landing/PriceVoid.tsx
+  s_b60ec3c6161754::t_663f588ee14806 1-210
+design/PROVENANCE.md
+  s_b60ec3c6161754::t_e9603825fded33 37-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "72834b5e5275e89d00acdbd64336ecc5f3260ffb",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
