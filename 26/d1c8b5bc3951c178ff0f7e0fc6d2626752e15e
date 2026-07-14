@@ -1,0 +1,21 @@
+apps/web/src/features/landing/LandingScroll.tsx
+  s_338735e9af5335::t_1b699dd7489fe3 26-43
+apps/web/src/features/landing/LandingHero.tsx
+  s_338735e9af5335::t_b9ce200e504500 33-47,50-58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "26d1c8b5bc3951c178ff0f7e0fc6d2626752e15e",
+  "prompts": {},
+  "sessions": {
+    "s_338735e9af5335": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93fac499-ebc1-4122-b865-8c9f3e20d6b6",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
