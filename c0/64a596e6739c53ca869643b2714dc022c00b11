@@ -1,0 +1,63 @@
+apps/web/src/features/live/useHaltSequence.ts
+  s_e6fe919b4d8a67::t_200a0403a213b5 70-73
+  s_e6fe919b4d8a67::t_48f9f9c289362f 99-106
+apps/web/src/features/home/Ticker.tsx
+  s_e6fe919b4d8a67::t_29dd5c4a6db858 38
+  s_e6fe919b4d8a67::t_f7871b533c0423 48
+apps/web/src/features/bracket/BracketB.tsx
+  s_e6fe919b4d8a67::t_5bdf54e72f0d84 141
+  s_e6fe919b4d8a67::t_be03c8f3b9c8a0 94
+scripts/ui/axe.mjs
+  s_e6fe919b4d8a67::t_0785a0f0a32480 12-14
+  s_c9a5063cddd265::t_8011cd80eacd0c 1-11,15-34,40-67
+  s_e6fe919b4d8a67::t_83c9a5504b81b3 35-39
+apps/web/src/features/terminal/CompetitionsRail.tsx
+  s_e6fe919b4d8a67::t_08dac172992164 80
+  s_e6fe919b4d8a67::t_1b4fd74e5f290f 87
+apps/web/src/features/home/LeftRail.tsx
+  s_e6fe919b4d8a67::t_f8361ed998e2eb 49
+apps/web/src/features/terminal/TerminalScreen.tsx
+  s_e6fe919b4d8a67::t_a1de2fa5f136ff 24
+apps/web/src/features/home/RightRail.tsx
+  s_e6fe919b4d8a67::t_ba33fd7ebcb8c8 36
+apps/web/src/styles/globals.css
+  s_e6fe919b4d8a67::t_8af936926117bb 58
+apps/web/src/features/home/HomeShell.tsx
+  s_e6fe919b4d8a67::t_a949ee8f975b87 24
+apps/web/src/components/ui/PrototypeRibbon.tsx
+  s_e6fe919b4d8a67::t_9f10a9ec4f87b4 6-7
+apps/web/tailwind.config.ts
+  s_d96f6ff4022f43::t_bb0f4ca6d33ac5 8-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "c064a596e6739c53ca869643b2714dc022c00b11",
+  "prompts": {},
+  "sessions": {
+    "s_c9a5063cddd265": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "508b2dec-5928-401d-98aa-3611db8a5c1b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_d96f6ff4022f43": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ef778a23-a6af-4e5a-b061-dd5cb2891442",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
