@@ -1,0 +1,28 @@
+infra/free-tier-map.md
+  s_e6fe919b4d8a67::t_4dacabc5d7d728 7-8
+.mcp.json
+  s_e6fe919b4d8a67::t_ca3c831bb80028 33-44
+infra/fly/fly.toml
+  s_e6fe919b4d8a67::t_c5c05708b0faf9 60,65
+  s_e6fe919b4d8a67::t_76ef31af8536d2 27-28,33
+apps/api/prisma/schema.prisma
+  s_e6fe919b4d8a67::t_50be50c504d038 6-11,13-15
+docs/SETUP-LIVE.md
+  s_e6fe919b4d8a67::t_b596b462748cd0 1-109
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "ebed784c4084c59bf8b6049a1e93ac1dff78f31f",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
