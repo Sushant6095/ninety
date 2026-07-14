@@ -103,7 +103,21 @@ export const type = {
   displayXl: { size: "40px", lineHeight: "1", letterSpacing: "-0.02em" },
 } as const;
 
-export const tokens = { colors, cssVars, fonts, space, grid, rhythm, radius, type } as const;
+// Letter-spacing scale — the ONLY tracking values components may use (tailwind.config maps them to
+// tracking-micro … tracking-hero; `wide` re-pins Tailwind's default so tracking-wide is token-sourced).
+export const tracking = {
+  micro: "0.08em", // inline mono tags (score chips, ticker cells)
+  tag: "0.1em", // small status tags
+  label: "0.12em", // the standard uppercase section label
+  caps: "0.14em", // wide eyebrow caps (landing labels)
+  banner: "0.16em", // rare banner caps
+  hero: "0.2em", // widest — one-off hero eyebrows
+  wide: "0.025em", // Tailwind's default `wide`, pinned here so every tracking-* traces to tokens
+  tight: "-0.02em", // display stat numbers (Jul 19 band, how-hero)
+  tighter: "-0.03em", // the wordmark only
+} as const;
+
+export const tokens = { colors, cssVars, fonts, space, grid, rhythm, radius, type, tracking } as const;
 
 export type SpaceToken = keyof typeof space;
 export type TypeToken = keyof typeof type;

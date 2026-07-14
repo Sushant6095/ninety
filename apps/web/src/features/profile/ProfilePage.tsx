@@ -14,7 +14,7 @@ function Stat({ label, value, tone = "hi" }: { label: string; value: string; ton
   const color = tone === "up" ? "text-up" : tone === "down" ? "text-down" : "text-hi";
   return (
     <div className="rounded-card border border-hairline bg-bg/40 px-4 py-3">
-      <div className="text-label font-medium uppercase tracking-[0.1em] text-lo">{label}</div>
+      <div className="text-label font-medium uppercase tracking-tag text-lo">{label}</div>
       <div className={`num mt-1 text-heading font-semibold tabular-nums ${color}`}>{value}</div>
     </div>
   );
@@ -39,7 +39,7 @@ export function ProfilePage({ handle }: { handle: string }) {
               <p className="num mt-1 text-caption tabular-nums text-lo">Rank #{p.rank} · {p.trades} trades · joined {p.joined}</p>
             </div>
             <div className="ml-auto text-right">
-              <div className="text-label font-medium uppercase tracking-[0.1em] text-lo">Net P&amp;L</div>
+              <div className="text-label font-medium uppercase tracking-tag text-lo">Net P&amp;L</div>
               <div className={`num text-display font-semibold tabular-nums ${gain ? "text-up" : "text-down"}`}>{signedCR(p.pnl)}</div>
             </div>
           </div>

@@ -19,7 +19,7 @@ export function MomentCard({ m }: { m: Moment }) {
       className="group elev block overflow-hidden rounded-card border border-hairline bg-surface p-4 outline-none transition-colors duration-200 hover:border-hairline hover:bg-hairline/10 focus-visible:bg-hairline/10"
     >
       <div className="flex items-center justify-between">
-        <span className={`rounded-chip px-2 py-0.5 text-label font-semibold uppercase tracking-[0.08em] ring-1 ring-inset ${RARITY_STYLE[rarity]}`}>{rarity}</span>
+        <span className={`rounded-chip px-2 py-0.5 text-label font-semibold uppercase tracking-micro ring-1 ring-inset ${RARITY_STYLE[rarity]}`}>{rarity}</span>
         <span className="num text-label font-semibold tabular-nums text-lo">{m.minute}&#39;</span>
       </div>
 

@@ -26,7 +26,7 @@ export function OpenSource() {
 
       <div className="mt-5 flex flex-wrap items-center justify-between gap-4 rounded-card border border-hairline bg-surface px-5 py-4">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-          <span className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Built with</span>
+          <span className="text-label font-semibold uppercase tracking-label text-lo">Built with</span>
           {BUILT_WITH.map((t) => (
             <span key={t} className="rounded-chip bg-bg/40 px-2.5 py-1 text-caption text-hi ring-1 ring-inset ring-hairline">{t}</span>
           ))}

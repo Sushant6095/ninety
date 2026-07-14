@@ -8,7 +8,7 @@ export function PowerRankings() {
   return (
     <section className="elev mt-3 overflow-hidden rounded-card border border-hairline/70 bg-surface">
       <div className="flex items-center justify-between border-b border-hairline px-4 py-2.5">
-        <h2 className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Ninety power rankings</h2>
+        <h2 className="text-label font-semibold uppercase tracking-label text-lo">Ninety power rankings</h2>
         <span className="text-label uppercase tracking-wide text-lo">Market-implied · WC26</span>
       </div>
       <ul className="divide-y divide-hairline/60">

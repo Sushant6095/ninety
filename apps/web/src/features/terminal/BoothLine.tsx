@@ -29,7 +29,7 @@ export function BoothLine({ quote, delta }: BoothLineProps) {
     >
       <EqBars />
       <div className="min-w-0 flex-1">
-        <span className="text-label font-semibold uppercase tracking-[0.12em] text-lo">The booth · live</span>
+        <span className="text-label font-semibold uppercase tracking-label text-lo">The booth · live</span>
         <p className="mt-0.5 text-body leading-snug text-hi">{quote}</p>
       </div>
       <span className="num shrink-0 rounded bg-up/12 px-1 py-0.5 text-label font-semibold text-up ring-1 ring-inset ring-up/25">

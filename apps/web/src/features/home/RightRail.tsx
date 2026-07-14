@@ -50,7 +50,7 @@ export function RightRail() {
         <ul>
           {LEADERS.slice(0, TOP_TRADERS).map((l) => (
             <li key={l.handle}>
-              <Link href={routes.profile(l.handle)} className="flex items-center gap-2 rounded-lg px-2 py-1 transition-colors duration-200 hover:bg-hairline/30">
+              <Link href={routes.profile(l.handle)} className="flex min-h-11 items-center gap-2 rounded-lg px-2 py-1 transition-colors duration-200 hover:bg-hairline/30">
                 <span className="num w-3 text-label tabular-nums text-lo">{l.rank}</span>
                 <Avatar handle={l.handle} size={28} />
                 <span className="truncate text-body font-medium text-hi">{l.handle}</span>
@@ -81,7 +81,7 @@ export function RightRail() {
         href={routes.moments}
         className="group rounded-card border border-chain/25 bg-chain/[0.04] px-4 py-3 transition-colors duration-200 hover:border-chain/40"
       >
-        <h2 className="mb-1 flex items-center gap-1 text-label font-semibold uppercase tracking-[0.12em] text-chain">
+        <h2 className="mb-1 flex items-center gap-1 text-label font-semibold uppercase tracking-label text-chain">
           <span aria-hidden>◆</span> Moment of the day
         </h2>
         <p className="font-display text-heading font-bold leading-tight text-hi">The 38th minute</p>

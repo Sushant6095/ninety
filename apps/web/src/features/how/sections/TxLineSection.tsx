@@ -35,7 +35,7 @@ export function TxLineSection() {
 
       {/* Pipeline */}
       <div className="mt-4 rounded-card border border-hairline bg-surface p-5">
-        <h3 className="text-label font-semibold uppercase tracking-[0.12em] text-lo">How Ninety consumes it</h3>
+        <h3 className="text-label font-semibold uppercase tracking-label text-lo">How Ninety consumes it</h3>
         <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-2">
           {PIPELINE.map((n, i) => (
             <span key={n} className="flex items-center gap-2">
@@ -48,7 +48,7 @@ export function TxLineSection() {
 
       {/* Endpoints (tech-doc) */}
       <div className="mt-4 overflow-hidden rounded-card border border-hairline bg-surface">
-        <h3 className="border-b border-hairline px-5 py-3 text-label font-semibold uppercase tracking-[0.12em] text-lo">Endpoints Ninety calls (packages/txline)</h3>
+        <h3 className="border-b border-hairline px-5 py-3 text-label font-semibold uppercase tracking-label text-lo">Endpoints Ninety calls (packages/txline)</h3>
         <ul className="divide-y divide-hairline/60">
           {ENDPOINTS.map((e) => (
             <li key={e.id} className="grid grid-cols-[36px_1fr] items-center gap-3 px-5 py-2.5 sm:grid-cols-[36px_minmax(0,320px)_1fr]">

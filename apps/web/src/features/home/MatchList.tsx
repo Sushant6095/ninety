@@ -47,7 +47,7 @@ export function MatchList({ markets, emptyLabel = "No matches in this view." }: 
             <span className="grid h-[18px] min-w-[18px] place-items-center rounded bg-bg px-1 text-label font-semibold text-lo ring-1 ring-inset ring-hairline">
               {badgeFor(label, rows[0])}
             </span>
-            <h3 className="text-label font-semibold uppercase tracking-[0.1em] text-lo">{label}</h3>
+            <h3 className="text-label font-semibold uppercase tracking-tag text-lo">{label}</h3>
             <span className="text-label text-lo">
               {rows.length} match{rows.length === 1 ? "" : "es"}
             </span>

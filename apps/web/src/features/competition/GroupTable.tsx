@@ -11,7 +11,7 @@ export function GroupTable({ group }: { group: WcGroup }) {
     <section className="elev overflow-hidden rounded-card border border-hairline bg-surface">
       <header className="flex items-center justify-between border-b border-hairline px-4 py-2.5">
         <h2 className="text-strong font-semibold text-hi">Group {group.name}</h2>
-        <span className="text-label uppercase tracking-[0.12em] text-lo">Top {QUALIFY} advance</span>
+        <span className="text-label uppercase tracking-label text-lo">Top {QUALIFY} advance</span>
       </header>
       <table className="w-full text-caption">
         <thead>

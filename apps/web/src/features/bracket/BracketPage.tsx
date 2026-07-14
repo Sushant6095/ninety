@@ -59,7 +59,7 @@ export function BracketPage() {
           <div className="flex min-w-max gap-5">
             {BRACKET.map((round) => (
               <section key={round.short} className="flex flex-col" aria-label={round.name}>
-                <h2 className="mb-3 text-label font-semibold uppercase tracking-[0.12em] text-lo">{round.name}</h2>
+                <h2 className="mb-3 text-label font-semibold uppercase tracking-label text-lo">{round.name}</h2>
                 <div className="flex flex-1 flex-col justify-around gap-4">
                   {round.ties.map((tie) => (
                     <TieCard key={tie.id} tie={tie} />

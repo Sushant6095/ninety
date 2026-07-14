@@ -27,7 +27,7 @@ export function BoothTimeline() {
   return (
     <div className="px-4 py-3">
       <div className="mb-2 flex items-center justify-between">
-        <h3 className="flex items-center gap-2 text-label font-semibold uppercase tracking-[0.1em] text-lo">
+        <h3 className="flex items-center gap-2 text-label font-semibold uppercase tracking-tag text-lo">
           <span className="flex items-end gap-[2px]" aria-hidden>
             <span className="h-2 w-[2px] rounded-full bg-up" /><span className="h-3 w-[2px] rounded-full bg-up" /><span className="h-1.5 w-[2px] rounded-full bg-up" /><span className="h-2.5 w-[2px] rounded-full bg-up" />
           </span>

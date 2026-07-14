@@ -85,7 +85,7 @@ export function LeaderboardPage({ leaders }: { leaders: LeaderRow[] }) {
           </div>
         ) : (
           <div className="overflow-hidden rounded-card border border-hairline bg-surface">
-            <div className="grid grid-cols-[48px_1fr_auto] gap-3 border-b border-hairline px-4 py-2 text-label font-semibold uppercase tracking-[0.1em] text-lo">
+            <div className="grid grid-cols-[48px_1fr_auto] gap-3 border-b border-hairline px-4 py-2 text-label font-semibold uppercase tracking-tag text-lo">
               <span>Rank</span>
               <span>Trader</span>
               <span className="text-right">P&amp;L</span>

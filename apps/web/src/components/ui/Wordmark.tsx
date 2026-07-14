@@ -8,7 +8,7 @@ interface WordmarkProps {
 export function Wordmark({ tag }: WordmarkProps) {
   return (
     <Link href="/" aria-label="Ninety — home" className="group inline-flex items-center gap-2">
-      <span className="font-display text-heading font-extrabold leading-none tracking-[-0.03em] text-hi transition-opacity duration-200 group-hover:opacity-80">
+      <span className="font-display text-heading font-extrabold leading-none tracking-tighter text-hi transition-opacity duration-200 group-hover:opacity-80">
         Ninety
       </span>
       {tag && (

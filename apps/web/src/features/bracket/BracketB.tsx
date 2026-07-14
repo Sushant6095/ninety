@@ -94,7 +94,7 @@ function Elbows({ pairs, side }: { pairs: number; side: "left" | "right" }) {
 function RoundColumn({ matches, label }: { matches: WcGame[]; label: string }) {
   return (
     <div className="flex min-w-[150px] flex-1 flex-col">
-      <div className="mb-2 text-center text-label font-semibold uppercase tracking-[0.12em] text-lo">{label}</div>
+      <div className="mb-2 text-center text-label font-semibold uppercase tracking-label text-lo">{label}</div>
       <div className="flex flex-1 flex-col justify-around gap-2">
         {matches.map((g) => (
           <MatchNode key={g.id} g={g} />
@@ -109,13 +109,13 @@ function FinalNode({ g }: { g: WcGame }) {
   const st = stadiumById(g.stadiumId);
   return (
     <div className="elev rounded-card border border-hairline bg-surface p-5 text-center ring-1 ring-inset ring-hairline">
-      <span className="text-label font-semibold uppercase tracking-[0.16em] text-lo">The Final</span>
+      <span className="text-label font-semibold uppercase tracking-banner text-lo">The Final</span>
       <p className="num mt-1 text-caption tabular-nums text-lo">
         {fmtDay(g.kickoff)} 2026 · {fmtTime(g.kickoff)}
       </p>
       <div className="mt-4 space-y-1">
         <p className="font-display text-strong font-bold leading-tight text-hi">{g.homeLabel}</p>
-        <p className="text-label uppercase tracking-[0.2em] text-lo">v</p>
+        <p className="text-label uppercase tracking-hero text-lo">v</p>
         <p className="font-display text-strong font-bold leading-tight text-hi">{g.awayLabel}</p>
       </div>
       {st ? (
@@ -184,7 +184,7 @@ export function BracketB() {
             {FINAL ? <FinalNode g={FINAL} /> : null}
             {THIRD ? (
               <div className="rounded-card border border-hairline bg-surface px-3 py-2.5 text-center">
-                <span className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Third place</span>
+                <span className="text-label font-semibold uppercase tracking-label text-lo">Third place</span>
                 <p className="mt-1 text-caption leading-tight text-hi">{THIRD.homeLabel}</p>
                 <p className="text-caption leading-tight text-hi">{THIRD.awayLabel}</p>
                 <p className="num mt-1 text-label tabular-nums text-lo">{fmtDay(THIRD.kickoff)}</p>
@@ -204,7 +204,7 @@ export function BracketB() {
       {/* Round of 32 — the 16 matches that feed the tree above. Quiet, secondary. */}
       <section className="mt-10">
         <div className="mb-3 flex items-baseline justify-between">
-          <h2 className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Round of 32</h2>
+          <h2 className="text-label font-semibold uppercase tracking-label text-lo">Round of 32</h2>
           <span className="num text-label tabular-nums text-lo">{R32.length} matches · 28 Jun – 3 Jul</span>
         </div>
         <div data-round="r32grid" className="grid grid-cols-2 gap-3 lg:grid-cols-4">

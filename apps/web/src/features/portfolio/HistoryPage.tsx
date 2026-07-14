@@ -70,7 +70,7 @@ export function HistoryPage() {
             <p className="mt-1 text-body text-lo">Every fill, with the match it came from. Play money, in credits.</p>
           </div>
           <div className="text-right">
-            <div className="text-label font-medium uppercase tracking-[0.1em] text-lo">Realized P&amp;L</div>
+            <div className="text-label font-medium uppercase tracking-tag text-lo">Realized P&amp;L</div>
             <div className={`num text-heading font-semibold tabular-nums ${realized >= 0 ? "text-up" : "text-down"}`}>{signedCR(realized)}</div>
           </div>
         </div>

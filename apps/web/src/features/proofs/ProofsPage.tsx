@@ -50,12 +50,12 @@ export function ProofsPage() {
 
       <div className="mb-4 flex flex-wrap items-center gap-x-6 gap-y-2 rounded-card border border-hairline bg-surface px-4 py-3">
         <span className="num text-strong font-semibold tabular-nums text-hi">{PROOFS_TOTAL}<span className="ml-1.5 text-label font-medium uppercase tracking-wide text-lo">settled</span></span>
-        <span className="text-label uppercase tracking-[0.12em] text-lo">Result · TxLINE</span>
-        <span className="text-label uppercase tracking-[0.12em] text-chain">Proof · Solana devnet</span>
+        <span className="text-label uppercase tracking-label text-lo">Result · TxLINE</span>
+        <span className="text-label uppercase tracking-label text-chain">Proof · Solana devnet</span>
       </div>
 
       <div className="overflow-hidden rounded-card border border-hairline bg-surface">
-        <div className="flex items-center justify-between border-b border-hairline px-4 py-2 text-label font-semibold uppercase tracking-[0.12em] text-lo">
+        <div className="flex items-center justify-between border-b border-hairline px-4 py-2 text-label font-semibold uppercase tracking-label text-lo">
           <span>Market</span>
           <span className="hidden sm:inline">Proof</span>
         </div>

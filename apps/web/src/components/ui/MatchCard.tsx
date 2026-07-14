@@ -45,7 +45,7 @@ export function MatchCard({ market }: { market: MarketRow }) {
         {isLive ? (
           <>
             <span className={`num block text-caption font-semibold leading-none ${halted ? "text-halt" : "text-up"}`}>{minute}&#39;</span>
-            <span className={`mt-0.5 block text-label font-medium tracking-[0.1em] ${halted ? "text-halt" : "text-lo"}`}>{halted ? "HALT" : "LIVE"}</span>
+            <span className={`mt-0.5 block text-label font-medium tracking-tag ${halted ? "text-halt" : "text-lo"}`}>{halted ? "HALT" : "LIVE"}</span>
           </>
         ) : (
           <span className="text-label text-lo">—</span>

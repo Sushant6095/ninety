@@ -23,7 +23,7 @@ export function TopMovers() {
 
   return (
     <section className="border-t border-hairline px-3 py-3 sm:px-4">
-      <h3 className="mb-2 flex items-center gap-2 text-label font-semibold uppercase tracking-[0.1em] text-lo">
+      <h3 className="mb-2 flex items-center gap-2 text-label font-semibold uppercase tracking-tag text-lo">
         Biggest movers
         <span className="h-1 w-1 rounded-full bg-up shadow-[0_0_5px_var(--up)]" />
         <span className="font-normal normal-case tracking-normal text-lo">live · home price</span>

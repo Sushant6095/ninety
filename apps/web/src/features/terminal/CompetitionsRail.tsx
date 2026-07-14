@@ -36,7 +36,7 @@ function Row({ m }: { m: TermMarketRow }) {
         {minute != null ? (
           <>
             <span className={`num block text-label font-semibold leading-none ${halted ? "text-halt" : "text-up"}`}>{minute}&#39;</span>
-            <span className="mt-0.5 block text-label font-medium tracking-[0.08em] text-lo">{minute > 45 ? "2H" : "1H"}</span>
+            <span className="mt-0.5 block text-label font-medium tracking-micro text-lo">{minute > 45 ? "2H" : "1H"}</span>
           </>
         ) : (
           <span className="num text-label text-lo">{m.time}</span>
@@ -75,10 +75,10 @@ export function CompetitionsRail() {
   return (
     <section className="elev overflow-hidden rounded-card border border-hairline/70 bg-surface">
       <div className="flex items-center justify-between border-b border-hairline px-3 py-2">
-        <h2 className="flex items-center gap-1 text-label font-semibold uppercase tracking-[0.12em] text-lo">
+        <h2 className="flex items-center gap-1 text-label font-semibold uppercase tracking-label text-lo">
           <span className="h-1.5 w-1.5 rounded-full bg-up shadow-[0_0_5px_var(--up)]" /> Live competitions
         </h2>
-        <span className="text-label uppercase tracking-wide text-lo">All KO times UTC</span>
+        <span className="text-label uppercase tracking-wide text-lo">Kick-off times UTC</span>
       </div>
       {/* The full R16 slate is 13 rows — cap the list at ~8 rows (Hyperliquid watchlist pattern) so Attack
           Momentum and the events feed stay on the first screen; the rail scrolls inside its own hairline bar. */}
@@ -87,7 +87,7 @@ export function CompetitionsRail() {
           <div key={label}>
             <div className="flex items-center gap-2 bg-bg/40 px-3 py-1">
               <span className="num rounded bg-bg px-1 text-label font-semibold text-lo ring-1 ring-inset ring-hairline">R16</span>
-              <h3 className="text-label font-semibold uppercase tracking-[0.08em] text-lo">{label}</h3>
+              <h3 className="text-label font-semibold uppercase tracking-micro text-lo">{label}</h3>
               <span className="text-label text-lo">{meta}</span>
               <ChevronDown size={13} className="ml-auto text-lo/60" aria-hidden />
             </div>

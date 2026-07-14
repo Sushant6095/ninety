@@ -57,6 +57,12 @@ body {
 @keyframes eq { 0%, 100% { transform: scaleY(0.35); } 50% { transform: scaleY(1); } }
 .eq-bar { transform-origin: bottom; will-change: transform; animation: eq 900ms ease-in-out infinite; }
 
+/* 44px minimum hit area (a11y law) for visually-compact controls that must stay small — a centered,
+   invisible strip extends the clickable region without changing layout. Use on lone/horizontal controls
+   only; stacked rows get a real min-h-11 instead (overlapping hit strips mis-click). */
+.hit { position: relative; }
+.hit::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 44px; transform: translateY(-50%); }
+
 /* Accordion expand/collapse via radix's content-height var (no tailwindcss-animate dep). Transform/height only. */
 @keyframes accDown { from { height: 0; } to { height: var(--radix-accordion-content-height); } }
 @keyframes accUp { from { height: var(--radix-accordion-content-height); } to { height: 0; } }

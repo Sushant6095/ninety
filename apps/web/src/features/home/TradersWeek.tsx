@@ -12,7 +12,7 @@ export function TradersWeek() {
   return (
     <section className="border-t border-hairline px-3 py-3 sm:px-4">
       <div className="mb-2 flex items-center justify-between">
-        <h3 className="text-label font-semibold uppercase tracking-[0.1em] text-lo">Traders of the week</h3>
+        <h3 className="text-label font-semibold uppercase tracking-tag text-lo">Traders of the week</h3>
         <Link href={routes.leaders} className="text-label text-lo transition-colors duration-200 hover:text-hi">Leaderboard →</Link>
       </div>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">

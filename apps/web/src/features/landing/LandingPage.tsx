@@ -50,7 +50,7 @@ export function LandingPage() {
           {/* 3 — price is probability: one giant number does the explaining */}
           <section aria-labelledby="price-h" className="border-b border-hairline">
             <div data-arrive className="mx-auto w-full max-w-[1180px] px-4 py-16 text-center sm:px-6 lg:py-24">
-              <h2 data-arrive-item id="price-h" className="text-label font-semibold uppercase tracking-[0.14em] text-lo">
+              <h2 data-arrive-item id="price-h" className="text-label font-semibold uppercase tracking-caps text-lo">
                 Price is probability
               </h2>
               <p data-arrive-item className="mt-6">
@@ -66,7 +66,7 @@ export function LandingPage() {
           {/* 4 — proof: the one violet (on-chain) surface on the page, on a tonal chapter break */}
           <section aria-labelledby="proof-h" className="border-b border-hairline bg-surface/60">
             <div data-arrive className="mx-auto w-full max-w-[1180px] px-4 py-16 sm:px-6 lg:py-24">
-              <p data-arrive-item className="inline-flex items-center gap-1.5 text-label font-semibold uppercase tracking-[0.14em] text-chain">
+              <p data-arrive-item className="inline-flex items-center gap-1.5 text-label font-semibold uppercase tracking-caps text-chain">
                 <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-chain shadow-[0_0_5px_var(--chain)]" />
                 On-chain
               </p>
@@ -76,7 +76,7 @@ export function LandingPage() {
               <div className="mt-10 grid gap-8 sm:grid-cols-3">
                 {PROOF_STEPS.map((s) => (
                   <div data-arrive-item key={s.n}>
-                    <p className="num text-label font-semibold tracking-[0.14em] text-lo">{s.n}</p>
+                    <p className="num text-label font-semibold tracking-caps text-lo">{s.n}</p>
                     <h3 className="mt-2 text-strong font-semibold text-hi">{s.title}</h3>
                     <p className="mt-2 text-body leading-relaxed text-lo">{s.copy}</p>
                   </div>
@@ -102,12 +102,12 @@ export function LandingPage() {
                   { value: <NumberTicker value={104} className="text-stat font-bold text-hi" />, label: "Fixtures, group stage to final" },
                   { value: <NumberTicker value={48} className="text-stat font-bold text-hi" />, label: "Teams, every one a market" },
                   { value: <NumberTicker value={1000} className="text-stat font-bold text-hi" />, label: "Free credits, every match" },
-                  { value: <span className="num text-stat font-bold tracking-[-0.02em] text-hi">Jul 19</span>, label: "The final, MetLife Stadium" },
+                  { value: <span className="num text-stat font-bold tracking-tight text-hi">Jul 19</span>, label: "The final, MetLife Stadium" },
                 ] as const
               ).map((t, i) => (
                 <div data-arrive-item key={i} className="flex flex-col gap-2">
                   <dd className="order-first">{t.value}</dd>
-                  <dt className="text-label uppercase tracking-[0.12em] text-lo">{t.label}</dt>
+                  <dt className="text-label uppercase tracking-label text-lo">{t.label}</dt>
                 </div>
               ))}
             </dl>

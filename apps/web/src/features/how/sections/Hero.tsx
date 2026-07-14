@@ -14,8 +14,8 @@ export function Hero() {
         <EquityCurve values={RIVER} up height={280} />
       </div>
       <div className="relative mx-auto w-full max-w-[1040px] px-4 py-20 sm:px-6 sm:py-28">
-        <div className="text-label font-semibold uppercase tracking-[0.14em] text-up">Ninety · World Cup 2026</div>
-        <h1 className="mt-3 max-w-[16ch] font-display text-[clamp(2.25rem,1.2rem+4.5vw,4.25rem)] font-bold leading-[1.02] tracking-[-0.02em] text-hi">
+        <div className="text-label font-semibold uppercase tracking-caps text-up">Ninety · World Cup 2026</div>
+        <h1 className="mt-3 max-w-[16ch] font-display text-[clamp(2.25rem,1.2rem+4.5vw,4.25rem)] font-bold leading-[1.02] tracking-tight text-hi">
           Every match is a market for ninety minutes.
         </h1>
         <p className="mt-5 max-w-[54ch] text-strong leading-relaxed text-lo">

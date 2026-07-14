@@ -14,7 +14,7 @@ function Stat({ label, value, tone = "hi" }: { label: string; value: string; ton
   const color = tone === "up" ? "text-up" : tone === "down" ? "text-down" : tone === "lo" ? "text-lo" : "text-hi";
   return (
     <div>
-      <div className="text-label font-medium uppercase tracking-[0.1em] text-lo">{label}</div>
+      <div className="text-label font-medium uppercase tracking-tag text-lo">{label}</div>
       <div className={`num mt-1 text-strong font-semibold tabular-nums ${color}`}>{value}</div>
     </div>
   );
@@ -97,7 +97,7 @@ export function PortfolioPage() {
         <section className="elev overflow-hidden rounded-card border border-hairline bg-surface">
           <div className="flex flex-wrap items-end justify-between gap-4 px-5 pt-5">
             <div>
-              <div className="text-label font-medium uppercase tracking-[0.1em] text-lo">Portfolio value</div>
+              <div className="text-label font-medium uppercase tracking-tag text-lo">Portfolio value</div>
               <div className="mt-1 flex items-baseline gap-3">
                 <span className="num font-display text-display font-bold tabular-nums text-hi">{fmtCR(equity)}</span>
                 <span className="text-caption font-medium text-lo">CR</span>

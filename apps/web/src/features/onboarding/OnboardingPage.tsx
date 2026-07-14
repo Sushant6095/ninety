@@ -36,7 +36,7 @@ export function OnboardingPage() {
                 <h1 className="font-display text-heading font-bold tracking-tight text-hi">Trade the match, live.</h1>
                 <p className="mt-1.5 text-body leading-relaxed text-lo">Free to play. 1,000 credits on us — no card, no deposit, ever.</p>
                 <label className="mt-5 block">
-                  <span className="text-label font-medium uppercase tracking-[0.1em] text-lo">Email</span>
+                  <span className="text-label font-medium uppercase tracking-tag text-lo">Email</span>
                   <input
                     type="email"
                     inputMode="email"
@@ -86,7 +86,7 @@ export function OnboardingPage() {
 
                 <div className="mt-5 grid place-items-center rounded-card border border-hairline bg-bg/40 py-6">
                   <span className="num font-display text-display font-bold tabular-nums text-up">1,000</span>
-                  <span className="text-label font-medium uppercase tracking-[0.12em] text-lo">credits</span>
+                  <span className="text-label font-medium uppercase tracking-label text-lo">credits</span>
                 </div>
 
                 {!claimed ? (

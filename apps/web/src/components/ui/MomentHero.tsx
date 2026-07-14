@@ -40,10 +40,10 @@ export function MomentHero({ m }: { m: Moment }) {
         <div className="flex flex-col justify-between gap-5 p-5 sm:p-6">
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="rounded-chip bg-bg px-2 py-0.5 text-label font-semibold uppercase tracking-[0.12em] text-lo ring-1 ring-inset ring-hairline">
+              <span className="rounded-chip bg-bg px-2 py-0.5 text-label font-semibold uppercase tracking-label text-lo ring-1 ring-inset ring-hairline">
                 Moment of the day
               </span>
-              <span className={`rounded-chip px-2 py-0.5 text-label font-semibold uppercase tracking-[0.08em] ring-1 ring-inset ${RARITY_STYLE[rarity]}`}>
+              <span className={`rounded-chip px-2 py-0.5 text-label font-semibold uppercase tracking-micro ring-1 ring-inset ${RARITY_STYLE[rarity]}`}>
                 {rarity}
               </span>
             </div>

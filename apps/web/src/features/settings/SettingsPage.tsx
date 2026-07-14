@@ -50,7 +50,7 @@ export function SettingsPage() {
 
         {/* Account */}
         <section className="mb-5 overflow-hidden rounded-card border border-hairline bg-surface">
-          <h2 className="border-b border-hairline px-4 py-3 text-label font-semibold uppercase tracking-[0.12em] text-lo">Account</h2>
+          <h2 className="border-b border-hairline px-4 py-3 text-label font-semibold uppercase tracking-label text-lo">Account</h2>
           <dl className="divide-y divide-hairline/60">
             <div className="flex items-center justify-between px-4 py-3"><dt className="text-body text-lo">Handle</dt><dd className="num text-body font-medium text-hi">{SESSION.handle}</dd></div>
             <div className="flex items-center justify-between px-4 py-3"><dt className="text-body text-lo">Email</dt><dd className="text-body text-hi">vd•••@example.com</dd></div>
@@ -60,7 +60,7 @@ export function SettingsPage() {
 
         {/* Notifications */}
         <section className="mb-5 overflow-hidden rounded-card border border-hairline bg-surface">
-          <h2 className="border-b border-hairline px-4 py-3 text-label font-semibold uppercase tracking-[0.12em] text-lo">Notifications</h2>
+          <h2 className="border-b border-hairline px-4 py-3 text-label font-semibold uppercase tracking-label text-lo">Notifications</h2>
           <div className="divide-y divide-hairline/60">
             {NOTIFS.map((n) => (
               <Toggle key={n.key} label={n.label} desc={n.desc} on={!!notifs[n.key]} onToggle={() => setNotifs((s) => ({ ...s, [n.key]: !s[n.key] }))} />
@@ -70,7 +70,7 @@ export function SettingsPage() {
 
         {/* Wallet */}
         <section className="mb-5 overflow-hidden rounded-card border border-hairline bg-surface">
-          <h2 className="border-b border-hairline px-4 py-3 text-label font-semibold uppercase tracking-[0.12em] text-lo">Wallet</h2>
+          <h2 className="border-b border-hairline px-4 py-3 text-label font-semibold uppercase tracking-label text-lo">Wallet</h2>
           <div className="px-4 py-3">
             <p className="text-caption text-lo">Your embedded Solana devnet wallet. Export the address to view settlements on Solscan.</p>
             <div className="mt-3 flex items-center justify-between gap-3 rounded-card border border-hairline bg-bg/40 px-4 py-3">

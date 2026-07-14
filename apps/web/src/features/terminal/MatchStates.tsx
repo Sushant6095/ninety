@@ -15,7 +15,7 @@ const VIEWS: MatchView[] = ["PRE", "LIVE", "HALTED", "SETTLED"];
 export function StateSwitcher({ view, onChange }: { view: MatchView; onChange: (v: MatchView) => void }) {
   return (
     <div className="flex items-center gap-2 border-b border-hairline px-4 py-2">
-      <span className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Market state</span>
+      <span className="text-label font-semibold uppercase tracking-label text-lo">Market state</span>
       <div role="tablist" aria-label="Market state" className="ml-auto inline-flex rounded-chip bg-bg p-0.5 ring-1 ring-inset ring-hairline">
         {VIEWS.map((v) => {
           const on = v === view;
@@ -25,7 +25,7 @@ export function StateSwitcher({ view, onChange }: { view: MatchView; onChange: (
               role="tab"
               aria-selected={on}
               onClick={() => onChange(v)}
-              className={`cursor-pointer rounded-chip px-2.5 py-1 text-label font-semibold uppercase tracking-wide outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-up ${on ? "bg-hairline/60 text-hi" : "text-lo hover:text-hi"}`}
+              className={`hit cursor-pointer rounded-chip px-2.5 py-1 text-label font-semibold uppercase tracking-wide outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-up ${on ? "bg-hairline/60 text-hi" : "text-lo hover:text-hi"}`}
             >
               {v}
             </button>
@@ -43,7 +43,7 @@ export function PreMatchPanel({ kickoff }: { kickoff: string }) {
     <div className="border-b border-hairline px-4 py-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <div className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Kicks off in</div>
+          <div className="text-label font-semibold uppercase tracking-label text-lo">Kicks off in</div>
           <div className="num mt-1 font-display text-display font-bold tabular-nums text-hi">{kickoff}</div>
         </div>
         <p className="max-w-[240px] text-caption leading-relaxed text-lo">Opening prices are live now — the market goes hot at kickoff. Buy early or wait for the whistle.</p>
@@ -67,7 +67,7 @@ export function PreMatchPanel({ kickoff }: { kickoff: string }) {
 export function HaltCallout({ reason }: { reason: string }) {
   return (
     <div className="border-b border-hairline px-4 py-3">
-      <div className="text-label font-semibold uppercase tracking-[0.12em] text-halt">The booth</div>
+      <div className="text-label font-semibold uppercase tracking-label text-halt">The booth</div>
       <p className="mt-1 text-body leading-relaxed text-hi/90">{reason}</p>
     </div>
   );
@@ -98,7 +98,7 @@ export function SettledPanel({ result, held }: { result: SettledResult; held?: S
       {/* result */}
       <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-4">
         <div>
-          <div className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Full time</div>
+          <div className="text-label font-semibold uppercase tracking-label text-lo">Full time</div>
           <div className="mt-1 flex items-baseline gap-3">
             <span className="num font-display text-display font-bold tabular-nums text-hi">{result.scoreLine}</span>
             <span className="text-strong font-semibold text-up">{result.winnerName} win</span>
@@ -111,7 +111,7 @@ export function SettledPanel({ result, held }: { result: SettledResult; held?: S
       {held && (
         <div className="flex flex-wrap items-center justify-between gap-3 border-t border-hairline px-4 py-3">
           <div>
-            <div className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Your position</div>
+            <div className="text-label font-semibold uppercase tracking-label text-lo">Your position</div>
             <div className="num mt-1 text-caption tabular-nums text-lo">{held.shares} {held.code} · avg {fmtPrice(held.avgEntry)} → settled {settlePx}</div>
           </div>
           <div className={`num text-heading font-semibold tabular-nums ${realized >= 0 ? "text-up" : "text-down"}`}>{signedCR(realized)}</div>

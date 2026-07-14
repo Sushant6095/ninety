@@ -33,7 +33,7 @@ export function EventsTimeline() {
   return (
     <div className="p-4">
       <div className="mb-2 flex items-center justify-between">
-        <h3 className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Match incidents</h3>
+        <h3 className="text-label font-semibold uppercase tracking-label text-lo">Match incidents</h3>
         <span className="num rounded-full bg-hairline/60 px-1.5 py-0.5 text-label font-semibold tabular-nums text-lo">{incidents.length}</span>
       </div>
       <ol>

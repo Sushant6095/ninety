@@ -50,7 +50,7 @@ export function CommandMenu({ open, onOpenChange }: { open: boolean; onOpenChang
         <kbd className="num rounded bg-bg px-1 py-0.5 text-label text-lo ring-1 ring-inset ring-hairline">esc</kbd>
       </div>
 
-      <Command.List className="max-h-[54vh] overflow-y-auto p-2 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-label [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-[0.1em] [&_[cmdk-group-heading]]:text-lo">
+      <Command.List className="max-h-[54vh] overflow-y-auto p-2 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-label [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-tag [&_[cmdk-group-heading]]:text-lo">
         <Command.Empty className="px-3 py-8 text-center text-body text-lo">No results.</Command.Empty>
 
         <Command.Group heading="Matches">

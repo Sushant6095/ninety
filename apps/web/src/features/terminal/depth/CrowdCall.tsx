@@ -20,7 +20,7 @@ export function CrowdCall() {
   return (
     <div className="mt-4 rounded-card border border-hairline bg-surface p-4">
       <div className="flex items-baseline justify-between">
-        <h3 className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Crowd call — who wins?</h3>
+        <h3 className="text-label font-semibold uppercase tracking-label text-lo">Crowd call — who wins?</h3>
         <span className="num text-label tabular-nums text-lo">{total.toLocaleString("en-US")} calls</span>
       </div>
       <RadioGroup.Root value={pick} onValueChange={setPick} aria-label="Who wins?" className="mt-3 flex flex-col gap-2">
@@ -32,7 +32,7 @@ export function CrowdCall() {
             <RadioGroup.Item
               key={o.value}
               value={o.value}
-              className={`flex items-center gap-3 rounded-md p-2 ring-1 ring-inset outline-none transition-colors duration-200 hover:bg-hairline/25 focus-visible:ring-up active:bg-hairline/40 ${
+              className={`flex min-h-11 items-center gap-3 rounded-md p-2 ring-1 ring-inset outline-none transition-colors duration-200 hover:bg-hairline/25 focus-visible:ring-up active:bg-hairline/40 ${
                 active ? "bg-hairline/30 ring-up/50" : "ring-hairline"
               }`}
             >

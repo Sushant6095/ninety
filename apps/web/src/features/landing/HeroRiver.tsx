@@ -21,10 +21,10 @@ export function HeroRiver() {
   return (
     <div data-hero-river className="w-full">
       <div className="flex items-baseline justify-between">
-        <span className="num text-label font-semibold uppercase tracking-[0.14em] text-lo">
+        <span className="num text-label font-semibold uppercase tracking-caps text-lo">
           {FEATURED.homeCode}–{FEATURED.awayCode} <span className="text-hi">{score?.home}–{score?.away}</span>
         </span>
-        <span className={`num inline-flex items-center gap-1.5 text-label font-semibold uppercase tracking-[0.1em] ${halted ? "text-halt" : "text-up"}`}>
+        <span className={`num inline-flex items-center gap-1.5 text-label font-semibold uppercase tracking-tag ${halted ? "text-halt" : "text-up"}`}>
           <span aria-hidden className={`h-1.5 w-1.5 rounded-full ${halted ? "bg-halt" : "bg-up shadow-[0_0_6px_var(--up)]"}`} />
           {halted ? "Halted" : "Live"} · {minute}&#39;
         </span>
@@ -35,7 +35,7 @@ export function HeroRiver() {
         <MomentumRiver data={spark} up={rising} height={300} totalMinutes={FULL_TIME} />
       </div>
       <div className="mt-3 flex items-baseline justify-between border-t border-hairline/60 pt-3">
-        <span className="text-label font-semibold uppercase tracking-[0.12em] text-lo">{FEATURED.homeCode} to win</span>
+        <span className="text-label font-semibold uppercase tracking-label text-lo">{FEATURED.homeCode} to win</span>
         <LivePrice value={mk.H * 100} className="text-display font-bold text-hi" />
       </div>
     </div>

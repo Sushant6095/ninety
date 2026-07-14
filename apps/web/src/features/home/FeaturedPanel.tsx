@@ -17,7 +17,7 @@ function Cell({ label, price, lead, frozen }: { label: string; price: number; le
   const ring = frozen ? "bg-halt/5 ring-halt/40" : lead ? "bg-hairline/45 ring-hairline" : "bg-bg/60 ring-hairline/50";
   return (
     <div className={`flex flex-col items-center gap-1 rounded-lg px-2 py-2 ring-1 ring-inset transition-colors duration-200 ${ring}`}>
-      <span className="text-label font-semibold uppercase tracking-[0.08em] text-lo">{label}</span>
+      <span className="text-label font-semibold uppercase tracking-micro text-lo">{label}</span>
       <LivePrice value={price} className={`text-heading font-bold ${lead ? "text-hi" : "text-hi/85"}`} />
     </div>
   );
@@ -77,7 +77,7 @@ export function FeaturedPanel({ market, replayNonce = 0 }: { market: MarketRow; 
   return (
     <section ref={sectionRef} className="elev-hi relative overflow-hidden rounded-card border border-hairline/70 bg-surface">
       <div className="flex items-center justify-between px-4 pt-3">
-        <h2 className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Featured — {halted ? "Halted" : "Live"}</h2>
+        <h2 className="text-label font-semibold uppercase tracking-label text-lo">Featured — {halted ? "Halted" : "Live"}</h2>
         <span className={`num inline-flex items-center gap-1 text-label ${halted ? "text-halt" : "text-up"}`}>
           <span className={`h-1.5 w-1.5 rounded-full ${halted ? "bg-halt" : "bg-up shadow-[0_0_6px_var(--up)]"}`} />
           {minute}&#39;
@@ -105,7 +105,7 @@ export function FeaturedPanel({ market, replayNonce = 0 }: { market: MarketRow; 
           <MomentumRiver data={spark} up={rising} height={108} totalMinutes={FULL_TIME} />
         </div>
         <div data-halt="wash" aria-hidden className="pointer-events-none invisible absolute inset-0 z-10 border-t-2 border-halt/70 bg-halt/15 opacity-0">
-          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-heading font-extrabold uppercase tracking-[0.2em] text-halt/50">Halted</span>
+          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-heading font-extrabold uppercase tracking-hero text-halt/50">Halted</span>
         </div>
         <div data-halt="flash" aria-hidden className="pointer-events-none invisible absolute inset-0 z-30 bg-halt opacity-0" />
         <div data-halt="sweep" aria-hidden className="pointer-events-none invisible absolute inset-y-0 left-0 z-30 w-1/3 bg-halt/50 opacity-0 blur-sm" />

@@ -20,7 +20,7 @@ export function YourPosition({ code, shares, avgEntry, markPct, opened }: YourPo
   return (
     <div className="px-4 py-3">
       <div className="mb-1 flex items-center justify-between">
-        <h3 className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Your position</h3>
+        <h3 className="text-label font-semibold uppercase tracking-label text-lo">Your position</h3>
         <span className="num rounded bg-up/12 px-1 py-0.5 text-label font-semibold text-up ring-1 ring-inset ring-up/25">{code} · {shares} SH</span>
       </div>
       <div className="flex items-end justify-between gap-3">

@@ -51,7 +51,7 @@ export function BigRiver({ match, mark, spark, homeSpark, minute, onReplay, repl
   return (
     <div className="border-b border-hairline px-4 py-3">
       <div className="mb-1 flex items-center justify-between gap-2">
-        <h3 className="text-label font-semibold uppercase tracking-[0.12em] text-lo">
+        <h3 className="text-label font-semibold uppercase tracking-label text-lo">
           Momentum River — <span className="text-up">{match.awayCode} win %</span>
         </h3>
         <div className="flex items-center gap-2">
@@ -61,7 +61,7 @@ export function BigRiver({ match, mark, spark, homeSpark, minute, onReplay, repl
             disabled={replayBusy}
             // A quiet control, NOT an amber one: amber is the halt signal (design law), and burning it on an
             // idle button pre-spends the very cue the money-shot lands on. It only goes amber while it runs.
-            className={`inline-flex min-h-[32px] items-center gap-1.5 rounded-chip bg-bg px-2.5 py-1 text-label font-semibold uppercase tracking-wide ring-1 ring-inset outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-hi disabled:cursor-default ${
+            className={`hit inline-flex min-h-8 items-center gap-1.5 rounded-chip bg-bg px-2.5 py-1 text-label font-semibold uppercase tracking-wide ring-1 ring-inset outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-hi disabled:cursor-default ${
               replayBusy ? "text-halt ring-halt/40" : "text-lo ring-hairline hover:text-hi hover:ring-hi/30"
             }`}
           >
@@ -103,7 +103,7 @@ export function BigRiver({ match, mark, spark, homeSpark, minute, onReplay, repl
         {/* ── Halt choreography overlays (DOM only — never inside the chart canvas). Hidden until the GSAP timeline runs. ── */}
         {/* persistent amber HALT wash — bathes the whole frozen River for the entire halted phase, then fades on resume */}
         <div data-halt="wash" aria-hidden className="pointer-events-none invisible absolute inset-0 z-10 border-t-2 border-halt/70 bg-halt/15 opacity-0">
-          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-display-xl font-extrabold uppercase tracking-[0.2em] text-halt/40">Halted</span>
+          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-display-xl font-extrabold uppercase tracking-hero text-halt/40">Halted</span>
         </div>
         {/* the cliff DRAWS ON — an SVG segment (pre-goal 31 → new mark 55) revealed via stroke-dashoffset, then the
             canvas settles underneath and this fades out. Its geometry is DERIVED (yFor + the live minute), never

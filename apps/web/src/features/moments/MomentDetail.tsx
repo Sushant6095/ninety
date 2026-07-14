@@ -52,7 +52,7 @@ export function MomentDetail({ m }: { m: Moment }) {
         {/* Full-bleed share card */}
         <article className="elev-hi overflow-hidden rounded-card border border-hairline bg-surface">
           <div className="flex items-center justify-between px-5 pt-5">
-            <span className={`rounded-chip px-2.5 py-0.5 text-label font-semibold uppercase tracking-[0.08em] ring-1 ring-inset ${RARITY_STYLE[rarity]}`}>{rarity}</span>
+            <span className={`rounded-chip px-2.5 py-0.5 text-label font-semibold uppercase tracking-micro ring-1 ring-inset ${RARITY_STYLE[rarity]}`}>{rarity}</span>
             <span className="num text-caption font-semibold tabular-nums text-lo">{m.minute}&#39;</span>
           </div>
 

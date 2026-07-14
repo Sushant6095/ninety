@@ -12,7 +12,7 @@ function pnlOf(p: PositionRow, mark: number | undefined): number | null {
 }
 
 function Pnl({ pnl, pre }: { pnl: number | null; pre?: boolean }) {
-  if (pre) return <span className="text-label uppercase tracking-[0.08em] text-lo">PRE</span>;
+  if (pre) return <span className="text-label uppercase tracking-micro text-lo">PRE</span>;
   const n = pnl ?? 0;
   return <span className={`num text-body font-semibold tabular-nums ${n >= 0 ? "text-up" : "text-down"}`}>{fmtPnl(n)}</span>;
 }
@@ -23,7 +23,7 @@ export function OpenPositions() {
   return (
     <section className="elev rounded-card border border-hairline/70 bg-surface">
       <div className="flex items-center justify-between px-4 pt-3 pb-2">
-        <h2 className="text-label font-semibold uppercase tracking-[0.12em] text-lo">OPEN POSITIONS</h2>
+        <h2 className="text-label font-semibold uppercase tracking-label text-lo">OPEN POSITIONS</h2>
         <span className="num text-label tabular-nums text-lo">{POSITIONS.length}</span>
       </div>
       <ul className="px-2 pb-2">

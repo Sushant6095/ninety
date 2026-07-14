@@ -22,14 +22,14 @@ export function H2H() {
   return (
     <div className="p-4">
       <div className="rounded-card border border-hairline bg-surface p-4">
-        <h3 className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Recent form</h3>
+        <h3 className="text-label font-semibold uppercase tracking-label text-lo">Recent form</h3>
         <div className="mt-3 flex flex-col gap-2">
           <FormRow code="AUS" form={FORM.home} />
           <FormRow code="EGY" form={FORM.away} />
         </div>
       </div>
 
-      <h3 className="mt-4 px-1 text-label font-semibold uppercase tracking-[0.12em] text-lo">Head to head</h3>
+      <h3 className="mt-4 px-1 text-label font-semibold uppercase tracking-label text-lo">Head to head</h3>
       <ul className="mt-2 overflow-hidden rounded-card border border-hairline bg-surface divide-y divide-hairline/60">
         {MEETINGS.map((m, i) => (
           <li key={i} className="grid grid-cols-[minmax(90px,110px)_1fr_auto_1fr] items-center gap-3 px-4 py-2.5">

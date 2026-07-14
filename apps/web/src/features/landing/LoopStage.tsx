@@ -25,7 +25,7 @@ export function LoopLegend() {
       {LOOP_STEPS.map((s, i) => (
         <li key={s.label} className="flex items-center gap-x-1">
           <span
-            className={`num rounded-md px-2 py-1 text-label font-semibold uppercase tracking-[0.14em] ring-1 ring-inset transition-colors duration-200 ${
+            className={`num rounded-md px-2 py-1 text-label font-semibold uppercase tracking-caps ring-1 ring-inset transition-colors duration-200 ${
               s.halt
                 ? halted
                   ? "bg-halt/25 text-halt ring-halt/80"

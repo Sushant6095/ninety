@@ -15,7 +15,7 @@ export function NewsStrip() {
   return (
     <section className="border-t border-hairline px-3 py-3 sm:px-4">
       <div className="mb-2 flex items-center justify-between">
-        <h3 className="text-label font-semibold uppercase tracking-[0.1em] text-lo">From the booth</h3>
+        <h3 className="text-label font-semibold uppercase tracking-tag text-lo">From the booth</h3>
         <Link href={routes.moments} className="text-label text-lo transition-colors duration-200 hover:text-hi">All →</Link>
       </div>
       <div className="grid gap-2 sm:grid-cols-2">
@@ -33,7 +33,7 @@ export function NewsStrip() {
               </span>
               <span className="min-w-0">
                 <span className="flex items-center gap-2">
-                  <span className={`text-label font-semibold uppercase tracking-[0.1em] ${t.tint}`}>{n.tag}</span>
+                  <span className={`text-label font-semibold uppercase tracking-tag ${t.tint}`}>{n.tag}</span>
                   <span className="num text-label text-lo">{n.when}</span>
                 </span>
                 <span className="mt-1 block text-body font-medium leading-snug text-hi group-hover:text-white">{n.title}</span>

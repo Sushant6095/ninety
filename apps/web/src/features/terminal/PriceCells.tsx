@@ -37,7 +37,7 @@ export function PriceCells({ mark, todayDelta, codes, selected, onSelect, heldSh
             className={`flex flex-col gap-1 rounded-lg px-3 py-2 text-left outline-none ring-1 ring-inset transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-up ${ring} ${inert ? "cursor-default" : ""}`}
           >
             <span className="flex items-center justify-between gap-1">
-              <span className="min-w-0 truncate text-label font-semibold uppercase tracking-[0.08em] text-lo">
+              <span className="min-w-0 truncate text-label font-semibold uppercase tracking-micro text-lo">
                 {LABEL[o]}{sub && <span className="hidden text-lo sm:inline"> · {sub}</span>}
               </span>
               {(heldShares?.[o] ?? 0) > 0 && (

@@ -22,15 +22,15 @@ export function TodaysMovers() {
   return (
     <section className="elev rounded-card border border-hairline/70 bg-surface">
       <div className="flex items-center justify-between px-4 pt-3 pb-2">
-        <h2 className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Today&apos;s movers</h2>
-        <span className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Δ vs open</span>
+        <h2 className="text-label font-semibold uppercase tracking-label text-lo">Today&apos;s movers</h2>
+        <span className="text-label font-semibold uppercase tracking-label text-lo">Δ vs open</span>
       </div>
       <ul className="px-2 pb-2">
         {rows.map((m) => (
           <li key={`${m.code}-${m.vs}`}>
             <a
               href="/match"
-              className="flex items-center gap-3 rounded-lg px-2 py-1 transition-colors duration-200 hover:bg-hairline/25"
+              className="flex min-h-11 items-center gap-3 rounded-lg px-2 py-1 transition-colors duration-200 hover:bg-hairline/25"
             >
               <span className="min-w-0 flex-1">
                 <span className="block text-body font-medium text-hi">

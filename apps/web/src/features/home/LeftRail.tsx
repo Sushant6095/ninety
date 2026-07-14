@@ -17,7 +17,7 @@ function MyMatchRow({ market }: { market: MarketRow }) {
     <li>
       <Link
         href={routes.match(market.matchId)}
-        className="flex items-center gap-2 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/30"
+        className="flex min-h-11 items-center gap-2 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/30"
       >
         <span className="text-up">★</span>
         <span className="text-body font-medium text-hi">{market.homeCode} – {market.awayCode}</span>
@@ -59,7 +59,7 @@ export function LeftRail() {
         <ul>
           {STAGES.map((s) => (
             <li key={s.name}>
-              <Link href={routes.competition} className="flex items-center gap-2 rounded-lg px-2 py-1 transition-colors duration-200 hover:bg-hairline/30">
+              <Link href={routes.competition} className="flex min-h-11 items-center gap-2 rounded-lg px-2 py-1 transition-colors duration-200 hover:bg-hairline/30">
                 <span className={`mt-1 h-1.5 w-1.5 shrink-0 rounded-full ${s.live ? "bg-up shadow-[0_0_5px_var(--up)]" : "bg-hairline"}`} />
                 <span className="min-w-0">
                   <span className="block text-body font-medium text-hi">{s.name}</span>
@@ -76,7 +76,7 @@ export function LeftRail() {
         <ul>
           {FOLLOWED.map((t) => (
             <li key={t.name}>
-              <Link href={routes.competition} className="flex items-center gap-2 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/30">
+              <Link href={routes.competition} className="flex min-h-11 items-center gap-2 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/30">
                 <Flag code={t.code} size={22} />
                 <span className="text-body font-medium text-hi">{t.name}</span>
                 <span className={`num ml-auto text-label font-semibold tracking-wide ${t.live ? "text-up" : "text-lo"}`}>{t.state}</span>
@@ -95,7 +95,7 @@ export function LeftRail() {
 function SettlementPanel() {
   return (
     <section className="rounded-card border border-chain/25 bg-chain/[0.04] px-4 py-3">
-      <h2 className="mb-2 flex items-center gap-1 text-label font-semibold uppercase tracking-[0.12em] text-chain">
+      <h2 className="mb-2 flex items-center gap-1 text-label font-semibold uppercase tracking-label text-chain">
         <span className="text-chain">◆</span> Settlement — Solana
       </h2>
       <div className="num space-y-1 text-label leading-relaxed text-lo">

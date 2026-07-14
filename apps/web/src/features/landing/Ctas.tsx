@@ -26,7 +26,7 @@ export function CtaPair({ center = false }: { center?: boolean }) {
 
 export function PlayMoneyLine({ className = "" }: { className?: string }) {
   return (
-    <p className={`text-label uppercase tracking-[0.14em] text-lo ${className}`}>
+    <p className={`text-label uppercase tracking-caps text-lo ${className}`}>
       Play money · No deposits · No cash payouts, ever
     </p>
   );

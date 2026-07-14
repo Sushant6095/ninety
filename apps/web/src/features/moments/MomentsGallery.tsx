@@ -27,7 +27,7 @@ export function MomentsGallery() {
 
         {hero && <MomentHero m={hero} />}
 
-        <h2 className="mb-3 mt-8 text-label font-semibold uppercase tracking-[0.12em] text-lo">More moments</h2>
+        <h2 className="mb-3 mt-8 text-label font-semibold uppercase tracking-label text-lo">More moments</h2>
 
         <div role="tablist" aria-label="Filter by rarity" className="mb-4 inline-flex flex-wrap gap-1 rounded-chip bg-surface p-1 ring-1 ring-inset ring-hairline">
           {TABS.map((t) => {

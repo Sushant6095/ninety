@@ -5,7 +5,7 @@ import { Section } from "./Section";
 
 const FAQS = [
   {
-    q: "Is this real-money gambling?",
+    q: "Is this real money?",
     a: "No. Ninety is free to play with play-money credits — there are no deposits and no cash payouts, ever. You play for rank, for Moments, and for the read on the match. Credits have no cash value.",
   },
   {

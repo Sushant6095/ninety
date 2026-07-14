@@ -41,7 +41,7 @@ export function Ticker() {
   return (
     <aside aria-label="Live match prices" className="border-b border-hairline bg-bg">
       <div className="flex items-stretch gap-0 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        <div className="flex shrink-0 items-center gap-1 border-r border-hairline px-3 py-2 text-label font-semibold tracking-[0.14em] text-lo">
+        <div className="flex shrink-0 items-center gap-1 border-r border-hairline px-3 py-2 text-label font-semibold tracking-caps text-lo">
           <span className="h-1.5 w-1.5 rounded-full bg-up shadow-[0_0_5px_var(--up)]" />
           WC26 LIVE
         </div>

@@ -12,14 +12,14 @@ export function TournamentLeaderboard() {
   return (
     <section className="elev rounded-card border border-hairline/70 bg-surface">
       <div className="flex items-center justify-between px-4 pt-3 pb-2">
-        <h2 className="text-label font-semibold uppercase tracking-[0.12em] text-lo">Leaderboard — Tournament</h2>
+        <h2 className="text-label font-semibold uppercase tracking-label text-lo">Leaderboard — Tournament</h2>
         <Link href={routes.leaders} className="text-label text-lo transition-colors duration-200 hover:text-hi">All →</Link>
       </div>
 
       <ul className="px-2">
         {LEADERS.slice(0, 5).map((l) => (
           <li key={l.handle}>
-            <Link href={routes.profile(l.handle)} className="flex items-center gap-2 rounded-lg px-2 py-1 transition-colors duration-200 hover:bg-hairline/30">
+            <Link href={routes.profile(l.handle)} className="flex min-h-11 items-center gap-2 rounded-lg px-2 py-1 transition-colors duration-200 hover:bg-hairline/30">
               <span className="num w-3 text-label tabular-nums text-lo">{l.rank}</span>
               <Avatar handle={l.handle} size={26} />
               <span className="truncate text-body font-medium text-hi">{l.handle}</span>

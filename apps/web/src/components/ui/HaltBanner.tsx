@@ -32,7 +32,7 @@ export function HaltBanner({ reason = "Trading paused — prices frozen" }: Halt
       )}
       <div className="relative flex items-center gap-2">
         <span className="h-1.5 w-1.5 shrink-0 animate-pulse rounded-full bg-halt" />
-        <span className="text-label font-semibold uppercase tracking-[0.12em] text-halt">Market halted</span>
+        <span className="text-label font-semibold uppercase tracking-label text-halt">Market halted</span>
         <span className="text-caption text-hi/80">{reason}</span>
       </div>
     </m.div>

@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { space } from "./src/design/tokens";
+import { space, tracking } from "./src/design/tokens";
 // Colors are CSS vars (styles/tokens.css); the spacing rhythm + type live in src/design/tokens.ts (the authority).
 export default {
   content: ["./src/**/*.{ts,tsx}"],
@@ -26,6 +26,7 @@ export default {
     transitionDuration: { fast: "var(--duration-fast)", DEFAULT: "var(--duration)", slow: "var(--duration-slow)" },
     transitionTimingFunction: { DEFAULT: "var(--ease-out)" },
     spacing: { ...space }, // the intentional spacing scale from tokens.ts (p-md, gap-lg, …)
+    letterSpacing: { ...tracking }, // tracking-micro … tracking-hero from tokens.ts — no arbitrary tracking-[…em]
     fontSize: {
       // The enforceable 6-step type scale (Series-C foundation). Use these named steps over arbitrary text-[Npx];
       // line-height is baked in, tracking stays on classes (label/body carry none by default). 11px is the label
