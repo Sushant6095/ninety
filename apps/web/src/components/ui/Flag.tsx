@@ -7,8 +7,8 @@ interface FlagProps {
   className?: string;
 }
 
-/** Real country flag as a circular crest disc (flagcdn PNG). Falls back to a neutral disc when unmapped.
- *  next/image (flagcdn host allow-listed in next.config) with explicit dimensions. */
+/** Real country flag as a circular crest disc, served from locally baked PNGs (public/flags/ — zero network).
+ *  next/image with explicit dimensions; priority on large crests (featured panel + header) so they paint first. */
 export function Flag({ code, size = 20, className = "" }: FlagProps) {
   const src = flagUrl(code, size > 28 ? 160 : 80);
   return (
@@ -17,8 +17,7 @@ export function Flag({ code, size = 20, className = "" }: FlagProps) {
       style={{ width: size, height: size }}
     >
       {src ? (
-        // impeccable-disable broken-image -- src is a runtime flagcdn URL; renders a real flag PNG, not a placeholder
-        <Image src={src} alt={code} width={size} height={size} loading="lazy" className="h-full w-full object-cover" />
+        <Image src={src} alt={code} width={size} height={size} priority={size > 28} className="h-full w-full object-cover" />
       ) : (
         <span className="num text-label font-semibold text-lo">{code.slice(0, 2)}</span>
       )}

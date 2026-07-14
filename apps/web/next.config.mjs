@@ -10,7 +10,6 @@ export default {
   outputFileTracingRoot: process.env.VERCEL ? import.meta.dirname : path.join(import.meta.dirname, "../.."),
   images: {
     remotePatterns: [
-      { protocol: "https", hostname: "flagcdn.com" }, // real country flags (cross-platform, replaces emoji)
       { protocol: "https", hostname: "i.pravatar.cc" }, // real avatar photos (deterministic per handle seed)
       { protocol: "https", hostname: "api.dicebear.com" }, // avatar fallback
     ],
