@@ -1,5 +1,6 @@
 import { Flag } from "../../../components/ui/Flag";
 import { H2H as MEETINGS, FORM } from "../../../lib/matchdepth";
+import { CrowdCall } from "./CrowdCall";
 
 const FORM_TONE = { W: "bg-up/20 text-up ring-up/40", D: "bg-hairline/60 text-lo ring-hairline", L: "bg-down/20 text-down ring-down/40" } as const;
 
@@ -31,7 +32,11 @@ export function H2H() {
       <h3 className="mt-4 px-1 text-label font-semibold uppercase tracking-[0.12em] text-lo">Head to head</h3>
       <ul className="mt-2 overflow-hidden rounded-card border border-hairline bg-surface divide-y divide-hairline/60">
         {MEETINGS.map((m, i) => (
-          <li key={i} className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 px-4 py-2.5">
+          <li key={i} className="grid grid-cols-[minmax(90px,110px)_1fr_auto_1fr] items-center gap-3 px-4 py-2.5">
+            <span className="min-w-0">
+              <span className="num block text-label tabular-nums text-lo">{m.date}</span>
+              <span className="block truncate text-label text-lo/70">{m.comp}</span>
+            </span>
             <span className="flex min-w-0 items-center justify-end gap-2">
               <span className={`truncate text-caption font-medium ${m.win === "H" ? "text-hi" : "text-lo"}`}>{m.home}</span>
               <Flag code={m.home} size={16} />
@@ -44,6 +49,8 @@ export function H2H() {
           </li>
         ))}
       </ul>
+
+      <CrowdCall />
     </div>
   );
 }
