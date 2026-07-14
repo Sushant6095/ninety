@@ -45,3 +45,9 @@ The layer map and data-flow contract are in the [README](README.md#architecture)
 ## Reporting issues
 
 Open a GitHub issue with steps to reproduce, expected vs. actual behavior, and your Node/pnpm versions. For anything settlement- or proof-related, reference the relevant ADR.
+
+## The documentation map
+
+[README](README.md) · [ARCHITECTURE](ARCHITECTURE.md) · [SETUP](SETUP.md) · [API](API.md) · [ROADMAP](ROADMAP.md) · [FAQ](FAQ.md) · [CHANGELOG](CHANGELOG.md) — and every decision's *why* lives in [`docs/adr/`](docs/adr/).
+
+Found a security issue? See [SECURITY.md](SECURITY.md) — please report privately, not via a public issue.
