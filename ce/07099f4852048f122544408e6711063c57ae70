@@ -1,0 +1,25 @@
+design/PROVENANCE.md
+  s_338735e9af5335::t_71c6af72f36e55 18-19
+apps/web/src/features/terminal/depth/CrowdCall.tsx
+  s_338735e9af5335::t_c3309cee850812 1-51
+apps/web/src/features/terminal/depth/H2H.tsx
+  s_338735e9af5335::t_d84cdbfff6145c 3
+  s_338735e9af5335::t_0e86a4db3421fb 35-39
+  s_338735e9af5335::t_696a0b1a6744fe 52-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "ce07099f4852048f122544408e6711063c57ae70",
+  "prompts": {},
+  "sessions": {
+    "s_338735e9af5335": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93fac499-ebc1-4122-b865-8c9f3e20d6b6",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
