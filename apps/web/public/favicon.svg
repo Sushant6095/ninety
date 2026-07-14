@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Ninety favicon. Values are the brand tokens (bg / hairline / up) inlined: a standalone
+       favicon cannot reference tokens.css custom properties (same exemption as the baked flag PNGs). -->
+  <rect width="64" height="64" rx="14" fill="#0B0D10"/>
+  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#232A33"/>
+  <text x="32" y="44" font-family="'IBM Plex Mono', ui-monospace, Menlo, monospace" font-size="28" font-weight="700" fill="#2BD97C" text-anchor="middle">90</text>
+</svg>

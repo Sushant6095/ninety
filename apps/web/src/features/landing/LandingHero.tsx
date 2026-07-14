@@ -1,6 +1,7 @@
 "use client";
 import { useRef } from "react";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { gsap, useGSAP } from "../../lib/gsap";
 import { motion as m } from "../../design/motion";
 import { Wordmark } from "../../components/ui/Wordmark";
@@ -53,11 +54,12 @@ export function LandingHero() {
           >
             How it works
           </Link>
+          {/* THE terminal button (B1): the always-present app exit, same label as the hero + close CTAs. */}
           <Link
-            href={routes.onboarding}
-            className="inline-flex h-11 items-center rounded-chip bg-up px-4 text-body font-semibold text-bg outline-none transition-opacity duration-200 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-up focus-visible:ring-offset-2 focus-visible:ring-offset-bg active:opacity-80"
+            href={routes.terminal}
+            className="inline-flex h-11 items-center gap-1.5 rounded-chip bg-up px-4 text-body font-semibold text-bg outline-none transition-opacity duration-200 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-up focus-visible:ring-offset-2 focus-visible:ring-offset-bg active:opacity-80"
           >
-            Get 1,000 credits
+            Open the terminal <ArrowRight className="h-4 w-4" aria-hidden strokeWidth={2.25} />
           </Link>
         </nav>
       </header>

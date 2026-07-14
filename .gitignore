@@ -20,3 +20,6 @@ test-ledger/
 # ui-craft loop — generated screenshots (keep the dir, ignore the shots)
 design/screens/impl/*
 !design/screens/impl/.gitkeep
+
+# agent trace logs (session noise — never ship)
+**/.claude/trace/
