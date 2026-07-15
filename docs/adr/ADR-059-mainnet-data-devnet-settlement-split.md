@@ -27,6 +27,11 @@ Meanwhile settlement is deliberately fail-closed on DEVNET (`SETTLEMENT_LIVE = f
 - **Action events** (shot OnTarget/OffTarget/Woodwork/Blocked · free_kick Offside/foul · VAR Goal/Penalty/RedCard/SecondYellow, Stands/Overturned · substitution · penalties Scored/Missed/Retake) become a first-class bus topic `match.actions.v1` feeding the Events timeline — TxLINE-native, zero external sources.
 - **Game phases 15 Abandoned / 16 Cancelled / 19 Postponed map to market VOID** in the lifecycle reducer (ADR-024): committed credits refund automatically off the feed's own phase code — trustless void, no admin path (there is none, ADR-017).
 
+## As landed (implementation shape)
+
+- Actions ride a typed `ActionEvent` (`packages/schema`): `{ action, team?, minute?, confirmed?, detail? }` where `detail` passes TxLINE's `Data` qualifiers through **verbatim** — the taxonomy is feed-owned, we don't chase variants. Own envelope source lane `txline.action` keeps its hashed seqs out of the goal-block seq space for dedup. WS fan-out: `m:{id}:actions` (gateway bridge).
+- The VOID mapping adds **no new engine event type**: on the transition into phase 15/16/19 the normalizer emits ONE `ft` envelope whose status matches the engine's existing `/aband/i` → `abandon` mapping (`market.ts fromEnvelope`) → `VOIDED` + committed-credit refund. Deterministic per-match seq (`seqFromId("void:{matchId}")`) makes recovery-snapshot re-derivation idempotent. Phase detection accepts numeric codes (GameState or StatusId) AND phase-name strings — devnet serves GameState as a string.
+
 ## Consequences
 
 - A mainnet id appearing in a devnet path (or vice versa) is a bug; the guards throw, not warn.
