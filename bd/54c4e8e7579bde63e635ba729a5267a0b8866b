@@ -1,0 +1,40 @@
+docs/adr/ADR-063-component-pass-motion-gradient-exceptions.md
+  s_b60ec3c6161754::t_3fb4204fc57a05 1-50
+apps/web/src/features/landing/VelocityBand.tsx
+  s_b60ec3c6161754::t_91f57a19ad0e8d 3,5-10,40-42
+apps/web/src/features/home/FeaturedPanel.tsx
+  s_b60ec3c6161754::t_e85211c3da4486 128-129
+design/verdicts/2026-07-15-component-pass.md
+  s_b60ec3c6161754::t_8b4511a46878e8 1-101
+  s_b60ec3c6161754::t_4e371e7f7fb293 102-123
+apps/web/src/app/play/PlayScreen.tsx
+  s_b60ec3c6161754::t_745842c4ef33a6 22-23
+apps/web/src/features/how/sections/TxLineSection.tsx
+  s_b60ec3c6161754::t_750880641ba864 24
+  s_b60ec3c6161754::t_d3a98c15c74d8f 57-58
+  s_b60ec3c6161754::t_a2f6b24378bed2 5-6,8-10
+  s_b60ec3c6161754::t_ac4c86bf061291 49
+  s_b60ec3c6161754::t_bb4edafb1a7449 28
+apps/web/src/features/landing/LandingPage.tsx
+  s_b60ec3c6161754::t_9b951235c6677c 46-48
+apps/web/src/lib/terminal.ts
+  s_b60ec3c6161754::t_8461e5c39c7c1c 76-77
+apps/web/src/lib/matchdepth.ts
+  s_b60ec3c6161754::t_652d9d8dda00a9 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "bd54c4e8e7579bde63e635ba729a5267a0b8866b",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
