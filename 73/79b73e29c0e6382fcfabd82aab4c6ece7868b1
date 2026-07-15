@@ -1,0 +1,66 @@
+packages/txline/src/idl.ts
+  s_b60ec3c6161754::t_5569aba7742040 1-3,6-8,15-19,21,23,27-28
+  s_b60ec3c6161754::t_6dbbd992e74e9d 4-5,9-14,20,22,24-26,29-33
+apps/worker-ingest/src/normalizer.ts
+  s_b60ec3c6161754::t_ec802d9d9ae600 92
+  s_b60ec3c6161754::t_f6692cdb965eab 29-50,166
+  s_b60ec3c6161754::t_0d099b27fb5835 11
+  s_b60ec3c6161754::t_42ee7868f979fc 113-131,135-165
+  s_b60ec3c6161754::t_e70ad4bd076f8a 167
+scripts/txline-mainnet-subscribe.mjs
+  s_b60ec3c6161754::t_ec4b4f7e8561b0 1-193
+apps/worker-ingest/src/liveAuth.ts
+  s_b60ec3c6161754::t_cc630f511b6703 1-64
+apps/worker-ingest/src/ingest.ts
+  s_b60ec3c6161754::t_bce46a1e29d7f1 10
+  s_b60ec3c6161754::t_1f3676f88c9a84 96-98
+packages/schema/src/events.ts
+  s_b60ec3c6161754::t_bf21e4843102f6 28
+  s_b60ec3c6161754::t_686e825bfc5310 48
+  s_b60ec3c6161754::t_db3e08c205262d 9
+  s_b60ec3c6161754::t_87bf3fbf092148 74
+packages/config/tsconfig.base.json
+  s_b60ec3c6161754::t_2b8a7f74222821 3
+packages/schema/src/topics.ts
+  s_b60ec3c6161754::t_a59a1f626b222b 6
+packages/schema/src/envelope.ts
+  s_b60ec3c6161754::t_bf44406e28be53 24
+  s_b60ec3c6161754::t_31ecb0cb98e002 7
+packages/txline/txoracle.mainnet.json
+  s_b60ec3c6161754::t_a1a709fac32fc4 1-2104
+apps/api/src/ws/gateway.ts
+  s_b60ec3c6161754::t_6ef37cbd539769 38-41
+docs/adr/ADR-059-mainnet-data-devnet-settlement-split.md
+  s_b60ec3c6161754::t_680b7fcb514121 1-34
+apps/api/src/ws/channels.ts
+  s_b60ec3c6161754::t_c7fe392003afc1 1
+apps/worker-ingest/src/main.ts
+  s_b60ec3c6161754::t_e90b9394da8e8a 1-5,7,9-18,25-37,39
+apps/worker-ingest/src/normalizer.test.ts
+  s_b60ec3c6161754::t_2c6275fc6abb4d 1-93
+packages/schema/src/events.test.ts
+  s_b60ec3c6161754::t_d1857e9fc832d4 21
+packages/schema/src/payloads.ts
+  s_b60ec3c6161754::t_11240ea39edcca 48-60
+packages/txline/src/network.ts
+  s_b60ec3c6161754::t_c061436de8542e 24-27,31-33
+  s_b60ec3c6161754::t_13a12e6d170428 34
+packages/txline/src/client.ts
+  s_b60ec3c6161754::t_2b8a7f74222821 40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "7379b73e29c0e6382fcfabd82aab4c6ece7868b1",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
