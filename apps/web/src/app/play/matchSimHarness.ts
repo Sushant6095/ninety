@@ -1,5 +1,5 @@
 "use client";
-// The /play feed harness (ADR-057) — the PAGE's stand-in for the live WS feed, and the ONLY thing in /play
+// The /play feed harness (ADR-060) — the PAGE's stand-in for the live WS feed, and the ONLY thing in /play
 // that writes match state. It writes exclusively through the store's OWN writers (the same setScore /
 // repriceMatch / rewindMatch that useHaltSequence uses to land the money-shot goal). The Next Goal game
 // never sees this file — it only reads the resulting score delta. Swap in a real feed = delete this hook;

@@ -1,5 +1,5 @@
 "use client";
-// /play (ADR-057) — composes the read-only Next Goal game with the page feed harness. onLock/onReset are
+// /play (ADR-060) — composes the read-only Next Goal game with the page feed harness. onLock/onReset are
 // plain round events; the harness turns them into store-owned goals. The game holds no writer.
 import Link from "next/link";
 import { NextGoal } from "../../features/games/NextGoal";

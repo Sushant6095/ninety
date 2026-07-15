@@ -1,5 +1,5 @@
 "use client";
-// The Next Goal state machine (ADR-057) — READ-ONLY. It reads the ONE live store via useMatchLive and
+// The Next Goal state machine (ADR-060) — READ-ONLY. It reads the ONE live store via useMatchLive and
 // resolves purely by observing a score delta while LOCKED. It imports NO store writers and never touches
 // match state; the goal is produced by the page's feed harness (app/play/matchSimHarness.ts). The only
 // coupling to the page is two plain UI callbacks (onLock/onReset) — round events, not match state.

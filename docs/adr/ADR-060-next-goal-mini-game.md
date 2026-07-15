@@ -1,4 +1,4 @@
-# ADR 057 Next Goal — the halftime mini-game (`/play`), a pure read-only consumer
+# ADR 060 Next Goal — the halftime mini-game (`/play`), a pure read-only consumer
 
 Status: accepted 2026-07-14 (`feat/games`). Cross-ref: ADR-050 (consumer layer — the game reads the ONE store, writes nothing), ADR-051/054/055 (two-source rule + the money-shot SSOT: the game reads the store's MOVING fields, reads MATCH's STILL fields), ADR-052 (GSAP is the sanctioned lib for the heavy win choreography, alongside Framer Motion for micro-interactions). New territory: `apps/web/src/features/games/` + `apps/web/src/app/play/`.
 

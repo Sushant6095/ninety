@@ -1,5 +1,5 @@
 "use client";
-// Next Goal (ADR-057) — the read-only orchestrator. Reads the live match (moving) from the store via the
+// Next Goal (ADR-060) — the read-only orchestrator. Reads the live match (moving) from the store via the
 // hook and the team metadata (still) from MATCH. Swaps the decision surface (PickPad) for the payoff
 // (Verdict). Writes ZERO match state; the goal is produced by the page harness through onLock/onReset.
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";

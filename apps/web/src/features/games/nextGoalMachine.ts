@@ -1,4 +1,4 @@
-// Next Goal — the PURE core (ADR-057). No React, no store, no DOM: just the state-machine vocabulary,
+// Next Goal — the PURE core (ADR-060). No React, no store, no DOM: just the state-machine vocabulary,
 // the scoring math, the goal-detection, and localStorage persistence. Kept pure so the money/streak logic
 // is unit-checkable (nextGoalMachine.test.ts) without a browser or the live store.
 
@@ -16,7 +16,7 @@ export interface Score {
   away: number;
 }
 
-/** The only thing that persists (localStorage, ADR-057). No accounts, no backend. */
+/** The only thing that persists (localStorage, ADR-060). No accounts, no backend. */
 export interface GameStats {
   points: number;
   streak: number;

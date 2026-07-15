@@ -1,5 +1,5 @@
 "use client";
-// The decision surface (ADR-057): the focal countdown + the two big, 2-second-legible pick buttons.
+// The decision surface (ADR-060): the focal countdown + the two big, 2-second-legible pick buttons.
 // Framer Motion owns the micro-interactions (press scale(0.97), selection spring); the countdown ring
 // drains via a CSS transition on stroke-dashoffset (precedented by the River cliff draw-on). Slow and
 // deliberate by design — the countdown IS the tension. Reduced motion drops the drain, keeps the number.

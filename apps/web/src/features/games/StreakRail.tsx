@@ -1,5 +1,5 @@
 "use client";
-// The persistent tally (ADR-057) — streak pips, points, best. localStorage-backed via the hook's stats.
+// The persistent tally (ADR-060) — streak pips, points, best. localStorage-backed via the hook's stats.
 // Numbers are mono/tabular (design law). Pips fill green as the streak climbs; the count pops on change.
 import { motion } from "framer-motion";
 import type { GameStats } from "./nextGoalMachine";

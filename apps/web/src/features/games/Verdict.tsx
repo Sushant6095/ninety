@@ -1,5 +1,5 @@
 "use client";
-// The payoff surface (ADR-057) — the ~1s snappy resolve after the slow countdown. GSAP choreographs the
+// The payoff surface (ADR-060) — the ~1s snappy resolve after the slow countdown. GSAP choreographs the
 // win burst (heavy motion, ADR-052); Framer handles the panel pop and the count-up. Celebration is EARNED:
 // a 3-streak throws more beams, a bigger pop, more glow than a 2. LOST never punishes — quiet, muted,
 // "so close", points kept. Reduced motion drops every beam and pop, keeps opacity + color.
