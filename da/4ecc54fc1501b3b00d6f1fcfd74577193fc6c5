@@ -1,0 +1,19 @@
+docs/adr/ADR-059-gitbook-docs-site-linked-from-app.md
+  s_338735e9af5335::t_2aed66235437c6 1-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "da4ecc54fc1501b3b00d6f1fcfd74577193fc6c5",
+  "prompts": {},
+  "sessions": {
+    "s_338735e9af5335": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93fac499-ebc1-4122-b865-8c9f3e20d6b6",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
