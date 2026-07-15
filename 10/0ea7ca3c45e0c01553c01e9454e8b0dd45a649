@@ -1,0 +1,116 @@
+apps/web/src/components/ui/MomentCard.tsx
+  s_e6fe919b4d8a67::t_2b935c8253a779 27-28
+  s_e6fe919b4d8a67::t_0e2b36f2e431ba 2
+apps/web/src/lib/teamMedia.ts
+  s_e6fe919b4d8a67::t_c0089d1481fb1a 1-47
+apps/web/src/features/portfolio/HistoryPage.tsx
+  s_e6fe919b4d8a67::t_b006a7855e6c98 6
+  s_e6fe919b4d8a67::t_e795a9c0a4bebd 32-33
+apps/web/src/features/competition/GroupTable.tsx
+  s_e6fe919b4d8a67::t_5b28c1a1deefc4 1
+  s_e6fe919b4d8a67::t_554f3ac8dd3bdf 44
+apps/web/src/features/bracket/BracketPage.tsx
+  s_e6fe919b4d8a67::t_1c11422d003a48 4
+  s_e6fe919b4d8a67::t_b05f06aa81094a 13
+design/verdicts/2026-07-15-richness.md
+  s_e6fe919b4d8a67::t_ea4cf0c08e7e55 1-68
+apps/web/src/features/terminal/CompetitionsRail.tsx
+  s_e6fe919b4d8a67::t_01289e023d99d4 4
+  s_e6fe919b4d8a67::t_992b6cd2822701 52-53
+scripts/bake-teams.mjs
+  s_e6fe919b4d8a67::t_91c123a87191e4 1-33,35-138
+  s_e6fe919b4d8a67::t_8ad154c18d9ba5 34
+apps/web/src/components/ui/TeamCrest.tsx
+  s_e6fe919b4d8a67::t_4725e91e39cddf 1-23
+apps/web/src/features/games/PickPad.tsx
+  s_e6fe919b4d8a67::t_d7f724bb5fa60b 9
+  s_e6fe919b4d8a67::t_272106e3ee25a3 197
+apps/web/src/features/moments/MomentDetail.tsx
+  s_e6fe919b4d8a67::t_108ddc26bf5f3e 61-62
+  s_e6fe919b4d8a67::t_618035f04575f8 7
+apps/web/src/features/terminal/depth/H2H.tsx
+  s_e6fe919b4d8a67::t_86cf2c99a7b7b7 38
+  s_e6fe919b4d8a67::t_ea45c95fa3abee 10
+  s_e6fe919b4d8a67::t_c5bc7c00529a20 42,46
+  s_e6fe919b4d8a67::t_deccdcaa5c495f 1
+apps/web/src/features/terminal/depth/Lineups.tsx
+  s_e6fe919b4d8a67::t_4a1768eaa9063b 1-2,4,6-72,74-80,86,94,97,99,102,115-121,125-126
+  s_e6fe919b4d8a67::t_70e1cbdb6572ec 73
+apps/web/src/features/games/NextGoal.tsx
+  s_e6fe919b4d8a67::t_9553ec43c5c5a4 52
+  s_e6fe919b4d8a67::t_86ff5f422210f2 66
+  s_e6fe919b4d8a67::t_1cb4cd280f0dee 6
+apps/web/src/features/home/FeaturedPanel.tsx
+  s_e6fe919b4d8a67::t_17b00a152c78ba 5
+  s_e6fe919b4d8a67::t_c4abe84690cc4e 88-89,95-96
+apps/web/src/components/ui/MomentHero.tsx
+  s_e6fe919b4d8a67::t_bda16adca1de2b 4
+  s_e6fe919b4d8a67::t_8dee46638b034d 51-52
+apps/web/src/components/ui/CommandMenu.tsx
+  s_e6fe919b4d8a67::t_62b0c67186d792 23-24
+  s_e6fe919b4d8a67::t_310c36d8c2ff3b 5
+apps/web/src/features/how/sections/TxLineSection.tsx
+  s_e6fe919b4d8a67::t_06f2a567318e23 12
+docs/adr/ADR-062-thesportsdb-baked-stillness-imagery.md
+  s_e6fe919b4d8a67::t_5f36837de8772a 13
+  s_e6fe919b4d8a67::t_e04515e979fc95 1-10,12,14-20
+  s_e6fe919b4d8a67::t_282ec1b79a8240 11
+apps/web/src/features/home/GroupStandings.tsx
+  s_e6fe919b4d8a67::t_34fd23c40d07cc 25
+  s_e6fe919b4d8a67::t_be23163adb6c31 3
+apps/web/src/components/ui/MatchCard.tsx
+  s_e6fe919b4d8a67::t_a32882236b761b 57,61
+  s_e6fe919b4d8a67::t_b7729606340fa3 8
+apps/web/src/features/terminal/MatchHeader.tsx
+  s_e6fe919b4d8a67::t_200b45d54f148a 30-33
+  s_e6fe919b4d8a67::t_e3b30376eba617 1,3-4,18-22,25,27-29,34-37,54,76
+  s_a3ce267df0c6f1::t_6a95592a0e59a5 83
+apps/web/src/features/terminal/OpenPositions.tsx
+  s_e6fe919b4d8a67::t_c45fd7d35a2091 39
+  s_e6fe919b4d8a67::t_ba39ce1c9fc572 2
+apps/web/src/features/home/LeftRail.tsx
+  s_e6fe919b4d8a67::t_81eab9e2ef95c4 80
+  s_e6fe919b4d8a67::t_510f89f5ead604 4
+apps/web/src/features/proofs/ProofsPage.tsx
+  s_e6fe919b4d8a67::t_b3383da59be7a9 2
+  s_e6fe919b4d8a67::t_3e9cd1e755fec1 15-16
+apps/web/src/features/home/TopMovers.tsx
+  s_e6fe919b4d8a67::t_0f3f385f8e719b 4
+  s_e6fe919b4d8a67::t_2311dd255238a6 41-42
+apps/web/src/features/home/PowerRankings.tsx
+  s_e6fe919b4d8a67::t_497ce752703390 1
+  s_e6fe919b4d8a67::t_9b03782257bc5f 22
+apps/web/src/features/portfolio/PortfolioPage.tsx
+  s_e6fe919b4d8a67::t_e8c79248b3d9d5 26-27
+  s_e6fe919b4d8a67::t_63de32787fb406 5
+design/PROVENANCE.md
+  s_e6fe919b4d8a67::t_dc2762c3f5bf1b 40-45,47
+  s_e6fe919b4d8a67::t_a5da8674cba4c3 46
+  s_e6fe919b4d8a67::t_f744955eec60bd 48
+apps/web/src/data/wc26/media.json
+  s_e6fe919b4d8a67::t_03288a1bde0712 1-3352
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "100ea7ca3c45e0c01553c01e9454e8b0dd45a649",
+  "prompts": {},
+  "sessions": {
+    "s_a3ce267df0c6f1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-aa0102bdbff88cbfc",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
