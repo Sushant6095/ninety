@@ -1,0 +1,27 @@
+.gitignore
+  s_338735e9af5335::t_e851ccc7619329 26-28
+apps/web/src/features/landing/LandingHero.tsx
+  s_338735e9af5335::t_dd40d63c519f4a 70-78
+  s_338735e9af5335::t_bf918d626a7654 8
+apps/web/src/features/terminal/TerminalHeader.tsx
+  s_338735e9af5335::t_49e5f76ad4351c 10,15-16,28
+  s_338735e9af5335::t_f14bdfe22e0830 83-90,95
+apps/web/src/lib/routes.ts
+  s_338735e9af5335::t_dc008f14963421 22-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "0bab4dcbf1b17cae8f29b15565a0daa3b968ba10",
+  "prompts": {},
+  "sessions": {
+    "s_338735e9af5335": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93fac499-ebc1-4122-b865-8c9f3e20d6b6",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
