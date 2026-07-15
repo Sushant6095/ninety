@@ -1,5 +1,6 @@
 "use client";
 import { useMatchLive, TERMINAL_MATCH_ID } from "../live/matchLiveStore";
+import { Terminal, AnimatedSpan } from "../../components/vendor/magicui/terminal";
 import { BOOTH, BOOTH_TIMELINE, BOOTH_GOAL, type BoothEvent } from "../../lib/terminal";
 
 function Impact({ e }: { e: BoothEvent }) {
@@ -45,15 +46,21 @@ export function BoothTimeline() {
         </p>
       </div>
 
-      <ol className="space-y-2">
-        {events.map((e) => (
-          <li key={e.minute} className="flex items-start gap-3">
-            <span className="num w-7 shrink-0 pt-0.5 text-right text-label text-lo">{e.minute}&#39;</span>
-            <p className="min-w-0 flex-1 text-caption leading-snug text-hi/90">{e.text}</p>
-            <Impact e={e} />
-          </li>
+      {/* The log itself wears terminal chrome (magicui Terminal, re-skinned). sequence is OFF on purpose:
+          the vendor sequencer indexes children by position, so a goal line prepending live would inherit an
+          already-completed index and never reveal. Each line fades in on mount at m.fast instead — a system
+          log, not a movie; keys keep played lines from re-animating. */}
+      <Terminal sequence={false}>
+        {events.map((e, i) => (
+          <AnimatedSpan key={e.minute} delay={Math.min(i, 6) * 40}>
+            <span className="flex items-start gap-3">
+              <span className="num w-7 shrink-0 text-right text-lo">{e.minute}&#39;</span>
+              <span className="min-w-0 flex-1 leading-snug text-hi/90">{e.text}</span>
+              <Impact e={e} />
+            </span>
+          </AnimatedSpan>
         ))}
-      </ol>
+      </Terminal>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { Activity, Radio, ShieldCheck, ArrowRight } from "lucide-react";
+import { PipelineBeams } from "./PipelineBeams";
 import { Section } from "./Section";
 
 const PROVIDES = [
@@ -16,8 +17,6 @@ const ENDPOINTS = [
   { id: "F1", path: "/api/fixtures/snapshot", use: "the match slate" },
 ];
 
-const PIPELINE = ["TxLINE SSE", "Normalize + dedup", "Event bus", "Engine reprices (LMSR)", "Settle on Solana"];
-
 export function TxLineSection() {
   return (
     <Section eyebrow="Data backbone" title="Powered by TxLINE." lede="Ninety runs on TxLINE / TxODDS — the sports-data layer that feeds the prices, the scores, and the proofs that make settlement trustless.">
@@ -33,17 +32,10 @@ export function TxLineSection() {
         ))}
       </div>
 
-      {/* Pipeline */}
+      {/* Pipeline — the four hops as a live beam flow (godui animated-beam, re-skinned) */}
       <div className="mt-4 rounded-card border border-hairline bg-surface p-5">
         <h3 className="text-label font-semibold uppercase tracking-label text-lo">How Ninety consumes it</h3>
-        <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-2">
-          {PIPELINE.map((n, i) => (
-            <span key={n} className="flex items-center gap-2">
-              <span className={`rounded-chip px-3 py-1.5 text-caption font-medium ring-1 ring-inset ${i === PIPELINE.length - 1 ? "bg-chain/10 text-chain ring-chain/40" : "bg-bg/40 text-hi ring-hairline"}`}>{n}</span>
-              {i < PIPELINE.length - 1 && <ArrowRight className="h-3.5 w-3.5 text-lo" aria-hidden strokeWidth={2} />}
-            </span>
-          ))}
-        </div>
+        <PipelineBeams />
       </div>
 
       {/* Endpoints (tech-doc) */}

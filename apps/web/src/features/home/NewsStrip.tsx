@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Trophy, Sparkles, ShieldCheck, BarChart3, type LucideIcon } from "lucide-react";
+import { BentoCard } from "../../components/vendor/magicui/bento-grid";
 import { NEWS } from "../../lib/fixtures";
 import { routes } from "../../lib/routes";
 
@@ -10,10 +11,11 @@ const TAG: Record<string, { icon: LucideIcon; tint: string }> = {
   MARKETS: { icon: BarChart3, tint: "text-up" },
 };
 
-/** From the booth — the AI-narrated feed. Text cards (no random stock photos); tag + icon + time. */
+/** From the booth — the AI-narrated feed. Text cards (no random stock photos); tag + icon + time.
+ *  Shell is the re-skinned magicui BentoCard — the board bento's full-width closing row. */
 export function NewsStrip() {
   return (
-    <section className="border-t border-hairline px-3 py-3 sm:px-4">
+    <BentoCard className="px-3 py-3 sm:px-4">
       <div className="mb-2 flex items-center justify-between">
         <h3 className="text-label font-semibold uppercase tracking-tag text-lo">From the booth</h3>
         <Link href={routes.moments} className="text-label text-lo transition-colors duration-200 hover:text-hi">All →</Link>
@@ -26,7 +28,7 @@ export function NewsStrip() {
             <Link
               key={n.id}
               href={routes.moments}
-              className="elev group flex items-start gap-3 rounded-card border border-hairline/70 bg-surface p-3 transition-colors duration-200 hover:border-hairline"
+              className="elev group flex items-start gap-3 rounded-card border border-hairline/70 bg-surface p-3 outline-none transition-colors duration-200 hover:border-hairline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-up/60"
             >
               <span className={`mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-bg ring-1 ring-inset ring-hairline ${t.tint}`}>
                 <Icon size={16} strokeWidth={2} aria-hidden />
@@ -36,12 +38,12 @@ export function NewsStrip() {
                   <span className={`text-label font-semibold uppercase tracking-tag ${t.tint}`}>{n.tag}</span>
                   <span className="num text-label text-lo">{n.when}</span>
                 </span>
-                <span className="mt-1 block text-body font-medium leading-snug text-hi group-hover:text-white">{n.title}</span>
+                <span className="mt-1 block text-body font-medium leading-snug text-hi/90 transition-colors duration-200 group-hover:text-hi">{n.title}</span>
               </span>
             </Link>
           );
         })}
       </div>
-    </section>
+    </BentoCard>
   );
 }

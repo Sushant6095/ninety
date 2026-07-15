@@ -3,6 +3,7 @@
 // plain round events; the harness turns them into store-owned goals. The game holds no writer.
 import Link from "next/link";
 import { NextGoal } from "../../features/games/NextGoal";
+import { RoundFilter } from "../../features/games/RoundFilter";
 import { routes } from "../../lib/routes";
 import { useMatchSimHarness } from "./matchSimHarness";
 
@@ -28,6 +29,8 @@ export function PlayScreen() {
         </div>
 
         <NextGoal onLock={armGoal} onReset={resetMatch} />
+
+        <RoundFilter />
 
         <p className="max-w-sm text-center text-label text-lo">
           Free · no sign-up · your streak saves to this device

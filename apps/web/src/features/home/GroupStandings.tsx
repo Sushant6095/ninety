@@ -1,5 +1,6 @@
 "use client";
 import { Tabs } from "radix-ui";
+import { BentoCard } from "../../components/vendor/magicui/bento-grid";
 import { TeamCrest } from "../../components/ui/TeamCrest";
 import { teamName } from "../../lib/fixtures";
 import { GROUP_STANDINGS, type GroupTable } from "../../lib/rankings";
@@ -39,10 +40,11 @@ function Table({ t }: { t: GroupTable }) {
   );
 }
 
-/** WC26 group standings — all groups, tabbed (Sofascore pattern) via radix Tabs. Top two per group highlighted. */
+/** WC26 group standings — all groups, tabbed (Sofascore pattern) via radix Tabs. Top two per group highlighted.
+ *  Shell comes from the re-skinned magicui BentoCard — this is the board bento's wide cell. */
 export function GroupStandings() {
   return (
-    <section className="elev mt-3 overflow-hidden rounded-card border border-hairline/70 bg-surface">
+    <BentoCard>
       <div className="flex items-center justify-between border-b border-hairline px-4 py-2.5">
         <h2 className="text-label font-semibold uppercase tracking-label text-lo">Group standings</h2>
         <span className="text-label uppercase tracking-wide text-lo">Top 2 + best thirds advance</span>
@@ -65,6 +67,6 @@ export function GroupStandings() {
           </Tabs.Content>
         ))}
       </Tabs.Root>
-    </section>
+    </BentoCard>
   );
 }

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback, useMemo, useRef } from "react";
+import { useState, useCallback, useEffect, useMemo, useRef } from "react";
 import { toast } from "sonner";
 import { MatchHeader } from "./MatchHeader";
 import { BigRiver } from "./BigRiver";
@@ -10,6 +10,7 @@ import { MatchTabs } from "./MatchTabs";
 import { NextGoal } from "../games/NextGoal";
 import { TERMINAL_RESOLVE_WINDOW_MS } from "../games/nextGoalMachine";
 import { StateSwitcher, PreMatchPanel, SettledPanel, type MatchView } from "./MatchStates";
+import { DOCK_TRADE_EVENT, DOCK_REPLAY_EVENT } from "./TerminalDock";
 import { HaltBanner } from "../../components/ui/HaltBanner";
 import { TradeSheet } from "../../components/ui/TradeSheet";
 import { useHaltSequence, type HaltActions } from "../live/useHaltSequence";
@@ -82,6 +83,18 @@ export function MatchColumn() {
     [],
   );
   const { replay } = useHaltSequence(sectionRef, haltActions);
+
+  // The bottom dock's shortcuts land here: open the trade ticket / replay the halt money-shot.
+  useEffect(() => {
+    const onTrade = (): void => setSheetOpen(true);
+    const onReplay = (): void => replay();
+    window.addEventListener(DOCK_TRADE_EVENT, onTrade);
+    window.addEventListener(DOCK_REPLAY_EVENT, onReplay);
+    return () => {
+      window.removeEventListener(DOCK_TRADE_EVENT, onTrade);
+      window.removeEventListener(DOCK_REPLAY_EVENT, onReplay);
+    };
+  }, [replay]);
 
   // The header restates the store — the scorer line appears only once the score actually says a goal exists.
   const headerLive = useMemo(

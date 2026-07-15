@@ -7,11 +7,13 @@ import { ProofFlowLazy } from "./sections/ProofFlowLazy";
 import { TxLineSection } from "./sections/TxLineSection";
 import { OpenSource } from "./sections/OpenSource";
 import { Architecture } from "./sections/Architecture";
+import { Coverage } from "./sections/Coverage";
 import { UserGuide } from "./sections/UserGuide";
 import { Faq } from "./sections/Faq";
 
-/** How Ninety works — the trust showcase. Eight sections: hero · the loop · the proof flow (React Flow, lazy) ·
- *  TxLINE · open source · architecture · how to trade · FAQ. BRAND register — it breathes more than the terminal. */
+/** How Ninety works — the trust showcase. Nine sections: hero · the loop (sticky-scroll) · the proof flow
+ *  (agent-flow + settlement timeline, lazy) · TxLINE (beam pipeline) · open source · architecture · coverage
+ *  (dotted map) · how to trade · FAQ. BRAND register — it breathes more than the terminal. */
 export function HowItWorksPage() {
   return (
     <div className="flex min-h-screen flex-col overflow-x-clip bg-bg">
@@ -23,6 +25,7 @@ export function HowItWorksPage() {
         <TxLineSection />
         <OpenSource />
         <Architecture />
+        <Coverage />
         <UserGuide />
         <Faq />
       </main>

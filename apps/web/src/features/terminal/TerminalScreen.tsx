@@ -6,6 +6,7 @@ import { AttackMomentum } from "./AttackMomentum";
 import { LatestEvents } from "./LatestEvents";
 import { MatchColumn } from "./MatchColumn";
 import { MarketStatus } from "./MarketStatus";
+import { TerminalDock } from "./TerminalDock";
 import { PortfolioCard } from "./PortfolioCard";
 import { OpenPositions } from "./OpenPositions";
 import { TournamentLeaderboard } from "./TournamentLeaderboard";
@@ -17,7 +18,8 @@ import { SESSION } from "../../lib/fixtures";
  *  positions + tournament leaderboard + movers (right). Ticks live; wired to fixtures that mirror the API. */
 export function TerminalScreen() {
   return (
-    <div className="flex min-h-screen flex-col overflow-x-clip bg-bg">
+    // pb-20 clears the fixed bottom dock so the footer / trade panel never sit under it at any breakpoint.
+    <div className="flex min-h-screen flex-col overflow-x-clip bg-bg pb-20">
       <Ticker />
       <TerminalHeader user={SESSION} />
       <main className="mx-auto grid w-full max-w-[1600px] flex-1 grid-cols-1 items-start gap-3 px-3 py-3 sm:px-4 xl:grid-cols-[300px_minmax(0,1fr)_340px]">
@@ -39,6 +41,7 @@ export function TerminalScreen() {
         </div>
       </main>
       <Footer />
+      <TerminalDock />
     </div>
   );
 }

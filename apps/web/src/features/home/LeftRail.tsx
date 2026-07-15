@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { RailCard } from "../../components/ui/RailCard";
+import { MagicCard } from "../../components/vendor/magicui/magic-card";
 import { TeamCrest } from "../../components/ui/TeamCrest";
 import { routes } from "../../lib/routes";
 import { MARKETS } from "../../lib/fixtures";
@@ -91,10 +92,17 @@ export function LeftRail() {
   );
 }
 
-/** Chain surface (violet, --chain) — read-only Solana settlement status. */
+/** Chain surface (violet, --chain) — read-only Solana settlement status. Wrapped in the MagicCard
+ *  pointer-spotlight (chain-tinted via color-mix — legal, this card IS on-chain UI). */
 function SettlementPanel() {
   return (
-    <section className="rounded-card border border-chain/25 bg-chain/[0.04] px-4 py-3">
+    <MagicCard
+      innerClassName="bg-chain/[0.04]"
+      baseBorder="color-mix(in srgb, var(--chain) 25%, transparent)"
+      spotlightColor="color-mix(in srgb, var(--chain) 45%, transparent)"
+      glowColor="color-mix(in srgb, var(--chain) 6%, transparent)"
+    >
+      <section className="px-4 py-3">
       <h2 className="mb-2 flex items-center gap-1 text-label font-semibold uppercase tracking-label text-chain">
         <span className="text-chain">◆</span> Settlement — Solana
       </h2>
@@ -114,6 +122,7 @@ function SettlementPanel() {
         </div>
         <div>feed latency <span className="text-hi">42 ms</span></div>
       </div>
-    </section>
+      </section>
+    </MagicCard>
   );
 }

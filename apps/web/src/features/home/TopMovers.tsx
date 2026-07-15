@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
 import { ArrowUpRight, ArrowDownRight } from "lucide-react";
+import { BentoCard } from "../../components/vendor/magicui/bento-grid";
+import { MagicCard } from "../../components/vendor/magicui/magic-card";
 import { TeamCrest } from "../../components/ui/TeamCrest";
 import { LivePrice } from "../../components/ui/LivePrice";
 import { useMatchLiveList } from "../live/matchLiveStore";
@@ -10,7 +12,9 @@ import { MARKETS } from "../../lib/fixtures";
 const MOVER_COUNT = 4;
 const MARKET_BY_ID = new Map(MARKETS.map((m) => [m.matchId, m])); // identity join — the store holds live values, not team codes
 
-/** Biggest live price swings right now — a real exchange metric, recomputed every tick off the ONE live store. */
+/** Biggest live price swings right now — a real exchange metric, recomputed every tick off the ONE live store.
+ *  Shell is the re-skinned magicui BentoCard (full-width bento row); each mover stat tile gets the MagicCard
+ *  pointer-spotlight (hover only, token color-mix, off under reduced motion). */
 export function TopMovers() {
   const live = useMatchLiveList();
   const movers = live
@@ -22,7 +26,7 @@ export function TopMovers() {
   if (movers.length === 0) return null;
 
   return (
-    <section className="border-t border-hairline px-3 py-3 sm:px-4">
+    <BentoCard className="px-3 py-3 sm:px-4">
       <h3 className="mb-2 flex items-center gap-2 text-label font-semibold uppercase tracking-tag text-lo">
         Biggest movers
         <span className="h-1 w-1 rounded-full bg-up shadow-[0_0_5px_var(--up)]" />
@@ -32,28 +36,29 @@ export function TopMovers() {
         {movers.map(({ row, minute, delta, last }) => {
           const up = delta >= 0;
           return (
-            <Link
-              key={row.marketId}
-              href={routes.match(row.matchId)}
-              className="elev group flex flex-col gap-2 rounded-card border border-hairline/70 bg-surface p-3 transition-colors duration-200 hover:border-hairline"
-            >
-              <span className="flex items-center gap-1">
-                <TeamCrest code={row.homeCode} size={18} />
-                <TeamCrest code={row.awayCode} size={18} />
-                <span className="num ml-1 text-label text-lo">{row.homeCode}–{row.awayCode}</span>
-                <span className="num ml-auto text-label text-lo">{minute}&#39;</span>
-              </span>
-              <span className="flex items-end justify-between">
-                <LivePrice value={last} className="font-display text-display font-bold leading-none text-hi" />
-                <span className={`num inline-flex items-center gap-0.5 text-caption font-semibold ${up ? "text-up" : "text-down"}`}>
-                  {up ? <ArrowUpRight size={13} strokeWidth={2.5} /> : <ArrowDownRight size={13} strokeWidth={2.5} />}
-                  {up ? "+" : "−"}{Math.abs(delta).toFixed(1)}
+            <MagicCard key={row.marketId} className="elev h-full">
+              <Link
+                href={routes.match(row.matchId)}
+                className="flex h-full flex-col gap-2 p-3 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-up/60"
+              >
+                <span className="flex items-center gap-1">
+                  <TeamCrest code={row.homeCode} size={18} />
+                  <TeamCrest code={row.awayCode} size={18} />
+                  <span className="num ml-1 text-label text-lo">{row.homeCode}–{row.awayCode}</span>
+                  <span className="num ml-auto text-label text-lo">{minute}&#39;</span>
                 </span>
-              </span>
-            </Link>
+                <span className="flex items-end justify-between">
+                  <LivePrice value={last} className="font-display text-display font-bold leading-none text-hi" />
+                  <span className={`num inline-flex items-center gap-0.5 text-caption font-semibold ${up ? "text-up" : "text-down"}`}>
+                    {up ? <ArrowUpRight size={13} strokeWidth={2.5} /> : <ArrowDownRight size={13} strokeWidth={2.5} />}
+                    {up ? "+" : "−"}{Math.abs(delta).toFixed(1)}
+                  </span>
+                </span>
+              </Link>
+            </MagicCard>
           );
         })}
       </div>
-    </section>
+    </BentoCard>
   );
 }

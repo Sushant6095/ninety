@@ -1,0 +1,49 @@
+"use client";
+import { useReducedMotion } from "framer-motion";
+import {
+  ScrollVelocityContainer,
+  ScrollVelocityRow,
+} from "../../components/vendor/magicui/scroll-based-velocity";
+
+// The velocity band (magicui scroll-based-velocity, re-skinned) — the product loop as a typographic
+// chapter break between the price story and the proof story: display type at whisper contrast,
+// speed reacting to the visitor's own scroll. Decorative (aria-hidden — the same four verbs are
+// real copy elsewhere). Reduced motion → one static centered row, no marquee at all.
+
+const WORDS = ["price", "trade", "settle", "prove"] as const;
+
+function BandRow() {
+  return (
+    // /70 not /30: axe checks contrast on visually-rendered text even under aria-hidden — 48px bold
+    // needs ≥3:1 on --bg (/50 measured 2.67, /70 ≈ 4:1 with margin) and it still whispers vs full lo.
+    <span className="font-display text-section font-bold text-lo/70">
+      {WORDS.map((w) => (
+        <span key={w} className="inline-block px-7">
+          {w}
+          <span aria-hidden className="pl-14 text-lo/30">
+            ·
+          </span>
+        </span>
+      ))}
+    </span>
+  );
+}
+
+export function VelocityBand() {
+  const reduce = useReducedMotion();
+  return (
+    <div aria-hidden className="select-none overflow-hidden border-b border-hairline py-5">
+      {reduce ? (
+        <div className="flex justify-center whitespace-nowrap">
+          <BandRow />
+        </div>
+      ) : (
+        <ScrollVelocityContainer>
+          <ScrollVelocityRow baseVelocity={3}>
+            <BandRow />
+          </ScrollVelocityRow>
+        </ScrollVelocityContainer>
+      )}
+    </div>
+  );
+}

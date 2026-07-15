@@ -6,6 +6,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { gsap, useGSAP } from "../../lib/gsap";
+import { Confetti, type ConfettiRef } from "../../components/vendor/magicui/confetti";
 import { awardFor, type GameStats, type Result, type Side } from "./nextGoalMachine";
 
 // per-tier escalation — intensity, not hue (up-green stays the win semantic; design law reserves halt/chain)
@@ -41,9 +42,45 @@ export function Verdict({
   const scorer = scored === "H" ? home : scored === "A" ? away : null;
   const award = won ? awardFor(stats.streak) : 0;
 
+  // Correct-pick confetti (magicui/canvas-confetti) — fires ONCE per resolved round (Verdict
+  // remounts per round via the AnimatePresence key). Colors come from the up + hi tokens read
+  // off :root at fire time (no hex literals); origin is the verdict card's centre. Reduced
+  // motion → no confetti at all (the verdict state is the feedback).
+  const burstAnchor = useRef<HTMLDivElement>(null);
+  const confettiRef = useRef<ConfettiRef>(null);
+  const fired = useRef(false); // once per mount — StrictMode's dev double-effect must not double-burst
+  useEffect(() => {
+    if (!won || reduce || fired.current) return;
+    fired.current = true;
+    const styles = getComputedStyle(document.documentElement);
+    const colors = [styles.getPropertyValue("--up").trim(), styles.getPropertyValue("--text-hi").trim()].filter(Boolean);
+    const rect = burstAnchor.current?.getBoundingClientRect();
+    const origin = rect
+      ? { x: (rect.left + rect.width / 2) / window.innerWidth, y: (rect.top + rect.height / 2) / window.innerHeight }
+      : undefined;
+    confettiRef.current?.fire({
+      particleCount: 80,
+      spread: 55,
+      startVelocity: 28,
+      ticks: 130,
+      origin,
+      colors,
+      disableForReducedMotion: true,
+    });
+  }, [won, reduce]);
+
   return (
     <div className="flex flex-col items-center gap-6">
+      {won && !reduce && (
+        <Confetti
+          ref={confettiRef}
+          manualstart
+          aria-hidden
+          className="pointer-events-none fixed inset-0 z-50 h-full w-full"
+        />
+      )}
       <motion.div
+        ref={burstAnchor}
         initial={{ opacity: 0, scale: reduce ? 1 : 0.9 }}
         animate={{ opacity: 1, scale: won && !reduce ? POP[tier] : 1 }}
         transition={won ? { type: "spring", duration: 0.5, bounce: 0.28 } : { duration: 0.25, ease: [0.16, 1, 0.3, 1] }}

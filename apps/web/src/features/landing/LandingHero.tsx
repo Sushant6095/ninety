@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { gsap, useGSAP } from "../../lib/gsap";
 import { motion as m } from "../../design/motion";
 import { Wordmark } from "../../components/ui/Wordmark";
+import { Backlight } from "../../components/vendor/magicui/backlight";
 import { routes, DOCS_URL } from "../../lib/routes";
 import { CtaPair, PlayMoneyLine } from "./Ctas";
 import { HeroRiver } from "./HeroRiver";
@@ -105,10 +106,14 @@ export function LandingHero() {
             <div className="mt-8">
               <CtaPair />
             </div>
-            <PlayMoneyLine className="mt-6" />
+            <PlayMoneyLine className="mt-6" highlight />
           </div>
         </div>
-        <HeroRiver />
+        {/* the Backlight (magicui, rebuilt static) — a quiet hi/up ambient pool under the tape;
+            the River stays the hero, the glow never animates, chain is deliberately absent here */}
+        <Backlight>
+          <HeroRiver />
+        </Backlight>
       </div>
     </section>
   );

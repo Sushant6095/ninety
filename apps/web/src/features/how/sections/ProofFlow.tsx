@@ -1,53 +1,27 @@
 "use client";
-import { ReactFlow, Background, BackgroundVariant, Handle, Position, type Node, type Edge, type NodeProps } from "@xyflow/react";
-import "@xyflow/react/dist/style.css";
-import { useReducedMotion } from "framer-motion";
-import { Radio, Flag, FileCheck2, Cpu, CircleCheck, type LucideIcon } from "lucide-react";
+// The proof pipeline — godui agent-flow (re-skinned to tokens) replaces the React Flow graph
+// (one owner per element): four nodes with the auto-play light tracing feed → merkle root →
+// validateStat → settled, looping as the "live-ish" status. Only txoracle.validateStat runs
+// chain violet (on-chain law). Below it, the godui agent-timeline walks one settlement step by
+// step with mono ids/sigs in the collapsible rows. Drag/pan stay on (this is the sanctioned
+// flow-viz page); the nodes read fully without dragging. Reduced motion → instant states.
+import { Radio, Hash, Cpu, CircleCheck } from "lucide-react";
+import { AgentFlow, type AgentFlowNode, type AgentFlowEdge } from "../../../components/vendor/godui/agent-flow";
+import { AgentStep, AgentTimeline } from "../../../components/vendor/godui/agent-timeline";
 import { ProofBadge } from "../../../components/ui/ProofBadge";
 import { Section } from "./Section";
 
-type Kind = "off" | "chain" | "settled";
-interface PFData { label: string; sub: string; kind: Kind; icon: LucideIcon; sig?: string; [k: string]: unknown }
+const NODES: AgentFlowNode[] = [
+  { id: "feed", label: "TxLINE fixture feed", sublabel: "scores + game_finalised", icon: <Radio aria-hidden strokeWidth={2} />, x: 0, y: 60 },
+  { id: "root", label: "Score merkle root", sublabel: "stat-validation bundle", icon: <Hash aria-hidden strokeWidth={2} />, x: 280, y: 84 },
+  { id: "verify", label: "txoracle.validateStat", sublabel: "verified on Solana", icon: <Cpu aria-hidden strokeWidth={2} />, tone: "chain", x: 560, y: 60 },
+  { id: "settled", label: "Market settled", sublabel: "winning shares pay 100", icon: <CircleCheck aria-hidden strokeWidth={2} />, x: 840, y: 84 },
+];
 
-const RING: Record<Kind, string> = {
-  off: "border-hairline bg-surface",
-  chain: "border-chain/50 bg-chain/[0.05]",
-  settled: "border-up/50 bg-up/[0.06]",
-};
-const ICONWRAP: Record<Kind, string> = {
-  off: "bg-bg/50 text-hi ring-hairline",
-  chain: "bg-chain/10 text-chain ring-chain/40",
-  settled: "bg-up/10 text-up ring-up/40",
-};
-
-/** One re-skinned proof-flow node — Ninety tokens, never React Flow's stock blue. Handles are invisible. */
-function PFNode({ data }: NodeProps) {
-  const d = data as PFData;
-  const Icon = d.icon;
-  return (
-    <div className={`w-[184px] rounded-card border p-3 elev ${RING[d.kind]}`}>
-      <Handle type="target" position={Position.Left} style={{ opacity: 0, width: 1, height: 1, minWidth: 0, border: 0 }} />
-      <div className="flex items-center gap-2">
-        <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full ring-1 ring-inset ${ICONWRAP[d.kind]}`}>
-          <Icon className="h-4 w-4" aria-hidden strokeWidth={2} />
-        </span>
-        <span className={`text-strong font-semibold leading-tight ${d.kind === "settled" ? "text-up" : d.kind === "chain" ? "text-chain" : "text-hi"}`}>{d.label}</span>
-      </div>
-      <p className="num mt-2 text-label leading-snug tabular-nums text-lo">{d.sub}</p>
-      {d.sig && <div className="mt-2"><ProofBadge sig={d.sig} label="Settled" /></div>}
-      <Handle type="source" position={Position.Right} style={{ opacity: 0, width: 1, height: 1, minWidth: 0, border: 0 }} />
-    </div>
-  );
-}
-
-const nodeTypes = { pf: PFNode };
-
-const NODES: Node[] = [
-  { id: "feed", type: "pf", position: { x: 0, y: 40 }, data: { label: "TxLINE feed", sub: "consensus prices + live scores", kind: "off", icon: Radio } },
-  { id: "score", type: "pf", position: { x: 232, y: 40 }, data: { label: "Score event", sub: "game_finalised at full time", kind: "off", icon: Flag } },
-  { id: "proof", type: "pf", position: { x: 464, y: 40 }, data: { label: "Stat-validation", sub: "Merkle proof of the goals", kind: "off", icon: FileCheck2 } },
-  { id: "chain", type: "pf", position: { x: 696, y: 40 }, data: { label: "validateStatV2", sub: "verified on Solana", kind: "chain", icon: Cpu } },
-  { id: "settled", type: "pf", position: { x: 928, y: 20 }, data: { label: "Market settled", sub: "winners paid · 100 credits", kind: "settled", icon: CircleCheck, sig: "7hNq…devnetAusEgy4kP" } },
+const EDGES: AgentFlowEdge[] = [
+  { id: "feed-root", from: "feed", to: "root", curvature: 16 },
+  { id: "root-verify", from: "root", to: "verify", curvature: 16 },
+  { id: "verify-settled", from: "verify", to: "settled", curvature: 16 },
 ];
 
 const PANELS = [
@@ -56,37 +30,37 @@ const PANELS = [
   { title: "What “settled” means", body: "The market resolves to the proven outcome, winning shares pay 100 credits, and the ProofBadge links the exact transaction on Solscan." },
 ];
 
-export function ProofFlow() {
-  const reduce = useReducedMotion();
-  const edges: Edge[] = ["feed-score", "score-proof", "proof-chain", "chain-settled"].map((id, i) => {
-    const [source, target] = [["feed", "score"], ["score", "proof"], ["proof", "chain"], ["chain", "settled"]][i];
-    const stroke = i === 3 ? "var(--up)" : i === 2 ? "var(--chain)" : "var(--hairline)";
-    return { id, source, target, animated: !reduce, style: { stroke, strokeWidth: 1.75 } };
-  });
+const SIG = "7hNq…devnetAusEgy4kP";
 
+export function ProofFlow() {
   return (
     <Section eyebrow="The proof" title="Why the result is trustworthy." lede="From the feed to the final settlement, every step is verifiable — and the last two happen on-chain, where no one can quietly change them.">
-      <div className="elev overflow-hidden rounded-card border border-hairline bg-bg">
-        <div className="h-[280px] w-full sm:h-[320px]">
-          <ReactFlow
-            nodes={NODES}
-            edges={edges}
-            nodeTypes={nodeTypes}
-            fitView
-            fitViewOptions={{ padding: 0.14 }}
-            proOptions={{ hideAttribution: true }}
-            nodesDraggable={false}
-            nodesConnectable={false}
-            elementsSelectable={false}
-            panOnDrag={false}
-            zoomOnScroll={false}
-            zoomOnPinch={false}
-            zoomOnDoubleClick={false}
-            preventScrolling={false}
-          >
-            <Background variant={BackgroundVariant.Dots} gap={22} size={1} color="var(--hairline)" />
-          </ReactFlow>
-        </div>
+      <AgentFlow
+        aria-label="The proof pipeline: TxLINE fixture feed, score merkle root, txoracle.validateStat, market settled"
+        nodes={NODES}
+        edges={EDGES}
+        autoPlay
+        continuous
+        className="h-[280px] w-full sm:h-[320px]"
+      />
+
+      {/* One settlement, step by step (godui agent-timeline, re-skinned) — the ids behind the graph. */}
+      <div className="mt-4 rounded-card border border-hairline bg-surface p-5">
+        <h3 className="text-label font-semibold uppercase tracking-label text-lo">One settlement, step by step</h3>
+        <AgentTimeline className="mt-4">
+          <AgentStep status="success" title="Proof fetched" meta="S4 · stat-validation">
+            <span className="num block tabular-nums">merkle root a3f19c…e402 · game_finalised · 2–1</span>
+          </AgentStep>
+          <AgentStep status="success" tone="chain" title="Verified on-chain" meta="validateStatV2" defaultOpen>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="num tabular-nums">tx {SIG}</span>
+              <ProofBadge sig={SIG} label="Settled" />
+            </div>
+          </AgentStep>
+          <AgentStep status="success" title="Market settled" meta="100 credits / share" last>
+            <span>The market resolves to the proven outcome — winning shares pay 100 credits.</span>
+          </AgentStep>
+        </AgentTimeline>
       </div>
 
       <div className="mt-4 grid gap-4 sm:grid-cols-3">

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { Highlighter } from "../../components/vendor/magicui/highlighter";
 import { routes } from "../../lib/routes";
 
 /** The landing's ONE funnel, repeated verbatim (hero + close, per the hyperfoundation restraint law):
@@ -24,10 +25,19 @@ export function CtaPair({ center = false }: { center?: boolean }) {
   );
 }
 
-export function PlayMoneyLine({ className = "" }: { className?: string }) {
+/** The disclosure line. `highlight` draws the rough up-token underline under "Play money" ONCE
+ *  (the hero's instance only — magicui highlighter, re-skinned; reduced motion → static border). */
+export function PlayMoneyLine({ className = "", highlight = false }: { className?: string; highlight?: boolean }) {
   return (
     <p className={`text-label uppercase tracking-caps text-lo ${className}`}>
-      Play money · No deposits · No cash payouts, ever
+      {highlight ? (
+        <Highlighter token="up" action="underline" strokeWidth={1.5} padding={3}>
+          Play money
+        </Highlighter>
+      ) : (
+        "Play money"
+      )}{" "}
+      · No deposits · No cash payouts, ever
     </p>
   );
 }

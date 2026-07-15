@@ -8,8 +8,17 @@ import { WorldGlobeLazy } from "./WorldGlobeLazy";
 import { StickerPeelLazy } from "./StickerPeelLazy";
 import { LoopStage, LoopLegend } from "./LoopStage";
 import { PriceScrub } from "./PriceScrub";
+import { PricePath } from "./PricePath";
+import { VelocityBand } from "./VelocityBand";
+import { FlowFieldLazy } from "./FlowFieldLazy";
+import { MomentCard } from "./MomentCard";
+import { PlayMoneyDissolve } from "./PlayMoneyDissolve";
+import { CrowdBand } from "./CrowdBand";
 import { CtaPair } from "./Ctas";
 import { NumberTicker } from "../../components/ui/NumberTicker";
+import { HyperText } from "../../components/vendor/magicui/hyper-text";
+import { Highlighter } from "../../components/vendor/magicui/highlighter";
+import { HoverExpand } from "../../components/vendor/skiper/skiper52";
 import { Footer } from "../home/Footer";
 import { routes } from "../../lib/routes";
 
@@ -17,6 +26,13 @@ const PROOF_STEPS = [
   { n: "01", title: "TxLINE signs the feed", copy: "Every goal, halt and final whistle arrives as a signed message. The data carries its own evidence." },
   { n: "02", title: "The program verifies", copy: "The Solana program checks that signature before any market settles. There is no admin override, by design." },
   { n: "03", title: "Settlement is public", copy: "Every settled market leaves a proof on devnet that anyone can open. No trust required, ever." },
+] as const;
+
+// The three pillars (skiper52 hover-expand panels) — the tagline, told in the story's own words.
+const PILLARS = [
+  { title: "Terminal-grade data", copy: "Sofascore density with a terminal's calm — live prices, the tape and the Booth, every minute of the match." },
+  { title: "Priced by TxLINE", copy: "Every mark comes from the signed TxLINE feed. The price is evidence, not opinion — it moves the moment the match does." },
+  { title: "Settled on Solana", copy: "The program verifies the feed's signature before any market settles. Public proofs on devnet, no admin override." },
 ] as const;
 
 /** The landing — where a visitor arrives (the board at /board is where a trader goes). Structure follows the
@@ -28,13 +44,18 @@ export function LandingPage() {
     <div className="flex min-h-screen flex-col bg-bg">
       <main>
         <LandingHero />
+        {/* the story wrapper: the scroll-drawn price path (skiper19) runs down the wide left
+            margin for the whole tale — delete the PricePath line and the page doesn't miss it */}
+        <div className="relative">
+        <PricePath className="hidden 2xl:block" />
         <LandingScroll>
           {/* 2 — the loop, told by the product itself */}
           <section aria-labelledby="loop-h" className="border-b border-hairline">
             <div data-arrive className="mx-auto grid w-full max-w-[1180px] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_minmax(380px,440px)] lg:items-center lg:gap-16 lg:py-24">
               <div>
                 <h2 data-arrive-item id="loop-h" className="max-w-[14ch] font-display text-section font-bold text-hi">
-                  Goal. Halt. Reprice.
+                  {/* magicui hyper-text — the ONE scramble-in headline; fires once in view, then static */}
+                  <HyperText duration={700}>Goal. Halt. Reprice.</HyperText>
                 </h2>
                 <p data-arrive-item className="mt-5 max-w-[48ch] text-strong leading-relaxed text-lo">
                   A goal freezes the market for a beat: the halt. Prices land at the new reality, the Booth
@@ -47,6 +68,17 @@ export function LandingPage() {
               </div>
               <div data-arrive-item>
                 <LoopStage />
+              </div>
+            </div>
+          </section>
+
+          {/* 2b — the three pillars (skiper52 hover-expand, re-skinned): the tagline as panels
+              that lean toward the pointer; keyboard focus expands them too, reduced → equal */}
+          <section aria-labelledby="pillars-h" className="border-b border-hairline">
+            <h2 id="pillars-h" className="sr-only">What Ninety runs on</h2>
+            <div data-arrive className="mx-auto w-full max-w-[1180px] px-4 py-16 sm:px-6 lg:py-20">
+              <div data-arrive-item>
+                <HoverExpand items={[...PILLARS]} />
               </div>
             </div>
           </section>
@@ -69,15 +101,25 @@ export function LandingPage() {
             </div>
           </section>
 
-          {/* 4 — proof: the one violet (on-chain) surface on the page, on a tonal chapter break */}
-          <section aria-labelledby="proof-h" className="border-b border-hairline bg-surface/60">
-            <div data-arrive className="mx-auto w-full max-w-[1180px] px-4 py-16 sm:px-6 lg:py-24">
+          {/* 3b — the velocity band (magicui scroll-based-velocity): the loop's four verbs as a
+              typographic chapter break, speed riding the visitor's own scroll */}
+          <VelocityBand />
+
+          {/* 4 — proof: the one violet (on-chain) surface on the page, on a tonal chapter break.
+              The flow field (godui, re-skinned transparent) streams signed data behind it. */}
+          <section aria-labelledby="proof-h" className="relative border-b border-hairline bg-surface/60">
+            <FlowFieldLazy className="hidden lg:block" />
+            <div data-arrive className="relative z-10 mx-auto w-full max-w-[1180px] px-4 py-16 sm:px-6 lg:py-24">
               <p data-arrive-item className="inline-flex items-center gap-1.5 text-label font-semibold uppercase tracking-caps text-chain">
                 <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-chain shadow-[0_0_5px_var(--chain)]" />
                 On-chain
               </p>
               <h2 data-arrive-item id="proof-h" className="mt-4 max-w-[22ch] font-display text-section font-bold text-hi">
-                Nobody is trusted. Everything is proven.
+                Nobody is trusted.{" "}
+                {/* the settlement claim earns the violet stroke — this IS the on-chain surface */}
+                <Highlighter token="chain" action="underline" strokeWidth={2} padding={4}>
+                  Everything is proven.
+                </Highlighter>
               </h2>
               <div className="mt-10 grid gap-8 sm:grid-cols-3">
                 {PROOF_STEPS.map((s) => (
@@ -133,16 +175,28 @@ export function LandingPage() {
             {/* the play-money sticker (Originkit sticker-peel, re-skinned) — peels on hover/press;
                 the disclosure it carries is also plain text in the hero and the footer */}
             <StickerPeelLazy className="absolute right-[6%] top-8 z-20 hidden h-[190px] w-[190px] -rotate-6 lg:block" />
-            <div data-arrive className="pointer-events-none relative z-10 mx-auto w-full max-w-[1180px] px-4 py-20 text-center sm:px-6 lg:py-28">
+            {/* the Moment teaser (godui holographic-card, re-skinned) mirrors the sticker on the
+                left margin — canonical Ashour moment, hi/up foil, desktop tilt only */}
+            <div className="absolute left-[5%] top-12 z-20 hidden -rotate-2 xl:block">
+              <MomentCard />
+            </div>
+            <div data-arrive className="pointer-events-none relative z-10 mx-auto w-full max-w-[1180px] px-4 pb-10 pt-20 text-center sm:px-6 lg:pt-28">
               <h2 data-arrive-item id="close-h" className="mx-auto max-w-[18ch] font-display text-section font-bold text-hi">
                 The whistle is the opening bell.
               </h2>
               <div data-arrive-item className="pointer-events-auto mt-8 flex justify-center">
                 <CtaPair center />
               </div>
+              {/* the disclosure, reforming from particles (godui particle-dissolve) — one shot */}
+              <div data-arrive-item className="mt-6 flex justify-center">
+                <PlayMoneyDissolve />
+              </div>
             </div>
+            {/* the crowd (skiper39, re-skinned): a silhouette terrace along the bottom edge */}
+            <CrowdBand className="z-10 hidden h-[140px] sm:block" />
           </section>
         </LandingScroll>
+        </div>
       </main>
       <Footer />
     </div>

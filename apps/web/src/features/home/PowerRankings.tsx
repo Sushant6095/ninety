@@ -1,12 +1,14 @@
+import { BentoCard } from "../../components/vendor/magicui/bento-grid";
 import { TeamCrest } from "../../components/ui/TeamCrest";
 import { teamName } from "../../lib/fixtures";
 import { POWER_RANKINGS } from "../../lib/rankings";
 
 /** Ninety Power Rankings — a market-implied strength table (our answer to Sofascore's Power Rankings).
- *  Rating priced from our own markets; movement is the shift vs the last update. */
+ *  Rating priced from our own markets; movement is the shift vs the last update.
+ *  Shell is the re-skinned magicui BentoCard — the board bento's tall narrow cell. */
 export function PowerRankings() {
   return (
-    <section className="elev mt-3 overflow-hidden rounded-card border border-hairline/70 bg-surface">
+    <BentoCard>
       <div className="flex items-center justify-between border-b border-hairline px-4 py-2.5">
         <h2 className="text-label font-semibold uppercase tracking-label text-lo">Ninety power rankings</h2>
         <span className="text-label uppercase tracking-wide text-lo">Market-implied · WC26</span>
@@ -30,6 +32,6 @@ export function PowerRankings() {
           );
         })}
       </ul>
-    </section>
+    </BentoCard>
   );
 }

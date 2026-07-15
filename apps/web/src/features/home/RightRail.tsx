@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { RailCard } from "../../components/ui/RailCard";
 import { Avatar } from "../../components/ui/Avatar";
+import { MagicCard } from "../../components/vendor/magicui/magic-card";
 import { FeaturedPanel } from "./FeaturedPanel";
 import { useMatchLiveList } from "../live/matchLiveStore";
 import { routes } from "../../lib/routes";
@@ -77,18 +78,27 @@ export function RightRail() {
         </ul>
       </RailCard>
 
-      <Link
-        href={routes.moments}
-        className="group rounded-card border border-chain/25 bg-chain/[0.04] px-4 py-3 transition-colors duration-200 hover:border-chain/40"
+      {/* Moment of the day — an on-chain artifact, so the chain violet is legal here; the MagicCard
+          spotlight (pointer-tracked border highlight) is tinted from the same token via color-mix. */}
+      <MagicCard
+        innerClassName="bg-chain/[0.04]"
+        baseBorder="color-mix(in srgb, var(--chain) 25%, transparent)"
+        spotlightColor="color-mix(in srgb, var(--chain) 45%, transparent)"
+        glowColor="color-mix(in srgb, var(--chain) 6%, transparent)"
       >
-        <h2 className="mb-1 flex items-center gap-1 text-label font-semibold uppercase tracking-label text-chain">
-          <span aria-hidden>◆</span> Moment of the day
-        </h2>
-        <p className="font-display text-heading font-bold leading-tight text-hi">The 38th minute</p>
-        <p className="num mt-1 text-label text-lo">
-          CAN–MAR · David repricing <span className="text-up">41 → 63</span> · minted by @hexfan
-        </p>
-      </Link>
+        <Link
+          href={routes.moments}
+          className="block px-4 py-3 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-chain/60"
+        >
+          <h2 className="mb-1 flex items-center gap-1 text-label font-semibold uppercase tracking-label text-chain">
+            <span aria-hidden>◆</span> Moment of the day
+          </h2>
+          <p className="font-display text-heading font-bold leading-tight text-hi">The 38th minute</p>
+          <p className="num mt-1 text-label text-lo">
+            CAN–MAR · David repricing <span className="text-up">41 → 63</span> · minted by @hexfan
+          </p>
+        </Link>
+      </MagicCard>
     </aside>
   );
 }

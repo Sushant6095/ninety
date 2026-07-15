@@ -46,5 +46,15 @@ export default {
       stat: ["var(--text-stat)", { lineHeight: "1" }],
       number: ["var(--text-number)", { lineHeight: "1", letterSpacing: "-0.03em" }],
     },
+    // Marquee (magicui pull, re-skinned). Vars are --marquee-* on purpose: the global --duration
+    // is the 200ms motion token and MUST NOT drive an infinite scroll loop.
+    keyframes: {
+      marquee: { from: { transform: "translateX(0)" }, to: { transform: "translateX(calc(-100% - var(--marquee-gap)))" } },
+      "marquee-vertical": { from: { transform: "translateY(0)" }, to: { transform: "translateY(calc(-100% - var(--marquee-gap)))" } },
+    },
+    animation: {
+      marquee: "marquee var(--marquee-duration) linear infinite",
+      "marquee-vertical": "marquee-vertical var(--marquee-duration) linear infinite",
+    },
   } },
 } satisfies Config;

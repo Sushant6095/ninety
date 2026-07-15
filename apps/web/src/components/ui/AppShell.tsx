@@ -15,6 +15,7 @@ interface AppShellProps {
  * The ONE Ninety app shell — a single header, footer, and frame for every route
  * (ADR-049 one-shell law). Pages provide only their `<main>`; the chrome lives here.
  * The onboarding flow is the deliberate exception (focused, no nav).
+ * The notification bell (godui inbox, re-skinned) sits in TerminalHeader's alerts slot.
  */
 export function AppShell({ children, ticker = false, user = SESSION }: AppShellProps) {
   return (

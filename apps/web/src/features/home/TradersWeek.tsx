@@ -1,26 +1,37 @@
 import Link from "next/link";
 import { Avatar } from "../../components/ui/Avatar";
+import { AvatarCircles } from "../../components/vendor/magicui/avatar-circles";
+import { BentoCard } from "../../components/vendor/magicui/bento-grid";
 import { LEADERS } from "../../lib/fixtures";
 import { routes } from "../../lib/routes";
 
 const fmtPnl = (n: number): string => (n >= 0 ? "+" : "−") + Math.abs(n).toLocaleString("en-US");
 const medal = ["bg-up/15 text-up ring-up/25", "bg-hi/10 text-hi ring-hairline", "bg-chain/15 text-chain ring-chain/25"];
 
-/** Traders of the week — Sofascore's "team of the week" analogue: top performers with real photos + P&L. */
+/** Traders of the week — Sofascore's "team of the week" analogue: top performers with real photos + P&L.
+ *  Shell is the re-skinned magicui BentoCard; the header carries the AvatarCircles facepile (top five +
+ *  the "+N" mono overflow), all one link into the leaderboard. */
 export function TradersWeek() {
   const top = LEADERS.slice(0, 5);
+  const rest = LEADERS.length - top.length;
   return (
-    <section className="border-t border-hairline px-3 py-3 sm:px-4">
-      <div className="mb-2 flex items-center justify-between">
+    <BentoCard className="px-3 py-3 sm:px-4">
+      <div className="mb-2 flex items-center justify-between gap-2">
         <h3 className="text-label font-semibold uppercase tracking-tag text-lo">Traders of the week</h3>
-        <Link href={routes.leaders} className="text-label text-lo transition-colors duration-200 hover:text-hi">Leaderboard →</Link>
+        <Link
+          href={routes.leaders}
+          className="hit group flex items-center gap-2 rounded-chip text-label text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi focus-visible:shadow-[0_0_0_2px_var(--up)] active:scale-[0.97]"
+        >
+          <AvatarCircles handles={top.map((l) => l.handle)} numPeople={rest} size={24} />
+          <span>Leaderboard →</span>
+        </Link>
       </div>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
         {top.map((l, i) => (
           <Link
             key={l.handle}
             href={routes.profile(l.handle)}
-            className="elev group flex flex-col items-center gap-2 rounded-card border border-hairline/70 bg-surface p-3 text-center transition-colors duration-200 hover:border-hairline"
+            className="elev group flex flex-col items-center gap-2 rounded-card border border-hairline/70 bg-surface p-3 text-center outline-none transition-colors duration-200 hover:border-hairline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-up/60"
           >
             <span className="relative">
               <Avatar handle={l.handle} size={48} />
@@ -33,6 +44,6 @@ export function TradersWeek() {
           </Link>
         ))}
       </div>
-    </section>
+    </BentoCard>
   );
 }

@@ -23,6 +23,7 @@ import {
   type Score,
   type Side,
 } from "./nextGoalMachine";
+import { appendRound } from "./roundLog";
 
 export interface NextGoalView {
   phase: Phase;
@@ -65,6 +66,8 @@ export function useNextGoalGame(
   phaseRef.current = phase;
   const pickRef = useRef<Pick | null>(null);
   pickRef.current = pick;
+  const minuteRef = useRef<number | null>(null);
+  minuteRef.current = live?.minute ?? null;
   const lockScore = useRef<Score>(ZERO);
   const timers = useRef<number[]>([]);
   const onLockRef = useRef(onLock);
@@ -85,8 +88,17 @@ export function useNextGoalGame(
 
   useEffect(() => () => clearTimers(), [clearTimers]); // cleanup on unmount
 
-  // finalize a round: apply + persist stats, paint the verdict
+  // finalize a round: apply + persist stats, paint the verdict. Resolved calls (never NO_CALL —
+  // a non-event) also land in the round log for the /play history filter.
   const finalize = useCallback((res: Result, scoredSide: Side | null) => {
+    if (res !== "NO_CALL") {
+      appendRound({
+        at: Date.now(),
+        pick: pickRef.current ?? "H",
+        outcome: res === "WON" ? "correct" : "missed",
+        minute: minuteRef.current ?? 0,
+      });
+    }
     setScored(scoredSide);
     setStats((prev) => {
       const nextStats = applyResult(prev, res);

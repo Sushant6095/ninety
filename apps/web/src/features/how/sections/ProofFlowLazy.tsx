@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 
-// React Flow enters ONLY this dynamically-imported chunk (ui-craft §7 / proof-flow-viz) — never the shared bundle.
+// The proof-flow graph (godui agent-flow + agent-timeline) stays in this dynamically-imported chunk — never the shared bundle.
 const ProofFlow = dynamic(() => import("./ProofFlow").then((m) => m.ProofFlow), {
   ssr: false,
   loading: () => (

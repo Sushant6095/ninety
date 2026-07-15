@@ -17,6 +17,7 @@ interface HomeShellProps {
 /** The Home page frame: ticker · header · 3-column body (rails quiet, center hero) · footer. */
 export function HomeShell({ markets, children }: HomeShellProps) {
   return (
+    // The working bell (godui notification-inbox, re-skinned) sits in TerminalHeader's alerts slot.
     <div className="flex min-h-screen flex-col overflow-x-clip bg-bg">
       <Ticker />
       <TerminalHeader user={SESSION} />

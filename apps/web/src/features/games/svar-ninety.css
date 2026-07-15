@@ -1,0 +1,114 @@
+/* SVAR react-filter → Ninety re-skin. SCOPED: every rule lives under .games-filter, and the
+   filter's dropdown portals are pinned inside the scope by data-wx-portal-root (RoundFilter.tsx),
+   so no stock SVAR chrome can render anywhere and nothing here can leak outside the game card.
+   All values map SVAR's --wx-* vars onto the Ninety tokens (styles/tokens.css) — zero raw color.
+   Note: --wx-color-warning is neutralized to text-lo, NOT --halt (halt is halts-only law). */
+
+.games-filter .wx-willow-dark-theme {
+  background: transparent;
+  font-family: var(--font-ui);
+  color: var(--text-hi);
+
+  /* type — Inter UI at the game card's caption scale */
+  --wx-font-family: var(--font-ui);
+  --wx-font-size: 12px;
+  --wx-line-height: 18px;
+  --wx-font-size-md: 12px;
+  --wx-line-height-md: 20px;
+  --wx-font-size-hd: 13px;
+  --wx-line-height-hd: 22px;
+  --wx-font-size-sm: 11px;
+  --wx-line-height-sm: 16px;
+
+  /* palette */
+  --wx-color-primary: var(--up);
+  --wx-color-primary-selected: color-mix(in srgb, var(--up) 22%, transparent);
+  --wx-color-primary-font: var(--bg);
+  --wx-color-secondary: transparent;
+  --wx-color-secondary-hover: color-mix(in srgb, var(--up) 12%, transparent);
+  --wx-color-secondary-font: var(--up);
+  --wx-color-secondary-font-hover: var(--up);
+  --wx-color-secondary-border: var(--up);
+  --wx-color-secondary-border-disabled: var(--hairline);
+  --wx-color-success: var(--up);
+  --wx-color-warning: var(--text-lo);
+  --wx-color-danger: var(--down);
+  --wx-color-info: var(--up);
+  --wx-color-link: var(--up);
+  --wx-color-disabled: var(--hairline);
+  --wx-color-disabled-alt: var(--hairline);
+  --wx-color-font: var(--text-hi);
+  --wx-color-font-alt: var(--text-lo);
+  --wx-color-font-disabled: var(--text-lo);
+  --wx-background: var(--surface);
+  --wx-background-alt: var(--bg);
+  --wx-background-hover: color-mix(in srgb, var(--surface) 88%, var(--text-hi));
+  --wx-icon-color: var(--text-lo);
+
+  /* chrome */
+  --wx-border-color: var(--hairline);
+  --wx-border: 1px solid var(--hairline);
+  --wx-border-light: 1px solid var(--hairline);
+  --wx-border-medium: 1px solid var(--hairline);
+  --wx-border-radius: calc(var(--radius-card) / 2);
+  --wx-radius-major: var(--radius-card);
+  --wx-radius-medium: calc(var(--radius-card) / 2);
+  --wx-shadow-light: none;
+  --wx-shadow-medium: none;
+  --wx-box-shadow: 0 8px 24px color-mix(in srgb, var(--bg) 70%, transparent);
+  --wx-box-shadow-strong: 0 8px 32px color-mix(in srgb, var(--bg) 85%, transparent);
+
+  /* inputs */
+  --wx-input-background: var(--bg);
+  --wx-input-border: 1px solid var(--hairline);
+  --wx-input-border-focus: 1px solid var(--up);
+  --wx-input-border-radius: calc(var(--radius-card) / 2);
+  --wx-input-placeholder-color: var(--text-lo);
+  --wx-input-icon-color: var(--text-lo);
+
+  /* buttons */
+  --wx-button-background: var(--bg);
+  --wx-button-font-color: var(--text-hi);
+  --wx-button-danger-font-color: var(--text-hi);
+  --wx-button-border-radius: calc(var(--radius-card) / 2);
+  --wx-button-pressed: var(--hairline);
+  --wx-button-primary-pressed: color-mix(in srgb, var(--up) 80%, var(--bg));
+  --wx-button-danger-pressed: color-mix(in srgb, var(--down) 80%, var(--bg));
+  --wx-button-box-shadow: none;
+  --wx-button-primary-box-shadow: none;
+
+  /* popups + modals (portaled inside .games-filter via data-wx-portal-root) */
+  --wx-popup-background: var(--surface);
+  --wx-popup-border: 1px solid var(--hairline);
+  --wx-popup-border-radius: calc(var(--radius-card) / 2);
+  --wx-popup-shadow: 0 8px 32px color-mix(in srgb, var(--bg) 85%, transparent);
+  --wx-modal-background: var(--surface);
+  --wx-modal-border: 1px solid var(--hairline);
+  --wx-modal-border-radius: var(--radius-card);
+  --wx-modal-backdrop: color-mix(in srgb, var(--bg) 60%, transparent);
+  --wx-modal-shadow: 0 8px 32px color-mix(in srgb, var(--bg) 85%, transparent);
+  --wx-modal-header-font-color: var(--text-hi);
+
+  /* filter-specific accents (stock: amber/green glue chips + violet values — all re-mapped) */
+  --wx-filter-value-color: var(--up);
+  --wx-filter-and-background: var(--hairline);
+  --wx-filter-and-font-color: var(--text-hi);
+  --wx-filter-or-background: var(--hairline);
+  --wx-filter-or-font-color: var(--text-hi);
+  --wx-filter-border: 1px solid var(--hairline);
+
+  /* small parts that surface in the bar */
+  --wx-multicombo-tag-background: var(--bg);
+  --wx-segmented-background: var(--bg);
+  --wx-segmented-background-hover: var(--hairline);
+  --wx-segmented-border: 1px solid var(--hairline);
+  --wx-checkbox-border-color: var(--text-lo);
+  --wx-tooltip-background: var(--surface);
+  --wx-tooltip-font-color: var(--text-hi);
+}
+
+/* Numbers are mono/tabular (design law) — the minute field's numeric input. */
+.games-filter .wx-willow-dark-theme input[type="number"] {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
