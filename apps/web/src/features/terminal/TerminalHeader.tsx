@@ -9,6 +9,7 @@ import { CreditPill } from "../../components/ui/CreditPill";
 import { Avatar } from "../../components/ui/Avatar";
 import { routes, DOCS_URL } from "../../lib/routes";
 import { NotificationBell } from "../home/components/NotificationBell";
+import { Logomark } from "../../components/ui/Logomark";
 import type { SessionUser } from "../../lib/types";
 
 // The single app-wide surface nav (App and Terminal are merged — no more surface toggle). Covers every
@@ -45,8 +46,9 @@ export function TerminalHeader({ user }: { user: SessionUser }) {
     <>
       <header className="sticky top-0 z-30 bg-bg">
       <div className="mx-auto flex h-14 max-w-[1600px] items-center gap-3 px-4 sm:gap-5 sm:px-6">
-        <Link href={routes.home} aria-label="Ninety — home" className="group inline-flex shrink-0 items-center gap-2">
-          <span className="font-display text-heading font-extrabold leading-none tracking-tighter text-hi transition-opacity duration-200 group-hover:opacity-80">Ninety</span>
+        <Link href={routes.home} aria-label="Ninety — home" className="group inline-flex shrink-0 items-center gap-2 text-hi">
+          <Logomark size={26} className="shrink-0 transition-transform duration-200 group-hover:-translate-y-px" />
+          <span className="font-display text-heading font-extrabold leading-none tracking-tighter transition-opacity duration-200 group-hover:opacity-80">Ninety</span>
           <span className="num rounded-md bg-surface px-1 py-0.5 text-label font-semibold uppercase leading-none tracking-tag text-lo ring-1 ring-inset ring-hairline">{path === routes.board ? "WC26" : "Terminal"}</span>
         </Link>
 

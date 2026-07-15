@@ -1,7 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Ninety favicon. Values are the brand tokens (bg / hairline / up) inlined: a standalone
-       favicon cannot reference tokens.css custom properties (same exemption as the baked flag PNGs). -->
-  <rect width="64" height="64" rx="14" fill="#0B0D10"/>
+  <!-- Ninety favicon — the River-9 mark (ADR-064). A dark tile keeps the white/green glyph
+       visible on BOTH light and dark browser chrome. Brand-token hex is inlined here: a
+       standalone favicon cannot reference tokens.css custom properties (same exemption as
+       the baked flag PNGs). surface #14171C · hairline #232A33 · text-hi #F5F7FA · up #2BD97C. -->
+  <rect width="64" height="64" rx="14" fill="#14171C"/>
   <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#232A33"/>
-  <text x="32" y="44" font-family="'IBM Plex Mono', ui-monospace, Menlo, monospace" font-size="28" font-weight="700" fill="#2BD97C" text-anchor="middle">90</text>
+  <g transform="translate(6 4.2) scale(0.52)" fill="none" stroke-width="12">
+    <circle cx="41" cy="39" r="22" stroke="#F5F7FA"/>
+    <path d="M63 39 L63 72" stroke="#F5F7FA" stroke-linecap="round"/>
+    <path d="M63 72 L88 54" stroke="#2BD97C" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
 </svg>
