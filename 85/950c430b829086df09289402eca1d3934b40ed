@@ -1,0 +1,58 @@
+apps/web/src/features/terminal/MatchTabs.tsx
+  s_e6fe919b4d8a67::t_034f4dcc27f3ca 39-43,45
+  s_e6fe919b4d8a67::t_5c8e5378260312 21-22,24
+apps/web/src/features/games/useNextGoalGame.ts
+  s_e6fe919b4d8a67::t_0b1fb3cbc82e68 13,21,29,32,40-49,52,57
+  s_e6fe919b4d8a67::t_aad3a1f927dc11 7
+  s_e6fe919b4d8a67::t_59e7db58cbdd77 121-126,128-143
+  s_e6fe919b4d8a67::t_936fc6c0dcfa54 146
+  s_e6fe919b4d8a67::t_b6bb8a71276dcb 107,117-119
+  s_e6fe919b4d8a67::t_a1a45f71af46c6 66
+apps/web/src/features/live/matchLiveStore.ts
+  s_e6fe919b4d8a67::t_b7edd0b0d33f70 267-279
+apps/web/src/features/games/nextGoalMachine.test.ts
+  s_e6fe919b4d8a67::t_184d4478c2966d 12
+  s_e6fe919b4d8a67::t_f9143a8dd7619b 52-63
+apps/web/src/features/games/StreakRail.tsx
+  s_e6fe919b4d8a67::t_e30aa70650ab3f 15
+apps/web/src/features/games/PickPad.tsx
+  s_e6fe919b4d8a67::t_d3c0456db7b4eb 2-7,10,15-21,35-36,39,43-45,78-80,135,140-146,149-155,174,178,203-237
+  s_e6fe919b4d8a67::t_3294acf4d40684 238-240
+apps/web/src/features/terminal/MatchColumn.tsx
+  s_e6fe919b4d8a67::t_8a04046b43f27c 32-36
+  s_e6fe919b4d8a67::t_ddffbd568ccbf0 10-11
+  s_e6fe919b4d8a67::t_716cdc8f3efc00 170-211,214-217,219
+apps/web/src/features/games/nextGoalMachine.ts
+  s_e6fe919b4d8a67::t_9cb3b19106559c 33-36
+  s_e6fe919b4d8a67::t_49210948afb724 11-14
+  s_e6fe919b4d8a67::t_0acd9e51a0c3ba 77-85
+docs/adr/ADR-061-next-goal-on-terminal-three-pick-read-only.md
+  s_e6fe919b4d8a67::t_837af72b1e9048 1-32
+apps/web/src/features/terminal/TradePanel.tsx
+  s_e6fe919b4d8a67::t_91787e4c60b3c7 152-153,155-156
+  s_e6fe919b4d8a67::t_51b92d2550edde 2,4-5
+  s_e6fe919b4d8a67::t_4262e5d74f87b2 39-40,53-77,80
+apps/web/src/features/games/Verdict.tsx
+  s_e6fe919b4d8a67::t_d0d9b927030235 57
+apps/web/src/styles/globals.css
+  s_e6fe919b4d8a67::t_fccf0c10472c03 82-87
+apps/web/src/features/games/NextGoal.tsx
+  s_e6fe919b4d8a67::t_85c51ac942950c 18-31,33,36
+  s_e6fe919b4d8a67::t_4392093299eaea 91
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "85950c430b829086df09289402eca1d3934b40ed",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
