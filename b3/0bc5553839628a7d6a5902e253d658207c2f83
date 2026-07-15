@@ -1,0 +1,26 @@
+apps/web/public/favicon.svg
+  s_6ab41d7b0271b9::t_653cf088f57d42 2-6,8-12
+apps/web/src/components/ui/Logomark.tsx
+  s_6ab41d7b0271b9::t_116241b59543de 1-40
+apps/web/src/features/terminal/TerminalHeader.tsx
+  s_6ab41d7b0271b9::t_6b6d771801b782 12
+  s_6ab41d7b0271b9::t_9a81426c24087b 49-51
+apps/web/src/components/ui/Wordmark.tsx
+  s_6ab41d7b0271b9::t_bab047ba8a94a0 2,8,11-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "b30bc5553839628a7d6a5902e253d658207c2f83",
+  "prompts": {},
+  "sessions": {
+    "s_6ab41d7b0271b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a5538f3a-206a-4aef-b98c-32f9c1580643",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
