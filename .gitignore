@@ -5,6 +5,9 @@ dist/
 .turbo/
 .env*
 !.env.example
+# Solana signing keypairs (SETTLEMENT_KEYPAIR_PATH=./.keys/…) — NEVER publish to a public repo
+.keys/
+*.pem
 *.log
 __pycache__/
 .venv/
@@ -17,6 +20,9 @@ test-ledger/
 .claude/trace/*.jsonl
 .claude/trace/*.log
 .claude/settings.local.json
+# internal playbook — keep PRIVATE, never ship (the prompts + session context are the build recipe)
+.claude/prompts/
+.claude/context/
 # ui-craft loop — generated screenshots (keep the dir, ignore the shots)
 design/screens/impl/*
 !design/screens/impl/.gitkeep

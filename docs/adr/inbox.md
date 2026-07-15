@@ -17,3 +17,5 @@ During the REBUILD Part 2.1 (fixing hook paths), `.claude/settings.json` became 
   key** as a precaution, since `.env` sat readable without the guard for a period.
 - Needs an ADR: record the incident + the rule "validate settings.json parses and re-list hooks after any
   edit to it; never leave it unparseable."
+- 2026-07-15T11:52:32Z compaction occurred — if a decision was made this session and not yet ADR'd, capture it now (/adr).
+- 2026-07-15T18:19:47Z compaction occurred — if a decision was made this session and not yet ADR'd, capture it now (/adr).
