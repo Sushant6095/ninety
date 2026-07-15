@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { TerminalHeader } from "../terminal/TerminalHeader";
 import { Footer } from "../home/Footer";
-import { Flag } from "../../components/ui/Flag";
+import { TeamCrest } from "../../components/ui/TeamCrest";
 import { routes } from "../../lib/routes";
 import { SESSION } from "../../lib/fixtures";
 import { FILLS, type Fill } from "../../lib/portfolio";
@@ -29,8 +29,8 @@ function FillRow({ f }: { f: Fill }) {
         className="group grid grid-cols-[auto_1fr_auto] items-center gap-3 px-4 py-3 outline-none transition-colors duration-200 hover:bg-hairline/25 focus-visible:bg-hairline/25"
       >
         <span className="relative inline-flex shrink-0 items-center" style={{ width: 34, height: 22 }} aria-hidden>
-          <span className="absolute left-0"><Flag code={f.homeCode} size={22} /></span>
-          <span className="absolute left-[13px] rounded-full ring-2 ring-surface"><Flag code={f.awayCode} size={22} /></span>
+          <span className="absolute left-0"><TeamCrest code={f.homeCode} size={22} /></span>
+          <span className="absolute left-[13px] rounded-full ring-2 ring-surface"><TeamCrest code={f.awayCode} size={22} /></span>
         </span>
         <span className="min-w-0">
           <span className="flex flex-wrap items-center gap-2">

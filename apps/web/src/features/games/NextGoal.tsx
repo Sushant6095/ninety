@@ -3,7 +3,7 @@
 // hook and the team metadata (still) from MATCH. Swaps the decision surface (PickPad) for the payoff
 // (Verdict). Writes ZERO match state; the goal is produced by the page harness through onLock/onReset.
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Flag } from "../../components/ui/Flag";
+import { TeamCrest } from "../../components/ui/TeamCrest";
 import { MATCH } from "../../lib/terminal";
 import { PickPad } from "./PickPad";
 import { Verdict } from "./Verdict";
@@ -49,7 +49,7 @@ export function NextGoal({
       {/* live match strip (read-only: minute/score/phase from the store) */}
       <div className="flex items-center justify-between px-4 py-3">
         <span className="flex items-center gap-2">
-          <Flag code={HOME.code} size={26} />
+          <TeamCrest code={HOME.code} size={26} />
           <span className="text-strong font-semibold text-hi">{HOME.code}</span>
         </span>
         <span className="flex flex-col items-center">
@@ -63,7 +63,7 @@ export function NextGoal({
         </span>
         <span className="flex items-center gap-2">
           <span className="text-strong font-semibold text-hi">{AWAY.code}</span>
-          <Flag code={AWAY.code} size={26} />
+          <TeamCrest code={AWAY.code} size={26} />
         </span>
       </div>
 

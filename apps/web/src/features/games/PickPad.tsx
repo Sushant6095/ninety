@@ -6,7 +6,7 @@
 // the tension. Reduced motion drops the drain, keeps the number.
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Flag } from "../../components/ui/Flag";
+import { TeamCrest } from "../../components/ui/TeamCrest";
 import { PICK_MS, type Phase, type Pick, type Side } from "./nextGoalMachine";
 
 const R = 54;
@@ -194,7 +194,7 @@ function PickButton({
         disabled:cursor-default
         ${selected ? "border-up/70 bg-up/10" : "border-hairline/70 bg-surface hover:border-hairline"}`}
     >
-      <Flag code={team.code} size={48} />
+      <TeamCrest code={team.code} size={48} />
       <span className="num font-display text-display font-extrabold leading-none tracking-tight text-hi">{team.code}</span>
       <span className={`text-label font-semibold uppercase tracking-[0.12em] ${selected ? "text-up" : "text-lo"}`}>{role}</span>
     </motion.button>

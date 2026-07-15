@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { TerminalHeader } from "../terminal/TerminalHeader";
 import { Footer } from "../home/Footer";
-import { Flag } from "../../components/ui/Flag";
+import { TeamCrest } from "../../components/ui/TeamCrest";
 import { routes } from "../../lib/routes";
 import { SESSION } from "../../lib/fixtures";
 import { BRACKET, type Tie } from "../../lib/bracket";
@@ -10,7 +10,7 @@ import { fmtPrice } from "../../lib/format";
 function TeamRow({ code, prob, lead }: { code: string | null; prob: number | null; lead: boolean }) {
   return (
     <div className="flex items-center gap-2 px-1 py-1.5">
-      {code ? <Flag code={code} size={18} /> : <span className="h-[18px] w-[18px] shrink-0 rounded-full bg-hairline/60 ring-1 ring-inset ring-hairline" aria-hidden />}
+      {code ? <TeamCrest code={code} size={18} /> : <span className="h-[18px] w-[18px] shrink-0 rounded-full bg-hairline/60 ring-1 ring-inset ring-hairline" aria-hidden />}
       <span className={`flex-1 truncate text-body font-medium ${code ? (lead ? "text-hi" : "text-hi/80") : "text-lo"}`}>{code ?? "TBD"}</span>
       {prob != null ? (
         <span className={`num rounded-md px-1.5 py-0.5 text-caption font-semibold tabular-nums ring-1 ring-inset ${lead ? "bg-hairline/40 text-hi ring-hairline" : "bg-bg/50 text-hi/80 ring-hairline/60"}`}>{fmtPrice(prob)}</span>

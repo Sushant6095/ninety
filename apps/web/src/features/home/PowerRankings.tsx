@@ -1,4 +1,4 @@
-import { Flag } from "../../components/ui/Flag";
+import { TeamCrest } from "../../components/ui/TeamCrest";
 import { teamName } from "../../lib/fixtures";
 import { POWER_RANKINGS } from "../../lib/rankings";
 
@@ -19,7 +19,7 @@ export function PowerRankings() {
             <li key={row.code} className="grid grid-cols-[24px_1fr_auto_auto] items-center gap-3 px-4 py-2 transition-colors duration-200 hover:bg-hairline/20">
               <span className="num text-caption font-semibold tabular-nums text-lo">{row.rank}</span>
               <span className="flex min-w-0 items-center gap-2">
-                <Flag code={row.code} size={20} />
+                <TeamCrest code={row.code} size={20} />
                 <span className="truncate text-body font-medium text-hi">{teamName(row.code)}</span>
               </span>
               <span className="num text-strong font-semibold tabular-nums text-hi">{row.rating}</span>

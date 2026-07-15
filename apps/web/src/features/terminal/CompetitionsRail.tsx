@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { Flag } from "../../components/ui/Flag";
+import { TeamCrest } from "../../components/ui/TeamCrest";
 import { LivePrice } from "../../components/ui/LivePrice";
 import { ScrollArea } from "../../components/ui/ScrollArea";
 import { useMatchLive } from "../live/matchLiveStore";
@@ -49,8 +49,8 @@ function Row({ m }: { m: TermMarketRow }) {
         )}
       </span>
       <span className="min-w-0 flex-1">
-        <span className="flex items-center gap-1"><Flag code={m.homeCode} size={14} /><span className="text-caption font-medium text-hi">{m.homeCode}</span></span>
-        <span className="mt-1 flex items-center gap-1"><Flag code={m.awayCode} size={14} /><span className="text-caption font-medium text-hi">{m.awayCode}</span></span>
+        <span className="flex items-center gap-1"><TeamCrest code={m.homeCode} size={16} /><span className="text-caption font-medium text-hi">{m.homeCode}</span></span>
+        <span className="mt-1 flex items-center gap-1"><TeamCrest code={m.awayCode} size={16} /><span className="text-caption font-medium text-hi">{m.awayCode}</span></span>
       </span>
       {score ? (
         <span className={`${COL.star} shrink-0 text-right`}>

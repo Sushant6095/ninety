@@ -1,5 +1,7 @@
+import Image from "next/image";
 import { Star } from "lucide-react";
-import { Flag } from "../../components/ui/Flag";
+import { TeamCrest } from "../../components/ui/TeamCrest";
+import { teamMediaByCode } from "../../lib/teamMedia";
 import type { TerminalMatch } from "../../lib/terminal";
 
 interface MatchLive {
@@ -13,11 +15,26 @@ interface MatchLive {
 /** Center header for the selected market — breadcrumb, both sides with FIFA/group meta, live score + status.
  *  `live` is REQUIRED and comes straight from the store: there is deliberately no fixture fallback, because a
  *  fallback is how the header ends up narrating a different minute than the River (ADR-055). `match` holds only
- *  the still parts — names, badges, venue. */
+ *  the still parts — names, badges, venue.
+ *
+ *  ATMOSPHERE: the backdrop is the HOME side's baked crowd/stadium shot (TheSportsDB strFanart1), dimmed under a
+ *  scrim so the numbers stay legible. It is team atmosphere, not a venue claim — the free tier has no image for a
+ *  neutral WC26 venue (MetLife/Lumen), so the venue NAME stays the authoritative text (ADR-062). */
 export function MatchHeader({ match, live }: { match: TerminalMatch; live: MatchLive }) {
   const { score, minute, phase, scorer, status } = live;
+  const atmosphere = teamMediaByCode(match.homeCode)?.stadium ?? null;
   return (
-    <div className="border-b border-hairline px-4 py-3">
+    <div className="relative overflow-hidden border-b border-hairline px-4 py-3">
+      {atmosphere && (
+        <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+          <Image src={atmosphere} alt="" fill sizes="100vw" className="object-cover object-center opacity-10" />
+          {/* legibility scrim (the sanctioned exception to the no-gradient law — never decorative): fade the
+              atmosphere back to the surface token so the tape/score stay ≥4.5:1 */}
+          <div className="absolute inset-0 bg-gradient-to-b from-surface/70 via-surface/85 to-surface" />
+        </div>
+      )}
+
+      <div className="relative z-10">
       <div className="mb-3 flex items-center justify-between gap-2">
         <nav className="flex items-center gap-1 truncate text-label text-lo" aria-label="Breadcrumb">
           <span>Football</span><span className="text-lo/50">›</span>
@@ -34,7 +51,7 @@ export function MatchHeader({ match, live }: { match: TerminalMatch; live: Match
 
       <div className="flex items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-3">
-          <Flag code={match.homeCode} size={40} />
+          <TeamCrest code={match.homeCode} size={48} priority />
           <div className="min-w-0">
             <div className="truncate text-body font-semibold text-hi sm:text-heading">{match.home}</div>
             <div className="num text-label uppercase tracking-wide text-lo">{match.homeMeta}</div>
@@ -56,12 +73,13 @@ export function MatchHeader({ match, live }: { match: TerminalMatch; live: Match
             <div className="truncate text-body font-semibold text-hi sm:text-heading">{match.away}</div>
             <div className="num text-label uppercase tracking-wide text-lo">{match.awayMeta}</div>
           </div>
-          <Flag code={match.awayCode} size={40} />
+          <TeamCrest code={match.awayCode} size={48} priority />
         </div>
       </div>
 
       <div className="num mt-2 flex items-center justify-center gap-2 text-label uppercase tracking-wide text-lo/80">
         {scorer && <><span className="text-hi">{scorer}</span><span className="text-lo/40">·</span></>}<span>{match.venue}</span>
+      </div>
       </div>
     </div>
   );

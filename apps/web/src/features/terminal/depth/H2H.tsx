@@ -1,4 +1,4 @@
-import { Flag } from "../../../components/ui/Flag";
+import { TeamCrest } from "../../../components/ui/TeamCrest";
 import { H2H as MEETINGS, FORM } from "../../../lib/matchdepth";
 import { CrowdCall } from "./CrowdCall";
 
@@ -7,7 +7,7 @@ const FORM_TONE = { W: "bg-up/20 text-up ring-up/40", D: "bg-hairline/60 text-lo
 function FormRow({ code, form }: { code: string; form: ("W" | "D" | "L")[] }) {
   return (
     <div className="flex items-center gap-2">
-      <Flag code={code} size={18} />
+      <TeamCrest code={code} size={20} />
       <span className="w-9 text-caption font-medium text-hi">{code}</span>
       <span className="flex gap-1">
         {form.map((f, i) => (
@@ -35,15 +35,15 @@ export function H2H() {
           <li key={i} className="grid grid-cols-[minmax(90px,110px)_1fr_auto_1fr] items-center gap-3 px-4 py-2.5">
             <span className="min-w-0">
               <span className="num block text-label tabular-nums text-lo">{m.date}</span>
-              <span className="block truncate text-label text-lo/70">{m.comp}</span>
+              <span className="block truncate text-label text-lo">{m.comp}</span>
             </span>
             <span className="flex min-w-0 items-center justify-end gap-2">
               <span className={`truncate text-caption font-medium ${m.win === "H" ? "text-hi" : "text-lo"}`}>{m.home}</span>
-              <Flag code={m.home} size={16} />
+              <TeamCrest code={m.home} size={18} />
             </span>
             <span className="num rounded bg-bg px-2 py-0.5 text-caption font-semibold tabular-nums text-hi ring-1 ring-inset ring-hairline">{m.score}</span>
             <span className="flex min-w-0 items-center gap-2">
-              <Flag code={m.away} size={16} />
+              <TeamCrest code={m.away} size={18} />
               <span className={`truncate text-caption font-medium ${m.win === "A" ? "text-hi" : "text-lo"}`}>{m.away}</span>
             </span>
           </li>

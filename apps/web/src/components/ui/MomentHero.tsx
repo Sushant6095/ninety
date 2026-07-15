@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { Flag } from "./Flag";
+import { TeamCrest } from "./TeamCrest";
 import { Avatar } from "./Avatar";
 import { routes } from "../../lib/routes";
 import { fmtPrice, signedCR } from "../../lib/format";
@@ -48,8 +48,8 @@ export function MomentHero({ m }: { m: Moment }) {
               </span>
             </div>
             <div className="mt-4 flex items-center gap-2">
-              <Flag code={m.homeCode} size={30} />
-              <Flag code={m.awayCode} size={30} />
+              <TeamCrest code={m.homeCode} size={30} />
+              <TeamCrest code={m.awayCode} size={30} />
               <span className="num text-caption tabular-nums text-lo">
                 {m.homeCode} v {m.awayCode} · {m.minute}&#39;
               </span>

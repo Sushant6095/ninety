@@ -5,7 +5,7 @@ import { useMatchLive } from "../../features/live/matchLiveStore";
 import type { MarketRow, Outcome } from "../../lib/types";
 import { Sparkline } from "./Sparkline";
 import { PriceChip } from "./PriceChip";
-import { Flag } from "./Flag";
+import { TeamCrest } from "./TeamCrest";
 
 const OUTCOMES: Outcome[] = ["H", "D", "A"];
 const fmtVol = (n?: number): string => (n == null ? "" : n >= 1000 ? `${(n / 1000).toFixed(n >= 100000 ? 0 : 1)}k` : `${n}`);
@@ -54,11 +54,11 @@ export function MatchCard({ market }: { market: MarketRow }) {
 
       <span className="min-w-0 flex-1">
         <span className="flex items-center gap-2">
-          <Flag code={market.homeCode} size={18} />
+          <TeamCrest code={market.homeCode} size={20} />
           <span className="truncate text-body font-medium text-hi">{market.home}</span>
         </span>
         <span className="mt-2 flex items-center gap-2">
-          <Flag code={market.awayCode} size={18} />
+          <TeamCrest code={market.awayCode} size={20} />
           <span className="truncate text-body font-medium text-hi">{market.away}</span>
         </span>
       </span>

@@ -9,7 +9,7 @@ const PROVIDES = [
 
 // The real client surface (packages/txline) — the tech-doc endpoint list.
 const ENDPOINTS = [
-  { id: "O3", path: "/api/odds/stream", use: "live consensus prices (SSE) → LMSR price" },
+  { id: "O3", path: "/api/prices/stream", use: "live consensus prices (SSE) → LMSR price" },
   { id: "S3", path: "/api/scores/stream", use: "live goals (SSE) → the River + halts" },
   { id: "S1", path: "/api/scores/snapshot/:fixture", use: "point-in-time score + gap recovery" },
   { id: "S4", path: "/api/scores/stat-validation", use: "Merkle proof bundle → on-chain validateStat" },

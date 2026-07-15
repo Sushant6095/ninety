@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { ArrowUpRight, ArrowDownRight } from "lucide-react";
-import { Flag } from "../../components/ui/Flag";
+import { TeamCrest } from "../../components/ui/TeamCrest";
 import { LivePrice } from "../../components/ui/LivePrice";
 import { useMatchLiveList } from "../live/matchLiveStore";
 import { routes } from "../../lib/routes";
@@ -38,8 +38,8 @@ export function TopMovers() {
               className="elev group flex flex-col gap-2 rounded-card border border-hairline/70 bg-surface p-3 transition-colors duration-200 hover:border-hairline"
             >
               <span className="flex items-center gap-1">
-                <Flag code={row.homeCode} size={18} />
-                <Flag code={row.awayCode} size={18} className="-ml-2" />
+                <TeamCrest code={row.homeCode} size={18} />
+                <TeamCrest code={row.awayCode} size={18} />
                 <span className="num ml-1 text-label text-lo">{row.homeCode}–{row.awayCode}</span>
                 <span className="num ml-auto text-label text-lo">{minute}&#39;</span>
               </span>

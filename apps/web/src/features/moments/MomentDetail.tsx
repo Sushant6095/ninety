@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Share2, Link2, Check } from "lucide-react";
 import { TerminalHeader } from "../terminal/TerminalHeader";
 import { Footer } from "../home/Footer";
-import { Flag } from "../../components/ui/Flag";
+import { TeamCrest } from "../../components/ui/TeamCrest";
 import { Avatar } from "../../components/ui/Avatar";
 import { EquityCurve } from "../../components/ui/EquityCurve";
 import { ProofBadge } from "../../components/ui/ProofBadge";
@@ -58,8 +58,8 @@ export function MomentDetail({ m }: { m: Moment }) {
 
           <div className="px-5 pt-3">
             <div className="flex items-center gap-2">
-              <Flag code={m.homeCode} size={20} />
-              <Flag code={m.awayCode} size={20} />
+              <TeamCrest code={m.homeCode} size={20} />
+              <TeamCrest code={m.awayCode} size={20} />
               <span className="num text-caption tabular-nums text-lo">{m.homeCode} v {m.awayCode} · World Cup 2026</span>
             </div>
             <h1 className="mt-2 font-display text-display font-bold tracking-tight text-hi">{m.title}</h1>

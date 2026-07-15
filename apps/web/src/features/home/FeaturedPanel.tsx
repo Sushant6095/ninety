@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { MomentumRiver } from "../../components/ui/MomentumRiver";
-import { Flag } from "../../components/ui/Flag";
+import { TeamCrest } from "../../components/ui/TeamCrest";
 import { LivePrice } from "../../components/ui/LivePrice";
 import {
   useMatchLive, setMatchStatus, setScore, repriceMatch, settleSpark, rewindMatch, FULL_TIME,
@@ -85,15 +85,15 @@ export function FeaturedPanel({ market, replayNonce = 0 }: { market: MarketRow; 
       </div>
 
       <div className="flex items-center justify-between px-4 py-3">
-        <span className="flex flex-col items-center gap-1">
-          <Flag code={market.homeCode} size={40} />
+        <span className="flex flex-col items-center gap-1.5">
+          <TeamCrest code={market.homeCode} size={52} priority />
           <span className="text-label font-medium tracking-wide text-lo">{market.homeCode}</span>
         </span>
         <span className="num font-display text-display-xl font-extrabold leading-none tabular-nums text-hi">
           {score?.home}<span className="px-1 text-lo">–</span>{score?.away}
         </span>
-        <span className="flex flex-col items-center gap-1">
-          <Flag code={market.awayCode} size={40} />
+        <span className="flex flex-col items-center gap-1.5">
+          <TeamCrest code={market.awayCode} size={52} priority />
           <span className="text-label font-medium tracking-wide text-lo">{market.awayCode}</span>
         </span>
       </div>

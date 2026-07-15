@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { TerminalHeader } from "../terminal/TerminalHeader";
 import { Footer } from "../home/Footer";
-import { Flag } from "../../components/ui/Flag";
+import { TeamCrest } from "../../components/ui/TeamCrest";
 import { EquityCurve } from "../../components/ui/EquityCurve";
 import { useMatchLiveList } from "../live/matchLiveStore";
 import { routes } from "../../lib/routes";
@@ -23,8 +23,8 @@ function Stat({ label, value, tone = "hi" }: { label: string; value: string; ton
 function CrestPair({ home, away }: { home: string; away: string }) {
   return (
     <span className="relative inline-flex shrink-0 items-center" style={{ width: 40, height: 26 }}>
-      <span className="absolute left-0"><Flag code={home} size={26} /></span>
-      <span className="absolute left-[16px] ring-2 ring-surface rounded-full"><Flag code={away} size={26} /></span>
+      <span className="absolute left-0"><TeamCrest code={home} size={26} /></span>
+      <span className="absolute left-[16px] ring-2 ring-surface rounded-full"><TeamCrest code={away} size={26} /></span>
     </span>
   );
 }

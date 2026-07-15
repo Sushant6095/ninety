@@ -1,4 +1,4 @@
-import { Flag } from "../../components/ui/Flag";
+import { TeamCrest } from "../../components/ui/TeamCrest";
 import { teamById, type WcGroup } from "../../data/wc26";
 
 const QUALIFY = 2; // top two of each group advance to the Round of 32
@@ -41,7 +41,7 @@ export function GroupTable({ group }: { group: WcGroup }) {
                 </td>
                 <td className="py-2 pr-2">
                   <span className="flex min-w-0 items-center gap-2">
-                    <Flag code={team?.code ?? "?"} size={20} />
+                    <TeamCrest code={team?.code ?? "?"} size={20} />
                     <span className="truncate text-hi">{team?.name ?? s.teamId}</span>
                     <span className="num hidden text-label text-lo md:inline">{team?.code}</span>
                   </span>

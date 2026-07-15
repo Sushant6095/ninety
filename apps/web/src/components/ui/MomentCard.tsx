@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Flag } from "./Flag";
+import { TeamCrest } from "./TeamCrest";
 import { Avatar } from "./Avatar";
 import { EquityCurve } from "./EquityCurve";
 import { routes } from "../../lib/routes";
@@ -24,8 +24,8 @@ export function MomentCard({ m }: { m: Moment }) {
       </div>
 
       <div className="mt-3 flex items-center gap-2">
-        <Flag code={m.homeCode} size={18} />
-        <Flag code={m.awayCode} size={18} />
+        <TeamCrest code={m.homeCode} size={18} />
+        <TeamCrest code={m.awayCode} size={18} />
         <span className="num text-caption tabular-nums text-lo">{m.homeCode} v {m.awayCode}</span>
       </div>
       <h3 className="mt-1 text-strong font-semibold leading-snug text-hi">{m.title}</h3>

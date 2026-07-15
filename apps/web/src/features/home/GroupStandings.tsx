@@ -1,6 +1,6 @@
 "use client";
 import { Tabs } from "radix-ui";
-import { Flag } from "../../components/ui/Flag";
+import { TeamCrest } from "../../components/ui/TeamCrest";
 import { teamName } from "../../lib/fixtures";
 import { GROUP_STANDINGS, type GroupTable } from "../../lib/rankings";
 
@@ -22,7 +22,7 @@ function Table({ t }: { t: GroupTable }) {
             <li key={row.code} className={`grid ${COLS} items-center gap-2 px-4 py-2 ${q ? "bg-up/[0.04]" : ""}`}>
               <span className={`num text-caption font-semibold tabular-nums ${q ? "text-up" : "text-lo"}`}>{i + 1}</span>
               <span className="flex min-w-0 items-center gap-2">
-                <Flag code={row.code} size={18} />
+                <TeamCrest code={row.code} size={18} />
                 <span className="truncate text-body font-medium text-hi">{teamName(row.code)}</span>
               </span>
               <span className="num text-center text-caption tabular-nums text-lo">{row.p}</span>

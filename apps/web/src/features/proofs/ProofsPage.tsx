@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Flag } from "../../components/ui/Flag";
+import { TeamCrest } from "../../components/ui/TeamCrest";
 import { ProofBadge } from "../../components/ui/ProofBadge";
 import { routes } from "../../lib/routes";
 import { PROOFS, PROOFS_TOTAL, type Proof } from "../../lib/proofs";
@@ -12,8 +12,8 @@ function ProofRow({ p }: { p: Proof }) {
   return (
     <li className="grid grid-cols-[auto_1fr_auto] items-center gap-4 px-4 py-3.5">
       <span className="flex items-center -space-x-1.5">
-        <Flag code={p.homeCode} size={26} className="ring-1 ring-bg" />
-        <Flag code={p.awayCode} size={26} className="ring-1 ring-bg" />
+        <TeamCrest code={p.homeCode} size={26} className="ring-1 ring-bg" />
+        <TeamCrest code={p.awayCode} size={26} className="ring-1 ring-bg" />
       </span>
 
       <div className="min-w-0">

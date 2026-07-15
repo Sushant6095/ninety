@@ -1,0 +1,3352 @@
+{
+  "source": "TheSportsDB (free key) — STILLNESS ONLY (ADR-051/ADR-062)",
+  "bakedAt": "2026-07-15T12:30:47.268Z",
+  "teams": {
+    "1": {
+      "code": "MEX",
+      "name": "Mexico",
+      "tsdbId": "134497",
+      "tsdbName": "Mexico",
+      "badge": "/teams/1/badge.png",
+      "jersey": "/teams/1/jersey.png",
+      "stadium": "/teams/1/stadium.jpg",
+      "players": [
+        {
+          "name": "Alexis Vega",
+          "slug": "alexis-vega",
+          "pos": "Left Wing",
+          "file": "/teams/1/players/alexis-vega.jpg"
+        },
+        {
+          "name": "Álvaro Fidalgo",
+          "slug": "alvaro-fidalgo",
+          "pos": "Central Midfield",
+          "file": "/teams/1/players/alvaro-fidalgo.jpg"
+        },
+        {
+          "name": "Armando González",
+          "slug": "armando-gonzalez",
+          "pos": "Centre-Forward",
+          "file": "/teams/1/players/armando-gonzalez.jpg"
+        },
+        {
+          "name": "Brian Gutiérrez",
+          "slug": "brian-gutierrez",
+          "pos": "Attacking Midfield",
+          "file": "/teams/1/players/brian-gutierrez.jpg"
+        },
+        {
+          "name": "Carlos Acevedo",
+          "slug": "carlos-acevedo",
+          "pos": "Goalkeeper",
+          "file": "/teams/1/players/carlos-acevedo.jpg"
+        },
+        {
+          "name": "César Huerta",
+          "slug": "cesar-huerta",
+          "pos": "Left Wing",
+          "file": "/teams/1/players/cesar-huerta.jpg"
+        },
+        {
+          "name": "César Montes",
+          "slug": "cesar-montes",
+          "pos": "Centre-Back",
+          "file": "/teams/1/players/cesar-montes.jpg"
+        },
+        {
+          "name": "Edson Álvarez",
+          "slug": "edson-alvarez",
+          "pos": "Defensive Midfield",
+          "file": "/teams/1/players/edson-alvarez.jpg"
+        },
+        {
+          "name": "Érik Lira",
+          "slug": "erik-lira",
+          "pos": "Defensive Midfield",
+          "file": "/teams/1/players/erik-lira.jpg"
+        },
+        {
+          "name": "Gilberto Mora",
+          "slug": "gilberto-mora",
+          "pos": "Attacking Midfield",
+          "file": "/teams/1/players/gilberto-mora.jpg"
+        }
+      ]
+    },
+    "2": {
+      "code": "RSA",
+      "name": "South Africa",
+      "tsdbId": "136482",
+      "tsdbName": "South Africa",
+      "badge": "/teams/2/badge.png",
+      "jersey": "/teams/2/jersey.png",
+      "stadium": "/teams/2/stadium.jpg",
+      "players": [
+        {
+          "name": "Aubrey Modiba",
+          "slug": "aubrey-modiba",
+          "pos": "Left-Back",
+          "file": "/teams/2/players/aubrey-modiba.jpg"
+        },
+        {
+          "name": "Bradley Cross",
+          "slug": "bradley-cross",
+          "pos": "Left-Back",
+          "file": "/teams/2/players/bradley-cross.jpg"
+        },
+        {
+          "name": "Evidence Makgopa",
+          "slug": "evidence-makgopa",
+          "pos": "Centre-Forward",
+          "file": "/teams/2/players/evidence-makgopa.jpg"
+        },
+        {
+          "name": "Hugo Broos",
+          "slug": "hugo-broos",
+          "pos": "Manager",
+          "file": "/teams/2/players/hugo-broos.jpg"
+        },
+        {
+          "name": "Ime Okon",
+          "slug": "ime-okon",
+          "pos": "Centre-Back",
+          "file": "/teams/2/players/ime-okon.jpg"
+        },
+        {
+          "name": "Iqraam Rayners",
+          "slug": "iqraam-rayners",
+          "pos": "Centre-Forward",
+          "file": "/teams/2/players/iqraam-rayners.jpg"
+        },
+        {
+          "name": "Kamogelo Sebelebele",
+          "slug": "kamogelo-sebelebele",
+          "pos": "Right-Back",
+          "file": "/teams/2/players/kamogelo-sebelebele.jpg"
+        },
+        {
+          "name": "Khuliso Mudau",
+          "slug": "khuliso-mudau",
+          "pos": "Right-Back",
+          "file": "/teams/2/players/khuliso-mudau.jpg"
+        },
+        {
+          "name": "Khulumani Ndamane",
+          "slug": "khulumani-ndamane",
+          "pos": "Centre-Back",
+          "file": "/teams/2/players/khulumani-ndamane.jpg"
+        },
+        {
+          "name": "Lyle Foster",
+          "slug": "lyle-foster",
+          "pos": "Centre-Forward",
+          "file": "/teams/2/players/lyle-foster.jpg"
+        }
+      ]
+    },
+    "3": {
+      "code": "KOR",
+      "name": "South Korea",
+      "tsdbId": "134517",
+      "tsdbName": "South Korea",
+      "badge": "/teams/3/badge.png",
+      "jersey": "/teams/3/jersey.png",
+      "stadium": "/teams/3/stadium.jpg",
+      "players": [
+        {
+          "name": "Bum-keun Song",
+          "slug": "bum-keun-song",
+          "pos": "Goalkeeper",
+          "file": "/teams/3/players/bum-keun-song.jpg"
+        },
+        {
+          "name": "Dong-gyeong Lee",
+          "slug": "dong-gyeong-lee",
+          "pos": "Attacking Midfield",
+          "file": "/teams/3/players/dong-gyeong-lee.jpg"
+        },
+        {
+          "name": "Gi-hyuk Lee",
+          "slug": "gi-hyuk-lee",
+          "pos": "Centre-Back",
+          "file": "/teams/3/players/gi-hyuk-lee.jpg"
+        },
+        {
+          "name": "Gue-sung Cho",
+          "slug": "gue-sung-cho",
+          "pos": "Centre-Forward",
+          "file": "/teams/3/players/gue-sung-cho.jpg"
+        },
+        {
+          "name": "Han-beom Lee",
+          "slug": "han-beom-lee",
+          "pos": "Centre-Back",
+          "file": "/teams/3/players/han-beom-lee.jpg"
+        },
+        {
+          "name": "Hee-chan Hwang",
+          "slug": "hee-chan-hwang",
+          "pos": "Centre-Forward",
+          "file": "/teams/3/players/hee-chan-hwang.jpg"
+        },
+        {
+          "name": "Heung-min Son",
+          "slug": "heung-min-son",
+          "pos": "Left Wing",
+          "file": "/teams/3/players/heung-min-son.jpg"
+        },
+        {
+          "name": "Hyeon-gyu Oh",
+          "slug": "hyeon-gyu-oh",
+          "pos": "Centre-Forward",
+          "file": "/teams/3/players/hyeon-gyu-oh.jpg"
+        },
+        {
+          "name": "Hyeon-woo Jo",
+          "slug": "hyeon-woo-jo",
+          "pos": "Goalkeeper",
+          "file": "/teams/3/players/hyeon-woo-jo.jpg"
+        },
+        {
+          "name": "Hyun-jun Yang",
+          "slug": "hyun-jun-yang",
+          "pos": "Right Winger",
+          "file": "/teams/3/players/hyun-jun-yang.jpg"
+        }
+      ]
+    },
+    "4": {
+      "code": "CZE",
+      "name": "Czech Republic",
+      "tsdbId": "133904",
+      "tsdbName": "Czech Republic",
+      "badge": "/teams/4/badge.png",
+      "jersey": "/teams/4/jersey.png",
+      "stadium": "/teams/4/stadium.jpg",
+      "players": [
+        {
+          "name": "Adam Hložek",
+          "slug": "adam-hlozek",
+          "pos": "Centre-Forward",
+          "file": "/teams/4/players/adam-hlozek.jpg"
+        },
+        {
+          "name": "Alexandr Sojka",
+          "slug": "alexandr-sojka",
+          "pos": "Central Midfield",
+          "file": "/teams/4/players/alexandr-sojka.jpg"
+        },
+        {
+          "name": "David Douděra",
+          "slug": "david-doudera",
+          "pos": "Right Midfield",
+          "file": "/teams/4/players/david-doudera.jpg"
+        },
+        {
+          "name": "David Jurásek",
+          "slug": "david-jurasek",
+          "pos": "Left-Back",
+          "file": "/teams/4/players/david-jurasek.jpg"
+        },
+        {
+          "name": "David Zima",
+          "slug": "david-zima",
+          "pos": "Centre-Back",
+          "file": "/teams/4/players/david-zima.jpg"
+        },
+        {
+          "name": "Denis Višinský",
+          "slug": "denis-visinsky",
+          "pos": "Attacking Midfield",
+          "file": "/teams/4/players/denis-visinsky.jpg"
+        },
+        {
+          "name": "Hugo Sochůrek",
+          "slug": "hugo-sochurek",
+          "pos": "Central Midfield",
+          "file": "/teams/4/players/hugo-sochurek.jpg"
+        },
+        {
+          "name": "Jan Kuchta",
+          "slug": "jan-kuchta",
+          "pos": "Centre-Forward",
+          "file": "/teams/4/players/jan-kuchta.jpg"
+        },
+        {
+          "name": "Jaroslav Zelený",
+          "slug": "jaroslav-zeleny",
+          "pos": "Left-Back",
+          "file": "/teams/4/players/jaroslav-zeleny.jpg"
+        },
+        {
+          "name": "Jindřich Staněk",
+          "slug": "jindrich-stanek",
+          "pos": "Goalkeeper",
+          "file": "/teams/4/players/jindrich-stanek.jpg"
+        }
+      ]
+    },
+    "5": {
+      "code": "CAN",
+      "name": "Canada",
+      "tsdbId": "140073",
+      "tsdbName": "Canada",
+      "badge": "/teams/5/badge.png",
+      "jersey": "/teams/5/jersey.png",
+      "stadium": "/teams/5/stadium.jpg",
+      "players": [
+        {
+          "name": "Alfie Jones",
+          "slug": "alfie-jones",
+          "pos": "Centre-Back",
+          "file": "/teams/5/players/alfie-jones.jpg"
+        },
+        {
+          "name": "Ali Ahmed",
+          "slug": "ali-ahmed",
+          "pos": "Left Midfield",
+          "file": "/teams/5/players/ali-ahmed.jpg"
+        },
+        {
+          "name": "Alistair Johnston",
+          "slug": "alistair-johnston",
+          "pos": "Right-Back",
+          "file": "/teams/5/players/alistair-johnston.jpg"
+        },
+        {
+          "name": "Alphonso Davies",
+          "slug": "alphonso-davies",
+          "pos": "Left-Back",
+          "file": "/teams/5/players/alphonso-davies.jpg"
+        },
+        {
+          "name": "Dayne St. Clair",
+          "slug": "dayne-st-clair",
+          "pos": "Goalkeeper",
+          "file": "/teams/5/players/dayne-st-clair.jpg"
+        },
+        {
+          "name": "Derek Cornelius",
+          "slug": "derek-cornelius",
+          "pos": "Centre-Back",
+          "file": "/teams/5/players/derek-cornelius.jpg"
+        },
+        {
+          "name": "Ismaël Koné",
+          "slug": "ismael-kone",
+          "pos": "Central Midfield",
+          "file": "/teams/5/players/ismael-kone.jpg"
+        },
+        {
+          "name": "Jacob Shaffelburg",
+          "slug": "jacob-shaffelburg",
+          "pos": "Left Wing",
+          "file": "/teams/5/players/jacob-shaffelburg.jpg"
+        },
+        {
+          "name": "Jayden Nelson",
+          "slug": "jayden-nelson",
+          "pos": "Left Wing",
+          "file": "/teams/5/players/jayden-nelson.jpg"
+        },
+        {
+          "name": "Jesse Marsch",
+          "slug": "jesse-marsch",
+          "pos": "Manager",
+          "file": "/teams/5/players/jesse-marsch.jpg"
+        }
+      ]
+    },
+    "6": {
+      "code": "BIH",
+      "name": "Bosnia and Herzegovina",
+      "tsdbId": "134510",
+      "tsdbName": "Bosnia-Herzegovina",
+      "badge": "/teams/6/badge.png",
+      "jersey": "/teams/6/jersey.png",
+      "stadium": "/teams/6/stadium.jpg",
+      "players": [
+        {
+          "name": "Amar Dedić",
+          "slug": "amar-dedic",
+          "pos": "Right-Back",
+          "file": "/teams/6/players/amar-dedic.jpg"
+        },
+        {
+          "name": "Amar Memić",
+          "slug": "amar-memic",
+          "pos": "Right Midfield",
+          "file": "/teams/6/players/amar-memic.jpg"
+        },
+        {
+          "name": "Amir Hadžiahmetović",
+          "slug": "amir-hadziahmetovic",
+          "pos": "Midfielder",
+          "file": "/teams/6/players/amir-hadziahmetovic.jpg"
+        },
+        {
+          "name": "Armin Gigović",
+          "slug": "armin-gigovic",
+          "pos": "Midfielder",
+          "file": "/teams/6/players/armin-gigovic.jpg"
+        },
+        {
+          "name": "Benjamin Tahirović",
+          "slug": "benjamin-tahirovic",
+          "pos": "Defensive Midfield",
+          "file": "/teams/6/players/benjamin-tahirovic.jpg"
+        },
+        {
+          "name": "Dennis Hadžikadunić",
+          "slug": "dennis-hadzikadunic",
+          "pos": "Centre-Back",
+          "file": "/teams/6/players/dennis-hadzikadunic.jpg"
+        },
+        {
+          "name": "Dženis Burnić",
+          "slug": "dzenis-burnic",
+          "pos": "Defensive Midfield",
+          "file": "/teams/6/players/dzenis-burnic.jpg"
+        },
+        {
+          "name": "Edin Džeko",
+          "slug": "edin-dzeko",
+          "pos": "Centre-Forward",
+          "file": "/teams/6/players/edin-dzeko.jpg"
+        },
+        {
+          "name": "Ermedin Demirović",
+          "slug": "ermedin-demirovic",
+          "pos": "Forward",
+          "file": "/teams/6/players/ermedin-demirovic.jpg"
+        },
+        {
+          "name": "Ermin Mahmić",
+          "slug": "ermin-mahmic",
+          "pos": "Attacking Midfield",
+          "file": "/teams/6/players/ermin-mahmic.jpg"
+        }
+      ]
+    },
+    "7": {
+      "code": "QAT",
+      "name": "Qatar",
+      "tsdbId": "136472",
+      "tsdbName": "Qatar",
+      "badge": "/teams/7/badge.png",
+      "jersey": "/teams/7/jersey.png",
+      "stadium": "/teams/7/stadium.jpg",
+      "players": [
+        {
+          "name": "Abdulaziz Hatem",
+          "slug": "abdulaziz-hatem",
+          "pos": "Central Midfield",
+          "file": "/teams/7/players/abdulaziz-hatem.jpg"
+        },
+        {
+          "name": "Ahmed Al-Ganehi",
+          "slug": "ahmed-al-ganehi",
+          "pos": "Right Winger",
+          "file": "/teams/7/players/ahmed-al-ganehi.jpg"
+        },
+        {
+          "name": "Ahmed Alaaeldin",
+          "slug": "ahmed-alaaeldin",
+          "pos": "Centre-Forward",
+          "file": "/teams/7/players/ahmed-alaaeldin.jpg"
+        },
+        {
+          "name": "Ahmed Fathy",
+          "slug": "ahmed-fathy",
+          "pos": "Defensive Midfield",
+          "file": "/teams/7/players/ahmed-fathy.jpg"
+        },
+        {
+          "name": "Akram Afif",
+          "slug": "akram-afif",
+          "pos": "Left Wing",
+          "file": "/teams/7/players/akram-afif.jpg"
+        },
+        {
+          "name": "Al-Hashmi Al-Hussain",
+          "slug": "al-hashmi-al-hussain",
+          "pos": "Centre-Back",
+          "file": "/teams/7/players/al-hashmi-al-hussain.jpg"
+        },
+        {
+          "name": "Almoez Ali",
+          "slug": "almoez-ali",
+          "pos": "Centre-Forward",
+          "file": "/teams/7/players/almoez-ali.jpg"
+        },
+        {
+          "name": "Assim Madibo",
+          "slug": "assim-madibo",
+          "pos": "Defensive Midfield",
+          "file": "/teams/7/players/assim-madibo.jpg"
+        },
+        {
+          "name": "Ayoub Al-Oui",
+          "slug": "ayoub-al-oui",
+          "pos": "Right-Back",
+          "file": "/teams/7/players/ayoub-al-oui.jpg"
+        },
+        {
+          "name": "Boualem Khoukhi",
+          "slug": "boualem-khoukhi",
+          "pos": "Centre-Back",
+          "file": "/teams/7/players/boualem-khoukhi.jpg"
+        }
+      ]
+    },
+    "8": {
+      "code": "SUI",
+      "name": "Switzerland",
+      "tsdbId": "134506",
+      "tsdbName": "Switzerland",
+      "badge": "/teams/8/badge.png",
+      "jersey": "/teams/8/jersey.png",
+      "stadium": "/teams/8/stadium.jpg",
+      "players": [
+        {
+          "name": "Ardon Jashari",
+          "slug": "ardon-jashari",
+          "pos": "Defensive Midfield",
+          "file": "/teams/8/players/ardon-jashari.jpg"
+        },
+        {
+          "name": "Aurèle Amenda",
+          "slug": "aurele-amenda",
+          "pos": "Centre-Back",
+          "file": "/teams/8/players/aurele-amenda.jpg"
+        },
+        {
+          "name": "Breel Embolo",
+          "slug": "breel-embolo",
+          "pos": "Centre-Forward",
+          "file": "/teams/8/players/breel-embolo.jpg"
+        },
+        {
+          "name": "Cedric Itten",
+          "slug": "cedric-itten",
+          "pos": "Centre-Forward",
+          "file": "/teams/8/players/cedric-itten.jpg"
+        },
+        {
+          "name": "Christian Fassnacht",
+          "slug": "christian-fassnacht",
+          "pos": "Attacking Midfield",
+          "file": "/teams/8/players/christian-fassnacht.jpg"
+        },
+        {
+          "name": "Dan Ndoye",
+          "slug": "dan-ndoye",
+          "pos": "Right Winger",
+          "file": "/teams/8/players/dan-ndoye.jpg"
+        },
+        {
+          "name": "Denis Zakaria",
+          "slug": "denis-zakaria",
+          "pos": "Defensive Midfield",
+          "file": "/teams/8/players/denis-zakaria.jpg"
+        },
+        {
+          "name": "Djibril Sow",
+          "slug": "djibril-sow",
+          "pos": "Central Midfield",
+          "file": "/teams/8/players/djibril-sow.jpg"
+        },
+        {
+          "name": "Eray Cömert",
+          "slug": "eray-comert",
+          "pos": "Centre-Back",
+          "file": "/teams/8/players/eray-comert.jpg"
+        },
+        {
+          "name": "Fabian Rieder",
+          "slug": "fabian-rieder",
+          "pos": "Attacking Midfield",
+          "file": "/teams/8/players/fabian-rieder.jpg"
+        }
+      ]
+    },
+    "9": {
+      "code": "BRA",
+      "name": "Brazil",
+      "tsdbId": "134496",
+      "tsdbName": "Brazil",
+      "badge": "/teams/9/badge.png",
+      "jersey": "/teams/9/jersey.png",
+      "stadium": "/teams/9/stadium.jpg",
+      "players": [
+        {
+          "name": "Alex Sandro",
+          "slug": "alex-sandro",
+          "pos": "Left-Back",
+          "file": "/teams/9/players/alex-sandro.jpg"
+        },
+        {
+          "name": "Alisson Becker",
+          "slug": "alisson-becker",
+          "pos": "Goalkeeper",
+          "file": "/teams/9/players/alisson-becker.jpg"
+        },
+        {
+          "name": "Bremer",
+          "slug": "bremer",
+          "pos": "Centre-Back",
+          "file": "/teams/9/players/bremer.jpg"
+        },
+        {
+          "name": "Bruno Guimarães",
+          "slug": "bruno-guimaraes",
+          "pos": "Defensive Midfield",
+          "file": "/teams/9/players/bruno-guimaraes.jpg"
+        },
+        {
+          "name": "Carlo Ancelotti",
+          "slug": "carlo-ancelotti",
+          "pos": "Manager",
+          "file": "/teams/9/players/carlo-ancelotti.jpg"
+        },
+        {
+          "name": "Casemiro",
+          "slug": "casemiro",
+          "pos": "Defensive Midfield",
+          "file": "/teams/9/players/casemiro.jpg"
+        },
+        {
+          "name": "Danilo",
+          "slug": "danilo",
+          "pos": "Centre-Back",
+          "file": "/teams/9/players/danilo.jpg"
+        },
+        {
+          "name": "Danilo Santos",
+          "slug": "danilo-santos",
+          "pos": "Central Midfield",
+          "file": "/teams/9/players/danilo-santos.jpg"
+        },
+        {
+          "name": "Douglas Santos",
+          "slug": "douglas-santos",
+          "pos": "Left-Back",
+          "file": "/teams/9/players/douglas-santos.jpg"
+        },
+        {
+          "name": "Ederson",
+          "slug": "ederson",
+          "pos": "Goalkeeper",
+          "file": "/teams/9/players/ederson.jpg"
+        }
+      ]
+    },
+    "10": {
+      "code": "MAR",
+      "name": "Morocco",
+      "tsdbId": "136139",
+      "tsdbName": "Morocco",
+      "badge": "/teams/10/badge.png",
+      "jersey": "/teams/10/jersey.png",
+      "stadium": "/teams/10/stadium.jpg",
+      "players": [
+        {
+          "name": "Abde Ezzalzouli",
+          "slug": "abde-ezzalzouli",
+          "pos": "Left Wing",
+          "file": "/teams/10/players/abde-ezzalzouli.jpg"
+        },
+        {
+          "name": "Achraf Hakimi",
+          "slug": "achraf-hakimi",
+          "pos": "Right-Back",
+          "file": "/teams/10/players/achraf-hakimi.jpg"
+        },
+        {
+          "name": "Ahmed Reda Tagnaouti",
+          "slug": "ahmed-reda-tagnaouti",
+          "pos": "Goalkeeper",
+          "file": "/teams/10/players/ahmed-reda-tagnaouti.jpg"
+        },
+        {
+          "name": "Anass Salah-Eddine",
+          "slug": "anass-salah-eddine",
+          "pos": "Left-Back",
+          "file": "/teams/10/players/anass-salah-eddine.jpg"
+        },
+        {
+          "name": "Ayoub El Kaabi",
+          "slug": "ayoub-el-kaabi",
+          "pos": "Centre-Forward",
+          "file": "/teams/10/players/ayoub-el-kaabi.jpg"
+        },
+        {
+          "name": "Ayoube Amaimouni",
+          "slug": "ayoube-amaimouni",
+          "pos": "Right Winger",
+          "file": "/teams/10/players/ayoube-amaimouni.jpg"
+        },
+        {
+          "name": "Ayyoub Bouaddi",
+          "slug": "ayyoub-bouaddi",
+          "pos": "Central Midfield",
+          "file": "/teams/10/players/ayyoub-bouaddi.jpg"
+        },
+        {
+          "name": "Azzedine Ounahi",
+          "slug": "azzedine-ounahi",
+          "pos": "Central Midfield",
+          "file": "/teams/10/players/azzedine-ounahi.jpg"
+        },
+        {
+          "name": "Bilal El Khannouss",
+          "slug": "bilal-el-khannouss",
+          "pos": "Midfielder",
+          "file": "/teams/10/players/bilal-el-khannouss.jpg"
+        },
+        {
+          "name": "Bono",
+          "slug": "bono",
+          "pos": "Goalkeeper",
+          "file": "/teams/10/players/bono.jpg"
+        }
+      ]
+    },
+    "11": {
+      "code": "HAI",
+      "name": "Haiti",
+      "tsdbId": "140175",
+      "tsdbName": "Haiti",
+      "badge": "/teams/11/badge.png",
+      "jersey": "/teams/11/jersey.png",
+      "stadium": "/teams/11/stadium.jpg",
+      "players": [
+        {
+          "name": "Alexandre Pierre",
+          "slug": "alexandre-pierre",
+          "pos": "Goalkeeper",
+          "file": "/teams/11/players/alexandre-pierre.jpg"
+        },
+        {
+          "name": "Carl Sainté",
+          "slug": "carl-sainte",
+          "pos": "Defensive Midfield",
+          "file": "/teams/11/players/carl-sainte.jpg"
+        },
+        {
+          "name": "Carlens Arcus",
+          "slug": "carlens-arcus",
+          "pos": "Right-Back",
+          "file": "/teams/11/players/carlens-arcus.jpg"
+        },
+        {
+          "name": "Danley Jean Jacques",
+          "slug": "danley-jean-jacques",
+          "pos": "Defensive Midfield",
+          "file": "/teams/11/players/danley-jean-jacques.jpg"
+        },
+        {
+          "name": "Derrick Etienne Jr.",
+          "slug": "derrick-etienne-jr",
+          "pos": "Left Wing",
+          "file": "/teams/11/players/derrick-etienne-jr.jpg"
+        },
+        {
+          "name": "Dominique Simon",
+          "slug": "dominique-simon",
+          "pos": "Defensive Midfield",
+          "file": "/teams/11/players/dominique-simon.jpg"
+        },
+        {
+          "name": "Duckens Nazon",
+          "slug": "duckens-nazon",
+          "pos": "Centre-Forward",
+          "file": "/teams/11/players/duckens-nazon.jpg"
+        },
+        {
+          "name": "Duke Lacroix",
+          "slug": "duke-lacroix",
+          "pos": "Left-Back",
+          "file": "/teams/11/players/duke-lacroix.jpg"
+        },
+        {
+          "name": "Frantzdy Pierrot",
+          "slug": "frantzdy-pierrot",
+          "pos": "Centre-Forward",
+          "file": "/teams/11/players/frantzdy-pierrot.jpg"
+        },
+        {
+          "name": "Hannes Delcroix",
+          "slug": "hannes-delcroix",
+          "pos": "Centre-Back",
+          "file": "/teams/11/players/hannes-delcroix.jpg"
+        }
+      ]
+    },
+    "12": {
+      "code": "SCO",
+      "name": "Scotland",
+      "tsdbId": "136450",
+      "tsdbName": "Scotland",
+      "badge": "/teams/12/badge.png",
+      "jersey": "/teams/12/jersey.png",
+      "stadium": "/teams/12/stadium.jpg",
+      "players": [
+        {
+          "name": "Aaron Hickey",
+          "slug": "aaron-hickey",
+          "pos": "Right-Back",
+          "file": "/teams/12/players/aaron-hickey.jpg"
+        },
+        {
+          "name": "Andrew Robertson",
+          "slug": "andrew-robertson",
+          "pos": "Left-Back",
+          "file": "/teams/12/players/andrew-robertson.jpg"
+        },
+        {
+          "name": "Angus Gunn",
+          "slug": "angus-gunn",
+          "pos": "Goalkeeper",
+          "file": "/teams/12/players/angus-gunn.jpg"
+        },
+        {
+          "name": "Anthony Ralston",
+          "slug": "anthony-ralston",
+          "pos": "Right-Back",
+          "file": "/teams/12/players/anthony-ralston.jpg"
+        },
+        {
+          "name": "Ben Gannon-Doak",
+          "slug": "ben-gannon-doak",
+          "pos": "Right Winger",
+          "file": "/teams/12/players/ben-gannon-doak.jpg"
+        },
+        {
+          "name": "Che Adams",
+          "slug": "che-adams",
+          "pos": "Centre-Forward",
+          "file": "/teams/12/players/che-adams.jpg"
+        },
+        {
+          "name": "Craig Gordon",
+          "slug": "craig-gordon",
+          "pos": "Goalkeeper",
+          "file": "/teams/12/players/craig-gordon.jpg"
+        },
+        {
+          "name": "Dominic Hyam",
+          "slug": "dominic-hyam",
+          "pos": "Centre-Back",
+          "file": "/teams/12/players/dominic-hyam.jpg"
+        },
+        {
+          "name": "Findlay Curtis",
+          "slug": "findlay-curtis",
+          "pos": "Midfielder",
+          "file": "/teams/12/players/findlay-curtis.jpg"
+        },
+        {
+          "name": "George Hirst",
+          "slug": "george-hirst",
+          "pos": "Forward",
+          "file": "/teams/12/players/george-hirst.jpg"
+        }
+      ]
+    },
+    "13": {
+      "code": "USA",
+      "name": "United States",
+      "tsdbId": "134514",
+      "tsdbName": "USA",
+      "badge": "/teams/13/badge.png",
+      "jersey": "/teams/13/jersey.png",
+      "stadium": "/teams/13/stadium.jpg",
+      "players": [
+        {
+          "name": "Alejandro Zendejas",
+          "slug": "alejandro-zendejas",
+          "pos": "Right Winger",
+          "file": "/teams/13/players/alejandro-zendejas.jpg"
+        },
+        {
+          "name": "Alex Freeman",
+          "slug": "alex-freeman",
+          "pos": "Right-Back",
+          "file": "/teams/13/players/alex-freeman.jpg"
+        },
+        {
+          "name": "Antonee Robinson",
+          "slug": "antonee-robinson",
+          "pos": "Left-Back",
+          "file": "/teams/13/players/antonee-robinson.jpg"
+        },
+        {
+          "name": "Auston Trusty",
+          "slug": "auston-trusty",
+          "pos": "Centre-Back",
+          "file": "/teams/13/players/auston-trusty.jpg"
+        },
+        {
+          "name": "Brenden Aaronson",
+          "slug": "brenden-aaronson",
+          "pos": "Attacking Midfield",
+          "file": "/teams/13/players/brenden-aaronson.jpg"
+        },
+        {
+          "name": "Chris Brady",
+          "slug": "chris-brady",
+          "pos": "Goalkeeper",
+          "file": "/teams/13/players/chris-brady.jpg"
+        },
+        {
+          "name": "Chris Richards",
+          "slug": "chris-richards",
+          "pos": "Centre-Back",
+          "file": "/teams/13/players/chris-richards.jpg"
+        },
+        {
+          "name": "Christian Pulisic",
+          "slug": "christian-pulisic",
+          "pos": "Right Winger",
+          "file": "/teams/13/players/christian-pulisic.jpg"
+        },
+        {
+          "name": "Cristian Roldan",
+          "slug": "cristian-roldan",
+          "pos": "Central Midfield",
+          "file": "/teams/13/players/cristian-roldan.jpg"
+        },
+        {
+          "name": "Folarin Balogun",
+          "slug": "folarin-balogun",
+          "pos": "Centre-Forward",
+          "file": "/teams/13/players/folarin-balogun.jpg"
+        }
+      ]
+    },
+    "14": {
+      "code": "PAR",
+      "name": "Paraguay",
+      "tsdbId": "136471",
+      "tsdbName": "Paraguay",
+      "badge": "/teams/14/badge.png",
+      "jersey": "/teams/14/jersey.png",
+      "stadium": "/teams/14/stadium.jpg",
+      "players": [
+        {
+          "name": "Álex Arce",
+          "slug": "alex-arce",
+          "pos": "Centre-Forward",
+          "file": "/teams/14/players/alex-arce.jpg"
+        },
+        {
+          "name": "Alexandro Maidana",
+          "slug": "alexandro-maidana",
+          "pos": "Left-Back",
+          "file": "/teams/14/players/alexandro-maidana.jpg"
+        },
+        {
+          "name": "Andrés Cubas",
+          "slug": "andres-cubas",
+          "pos": "Defensive Midfield",
+          "file": "/teams/14/players/andres-cubas.jpg"
+        },
+        {
+          "name": "Antonio Sanabria",
+          "slug": "antonio-sanabria",
+          "pos": "Centre-Forward",
+          "file": "/teams/14/players/antonio-sanabria.jpg"
+        },
+        {
+          "name": "Braian Ojeda",
+          "slug": "braian-ojeda",
+          "pos": "Defensive Midfield",
+          "file": "/teams/14/players/braian-ojeda.jpg"
+        },
+        {
+          "name": "Damián Bobadilla",
+          "slug": "damian-bobadilla",
+          "pos": "Central Midfield",
+          "file": "/teams/14/players/damian-bobadilla.jpg"
+        },
+        {
+          "name": "Diego Gómez",
+          "slug": "diego-gomez",
+          "pos": "Central Midfield",
+          "file": "/teams/14/players/diego-gomez.jpg"
+        },
+        {
+          "name": "Fabián Balbuena",
+          "slug": "fabian-balbuena",
+          "pos": "Centre-Back",
+          "file": "/teams/14/players/fabian-balbuena.jpg"
+        },
+        {
+          "name": "Gabriel Ávalos",
+          "slug": "gabriel-avalos",
+          "pos": "Centre-Forward",
+          "file": "/teams/14/players/gabriel-avalos.jpg"
+        },
+        {
+          "name": "Gastón Olveira",
+          "slug": "gaston-olveira",
+          "pos": "Goalkeeper",
+          "file": "/teams/14/players/gaston-olveira.jpg"
+        }
+      ]
+    },
+    "15": {
+      "code": "AUS",
+      "name": "Australia",
+      "tsdbId": "134500",
+      "tsdbName": "Australia",
+      "badge": "/teams/15/badge.png",
+      "jersey": "/teams/15/jersey.png",
+      "stadium": "/teams/15/stadium.jpg",
+      "players": [
+        {
+          "name": "Aiden O'Neill",
+          "slug": "aiden-o-neill",
+          "pos": "Defensive Midfield",
+          "file": "/teams/15/players/aiden-o-neill.jpg"
+        },
+        {
+          "name": "Ajdin Hrustic",
+          "slug": "ajdin-hrustic",
+          "pos": "Attacking Midfield",
+          "file": "/teams/15/players/ajdin-hrustic.jpg"
+        },
+        {
+          "name": "Alessandro Circati",
+          "slug": "alessandro-circati",
+          "pos": "Centre-Back",
+          "file": "/teams/15/players/alessandro-circati.jpg"
+        },
+        {
+          "name": "Anthony Popovic",
+          "slug": "anthony-popovic",
+          "pos": "Manager",
+          "file": "/teams/15/players/anthony-popovic.jpg"
+        },
+        {
+          "name": "Awer Mabil",
+          "slug": "awer-mabil",
+          "pos": "Left Wing",
+          "file": "/teams/15/players/awer-mabil.jpg"
+        },
+        {
+          "name": "Aziz Behich",
+          "slug": "aziz-behich",
+          "pos": "Left-Back",
+          "file": "/teams/15/players/aziz-behich.jpg"
+        },
+        {
+          "name": "Cameron Burgess",
+          "slug": "cameron-burgess",
+          "pos": "Centre-Back",
+          "file": "/teams/15/players/cameron-burgess.jpg"
+        },
+        {
+          "name": "Cammy Devlin",
+          "slug": "cammy-devlin",
+          "pos": "Central Midfield",
+          "file": "/teams/15/players/cammy-devlin.jpg"
+        },
+        {
+          "name": "Connor Metcalfe",
+          "slug": "connor-metcalfe",
+          "pos": "Central Midfield",
+          "file": "/teams/15/players/connor-metcalfe.jpg"
+        },
+        {
+          "name": "Cristian Volpato",
+          "slug": "cristian-volpato",
+          "pos": "Attacking Midfield",
+          "file": "/teams/15/players/cristian-volpato.jpg"
+        }
+      ]
+    },
+    "16": {
+      "code": "TUR",
+      "name": "Turkey",
+      "tsdbId": "135985",
+      "tsdbName": "Turkey",
+      "badge": "/teams/16/badge.png",
+      "jersey": "/teams/16/jersey.png",
+      "stadium": "/teams/16/stadium.jpg",
+      "players": [
+        {
+          "name": "Abdülkerim Bardakcı",
+          "slug": "abdulkerim-bardakc",
+          "pos": "Centre-Back",
+          "file": "/teams/16/players/abdulkerim-bardakc.jpg"
+        },
+        {
+          "name": "Altay Bayındır",
+          "slug": "altay-bay-nd-r",
+          "pos": "Goalkeeper",
+          "file": "/teams/16/players/altay-bay-nd-r.jpg"
+        },
+        {
+          "name": "Arda Güler",
+          "slug": "arda-guler",
+          "pos": "Attacking Midfield",
+          "file": "/teams/16/players/arda-guler.jpg"
+        },
+        {
+          "name": "Barış Alper Yılmaz",
+          "slug": "bar-s-alper-y-lmaz",
+          "pos": "Right Winger",
+          "file": "/teams/16/players/bar-s-alper-y-lmaz.jpg"
+        },
+        {
+          "name": "Çağlar Söyüncü",
+          "slug": "caglar-soyuncu",
+          "pos": "Centre-Back",
+          "file": "/teams/16/players/caglar-soyuncu.jpg"
+        },
+        {
+          "name": "Can Uzun",
+          "slug": "can-uzun",
+          "pos": "Attacking Midfield",
+          "file": "/teams/16/players/can-uzun.jpg"
+        },
+        {
+          "name": "Deniz Gül",
+          "slug": "deniz-gul",
+          "pos": "Centre-Forward",
+          "file": "/teams/16/players/deniz-gul.jpg"
+        },
+        {
+          "name": "Eren Elmalı",
+          "slug": "eren-elmal",
+          "pos": "Left-Back",
+          "file": "/teams/16/players/eren-elmal.jpg"
+        },
+        {
+          "name": "Ferdi Kadıoğlu",
+          "slug": "ferdi-kad-oglu",
+          "pos": "Left-Back",
+          "file": "/teams/16/players/ferdi-kad-oglu.jpg"
+        },
+        {
+          "name": "Hakan Çalhanoğlu",
+          "slug": "hakan-calhanoglu",
+          "pos": "Defensive Midfield",
+          "file": "/teams/16/players/hakan-calhanoglu.jpg"
+        }
+      ]
+    },
+    "17": {
+      "code": "GER",
+      "name": "Germany",
+      "tsdbId": "133907",
+      "tsdbName": "Germany",
+      "badge": "/teams/17/badge.png",
+      "jersey": "/teams/17/jersey.png",
+      "stadium": "/teams/17/stadium.jpg",
+      "players": [
+        {
+          "name": "Aleksandar Pavlović",
+          "slug": "aleksandar-pavlovic",
+          "pos": "Defensive Midfield",
+          "file": "/teams/17/players/aleksandar-pavlovic.jpg"
+        },
+        {
+          "name": "Alexander Nübel",
+          "slug": "alexander-nubel",
+          "pos": "Goalkeeper",
+          "file": "/teams/17/players/alexander-nubel.jpg"
+        },
+        {
+          "name": "Angelo Stiller",
+          "slug": "angelo-stiller",
+          "pos": "Defensive Midfield",
+          "file": "/teams/17/players/angelo-stiller.jpg"
+        },
+        {
+          "name": "Antonio Rüdiger",
+          "slug": "antonio-rudiger",
+          "pos": "Centre-Back",
+          "file": "/teams/17/players/antonio-rudiger.jpg"
+        },
+        {
+          "name": "Assan Ouédraogo",
+          "slug": "assan-ouedraogo",
+          "pos": "Central Midfield",
+          "file": "/teams/17/players/assan-ouedraogo.jpg"
+        },
+        {
+          "name": "David Raum",
+          "slug": "david-raum",
+          "pos": "Left-Back",
+          "file": "/teams/17/players/david-raum.jpg"
+        },
+        {
+          "name": "Deniz Undav",
+          "slug": "deniz-undav",
+          "pos": "Centre-Forward",
+          "file": "/teams/17/players/deniz-undav.jpg"
+        },
+        {
+          "name": "Felix Nmecha",
+          "slug": "felix-nmecha",
+          "pos": "Central Midfield",
+          "file": "/teams/17/players/felix-nmecha.jpg"
+        },
+        {
+          "name": "Florian Wirtz",
+          "slug": "florian-wirtz",
+          "pos": "Attacking Midfield",
+          "file": "/teams/17/players/florian-wirtz.jpg"
+        },
+        {
+          "name": "Jamal Musiala",
+          "slug": "jamal-musiala",
+          "pos": "Attacking Midfield",
+          "file": "/teams/17/players/jamal-musiala.jpg"
+        }
+      ]
+    },
+    "18": {
+      "code": "CUW",
+      "name": "Curaçao",
+      "tsdbId": "140271",
+      "tsdbName": "Curaçao",
+      "badge": "/teams/18/badge.png",
+      "jersey": "/teams/18/jersey.png",
+      "stadium": "/teams/18/stadium.jpg",
+      "players": [
+        {
+          "name": "Ar'jany Martha",
+          "slug": "ar-jany-martha",
+          "pos": "Right Winger",
+          "file": "/teams/18/players/ar-jany-martha.jpg"
+        },
+        {
+          "name": "Armando Obispo",
+          "slug": "armando-obispo",
+          "pos": "Centre-Back",
+          "file": "/teams/18/players/armando-obispo.jpg"
+        },
+        {
+          "name": "Brandley Kuwas",
+          "slug": "brandley-kuwas",
+          "pos": "Attacking Midfield",
+          "file": "/teams/18/players/brandley-kuwas.jpg"
+        },
+        {
+          "name": "Deveron Fonville",
+          "slug": "deveron-fonville",
+          "pos": "Centre-Back",
+          "file": "/teams/18/players/deveron-fonville.jpg"
+        },
+        {
+          "name": "Dick Advocaat",
+          "slug": "dick-advocaat",
+          "pos": "Manager",
+          "file": "/teams/18/players/dick-advocaat.jpg"
+        },
+        {
+          "name": "Eloy Room",
+          "slug": "eloy-room",
+          "pos": "Goalkeeper",
+          "file": "/teams/18/players/eloy-room.jpg"
+        },
+        {
+          "name": "Gervane Kastaneer",
+          "slug": "gervane-kastaneer",
+          "pos": "Centre-Forward",
+          "file": "/teams/18/players/gervane-kastaneer.jpg"
+        },
+        {
+          "name": "Godfried Roemeratoe",
+          "slug": "godfried-roemeratoe",
+          "pos": "Defensive Midfield",
+          "file": "/teams/18/players/godfried-roemeratoe.jpg"
+        },
+        {
+          "name": "Jearl Margaritha",
+          "slug": "jearl-margaritha",
+          "pos": "Left Wing",
+          "file": "/teams/18/players/jearl-margaritha.jpg"
+        },
+        {
+          "name": "Jeremy Antonisse",
+          "slug": "jeremy-antonisse",
+          "pos": "Left Wing",
+          "file": "/teams/18/players/jeremy-antonisse.jpg"
+        }
+      ]
+    },
+    "19": {
+      "code": "CIV",
+      "name": "Ivory Coast",
+      "tsdbId": "134502",
+      "tsdbName": "Ivory Coast",
+      "badge": "/teams/19/badge.png",
+      "jersey": "/teams/19/jersey.png",
+      "stadium": "/teams/19/stadium.jpg",
+      "players": [
+        {
+          "name": "Alban Lafont",
+          "slug": "alban-lafont",
+          "pos": "Goalkeeper",
+          "file": "/teams/19/players/alban-lafont.jpg"
+        },
+        {
+          "name": "Amad Diallo",
+          "slug": "amad-diallo",
+          "pos": "Right Winger",
+          "file": "/teams/19/players/amad-diallo.jpg"
+        },
+        {
+          "name": "Ange-Yoan Bonny",
+          "slug": "ange-yoan-bonny",
+          "pos": "Centre-Forward",
+          "file": "/teams/19/players/ange-yoan-bonny.jpg"
+        },
+        {
+          "name": "Bazoumana Touré",
+          "slug": "bazoumana-toure",
+          "pos": "Left Wing",
+          "file": "/teams/19/players/bazoumana-toure.jpg"
+        },
+        {
+          "name": "Christ Inao Oulaï",
+          "slug": "christ-inao-oulai",
+          "pos": "Central Midfield",
+          "file": "/teams/19/players/christ-inao-oulai.jpg"
+        },
+        {
+          "name": "Christopher Opéri",
+          "slug": "christopher-operi",
+          "pos": "Left-Back",
+          "file": "/teams/19/players/christopher-operi.jpg"
+        },
+        {
+          "name": "Elye Wahi",
+          "slug": "elye-wahi",
+          "pos": "Centre-Forward",
+          "file": "/teams/19/players/elye-wahi.jpg"
+        },
+        {
+          "name": "Emerse Faé",
+          "slug": "emerse-fae",
+          "pos": "Manager",
+          "file": "/teams/19/players/emerse-fae.jpg"
+        },
+        {
+          "name": "Emmanuel Agbadou",
+          "slug": "emmanuel-agbadou",
+          "pos": "Centre-Back",
+          "file": "/teams/19/players/emmanuel-agbadou.jpg"
+        },
+        {
+          "name": "Evan Ndicka",
+          "slug": "evan-ndicka",
+          "pos": "Centre-Back",
+          "file": "/teams/19/players/evan-ndicka.jpg"
+        }
+      ]
+    },
+    "20": {
+      "code": "ECU",
+      "name": "Ecuador",
+      "tsdbId": "134507",
+      "tsdbName": "Ecuador",
+      "badge": "/teams/20/badge.png",
+      "jersey": "/teams/20/jersey.png",
+      "stadium": "/teams/20/stadium.jpg",
+      "players": [
+        {
+          "name": "Alan Franco",
+          "slug": "alan-franco",
+          "pos": "Central Midfield",
+          "file": "/teams/20/players/alan-franco.jpg"
+        },
+        {
+          "name": "Alan Minda",
+          "slug": "alan-minda",
+          "pos": "Right Winger",
+          "file": "/teams/20/players/alan-minda.jpg"
+        },
+        {
+          "name": "Ángelo Preciado",
+          "slug": "angelo-preciado",
+          "pos": "Right-Back",
+          "file": "/teams/20/players/angelo-preciado.jpg"
+        },
+        {
+          "name": "Anthony Valencia",
+          "slug": "anthony-valencia",
+          "pos": "Right Winger",
+          "file": "/teams/20/players/anthony-valencia.jpg"
+        },
+        {
+          "name": "Denil Castillo",
+          "slug": "denil-castillo",
+          "pos": "Central Midfield",
+          "file": "/teams/20/players/denil-castillo.jpg"
+        },
+        {
+          "name": "Enner Valencia",
+          "slug": "enner-valencia",
+          "pos": "Centre-Forward",
+          "file": "/teams/20/players/enner-valencia.jpg"
+        },
+        {
+          "name": "Félix Torres",
+          "slug": "felix-torres",
+          "pos": "Centre-Back",
+          "file": "/teams/20/players/felix-torres.jpg"
+        },
+        {
+          "name": "Gonzalo Plata",
+          "slug": "gonzalo-plata",
+          "pos": "Right Winger",
+          "file": "/teams/20/players/gonzalo-plata.jpg"
+        },
+        {
+          "name": "Gonzalo Valle",
+          "slug": "gonzalo-valle",
+          "pos": "Goalkeeper",
+          "file": "/teams/20/players/gonzalo-valle.jpg"
+        },
+        {
+          "name": "Hernán Galíndez",
+          "slug": "hernan-galindez",
+          "pos": "Goalkeeper",
+          "file": "/teams/20/players/hernan-galindez.jpg"
+        }
+      ]
+    },
+    "21": {
+      "code": "NED",
+      "name": "Netherlands",
+      "tsdbId": "133905",
+      "tsdbName": "Netherlands",
+      "badge": "/teams/21/badge.png",
+      "jersey": "/teams/21/jersey.png",
+      "stadium": "/teams/21/stadium.jpg",
+      "players": [
+        {
+          "name": "Bart Verbruggen",
+          "slug": "bart-verbruggen",
+          "pos": "Goalkeeper",
+          "file": "/teams/21/players/bart-verbruggen.jpg"
+        },
+        {
+          "name": "Brian Brobbey",
+          "slug": "brian-brobbey",
+          "pos": "Centre-Forward",
+          "file": "/teams/21/players/brian-brobbey.jpg"
+        },
+        {
+          "name": "Cody Gakpo",
+          "slug": "cody-gakpo",
+          "pos": "Left Wing",
+          "file": "/teams/21/players/cody-gakpo.jpg"
+        },
+        {
+          "name": "Crysencio Summerville",
+          "slug": "crysencio-summerville",
+          "pos": "Right Winger",
+          "file": "/teams/21/players/crysencio-summerville.jpg"
+        },
+        {
+          "name": "Denzel Dumfries",
+          "slug": "denzel-dumfries",
+          "pos": "Right-Back",
+          "file": "/teams/21/players/denzel-dumfries.jpg"
+        },
+        {
+          "name": "Donyell Malen",
+          "slug": "donyell-malen",
+          "pos": "Right Winger",
+          "file": "/teams/21/players/donyell-malen.jpg"
+        },
+        {
+          "name": "Frenkie de Jong",
+          "slug": "frenkie-de-jong",
+          "pos": "Central Midfield",
+          "file": "/teams/21/players/frenkie-de-jong.jpg"
+        },
+        {
+          "name": "Guus Til",
+          "slug": "guus-til",
+          "pos": "Attacking Midfield",
+          "file": "/teams/21/players/guus-til.jpg"
+        },
+        {
+          "name": "Jan Paul van Hecke",
+          "slug": "jan-paul-van-hecke",
+          "pos": "Centre-Back",
+          "file": "/teams/21/players/jan-paul-van-hecke.jpg"
+        },
+        {
+          "name": "Jorrel Hato",
+          "slug": "jorrel-hato",
+          "pos": "Left-Back",
+          "file": "/teams/21/players/jorrel-hato.jpg"
+        }
+      ]
+    },
+    "22": {
+      "code": "JPN",
+      "name": "Japan",
+      "tsdbId": "134503",
+      "tsdbName": "Japan",
+      "badge": "/teams/22/badge.png",
+      "jersey": "/teams/22/jersey.png",
+      "stadium": "/teams/22/stadium.jpg",
+      "players": [
+        {
+          "name": "Ao Tanaka",
+          "slug": "ao-tanaka",
+          "pos": "Central Midfield",
+          "file": "/teams/22/players/ao-tanaka.jpg"
+        },
+        {
+          "name": "Ayase Ueda",
+          "slug": "ayase-ueda",
+          "pos": "Centre-Forward",
+          "file": "/teams/22/players/ayase-ueda.jpg"
+        },
+        {
+          "name": "Ayumu Seko",
+          "slug": "ayumu-seko",
+          "pos": "Defensive Midfield",
+          "file": "/teams/22/players/ayumu-seko.jpg"
+        },
+        {
+          "name": "Daichi Kamada",
+          "slug": "daichi-kamada",
+          "pos": "Attacking Midfield",
+          "file": "/teams/22/players/daichi-kamada.jpg"
+        },
+        {
+          "name": "Daizen Maeda",
+          "slug": "daizen-maeda",
+          "pos": "Left Wing",
+          "file": "/teams/22/players/daizen-maeda.jpg"
+        },
+        {
+          "name": "Hajime Moriyasu",
+          "slug": "hajime-moriyasu",
+          "pos": "Manager",
+          "file": "/teams/22/players/hajime-moriyasu.jpg"
+        },
+        {
+          "name": "Hiroki Itō",
+          "slug": "hiroki-ito",
+          "pos": "Centre-Back",
+          "file": "/teams/22/players/hiroki-ito.jpg"
+        },
+        {
+          "name": "Junnosuke Suzuki",
+          "slug": "junnosuke-suzuki",
+          "pos": "Centre-Back",
+          "file": "/teams/22/players/junnosuke-suzuki.jpg"
+        },
+        {
+          "name": "Junya Itō",
+          "slug": "junya-ito",
+          "pos": "Right Winger",
+          "file": "/teams/22/players/junya-ito.jpg"
+        },
+        {
+          "name": "Kaishū Sano",
+          "slug": "kaishu-sano",
+          "pos": "Defensive Midfield",
+          "file": "/teams/22/players/kaishu-sano.jpg"
+        }
+      ]
+    },
+    "23": {
+      "code": "SWE",
+      "name": "Sweden",
+      "tsdbId": "133916",
+      "tsdbName": "Sweden",
+      "badge": "/teams/23/badge.png",
+      "jersey": "/teams/23/jersey.png",
+      "stadium": "/teams/23/stadium.jpg",
+      "players": [
+        {
+          "name": "Alexander Bernhardsson",
+          "slug": "alexander-bernhardsson",
+          "pos": "Right Winger",
+          "file": "/teams/23/players/alexander-bernhardsson.jpg"
+        },
+        {
+          "name": "Alexander Isak",
+          "slug": "alexander-isak",
+          "pos": "Centre-Forward",
+          "file": "/teams/23/players/alexander-isak.jpg"
+        },
+        {
+          "name": "Anthony Elanga",
+          "slug": "anthony-elanga",
+          "pos": "Left Wing",
+          "file": "/teams/23/players/anthony-elanga.jpg"
+        },
+        {
+          "name": "Benjamin Nygren",
+          "slug": "benjamin-nygren",
+          "pos": "Right Winger",
+          "file": "/teams/23/players/benjamin-nygren.jpg"
+        },
+        {
+          "name": "Besfort Zeneli",
+          "slug": "besfort-zeneli",
+          "pos": "Central Midfield",
+          "file": "/teams/23/players/besfort-zeneli.jpg"
+        },
+        {
+          "name": "Carl Starfelt",
+          "slug": "carl-starfelt",
+          "pos": "Centre-Back",
+          "file": "/teams/23/players/carl-starfelt.jpg"
+        },
+        {
+          "name": "Daniel Svensson",
+          "slug": "daniel-svensson",
+          "pos": "Left-Back",
+          "file": "/teams/23/players/daniel-svensson.jpg"
+        },
+        {
+          "name": "Elliot Stroud",
+          "slug": "elliot-stroud",
+          "pos": "Left Midfield",
+          "file": "/teams/23/players/elliot-stroud.jpg"
+        },
+        {
+          "name": "Eric Smith",
+          "slug": "eric-smith",
+          "pos": "Centre-Back",
+          "file": "/teams/23/players/eric-smith.jpg"
+        },
+        {
+          "name": "Gabriel Gudmundsson",
+          "slug": "gabriel-gudmundsson",
+          "pos": "Midfielder",
+          "file": "/teams/23/players/gabriel-gudmundsson.jpg"
+        }
+      ]
+    },
+    "24": {
+      "code": "TUN",
+      "name": "Tunisia",
+      "tsdbId": "136142",
+      "tsdbName": "Tunisia",
+      "badge": "/teams/24/badge.png",
+      "jersey": "/teams/24/jersey.png",
+      "stadium": "/teams/24/stadium.jpg",
+      "players": [
+        {
+          "name": "Abdelmouhib Chamakh",
+          "slug": "abdelmouhib-chamakh",
+          "pos": "Goalkeeper",
+          "file": "/teams/24/players/abdelmouhib-chamakh.jpg"
+        },
+        {
+          "name": "Adem Arous",
+          "slug": "adem-arous",
+          "pos": "Centre-Back",
+          "file": "/teams/24/players/adem-arous.jpg"
+        },
+        {
+          "name": "Ali Abdi",
+          "slug": "ali-abdi",
+          "pos": "Left-Back",
+          "file": "/teams/24/players/ali-abdi.jpg"
+        },
+        {
+          "name": "Anis Ben Slimane",
+          "slug": "anis-ben-slimane",
+          "pos": "Central Midfield",
+          "file": "/teams/24/players/anis-ben-slimane.jpg"
+        },
+        {
+          "name": "Aymen Dahmen",
+          "slug": "aymen-dahmen",
+          "pos": "Goalkeeper",
+          "file": "/teams/24/players/aymen-dahmen.jpg"
+        },
+        {
+          "name": "Dylan Bronn",
+          "slug": "dylan-bronn",
+          "pos": "Centre-Back",
+          "file": "/teams/24/players/dylan-bronn.jpg"
+        },
+        {
+          "name": "Elias Achouri",
+          "slug": "elias-achouri",
+          "pos": "Left Wing",
+          "file": "/teams/24/players/elias-achouri.jpg"
+        },
+        {
+          "name": "Elias Saad",
+          "slug": "elias-saad",
+          "pos": "Left Wing",
+          "file": "/teams/24/players/elias-saad.jpg"
+        },
+        {
+          "name": "Ellyes Skhiri",
+          "slug": "ellyes-skhiri",
+          "pos": "Defensive Midfield",
+          "file": "/teams/24/players/ellyes-skhiri.jpg"
+        },
+        {
+          "name": "Firas Chaouat",
+          "slug": "firas-chaouat",
+          "pos": "Centre-Forward",
+          "file": "/teams/24/players/firas-chaouat.jpg"
+        }
+      ]
+    },
+    "25": {
+      "code": "BEL",
+      "name": "Belgium",
+      "tsdbId": "134515",
+      "tsdbName": "Belgium",
+      "badge": "/teams/25/badge.png",
+      "jersey": "/teams/25/jersey.png",
+      "stadium": "/teams/25/stadium.jpg",
+      "players": [
+        {
+          "name": "Alexis Saelemaekers",
+          "slug": "alexis-saelemaekers",
+          "pos": "Left Midfield",
+          "file": "/teams/25/players/alexis-saelemaekers.jpg"
+        },
+        {
+          "name": "Amadou Onana",
+          "slug": "amadou-onana",
+          "pos": "Defensive Midfield",
+          "file": "/teams/25/players/amadou-onana.jpg"
+        },
+        {
+          "name": "Arthur Theate",
+          "slug": "arthur-theate",
+          "pos": "Centre-Back",
+          "file": "/teams/25/players/arthur-theate.jpg"
+        },
+        {
+          "name": "Axel Witsel",
+          "slug": "axel-witsel",
+          "pos": "Defensive Midfield",
+          "file": "/teams/25/players/axel-witsel.jpg"
+        },
+        {
+          "name": "Brandon Mechele",
+          "slug": "brandon-mechele",
+          "pos": "Centre-Back",
+          "file": "/teams/25/players/brandon-mechele.jpg"
+        },
+        {
+          "name": "Charles De Ketelaere",
+          "slug": "charles-de-ketelaere",
+          "pos": "Attacking Midfield",
+          "file": "/teams/25/players/charles-de-ketelaere.jpg"
+        },
+        {
+          "name": "Diego Moreira",
+          "slug": "diego-moreira",
+          "pos": "Left Midfield",
+          "file": "/teams/25/players/diego-moreira.jpg"
+        },
+        {
+          "name": "Dodi Lukébakio",
+          "slug": "dodi-lukebakio",
+          "pos": "Right Winger",
+          "file": "/teams/25/players/dodi-lukebakio.jpg"
+        },
+        {
+          "name": "Hans Vanaken",
+          "slug": "hans-vanaken",
+          "pos": "Attacking Midfield",
+          "file": "/teams/25/players/hans-vanaken.jpg"
+        },
+        {
+          "name": "Jérémy Doku",
+          "slug": "jeremy-doku",
+          "pos": "Left Wing",
+          "file": "/teams/25/players/jeremy-doku.jpg"
+        }
+      ]
+    },
+    "26": {
+      "code": "EGY",
+      "name": "Egypt",
+      "tsdbId": "136138",
+      "tsdbName": "Egypt",
+      "badge": "/teams/26/badge.png",
+      "jersey": "/teams/26/jersey.png",
+      "stadium": "/teams/26/stadium.jpg",
+      "players": [
+        {
+          "name": "Ahmed Fatouh",
+          "slug": "ahmed-fatouh",
+          "pos": "Left-Back",
+          "file": "/teams/26/players/ahmed-fatouh.jpg"
+        },
+        {
+          "name": "El Mahdy Soliman",
+          "slug": "el-mahdy-soliman",
+          "pos": "Goalkeeper",
+          "file": "/teams/26/players/el-mahdy-soliman.jpg"
+        },
+        {
+          "name": "Emam Ashour",
+          "slug": "emam-ashour",
+          "pos": "Central Midfield",
+          "file": "/teams/26/players/emam-ashour.jpg"
+        },
+        {
+          "name": "Haissem Hassan",
+          "slug": "haissem-hassan",
+          "pos": "Right Winger",
+          "file": "/teams/26/players/haissem-hassan.jpg"
+        },
+        {
+          "name": "Hamdy Fathy",
+          "slug": "hamdy-fathy",
+          "pos": "Defensive Midfield",
+          "file": "/teams/26/players/hamdy-fathy.jpg"
+        },
+        {
+          "name": "Hamza Abdelkarim",
+          "slug": "hamza-abdelkarim",
+          "pos": "Centre-Forward",
+          "file": "/teams/26/players/hamza-abdelkarim.jpg"
+        },
+        {
+          "name": "Hossam Abdelmaguid",
+          "slug": "hossam-abdelmaguid",
+          "pos": "Centre-Back",
+          "file": "/teams/26/players/hossam-abdelmaguid.jpg"
+        },
+        {
+          "name": "Hossam Hassan",
+          "slug": "hossam-hassan",
+          "pos": "Manager",
+          "file": "/teams/26/players/hossam-hassan.jpg"
+        },
+        {
+          "name": "Ibrahim Adel",
+          "slug": "ibrahim-adel",
+          "pos": "Left Wing",
+          "file": "/teams/26/players/ibrahim-adel.jpg"
+        },
+        {
+          "name": "Karim Hafez",
+          "slug": "karim-hafez",
+          "pos": "Left-Back",
+          "file": "/teams/26/players/karim-hafez.jpg"
+        }
+      ]
+    },
+    "27": {
+      "code": "IRN",
+      "name": "Iran",
+      "tsdbId": "134511",
+      "tsdbName": "Iran",
+      "badge": "/teams/27/badge.png",
+      "jersey": "/teams/27/jersey.png",
+      "stadium": "/teams/27/stadium.jpg",
+      "players": [
+        {
+          "name": "Ali Alipour",
+          "slug": "ali-alipour",
+          "pos": "Centre-Forward",
+          "file": "/teams/27/players/ali-alipour.jpg"
+        },
+        {
+          "name": "Ali Nemati",
+          "slug": "ali-nemati",
+          "pos": "Centre-Back",
+          "file": "/teams/27/players/ali-nemati.jpg"
+        },
+        {
+          "name": "Alireza Beiranvand",
+          "slug": "alireza-beiranvand",
+          "pos": "Goalkeeper",
+          "file": "/teams/27/players/alireza-beiranvand.jpg"
+        },
+        {
+          "name": "Alireza Jahanbakhsh",
+          "slug": "alireza-jahanbakhsh",
+          "pos": "Right Winger",
+          "file": "/teams/27/players/alireza-jahanbakhsh.jpg"
+        },
+        {
+          "name": "Amir Ghalenoei",
+          "slug": "amir-ghalenoei",
+          "pos": "Manager",
+          "file": "/teams/27/players/amir-ghalenoei.jpg"
+        },
+        {
+          "name": "Amirhossein Hosseinzadeh",
+          "slug": "amirhossein-hosseinzadeh",
+          "pos": "Right Winger",
+          "file": "/teams/27/players/amirhossein-hosseinzadeh.jpg"
+        },
+        {
+          "name": "Amirmohammad Razzaghinia",
+          "slug": "amirmohammad-razzaghinia",
+          "pos": "Central Midfield",
+          "file": "/teams/27/players/amirmohammad-razzaghinia.jpg"
+        },
+        {
+          "name": "Aria Yousefi",
+          "slug": "aria-yousefi",
+          "pos": "Right-Back",
+          "file": "/teams/27/players/aria-yousefi.jpg"
+        },
+        {
+          "name": "Danial Eiri",
+          "slug": "danial-eiri",
+          "pos": "Centre-Back",
+          "file": "/teams/27/players/danial-eiri.jpg"
+        },
+        {
+          "name": "Dennis Eckert",
+          "slug": "dennis-eckert",
+          "pos": "Centre-Forward",
+          "file": "/teams/27/players/dennis-eckert.jpg"
+        }
+      ]
+    },
+    "28": {
+      "code": "NZL",
+      "name": "New Zealand",
+      "tsdbId": "137449",
+      "tsdbName": "New Zealand",
+      "badge": "/teams/28/badge.png",
+      "jersey": "/teams/28/jersey.png",
+      "stadium": "/teams/28/stadium.jpg",
+      "players": [
+        {
+          "name": "Alex Paulsen",
+          "slug": "alex-paulsen",
+          "pos": "Goalkeeper",
+          "file": "/teams/28/players/alex-paulsen.jpg"
+        },
+        {
+          "name": "Alex Rufer",
+          "slug": "alex-rufer",
+          "pos": "Defensive Midfield",
+          "file": "/teams/28/players/alex-rufer.jpg"
+        },
+        {
+          "name": "Ben Old",
+          "slug": "ben-old",
+          "pos": "Left-Back",
+          "file": "/teams/28/players/ben-old.jpg"
+        },
+        {
+          "name": "Ben Waine",
+          "slug": "ben-waine",
+          "pos": "Centre-Forward",
+          "file": "/teams/28/players/ben-waine.jpg"
+        },
+        {
+          "name": "Callan Elliot",
+          "slug": "callan-elliot",
+          "pos": "Right-Back",
+          "file": "/teams/28/players/callan-elliot.jpg"
+        },
+        {
+          "name": "Callum McCowatt",
+          "slug": "callum-mccowatt",
+          "pos": "Attacking Midfield",
+          "file": "/teams/28/players/callum-mccowatt.jpg"
+        },
+        {
+          "name": "Chris Wood",
+          "slug": "chris-wood",
+          "pos": "Centre-Forward",
+          "file": "/teams/28/players/chris-wood.jpg"
+        },
+        {
+          "name": "Darren Bazeley",
+          "slug": "darren-bazeley",
+          "pos": "Manager",
+          "file": "/teams/28/players/darren-bazeley.jpg"
+        },
+        {
+          "name": "Elijah Just",
+          "slug": "elijah-just",
+          "pos": "Right Winger",
+          "file": "/teams/28/players/elijah-just.jpg"
+        },
+        {
+          "name": "Finn Surman",
+          "slug": "finn-surman",
+          "pos": "Centre-Back",
+          "file": "/teams/28/players/finn-surman.jpg"
+        }
+      ]
+    },
+    "29": {
+      "code": "ESP",
+      "name": "Spain",
+      "tsdbId": "133909",
+      "tsdbName": "Spain",
+      "badge": "/teams/29/badge.png",
+      "jersey": "/teams/29/jersey.png",
+      "stadium": "/teams/29/stadium.jpg",
+      "players": [
+        {
+          "name": "Álex Baena",
+          "slug": "alex-baena",
+          "pos": "Left Midfield",
+          "file": "/teams/29/players/alex-baena.jpg"
+        },
+        {
+          "name": "Álex Grimaldo",
+          "slug": "alex-grimaldo",
+          "pos": "Left-Back",
+          "file": "/teams/29/players/alex-grimaldo.jpg"
+        },
+        {
+          "name": "Aymeric Laporte",
+          "slug": "aymeric-laporte",
+          "pos": "Centre-Back",
+          "file": "/teams/29/players/aymeric-laporte.jpg"
+        },
+        {
+          "name": "Borja Iglesias",
+          "slug": "borja-iglesias",
+          "pos": "Centre-Forward",
+          "file": "/teams/29/players/borja-iglesias.jpg"
+        },
+        {
+          "name": "Dani Olmo",
+          "slug": "dani-olmo",
+          "pos": "Attacking Midfield",
+          "file": "/teams/29/players/dani-olmo.jpg"
+        },
+        {
+          "name": "David Raya",
+          "slug": "david-raya",
+          "pos": "Goalkeeper",
+          "file": "/teams/29/players/david-raya.jpg"
+        },
+        {
+          "name": "Eric García",
+          "slug": "eric-garcia",
+          "pos": "Centre-Back",
+          "file": "/teams/29/players/eric-garcia.jpg"
+        },
+        {
+          "name": "Fabián Ruiz",
+          "slug": "fabian-ruiz",
+          "pos": "Central Midfield",
+          "file": "/teams/29/players/fabian-ruiz.jpg"
+        },
+        {
+          "name": "Ferran Torres",
+          "slug": "ferran-torres",
+          "pos": "Left Wing",
+          "file": "/teams/29/players/ferran-torres.jpg"
+        },
+        {
+          "name": "Gavi",
+          "slug": "gavi",
+          "pos": "Central Midfield",
+          "file": "/teams/29/players/gavi.jpg"
+        }
+      ]
+    },
+    "30": {
+      "code": "CPV",
+      "name": "Cape Verde",
+      "tsdbId": "136477",
+      "tsdbName": "Cape Verde",
+      "badge": "/teams/30/badge.png",
+      "jersey": "/teams/30/jersey.png",
+      "stadium": "/teams/30/stadium.jpg",
+      "players": [
+        {
+          "name": "Bubista",
+          "slug": "bubista",
+          "pos": "Manager",
+          "file": "/teams/30/players/bubista.jpg"
+        },
+        {
+          "name": "CJ dos Santos",
+          "slug": "cj-dos-santos",
+          "pos": "Goalkeeper",
+          "file": "/teams/30/players/cj-dos-santos.jpg"
+        },
+        {
+          "name": "Dailon Livramento",
+          "slug": "dailon-livramento",
+          "pos": "Centre-Forward",
+          "file": "/teams/30/players/dailon-livramento.jpg"
+        },
+        {
+          "name": "Deroy Duarte",
+          "slug": "deroy-duarte",
+          "pos": "Central Midfield",
+          "file": "/teams/30/players/deroy-duarte.jpg"
+        },
+        {
+          "name": "Diney",
+          "slug": "diney",
+          "pos": "Centre-Back",
+          "file": "/teams/30/players/diney.jpg"
+        },
+        {
+          "name": "Garry Rodrigues",
+          "slug": "garry-rodrigues",
+          "pos": "Right Winger",
+          "file": "/teams/30/players/garry-rodrigues.jpg"
+        },
+        {
+          "name": "Gilson Benchimol",
+          "slug": "gilson-benchimol",
+          "pos": "Centre-Forward",
+          "file": "/teams/30/players/gilson-benchimol.jpg"
+        },
+        {
+          "name": "Hélio Varela",
+          "slug": "helio-varela",
+          "pos": "Left Wing",
+          "file": "/teams/30/players/helio-varela.jpg"
+        },
+        {
+          "name": "Jamiro Monteiro",
+          "slug": "jamiro-monteiro",
+          "pos": "Central Midfield",
+          "file": "/teams/30/players/jamiro-monteiro.jpg"
+        },
+        {
+          "name": "João Paulo",
+          "slug": "joao-paulo",
+          "pos": "Defensive Midfield",
+          "file": "/teams/30/players/joao-paulo.jpg"
+        }
+      ]
+    },
+    "31": {
+      "code": "KSA",
+      "name": "Saudi Arabia",
+      "tsdbId": "136137",
+      "tsdbName": "Saudi Arabia",
+      "badge": "/teams/31/badge.png",
+      "jersey": "/teams/31/jersey.png",
+      "stadium": "/teams/31/stadium.jpg",
+      "players": [
+        {
+          "name": "Abdulelah Al-Amri",
+          "slug": "abdulelah-al-amri",
+          "pos": "Centre-Back",
+          "file": "/teams/31/players/abdulelah-al-amri.jpg"
+        },
+        {
+          "name": "Abdullah Al-Hamdan",
+          "slug": "abdullah-al-hamdan",
+          "pos": "Centre-Forward",
+          "file": "/teams/31/players/abdullah-al-hamdan.jpg"
+        },
+        {
+          "name": "Abdullah Al-Khaibari",
+          "slug": "abdullah-al-khaibari",
+          "pos": "Defensive Midfield",
+          "file": "/teams/31/players/abdullah-al-khaibari.jpg"
+        },
+        {
+          "name": "Ahmed Al-Kassar",
+          "slug": "ahmed-al-kassar",
+          "pos": "Goalkeeper",
+          "file": "/teams/31/players/ahmed-al-kassar.jpg"
+        },
+        {
+          "name": "Alaa Al-Hejji",
+          "slug": "alaa-al-hejji",
+          "pos": "Central Midfield",
+          "file": "/teams/31/players/alaa-al-hejji.jpg"
+        },
+        {
+          "name": "Ali Lajami",
+          "slug": "ali-lajami",
+          "pos": "Centre-Back",
+          "file": "/teams/31/players/ali-lajami.jpg"
+        },
+        {
+          "name": "Ali Majrashi",
+          "slug": "ali-majrashi",
+          "pos": "Right-Back",
+          "file": "/teams/31/players/ali-majrashi.jpg"
+        },
+        {
+          "name": "Ayman Yahya",
+          "slug": "ayman-yahya",
+          "pos": "Left Wing",
+          "file": "/teams/31/players/ayman-yahya.jpg"
+        },
+        {
+          "name": "Firas Al-Buraikan",
+          "slug": "firas-al-buraikan",
+          "pos": "Centre-Forward",
+          "file": "/teams/31/players/firas-al-buraikan.jpg"
+        },
+        {
+          "name": "Georgios Donis",
+          "slug": "georgios-donis",
+          "pos": "Manager",
+          "file": "/teams/31/players/georgios-donis.jpg"
+        }
+      ]
+    },
+    "32": {
+      "code": "URU",
+      "name": "Uruguay",
+      "tsdbId": "134504",
+      "tsdbName": "Uruguay",
+      "badge": "/teams/32/badge.png",
+      "jersey": "/teams/32/jersey.png",
+      "stadium": "/teams/32/stadium.jpg",
+      "players": [
+        {
+          "name": "Agustín Canobbio",
+          "slug": "agustin-canobbio",
+          "pos": "Right Winger",
+          "file": "/teams/32/players/agustin-canobbio.jpg"
+        },
+        {
+          "name": "Brian Rodríguez",
+          "slug": "brian-rodriguez",
+          "pos": "Left Wing",
+          "file": "/teams/32/players/brian-rodriguez.jpg"
+        },
+        {
+          "name": "Darwin Núñez",
+          "slug": "darwin-nunez",
+          "pos": "Centre-Forward",
+          "file": "/teams/32/players/darwin-nunez.jpg"
+        },
+        {
+          "name": "Emiliano Martínez",
+          "slug": "emiliano-martinez",
+          "pos": "Defensive Midfield",
+          "file": "/teams/32/players/emiliano-martinez.jpg"
+        },
+        {
+          "name": "Facundo Pellistri",
+          "slug": "facundo-pellistri",
+          "pos": "Right Winger",
+          "file": "/teams/32/players/facundo-pellistri.jpg"
+        },
+        {
+          "name": "Federico Valverde",
+          "slug": "federico-valverde",
+          "pos": "Central Midfield",
+          "file": "/teams/32/players/federico-valverde.jpg"
+        },
+        {
+          "name": "Federico Viñas",
+          "slug": "federico-vinas",
+          "pos": "Centre-Forward",
+          "file": "/teams/32/players/federico-vinas.jpg"
+        },
+        {
+          "name": "Fernando Muslera",
+          "slug": "fernando-muslera",
+          "pos": "Goalkeeper",
+          "file": "/teams/32/players/fernando-muslera.jpg"
+        },
+        {
+          "name": "Giorgian De Arrascaeta",
+          "slug": "giorgian-de-arrascaeta",
+          "pos": "Attacking Midfield",
+          "file": "/teams/32/players/giorgian-de-arrascaeta.jpg"
+        },
+        {
+          "name": "Guillermo Varela",
+          "slug": "guillermo-varela",
+          "pos": "Right-Back",
+          "file": "/teams/32/players/guillermo-varela.jpg"
+        }
+      ]
+    },
+    "33": {
+      "code": "FRA",
+      "name": "France",
+      "tsdbId": "133913",
+      "tsdbName": "France",
+      "badge": "/teams/33/badge.png",
+      "jersey": "/teams/33/jersey.png",
+      "stadium": "/teams/33/stadium.jpg",
+      "players": [
+        {
+          "name": "Adrien Rabiot",
+          "slug": "adrien-rabiot",
+          "pos": "Central Midfield",
+          "file": "/teams/33/players/adrien-rabiot.jpg"
+        },
+        {
+          "name": "Aurélien Tchouaméni",
+          "slug": "aurelien-tchouameni",
+          "pos": "Defensive Midfield",
+          "file": "/teams/33/players/aurelien-tchouameni.jpg"
+        },
+        {
+          "name": "Bradley Barcola",
+          "slug": "bradley-barcola",
+          "pos": "Left Wing",
+          "file": "/teams/33/players/bradley-barcola.jpg"
+        },
+        {
+          "name": "Brice Samba",
+          "slug": "brice-samba",
+          "pos": "Goalkeeper",
+          "file": "/teams/33/players/brice-samba.jpg"
+        },
+        {
+          "name": "Dayot Upamecano",
+          "slug": "dayot-upamecano",
+          "pos": "Centre-Back",
+          "file": "/teams/33/players/dayot-upamecano.jpg"
+        },
+        {
+          "name": "Désiré Doué",
+          "slug": "desire-doue",
+          "pos": "Left Midfield",
+          "file": "/teams/33/players/desire-doue.jpg"
+        },
+        {
+          "name": "Didier Deschamps",
+          "slug": "didier-deschamps",
+          "pos": "Manager",
+          "file": "/teams/33/players/didier-deschamps.jpg"
+        },
+        {
+          "name": "Ibrahima Konaté",
+          "slug": "ibrahima-konate",
+          "pos": "Centre-Back",
+          "file": "/teams/33/players/ibrahima-konate.jpg"
+        },
+        {
+          "name": "Jean-Philippe Mateta",
+          "slug": "jean-philippe-mateta",
+          "pos": "Centre-Forward",
+          "file": "/teams/33/players/jean-philippe-mateta.jpg"
+        },
+        {
+          "name": "Jules Koundé",
+          "slug": "jules-kounde",
+          "pos": "Centre-Back",
+          "file": "/teams/33/players/jules-kounde.jpg"
+        }
+      ]
+    },
+    "34": {
+      "code": "SEN",
+      "name": "Senegal",
+      "tsdbId": "136143",
+      "tsdbName": "Senegal",
+      "badge": "/teams/34/badge.png",
+      "jersey": "/teams/34/jersey.png",
+      "stadium": "/teams/34/stadium.jpg",
+      "players": [
+        {
+          "name": "Abdoulaye Seck",
+          "slug": "abdoulaye-seck",
+          "pos": "Centre-Back",
+          "file": "/teams/34/players/abdoulaye-seck.jpg"
+        },
+        {
+          "name": "Antoine Mendy",
+          "slug": "antoine-mendy",
+          "pos": "Centre-Back",
+          "file": "/teams/34/players/antoine-mendy.jpg"
+        },
+        {
+          "name": "Assane Diao",
+          "slug": "assane-diao",
+          "pos": "Right Winger",
+          "file": "/teams/34/players/assane-diao.jpg"
+        },
+        {
+          "name": "Bamba Dieng",
+          "slug": "bamba-dieng",
+          "pos": "Centre-Forward",
+          "file": "/teams/34/players/bamba-dieng.jpg"
+        },
+        {
+          "name": "Bara Sapoko Ndiaye",
+          "slug": "bara-sapoko-ndiaye",
+          "pos": "Central Midfield",
+          "file": "/teams/34/players/bara-sapoko-ndiaye.jpg"
+        },
+        {
+          "name": "Cherif Ndiaye",
+          "slug": "cherif-ndiaye",
+          "pos": "Centre-Forward",
+          "file": "/teams/34/players/cherif-ndiaye.jpg"
+        },
+        {
+          "name": "Édouard Mendy",
+          "slug": "edouard-mendy",
+          "pos": "Goalkeeper",
+          "file": "/teams/34/players/edouard-mendy.jpg"
+        },
+        {
+          "name": "El Hadji Malick Diouf",
+          "slug": "el-hadji-malick-diouf",
+          "pos": "Left-Back",
+          "file": "/teams/34/players/el-hadji-malick-diouf.jpg"
+        },
+        {
+          "name": "Habib Diarra",
+          "slug": "habib-diarra",
+          "pos": "Central Midfield",
+          "file": "/teams/34/players/habib-diarra.jpg"
+        },
+        {
+          "name": "Ibrahim Mbaye",
+          "slug": "ibrahim-mbaye",
+          "pos": "Right Winger",
+          "file": "/teams/34/players/ibrahim-mbaye.jpg"
+        }
+      ]
+    },
+    "35": {
+      "code": "IRQ",
+      "name": "Iraq",
+      "tsdbId": "140148",
+      "tsdbName": "Iraq",
+      "badge": "/teams/35/badge.png",
+      "jersey": "/teams/35/jersey.png",
+      "stadium": "/teams/35/stadium.jpg",
+      "players": [
+        {
+          "name": "Ahmed Basil",
+          "slug": "ahmed-basil",
+          "pos": "Goalkeeper",
+          "file": "/teams/35/players/ahmed-basil.jpg"
+        },
+        {
+          "name": "Ahmed Maknzi",
+          "slug": "ahmed-maknzi",
+          "pos": "Left-Back",
+          "file": "/teams/35/players/ahmed-maknzi.jpg"
+        },
+        {
+          "name": "Ahmed Qasem",
+          "slug": "ahmed-qasem",
+          "pos": "Right Winger",
+          "file": "/teams/35/players/ahmed-qasem.jpg"
+        },
+        {
+          "name": "Aimar Sher",
+          "slug": "aimar-sher",
+          "pos": "Central Midfield",
+          "file": "/teams/35/players/aimar-sher.jpg"
+        },
+        {
+          "name": "Akam Hashem",
+          "slug": "akam-hashem",
+          "pos": "Centre-Back",
+          "file": "/teams/35/players/akam-hashem.jpg"
+        },
+        {
+          "name": "Ali Al-Hamadi",
+          "slug": "ali-al-hamadi",
+          "pos": "Centre-Forward",
+          "file": "/teams/35/players/ali-al-hamadi.jpg"
+        },
+        {
+          "name": "Ali Jasim",
+          "slug": "ali-jasim",
+          "pos": "Left Centre",
+          "file": "/teams/35/players/ali-jasim.jpg"
+        },
+        {
+          "name": "Ali Yousif",
+          "slug": "ali-yousif",
+          "pos": "Centre-Forward",
+          "file": "/teams/35/players/ali-yousif.jpg"
+        },
+        {
+          "name": "Amir Al-Ammari",
+          "slug": "amir-al-ammari",
+          "pos": "Defensive Midfield",
+          "file": "/teams/35/players/amir-al-ammari.jpg"
+        },
+        {
+          "name": "Aymen Hussein",
+          "slug": "aymen-hussein",
+          "pos": "Centre-Forward",
+          "file": "/teams/35/players/aymen-hussein.jpg"
+        }
+      ]
+    },
+    "36": {
+      "code": "NOR",
+      "name": "Norway",
+      "tsdbId": "136516",
+      "tsdbName": "Norway",
+      "badge": "/teams/36/badge.png",
+      "jersey": "/teams/36/jersey.png",
+      "stadium": "/teams/36/stadium.jpg",
+      "players": [
+        {
+          "name": "Alexander Sørloth",
+          "slug": "alexander-s-rloth",
+          "pos": "Centre-Forward",
+          "file": "/teams/36/players/alexander-s-rloth.jpg"
+        },
+        {
+          "name": "Andreas Schjelderup",
+          "slug": "andreas-schjelderup",
+          "pos": "Centre-Forward",
+          "file": "/teams/36/players/andreas-schjelderup.jpg"
+        },
+        {
+          "name": "Antonio Nusa",
+          "slug": "antonio-nusa",
+          "pos": "Left Midfield",
+          "file": "/teams/36/players/antonio-nusa.jpg"
+        },
+        {
+          "name": "David Møller Wolfe",
+          "slug": "david-m-ller-wolfe",
+          "pos": "Left-Back",
+          "file": "/teams/36/players/david-m-ller-wolfe.jpg"
+        },
+        {
+          "name": "Egil Selvik",
+          "slug": "egil-selvik",
+          "pos": "Goalkeeper",
+          "file": "/teams/36/players/egil-selvik.jpg"
+        },
+        {
+          "name": "Erling Haaland",
+          "slug": "erling-haaland",
+          "pos": "Centre-Forward",
+          "file": "/teams/36/players/erling-haaland.jpg"
+        },
+        {
+          "name": "Fredrik Aursnes",
+          "slug": "fredrik-aursnes",
+          "pos": "Central Midfield",
+          "file": "/teams/36/players/fredrik-aursnes.jpg"
+        },
+        {
+          "name": "Fredrik Bjørkan",
+          "slug": "fredrik-bj-rkan",
+          "pos": "Left-Back",
+          "file": "/teams/36/players/fredrik-bj-rkan.jpg"
+        },
+        {
+          "name": "Henrik Falchener",
+          "slug": "henrik-falchener",
+          "pos": "Centre-Back",
+          "file": "/teams/36/players/henrik-falchener.jpg"
+        },
+        {
+          "name": "Jens Petter Hauge",
+          "slug": "jens-petter-hauge",
+          "pos": "Left Wing",
+          "file": "/teams/36/players/jens-petter-hauge.jpg"
+        }
+      ]
+    },
+    "37": {
+      "code": "ARG",
+      "name": "Argentina",
+      "tsdbId": "134509",
+      "tsdbName": "Argentina",
+      "badge": "/teams/37/badge.png",
+      "jersey": "/teams/37/jersey.png",
+      "stadium": "/teams/37/stadium.jpg",
+      "players": [
+        {
+          "name": "Alexis Mac Allister",
+          "slug": "alexis-mac-allister",
+          "pos": "Central Midfield",
+          "file": "/teams/37/players/alexis-mac-allister.jpg"
+        },
+        {
+          "name": "Cristian Romero",
+          "slug": "cristian-romero",
+          "pos": "Centre-Back",
+          "file": "/teams/37/players/cristian-romero.jpg"
+        },
+        {
+          "name": "Emiliano Martinez",
+          "slug": "emiliano-martinez",
+          "pos": "Goalkeeper",
+          "file": "/teams/37/players/emiliano-martinez.jpg"
+        },
+        {
+          "name": "Enzo Fernández",
+          "slug": "enzo-fernandez",
+          "pos": "Central Midfield",
+          "file": "/teams/37/players/enzo-fernandez.jpg"
+        },
+        {
+          "name": "Exequiel Palacios",
+          "slug": "exequiel-palacios",
+          "pos": "Central Midfield",
+          "file": "/teams/37/players/exequiel-palacios.jpg"
+        },
+        {
+          "name": "Facundo Medina",
+          "slug": "facundo-medina",
+          "pos": "Centre-Back",
+          "file": "/teams/37/players/facundo-medina.jpg"
+        },
+        {
+          "name": "Gerónimo Rulli",
+          "slug": "geronimo-rulli",
+          "pos": "Goalkeeper",
+          "file": "/teams/37/players/geronimo-rulli.jpg"
+        },
+        {
+          "name": "Giovani Lo Celso",
+          "slug": "giovani-lo-celso",
+          "pos": "Attacking Midfield",
+          "file": "/teams/37/players/giovani-lo-celso.jpg"
+        },
+        {
+          "name": "Giuliano Simeone",
+          "slug": "giuliano-simeone",
+          "pos": "Centre-Forward",
+          "file": "/teams/37/players/giuliano-simeone.jpg"
+        },
+        {
+          "name": "Gonzalo Montiel",
+          "slug": "gonzalo-montiel",
+          "pos": "Right-Back",
+          "file": "/teams/37/players/gonzalo-montiel.jpg"
+        }
+      ]
+    },
+    "38": {
+      "code": "ALG",
+      "name": "Algeria",
+      "tsdbId": "134516",
+      "tsdbName": "Algeria",
+      "badge": "/teams/38/badge.png",
+      "jersey": "/teams/38/jersey.png",
+      "stadium": "/teams/38/stadium.jpg",
+      "players": [
+        {
+          "name": "Achref Abada",
+          "slug": "achref-abada",
+          "pos": "Centre-Back",
+          "file": "/teams/38/players/achref-abada.jpg"
+        },
+        {
+          "name": "Adil Boulbina",
+          "slug": "adil-boulbina",
+          "pos": "Left Wing",
+          "file": "/teams/38/players/adil-boulbina.jpg"
+        },
+        {
+          "name": "Aïssa Mandi",
+          "slug": "aissa-mandi",
+          "pos": "Centre-Back",
+          "file": "/teams/38/players/aissa-mandi.jpg"
+        },
+        {
+          "name": "Amine Gouiri",
+          "slug": "amine-gouiri",
+          "pos": "Centre-Forward",
+          "file": "/teams/38/players/amine-gouiri.jpg"
+        },
+        {
+          "name": "Anis Hadj Moussa",
+          "slug": "anis-hadj-moussa",
+          "pos": "Right Winger",
+          "file": "/teams/38/players/anis-hadj-moussa.jpg"
+        },
+        {
+          "name": "Farès Chaïbi",
+          "slug": "fares-chaibi",
+          "pos": "Attacking Midfield",
+          "file": "/teams/38/players/fares-chaibi.jpg"
+        },
+        {
+          "name": "Farès Ghedjemis",
+          "slug": "fares-ghedjemis",
+          "pos": "Right Winger",
+          "file": "/teams/38/players/fares-ghedjemis.jpg"
+        },
+        {
+          "name": "Hicham Boudaoui",
+          "slug": "hicham-boudaoui",
+          "pos": "Central Midfield",
+          "file": "/teams/38/players/hicham-boudaoui.jpg"
+        },
+        {
+          "name": "Houssem Aouar",
+          "slug": "houssem-aouar",
+          "pos": "Attacking Midfield",
+          "file": "/teams/38/players/houssem-aouar.jpg"
+        },
+        {
+          "name": "Ibrahim Maza",
+          "slug": "ibrahim-maza",
+          "pos": "Attacking Midfield",
+          "file": "/teams/38/players/ibrahim-maza.jpg"
+        }
+      ]
+    },
+    "39": {
+      "code": "AUT",
+      "name": "Austria",
+      "tsdbId": "135986",
+      "tsdbName": "Austria",
+      "badge": "/teams/39/badge.png",
+      "jersey": "/teams/39/jersey.png",
+      "stadium": "/teams/39/stadium.jpg",
+      "players": [
+        {
+          "name": "Alessandro Schöpf",
+          "slug": "alessandro-schopf",
+          "pos": "Central Midfield",
+          "file": "/teams/39/players/alessandro-schopf.jpg"
+        },
+        {
+          "name": "Alexander Prass",
+          "slug": "alexander-prass",
+          "pos": "Left Midfield",
+          "file": "/teams/39/players/alexander-prass.jpg"
+        },
+        {
+          "name": "Alexander Schlager",
+          "slug": "alexander-schlager",
+          "pos": "Goalkeeper",
+          "file": "/teams/39/players/alexander-schlager.jpg"
+        },
+        {
+          "name": "Carney Chukwuemeka",
+          "slug": "carney-chukwuemeka",
+          "pos": "Central Midfield",
+          "file": "/teams/39/players/carney-chukwuemeka.jpg"
+        },
+        {
+          "name": "David Affengruber",
+          "slug": "david-affengruber",
+          "pos": "Centre-Back",
+          "file": "/teams/39/players/david-affengruber.jpg"
+        },
+        {
+          "name": "David Alaba",
+          "slug": "david-alaba",
+          "pos": "Centre-Back",
+          "file": "/teams/39/players/david-alaba.jpg"
+        },
+        {
+          "name": "Florian Grillitsch",
+          "slug": "florian-grillitsch",
+          "pos": "Defensive Midfield",
+          "file": "/teams/39/players/florian-grillitsch.jpg"
+        },
+        {
+          "name": "Florian Wiegele",
+          "slug": "florian-wiegele",
+          "pos": "Goalkeeper",
+          "file": "/teams/39/players/florian-wiegele.jpg"
+        },
+        {
+          "name": "Kevin Danso",
+          "slug": "kevin-danso",
+          "pos": "Centre-Back",
+          "file": "/teams/39/players/kevin-danso.jpg"
+        },
+        {
+          "name": "Konrad Laimer",
+          "slug": "konrad-laimer",
+          "pos": "Right-Back",
+          "file": "/teams/39/players/konrad-laimer.jpg"
+        }
+      ]
+    },
+    "40": {
+      "code": "JOR",
+      "name": "Jordan",
+      "tsdbId": "151748",
+      "tsdbName": "Jordan",
+      "badge": "/teams/40/badge.png",
+      "jersey": "/teams/40/jersey.png",
+      "players": []
+    },
+    "41": {
+      "code": "POR",
+      "name": "Portugal",
+      "tsdbId": "133908",
+      "tsdbName": "Portugal",
+      "badge": "/teams/41/badge.png",
+      "jersey": "/teams/41/jersey.png",
+      "stadium": "/teams/41/stadium.jpg",
+      "players": [
+        {
+          "name": "Bernardo Silva",
+          "slug": "bernardo-silva",
+          "pos": "Attacking Midfield",
+          "file": "/teams/41/players/bernardo-silva.jpg"
+        },
+        {
+          "name": "Bruno Fernandes",
+          "slug": "bruno-fernandes",
+          "pos": "Central Midfield",
+          "file": "/teams/41/players/bruno-fernandes.jpg"
+        },
+        {
+          "name": "Cristiano Ronaldo",
+          "slug": "cristiano-ronaldo",
+          "pos": "Centre-Forward",
+          "file": "/teams/41/players/cristiano-ronaldo.jpg"
+        },
+        {
+          "name": "Diogo Costa",
+          "slug": "diogo-costa",
+          "pos": "Goalkeeper",
+          "file": "/teams/41/players/diogo-costa.jpg"
+        },
+        {
+          "name": "Diogo Dalot",
+          "slug": "diogo-dalot",
+          "pos": "Right-Back",
+          "file": "/teams/41/players/diogo-dalot.jpg"
+        },
+        {
+          "name": "Francisco Conceição",
+          "slug": "francisco-conceicao",
+          "pos": "Right Midfield",
+          "file": "/teams/41/players/francisco-conceicao.jpg"
+        },
+        {
+          "name": "Francisco Trincão",
+          "slug": "francisco-trincao",
+          "pos": "Attacking Midfield",
+          "file": "/teams/41/players/francisco-trincao.jpg"
+        },
+        {
+          "name": "Gonçalo Guedes",
+          "slug": "goncalo-guedes",
+          "pos": "Left Wing",
+          "file": "/teams/41/players/goncalo-guedes.jpg"
+        },
+        {
+          "name": "Gonçalo Inácio",
+          "slug": "goncalo-inacio",
+          "pos": "Centre-Back",
+          "file": "/teams/41/players/goncalo-inacio.jpg"
+        },
+        {
+          "name": "Gonçalo Ramos",
+          "slug": "goncalo-ramos",
+          "pos": "Centre-Forward",
+          "file": "/teams/41/players/goncalo-ramos.jpg"
+        }
+      ]
+    },
+    "42": {
+      "code": "COD",
+      "name": "Democratic Republic of the Congo",
+      "tsdbId": "136475",
+      "tsdbName": "DR Congo",
+      "badge": "/teams/42/badge.png",
+      "jersey": "/teams/42/jersey.png",
+      "stadium": "/teams/42/stadium.jpg",
+      "players": [
+        {
+          "name": "Aaron Tshibola",
+          "slug": "aaron-tshibola",
+          "pos": "Midfielder",
+          "file": "/teams/42/players/aaron-tshibola.jpg"
+        },
+        {
+          "name": "Aaron Wan-Bissaka",
+          "slug": "aaron-wan-bissaka",
+          "pos": "Right-Back",
+          "file": "/teams/42/players/aaron-wan-bissaka.jpg"
+        },
+        {
+          "name": "Arthur Masuaku",
+          "slug": "arthur-masuaku",
+          "pos": "Left-Back",
+          "file": "/teams/42/players/arthur-masuaku.jpg"
+        },
+        {
+          "name": "Axel Tuanzebe",
+          "slug": "axel-tuanzebe",
+          "pos": "Centre-Back",
+          "file": "/teams/42/players/axel-tuanzebe.jpg"
+        },
+        {
+          "name": "Brian Cipenga",
+          "slug": "brian-cipenga",
+          "pos": "Left Wing",
+          "file": "/teams/42/players/brian-cipenga.jpg"
+        },
+        {
+          "name": "Cédric Bakambu",
+          "slug": "cedric-bakambu",
+          "pos": "Centre-Forward",
+          "file": "/teams/42/players/cedric-bakambu.jpg"
+        },
+        {
+          "name": "Chancel Mbemba",
+          "slug": "chancel-mbemba",
+          "pos": "Centre-Back",
+          "file": "/teams/42/players/chancel-mbemba.jpg"
+        },
+        {
+          "name": "Charles Pickel",
+          "slug": "charles-pickel",
+          "pos": "Defensive Midfield",
+          "file": "/teams/42/players/charles-pickel.jpg"
+        },
+        {
+          "name": "Dylan Batubinsika",
+          "slug": "dylan-batubinsika",
+          "pos": "Centre-Back",
+          "file": "/teams/42/players/dylan-batubinsika.jpg"
+        },
+        {
+          "name": "Edo Kayembe",
+          "slug": "edo-kayembe",
+          "pos": "Defensive Midfield",
+          "file": "/teams/42/players/edo-kayembe.jpg"
+        }
+      ]
+    },
+    "43": {
+      "code": "UZB",
+      "name": "Uzbekistan",
+      "tsdbId": "140151",
+      "tsdbName": "Uzbekistan",
+      "badge": "/teams/43/badge.png",
+      "jersey": "/teams/43/jersey.png",
+      "stadium": "/teams/43/stadium.jpg",
+      "players": [
+        {
+          "name": "Abbosbek Fayzullaev",
+          "slug": "abbosbek-fayzullaev",
+          "pos": "Attacking Midfield",
+          "file": "/teams/43/players/abbosbek-fayzullaev.jpg"
+        },
+        {
+          "name": "Abdukodir Khusanov",
+          "slug": "abdukodir-khusanov",
+          "pos": "Centre-Back",
+          "file": "/teams/43/players/abdukodir-khusanov.jpg"
+        },
+        {
+          "name": "Abdulla Abdullaev",
+          "slug": "abdulla-abdullaev",
+          "pos": "Defensive Midfield",
+          "file": "/teams/43/players/abdulla-abdullaev.jpg"
+        },
+        {
+          "name": "Abduvohid Nematov",
+          "slug": "abduvohid-nematov",
+          "pos": "Goalkeeper",
+          "file": "/teams/43/players/abduvohid-nematov.jpg"
+        },
+        {
+          "name": "Akmal Mozgovoy",
+          "slug": "akmal-mozgovoy",
+          "pos": "Central Midfield",
+          "file": "/teams/43/players/akmal-mozgovoy.jpg"
+        },
+        {
+          "name": "Avazbek Ulmasaliev",
+          "slug": "avazbek-ulmasaliev",
+          "pos": "Centre-Back",
+          "file": "/teams/43/players/avazbek-ulmasaliev.jpg"
+        },
+        {
+          "name": "Azizbek Amonov",
+          "slug": "azizbek-amonov",
+          "pos": "Centre-Forward",
+          "file": "/teams/43/players/azizbek-amonov.jpg"
+        },
+        {
+          "name": "Azizjon Ganiev",
+          "slug": "azizjon-ganiev",
+          "pos": "Central Midfield",
+          "file": "/teams/43/players/azizjon-ganiev.jpg"
+        },
+        {
+          "name": "Bekhruz Karimov",
+          "slug": "bekhruz-karimov",
+          "pos": "Right-Back",
+          "file": "/teams/43/players/bekhruz-karimov.jpg"
+        },
+        {
+          "name": "Botirali Ergashev",
+          "slug": "botirali-ergashev",
+          "pos": "Goalkeeper",
+          "file": "/teams/43/players/botirali-ergashev.jpg"
+        }
+      ]
+    },
+    "44": {
+      "code": "COL",
+      "name": "Colombia",
+      "tsdbId": "134501",
+      "tsdbName": "Colombia",
+      "badge": "/teams/44/badge.png",
+      "jersey": "/teams/44/jersey.png",
+      "stadium": "/teams/44/stadium.jpg",
+      "players": [
+        {
+          "name": "Álvaro Montero",
+          "slug": "alvaro-montero",
+          "pos": "Goalkeeper",
+          "file": "/teams/44/players/alvaro-montero.jpg"
+        },
+        {
+          "name": "Andrés Gómez",
+          "slug": "andres-gomez",
+          "pos": "Left Wing",
+          "file": "/teams/44/players/andres-gomez.jpg"
+        },
+        {
+          "name": "Camilo Vargas",
+          "slug": "camilo-vargas",
+          "pos": "Goalkeeper",
+          "file": "/teams/44/players/camilo-vargas.jpg"
+        },
+        {
+          "name": "Cucho Hernández",
+          "slug": "cucho-hernandez",
+          "pos": "Centre-Forward",
+          "file": "/teams/44/players/cucho-hernandez.jpg"
+        },
+        {
+          "name": "Daniel Muñoz",
+          "slug": "daniel-munoz",
+          "pos": "Right-Back",
+          "file": "/teams/44/players/daniel-munoz.jpg"
+        },
+        {
+          "name": "David Ospina",
+          "slug": "david-ospina",
+          "pos": "Goalkeeper",
+          "file": "/teams/44/players/david-ospina.jpg"
+        },
+        {
+          "name": "Davinson Sánchez",
+          "slug": "davinson-sanchez",
+          "pos": "Centre-Back",
+          "file": "/teams/44/players/davinson-sanchez.jpg"
+        },
+        {
+          "name": "Deiver Machado",
+          "slug": "deiver-machado",
+          "pos": "Left-Back",
+          "file": "/teams/44/players/deiver-machado.jpg"
+        },
+        {
+          "name": "Gustavo Puerta",
+          "slug": "gustavo-puerta",
+          "pos": "Central Midfield",
+          "file": "/teams/44/players/gustavo-puerta.jpg"
+        },
+        {
+          "name": "James Rodríguez",
+          "slug": "james-rodriguez",
+          "pos": "Attacking Midfield",
+          "file": "/teams/44/players/james-rodriguez.jpg"
+        }
+      ]
+    },
+    "45": {
+      "code": "ENG",
+      "name": "England",
+      "tsdbId": "133914",
+      "tsdbName": "England",
+      "badge": "/teams/45/badge.png",
+      "jersey": "/teams/45/jersey.png",
+      "stadium": "/teams/45/stadium.jpg",
+      "players": [
+        {
+          "name": "Anthony Barry",
+          "slug": "anthony-barry",
+          "pos": "Assistant Coach",
+          "file": "/teams/45/players/anthony-barry.jpg"
+        },
+        {
+          "name": "Anthony Gordon",
+          "slug": "anthony-gordon",
+          "pos": "Left Wing",
+          "file": "/teams/45/players/anthony-gordon.jpg"
+        },
+        {
+          "name": "Bukayo Saka",
+          "slug": "bukayo-saka",
+          "pos": "Right Winger",
+          "file": "/teams/45/players/bukayo-saka.jpg"
+        },
+        {
+          "name": "Dan Burn",
+          "slug": "dan-burn",
+          "pos": "Left-Back",
+          "file": "/teams/45/players/dan-burn.jpg"
+        },
+        {
+          "name": "Dean Henderson",
+          "slug": "dean-henderson",
+          "pos": "Goalkeeper",
+          "file": "/teams/45/players/dean-henderson.jpg"
+        },
+        {
+          "name": "Declan Rice",
+          "slug": "declan-rice",
+          "pos": "Central Midfield",
+          "file": "/teams/45/players/declan-rice.jpg"
+        },
+        {
+          "name": "Djed Spence",
+          "slug": "djed-spence",
+          "pos": "Right-Back",
+          "file": "/teams/45/players/djed-spence.jpg"
+        },
+        {
+          "name": "Eberechi Eze",
+          "slug": "eberechi-eze",
+          "pos": "Attacking Midfield",
+          "file": "/teams/45/players/eberechi-eze.jpg"
+        },
+        {
+          "name": "Elliot Anderson",
+          "slug": "elliot-anderson",
+          "pos": "Central Midfield",
+          "file": "/teams/45/players/elliot-anderson.jpg"
+        },
+        {
+          "name": "Ezri Konsa",
+          "slug": "ezri-konsa",
+          "pos": "Centre-Back",
+          "file": "/teams/45/players/ezri-konsa.jpg"
+        }
+      ]
+    },
+    "46": {
+      "code": "CRO",
+      "name": "Croatia",
+      "tsdbId": "133912",
+      "tsdbName": "Croatia",
+      "badge": "/teams/46/badge.png",
+      "jersey": "/teams/46/jersey.png",
+      "stadium": "/teams/46/stadium.jpg",
+      "players": [
+        {
+          "name": "Andrej Kramarić",
+          "slug": "andrej-kramaric",
+          "pos": "Centre-Forward",
+          "file": "/teams/46/players/andrej-kramaric.jpg"
+        },
+        {
+          "name": "Ante Budimir",
+          "slug": "ante-budimir",
+          "pos": "Centre-Forward",
+          "file": "/teams/46/players/ante-budimir.jpg"
+        },
+        {
+          "name": "Dominik Kotarski",
+          "slug": "dominik-kotarski",
+          "pos": "Goalkeeper",
+          "file": "/teams/46/players/dominik-kotarski.jpg"
+        },
+        {
+          "name": "Dominik Livaković",
+          "slug": "dominik-livakovic",
+          "pos": "Goalkeeper",
+          "file": "/teams/46/players/dominik-livakovic.jpg"
+        },
+        {
+          "name": "Duje Ćaleta-Car",
+          "slug": "duje-caleta-car",
+          "pos": "Centre-Back",
+          "file": "/teams/46/players/duje-caleta-car.jpg"
+        },
+        {
+          "name": "Igor Matanović",
+          "slug": "igor-matanovic",
+          "pos": "Centre-Forward",
+          "file": "/teams/46/players/igor-matanovic.jpg"
+        },
+        {
+          "name": "Ivan Perišić",
+          "slug": "ivan-perisic",
+          "pos": "Left Midfield",
+          "file": "/teams/46/players/ivan-perisic.jpg"
+        },
+        {
+          "name": "Ivor Pandur",
+          "slug": "ivor-pandur",
+          "pos": "Goalkeeper",
+          "file": "/teams/46/players/ivor-pandur.jpg"
+        },
+        {
+          "name": "Josip Stanišić",
+          "slug": "josip-stanisic",
+          "pos": "Right-Back",
+          "file": "/teams/46/players/josip-stanisic.jpg"
+        },
+        {
+          "name": "Josip Šutalo",
+          "slug": "josip-sutalo",
+          "pos": "Centre-Back",
+          "file": "/teams/46/players/josip-sutalo.jpg"
+        }
+      ]
+    },
+    "47": {
+      "code": "GHA",
+      "name": "Ghana",
+      "tsdbId": "134513",
+      "tsdbName": "Ghana",
+      "badge": "/teams/47/badge.png",
+      "jersey": "/teams/47/jersey.png",
+      "stadium": "/teams/47/stadium.jpg",
+      "players": [
+        {
+          "name": "Abdul Fatawu",
+          "slug": "abdul-fatawu",
+          "pos": "Right Winger",
+          "file": "/teams/47/players/abdul-fatawu.jpg"
+        },
+        {
+          "name": "Abdul Mumin",
+          "slug": "abdul-mumin",
+          "pos": "Centre-Back",
+          "file": "/teams/47/players/abdul-mumin.jpg"
+        },
+        {
+          "name": "Alidu Seidu",
+          "slug": "alidu-seidu",
+          "pos": "Defender",
+          "file": "/teams/47/players/alidu-seidu.jpg"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "slug": "antoine-semenyo",
+          "pos": "Right Winger",
+          "file": "/teams/47/players/antoine-semenyo.jpg"
+        },
+        {
+          "name": "Augustine Boakye",
+          "slug": "augustine-boakye",
+          "pos": "Midfielder",
+          "file": "/teams/47/players/augustine-boakye.jpg"
+        },
+        {
+          "name": "Baba Rahman",
+          "slug": "baba-rahman",
+          "pos": "Defender",
+          "file": "/teams/47/players/baba-rahman.jpg"
+        },
+        {
+          "name": "Benjamin Asare",
+          "slug": "benjamin-asare",
+          "pos": "Goalkeeper",
+          "file": "/teams/47/players/benjamin-asare.jpg"
+        },
+        {
+          "name": "Brandon Thomas-Asante",
+          "slug": "brandon-thomas-asante",
+          "pos": "Centre-Forward",
+          "file": "/teams/47/players/brandon-thomas-asante.jpg"
+        },
+        {
+          "name": "Caleb Yirenkyi",
+          "slug": "caleb-yirenkyi",
+          "pos": "Central Midfield",
+          "file": "/teams/47/players/caleb-yirenkyi.jpg"
+        },
+        {
+          "name": "Carlos Queiroz",
+          "slug": "carlos-queiroz",
+          "pos": "Manager",
+          "file": "/teams/47/players/carlos-queiroz.jpg"
+        }
+      ]
+    },
+    "48": {
+      "code": "PAN",
+      "name": "Panama",
+      "tsdbId": "136141",
+      "tsdbName": "Panama",
+      "badge": "/teams/48/badge.png",
+      "jersey": "/teams/48/jersey.png",
+      "stadium": "/teams/48/stadium.jpg",
+      "players": [
+        {
+          "name": "Adalberto Carrasquilla",
+          "slug": "adalberto-carrasquilla",
+          "pos": "Central Midfield",
+          "file": "/teams/48/players/adalberto-carrasquilla.jpg"
+        },
+        {
+          "name": "Alberto Quintero",
+          "slug": "alberto-quintero",
+          "pos": "Right Winger",
+          "file": "/teams/48/players/alberto-quintero.jpg"
+        },
+        {
+          "name": "Andrés Andrade",
+          "slug": "andres-andrade",
+          "pos": "Centre-Back",
+          "file": "/teams/48/players/andres-andrade.jpg"
+        },
+        {
+          "name": "Aníbal Godoy",
+          "slug": "anibal-godoy",
+          "pos": "Defensive Midfield",
+          "file": "/teams/48/players/anibal-godoy.jpg"
+        },
+        {
+          "name": "Azarias Londoño",
+          "slug": "azarias-londono",
+          "pos": "Centre-Forward",
+          "file": "/teams/48/players/azarias-londono.jpg"
+        },
+        {
+          "name": "Carlos Harvey",
+          "slug": "carlos-harvey",
+          "pos": "Defensive Midfield",
+          "file": "/teams/48/players/carlos-harvey.jpg"
+        },
+        {
+          "name": "Cecilio Waterman",
+          "slug": "cecilio-waterman",
+          "pos": "Centre-Forward",
+          "file": "/teams/48/players/cecilio-waterman.jpg"
+        },
+        {
+          "name": "César Blackman",
+          "slug": "cesar-blackman",
+          "pos": "Right-Back",
+          "file": "/teams/48/players/cesar-blackman.jpg"
+        },
+        {
+          "name": "César Samudio",
+          "slug": "cesar-samudio",
+          "pos": "Goalkeeper",
+          "file": "/teams/48/players/cesar-samudio.jpg"
+        },
+        {
+          "name": "César Yanis",
+          "slug": "cesar-yanis",
+          "pos": "Right Winger",
+          "file": "/teams/48/players/cesar-yanis.jpg"
+        }
+      ]
+    }
+  }
+}

@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { Command } from "cmdk";
 import { Search } from "lucide-react";
-import { Flag } from "./Flag";
+import { TeamCrest } from "./TeamCrest";
 import { Avatar } from "./Avatar";
 import { MARKETS, LEADERS } from "../../lib/fixtures";
 import { routes, NAV } from "../../lib/routes";
@@ -20,8 +20,8 @@ function MatchCommandItem({ market, onSelect }: { market: MarketRow; onSelect: (
       onSelect={onSelect}
       className="flex cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-body text-hi data-[selected=true]:bg-hairline/60"
     >
-      <Flag code={market.homeCode} size={18} />
-      <Flag code={market.awayCode} size={18} />
+      <TeamCrest code={market.homeCode} size={18} />
+      <TeamCrest code={market.awayCode} size={18} />
       <span className="truncate">{market.home} <span className="text-lo">v</span> {market.away}</span>
       {minute != null && <span className={`num ml-auto text-label font-semibold ${halted ? "text-halt" : "text-up"}`}>{minute}&#39;</span>}
     </Command.Item>

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { RailCard } from "../../components/ui/RailCard";
-import { Flag } from "../../components/ui/Flag";
+import { TeamCrest } from "../../components/ui/TeamCrest";
 import { routes } from "../../lib/routes";
 import { MARKETS } from "../../lib/fixtures";
 import { useMatchLive } from "../live/matchLiveStore";
@@ -77,7 +77,7 @@ export function LeftRail() {
           {FOLLOWED.map((t) => (
             <li key={t.name}>
               <Link href={routes.competition} className="flex min-h-11 items-center gap-2 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-hairline/30">
-                <Flag code={t.code} size={22} />
+                <TeamCrest code={t.code} size={22} />
                 <span className="text-body font-medium text-hi">{t.name}</span>
                 <span className={`num ml-auto text-label font-semibold tracking-wide ${t.live ? "text-up" : "text-lo"}`}>{t.state}</span>
               </Link>
