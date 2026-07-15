@@ -37,6 +37,7 @@ export * from "./odds";
 export * from "./fixtures";
 export * from "./statkeys";
 export * from "./network";
+export * from "./idl";
 
 export type FetchLike = (url: string, init?: RequestInit) => Promise<Response>;
 

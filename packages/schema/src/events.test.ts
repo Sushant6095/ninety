@@ -18,6 +18,7 @@ const payloadByType: Record<string, unknown> = {
   goal: { team: "home", minute: 23, score: { home: 1, away: 0 } },
   card: { color: "yellow", team: "away", minute: 40 },
   penalty: { team: "home", minute: 55, outcome: "awarded" },
+  action: { action: "shot", team: "away", minute: 31, confirmed: true, detail: { Outcome: "OnTarget" } },
   kickoff: { status: "1H" },
   ht: { status: "HT" },
   ft: { status: "FT" },

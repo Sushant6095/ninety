@@ -8,6 +8,7 @@ import type { OddsTick, ScoreState } from "@omnipitch/txline";
 
 export const SRC_ODDS = "txline.odds";
 export const SRC_SCORE = "txline.score";
+export const SRC_ACTION = "txline.action";
 export const SRC_REPLAY = "replay";
 
 // source_seq slots reserved per score state: home goals [0, BLOCK/2), away goals [BLOCK/2, BLOCK).
@@ -25,6 +26,28 @@ export function seqFromId(id: string): number {
 
 const nowIso = () => new Date().toISOString();
 const tsIso = (ts: number | undefined): string => (typeof ts === "number" ? new Date(ts < 1e12 ? ts * 1000 : ts).toISOString() : nowIso());
+const minuteOf = (s: ScoreState): number => Math.min(130, Math.max(0, Math.floor((s.Clock?.Seconds ?? 0) / 60)));
+
+/** Participant slot (1|2) + Participant1IsHome → home/away. Slot absent or unknown → undefined. */
+const teamOf = (s: ScoreState): "home" | "away" | undefined => {
+  const p = (s as Record<string, unknown>).Participant;
+  if (p !== 1 && p !== 2) return undefined;
+  const p1Home = s.Participant1IsHome !== false; // field absent → Participant1 is home (TxLINE convention)
+  return (p === 1) === p1Home ? "home" : "away";
+};
+
+// TxLINE game phases that kill the match (ADR-059): 15 Abandoned, 16 Cancelled, 19 Postponed → market VOID.
+const VOID_PHASES: Record<number, string> = { 15: "abandoned", 16: "cancelled", 19: "postponed" };
+
+/** The void phase name if this state sits in one — matched by numeric phase code (GameState or StatusId)
+ *  OR by a phase-name string, since devnet serves GameState as a string and mainnet codes are numeric. */
+export function voidPhase(s: ScoreState | undefined): string | undefined {
+  if (!s) return undefined;
+  const code = typeof s.GameState === "number" ? s.GameState : s.StatusId;
+  if (typeof code === "number" && VOID_PHASES[code]) return VOID_PHASES[code];
+  if (typeof s.GameState === "string" && /aband|cancel|postpon/i.test(s.GameState)) return s.GameState.toLowerCase();
+  return undefined;
+}
 
 /** Raw odds tick → odds.raw Envelope. source_seq derived from MessageId (stable per tick).
  *  `recovered` marks events re-emitted during gap recovery (they dedupe against a live counterpart).
@@ -66,7 +89,7 @@ export function normalizeScore(state: ScoreState, prev: ScoreState | undefined, 
   const ag = state.Score?.Participant2?.Total?.Goals ?? 0;
   const phg = prev?.Score?.Participant1?.Total?.Goals ?? 0;
   const pag = prev?.Score?.Participant2?.Total?.Goals ?? 0;
-  const minute = Math.min(130, Math.max(0, Math.floor((state.Clock?.Seconds ?? 0) / 60)));
+  const minute = minuteOf(state);
   // Globally-unique source_seq per goal. A naive baseSeq / baseSeq+1 scheme let an away goal at Seq N
   // collide with the next state's home goal at Seq N+1 (Seq is +1-monotonic), dropping a real goal as a
   // false duplicate; the block/team/index scheme keeps every distinct goal's key distinct.
@@ -87,7 +110,59 @@ export function normalizeScore(state: ScoreState, prev: ScoreState | undefined, 
   const out: Envelope[] = [];
   for (let i = 0; i < hg - phg; i++) out.push(goal("home", i));
   for (let i = 0; i < ag - pag; i++) out.push(goal("away", i));
+  // Game-phase → VOID (ADR-059/ADR-024): on the transition INTO phase 15/16/19 emit ONE ft envelope whose
+  // status matches the engine's /aband/i mapping (market.ts fromEnvelope) → abandon trigger → VOIDED,
+  // refunding exactly the committed credits off the feed's own phase code — trustless, no admin path
+  // (ADR-017). Deterministic seq (one void per match) keeps recovery snapshots idempotent under dedup.
+  const phase = voidPhase(state);
+  if (phase && !voidPhase(prev)) {
+    out.push(
+      Envelope.parse({
+        event_id: randomUUID(),
+        source: replay ? SRC_REPLAY : SRC_SCORE,
+        source_seq: seqFromId(`void:${matchId}`),
+        match_id: matchId,
+        ts_source: tsIso(state.Ts),
+        ts_ingest: nowIso(),
+        type: "ft",
+        payload: { status: `abandoned (${phase})`, ...(recovered ? { recovered: true } : {}) },
+      }),
+    );
+  }
   return out;
+}
+
+// The Events-tab action set (ADR-059): timeline moments a fan cares about. Everything else on the scores
+// feed (attack_possession, action_amend, additional_time, dangerous_attack…) is pace/possession noise.
+const ACTION_KINDS = new Set(["shot", "free_kick", "var", "substitution", "penalty", "penalties"]);
+
+/** ScoreState carrying a timeline Action → one match.actions Envelope; noise/non-actions → null.
+ *  `detail` passes TxLINE's Data qualifiers through verbatim ({ Outcome: "OnTarget" }, { FreeKickType }…) —
+ *  the taxonomy is feed-owned, so we don't chase variants. Own source lane (SRC_ACTION) keeps its hashed
+ *  seqs out of the goal-block seq space for dedup. */
+export function normalizeAction(state: ScoreState, recovered = false, replay = false): Envelope | null {
+  const action = state.Action;
+  if (!action || !ACTION_KINDS.has(action)) return null;
+  const raw = state as Record<string, unknown>;
+  const team = teamOf(state);
+  const key = `${state.FixtureId}:${raw.Id ?? state.Seq ?? state.Ts ?? 0}:${action}`; // stable per action record
+  return Envelope.parse({
+    event_id: randomUUID(),
+    source: replay ? SRC_REPLAY : SRC_ACTION,
+    source_seq: seqFromId(key),
+    match_id: String(state.FixtureId),
+    ts_source: tsIso(state.Ts),
+    ts_ingest: nowIso(),
+    type: "action",
+    payload: {
+      action,
+      ...(team ? { team } : {}),
+      minute: minuteOf(state),
+      ...(typeof raw.Confirmed === "boolean" ? { confirmed: raw.Confirmed } : {}),
+      ...(raw.Data && typeof raw.Data === "object" ? { detail: raw.Data as Record<string, unknown> } : {}),
+      ...(recovered ? { recovered: true } : {}),
+    },
+  });
 }
 
 /** Bounded per-process idempotency filter on (source, source_seq). */

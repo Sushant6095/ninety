@@ -7,7 +7,7 @@ import { randomUUID } from "node:crypto";
 import { TOPICS, type Envelope, type Topic, type SysEvent } from "@omnipitch/schema";
 import type { Bus } from "@omnipitch/bus";
 import type { TxLineClient, OddsTick, ScoreState, Fixture } from "@omnipitch/txline";
-import { normalizeOdds, normalizeScore, Dedup } from "./normalizer";
+import { normalizeOdds, normalizeScore, normalizeAction, Dedup } from "./normalizer";
 import { superviseStream, type GapInfo } from "./supervise";
 
 const FIXTURES_HASH = "fixtures:current"; // compacted: field = fixtureId, value = latest fixture json
@@ -93,6 +93,9 @@ export function createPipeline(bus: Bus, redis?: Redis, opts: { logEvery?: numbe
       // re-derives the whole delta — an earlier same-team goal could then re-emit. Only reachable on a recovery
       // snapshot (live sends one goal per state); tighten to per-goal journaling if that partial-failure bites.
       for (const env of normalizeScore(state, prev, recovered, replay)) if (await publish(env, TOPICS.matchEvents)) n++;
+      // In-play action records (shot/free_kick/var/…) → match.actions for the Events tab (ADR-059).
+      const act = normalizeAction(state, recovered, replay);
+      if (act && (await publish(act, TOPICS.matchActions))) n++;
       prevScore.set(key, state); // advance only after the delta's goals are published (journal-then-ack)
       return n;
     },

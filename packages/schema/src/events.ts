@@ -6,6 +6,7 @@ import {
   GoalPayload,
   CardPayload,
   PenaltyPayload,
+  ActionPayload,
   StatusPayload,
   OrderPayload,
   FillPayload,
@@ -24,6 +25,7 @@ export const OddsTickEvent = EnvelopeBase.extend({ type: z.literal("odds_tick"),
 export const GoalEvent = EnvelopeBase.extend({ type: z.literal("goal"), payload: GoalPayload });
 export const CardEvent = EnvelopeBase.extend({ type: z.literal("card"), payload: CardPayload });
 export const PenaltyEvent = EnvelopeBase.extend({ type: z.literal("penalty"), payload: PenaltyPayload });
+export const ActionEvent = EnvelopeBase.extend({ type: z.literal("action"), payload: ActionPayload });
 export const KickoffEvent = EnvelopeBase.extend({ type: z.literal("kickoff"), payload: StatusPayload });
 export const HtEvent = EnvelopeBase.extend({ type: z.literal("ht"), payload: StatusPayload });
 export const FtEvent = EnvelopeBase.extend({ type: z.literal("ft"), payload: StatusPayload });
@@ -43,6 +45,7 @@ export const AnyEvent = z.discriminatedUnion("type", [
   GoalEvent,
   CardEvent,
   PenaltyEvent,
+  ActionEvent,
   KickoffEvent,
   HtEvent,
   FtEvent,
@@ -68,6 +71,7 @@ export const PAYLOAD_BY_TYPE = {
   goal: GoalPayload,
   card: CardPayload,
   penalty: PenaltyPayload,
+  action: ActionPayload,
   kickoff: StatusPayload,
   ht: StatusPayload,
   ft: StatusPayload,

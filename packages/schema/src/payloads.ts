@@ -45,6 +45,19 @@ export type PenaltyPayload = z.infer<typeof PenaltyPayload>;
 export const StatusPayload = z.object({ status: z.string().min(1) });
 export type StatusPayload = z.infer<typeof StatusPayload>;
 
+// An in-play action record from the SL12 real-time scores feed (match.actions.v1, ADR-059):
+// shot / free_kick / var / substitution / penalties. `detail` carries TxLINE's qualifier object
+// verbatim (e.g. { Outcome: "OnTarget" }, { FreeKickType: "Safe" }) — the taxonomy is feed-owned
+// and evolves, so it passes through untyped rather than chasing every variant.
+export const ActionPayload = z.object({
+  action: z.string().min(1), // TxLINE action name, e.g. "shot"
+  team: TeamSide.optional(), // resolved from Participant slot + Participant1IsHome when present
+  minute: Minute.optional(),
+  confirmed: z.boolean().optional(),
+  detail: z.record(z.unknown()).optional(),
+});
+export type ActionPayload = z.infer<typeof ActionPayload>;
+
 // --- trading (engine) ---
 // market_id lives on the Envelope; payloads never duplicate envelope fields.
 export const OrderPayload = z.object({

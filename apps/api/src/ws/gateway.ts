@@ -35,6 +35,10 @@ export async function attachBridge(bus: Bus, publish: Publish): Promise<void> {
   await bus.consume(TOPICS.matchEvents, "ws-bridge", async (env: Envelope) => {
     emit(channels.events(env.match_id), { type: env.type, ...(env.payload as object) });
   });
+  // In-play action feed (shot/free_kick/var/…, ADR-059) → the Events tab's timeline channel.
+  await bus.consume(TOPICS.matchActions, "ws-bridge", async (env: Envelope) => {
+    emit(channels.actions(env.match_id), env.payload);
+  });
   await bus.consume(TOPICS.commentary, "ws-bridge", async (env: Envelope) => {
     emit(channels.booth(env.match_id), env.payload);
   });

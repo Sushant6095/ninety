@@ -4,6 +4,7 @@ import { z } from "zod";
 export const EventSource = z.enum([
   "txline.odds",
   "txline.score",
+  "txline.action", // in-play action records (match.actions.v1) — own lane so seqs never collide with goals
   "txline.fixtures",
   "txline.proofs",
   "engine",
@@ -20,6 +21,7 @@ export const EventType = z.enum([
   "goal",
   "card",
   "penalty",
+  "action",
   "kickoff",
   "ht",
   "ft",

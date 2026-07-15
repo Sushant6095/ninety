@@ -21,10 +21,16 @@ export const NETWORKS: Record<Cluster, TxLineNetwork> = {
   "mainnet-beta": {
     cluster: "mainnet-beta",
     apiOrigin: "https://txline.txodds.com",
-    txoracleProgram: "", // ⚠ Day-0: confirm mainnet program id + mint before mainnet use
-    txlMint: "",
+    // Vendored from github.com/txodds/tx-on-chain examples/mainnet (IDL v1.5.6) — ADR-059.
+    // MAINNET is the LIVE-DATA network only (SL12 real-time); settlement stays devnet, fail-closed.
+    txoracleProgram: "9ExbZjAapQww1vfcisDmrngPinHTEfpjYRWMunJgcKaA",
+    txlMint: "Zhw9TVKp68a1QrftncMSd6ELXKDtpVMNuMGr1jNwdeL",
   },
 };
+
+/** SL tiers are network-bound (ADR-015): devnet free tier is SL1 (60s data delay);
+ *  SL12 (real-time) exists only on mainnet — devnet rejects it with InvalidServiceLevelId. */
+export const SERVICE_LEVEL: Record<Cluster, number> = { devnet: 1, "mainnet-beta": 12 };
 
 const host = (u: string): string => {
   try {
