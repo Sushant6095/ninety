@@ -7,6 +7,8 @@ import { PriceCells } from "./PriceCells";
 import { TradePanel, type PlaceResult } from "./TradePanel";
 import { YourPosition } from "./YourPosition";
 import { MatchTabs } from "./MatchTabs";
+import { NextGoal } from "../games/NextGoal";
+import { TERMINAL_RESOLVE_WINDOW_MS } from "../games/nextGoalMachine";
 import { StateSwitcher, PreMatchPanel, SettledPanel, type MatchView } from "./MatchStates";
 import { HaltBanner } from "../../components/ui/HaltBanner";
 import { TradeSheet } from "../../components/ui/TradeSheet";
@@ -26,6 +28,11 @@ const vsFor = (o: Outcome): string => (o === "H" ? MATCH.awayCode : o === "A" ? 
 
 // Settled-state result (the settle envelope in production). Egypt take it late; the proof posts to devnet.
 const SETTLED_RESULT = { winner: "A" as Outcome, winnerName: "Egypt", scoreLine: "0 – 2", settleSig: "7hNq…devnetAusEgy4kP" };
+
+// The terminal Next Goal card is a PURE READ-ONLY consumer (ADR-061): it resolves off the SAME store score
+// delta the halt money-shot writes via land(), and NEVER fabricates a goal. So its round-lifecycle callbacks
+// are no-ops here — /play's harness (matchSimHarness) is the ONLY thing that turns these into store writes.
+const NOOP = (): void => {};
 
 // ── The halt money-shot — ONE consistent story, ONE clock (ADR-055) ───────────────────────────────
 // Australia v Egypt is goalless at 74' and Egypt's win% has been flat ~31 all match. Ashour's counter lands AT
@@ -160,46 +167,56 @@ export function MatchColumn() {
           held={primary ? { code: primary.code, outcome: primary.outcome, shares: primary.shares, avgEntry: primary.avgEntry } : undefined}
         />
       ) : (
-        <>
-          {/* the trade area — dims to 0.55 while the market is halted (GSAP drives opacity on this hook) */}
-          <div data-halt="dim">
-            <PriceCells
-              mark={mark}
-              todayDelta={todayDelta}
-              codes={{ H: MATCH.homeCode, A: MATCH.awayCode }}
-              selected={selected}
-              onSelect={setSelected}
-              heldShares={heldShares}
-              disabled={view === "PRE"}
-              frozen={view === "HALTED"}
-            />
-            {(view === "LIVE" || view === "HALTED") && (
-              <>
-                {/* the Buy/Sell panel stays mounted but DISABLES (greyed + inert) during the halt, then re-enables */}
-                <div className="hidden lg:block">
-                  <TradePanel amm={MATCH.amm} selected={selected} code={codeFor(selected)} markPx={mark[selected] * 100} free={free} heldShares={heldShares[selected] ?? 0} onPlace={placeOrder} disabled={view === "HALTED"} />
-                </div>
-                <div className="border-b border-hairline p-3 lg:hidden">
-                  <button
-                    type="button"
-                    onClick={() => setSheetOpen(true)}
-                    disabled={view === "HALTED"}
-                    className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-up px-4 text-strong font-semibold text-bg outline-none transition-opacity duration-200 hover:opacity-90 focus-visible:opacity-90 active:opacity-80 disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    {view === "HALTED" ? "Trading paused" : `Trade ${codeFor(selected)} @ ${(mark[selected] * 100).toFixed(1)}`}
-                  </button>
-                </div>
-                <TradeSheet open={sheetOpen} onOpenChange={setSheetOpen} title={`Trade · ${MATCH.home} v ${MATCH.away}`}>
-                  <TradePanel amm={MATCH.amm} selected={selected} code={codeFor(selected)} markPx={mark[selected] * 100} free={free} heldShares={heldShares[selected] ?? 0} onPlace={placeOrder} disabled={view === "HALTED"} />
-                </TradeSheet>
-              </>
+        // Trade decision (left) + the Next Goal call (right, lg+) — the game sits BESIDE the panel, stacked
+        // below it on mobile. It lives OUTSIDE data-halt="dim" on purpose: its win burst must stay bright
+        // when the halt dims the trade area around it.
+        <div className="lg:flex lg:items-stretch">
+          <div className="min-w-0 lg:flex-1">
+            {/* the trade area — dims to 0.55 while the market is halted (GSAP drives opacity on this hook) */}
+            <div data-halt="dim">
+              <PriceCells
+                mark={mark}
+                todayDelta={todayDelta}
+                codes={{ H: MATCH.homeCode, A: MATCH.awayCode }}
+                selected={selected}
+                onSelect={setSelected}
+                heldShares={heldShares}
+                disabled={view === "PRE"}
+                frozen={view === "HALTED"}
+              />
+              {(view === "LIVE" || view === "HALTED") && (
+                <>
+                  {/* the Buy/Sell panel stays mounted but DISABLES (greyed + inert) during the halt, then re-enables */}
+                  <div className="hidden lg:block">
+                    <TradePanel amm={MATCH.amm} selected={selected} code={codeFor(selected)} markPx={mark[selected] * 100} free={free} heldShares={heldShares[selected] ?? 0} onPlace={placeOrder} disabled={view === "HALTED"} />
+                  </div>
+                  <div className="border-b border-hairline p-3 lg:hidden">
+                    <button
+                      type="button"
+                      onClick={() => setSheetOpen(true)}
+                      disabled={view === "HALTED"}
+                      className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-up px-4 text-strong font-semibold text-bg outline-none transition-opacity duration-200 hover:opacity-90 focus-visible:opacity-90 active:opacity-80 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      {view === "HALTED" ? "Trading paused" : `Trade ${codeFor(selected)} @ ${(mark[selected] * 100).toFixed(1)}`}
+                    </button>
+                  </div>
+                  <TradeSheet open={sheetOpen} onOpenChange={setSheetOpen} title={`Trade · ${MATCH.home} v ${MATCH.away}`}>
+                    <TradePanel amm={MATCH.amm} selected={selected} code={codeFor(selected)} markPx={mark[selected] * 100} free={free} heldShares={heldShares[selected] ?? 0} onPlace={placeOrder} disabled={view === "HALTED"} />
+                  </TradeSheet>
+                </>
+              )}
+            </div>
+            {view === "PRE" && <PreMatchPanel kickoff="02:14:36" />}
+            {primary && (view === "LIVE" || view === "HALTED") && (
+              <YourPosition code={primary.code} shares={primary.shares} avgEntry={primary.avgEntry} markPct={mark[primary.outcome] * 100} opened={primary.pre ? "opened pre-match" : "opened in-play"} />
             )}
           </div>
-          {view === "PRE" && <PreMatchPanel kickoff="02:14:36" />}
-          {primary && (view === "LIVE" || view === "HALTED") && (
-            <YourPosition code={primary.code} shares={primary.shares} avgEntry={primary.avgEntry} markPct={mark[primary.outcome] * 100} opened={primary.pre ? "opened pre-match" : "opened in-play"} />
+          {(view === "LIVE" || view === "HALTED") && (
+            <aside aria-label="Next Goal — call the next scorer" className="border-t border-hairline p-3 lg:w-[340px] lg:shrink-0 lg:border-l lg:border-t-0">
+              <NextGoal nobody resolveWindowMs={TERMINAL_RESOLVE_WINDOW_MS} onLock={NOOP} onReset={NOOP} />
+            </aside>
           )}
-        </>
+        </div>
       )}
       <MatchTabs positions={positions} mark={mark} />
     </section>

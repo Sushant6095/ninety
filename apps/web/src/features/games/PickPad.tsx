@@ -1,16 +1,24 @@
 "use client";
-// The decision surface (ADR-060): the focal countdown + the two big, 2-second-legible pick buttons.
-// Framer Motion owns the micro-interactions (press scale(0.97), selection spring); the countdown ring
-// drains via a CSS transition on stroke-dashoffset (precedented by the River cliff draw-on). Slow and
-// deliberate by design — the countdown IS the tension. Reduced motion drops the drain, keeps the number.
-import { useEffect, useRef, useState } from "react";
+// The decision surface (ADR-060, extended by ADR-061): the focal countdown + the big, 2-second-legible pick
+// buttons. Two picks on /play; three on /terminal (home · away · nobody). Framer Motion owns the
+// micro-interactions (press scale(0.97), selection spring); the countdown ring drains via a CSS transition on
+// stroke-dashoffset (precedented by the River cliff draw-on). Slow and deliberate by design — the countdown IS
+// the tension. Reduced motion drops the drain, keeps the number.
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Flag } from "../../components/ui/Flag";
-import { PICK_MS, type Phase, type Side } from "./nextGoalMachine";
+import { PICK_MS, type Phase, type Pick, type Side } from "./nextGoalMachine";
 
 const R = 54;
 const C = 2 * Math.PI * R;
 const TICK_MS = 100;
+const DEFAULT_PROMPT = (
+  <>
+    Who scores
+    <br />
+    next?
+  </>
+);
 
 interface Team {
   code: string;
@@ -24,13 +32,17 @@ export function PickPad({
   home,
   away,
   onPick,
+  nobody = false,
+  prompt = DEFAULT_PROMPT,
 }: {
   phase: Phase;
-  pick: Side | null;
+  pick: Pick | null;
   pickStartedAt: number | null;
   home: Team;
   away: Team;
-  onPick: (side: Side) => void;
+  onPick: (side: Pick) => void;
+  nobody?: boolean; // three-pick terminal variant — adds the "nobody / no goal" call (ADR-061)
+  prompt?: ReactNode; // READY-state question; the terminal passes the full "…home, away, or nobody?" line
 }) {
   const reduce = useReducedMotion();
   const picking = phase === "PICKING";
@@ -63,8 +75,9 @@ export function PickPad({
 
   return (
     <div className="flex flex-col items-center gap-6">
-      {/* ── focal: headline (READY) or countdown (PICKING/LOCKED) ── */}
-      <div className="relative flex h-[128px] w-[128px] items-center justify-center">
+      {/* ── focal: prompt (READY) or countdown (PICKING/LOCKED). READY takes full width so a longer terminal
+           question wraps cleanly; the countdown circle stays a fixed 128px. ── */}
+      <div className={`relative flex items-center justify-center ${active ? "h-[128px] w-[128px]" : "min-h-[128px] w-full px-2"}`}>
         {active ? (
           <>
             <svg viewBox="0 0 128 128" className="absolute inset-0 -rotate-90" aria-hidden>
@@ -119,20 +132,27 @@ export function PickPad({
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="text-center font-display text-heading font-extrabold leading-tight tracking-tight text-hi"
           >
-            Who scores
-            <br />
-            next?
+            {prompt}
           </motion.h2>
         )}
       </div>
 
-      {/* ── the two picks ── */}
-      <div className="grid w-full grid-cols-2 gap-3" role="group" aria-label="Pick who scores the next goal">
-        <PickButton team={home} role="Home" side="H" pick={pick} active={active} locked={locked} reduce={!!reduce} onPick={onPick} />
-        <PickButton team={away} role="Away" side="A" pick={pick} active={active} locked={locked} reduce={!!reduce} onPick={onPick} />
+      {/* ── the picks ── */}
+      <div className="flex w-full flex-col gap-3" role="group" aria-label="Pick who scores the next goal">
+        <div className="grid grid-cols-2 gap-3">
+          <PickButton team={home} role="Home" side="H" pick={pick} active={active} locked={locked} reduce={!!reduce} onPick={onPick} />
+          <PickButton team={away} role="Away" side="A" pick={pick} active={active} locked={locked} reduce={!!reduce} onPick={onPick} />
+        </div>
+        {nobody && <NobodyButton pick={pick} active={active} locked={locked} reduce={!!reduce} onPick={onPick} />}
       </div>
       <p className="min-h-[1rem] text-center text-caption text-lo">
-        {locked ? "Watching the match…" : picking ? "Tap the other side to switch · tap yours to lock now" : "Pick a side"}
+        {locked
+          ? "Watching the match…"
+          : picking
+            ? "Tap another to switch · tap yours to lock now"
+            : nobody
+              ? "Make your call"
+              : "Pick a side"}
       </p>
     </div>
   );
@@ -151,11 +171,11 @@ function PickButton({
   team: Team;
   role: string;
   side: Side;
-  pick: Side | null;
+  pick: Pick | null;
   active: boolean;
   locked: boolean;
   reduce: boolean;
-  onPick: (side: Side) => void;
+  onPick: (side: Pick) => void;
 }) {
   const selected = pick === side;
   const dimmed = active && !selected;
@@ -177,6 +197,44 @@ function PickButton({
       <Flag code={team.code} size={48} />
       <span className="num font-display text-display font-extrabold leading-none tracking-tight text-hi">{team.code}</span>
       <span className={`text-label font-semibold uppercase tracking-[0.12em] ${selected ? "text-up" : "text-lo"}`}>{role}</span>
+    </motion.button>
+  );
+}
+
+/** The quiet third call (terminal only) — "nobody scores this window". A slim bar under the two teams, so the
+ *  flags stay the heroes (subtract-then-elevate). Same press/selection vocabulary as the team picks. */
+function NobodyButton({
+  pick,
+  active,
+  locked,
+  reduce,
+  onPick,
+}: {
+  pick: Pick | null;
+  active: boolean;
+  locked: boolean;
+  reduce: boolean;
+  onPick: (side: Pick) => void;
+}) {
+  const selected = pick === "N";
+  const dimmed = active && !selected;
+  return (
+    <motion.button
+      type="button"
+      disabled={locked}
+      onClick={() => onPick("N")}
+      aria-pressed={selected}
+      aria-label="Nobody scores next — no goal this window"
+      whileTap={locked ? undefined : { scale: 0.97 }}
+      animate={{ opacity: dimmed ? 0.5 : 1 }}
+      transition={{ type: "spring", duration: 0.3, bounce: 0.15 }}
+      className={`elev group flex items-center justify-center gap-2 rounded-card border px-4 py-3 outline-none transition-colors duration-200
+        focus-visible:ring-2 focus-visible:ring-up focus-visible:ring-offset-2 focus-visible:ring-offset-bg
+        disabled:cursor-default
+        ${selected ? "border-up/70 bg-up/10" : "border-hairline/70 bg-surface hover:border-hairline"}`}
+    >
+      <span className={`text-strong font-semibold ${selected ? "text-up" : "text-hi"}`}>Nobody</span>
+      <span className="text-label font-semibold uppercase tracking-[0.12em] text-lo">no goal</span>
     </motion.button>
   );
 }

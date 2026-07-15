@@ -15,11 +15,25 @@ const HOME = { code: MATCH.homeCode, name: MATCH.home };
 const AWAY = { code: MATCH.awayCode, name: MATCH.away };
 const TERMINAL: Result[] = ["WON", "LOST", "NO_CALL"];
 
-export function NextGoal({ onLock, onReset }: { onLock: () => void; onReset: () => void }) {
+/** @param onLock/onReset  round lifecycle events. /play turns them into store-owned goals via its harness;
+ *                         /terminal passes no-ops (read-only — the game reads the REAL halt goal, ADR-061).
+ *  @param nobody          add the "nobody" third pick (terminal variant). @param resolveWindowMs  lock→NO_CALL wait. */
+export function NextGoal({
+  onLock,
+  onReset,
+  nobody = false,
+  resolveWindowMs,
+}: {
+  onLock: () => void;
+  onReset: () => void;
+  nobody?: boolean;
+  resolveWindowMs?: number;
+}) {
   const reduce = useReducedMotion();
-  const g = useNextGoalGame(onLock, onReset);
+  const g = useNextGoalGame(onLock, onReset, { resolveWindowMs });
   const resolved = TERMINAL.includes(g.phase as Result);
   const halted = g.match.status === "HALTED";
+  const prompt = nobody ? `Who scores next — ${HOME.name}, ${AWAY.name}, or nobody?` : undefined;
 
   return (
     <section
@@ -74,7 +88,7 @@ export function NextGoal({ onLock, onReset }: { onLock: () => void; onReset: () 
                 onNext={g.next}
               />
             ) : (
-              <PickPad phase={g.phase} pick={g.pick} pickStartedAt={g.pickStartedAt} home={HOME} away={AWAY} onPick={g.choose} />
+              <PickPad phase={g.phase} pick={g.pick} pickStartedAt={g.pickStartedAt} home={HOME} away={AWAY} onPick={g.choose} nobody={nobody} prompt={prompt} />
             )}
           </motion.div>
         </AnimatePresence>

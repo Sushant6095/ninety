@@ -54,7 +54,7 @@ export function Verdict({
         {won ? (
           <>
             <span className="relative z-10 font-display text-heading font-extrabold uppercase tracking-[0.12em] text-up">
-              Goal · {scorer?.code}
+              {scorer ? `Goal · ${scorer.code}` : "Called it · no goal"}
             </span>
             <CountUp value={award} reduce={!!reduce} />
             <StreakBadge streak={stats.streak} label={TIER_LABEL[tier]} />

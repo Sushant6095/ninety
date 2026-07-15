@@ -12,7 +12,7 @@ export function StreakRail({ stats }: { stats: GameStats }) {
     <div className="flex items-center justify-between border-t border-hairline/60 px-4 py-3">
       <div className="flex items-center gap-2">
         <span className="text-label font-semibold uppercase tracking-[0.1em] text-lo">Streak</span>
-        <span className="flex items-center gap-1" aria-label={`Streak ${stats.streak}`}>
+        <span className="flex items-center gap-1" role="img" aria-label={`Streak ${stats.streak}`}>
           {Array.from({ length: PIPS }, (_, i) => (
             <motion.span
               key={i}

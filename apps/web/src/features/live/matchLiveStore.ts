@@ -264,6 +264,19 @@ function getList(): MatchLiveState[] {
   return listSnapshot;
 }
 
+/** Raw read-only subscription to one match's state. Unlike `useMatchLive` (which rides React renders and so
+ *  COALESCES synchronous writes), this fires the callback on EVERY store emit — so a consumer can observe a
+ *  transient the render never shows (e.g. the halt's reset()→land() score dip, which is synchronous under
+ *  reduced motion). Read-only: it never writes. Used by the Next Goal game to resolve off the real goal in
+ *  both motion modes (ADR-061). Returns an unsubscribe. */
+export function subscribeMatch(matchId: string, cb: (s: MatchLiveState | null) => void): () => void {
+  const listener = (): void => cb(map.get(matchId) ?? null);
+  listeners.add(listener);
+  return () => {
+    listeners.delete(listener);
+  };
+}
+
 /** THE single read hook: live { status, minute, score, prices, … } for one match, on either surface. */
 export function useMatchLive(matchId: string): MatchLiveState | null {
   return useSyncExternalStore(

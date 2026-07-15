@@ -1,6 +1,8 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { toast } from "sonner";
+import { gsap, useGSAP } from "../../lib/gsap";
 import { motion as m } from "../../design/motion";
 import { quote } from "../../lib/lmsr";
 import { fmtCR } from "../../lib/format";
@@ -34,7 +36,8 @@ interface TradePanelProps {
 export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPlace, disabled = false }: TradePanelProps) {
   const [side, setSide] = useState<"buy" | "sell">("buy");
   const [size, setSize] = useState(20);
-  const [result, setResult] = useState<PlaceResult | null>(null);
+  // A confirmed fill (or null). Carries what the choreography needs so the inline line + toast agree.
+  const [fill, setFill] = useState<{ size: number; code: string; avgPx: number } | null>(null);
   const reduce = useReducedMotion();
 
   const q = quote(amm.q, amm.b, IDX[selected], size, side, amm.spreadMult);
@@ -47,12 +50,34 @@ export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPl
   }, [amm, selected, free]);
   const maxSize = side === "buy" ? maxBuy : heldShares;
 
-  const setSz = (n: number) => { setSize(Math.max(0, Math.min(MAX, n))); setResult(null); };
-  const flip = (s: "buy" | "sell") => { setSide(s); setResult(null); };
-  const submit = () => setResult(onPlace(side, size));
+  const setSz = (n: number) => { setSize(Math.max(0, Math.min(MAX, n))); setFill(null); };
+  const flip = (s: "buy" | "sell") => { setSide(s); setFill(null); };
+  const submit = () => {
+    const r = onPlace(side, size); // parent applies the fill (or toasts a reject — those stay in placeOrder)
+    setFill(r.ok ? { size, code, avgPx: r.avgPx ?? markPx } : null);
+  };
+
+  // submit → fill confirmation → toast as ONE one-shot GSAP timeline (ADR-061). Off the price tape and only
+  // on a confirmed fill, so it is wall-safe; transform/opacity only; reduced motion drops the travel and
+  // fires the toast immediately. The press dip itself stays CSS active:scale (ADR-058 — untouched).
+  const scope = useRef<HTMLDivElement>(null);
+  const fillRef = useRef<HTMLParagraphElement>(null);
+  useGSAP(
+    () => {
+      const el = fillRef.current;
+      if (!fill || !el) return;
+      const rm = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+      const reveal = rm ? 0.001 : m.fast / 1000;
+      gsap
+        .timeline()
+        .fromTo(el, { autoAlpha: 0, y: rm ? 0 : 6 }, { autoAlpha: 1, y: 0, duration: reveal }, 0)
+        .call(() => toast.success(`Filled ${fill.size} ${fill.code} @ ${fill.avgPx.toFixed(1)}`), undefined, reveal);
+    },
+    { scope, dependencies: [fill], revertOnUpdate: true },
+  );
 
   return (
-    <div aria-disabled={disabled} className={`border-b border-hairline px-4 py-3 ${disabled ? "pointer-events-none select-none opacity-60" : ""}`}>
+    <div ref={scope} aria-disabled={disabled} className={`border-b border-hairline px-4 py-3 ${disabled ? "pointer-events-none select-none opacity-60" : ""}`}>
       <div className="flex flex-wrap items-center gap-3">
         <div className="inline-flex rounded-lg bg-bg p-0.5 ring-1 ring-inset ring-hairline">
           {(["buy", "sell"] as const).map((s) => {
@@ -124,17 +149,11 @@ export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPl
         </button>
       </div>
 
-      {result?.ok && (
-        <motion.p
-          className="num mt-2 flex items-center gap-1 text-label text-up"
-          role="status"
-          initial={reduce ? false : { opacity: 0, y: -4 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: m.fast / 1000, ease: m.easeOut }}
-        >
+      {fill && (
+        <p ref={fillRef} className="num mt-2 flex items-center gap-1 text-label text-up" role="status">
           <span aria-hidden>✓</span>
-          Filled {size} {code} @ {result.avgPx?.toFixed(1)} — position updated (optimistic; reconciles on the fill frame).
-        </motion.p>
+          Filled {fill.size} {fill.code} @ {fill.avgPx.toFixed(1)} — position updated (optimistic; reconciles on the fill frame).
+        </p>
       )}
     </div>
   );

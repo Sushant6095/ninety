@@ -79,6 +79,12 @@ body {
 .pop-content[data-state="delayed-open"], .pop-content[data-state="open"] { animation: popIn var(--duration-fast) var(--ease-out); }
 @keyframes popIn { from { opacity: 0; transform: scale(0.97); } }
 
+/* Depth-tab crossfade (plans/008 §3). Radix mounts only the active Tabs.Content, so a mount-time opacity
+   keyframe fades it in. OPACITY ONLY — the terminal stays crisp (motion.md: no entrance travel on data), and
+   opacity is comprehension-safe under reduced motion (clamped to ~0 by the global rule below). */
+.tab-fade[data-state="active"] { animation: tabIn var(--duration-fast) var(--ease-out); }
+@keyframes tabIn { from { opacity: 0; } }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

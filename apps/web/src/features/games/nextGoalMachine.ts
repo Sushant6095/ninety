@@ -8,6 +8,10 @@ export type Phase = "READY" | "PICKING" | "LOCKED" | "RESOLVING" | "WON" | "LOST
 /** A pick is one of the two sides. Home = the store's H outcome, Away = A. */
 export type Side = "H" | "A";
 
+/** What the player can call. The two-pick /play game (ADR-060) only ever uses a Side; the terminal
+ *  three-pick variant (ADR-061) adds "N" (nobody / no goal). "N" is a PICK, never a scored side. */
+export type Pick = Side | "N";
+
 /** The resolution outcome — the three ways a locked round can end. */
 export type Result = "WON" | "LOST" | "NO_CALL";
 
@@ -26,6 +30,10 @@ export interface GameStats {
 // ── timing (ms) — asymmetric by design (emil): the decision is slow and deliberate, the resolve is snappy ──
 export const PICK_MS = 3000; // the countdown/lock window — the tension IS this
 export const RESOLVE_WINDOW_MS = 2200; // no delta by here after lock → NO_CALL (no penalty)
+// Terminal variant (ADR-061): the goal comes from the REAL match (the player drives the halt), not a
+// /play auto-harness that fires inside 1.5s — so give a comfortable window to trigger it, and to let a
+// "nobody" call win by the window elapsing quietly.
+export const TERMINAL_RESOLVE_WINDOW_MS = 8000;
 export const FLASH_MS = 180; // the RESOLVING goal-flash beat before the verdict paints
 export const PAYOFF_HOLD_MS = 500; // number count-up window on a win
 
@@ -64,6 +72,15 @@ export function detectGoal(lockScore: Score, now: Score): Side | null {
 /** A goal for the picked side wins; the other side loses. */
 export function resultFor(pick: Side, scored: Side): Result {
   return pick === scored ? "WON" : "LOST";
+}
+
+/** Resolve a locked round from the pick and which side (if any) scored — a strict SUPERSET of the two-pick
+ *  path: for a Side pick this is `resultFor` (goal) or NO_CALL (no goal), IDENTICAL to /play. Only "N"
+ *  (nobody) changes the meaning of "no goal": nobody called it right, so the window elapsing is a WIN, and
+ *  any goal is a (never-punishing) LOSS. */
+export function resolvePick(pick: Pick, scored: Side | null): Result {
+  if (pick === "N") return scored === null ? "WON" : "LOST";
+  return scored === null ? "NO_CALL" : resultFor(pick, scored);
 }
 
 /** Apply a resolved result to the stats — immutable (coding-style law: never mutate). LOST never punishes

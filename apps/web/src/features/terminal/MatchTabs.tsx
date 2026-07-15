@@ -18,8 +18,10 @@ const TABS = [
   { v: "positions", l: "Positions" },
 ];
 
+// The active underline fades instead of popping (plans/008 §3): its opacity gets its own transition on the
+// `after` pseudo (the base `transition-colors` never reaches a pseudo-element).
 const TRIGGER =
-  "relative inline-flex min-h-[44px] shrink-0 items-center rounded-md px-3 text-caption font-medium text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-up data-[state=active]:text-hi after:absolute after:inset-x-3 after:-bottom-px after:h-0.5 after:rounded-full after:bg-up after:opacity-0 data-[state=active]:after:opacity-100";
+  "relative inline-flex min-h-[44px] shrink-0 items-center rounded-md px-3 text-caption font-medium text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-up data-[state=active]:text-hi after:absolute after:inset-x-3 after:-bottom-px after:h-0.5 after:rounded-full after:bg-up after:opacity-0 after:transition-opacity after:duration-200 data-[state=active]:after:opacity-100";
 
 function Empty({ text }: { text: string }) {
   return <p className="px-4 py-10 text-center text-body leading-relaxed text-lo">{text}</p>;
@@ -34,13 +36,13 @@ export function MatchTabs({ positions, mark }: { positions: PositionRow[]; mark:
         {TABS.map((t) => <Tabs.Trigger key={t.v} value={t.v} className={TRIGGER}>{t.l}</Tabs.Trigger>)}
       </Tabs.List>
 
-      <Tabs.Content value="market" className="outline-none"><BoothTimeline /></Tabs.Content>
-      <Tabs.Content value="stats" className="outline-none"><MatchStats /></Tabs.Content>
-      <Tabs.Content value="lineups" className="outline-none"><Lineups /></Tabs.Content>
-      <Tabs.Content value="h2h" className="outline-none"><H2H /></Tabs.Content>
-      <Tabs.Content value="events" className="outline-none"><EventsTimeline /></Tabs.Content>
+      <Tabs.Content value="market" className="tab-fade outline-none"><BoothTimeline /></Tabs.Content>
+      <Tabs.Content value="stats" className="tab-fade outline-none"><MatchStats /></Tabs.Content>
+      <Tabs.Content value="lineups" className="tab-fade outline-none"><Lineups /></Tabs.Content>
+      <Tabs.Content value="h2h" className="tab-fade outline-none"><H2H /></Tabs.Content>
+      <Tabs.Content value="events" className="tab-fade outline-none"><EventsTimeline /></Tabs.Content>
 
-      <Tabs.Content value="positions" className="outline-none">
+      <Tabs.Content value="positions" className="tab-fade outline-none">
         {positions.length === 0 ? (
           <Empty text="No position in this match yet — arm an outcome above to trade." />
         ) : (
