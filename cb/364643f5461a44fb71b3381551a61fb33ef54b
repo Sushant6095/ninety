@@ -1,0 +1,27 @@
+design/PROVENANCE.md
+  s_6ab41d7b0271b9::t_b0ef14742b2cdd 98
+.gitignore
+  s_6ab41d7b0271b9::t_bf90a1df263514 23-25
+  s_6ab41d7b0271b9::t_a2c5f11cfab5e9 8-10
+docs/AUDIT-2026-07-14.md
+  s_6ab41d7b0271b9::t_a566e16bfbc444 334
+  s_6ab41d7b0271b9::t_ec1f5a0a3b1118 331-333
+  s_6ab41d7b0271b9::t_a58b21bef5b8cf 335-337
+  s_6ab41d7b0271b9::t_1d0a4c4e969a65 1-330,338-400
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "cb364643f5461a44fb71b3381551a61fb33ef54b",
+  "prompts": {},
+  "sessions": {
+    "s_6ab41d7b0271b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a5538f3a-206a-4aef-b98c-32f9c1580643",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
