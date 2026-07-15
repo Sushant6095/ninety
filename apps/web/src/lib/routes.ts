@@ -19,6 +19,10 @@ export const routes = {
   moment: (id: string): string => `/moments/${id}`,
 } as const;
 
+// The written reference, hosted on GitBook (external). /how-it-works is the in-app visual explainer;
+// docs is the deep read. They complement — not duplicate.
+export const DOCS_URL = "https://sushi-2.gitbook.io/ninety-docs/";
+
 export interface NavItem {
   label: string;
   href: string;

@@ -23,3 +23,6 @@ design/screens/impl/*
 
 # agent trace logs (session noise — never ship)
 **/.claude/trace/
+
+# vendored skill packs (installed via `npx skills add …`) — keep LOCAL, never ship ~18 skill dirs
+.agents/skills/

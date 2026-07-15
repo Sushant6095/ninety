@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { gsap, useGSAP } from "../../lib/gsap";
 import { motion as m } from "../../design/motion";
 import { Wordmark } from "../../components/ui/Wordmark";
-import { routes } from "../../lib/routes";
+import { routes, DOCS_URL } from "../../lib/routes";
 import { CtaPair, PlayMoneyLine } from "./Ctas";
 import { HeroRiver } from "./HeroRiver";
 
@@ -67,6 +67,15 @@ export function LandingHero() {
           >
             How it works
           </Link>
+          {/* The deep written reference (GitBook). Opens in a new tab; /how-it-works stays the in-app explainer. */}
+          <a
+            href={DOCS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden min-h-[44px] items-center rounded-chip px-3 text-body font-medium text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi focus-visible:ring-2 focus-visible:ring-up/60 active:opacity-70 sm:inline-flex"
+          >
+            Docs
+          </a>
           {/* THE terminal button (B1): the always-present app exit, same label as the hero + close CTAs. */}
           <Link
             href={routes.terminal}

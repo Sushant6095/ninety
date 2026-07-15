@@ -7,12 +7,13 @@ import { CommandMenu } from "../../components/ui/CommandMenu";
 import { Tooltip } from "../../components/ui/Tooltip";
 import { CreditPill } from "../../components/ui/CreditPill";
 import { Avatar } from "../../components/ui/Avatar";
-import { routes } from "../../lib/routes";
+import { routes, DOCS_URL } from "../../lib/routes";
 import type { SessionUser } from "../../lib/types";
 
 // The single app-wide surface nav (App and Terminal are merged — no more surface toggle). Covers every
 // destination the old App nav had, plus the Terminal's live-market filters and proof status.
-const SUBNAV: { label: string; href: string; count?: number; home?: boolean }[] = [
+// `external` items (Docs → GitBook) render as new-tab anchors with no active state.
+const SUBNAV: { label: string; href: string; count?: number; home?: boolean; external?: boolean }[] = [
   { label: "Trending", href: routes.moments },
   { label: "WC26", href: routes.board, count: 80, home: true },
   { label: "Live", href: routes.board, count: 4 },
@@ -24,6 +25,7 @@ const SUBNAV: { label: string; href: string; count?: number; home?: boolean }[] 
   { label: "Moments", href: routes.moments },
   { label: "History", href: routes.history },
   { label: "Proofs", href: routes.proofs, count: 88 },
+  { label: "Docs", href: DOCS_URL, external: true },
 ];
 
 /** The one Ninety chrome: wordmark + TERMINAL badge · search · balance/rank/actions, then a dense sub-nav row
@@ -78,11 +80,19 @@ export function TerminalHeader({ user }: { user: SessionUser }) {
       <div className="border-b border-hairline">
         <div className="mx-auto flex max-w-[1600px] items-center gap-1 overflow-x-auto px-2 sm:px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {SUBNAV.map((t) => {
+            const cls = "group relative flex shrink-0 items-center gap-1 whitespace-nowrap px-3 py-2 text-caption font-medium transition-colors duration-200";
+            if (t.external) {
+              return (
+                <a key={t.label} href={t.href} target="_blank" rel="noopener noreferrer" className={`${cls} text-lo hover:text-hi`}>
+                  {t.label}
+                </a>
+              );
+            }
             const active = t.home
               ? path === routes.board || path.startsWith(routes.terminal) || path.startsWith("/match")
               : t.href !== routes.board && path.startsWith(t.href);
             return (
-              <Link key={t.label} href={t.href} className={`group relative flex shrink-0 items-center gap-1 whitespace-nowrap px-3 py-2 text-caption font-medium transition-colors duration-200 ${active ? "text-hi" : "text-lo hover:text-hi"}`}>
+              <Link key={t.label} href={t.href} className={`${cls} ${active ? "text-hi" : "text-lo hover:text-hi"}`}>
                 {t.label}
                 {t.count != null && <span className={`num rounded-full px-1 text-label font-semibold tabular-nums ring-1 ring-inset ${active ? "bg-hairline/50 text-hi ring-hairline" : "bg-surface text-lo ring-hairline"}`}>{t.count}</span>}
                 {active && <span className="absolute inset-x-3 -bottom-px h-[2px] rounded-full bg-up" />}
