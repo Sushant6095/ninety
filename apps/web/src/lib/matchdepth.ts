@@ -1,5 +1,5 @@
 // Match-view depth (Sofascore-style) for the Terminal fixture match (AUS vs EGY). Illustrative fixture data —
-// TxLINE gives scores/odds/proofs, not lineups/ratings, so these populate the Stats/Lineups/H2H tabs for the demo.
+// TxLINE gives scores/prices/proofs, not lineups/ratings, so these populate the Stats/Lineups/H2H tabs for the demo.
 
 export interface StatRow {
   label: string;

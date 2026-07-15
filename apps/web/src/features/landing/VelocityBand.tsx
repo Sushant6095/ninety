@@ -1,14 +1,13 @@
 "use client";
 import { useReducedMotion } from "framer-motion";
-import {
-  ScrollVelocityContainer,
-  ScrollVelocityRow,
-} from "../../components/vendor/magicui/scroll-based-velocity";
+import { Marquee } from "../../components/vendor/magicui/marquee";
 
-// The velocity band (magicui scroll-based-velocity, re-skinned) — the product loop as a typographic
-// chapter break between the price story and the proof story: display type at whisper contrast,
-// speed reacting to the visitor's own scroll. Decorative (aria-hidden — the same four verbs are
-// real copy elsewhere). Reduced motion → one static centered row, no marquee at all.
+// The velocity band — the product loop as a typographic chapter break between the price story and
+// the proof story. Rides the CSS marquee keyframes (compositor-only), NOT scroll-linked JS: the
+// scroll-velocity variant added a per-frame rAF scroll read + a static will-change row, and the
+// live MotionScore gate measured desktop thrashing C→D — performance beats the flourish (the cut
+// is logged in PROVENANCE). Decorative (aria-hidden — the same four verbs are real copy elsewhere).
+// Reduced motion → one static centered row, no loop at all.
 
 const WORDS = ["price", "trade", "settle", "prove"] as const;
 
@@ -38,11 +37,9 @@ export function VelocityBand() {
           <BandRow />
         </div>
       ) : (
-        <ScrollVelocityContainer>
-          <ScrollVelocityRow baseVelocity={3}>
-            <BandRow />
-          </ScrollVelocityRow>
-        </ScrollVelocityContainer>
+        <Marquee className="[--marquee-duration:48s] [--marquee-gap:0px]" repeat={3}>
+          <BandRow />
+        </Marquee>
       )}
     </div>
   );

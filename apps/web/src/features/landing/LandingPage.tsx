@@ -8,7 +8,6 @@ import { WorldGlobeLazy } from "./WorldGlobeLazy";
 import { StickerPeelLazy } from "./StickerPeelLazy";
 import { LoopStage, LoopLegend } from "./LoopStage";
 import { PriceScrub } from "./PriceScrub";
-import { PricePath } from "./PricePath";
 import { VelocityBand } from "./VelocityBand";
 import { FlowFieldLazy } from "./FlowFieldLazy";
 import { MomentCard } from "./MomentCard";
@@ -44,10 +43,10 @@ export function LandingPage() {
     <div className="flex min-h-screen flex-col bg-bg">
       <main>
         <LandingHero />
-        {/* the story wrapper: the scroll-drawn price path (skiper19) runs down the wide left
-            margin for the whole tale — delete the PricePath line and the page doesn't miss it */}
+        {/* PricePath (skiper19) CUT here per the MotionScore gate: its per-frame scroll read helped
+            push desktop thrashing C→D on the live audit. The component survives in the tree
+            (features/landing/PricePath.tsx) — one import re-adds it if the budget ever allows. */}
         <div className="relative">
-        <PricePath className="hidden 2xl:block" />
         <LandingScroll>
           {/* 2 — the loop, told by the product itself */}
           <section aria-labelledby="loop-h" className="border-b border-hairline">

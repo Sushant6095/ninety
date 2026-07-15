@@ -19,7 +19,8 @@ export function PlayScreen() {
         >
           ← Board
         </Link>
-        <span className="text-label font-semibold uppercase tracking-[0.16em] text-lo">Halftime</span>
+        {/* Surface name (ADR-060), not a match-state chip — "HALFTIME" over "LIVE 74'" read as two clocks. */}
+        <span className="text-label font-semibold uppercase tracking-[0.16em] text-lo">Next Goal</span>
       </header>
 
       <div className="flex flex-1 flex-col items-center justify-center gap-5 py-6">

@@ -125,7 +125,8 @@ export function FeaturedPanel({ market, replayNonce = 0 }: { market: MarketRow; 
           href={routes.match(market.matchId)}
           className="flex min-h-[44px] w-full items-center justify-center rounded-lg bg-up px-4 py-2 text-strong font-semibold text-bg transition-[filter,transform] duration-200 ease-out hover:brightness-110 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-up focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
         >
-          Trade this match
+          {/* Honest CTA: orders reject during a halt (MARKET_HALTED), so the label must not promise a trade. */}
+          {halted ? "View market" : "Trade this match"}
         </Link>
       </div>
     </section>

@@ -73,7 +73,8 @@ export const POSITIONS: PositionRow[] = [
 // open from the live store for all of them (`price`/`delta` are only the pre-hydration seed).
 export interface MoverRow { matchId: string; code: string; vs: string; outcome: Outcome; price: number; delta: number; note: string; }
 export const MOVERS: MoverRow[] = [
-  { matchId: "wc26-aus-egy", code: "EGY", vs: "AUS", outcome: "A", price: 31.0, delta: 0, note: "goalless at 74' — pressing" },
+  // note must agree with the same screen's scoreboard/Booth (read-out-loud law): Ashour scored at 74'.
+  { matchId: "wc26-aus-egy", code: "EGY", vs: "AUS", outcome: "A", price: 55.3, delta: 24.3, note: "Ashour repriced it 31 → 55" },
   { matchId: "wc26-bra-kor", code: "BRA", vs: "KOR", outcome: "H", price: 86.0, delta: 15.0, note: "two up before the hour" },
   { matchId: "wc26-ned-usa", code: "USA", vs: "NED", outcome: "A", price: 26.4, delta: 8.0, note: "level after half an hour — USA bid" },
   { matchId: "wc26-can-mar", code: "CAN", vs: "MAR", outcome: "H", price: 61.4, delta: 9.4, note: "a goal to the good" },
