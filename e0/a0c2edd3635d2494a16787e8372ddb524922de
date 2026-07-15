@@ -1,0 +1,37 @@
+apps/web/src/app/play/PlayScreen.tsx
+  s_e6fe919b4d8a67::t_7f12d163e39d23 2
+apps/web/src/app/play/matchSimHarness.ts
+  s_e6fe919b4d8a67::t_8e69b283508bcd 2
+apps/web/src/app/play/page.tsx
+  s_e6fe919b4d8a67::t_e1b18bc67676c3 4
+apps/web/src/features/games/NextGoal.tsx
+  s_e6fe919b4d8a67::t_421c6e97b177e1 2
+apps/web/src/features/games/PickPad.tsx
+  s_e6fe919b4d8a67::t_b595a5454e516e 2
+apps/web/src/features/games/StreakRail.tsx
+  s_e6fe919b4d8a67::t_a289c9098c96f9 2
+apps/web/src/features/games/Verdict.tsx
+  s_e6fe919b4d8a67::t_56061bd1a083fb 2
+apps/web/src/features/games/nextGoalMachine.ts
+  s_e6fe919b4d8a67::t_e383dd7ff59c83 1,19
+apps/web/src/features/games/useNextGoalGame.ts
+  s_e6fe919b4d8a67::t_8d09ff1cd51395 2
+docs/adr/ADR-060-next-goal-mini-game.md
+  s_e6fe919b4d8a67::t_07e07f941612b4 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "e0a0c2edd3635d2494a16787e8372ddb524922de",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
