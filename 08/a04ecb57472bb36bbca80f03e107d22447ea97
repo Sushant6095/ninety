@@ -1,0 +1,240 @@
+apps/web/src/features/home/HomeShell.tsx
+  s_b60ec3c6161754::t_c497952f019954 20
+apps/web/src/features/landing/PlayMoneyDissolve.tsx
+  s_b60ec3c6161754::t_bfebf2a49d4b27 1-29
+apps/web/src/features/how/HowItWorksPage.tsx
+  s_b60ec3c6161754::t_1cd09dbaad68a8 14-16
+  s_b60ec3c6161754::t_c79c9b8db67fe4 10
+  s_b60ec3c6161754::t_b0c44a95b825f8 28
+apps/web/src/features/terminal/TerminalScreen.tsx
+  s_b60ec3c6161754::t_c2199fa02cc986 9
+  s_b60ec3c6161754::t_fd8a341a1c4c18 21-22
+  s_b60ec3c6161754::t_7beabf6900da24 44
+apps/web/src/features/games/useNextGoalGame.ts
+  s_b60ec3c6161754::t_dbfc626c269c8c 26
+  s_b60ec3c6161754::t_09821fd16ed07b 69-70
+  s_b60ec3c6161754::t_1fddcceafeec08 91-92,94-101
+apps/web/src/features/how/sections/TheLoop.tsx
+  s_b60ec3c6161754::t_ff6eb78aefa3a0 1-6,9-11,14-15,19-38,42-50
+apps/web/src/features/home/TopMovers.tsx
+  s_b60ec3c6161754::t_7b9f82584bc2de 4-5,15-17,29,39-48,50-58,62
+apps/web/src/features/games/roundLog.ts
+  s_b60ec3c6161754::t_bc826c9ad9fb7c 1-72
+apps/web/package.json
+  s_b60ec3c6161754::t_5f471d1a1dcb3c 19-20,23,33,35,40
+apps/web/src/features/terminal/MarketStatus.tsx
+  s_b60ec3c6161754::t_06ba6fc6627a26 4,6,8
+  s_b60ec3c6161754::t_0db2f4ee40e2cd 37,45
+apps/web/src/features/terminal/TradersStrip.tsx
+  s_b60ec3c6161754::t_058cfd03ed5b7e 1-52
+apps/web/tailwind.config.ts
+  s_b60ec3c6161754::t_c5e132f65e3aea 49-58
+apps/web/src/features/games/svar-filter.d.ts
+  s_b60ec3c6161754::t_ad2e6be1bb5b7d 1-36
+apps/web/src/features/how/sections/ProofFlowLazy.tsx
+  s_b60ec3c6161754::t_15ad5925d7bed5 4
+apps/web/src/features/games/Verdict.tsx
+  s_b60ec3c6161754::t_dd63aba6f270b8 51,53-54
+  s_b60ec3c6161754::t_fd2e92525e1ef4 45-50,52,55-71,74-81,83
+  s_b60ec3c6161754::t_7320e255f1b41f 9
+apps/web/src/features/terminal/TerminalHeader.tsx
+  s_b60ec3c6161754::t_06f194cb898293 11
+  s_b60ec3c6161754::t_be937032bdd098 5
+  s_b60ec3c6161754::t_1ca91dc566d68d 74
+apps/web/src/features/home/LeftRail.tsx
+  s_b60ec3c6161754::t_574d14c618d9d9 4
+  s_b60ec3c6161754::t_82737df8572e3d 95-96,99-105
+  s_b60ec3c6161754::t_9a0fbac7347a27 125-126
+apps/web/src/features/how/sections/PipelineBeams.tsx
+  s_b60ec3c6161754::t_11b0d4f79e0856 1-56
+apps/web/src/features/games/RoundFilter.tsx
+  s_b60ec3c6161754::t_f8264d1d7e60c2 1-66,68-93
+  s_b60ec3c6161754::t_552e29bd0931ea 67
+apps/web/src/features/home/GroupStandings.tsx
+  s_b60ec3c6161754::t_5a37b034b50497 43-44,47
+  s_b60ec3c6161754::t_1552016235e340 3
+  s_b60ec3c6161754::t_964c28384fa9b9 70
+apps/web/src/components/ui/CreditPill.tsx
+  s_b60ec3c6161754::t_16df329c117dcb 1-2,4-5,12,14-18,20-42,47,50
+apps/web/src/features/terminal/MatchColumn.tsx
+  s_b60ec3c6161754::t_cf456d7666ae4f 87-98
+  s_b60ec3c6161754::t_6856a0cbbaec38 13
+  s_b60ec3c6161754::t_7c115514678eb0 2
+apps/web/src/features/home/BentoBoard.tsx
+  s_b60ec3c6161754::t_5875500e703397 1-25
+apps/web/src/features/home/TradersWeek.tsx
+  s_b60ec3c6161754::t_ba365c024b14a8 3-4,11-13,16,18-19,21-27,34,47
+apps/web/tsconfig.json
+  s_b60ec3c6161754::t_ff30c75597eb27 24-26
+apps/web/src/features/home/PowerRankings.tsx
+  s_b60ec3c6161754::t_3f574915b72a98 1,7-8,11
+  s_b60ec3c6161754::t_26e84fb6eec923 35
+apps/web/src/features/landing/PricePath.tsx
+  s_b60ec3c6161754::t_ee4e795ff5af41 1-35
+apps/web/src/features/how/sections/TxLineSection.tsx
+  s_b60ec3c6161754::t_9a7e34aef2ddbf 35,38
+  s_b60ec3c6161754::t_7248ab91f7c201 2
+apps/web/src/features/terminal/TerminalDock.tsx
+  s_b60ec3c6161754::t_84f2b2429159e4 1-64
+apps/web/src/app/board/page.tsx
+  s_b60ec3c6161754::t_9e5637edf757ba 3,8-11,15
+apps/web/src/features/landing/VelocityBand.tsx
+  s_b60ec3c6161754::t_b7948ce3448d09 1-16,20-22,24-49
+  s_b60ec3c6161754::t_af9d65bfe15ea8 17-19
+  s_b60ec3c6161754::t_cc7c5c60c9401d 23
+apps/web/src/features/landing/Ctas.tsx
+  s_b60ec3c6161754::t_abca0a88593892 3
+  s_b60ec3c6161754::t_e6fe7ea494b599 28-30,33-40
+apps/web/src/features/how/sections/ProofFlow.tsx
+  s_b60ec3c6161754::t_1d04dbdd4b376e 2-10,14-19,21-24,33,35,38-63
+apps/web/src/features/home/RightRail.tsx
+  s_b60ec3c6161754::t_334e716c108578 81-87,89-101
+  s_b60ec3c6161754::t_654e7a3da19b7f 5
+apps/web/src/features/terminal/BoothTimeline.tsx
+  s_b60ec3c6161754::t_144f4207f9e39d 3
+  s_b60ec3c6161754::t_8e5ca41559fe47 49-61,63
+apps/web/src/features/home/Ticker.tsx
+  s_b60ec3c6161754::t_8890d7c5d45862 3,7,26,41-43,45-46,49,54-62
+apps/web/src/lib/utils.ts
+  s_b60ec3c6161754::t_3adba4ec4106c3 1-19
+apps/web/src/features/landing/CrowdBand.tsx
+  s_b60ec3c6161754::t_19b2f906bb3bb9 1-19
+apps/web/src/features/how/sections/Coverage.tsx
+  s_b60ec3c6161754::t_1004328da79875 1-48
+apps/web/src/features/home/NewsStrip.tsx
+  s_b60ec3c6161754::t_eea64a3fe5aad4 47
+  s_b60ec3c6161754::t_fe0a17844b1629 31
+  s_b60ec3c6161754::t_08711dd0b0cbf7 3
+  s_b60ec3c6161754::t_736204c075b4a2 14-15,18
+  s_b60ec3c6161754::t_8e179ea2d02e53 41
+apps/web/scripts/pull-registry-components.mjs
+  s_b60ec3c6161754::t_2c04add3f48b33 1-49
+apps/web/src/features/home/components/NotificationBell.tsx
+  s_b60ec3c6161754::t_9a02ca51180825 12-14
+  s_b60ec3c6161754::t_87b90e3e76f552 1-11,15-72,76-88
+  s_b60ec3c6161754::t_1fafd42b313b35 73-75
+design/PROVENANCE.md
+  s_b60ec3c6161754::t_770660132c2299 49-66
+  s_b60ec3c6161754::t_80c9919f22a966 67-97
+apps/web/src/features/landing/MomentCard.tsx
+  s_b60ec3c6161754::t_698b5324ddc8eb 1-43
+apps/web/src/features/landing/LandingHero.tsx
+  s_b60ec3c6161754::t_68b2d8ce6031b0 109,112-116
+  s_b60ec3c6161754::t_5e152dc9de8936 8
+apps/web/src/features/landing/FlowFieldLazy.tsx
+  s_b60ec3c6161754::t_b1efa504d77442 1-15
+apps/web/src/components/ui/AppShell.tsx
+  s_b60ec3c6161754::t_351058c3af0783 18
+apps/web/src/features/landing/LandingPage.tsx
+  s_b60ec3c6161754::t_0b710a501fda5d 11-16,19-21,31-35
+  s_b60ec3c6161754::t_fdba3008aac0f4 75-85
+  s_b60ec3c6161754::t_ce8de4a3d8e345 178-183,190-193,195-196,199
+  s_b60ec3c6161754::t_efb95b40d3fe5f 47-50,57-58
+  s_b60ec3c6161754::t_e5ba20fd071c3e 104-112,118-122
+  s_b60ec3c6161754::t_53b36d3c8bb15a 36-37
+apps/web/src/features/games/svar-ninety.css
+  s_b60ec3c6161754::t_82743857daef22 1-114
+apps/web/src/app/play/PlayScreen.tsx
+  s_b60ec3c6161754::t_01fa3a36e3edd8 6
+  s_b60ec3c6161754::t_6a5b388e72fde1 33-34
+apps/web/src/components/vendor/magicui/video-text.tsx
+  s_b60ec3c6161754::t_cb27580818b4c3 1-134
+pnpm-lock.yaml
+  s_b60ec3c6161754::t_71b40af5c17bd2 81-86,93-95,123-125,129-131,139-141,1791-1838,1878-1880,2144-2146,3149-3151,3312-3315,4970-5023,5052-5053,5333-5334,6448-6449,6659-6660
+apps/web/src/components/vendor/godui/agent-flow.tsx
+  s_07a3274eb5c17f::t_75d9ad4326cb60 1-1069
+apps/web/src/components/vendor/godui/agent-timeline.tsx
+  s_07a3274eb5c17f::t_6a70f8f9d1f870 1-236
+apps/web/src/components/vendor/godui/animated-beam.tsx
+  s_07a3274eb5c17f::t_70910b95699398 1-177
+apps/web/src/components/vendor/godui/flow-field.tsx
+  s_76f8a6ad57a785::t_55dc4081b6a9b7 1-231
+apps/web/src/components/vendor/godui/holographic-card.tsx
+  s_76f8a6ad57a785::t_3092c278f3862a 1-169
+apps/web/src/components/vendor/godui/notification-inbox.tsx
+  s_07a3274eb5c17f::t_e2ec553b27335d 1-207
+apps/web/src/components/vendor/godui/particle-dissolve.tsx
+  s_76f8a6ad57a785::t_8395b230e30f73 1-301
+apps/web/src/components/vendor/godui/presence.ts
+  s_dbc6e24e77c8f3::t_f686682d1cc3c5 1-43
+apps/web/src/components/vendor/godui/sticky-scroll.tsx
+  s_b60ec3c6161754::t_17b72652c868b0 1-149
+apps/web/src/components/vendor/magicui/avatar-circles.tsx
+  s_dbc6e24e77c8f3::t_4b06661ddd5723 1-63
+apps/web/src/components/vendor/magicui/backlight.tsx
+  s_76f8a6ad57a785::t_9748369f3e852b 1-37
+apps/web/src/components/vendor/magicui/bento-grid.tsx
+  s_dbc6e24e77c8f3::t_b569b34c0e6791 1-42
+apps/web/src/components/vendor/magicui/confetti.tsx
+  s_07a3274eb5c17f::t_f48e85ebd43195 1-103
+apps/web/src/components/vendor/magicui/dock.tsx
+  s_c1b422c669f85a::t_742a97e69339c9 1-140
+apps/web/src/components/vendor/magicui/dotted-map.tsx
+  s_dbc6e24e77c8f3::t_a823855d31b546 1-194
+apps/web/src/components/vendor/magicui/highlighter.tsx
+  s_76f8a6ad57a785::t_7b1654444ada92 1-90
+apps/web/src/components/vendor/magicui/hyper-text.tsx
+  s_07a3274eb5c17f::t_4d17d0fd3def0d 1-110
+apps/web/src/components/vendor/magicui/magic-card.tsx
+  s_dbc6e24e77c8f3::t_2c19bc28692d76 1-118
+apps/web/src/components/vendor/magicui/marquee.tsx
+  s_dbc6e24e77c8f3::t_3fea8286a8facb 1-84
+apps/web/src/components/vendor/magicui/scroll-based-velocity.tsx
+  s_76f8a6ad57a785::t_38799597315668 1-227
+apps/web/src/components/vendor/magicui/terminal.tsx
+  s_c1b422c669f85a::t_527ed436529eab 1-309
+apps/web/src/components/vendor/skiper/skiper19.tsx
+  s_07a3274eb5c17f::t_d39f1733c94790 1-59
+apps/web/src/components/vendor/skiper/skiper39.tsx
+  s_76f8a6ad57a785::t_269d40191ee878 1-201
+apps/web/src/components/vendor/skiper/skiper52.tsx
+  s_76f8a6ad57a785::t_35ef92359c5ea1 1-52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "08a04ecb57472bb36bbca80f03e107d22447ea97",
+  "prompts": {},
+  "sessions": {
+    "s_07a3274eb5c17f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-adcae0203834f7eec",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_76f8a6ad57a785": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-a5f3736d01cfbfaf5",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_c1b422c669f85a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-a00512b3ac98a09c9",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_dbc6e24e77c8f3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-ad8520f2664baad4e",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
