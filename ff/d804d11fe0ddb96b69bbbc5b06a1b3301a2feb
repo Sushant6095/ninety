@@ -1,0 +1,21 @@
+apps/web/public/docs/logo-solana.svg
+  s_338735e9af5335::t_8ac3fc052e2384 1
+apps/web/public/docs/logo-txodds.svg
+  s_338735e9af5335::t_86ceeb48c8887c 1-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "ffd804d11fe0ddb96b69bbbc5b06a1b3301a2feb",
+  "prompts": {},
+  "sessions": {
+    "s_338735e9af5335": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93fac499-ebc1-4122-b865-8c9f3e20d6b6",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
