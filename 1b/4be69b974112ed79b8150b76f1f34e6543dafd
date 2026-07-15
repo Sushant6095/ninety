@@ -1,0 +1,19 @@
+scripts/txline-devnet-argeng.mjs
+  s_b60ec3c6161754::t_a8c6c240de504d 1-180
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "1b4be69b974112ed79b8150b76f1f34e6543dafd",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
