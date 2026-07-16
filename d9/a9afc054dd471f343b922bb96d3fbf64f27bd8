@@ -1,0 +1,30 @@
+apps/web/src/lib/proofs.ts
+  s_e6fe919b4d8a67::t_96813878e17ee7 1-7,19,24,28-35
+apps/web/src/features/home/LeftRail.tsx
+  s_e6fe919b4d8a67::t_5f871b11df51f2 110-112,114-117,119-121
+apps/web/src/components/ui/ProofBadge.tsx
+  s_e6fe919b4d8a67::t_30fb29c35dbf0e 1,4,6,10-15,17-33
+apps/web/src/features/how/sections/ProofFlow.tsx
+  s_e6fe919b4d8a67::t_6d5d12225ecc66 54-57
+apps/web/src/features/proofs/ProofsPage.tsx
+  s_e6fe919b4d8a67::t_8fdf0a8136d4be 80,82
+  s_e6fe919b4d8a67::t_62cd61805950ce 7-10,12,32,36-38,43-45,51-56,61-63,68-69,76-79,81,83
+apps/web/src/lib/moments.ts
+  s_e6fe919b4d8a67::t_f2b74fbebc1716 49-51,54-58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "d9a9afc054dd471f343b922bb96d3fbf64f27bd8",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
