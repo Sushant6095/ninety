@@ -1,0 +1,41 @@
+.claude/skills/threejs-geometry/SKILL.md
+  s_e6fe919b4d8a67::t_3ba393764fad00 1-548
+.claude/skills/threejs-interaction/SKILL.md
+  s_e6fe919b4d8a67::t_3ba393764fad00 1-660
+.claude/skills/threejs-materials/SKILL.md
+  s_e6fe919b4d8a67::t_3ba393764fad00 1-520
+.claude/skills/threejs-textures/SKILL.md
+  s_e6fe919b4d8a67::t_3ba393764fad00 1-628
+.claude/skills/threejs-shaders/SKILL.md
+  s_e6fe919b4d8a67::t_3ba393764fad00 1-642
+.claude/skills/threejs-animation/SKILL.md
+  s_e6fe919b4d8a67::t_3ba393764fad00 1-552
+.claude/skills/threejs-postprocessing/SKILL.md
+  s_e6fe919b4d8a67::t_3ba393764fad00 1-602
+.claude/skills/threejs-lighting/SKILL.md
+  s_e6fe919b4d8a67::t_3ba393764fad00 1-481
+.claude/skills/threejs-loaders/SKILL.md
+  s_e6fe919b4d8a67::t_3ba393764fad00 1-623
+apps/web/package.json
+  s_e6fe919b4d8a67::t_4cbf65ebfa3c21 19
+.claude/skills/threejs-fundamentals/SKILL.md
+  s_e6fe919b4d8a67::t_3ba393764fad00 1-488
+pnpm-lock.yaml
+  s_e6fe919b4d8a67::t_fe2aba0d63fd7e 78-80,858-860,871-875,1677-1687,2030-2037,2163-2165,2325-2329,2431-2433,2694-2696,2712-2714,2737-2739,2783-2785,2826-2828,2856-2861,2889-2893,3157-3159,3407-3415,3496-3500,3549-3561,3573-3575,3647-3650,3728-3733,4203-4204,4227-4231,5055-5087,5392-5398,5530-5533,5693-5696,5798-5801,6131-6132,6143-6144,6172-6173,6226-6227,6275-6278,6305-6309,6326-6329,6547-6551,6936-6942,7036-7039,7079-7092,7103-7110,7172-7173,7245-7248
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "e11f3ceceae2bd856b69dec8aec7b4813b039593",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
