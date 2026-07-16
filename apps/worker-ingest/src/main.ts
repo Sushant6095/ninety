@@ -7,7 +7,7 @@ import { createBus } from "@omnipitch/bus";
 import { TxLineClient, loadTxoracleIdl, type Cluster } from "@omnipitch/txline";
 import { startReplayService } from "./replayer";
 import { runIngest, type RunIngestHandle } from "./ingest";
-import { reuseSubscriber, keypairSigner } from "./liveAuth";
+import { reuseSubscriber, devnetFreshSubscriber, keypairSigner, initialAuthFromEnv } from "./liveAuth";
 
 function liveCluster(): Cluster | null {
   const raw = process.env.TXLINE_NETWORK?.trim().toLowerCase();
@@ -26,10 +26,14 @@ async function main() {
   const cluster = liveCluster();
   if (cluster) {
     loadTxoracleIdl(cluster); // ADR-059 guard: IDL address must match the network registry, or throw
+    // devnet: a txSig activates once → fresh subscribe per handshake (free SOL); mainnet: reuse the
+    // human-purchased subscription, never spend. Persisted tokens seed the session either way, so a
+    // boot right after the subscribe script never re-burns an activation.
     const client = new TxLineClient({
       cluster,
-      subscriber: reuseSubscriber(cluster),
+      subscriber: cluster === "devnet" ? devnetFreshSubscriber() : reuseSubscriber(cluster),
       signer: keypairSigner(cluster),
+      initialAuth: initialAuthFromEnv(cluster),
     });
     live = await runIngest(client, bus);
     console.log(JSON.stringify({ evt: "worker-ingest.live.ready", cluster }));

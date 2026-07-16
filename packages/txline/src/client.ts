@@ -74,6 +74,9 @@ export interface TxLineClientOptions {
   fetch?: FetchLike; // default: global fetch
   subscriber: Subscriber;
   signer: MessageSigner;
+  /** Pre-provisioned session (e.g. persisted by the subscribe script). Used until expiry — critical
+   *  on devnet, where a txSig activates exactly ONCE and a second activate 403s ("already used"). */
+  initialAuth?: { jwt: string; apiToken: string; obtainedAt?: number };
 }
 
 interface Session {
@@ -110,6 +113,9 @@ export class TxLineClient {
     this.fetchImpl = f;
     this.subscriber = opts.subscriber;
     this.signer = opts.signer;
+    if (opts.initialAuth) {
+      this.session = { jwt: opts.initialAuth.jwt, apiToken: opts.initialAuth.apiToken, obtainedAt: opts.initialAuth.obtainedAt ?? Date.now() };
+    }
   }
 
   // --- auth handshake (cached, coalesced) ---

@@ -8,12 +8,24 @@
 import { readFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { createPrivateKey, sign as edSign, createPublicKey } from "node:crypto";
-import type { Cluster } from "@omnipitch/txline";
+import { Connection, Keypair, PublicKey, Transaction } from "@solana/web3.js";
+import { NETWORKS, SERVICE_LEVEL, type Cluster } from "@omnipitch/txline";
+import { buildSubscribeIx, buildCreateUserAtaIx } from "@omnipitch/chain";
 
-const ENV_KEYS: Record<Cluster, { txSig: string; keypair: string }> = {
-  devnet: { txSig: "TXLINE_DEVNET_TX_SIG", keypair: "TXLINE_DEVNET_KEYPAIR_PATH" },
-  "mainnet-beta": { txSig: "TXLINE_MAINNET_TX_SIG", keypair: "TXLINE_MAINNET_KEYPAIR_PATH" },
+const ENV_KEYS: Record<Cluster, { txSig: string; keypair: string; jwt: string; apiToken: string }> = {
+  devnet: { txSig: "TXLINE_DEVNET_TX_SIG", keypair: "TXLINE_DEVNET_KEYPAIR_PATH", jwt: "TXLINE_DEVNET_JWT", apiToken: "TXLINE_DEVNET_API_TOKEN" },
+  "mainnet-beta": { txSig: "TXLINE_MAINNET_TX_SIG", keypair: "TXLINE_MAINNET_KEYPAIR_PATH", jwt: "TXLINE_MAINNET_JWT", apiToken: "TXLINE_MAINNET_API_TOKEN" },
 };
+
+/** Persisted session from the subscribe script, if present. On devnet a txSig activates exactly
+ *  ONCE — booting without these would burn the activation the script already spent. env carries no
+ *  timestamp, so the session is assumed fresh; a stale one just 401s and the refresh path runs. */
+export function initialAuthFromEnv(cluster: Cluster): { jwt: string; apiToken: string } | undefined {
+  const k = ENV_KEYS[cluster];
+  const jwt = process.env[k.jwt];
+  const apiToken = process.env[k.apiToken];
+  return jwt && apiToken ? { jwt, apiToken } : undefined;
+}
 
 function loadSecretKey(cluster: Cluster): Uint8Array {
   const key = ENV_KEYS[cluster].keypair;
@@ -26,6 +38,31 @@ function loadSecretKey(cluster: Cluster): Uint8Array {
     );
   }
   return Uint8Array.from(JSON.parse(readFileSync(path.replace(/^~/, homedir()), "utf8")) as number[]);
+}
+
+/** Devnet-only: sends a FRESH subscribe tx per handshake. A devnet txSig activates exactly once, so
+ *  the reuse pattern cannot refresh a session there — and devnet SOL is free, so the ADR-059
+ *  automation-never-spends law (a MAINNET law, real money) does not apply. Builders come from
+ *  packages/chain (the only tx-building home); this function only signs and sends. */
+export function devnetFreshSubscriber(): { subscribe(input: { level: number; weeks: number }): Promise<string> } {
+  return {
+    async subscribe({ level, weeks }): Promise<string> {
+      const kp = Keypair.fromSecretKey(loadSecretKey("devnet"));
+      const net = NETWORKS.devnet;
+      const conn = new Connection(process.env.TXLINE_DEVNET_RPC_URL ?? "https://api.devnet.solana.com", "confirmed");
+      const mint = new PublicKey(net.txlMint);
+      const tx = new Transaction()
+        .add(buildCreateUserAtaIx(mint, kp.publicKey))
+        .add(buildSubscribeIx({ txoracleProgram: new PublicKey(net.txoracleProgram), txlMint: mint, user: kp.publicKey, serviceLevelId: level ?? SERVICE_LEVEL.devnet, weeks }));
+      tx.feePayer = kp.publicKey;
+      tx.recentBlockhash = (await conn.getLatestBlockhash("confirmed")).blockhash;
+      tx.sign(kp);
+      const sig = await conn.sendRawTransaction(tx.serialize(), { preflightCommitment: "confirmed" });
+      await conn.confirmTransaction(sig, "confirmed");
+      console.log(JSON.stringify({ evt: "ingest.devnet.subscribe", sig }));
+      return sig;
+    },
+  };
 }
 
 /** Subscriber that reuses the human-purchased subscription — never builds or sends a transaction. */
