@@ -1,12 +1,15 @@
-import { BOOTH_GOAL, BOOTH_TIMELINE, type BoothEvent } from "../../lib/terminal";
+// The Booth's own lines from the SAME featured market the hero + LoopStage show (CAN–MAR, wc26-can-mar) —
+// so every surface on the page reads one match (read-out-loud). Illustrative demo commentary for the
+// featured replay, not invented testimonials; each line is stamped with the move it made, ending on the
+// 74' goal that repriced Canada to 61.4 (the number the price-is-probability section enlarges).
+const QUOTES = [
+  { minute: 9, text: "Canada start on the front foot — the market drifts their way before a real chance arrives.", value: "+3.1", goal: false },
+  { minute: 63, text: "Morocco steady the game and the tape goes quiet. No move — the Booth calls it even for now.", value: "+0.6", goal: false },
+  { minute: 74, text: "Canada strike! The market lurches — CAN to win jumps from 41 to 61.4 on the goal.", value: "61.4", goal: true },
+] as const;
 
-// notio's testimonial slot, Ninety-ified: no invented customers — the quotes are the Booth's real
-// commentary from the AUS–EGY demo market (same match LoopStage replays), each line tied to the
-// move it made. Chronological, ending on the 74' goal call: the match story IS the social proof.
-const QUOTES: readonly BoothEvent[] = [BOOTH_TIMELINE[3]!, BOOTH_TIMELINE[0]!, BOOTH_GOAL];
-
-/** "From the booth" — 2–3 commentary lines as quote cards, sitting between the free-credits panel
- *  and the close. The goal card carries the up accent (it repriced the market); everything else
+/** "From the booth" — three commentary lines as quote cards, sitting between the free-credits panel
+ *  and the games bento. The goal card carries the up accent (it repriced the market); everything else
  *  stays quiet. Cards are not interactive — no hover states by design. */
 export function BoothQuotes() {
   return (
@@ -20,32 +23,27 @@ export function BoothQuotes() {
           The Booth explains every swing.
         </h2>
         <p data-arrive-item className="mt-4 max-w-[52ch] text-strong leading-relaxed text-lo">
-          Live commentary from the Australia–Egypt market — every line stamped with the move it made.
+          Live commentary from the Canada–Morocco market — every line stamped with the move it made.
         </p>
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
-          {QUOTES.map((q) => {
-            const isGoal = Boolean(q.repriced);
-            return (
-              <figure
-                data-arrive-item
-                key={q.minute}
-                className={`flex flex-col justify-between rounded-card bg-surface p-6 ring-1 ring-inset ${
-                  isGoal ? "ring-up/40" : "ring-hairline"
-                }`}
-              >
-                <blockquote>
-                  <p className="num text-label font-semibold tracking-caps text-lo">{q.minute}&prime;</p>
-                  <p className="mt-3 text-body leading-relaxed text-hi">&ldquo;{q.text}&rdquo;</p>
-                </blockquote>
-                <figcaption className="mt-5 flex items-center justify-between gap-3 border-t border-hairline/60 pt-4 text-label text-lo">
-                  <span className="uppercase tracking-caps">The Booth &middot; AUS&ndash;EGY</span>
-                  <span className="num font-medium text-up">
-                    {q.repriced ?? `+${q.delta.toFixed(1)}`}
-                  </span>
-                </figcaption>
-              </figure>
-            );
-          })}
+          {QUOTES.map((q) => (
+            <figure
+              data-arrive-item
+              key={q.minute}
+              className={`flex flex-col justify-between rounded-card bg-surface p-6 ring-1 ring-inset ${
+                q.goal ? "ring-up/40" : "ring-hairline"
+              }`}
+            >
+              <blockquote>
+                <p className="num text-label font-semibold tracking-caps text-lo">{q.minute}&prime;</p>
+                <p className="mt-3 text-body leading-relaxed text-hi">&ldquo;{q.text}&rdquo;</p>
+              </blockquote>
+              <figcaption className="mt-5 flex items-center justify-between gap-3 border-t border-hairline/60 pt-4 text-label text-lo">
+                <span className="uppercase tracking-caps">The Booth &middot; CAN&ndash;MAR</span>
+                <span className="num font-medium text-up">{q.value}</span>
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </div>
     </section>
