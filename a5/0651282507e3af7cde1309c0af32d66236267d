@@ -1,0 +1,21 @@
+docs/adr/ADR-068-landing-notio-literal-pull-reskinned.md
+  s_e6fe919b4d8a67::t_5b2b4be1143fdc 1-16
+design/verdicts/2026-07-17-landing-notio-literal.md
+  s_e6fe919b4d8a67::t_22933100d9ed2b 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "a50651282507e3af7cde1309c0af32d66236267d",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
