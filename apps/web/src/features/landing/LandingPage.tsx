@@ -5,7 +5,6 @@ import { LandingHero } from "./LandingHero";
 import { LandingScroll } from "./LandingScroll";
 import { FreeCredits } from "./FreeCredits";
 import { BoothQuotes } from "./BoothQuotes";
-import { DitheredMark } from "./DitheredMark";
 import { PrismGrid } from "./PrismGrid";
 import { PriceVoid } from "./PriceVoid";
 import { WorldGlobeLazy } from "./WorldGlobeLazy";
@@ -192,7 +191,10 @@ export function LandingPage() {
             {/* the dithered River-9 (componentry.dev, re-skinned) — the close's quiet backdrop below
                 lg, where the prism/sticker/moment accents are hidden; canvas is lazy (next/dynamic),
                 aria-hidden, and static by construction (pointer-events-none + PRM guard in vendor). */}
-            <DitheredMark className="absolute inset-x-0 top-8 z-0 mx-auto h-48 w-48 opacity-60 lg:hidden" />
+            {/* DitheredMark CUT per the MotionScore gate: the vendor dither runs an unconditional
+                rAF loop (dithered-logo.tsx tick), and mobile thrashing measured C→D on the live
+                audit with this as the only below-lg addition. Component survives in the tree —
+                one import re-adds it once the loop is interaction-gated. */}
             {/* the play-money sticker (Originkit sticker-peel, re-skinned) — peels on hover/press;
                 the disclosure it carries is also plain text in the hero and the footer */}
             <StickerPeelLazy className="absolute right-[6%] top-8 z-20 hidden h-[190px] w-[190px] -rotate-6 lg:block" />
