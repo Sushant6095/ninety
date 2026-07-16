@@ -1,0 +1,101 @@
+apps/web/src/components/templates/notio/features/features.tsx
+  s_e6fe919b4d8a67::t_857e358c527618 47-48
+  s_e6fe919b4d8a67::t_067cc67f2dfc65 4,10,12-13,16,18-19,22,24-25
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-3,5-9,11,14-15,17,20-21,23,26-35,37,39-46,49-70
+  s_e6fe919b4d8a67::t_eb8f2c2fa82afb 36,38
+apps/web/src/components/templates/notio/stats.tsx
+  s_e6fe919b4d8a67::t_e56ba1235408e0 8-10
+  s_e6fe919b4d8a67::t_18d55adc867cdc 22-23,26-27
+  s_e6fe919b4d8a67::t_691cf6472bc0cc 52
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-7,11-21,24-25,28-51,53-67
+apps/web/src/components/ui/button.tsx
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-51
+apps/web/src/app/layout.tsx
+  s_e6fe919b4d8a67::t_7e9e2ee60d92de 43
+  s_e6fe919b4d8a67::t_b4b014de470f8b 41
+apps/web/src/components/templates/notio/call-to-action/hero.tsx
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-3,7,10-16,18-22,24,35-38,40,42-46,48,52-56,58,68-73,75,77-81
+  s_e6fe919b4d8a67::t_7de5547fb2a8d1 4-6,8-9,17,23,25-34,39,41,47,49-51,57,59-67,74,76
+apps/web/src/components/templates/notio/footer.tsx
+  s_e6fe919b4d8a67::t_1187248f091162 5-6,8-9,11-15,24,30,32-33,37,39-40,45,47-48,55-57,62,69,76,78-84,91,93-99
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-4,7,10,16-23,25-29,31,34-36,38,41-44,46,49-54,58-61,63-68,70-75,77,85-90,92,100-104
+apps/web/src/types/components/feature.ts
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-7
+apps/web/src/components/templates/notio/navbar.tsx
+  s_e6fe919b4d8a67::t_4a7a3d98aff83f 3,6,8-9,14-16,27,30,36,40,42,49,51-53,55-56,66-67,70,74,76,78,80,83,103-105,107-109,111-112,114-117,119-121
+  s_e6fe919b4d8a67::t_64bb02668208a6 125
+  s_e6fe919b4d8a67::t_65947a75475213 85
+  s_e6fe919b4d8a67::t_b57313eefbcd7c 20-21
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-2,4-5,7,10-13,17-19,22-26,28-29,31-35,37-39,41,43-48,50,54,57-65,68-69,71-73,75,77,79,81-82,84,86-102,106,110,113,118,122-124,126-127
+apps/web/src/styles/tokens.css
+  s_e6fe919b4d8a67::t_619196b2571a26 19-44,50-56
+  s_e6fe919b4d8a67::t_db6654ef62cd61 45-49
+apps/web/src/components/ui/card.tsx
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-94
+apps/web/tailwind.config.ts
+  s_e6fe919b4d8a67::t_49daa9ce112809 6-8
+  s_e6fe919b4d8a67::t_59d278f1fce5aa 26-52
+apps/web/src/components/ui/toggle.tsx
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-44
+apps/web/src/components/ui/toggle-group.tsx
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-89
+apps/web/src/components/ui/badge.tsx
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-48
+apps/web/src/components/blurred-orb.tsx
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-13
+apps/web/src/components/templates/notio/features/feature-card.tsx
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-37
+apps/web/src/lib/utils.ts
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-2,4-5
+apps/web/src/components/ui/separator.tsx
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-25
+apps/web/src/types/components/team-member.ts
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-6
+apps/web/src/components/ui/label.tsx
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-20
+apps/web/package.json
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 17,27-28,34,36,43,45-46
+apps/web/src/components/counter.tsx
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-17,20-31
+  s_e6fe919b4d8a67::t_fc549c836f1f44 18-19
+design/PROVENANCE.md
+  s_e6fe919b4d8a67::t_b007ade44fb154 107
+apps/web/src/components/ui/input.tsx
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-20
+apps/web/src/app/page.tsx
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 3,5-6,19
+  s_e6fe919b4d8a67::t_ecde5ea8d10b5c 23-30
+  s_e6fe919b4d8a67::t_66cf710b761eea 2,4,7-8,16-18,20-22,31-37
+apps/web/src/components/templates/notio/beam.tsx
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-40
+apps/web/src/types/components/image.ts
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-8
+apps/web/src/types/utils/configs/theme.ts
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-9
+apps/web/src/lib/format.ts
+  s_e6fe919b4d8a67::t_53ce379db52311 4-8
+apps/web/src/components/ui/dropdown-menu.tsx
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-254
+apps/web/src/components/ui/grid-pattern.tsx
+  s_e6fe919b4d8a67::t_7da1fe19fd25ad 1-70
+README.md
+  s_e6fe919b4d8a67::t_a375cf20f23c9e 281
+pnpm-lock.yaml
+  s_e6fe919b4d8a67::t_3bf710800e553c 72-74,102-107,123-125,129-131,150-152,159-161,322-348,2230-2232,2243-2246,2786-2788,2884-2889,3205-3207,3396-3398,3534-3539,3730-3752,5480-5483,5495-5496,6112-6113,6185-6189,6531-6532,6790-6791,6932-6936
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "2bb6295e7a498fcfaee02366e7c18a9de2f816fb",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
