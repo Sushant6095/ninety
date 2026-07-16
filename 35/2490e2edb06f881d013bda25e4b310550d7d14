@@ -1,0 +1,21 @@
+design/verdicts/2026-07-16-credibility-fixes.md
+  s_e6fe919b4d8a67::t_b8776484b8a200 1-53
+design/PROVENANCE.md
+  s_e6fe919b4d8a67::t_8b995349a4455b 99-110
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "352490e2edb06f881d013bda25e4b310550d7d14",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
