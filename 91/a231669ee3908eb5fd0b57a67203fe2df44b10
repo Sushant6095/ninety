@@ -1,0 +1,23 @@
+apps/web/src/features/landing/LandingPage.tsx
+  s_b60ec3c6161754::t_ecd629e3464ca1 194-197
+design/PROVENANCE.md
+  s_b60ec3c6161754::t_a76c2269df139c 121
+design/verdicts/2026-07-16-pass2.md
+  s_b60ec3c6161754::t_d2c4a0069c1423 38-43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "91a231669ee3908eb5fd0b57a67203fe2df44b10",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
