@@ -1,0 +1,48 @@
+apps/web/src/app/match/[id]/page.tsx
+  s_e6fe919b4d8a67::t_b524a33ec73946 1,3,5-7,9-11
+apps/web/src/features/terminal/MatchHeader.tsx
+  s_e6fe919b4d8a67::t_378eada72b3ce9 62-68,70-72
+  s_e6fe919b4d8a67::t_0119e93335d832 8-9
+  s_e6fe919b4d8a67::t_041bbd8ca2e216 86-90
+apps/web/src/features/terminal/PlainMatchTabs.tsx
+  s_e6fe919b4d8a67::t_c5863a36b5a813 1-68
+apps/web/src/features/terminal/MatchColumn.tsx
+  s_e6fe919b4d8a67::t_8023c365e39646 49-57,60
+  s_e6fe919b4d8a67::t_8c0d1de46b77c3 13
+  s_e6fe919b4d8a67::t_a54af173fb8c1c 31-34
+apps/web/src/features/terminal/depth/Lineups.tsx
+  s_e6fe919b4d8a67::t_c2b4aa56701a8c 122-142
+apps/web/src/features/terminal/TerminalDock.tsx
+  s_e6fe919b4d8a67::t_aa69c03603d35d 31-34,37
+  s_e6fe919b4d8a67::t_0c2600632a6e94 57
+apps/web/src/features/terminal/MarketStatus.tsx
+  s_e6fe919b4d8a67::t_c15ac04f3a7fba 23-27
+apps/web/src/lib/fixtures.ts
+  s_e6fe919b4d8a67::t_833fb1b4eb3637 89-94
+apps/web/src/features/terminal/TerminalScreen.tsx
+  s_e6fe919b4d8a67::t_a486192955e113 50
+  s_e6fe919b4d8a67::t_1d45048e4e9f91 15,19-25,35-36,39,42
+apps/web/src/features/terminal/PlainMatchColumn.tsx
+  s_e6fe919b4d8a67::t_8316583c87b067 1,3-4,6-13,15-28,30-86,92-100,109-227
+  s_e6fe919b4d8a67::t_c78af3f769b586 101-108
+  s_e6fe919b4d8a67::t_5e29d3f3e8b7d3 29
+  s_e6fe919b4d8a67::t_81ba987f30bd75 2,5
+  s_e6fe919b4d8a67::t_a47f4dd2a7deaf 87-91
+  s_e6fe919b4d8a67::t_56687b5f7c06f7 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "2c899e26f760f8d2568c4e78c1936946d7b2d0ec",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
