@@ -6,6 +6,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import * as React from "react";
+import { DotmSquare3 } from "@/components/vendor/dotmatrix/dotm-square-3";
 import m from "@/design/motion";
 
 export type StepStatus = "pending" | "running" | "success" | "error";
@@ -98,7 +99,9 @@ const AgentStep = React.forwardRef<HTMLLIElement, AgentStepProps>(
             className={`relative z-10 flex size-6 shrink-0 items-center justify-center rounded-chip border transition-colors ${STATUS_RING[tone][status]}`}
           >
             {status === "running" ? (
-              <span className="size-2.5 animate-spin rounded-chip border-2 border-current border-t-transparent motion-reduce:animate-none" />
+              // The app loading motif (dotmatrix spiral) — rides currentColor so the
+              // tone ring (up/chain) colors it; reduced motion → static grid inside.
+              <DotmSquare3 size={14} dotSize={2} className="shrink-0" />
             ) : status === "success" ? (
               <CheckIcon className="size-3.5" />
             ) : status === "error" ? (

@@ -3,6 +3,7 @@
 // hook and the team metadata (still) from MATCH. Swaps the decision surface (PickPad) for the payoff
 // (Verdict). Writes ZERO match state; the goal is produced by the page harness through onLock/onReset.
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { Sparkline } from "../../components/ui/Sparkline";
 import { TeamCrest } from "../../components/ui/TeamCrest";
 import { MATCH } from "../../lib/terminal";
 import { PickPad } from "./PickPad";
@@ -67,8 +68,12 @@ export function NextGoal({
         </span>
       </div>
 
+      {/* the last stretch of the River, compressed — WHY calling the next goal is live (design-cop
+          2026-07-16 gap 5: the card had a dead zone; the market's pulse fills it). Static SVG, PRM-safe. */}
+      <MiniTape spark={g.match.spark} outcome={g.match.sparkOutcome} home={HOME.code} away={AWAY.code} halted={halted} />
+
       {/* the swap: decision ⇄ payoff. aria-live announces the verdict. min-height avoids layout jump. */}
-      <div className="min-h-[292px] px-4 pb-2 pt-1" aria-live="polite">
+      <div className="min-h-[248px] px-4 pb-2 pt-1" aria-live="polite">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={resolved ? "verdict" : "pick"}
@@ -96,5 +101,25 @@ export function NextGoal({
 
       <StreakRail stats={g.stats} />
     </section>
+  );
+}
+
+/** The live market's last ~10 minutes as a whisper-height tape between the score and the decision.
+ *  Reads the store's River trace (spark = mark per minute); renders nothing until it has a shape. */
+function MiniTape({ spark, outcome, home, away, halted }: { spark: number[]; outcome: "H" | "D" | "A"; home: string; away: string; halted: boolean }) {
+  if (spark.length < 3) return null;
+  const tail = spark.slice(-10);
+  const up = tail[tail.length - 1] >= tail[0];
+  const code = outcome === "H" ? home : outcome === "A" ? away : "DRAW";
+  const now = tail[tail.length - 1];
+  return (
+    <div className="flex items-center gap-3 border-y border-hairline/60 bg-bg/40 px-4 py-2" aria-hidden>
+      <span className="text-label font-semibold uppercase tracking-[0.1em] text-lo">{code} win %</span>
+      <div className="min-w-0 flex-1">
+        {/* line stays trend-colored — down-pink would misread a halt as a fall; the amber NUMBER carries the halt */}
+        <Sparkline values={tail} up={up} width={168} height={22} />
+      </div>
+      <span className={`num text-strong font-bold tabular-nums ${halted ? "text-halt" : "text-hi"}`}>{now.toFixed(1)}</span>
+    </div>
   );
 }

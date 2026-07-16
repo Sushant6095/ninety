@@ -14,7 +14,7 @@ export const DOCK_REPLAY_EVENT = "ninety:terminal-replay";
 const LINKS: { label: string; href: string; icon: LucideIcon }[] = [
   { label: "Board", href: routes.board, icon: LayoutGrid },
   { label: "Bracket", href: routes.bracket, icon: GitFork },
-  { label: "Portfolio", href: routes.portfolio, icon: Wallet },
+  { label: "Account", href: routes.account, icon: Wallet },
   { label: "Proofs", href: routes.proofs, icon: ShieldCheck },
 ];
 

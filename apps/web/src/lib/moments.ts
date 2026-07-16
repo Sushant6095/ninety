@@ -51,9 +51,9 @@ const seg = (from: number, to: number): number[] => {
 // signature. Each flips to a Solscan-verifiable ProofBadge the moment a real mint tx exists.
 export const MOMENTS: Moment[] = [
   // Ashour's counter is the 74' money-shot (GOAL_MINUTE on /terminal) — the minute must match there, not read 13'.
-  { id: "m-ashour-74", matchId: "wc26-aus-egy", homeCode: "AUS", awayCode: "EGY", title: "Ashour's counter", outcome: "A", pick: "EGY", minute: 74, fromPrice: 31, toPrice: 55, owner: "@vd", ts: "today", mintSig: null, segment: seg(31, 55) },
+  { id: "m-ashour-74", matchId: "wc26-aus-egy", homeCode: "AUS", awayCode: "EGY", title: "Ashour's counter", outcome: "A", pick: "EGY", minute: 74, fromPrice: 31, toPrice: 55, owner: "@pitchwizard", ts: "today", mintSig: null, segment: seg(31, 55) },
   { id: "m-david-38", matchId: "wc26-can-mar", homeCode: "CAN", awayCode: "MAR", title: "David reprices Canada", outcome: "H", pick: "CAN", minute: 38, fromPrice: 41, toPrice: 63, owner: "@hexfan", ts: "today", mintSig: null, segment: seg(41, 63) },
-  { id: "m-srb-76", matchId: "wc26-srb-cmr", homeCode: "SRB", awayCode: "CMR", title: "Serbia seal it", outcome: "H", pick: "SRB", minute: 76, fromPrice: 72, toPrice: 92, owner: "@maple_maxi", ts: "today", mintSig: null, segment: seg(72, 92) },
+  { id: "m-srb-76", matchId: "wc26-srb-cmr", homeCode: "SRB", awayCode: "CMR", title: "Serbia seal it", outcome: "H", pick: "SRB", minute: 76, fromPrice: 72, toPrice: 92, owner: "@vd", ts: "today", mintSig: null, segment: seg(72, 92) },
   { id: "m-cro-88", matchId: "wc26-cro-bel", homeCode: "CRO", awayCode: "BEL", title: "Croatia's late winner", outcome: "H", pick: "CRO", minute: 88, fromPrice: 45, toPrice: 78, owner: "@late_swing", ts: "today", mintSig: null, segment: seg(45, 78) },
   { id: "m-bra-30", matchId: "wc26-bra-kor", homeCode: "BRA", awayCode: "KOR", title: "Brazil pull clear", outcome: "H", pick: "BRA", minute: 30, fromPrice: 71, toPrice: 84, owner: "@atlasfox", ts: "5 Jul", mintSig: null, segment: seg(71, 84) },
   { id: "m-esp-58", matchId: "wc26-esp-jpn", homeCode: "ESP", awayCode: "JPN", title: "Spain edge ahead", outcome: "H", pick: "ESP", minute: 58, fromPrice: 60, toPrice: 68, owner: "@pitchwizard", ts: "today", mintSig: null, segment: seg(60, 68) },

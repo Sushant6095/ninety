@@ -33,7 +33,7 @@ export interface NextGoalView {
   scored: Side | null; // which side scored (WON/LOST); null on NO_CALL or a "nobody" win
   tier: 0 | 1 | 2 | 3 | 4; // celebration escalation for a win
   pickStartedAt: number | null; // when the current countdown began (stable across a side-switch)
-  match: { score: Score; minute: number | null; status: string };
+  match: { score: Score; minute: number | null; status: string; spark: number[]; sparkOutcome: "H" | "D" | "A" };
 }
 
 const ZERO: Score = { home: 0, away: 0 };
@@ -191,7 +191,7 @@ export function useNextGoalGame(
     scored,
     tier,
     pickStartedAt,
-    match: { score, minute: live?.minute ?? null, status: live?.status ?? "LIVE" },
+    match: { score, minute: live?.minute ?? null, status: live?.status ?? "LIVE", spark: live?.spark ?? [], sparkOutcome: live?.riverOutcome ?? "A" },
     choose,
     next,
   };
