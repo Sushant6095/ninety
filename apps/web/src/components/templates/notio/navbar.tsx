@@ -4,16 +4,17 @@ import { MenuIcon, XIcon, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { Wordmark } from "src/components/ui/Wordmark";
+import { DOCS_URL } from "src/lib/routes";
 
 // notio's floating-pill nav, re-skinned to Ninety: our Wordmark + WC26 chip left, real routes + the
 // one filled CTA ("Open the terminal") right. Dropped notio's logo SVGs, theme toggle, and auth links.
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems: { label: string; href: string }[] = [
+  // Docs is the deep written reference (GitBook) — external, opens a new tab.
+  const navItems: { label: string; href: string; external?: boolean }[] = [
     { label: "How it works", href: "/how-it-works" },
-    { label: "Leaderboard", href: "/leaderboard" },
-    { label: "Proofs", href: "/proofs" },
+    { label: "Docs", href: DOCS_URL, external: true },
   ];
 
   return (
@@ -35,12 +36,23 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 + index * 0.1 }}
             >
-              <Link
-                href={item.href}
-                className="inline-flex min-h-11 items-center rounded-chip px-3 text-sm font-medium text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi focus-visible:ring-2 focus-visible:ring-up/60"
-              >
-                {item.label}
-              </Link>
+              {item.external ? (
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center rounded-chip px-3 text-sm font-medium text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi focus-visible:ring-2 focus-visible:ring-up/60"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="inline-flex min-h-11 items-center rounded-chip px-3 text-sm font-medium text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi focus-visible:ring-2 focus-visible:ring-up/60"
+                >
+                  {item.label}
+                </Link>
+              )}
             </motion.div>
           ))}
           <motion.div
@@ -101,16 +113,29 @@ export default function Navbar() {
             className="md:hidden overflow-hidden"
           >
             <div className="flex flex-col gap-1 py-3">
-              {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="flex min-h-11 items-center px-2 text-sm font-medium text-lo hover:text-hi"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {navItems.map((item) =>
+                item.external ? (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex min-h-11 items-center px-2 text-sm font-medium text-lo hover:text-hi"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="flex min-h-11 items-center px-2 text-sm font-medium text-lo hover:text-hi"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ),
+              )}
               <Link
                 href="/terminal"
                 className="mt-2 inline-flex h-11 items-center justify-center gap-1.5 rounded-chip bg-up px-4 text-sm font-semibold text-bg"
