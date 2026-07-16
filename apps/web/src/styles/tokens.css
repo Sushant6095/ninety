@@ -16,3 +16,41 @@
   --text-stat: clamp(2.5rem, 1.6rem + 2.4vw, 3.5rem);
   --text-number: clamp(4.5rem, 2rem + 9vw, 10rem);
 }
+
+/* ── shadcn/notio semantic bridge (ADR-068). The notio pull (styleui.dev) is built on shadcn semantic
+   class names — bg-background, text-primary, bg-card, border-border, text-muted-foreground … — none of
+   which exist in our Ninety-named palette. Map each to a Ninety token here and the ENTIRE notio landing
+   renders in Ninety colors with zero per-component edits: tokens on the OUTPUT. Each is a reference to a
+   raw token above — no third palette copy (design law). tailwind.config maps the color keys to these. */
+:root {
+  --background: var(--bg);
+  --foreground: var(--text-hi);
+  --card: var(--surface);
+  --card-foreground: var(--text-hi);
+  --popover: var(--surface);
+  --popover-foreground: var(--text-hi);
+  --primary: var(--up);            /* the signature green carries CTAs + accents */
+  --primary-foreground: var(--bg); /* dark ink on the green button */
+  --secondary: var(--hairline);
+  --secondary-foreground: var(--text-hi);
+  --muted: var(--surface);
+  --muted-foreground: var(--text-lo);
+  --accent: var(--hairline);
+  --accent-foreground: var(--text-hi);
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--up);
+  --destructive: var(--down);
+  --destructive-foreground: var(--text-hi);
+  /* notio's shadcn primitives (button/input/card) reference these radius steps (their v4 index.css is not
+     imported); define them so the radii resolve instead of collapsing to a broken min(,Npx). */
+  --radius: 0.625rem;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  /* notio decorative layers (beam orbs) — re-skinned to a dark Ninety wash: a whisper of up-green over
+     near-black, never notio's orange. The hero/footer radials live in tailwind.config backgroundImage. */
+  --orb-color-light: color-mix(in srgb, var(--up) 10%, transparent);
+  --orb-color-dark: color-mix(in srgb, var(--up) 15%, transparent);
+  --orb-color-dark-fade: color-mix(in srgb, var(--up) 6%, transparent);
+  --gradient-orb-base: var(--surface);
+}

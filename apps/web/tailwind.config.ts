@@ -3,6 +3,9 @@ import { space, tracking } from "./src/design/tokens";
 // Colors are CSS vars (styles/tokens.css); the spacing rhythm + type live in src/design/tokens.ts (the authority).
 export default {
   content: ["./src/**/*.{ts,tsx}"],
+  // Dark-only (v1): html carries a permanent `dark` class (layout.tsx). class-strategy (not media) so
+  // the notio pull's `dark:` variants resolve deterministically, not by the visitor's OS preference.
+  darkMode: "class",
   // hover: variants compile behind @media (hover:hover) — touch taps stop triggering sticky hovers.
   future: { hoverOnlyWhenSupported: true },
   theme: { extend: {
@@ -20,9 +23,34 @@ export default {
       chain: "color-mix(in srgb, var(--chain) calc(<alpha-value> * 100%), transparent)",
       hi: "color-mix(in srgb, var(--text-hi) calc(<alpha-value> * 100%), transparent)",
       lo: "color-mix(in srgb, var(--text-lo) calc(<alpha-value> * 100%), transparent)",
+      // shadcn/notio semantic aliases → Ninety tokens (styles/tokens.css). Same color-mix+<alpha-value>
+      // pattern so notio's opacity modifiers (bg-primary/10, border-border/50, text-muted-foreground/40)
+      // apply. Nested {DEFAULT,foreground} matches shadcn: bg-card + text-card-foreground both resolve.
+      background: "color-mix(in srgb, var(--background) calc(<alpha-value> * 100%), transparent)",
+      foreground: "color-mix(in srgb, var(--foreground) calc(<alpha-value> * 100%), transparent)",
+      card: { DEFAULT: "color-mix(in srgb, var(--card) calc(<alpha-value> * 100%), transparent)", foreground: "color-mix(in srgb, var(--card-foreground) calc(<alpha-value> * 100%), transparent)" },
+      popover: { DEFAULT: "color-mix(in srgb, var(--popover) calc(<alpha-value> * 100%), transparent)", foreground: "color-mix(in srgb, var(--popover-foreground) calc(<alpha-value> * 100%), transparent)" },
+      primary: { DEFAULT: "color-mix(in srgb, var(--primary) calc(<alpha-value> * 100%), transparent)", foreground: "color-mix(in srgb, var(--primary-foreground) calc(<alpha-value> * 100%), transparent)" },
+      secondary: { DEFAULT: "color-mix(in srgb, var(--secondary) calc(<alpha-value> * 100%), transparent)", foreground: "color-mix(in srgb, var(--secondary-foreground) calc(<alpha-value> * 100%), transparent)" },
+      muted: { DEFAULT: "color-mix(in srgb, var(--muted) calc(<alpha-value> * 100%), transparent)", foreground: "color-mix(in srgb, var(--muted-foreground) calc(<alpha-value> * 100%), transparent)" },
+      accent: { DEFAULT: "color-mix(in srgb, var(--accent) calc(<alpha-value> * 100%), transparent)", foreground: "color-mix(in srgb, var(--accent-foreground) calc(<alpha-value> * 100%), transparent)" },
+      destructive: { DEFAULT: "color-mix(in srgb, var(--destructive) calc(<alpha-value> * 100%), transparent)", foreground: "color-mix(in srgb, var(--destructive-foreground) calc(<alpha-value> * 100%), transparent)" },
+      border: "color-mix(in srgb, var(--border) calc(<alpha-value> * 100%), transparent)",
+      input: "color-mix(in srgb, var(--input) calc(<alpha-value> * 100%), transparent)",
+      ring: "color-mix(in srgb, var(--ring) calc(<alpha-value> * 100%), transparent)",
     },
-    fontFamily: { display: ["var(--font-display)"], ui: ["var(--font-ui)"], mono: ["var(--font-mono)"] },
-    borderRadius: { card: "var(--radius-card)", chip: "var(--radius-chip)" },
+    fontFamily: { display: ["var(--font-display)"], ui: ["var(--font-ui)"], mono: ["var(--font-mono)"], aleo: ["var(--font-display)"] },
+    borderRadius: { card: "var(--radius-card)", chip: "var(--radius-chip)", "4xl": "2rem" },
+    // notio hero/footer radials — re-skinned: a faint up-green dome (hero) / chain-violet (footer) over
+    // near-black. Dark-only, so light == dark. Replaces notio's orange (#dc8e43/#c76829/#9c3a21).
+    backgroundImage: {
+      "hero-radial-light": "radial-gradient(ellipse 120% 90% at 50% -10%, color-mix(in srgb, var(--up) 12%, var(--bg)) 0%, var(--bg) 55%, var(--bg) 100%)",
+      "hero-radial-dark": "radial-gradient(ellipse 120% 90% at 50% -10%, color-mix(in srgb, var(--up) 12%, var(--bg)) 0%, var(--bg) 55%, var(--bg) 100%)",
+      "footer-radial-light": "radial-gradient(ellipse 120% 90% at 50% 0%, color-mix(in srgb, var(--chain) 16%, var(--bg)) 0%, var(--bg) 60%)",
+      "footer-radial-dark": "radial-gradient(ellipse 120% 90% at 50% 0%, color-mix(in srgb, var(--chain) 16%, var(--bg)) 0%, var(--bg) 60%)",
+      "footer-radial-light-mobile": "radial-gradient(ellipse 150% 90% at 50% 0%, color-mix(in srgb, var(--chain) 16%, var(--bg)) 0%, var(--bg) 60%)",
+      "footer-radial-dark-mobile": "radial-gradient(ellipse 150% 90% at 50% 0%, color-mix(in srgb, var(--chain) 16%, var(--bg)) 0%, var(--bg) 60%)",
+    },
     // Motion routed through the tokens (styles/tokens.css mirrors design/motion.ts): `duration-200`
     // keeps working, and every transition utility now runs the ninety ease, not Tailwind's default.
     transitionDuration: { fast: "var(--duration-fast)", DEFAULT: "var(--duration)", slow: "var(--duration-slow)" },

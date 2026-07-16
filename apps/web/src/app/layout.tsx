@@ -38,8 +38,9 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+  // `dark` is permanent (v1 is dark-only) — it makes notio's `dark:` variants resolve; darkMode:"class" in tailwind.config.
   return (
-    <html lang="en" className={`${archivo.variable} ${inter.variable} ${plexMono.variable}`}>
+    <html lang="en" className={`dark ${archivo.variable} ${inter.variable} ${plexMono.variable}`}>
       <body>
         <PrototypeRibbon />
         <OfflineBanner />
