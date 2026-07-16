@@ -1,0 +1,303 @@
+design/reference/notio/components/templates/notio/notio-themes.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-271
+apps/web/package.json
+  s_b60ec3c6161754::t_63685fe72d2b6d 22
+design/reference/notio/components/templates/notio/footer.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-146
+design/reference/notio/components/ui/input.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-20
+design/reference/notio/blocks/pricing/pricing.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-70
+design/reference/notio/public/logo/webflow.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-10
+apps/web/src/features/landing/DitheredMark.tsx
+  s_b60ec3c6161754::t_5caaccfd3fc7ab 14-15
+  s_b60ec3c6161754::t_6e907e3aba36ae 1-13,16-39
+apps/web/src/features/account/AccountPage.tsx
+  s_b60ec3c6161754::t_5fdea5f5ee80d3 118
+  s_b60ec3c6161754::t_bcb48d13e6976f 70-72,74-76
+  s_b60ec3c6161754::t_dac242ac8c576b 22
+  s_b60ec3c6161754::t_857dd3062c3604 13
+  s_b60ec3c6161754::t_b3066b8012c956 123
+  s_b60ec3c6161754::t_27176731896948 172-176
+  s_b60ec3c6161754::t_1c6fbcf48ad8f2 1-12,14-21,23-69,73,77-117,119-122,124-144,146-171,177-199
+  s_b60ec3c6161754::t_a1ce7a75e2faaa 145
+design/reference/notio/components/templates/notio/stats.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-67
+apps/web/src/features/account/ProofsPanel.tsx
+  s_b60ec3c6161754::t_c9b3c50fafb489 1-66
+design/reference/notio/components/theme/color-theme-switcher.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-75
+design/reference/notio/components/ui/label.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-20
+design/reference/notio/public/icons/tiktok.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-3
+design/reference/notio/components/templates/notio/features/transcription-feature.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-160
+design/reference/notio/public/illustrations/avatar-1.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-9
+design/reference/notio/types/components/image.ts
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-8
+design/reference/notio/blocks/team-member/team-member-avatar.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-61
+design/reference/notio/components/ui/grid-pattern.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-70
+design/reference/notio/utils/context/color-theme-context.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-44
+design/reference/notio/components/templates/notio/call-to-action/transcriber.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-237
+apps/web/src/features/account/AccuracyPanel.tsx
+  s_b60ec3c6161754::t_9a96379047d84a 1-62
+design/reference/notio/components/ui/avatar.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-106
+design/reference/notio/public/logo/mailchip.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-9
+design/reference/notio/components/ui/separator.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-25
+design/reference/notio/public/logo/calendly-light.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-7
+design/reference/notio/public/logo/notio-logo-black.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-15
+apps/web/src/features/landing/BoothQuotes.tsx
+  s_b60ec3c6161754::t_8e4cb1996ab555 1-53
+apps/web/src/components/ui/Loading.tsx
+  s_b60ec3c6161754::t_871be65f99a703 1-33
+design/reference/notio/components/templates/notio/beam.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-40
+design/reference/notio/app/templates/notio/(pages)/page.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-28
+design/reference/notio/components/templates/notio/features/tool-feature.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-116
+design/reference/notio/public/logo/notion-mini-light.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-3
+design/reference/notio/components/animated-list.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-92
+apps/web/src/lib/moments.ts
+  s_b60ec3c6161754::t_39687d30ac85bb 51,53
+design/reference/notio/components/templates/notio/features/features.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-74
+design/reference/notio/types/components/pricing.ts
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-8
+design/reference/notio/public/logo/notio-logo-white.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-15
+design/reference/notio/components/theme/theme-variables.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-36
+design/reference/notio/lib/utils.ts
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-6
+design/reference/notio/public/logo/loom-mini.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-3
+design/reference/notio/public/icons/x.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-3
+design/reference/notio/public/logo/loom-mini-light.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-3
+design/reference/notio/components/ui/card.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-94
+design/reference/notio/types/components/team-member.ts
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-6
+apps/web/src/features/terminal/TerminalHeader.tsx
+  s_b60ec3c6161754::t_39687d30ac85bb 25
+design/reference/notio/types/components/testimonial.ts
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-8
+design/reference/notio/types/utils/configs/theme.ts
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-9
+apps/web/src/features/landing/FreeCredits.tsx
+  s_b60ec3c6161754::t_6c0ab2b5dea968 1-61
+apps/web/src/features/account/WatchlistPanel.tsx
+  s_b60ec3c6161754::t_aa509e1119323f 1-60
+apps/web/src/features/landing/LandingPage.tsx
+  s_b60ec3c6161754::t_2842f5b423fdb3 180-187,192-195
+  s_b60ec3c6161754::t_0f181cda295613 51-53
+  s_b60ec3c6161754::t_25e2b99abf5e7b 3,6-8
+  s_b60ec3c6161754::t_d03f69e1f5ce6b 41-46
+design/reference/notio/app/templates/notio/(pages)/layout.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-53
+design/reference/notio/public/illustrations/avatar-3.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-9
+design/reference/notio/components/counter.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-30
+design/reference/notio/hooks/use-countdown.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-37
+design/reference/notio/public/illustrations/avatar-2.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-9
+design/reference/notio/components/ui/toggle-group.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-89
+design/reference/notio/blocks/pricing/pricing-card.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-77
+design/reference/notio/hooks/use-media-query.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-60
+design/reference/notio/components/ui/badge.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-48
+design/reference/notio/blocks/team-member/team.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-108
+design/reference/notio/app/templates/notio/(pages)/auth/login/page.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-91
+design/reference/notio/components/ui/button.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-51
+design/reference/notio/components/ui/skeleton.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-13
+design/reference/notio/app/templates/notio/(pages)/index.css
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-109
+design/reference/notio/components/templates/notio/call-to-action/hero.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-64
+design/reference/notio/public/logo/medium-light.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-3
+design/reference/notio/public/logo/notio-icon-black.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-10
+design/reference/notio/public/logo/slack.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-7
+apps/web/src/components/ui/MilestoneBalloons.tsx
+  s_b60ec3c6161754::t_0a0ce0af7277f9 1-73
+apps/web/scripts/pull-registry-pass2.mjs
+  s_b60ec3c6161754::t_5fbaf5e4416a09 1-38
+design/reference/notio/components/blurred-orb.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-13
+apps/web/src/features/account/PositionsPanel.tsx
+  s_b60ec3c6161754::t_f8a00fefee3d62 1-14,16-77
+  s_b60ec3c6161754::t_39687d30ac85bb 15
+apps/web/src/features/how/sections/ProofFlowLazy.tsx
+  s_b60ec3c6161754::t_2a4fc60baeaeb2 3
+  s_b60ec3c6161754::t_f0fe708fae3237 10-13
+design/reference/notio/components/orb-background.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-21
+design/reference/notio/blocks/testimonial/testimonial-card.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-58
+design/reference/notio/public/logo/framer.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-4
+design/reference/notio/public/logo/loom.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-4
+design/reference/notio/public/logo/notio-icon-white.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-10
+design/reference/notio/components/ui/dropdown-menu.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-254
+apps/web/src/features/landing/LandingNav.tsx
+  s_b60ec3c6161754::t_39687d30ac85bb 33,42
+  s_b60ec3c6161754::t_57e958bc73a147 1-32,34-41,43-56
+apps/web/src/lib/routes.ts
+  s_b60ec3c6161754::t_39687d30ac85bb 37
+  s_b60ec3c6161754::t_08ff3a41934fb0 8-10
+design/PROVENANCE.md
+  s_b60ec3c6161754::t_1252d52c37d27a 114-121
+  s_b60ec3c6161754::t_7b8f2ede8078ed 98-108
+  s_b60ec3c6161754::t_a6b0b2c7f5f77b 109-113,122
+apps/web/scripts/assert-river.mjs
+  s_b60ec3c6161754::t_114dd531fe6f66 11-13,15-19,22-25,28-30,33
+  s_b60ec3c6161754::t_cac9bfe837c7c6 1-10,14,20-21,26-27,31-32
+design/reference/notio/public/icons/linkedin.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-3
+design/reference/notio/public/logo/uber.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-18
+apps/web/src/features/games/StreakRail.tsx
+  s_b60ec3c6161754::t_96f755de620bc3 4-6,13,23-25,27-34
+design/reference/notio/components/templates/notio/theme-toggle.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-36
+apps/web/src/app/account/page.tsx
+  s_b60ec3c6161754::t_5f78f7823ab718 1-13
+design/reference/notio/public/logo/calendly.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-7
+design/reference/notio/public/logo/coinbase.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-3
+design/reference/notio/public/icons/instagram.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-5
+apps/web/src/app/play/PlayScreen.tsx
+  s_b60ec3c6161754::t_0905b42fa0f725 16
+  s_b60ec3c6161754::t_e912623ad3ac29 5
+apps/web/src/features/games/useNextGoalGame.ts
+  s_b60ec3c6161754::t_1e2cc95a8c0d12 194
+  s_b60ec3c6161754::t_00c27b6267f431 36
+design/verdicts/2026-07-16-pass2.md
+  s_b60ec3c6161754::t_13791e5f964102 1
+  s_b60ec3c6161754::t_38239f463d4294 2-37
+apps/web/src/features/games/NextGoal.tsx
+  s_b60ec3c6161754::t_b07eda1a4d93fc 71-74,76
+  s_b60ec3c6161754::t_08476d847598f6 106-118,121-125
+  s_b60ec3c6161754::t_ad06320e8e94d7 6
+  s_b60ec3c6161754::t_bdba0a236babbe 119-120
+design/reference/notio/components/templates/notio/navbar.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-199
+design/reference/notio/public/icons/facebook.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-3
+design/reference/notio/blocks/testimonial/testimonial.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-71
+design/reference/notio/public/logo/notion-mini.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-3
+design/reference/notio/public/logo/notion.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-4
+design/reference/notio/types/components/feature.ts
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-7
+design/reference/notio/blocks/logo-cloud.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-139
+design/reference/notio/public/logo/mailchip-light.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-9
+design/reference/notio/utils/providers/theme-provider.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-11
+design/reference/notio/components/templates/notio/features/feature-card.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-37
+apps/web/src/app/portfolio/page.tsx
+  s_b60ec3c6161754::t_252ebeba364f03 1-2,4-5,7
+design/reference/notio/components/ui/toggle.tsx
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-44
+apps/web/src/features/landing/LandingHero.tsx
+  s_b60ec3c6161754::t_5ef4f78a63225d 57-58
+apps/web/src/features/terminal/TerminalDock.tsx
+  s_b60ec3c6161754::t_39687d30ac85bb 17
+design/reference/notio/public/logo/medium.svg
+  s_b60ec3c6161754::t_63685fe72d2b6d 1-3
+apps/web/src/components/vendor/watermelon/web3-dashboard.mdx
+  s_b60ec3c6161754::t_c18e36c2546cda 1-19
+pnpm-lock.yaml
+  s_b60ec3c6161754::t_f70b46a5f9a81c 90-92,2066-2069,5258-5259
+apps/web/src/components/vendor/componentry/dithered-logo.tsx
+  s_3b2115fb0cf50a::t_5c1f1c5e667c6e 1-713
+apps/web/src/components/vendor/dotmatrix/dotm-square-3.tsx
+  s_2b55c840ea52c6::t_bbb0606921df04 1-68
+apps/web/src/components/vendor/dotmatrix/dotmatrix-core.tsx
+  s_2b55c840ea52c6::t_e052dc24540d72 1-553
+apps/web/src/components/vendor/dotmatrix/dotmatrix-hooks.ts
+  s_2b55c840ea52c6::t_4aceefd1535601 1-103
+apps/web/src/components/vendor/dotmatrix/dotmatrix-loader.css
+  s_2b55c840ea52c6::t_e2833852d15cbc 1-152
+apps/web/src/components/vendor/godui/agent-timeline.tsx
+  s_2b55c840ea52c6::t_4e87a9e45cd5a5 9,102-104
+apps/web/src/components/vendor/watermelon/dashboard-shell.tsx
+  s_7ffe19b0b58f5a::t_0b7ad0fd39a4f5 1-124
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "12a8692955c4ea0f2ad1a7d56108547915606d00",
+  "prompts": {},
+  "sessions": {
+    "s_2b55c840ea52c6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-a7283243a87a949f7",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_3b2115fb0cf50a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-a7a125ab69e749637",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_7ffe19b0b58f5a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-ac128c54a685cef40",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
