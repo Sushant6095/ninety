@@ -1,0 +1,24 @@
+CLAUDE.md
+  s_e6fe919b4d8a67::t_a00afc6dade37c 41-48
+  s_e6fe919b4d8a67::t_16ac8d903a9cd1 38-40
+  s_e6fe919b4d8a67::t_41747a5014b459 49-50
+  s_e6fe919b4d8a67::t_2ca7d545bb3e2a 1-37,53-100,103-118,120-128,130-132
+apps/web/package.json
+  s_e6fe919b4d8a67::t_b78c9f44f19043 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "5fb099e47b785fe11bc696fcee01360a909bc42c",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
