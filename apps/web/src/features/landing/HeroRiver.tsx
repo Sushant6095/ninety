@@ -32,7 +32,9 @@ export function HeroRiver() {
       <div className="relative">
         {/* the halt reaches the tape itself — same amber grammar as the panel's wash, quieter */}
         {halted && <div aria-hidden className="pointer-events-none absolute inset-0 z-10 border-t-2 border-halt/70 bg-halt/10" />}
-        <MomentumRiver data={spark} up={rising} height={300} totalMinutes={FULL_TIME} />
+        {/* Pin the price axis 0..100 (it's a win %) — without this the area autoscales to the narrow live band
+            and the fill reads as a faint glow; pinned, the river draws BIG from the value down (parity with BigRiver). */}
+        <MomentumRiver data={spark} up={rising} height={300} yRange={[0, 100]} totalMinutes={FULL_TIME} />
       </div>
       <div className="mt-3 flex items-baseline justify-between border-t border-hairline/60 pt-3">
         <span className="text-label font-semibold uppercase tracking-label text-lo">{FEATURED.homeCode} to win</span>

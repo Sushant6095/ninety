@@ -278,7 +278,7 @@ Built for the **TxODDS World Cup Hackathon**, track **Prediction Markets & Settl
 
 **License:** [MIT](LICENSE) — open source, use it freely.
 
-**Credits:** live scores, prices, and settlement proofs from **TxLINE / TxODDS**. Static World Cup context — flags, team names, group tables, the bracket skeleton, and stadiums — from [**worldcup26**](https://github.com/rezarahiminia/worldcup2026) by Reza Rahiminia ([ISC](https://opensource.org/license/isc-license-txt)), baked at build time and never called at runtime.
+**Credits:** live scores, prices, and settlement proofs from **TxLINE / TxODDS**. Static World Cup context — flags, team names, group tables, the bracket skeleton, and stadiums — from [**worldcup26**](https://github.com/rezarahiminia/worldcup2026) by Reza Rahiminia ([ISC](https://opensource.org/license/isc-license-txt)), baked at build time and never called at runtime. The landing's section structure is a heavily-transformed derivative of the [**notio**](https://styleui.dev) template layout (styleui.dev; license **undeclared** — studied for structure only, zero notio markup/brand/copy ships; logged in `design/PROVENANCE.md`).
 
 **Play-money, and it is locked.** Ninety uses credits with no cash value. There are no deposits, no withdrawals, and no cash payouts anywhere in the system — that is a design invariant, not a setting. Product copy never uses gambling vocabulary; the constraint is enforced in code, down to a filter on the AI Booth's output (ADR-039).
 
