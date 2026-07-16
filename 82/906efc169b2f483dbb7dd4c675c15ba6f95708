@@ -1,0 +1,21 @@
+docs/adr/ADR-067-landing-hero-river-yrange-pin.md
+  s_e6fe919b4d8a67::t_0245bcabf9b38b 1-11
+design/verdicts/2026-07-16-landing-hero-river.md
+  s_e6fe919b4d8a67::t_a49374d1b5817c 1-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "82906efc169b2f483dbb7dd4c675c15ba6f95708",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
