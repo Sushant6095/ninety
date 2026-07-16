@@ -1,0 +1,21 @@
+apps/web/src/components/templates/notio/navbar.tsx
+  s_e6fe919b4d8a67::t_8d42e7bd003e85 39-55
+  s_e6fe919b4d8a67::t_dd42ddcf89b8b9 7,14-15,17
+  s_e6fe919b4d8a67::t_29eef6a2312ed9 116-138
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "dd923c3b550063d95e9ca679fc9744f9d4edb4f0",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
