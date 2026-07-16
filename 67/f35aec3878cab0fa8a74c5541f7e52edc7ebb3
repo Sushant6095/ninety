@@ -1,0 +1,19 @@
+docs/adr/ADR-065-account-dashboard-notio-landing.md
+  s_b60ec3c6161754::t_f7b6006fd96fb5 1-64
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "67f35aec3878cab0fa8a74c5541f7e52edc7ebb3",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
