@@ -22,7 +22,7 @@ const SUBNAV: { label: string; href: string; count?: number; home?: boolean; ext
   { label: "Today", href: routes.board, count: 12 },
   { label: "Competition", href: routes.competition },
   { label: "Bracket", href: routes.bracket },
-  { label: "Portfolio", href: routes.portfolio },
+  { label: "Account", href: routes.account },
   { label: "Leaders", href: routes.leaders },
   { label: "Moments", href: routes.moments },
   { label: "History", href: routes.history },

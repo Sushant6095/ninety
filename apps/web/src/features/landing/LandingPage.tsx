@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { LandingNav } from "./LandingNav";
 import { LandingHero } from "./LandingHero";
 import { LandingScroll } from "./LandingScroll";
+import { FreeCredits } from "./FreeCredits";
+import { BoothQuotes } from "./BoothQuotes";
+import { DitheredMark } from "./DitheredMark";
 import { PrismGrid } from "./PrismGrid";
 import { PriceVoid } from "./PriceVoid";
 import { WorldGlobeLazy } from "./WorldGlobeLazy";
@@ -34,13 +38,19 @@ const PILLARS = [
   { title: "Settled on Solana", copy: "The program verifies the feed's signature before any market settles. Public proofs on devnet, no admin override." },
 ] as const;
 
-/** The landing — where a visitor arrives (the board at /board is where a trader goes). Structure follows the
- *  hyperfoundation research: thesis + live tape → the loop shown live → one number → proof → numbers band →
- *  close; one filled CTA repeated verbatim, accent spent once, sections arriving on scroll (LandingScroll),
+/** The landing — where a visitor arrives (the board at /board is where a trader goes). Structural
+ *  rhythm from the notio reference (nav → hero → chapters → pricing → quotes → close), content and
+ *  craft entirely Ninety's: sticky nav → thesis + live tape → the loop shown live → pillars → one
+ *  number → velocity → proof → numbers band → free credits (the pricing slot, inverted: one card,
+ *  free) → the Booth's own lines (the testimonial slot, no invented customers) → close. One filled
+ *  CTA repeated verbatim, accent spent once, sections arriving on scroll (LandingScroll),
  *  everything quiet except the River and the halt beat. */
 export function LandingPage() {
   return (
     <div className="flex min-h-screen flex-col bg-bg">
+      {/* 1 — sticky landing chrome (the hero's old inline header, promoted): transparent over the
+          hero, bg-bg/95 + hairline once scrolled. One wordmark, one filled terminal CTA on screen. */}
+      <LandingNav />
       <main>
         <LandingHero />
         {/* PricePath (skiper19) CUT here per the MotionScore gate: its per-frame scroll read helped
@@ -167,10 +177,22 @@ export function LandingPage() {
             </div>
           </section>
 
+          {/* 5b — the pricing chapter, inverted by the play-money law: one card, one price, free.
+              Sits after the numbers band (1,000 credits is already on the table there) as its answer. */}
+          <FreeCredits />
+
+          {/* 5c — the testimonial slot, Ninety-ified: no invented customers — the Booth's own lines
+              from the AUS–EGY market (the same match LoopStage replays), ending on the 74' goal call. */}
+          <BoothQuotes />
+
           {/* 6 — close: same funnel, identical labels. The prism grid (Originkit, re-skinned) is the
               footer moment's backdrop — the one rare surface with a delight budget; content sits above it. */}
           <section aria-labelledby="close-h" className="relative">
             <PrismGrid pitch={26} boxSize={44} className="hidden lg:block" />
+            {/* the dithered River-9 (componentry.dev, re-skinned) — the close's quiet backdrop below
+                lg, where the prism/sticker/moment accents are hidden; canvas is lazy (next/dynamic),
+                aria-hidden, and static by construction (pointer-events-none + PRM guard in vendor). */}
+            <DitheredMark className="absolute inset-x-0 top-8 z-0 mx-auto h-48 w-48 opacity-60 lg:hidden" />
             {/* the play-money sticker (Originkit sticker-peel, re-skinned) — peels on hover/press;
                 the disclosure it carries is also plain text in the hero and the footer */}
             <StickerPeelLazy className="absolute right-[6%] top-8 z-20 hidden h-[190px] w-[190px] -rotate-6 lg:block" />

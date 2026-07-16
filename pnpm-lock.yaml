@@ -87,6 +87,9 @@ importers:
       '@xyflow/react':
         specifier: ^12.11.2
         version: 12.11.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(immer@10.2.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      balloons-js:
+        specifier: ^0.0.3
+        version: 0.0.3
       camera-controls:
         specifier: ^3.1.2
         version: 3.1.2(three@0.185.1)
@@ -2059,6 +2062,10 @@ packages:
   axe-core@4.12.1:
     resolution: {integrity: sha512-s7iGf5GaVMxEG0ENN9x+xTr7GFZCb1ZP/1uATUpCEK2X78nDB3RwbtFCo9pGAf9ru+VwoQ464DkaLEeRM08wJA==}
     engines: {node: '>=4'}
+
+  balloons-js@0.0.3:
+    resolution: {integrity: sha512-5Mfy2VH2lC0WhX9jUvlkeKac+47reQq6naaNys+xFM2l+n+4jXoxGwwfnCyAdeXJh2IcRK+2LdD0cpOtyxEZzA==}
+    engines: {node: '>=12.0.0'}
 
   base-x@3.0.11:
     resolution: {integrity: sha512-xz7wQ8xDhdyP7tQxwdteLYeFfS68tSMNCZ/Y37WJ4bhGfKPpqEIlmIyueQHqOyoPhE6xNUqjzRr8ra0eF9VRvA==}
@@ -5247,6 +5254,8 @@ snapshots:
       fastq: 1.20.1
 
   axe-core@4.12.1: {}
+
+  balloons-js@0.0.3: {}
 
   base-x@3.0.11:
     dependencies:

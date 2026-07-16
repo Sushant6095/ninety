@@ -1,12 +1,8 @@
 "use client";
 import { useRef } from "react";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { gsap, useGSAP } from "../../lib/gsap";
 import { motion as m } from "../../design/motion";
-import { Wordmark } from "../../components/ui/Wordmark";
 import { Backlight } from "../../components/vendor/magicui/backlight";
-import { routes, DOCS_URL } from "../../lib/routes";
 import { CtaPair, PlayMoneyLine } from "./Ctas";
 import { HeroRiver } from "./HeroRiver";
 
@@ -58,35 +54,8 @@ export function LandingHero() {
 
   return (
     <section ref={scope} aria-labelledby="hero-h" className="relative border-b border-hairline">
-      {/* minimal landing chrome: wordmark + the two exits. The board carries the full terminal header. */}
-      <header className="mx-auto flex w-full max-w-[1180px] items-center justify-between px-4 py-5 sm:px-6">
-        <Wordmark tag="WC26" />
-        <nav aria-label="Landing" className="flex items-center gap-2">
-          <Link
-            href={routes.howItWorks}
-            className="inline-flex min-h-[44px] items-center rounded-chip px-3 text-body font-medium text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi focus-visible:ring-2 focus-visible:ring-up/60 active:opacity-70"
-          >
-            How it works
-          </Link>
-          {/* The deep written reference (GitBook). Opens in a new tab; /how-it-works stays the in-app explainer. */}
-          <a
-            href={DOCS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden min-h-[44px] items-center rounded-chip px-3 text-body font-medium text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi focus-visible:ring-2 focus-visible:ring-up/60 active:opacity-70 sm:inline-flex"
-          >
-            Docs
-          </a>
-          {/* THE terminal button (B1): the always-present app exit, same label as the hero + close CTAs. */}
-          <Link
-            href={routes.terminal}
-            className="inline-flex h-11 items-center gap-1.5 rounded-chip bg-up px-4 text-body font-semibold text-bg outline-none transition-opacity duration-200 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-up focus-visible:ring-offset-2 focus-visible:ring-offset-bg active:opacity-80"
-          >
-            Open the terminal <ArrowRight className="h-4 w-4" aria-hidden strokeWidth={2.25} />
-          </Link>
-        </nav>
-      </header>
-
+      {/* landing chrome lives in LandingNav (sticky, composed above this hero in LandingPage) —
+          keeping it out of the hero means exactly one wordmark and one terminal button up top */}
       <div className="mx-auto grid w-full max-w-[1180px] items-center gap-12 px-4 pb-16 pt-10 sm:px-6 sm:pb-20 sm:pt-14 lg:grid-cols-[minmax(0,1fr)_minmax(380px,460px)] lg:gap-16">
         <div>
           <h1 id="hero-h" className="max-w-[15ch] font-display text-hero font-bold text-hi [text-wrap:balance]">
