@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "start": "next start",
     "lint": "echo lint",
     "test": "echo 'no tests yet'",
     "wc26:refresh": "node scripts/fetch-wc26.mjs"
