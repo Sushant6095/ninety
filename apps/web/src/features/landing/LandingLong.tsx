@@ -15,6 +15,7 @@ import { FreeCredits } from "./FreeCredits";
 import { CrowdBand } from "./CrowdBand";
 import { FootballExperience } from "./FootballExperience";
 import { ConsumerBento } from "./ConsumerBento";
+import { DribbleSceneLazy } from "./DribbleSceneLazy";
 import { NumberTicker } from "../../components/ui/NumberTicker";
 import { HyperText } from "../../components/vendor/magicui/hyper-text";
 import { Highlighter } from "../../components/vendor/magicui/highlighter";
@@ -41,6 +42,29 @@ export function LandingLong() {
         <Hero />
 
         <LandingScroll>
+          {/* 2b — THE 3D FOOTBALL MOMENT (ADR-070): a stylized dribbler weaves, scores, and the
+              price ticks up — landing-only (ADR-058), lazy (next/dynamic ssr:false), IO-gated. The
+              canvas slot is NOT opacity-gated (only the copy cascades) and has a fixed height (no CLS). */}
+          <section aria-labelledby="scene-h" className="border-b border-hairline">
+            <div data-arrive className="mx-auto w-full max-w-[1180px] px-4 pt-16 sm:px-6 lg:pt-24">
+              <p data-arrive-item className="text-label font-semibold uppercase tracking-caps text-lo">
+                Football, priced live
+              </p>
+              <h2 data-arrive-item id="scene-h" className="mt-4 max-w-[24ch] font-display text-section font-bold text-hi">
+                This isn&apos;t a terminal — it&apos;s football, priced live.
+              </h2>
+              <p data-arrive-item className="mt-5 max-w-[52ch] text-strong leading-relaxed text-lo">
+                A run, a shot, a goal — and the price moves before the crowd comes down. Watch the
+                market read the game.
+              </p>
+            </div>
+            <div className="mx-auto w-full max-w-[1180px] px-4 pb-16 pt-10 sm:px-6 lg:pb-24">
+              <div className="elev relative h-[380px] overflow-hidden rounded-card border border-hairline/70 bg-bg sm:h-[440px] lg:h-[520px]">
+                <DribbleSceneLazy className="h-full w-full" />
+              </div>
+            </div>
+          </section>
+
           {/* 3 — THE LOOP: the product tells its own story. LoopStage mounts in view and plays the
               real useHaltSequence timeline (goal → halt → reprice → Booth → settle) in front of you. */}
           <section aria-labelledby="loop-h" className="border-b border-hairline">
