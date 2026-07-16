@@ -107,18 +107,18 @@ function SettlementPanel() {
         <span className="text-chain">◆</span> Settlement — Solana
       </h2>
       <div className="num space-y-1 text-label leading-relaxed text-lo">
-        <div>devnet · slot <span className="text-hi">297,441,208</span></div>
+        <div>devnet · program <span className="text-hi">deployed</span></div>
+        {/* Honest state, not a fabricated Solscan link: settlement is fail-closed on purpose (ADR-036/037) —
+            there is no real settle tx to point at, so we link the reasoning on /proofs instead. */}
         <div className="flex items-center gap-1">
-          last proof
-          <a
-            href="https://solscan.io/?cluster=devnet"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-chain underline-offset-2 transition-colors duration-200 hover:underline"
+          settlement
+          <Link
+            href={routes.proofs}
+            className="inline-flex items-center gap-1 text-chain underline-offset-2 outline-none transition-opacity duration-200 hover:opacity-80 focus-visible:underline"
           >
-            JPN–CRO · 5Kx…9f2a
-            <span aria-hidden>↗</span>
-          </a>
+            fail-closed
+            <span aria-hidden>→</span>
+          </Link>
         </div>
         <div>feed latency <span className="text-hi">42 ms</span></div>
       </div>

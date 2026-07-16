@@ -30,8 +30,6 @@ const PANELS = [
   { title: "What “settled” means", body: "The market resolves to the proven outcome, winning shares pay 100 credits, and the ProofBadge links the exact transaction on Solscan." },
 ];
 
-const SIG = "7hNq…devnetAusEgy4kP";
-
 export function ProofFlow() {
   return (
     <Section eyebrow="The proof" title="Why the result is trustworthy." lede="From the feed to the final settlement, every step is verifiable — and the last two happen on-chain, where no one can quietly change them.">
@@ -53,8 +51,10 @@ export function ProofFlow() {
           </AgentStep>
           <AgentStep status="success" tone="chain" title="Verified on-chain" meta="validateStatV2" defaultOpen>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="num tabular-nums">tx {SIG}</span>
-              <ProofBadge sig={SIG} label="Settled" />
+              <span className="num tabular-nums text-lo">settle tx</span>
+              {/* No fabricated signature: settlement is fail-closed (ADR-036/037), so this reads the honest
+                  pending state and links no Solscan tx until a real one exists. */}
+              <ProofBadge label="Settled" pendingLabel="Proof pending — fail-closed" />
             </div>
           </AgentStep>
           <AgentStep status="success" title="Market settled" meta="100 credits / share" last>
