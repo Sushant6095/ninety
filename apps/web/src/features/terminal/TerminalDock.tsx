@@ -28,10 +28,13 @@ const ITEM =
   "flex h-full w-full items-center justify-center rounded-full text-lo outline-none transition-colors duration-200 hover:bg-hairline/40 hover:text-hi focus-visible:ring-2 focus-visible:ring-up active:scale-[0.97]";
 
 /** Bottom dock for /terminal — tools + nav (magicui Dock, re-skinned). Magnification stays ≤1.15×
- *  and dies entirely under prefers-reduced-motion; the active route gets a hi underline dot. */
-export function TerminalDock() {
+ *  and dies entirely under prefers-reduced-motion; the active route gets a hi underline dot.
+ *  `featured` (the AUS-EGY money-shot) gates the "Replay the halt" tool: only that market runs the halt
+ *  choreography, so a non-featured match must not advertise a halt it has no way to replay. */
+export function TerminalDock({ featured = true }: { featured?: boolean }) {
   const pathname = usePathname();
   const reduce = useReducedMotion();
+  const actions = featured ? ACTIONS : ACTIONS.filter((a) => a.event !== DOCK_REPLAY_EVENT);
   const dispatch = (event: string): void => {
     window.dispatchEvent(new Event(event));
   };
@@ -51,7 +54,7 @@ export function TerminalDock() {
           );
         })}
         <span aria-hidden className="mx-0.5 h-6 w-px self-center bg-hairline" />
-        {ACTIONS.map(({ label, event, icon: Icon }) => (
+        {actions.map(({ label, event, icon: Icon }) => (
           <DockIcon key={event}>
             <button type="button" aria-label={label} onClick={() => dispatch(event)} className={ITEM}>
               <Icon size={18} aria-hidden />

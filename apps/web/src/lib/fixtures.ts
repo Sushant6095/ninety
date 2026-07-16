@@ -86,6 +86,12 @@ export const MARKETS: MarketRow[] = [
   mkt({ hc: "CRO", ac: "BEL", comp: "Earlier this week", stage: "Round of 32", ko: "2026-07-01T20:00:00Z", min: null, score: [0, 3], mark: [0, 0, 1], from: 40, to: 6, vol: 47000, status: "SETTLED" }),
 ];
 
+/** Look up a board market by its store key (matchId, e.g. "wc26-bra-kor"). The single resolver the match route
+ *  uses to decide render-vs-404 — an unknown id has no fixture and must 404, never silently fall back. */
+export function marketByMatchId(matchId: string): MarketRow | undefined {
+  return MARKETS.find((m) => m.matchId === matchId);
+}
+
 /** Kick-off wall-clock "HH:MM" (UTC) for an ISO timestamp — the one formatter every KO label uses. */
 export function koClock(iso: string): string {
   return new Date(iso).toISOString().slice(11, 16);

@@ -12,11 +12,17 @@ import { OpenPositions } from "./OpenPositions";
 import { TournamentLeaderboard } from "./TournamentLeaderboard";
 import { TodaysMovers } from "./TodaysMovers";
 import { SESSION } from "../../lib/fixtures";
+import { MATCH } from "../../lib/terminal";
 
 /** The Terminal — the pro match-detail trading surface: live competitions + attack momentum + events (left),
  *  the selected market with the big River + trade panel + your position (center), market status + portfolio +
- *  positions + tournament leaderboard + movers (right). Ticks live; wired to fixtures that mirror the API. */
-export function TerminalScreen() {
+ *  positions + tournament leaderboard + movers (right). Ticks live; wired to fixtures that mirror the API.
+ *
+ *  `matchId` selects the centre market and defaults to the featured AUS-EGY money-shot, so /terminal is
+ *  unchanged. The left-rail attack-momentum + latest-events cards are AUS-EGY-specific fixtures, so they show
+ *  only for the featured market — a non-featured match never gets another match's momentum/events under it. */
+export function TerminalScreen({ matchId = MATCH.matchId }: { matchId?: string }) {
+  const featured = matchId === MATCH.matchId;
   return (
     // pb-20 clears the fixed bottom dock so the footer / trade panel never sit under it at any breakpoint.
     <div className="flex min-h-screen flex-col overflow-x-clip bg-bg pb-20">
@@ -26,14 +32,14 @@ export function TerminalScreen() {
         <h1 className="sr-only">Live match terminal</h1>
         <div className="hidden flex-col gap-3 xl:flex">
           <CompetitionsRail />
-          <AttackMomentum />
-          <LatestEvents />
+          {featured && <AttackMomentum />}
+          {featured && <LatestEvents />}
         </div>
         <div className="min-w-0">
-          <MatchColumn />
+          <MatchColumn matchId={matchId} />
         </div>
         <div className="hidden flex-col gap-3 xl:flex">
-          <MarketStatus />
+          <MarketStatus matchId={matchId} />
           <PortfolioCard />
           <OpenPositions />
           <TournamentLeaderboard />
@@ -41,7 +47,7 @@ export function TerminalScreen() {
         </div>
       </main>
       <Footer />
-      <TerminalDock />
+      <TerminalDock featured={featured} />
     </div>
   );
 }

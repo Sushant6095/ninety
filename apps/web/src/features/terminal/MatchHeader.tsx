@@ -5,8 +5,8 @@ import { teamMediaByCode } from "../../lib/teamMedia";
 import type { TerminalMatch } from "../../lib/terminal";
 
 interface MatchLive {
-  score: { home: number; away: number };
-  minute: number;
+  score: { home: number; away: number } | null; // null before kickoff — shows "vs" instead of a scoreline
+  minute: number | null; // null before kickoff — the live-minute pip is hidden, only the phase shows
   phase: string;
   scorer: string; // "" hides the scorer line (pre-goal)
   status: string; // "LIVE" | "HALTED" …
@@ -59,11 +59,17 @@ export function MatchHeader({ match, live }: { match: TerminalMatch; live: Match
         </div>
 
         <div className="shrink-0 text-center">
-          <div className="num font-display text-display-xl font-extrabold leading-none tabular-nums text-hi">
-            {score.home}<span className="px-2 text-lo">–</span>{score.away}
-          </div>
+          {score ? (
+            <div className="num font-display text-display-xl font-extrabold leading-none tabular-nums text-hi">
+              {score.home}<span className="px-2 text-lo">–</span>{score.away}
+            </div>
+          ) : (
+            <div className="num font-display text-display-xl font-extrabold leading-none tabular-nums text-lo/60">vs</div>
+          )}
           <div className="num mt-1 flex items-center justify-center gap-2 text-label uppercase tracking-wide text-lo">
-            <span className="inline-flex items-center gap-1 text-up"><span className="h-1.5 w-1.5 rounded-full bg-up shadow-[0_0_5px_var(--up)]" />{minute}&#39;</span>
+            {minute != null && (
+              <span className="inline-flex items-center gap-1 text-up"><span className="h-1.5 w-1.5 rounded-full bg-up shadow-[0_0_5px_var(--up)]" />{minute}&#39;</span>
+            )}
             <span>{phase}</span>
           </div>
         </div>
@@ -77,9 +83,11 @@ export function MatchHeader({ match, live }: { match: TerminalMatch; live: Match
         </div>
       </div>
 
-      <div className="num mt-2 flex items-center justify-center gap-2 text-label uppercase tracking-wide text-lo/80">
-        {scorer && <><span className="text-hi">{scorer}</span><span className="text-lo/40">·</span></>}<span>{match.venue}</span>
-      </div>
+      {(scorer || match.venue) && (
+        <div className="num mt-2 flex items-center justify-center gap-2 text-label uppercase tracking-wide text-lo/80">
+          {scorer && <><span className="text-hi">{scorer}</span><span className="text-lo/40">·</span></>}<span>{match.venue}</span>
+        </div>
+      )}
       </div>
     </div>
   );

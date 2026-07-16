@@ -10,6 +10,7 @@ import { MatchTabs } from "./MatchTabs";
 import { NextGoal } from "../games/NextGoal";
 import { TERMINAL_RESOLVE_WINDOW_MS } from "../games/nextGoalMachine";
 import { StateSwitcher, PreMatchPanel, SettledPanel, type MatchView } from "./MatchStates";
+import { PlainMatchColumn } from "./PlainMatchColumn";
 import { DOCK_TRADE_EVENT, DOCK_REPLAY_EVENT } from "./TerminalDock";
 import { HaltBanner } from "../../components/ui/HaltBanner";
 import { TradeSheet } from "../../components/ui/TradeSheet";
@@ -27,8 +28,10 @@ const IDX: Record<Outcome, number> = { H: 0, D: 1, A: 2 };
 const codeFor = (o: Outcome): string => (o === "H" ? MATCH.homeCode : o === "A" ? MATCH.awayCode : "DRAW");
 const vsFor = (o: Outcome): string => (o === "H" ? MATCH.awayCode : o === "A" ? MATCH.homeCode : `${MATCH.homeCode}/${MATCH.awayCode}`);
 
-// Settled-state result (the settle envelope in production). Egypt take it late; the proof posts to devnet.
-const SETTLED_RESULT = { winner: "A" as Outcome, winnerName: "Egypt", scoreLine: "0 – 2", settleSig: "7hNq…devnetAusEgy4kP" };
+// Settled-state result (the settle envelope in production). Egypt take it late. There is NO real settle tx —
+// settlement is fail-closed on purpose (ADR-036/037), so settleSig is empty and the ProofBadge renders its
+// honest "proof pending" state, never a dead Solscan link.
+const SETTLED_RESULT = { winner: "A" as Outcome, winnerName: "Egypt", scoreLine: "0 – 2", settleSig: "" };
 
 // The terminal Next Goal card is a PURE READ-ONLY consumer (ADR-061): it resolves off the SAME store score
 // delta the halt money-shot writes via land(), and NEVER fabricates a goal. So its round-lifecycle callbacks
@@ -43,10 +46,18 @@ const { awayPre: AWAY_PRE, awayPost: AWAY_POST } = MONEY_SHOT;
 const BOOTH_DELTA = AWAY_POST - AWAY_PRE; // +24
 const BOOTH_QUOTE = `Ashour's counter — Egypt ${AWAY_PRE} → ${AWAY_POST}`;
 
-/** Center trading column — owns the selected outcome AND the optimistic trade store: a confirmed order updates
+/** Center trading column dispatcher. The featured AUS-EGY market keeps the full money-shot below EXACTLY as-is
+ *  (halt choreography, Next Goal, depth tabs); any other market opens the plain per-match terminal, which reads
+ *  its own identity + live state and never borrows AUS-EGY data (ADR-055 credibility). */
+export function MatchColumn({ matchId }: { matchId: string }) {
+  if (matchId === TERMINAL_MATCH_ID) return <FeaturedMatchColumn />;
+  return <PlainMatchColumn matchId={matchId} />;
+}
+
+/** The featured money-shot — owns the selected outcome AND the optimistic trade store: a confirmed order updates
  *  positions + free credits locally and reconciles on the fill frame (here: applied immediately; the reject path
  *  — insufficient credits / oversell — surfaces a Sonner toast). Every live number reads from the ONE store. */
-export function MatchColumn() {
+function FeaturedMatchColumn() {
   const live = useMatchLive(TERMINAL_MATCH_ID);
   const view: MatchView = live?.status ?? "LIVE";
   const mark = live?.prices ?? MONEY_SHOT.prices;

@@ -119,6 +119,27 @@ function Side({ l }: { l: Lineup }) {
   return <DotPitch l={l} />;
 }
 
+// Honest "pending" pitch for a side TheSportsDB hasn't baked a squad for — never a faked XI (ADR-051/ADR-062).
+function PendingPitch({ code }: { code: string }) {
+  return (
+    <div className="rounded-card border border-hairline bg-surface p-3">
+      <PitchHeader code={code} right="Squad" />
+      <div className="relative grid aspect-[2/3] w-full place-items-center overflow-hidden rounded-md bg-bg">
+        <Markings />
+        <span className="relative max-w-[22ch] px-4 text-center text-label leading-relaxed text-lo">Squad &amp; confirmed XI pending live data</span>
+      </div>
+    </div>
+  );
+}
+
+/** Lineups for an arbitrary match, addressed by team code only (no hand-written LINEUPS fixture): the real baked
+ *  squad on the pitch when TheSportsDB has it, an honest "pending" pitch otherwise. Used by non-featured matches. */
+export function SquadPitch({ code }: { code: string }) {
+  const squad = squadByCode(code);
+  if (squad.length >= 5) return <FacesPitch code={code} squad={squad} manager={managerByCode(code)} />;
+  return <PendingPitch code={code} />;
+}
+
 export function Lineups() {
   return (
     <div className="grid gap-3 p-4 sm:grid-cols-2">

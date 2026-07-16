@@ -20,10 +20,11 @@ const PILL: Record<MatchStatus, string> = {
   SETTLED: "text-lo ring-hairline",
 };
 
-/** Right-rail status card. The status word reads from the ONE store (so it can never disagree with the
- *  center header / switcher); the tick/feed/B/traders tiles are static market metrics. */
-export function MarketStatus() {
-  const live = useMatchLive(TERMINAL_MATCH_ID);
+/** Right-rail status card. The status word reads from the ONE store for the OPEN market (so it can never
+ *  disagree with the center header / switcher); the tick/feed/B/traders tiles are static market metrics.
+ *  `matchId` defaults to the featured market, so /terminal is unchanged; a non-featured /match/:id passes its id. */
+export function MarketStatus({ matchId = TERMINAL_MATCH_ID }: { matchId?: string }) {
+  const live = useMatchLive(matchId);
   const status = live?.status ?? "LIVE";
   return (
     <section className="elev rounded-card border border-hairline/70 bg-surface">

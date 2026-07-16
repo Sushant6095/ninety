@@ -1,8 +1,12 @@
+import { notFound } from "next/navigation";
 import { TerminalScreen } from "../../../features/terminal/TerminalScreen";
+import { marketByMatchId } from "../../../lib/fixtures";
 
-// Match view = the Terminal. Any match link opens the pro trading surface (fixture-seeded on the featured market
-// for now; the per-id market detail + amm.q feed lands via GET /markets/:id and the ADR-046 guarded engine emit).
+// Match view = the Terminal. The [id] selects WHICH market opens: the featured AUS-EGY money-shot, or any other
+// board market (fixture identity + the ONE live store, keyed by the same matchId). An unknown id has no fixture,
+// so it 404s here (Next notFound) — it must never silently fall back to the featured match (ADR-055 credibility).
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
-  await params; // id will select the market once GET /markets/:id is wired (chunk-swap)
-  return <TerminalScreen />;
+  const { id } = await params;
+  if (!marketByMatchId(id)) notFound();
+  return <TerminalScreen matchId={id} />;
 }
