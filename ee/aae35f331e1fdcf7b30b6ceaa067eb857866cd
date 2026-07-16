@@ -1,0 +1,30 @@
+apps/web/src/features/landing/DribbleScene.tsx
+  s_e6fe919b4d8a67::t_49f71ae73ab0ce 1-359
+apps/web/src/features/landing/DribbleSceneLazy.tsx
+  s_e6fe919b4d8a67::t_0e6a1bdcb9a6a0 1-13
+docs/adr/ADR-070-dribble-scene-3d-football-moment.md
+  s_e6fe919b4d8a67::t_e36fb888f971df 1-12
+design/verdicts/2026-07-17-dribble-scene.md
+  s_e6fe919b4d8a67::t_25f4753303eb75 1-20
+apps/web/src/features/landing/LandingLong.tsx
+  s_e6fe919b4d8a67::t_2d1c0f0ca399e5 45-67
+  s_e6fe919b4d8a67::t_01fcb4ce4aaf8f 18
+design/PROVENANCE.md
+  s_e6fe919b4d8a67::t_214e6e73959372 150-155
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "eeaae35f331e1fdcf7b30b6ceaa067eb857866cd",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
