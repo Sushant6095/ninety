@@ -1,0 +1,69 @@
+docs/adr/ADR-067-earlywhistle-last-mile-and-landing.md
+  s_6ab41d7b0271b9::t_72b3e49b1d94d5 1-65
+apps/worker-jobs/src/readers.ts
+  s_6ab41d7b0271b9::t_0689c907d53f80 1-70
+apps/worker-jobs/Dockerfile
+  s_6ab41d7b0271b9::t_003adccc6b4c20 1-15
+apps/web/src/features/home/Footer.tsx
+  s_6ab41d7b0271b9::t_89374254f3cdd7 12-22
+  s_6ab41d7b0271b9::t_de32103626dc2e 1-3
+apps/worker-jobs/src/main.ts
+  s_6ab41d7b0271b9::t_c35b00574669cb 24-29,31,33-34,37-46
+  s_6ab41d7b0271b9::t_c585c6d7d1dfd8 4,10-11
+design/verdicts/2026-07-16-telegram-landing.md
+  s_6ab41d7b0271b9::t_cad1d5b06a1f2c 1-26
+.env.example
+  s_6ab41d7b0271b9::t_25065acaf5fecc 27-31,36
+design/PROVENANCE.md
+  s_6ab41d7b0271b9::t_78ceb76d747b8d 136-138
+apps/web/src/features/landing/LandingPage.tsx
+  s_6ab41d7b0271b9::t_b7be6976949a10 19
+  s_6ab41d7b0271b9::t_f22143018fcb45 153-156
+apps/worker-jobs/src/readers.test.ts
+  s_6ab41d7b0271b9::t_9f209de907bade 1-43
+apps/web/src/lib/routes.ts
+  s_6ab41d7b0271b9::t_97c19412d4f33d 28-32
+apps/web/src/features/landing/TelegramSection.tsx
+  s_6ab41d7b0271b9::t_cef60342c4ea17 1-44,46-138
+  s_6ab41d7b0271b9::t_80d99338c881c2 45
+apps/worker-jobs/src/tg.ts
+  s_6ab41d7b0271b9::t_2c4799651b8768 19-25
+  s_6ab41d7b0271b9::t_5dd7916111d463 78-86
+apps/worker-jobs/src/receive.test.ts
+  s_6ab41d7b0271b9::t_001ee35afd74fa 1-41
+apps/worker-jobs/package.json
+  s_6ab41d7b0271b9::t_5825e3dadc584a 3
+  s_6ab41d7b0271b9::t_5feeca7b0554fe 4
+apps/worker-jobs/scripts/telegram-smoke.ts
+  s_6ab41d7b0271b9::t_dc68002fe6fd17 1-12,16-50,60-70
+  s_6ab41d7b0271b9::t_e602c634b9e90f 51-59
+  s_6ab41d7b0271b9::t_8e073e3acdfa0c 13-15
+apps/web/src/features/landing/TelegramCard.tsx
+  s_6ab41d7b0271b9::t_15bbb6f624afe6 1-116
+apps/worker-jobs/fly.toml
+  s_6ab41d7b0271b9::t_8828335a5740be 1-24
+apps/worker-jobs/src/receive.ts
+  s_6ab41d7b0271b9::t_01634b992e01df 1-103
+.dockerignore
+  s_6ab41d7b0271b9::t_592728557c2e7d 1-12
+pnpm-lock.yaml
+  s_6ab41d7b0271b9::t_ed88dee3f0b40a 220-222
+apps/web/src/components/vendor/magicui/iphone.tsx
+  s_6ab41d7b0271b9::t_e3f441a725fdad 1-91
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "13fbaee1568745a6050667392856ed9fdfd69c0d",
+  "prompts": {},
+  "sessions": {
+    "s_6ab41d7b0271b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a5538f3a-206a-4aef-b98c-32f9c1580643",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
