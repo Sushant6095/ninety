@@ -1,0 +1,39 @@
+scripts/txline-devnet-final.mjs
+  s_b60ec3c6161754::t_d390221e56ecdf 1-36
+apps/worker-ingest/package.json
+  s_b60ec3c6161754::t_f5e9cd4838228c 2-23
+pnpm-lock.yaml
+  s_b60ec3c6161754::t_b77ac7fa6d5f93 177-179,186-188
+apps/worker-ingest/src/liveAuth.ts
+  s_b60ec3c6161754::t_4e0f81959d2653 11-13,15-17,20-29,43-67
+apps/worker-ingest/src/main.ts
+  s_b60ec3c6161754::t_774ddbf0ad6f98 10,29-31,34,36
+packages/txline/src/client.ts
+  s_b60ec3c6161754::t_a021d2fa4de75d 77-79,116-118
+scripts/run-live-ingest.mjs
+  s_59ae910437e8f3::t_03b44e6faad765 1-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "fe78fb259b8daf25727e6b2cbaddc1002e42f9f0",
+  "prompts": {},
+  "sessions": {
+    "s_59ae910437e8f3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-ac4116250b18d6bb7",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
