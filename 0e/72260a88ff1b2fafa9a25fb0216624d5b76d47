@@ -1,0 +1,19 @@
+apps/web/src/features/account/ProofsPanel.tsx
+  s_b60ec3c6161754::t_6e6243a65f00b3 51-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "0e72260a88ff1b2fafa9a25fb0216624d5b76d47",
+  "prompts": {},
+  "sessions": {
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "claude-fable-5"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
