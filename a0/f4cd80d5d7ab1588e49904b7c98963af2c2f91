@@ -1,0 +1,33 @@
+apps/web/src/features/landing/ConsumerBento.tsx
+  s_e6fe919b4d8a67::t_5f12ec71ce5943 1-125
+apps/web/src/features/landing/LandingLong.tsx
+  s_e6fe919b4d8a67::t_bfc3079a4991f5 1-170
+apps/web/src/features/landing/FootballExperience.tsx
+  s_e6fe919b4d8a67::t_a4ce0a1c204657 1-87
+apps/web/src/app/page.tsx
+  s_e6fe919b4d8a67::t_ecdc710a4db534 2,10,12
+design/PROVENANCE.md
+  s_e6fe919b4d8a67::t_7f05121a1f05cc 136-149
+docs/adr/ADR-069-landing-long-page.md
+  s_e6fe919b4d8a67::t_6133f4df768916 1-15
+apps/web/src/features/landing/BoothQuotes.tsx
+  s_e6fe919b4d8a67::t_91f1f7a09306f8 1-9,11-12,26,29-46
+design/verdicts/2026-07-17-landing-long.md
+  s_e6fe919b4d8a67::t_19226ddba0ac89 1-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "a0f4cd80d5d7ab1588e49904b7c98963af2c2f91",
+  "prompts": {},
+  "sessions": {
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
