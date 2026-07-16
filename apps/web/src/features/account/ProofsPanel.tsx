@@ -48,16 +48,15 @@ export function ProofHistoryList() {
                 </span>
               </span>
             </span>
-            {proof ? (
-              <ProofBadge sig={proof.txSig} label="Settled on-chain" />
-            ) : (
-              <Link
-                href={routes.proofs}
-                className="rounded-chip px-2 py-1.5 text-caption font-medium text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi focus-visible:ring-1 focus-visible:ring-hairline active:scale-[0.97]"
-              >
-                in proof log →
-              </Link>
-            )}
+            {/* Mintless mode (credibility fix, ADR-065): Proof carries NO tx signature until a real
+                settle tx exists — a fabricated sig on a violet badge is worse than a link. Every row
+                routes to the proof log; the Solscan ProofBadge returns when the sig field does. */}
+            <Link
+              href={routes.proofs}
+              className="rounded-chip px-2 py-1.5 text-caption font-medium text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi focus-visible:ring-1 focus-visible:ring-hairline active:scale-[0.97]"
+            >
+              in proof log →
+            </Link>
           </li>
         );
       })}
