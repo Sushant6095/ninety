@@ -1,0 +1,70 @@
+apps/api/src/http/routes/orders.ts
+  s_64dcffbefc89fb::t_3579f638e07c22 6-14,43-46,49-50,65-73,81-82,99-100,105-131,133-136,138-142
+  s_64dcffbefc89fb::t_6b3e3c04b174dd 1-5,15-42,47-48,51-64,74-80,83-98,101-104,132,137,143-186
+apps/api/src/services/quote.ts
+  s_64dcffbefc89fb::t_5ded70776e74a6 35-41
+apps/api/src/services/portfolio.test.ts
+  s_64dcffbefc89fb::t_5385511e5ccfd1 18
+  s_64dcffbefc89fb::t_2d90468feb4335 28
+apps/api/src/services/portfolio.ts
+  s_64dcffbefc89fb::t_58983117c74573 90-93
+  s_64dcffbefc89fb::t_589d44dfcd2cc5 1-6,11,18-22,26-35,43-46,55-57,62-65,69,74-80,82-89,94-95
+apps/api/src/main.ts
+  s_64dcffbefc89fb::t_a72172ccf353ac 9,11
+apps/api/src/services/rate-limit.ts
+  s_64dcffbefc89fb::t_cf246908601df4 1-31
+apps/api/src/services/balance.ts
+  s_64dcffbefc89fb::t_cdf10403cd01fa 1-11
+apps/api/src/engine/index.test.ts
+  s_64dcffbefc89fb::t_a9d3536b507d40 163-179
+apps/api/src/http/server.ts
+  s_64dcffbefc89fb::t_ab87151b6ce853 17,28
+  s_64dcffbefc89fb::t_cc1461350a3f69 3,9
+apps/api/src/http/routes/markets.ts
+  s_64dcffbefc89fb::t_e23adb789e6dc7 83
+  s_64dcffbefc89fb::t_03a2b139010510 10,16-19,28-33,35,45-47
+  s_64dcffbefc89fb::t_3ada6de907026a 104-107
+  s_64dcffbefc89fb::t_5a8028d7fc107f 20-27
+apps/api/src/engine/index.ts
+  s_64dcffbefc89fb::t_d6538500361ac5 298,302,310
+  s_64dcffbefc89fb::t_64bb4524a71b36 243-250,252,255,261
+  s_64dcffbefc89fb::t_11dc7324a5b691 132-139
+apps/api/src/http/routes/leaderboard.ts
+  s_64dcffbefc89fb::t_369d6e592da21c 1-2,5,11-16
+apps/api/prisma/schema.prisma
+  s_e6fe919b4d8a67::t_d5f53562416a82 34-35
+apps/web/scripts/.fetch-mainnet-idl.mjs
+  s_b60ec3c6161754::t_931d6a01a45e02 1-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "dc30dd3f146c5101fce9d97bb5dcd97245bc6c64",
+  "prompts": {},
+  "sessions": {
+    "s_64dcffbefc89fb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4e456246-6377-4918-a5d0-30a1b596d9ee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_b60ec3c6161754": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "698ddd7a-d9b6-4924-b6be-165ebfd5aede",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_e6fe919b4d8a67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d47c79f-ddd7-4ab6-b211-897f2d568eee",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
