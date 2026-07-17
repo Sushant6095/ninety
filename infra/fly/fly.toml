@@ -11,12 +11,21 @@
 # Deploy from the REPO ROOT so the whole pnpm monorepo is the build context:
 #   fly deploy -c infra/fly/fly.toml
 #
-# Secrets are NEVER in this file — set them with `fly secrets set` (see the report / commands below):
-#   DATABASE_URL  (Supabase POOLER url: ...?pgbouncer=true&connection_limit=1)
-#   DIRECT_URL    (Supabase 5432 direct url — for prisma migrate deploy)
-#   REDIS_URL, TXLINE_TOKEN, TXLINE_BASE_URL,
-#   JWT_SECRET, EMBEDDED_WALLET_SECRET, ADMIN_TOKEN,
-#   ANTHROPIC_API_KEY (optional — booth uses a template narrator without it)
+# Secrets are NEVER in this file — set with `fly secrets set -c infra/fly/fly.toml`. AUTHORITATIVE list, read from
+# the code (ADR-072 audit) — the old list had a phantom `TXLINE_TOKEN` and missed the real TxLINE token vars:
+#   REQUIRED — the app fails to boot without these:
+#     DATABASE_URL   Supabase POOLER  (...pooler...:6543/postgres?pgbouncer=true&connection_limit=1)
+#     DIRECT_URL     Supabase DIRECT  (db.<ref>.supabase.co:5432/postgres)  — Prisma reads it from the schema
+#     REDIS_URL      Redis Cloud — bus + read caches, used by every process group (api/ingest/cortex/jobs)
+#     JWT_SECRET, EMBEDDED_WALLET_SECRET   — assertSecretsAtBoot() throws in production if either is unset
+#   TxLINE live ingest (worker-ingest/liveAuth.ts — the deployed worker uses PRE-OBTAINED tokens, never signs SOL):
+#     TXLINE_NETWORK=devnet · TXLINE_DEVNET_JWT · TXLINE_DEVNET_API_TOKEN   (from scripts/txline-devnet-argeng.mjs)
+#     TXLINE_DEVNET_RPC_URL, TXLINE_BASE_URL   — optional, default to the devnet origins
+#   OPTIONAL — the feature degrades gracefully if unset:
+#     ANTHROPIC_API_KEY (booth → template narrator) · TELEGRAM_BOT_TOKEN + EARLYWHISTLE_CHANNEL (EarlyWhistle) ·
+#     HELIUS_WEBHOOK_SECRET (Helius webhook) · ADMIN_TOKEN (replay) · MOMENTS_ONCHAIN (default off) ·
+#     OMNIPITCH_PROGRAM_ID + SOLANA_CLUSTER (chain reads) · APP_URL (absolute links)
+#   NOTE: the schema is ALREADY applied to Supabase (via the Supabase MCP) — do NOT run `prisma migrate deploy`.
 
 app = "omnipitch"
 primary_region = "iad"
@@ -57,9 +66,12 @@ primary_region = "iad"
     port     = 8443
     handlers = ["tls"]
 
-# Persistent VM sizing for all four process groups.
+# Persistent VM sizing for all four process groups. COST-CAUTIOUS (ADR-072): Fly has NO free tier (2024 cut) —
+# every machine is pay-as-you-go, so this is the smallest safe size. 512MB comfortably runs the Node api/uWS and
+# the cortex numpy/scipy worker at rest. If cortex OOMs on deploy (penaltyblog import), bump ONLY cortex to 1gb via
+# a second [[vm]] block. For a hackathon: deploy for the demo window, then `fly apps destroy` to stop the meter.
 [[vm]]
   cpu_kind  = "shared"
   cpus      = 1
-  memory    = "1gb"
+  memory    = "512mb"
   processes = ["api", "ingest", "cortex", "jobs"]

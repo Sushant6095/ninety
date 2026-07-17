@@ -26,6 +26,7 @@ export const GoalEvent = EnvelopeBase.extend({ type: z.literal("goal"), payload:
 export const CardEvent = EnvelopeBase.extend({ type: z.literal("card"), payload: CardPayload });
 export const PenaltyEvent = EnvelopeBase.extend({ type: z.literal("penalty"), payload: PenaltyPayload });
 export const ActionEvent = EnvelopeBase.extend({ type: z.literal("action"), payload: ActionPayload });
+export const OpenEvent = EnvelopeBase.extend({ type: z.literal("open"), payload: StatusPayload });
 export const KickoffEvent = EnvelopeBase.extend({ type: z.literal("kickoff"), payload: StatusPayload });
 export const HtEvent = EnvelopeBase.extend({ type: z.literal("ht"), payload: StatusPayload });
 export const FtEvent = EnvelopeBase.extend({ type: z.literal("ft"), payload: StatusPayload });
@@ -46,6 +47,7 @@ export const AnyEvent = z.discriminatedUnion("type", [
   CardEvent,
   PenaltyEvent,
   ActionEvent,
+  OpenEvent,
   KickoffEvent,
   HtEvent,
   FtEvent,
@@ -72,6 +74,7 @@ export const PAYLOAD_BY_TYPE = {
   card: CardPayload,
   penalty: PenaltyPayload,
   action: ActionPayload,
+  open: StatusPayload,
   kickoff: StatusPayload,
   ht: StatusPayload,
   ft: StatusPayload,

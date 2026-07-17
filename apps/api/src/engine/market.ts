@@ -169,6 +169,8 @@ export function fromEnvelope(env: Envelope): MarketCommand | null {
   if (Number.isNaN(at)) return null; // unparseable timestamp is a data-integrity signal → drop, don't stamp epoch 0
   const p = env.payload as { color?: string; status?: string; result?: string; sig?: string };
   switch (env.type) {
+    case "open": // ADR-073: market opens for trading (SCHEDULED→OPEN). The deferred normalizer emits this when a
+      return { trigger: "open", at }; // fixture becomes tradeable; the local demo push emits it (no live creds).
     case "kickoff":
       return { trigger: "kickoff", at };
     case "goal":

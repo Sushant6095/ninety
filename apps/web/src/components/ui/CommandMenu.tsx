@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Command } from "cmdk";
 import { Search } from "lucide-react";
@@ -7,10 +8,14 @@ import { Avatar } from "./Avatar";
 import { MARKETS, LEADERS } from "../../lib/fixtures";
 import { routes, NAV } from "../../lib/routes";
 import { useMatchLive } from "../../features/live/matchLiveStore";
-import type { MarketRow } from "../../lib/types";
+import { USE_FIXTURES } from "../../lib/api";
+import { searchLive, type SearchResults } from "../../lib/data/search";
 
-/** ⌘K match result — identity from the seed row, live minute from the ONE store. */
-function MatchCommandItem({ market, onSelect }: { market: MarketRow; onSelect: () => void }) {
+/** The match fields the palette renders — satisfied by both a fixture MarketRow and a live SearchMatch. */
+interface CommandMatch { matchId: string; home: string; away: string; homeCode: string; awayCode: string; minute?: number | null }
+
+/** ⌘K match result — identity from the row, live minute from the ONE store. */
+function MatchCommandItem({ market, onSelect }: { market: CommandMatch; onSelect: () => void }) {
   const live = useMatchLive(market.matchId);
   const minute = live?.minute ?? market.minute;
   const halted = live?.status === "HALTED";
@@ -34,6 +39,24 @@ export function CommandMenu({ open, onOpenChange }: { open: boolean; onOpenChang
   const router = useRouter();
   const go = (href: string) => { onOpenChange(false); router.push(href); };
 
+  // CONNECT — query the live /search as the user types (debounced ~200ms). Under NEXT_PUBLIC_USE_FIXTURES=1 or on
+  // a live error we drop `live` to null and render the baked fixture path below; we never invent results.
+  const [query, setQuery] = useState("");
+  const [live, setLive] = useState<SearchResults | null>(null);
+  useEffect(() => {
+    if (USE_FIXTURES) return; // fixture path only; no network
+    const q = query.trim();
+    if (q.length < 2) { setLive(null); return; }
+    let alive = true;
+    const t = setTimeout(() => {
+      searchLive(q)
+        .then((r) => { if (alive) setLive(r); })
+        .catch(() => { if (alive) setLive(null); }); // degrade to the fixture render, never to blank
+    }, 200);
+    return () => { alive = false; clearTimeout(t); };
+  }, [query]);
+  const showLive = live != null && (live.matches.length > 0 || live.teams.length > 0);
+
   return (
     <Command.Dialog
       open={open}
@@ -46,15 +69,31 @@ export function CommandMenu({ open, onOpenChange }: { open: boolean; onOpenChang
     >
       <div className="flex items-center gap-2 border-b border-hairline px-4">
         <Search size={16} strokeWidth={2} className="shrink-0 text-lo" aria-hidden />
-        <Command.Input placeholder="Search matches, traders, pages…" className="h-12 w-full bg-transparent text-body text-hi placeholder:text-lo outline-none" />
+        <Command.Input value={query} onValueChange={setQuery} placeholder="Search matches, traders, pages…" className="h-12 w-full bg-transparent text-body text-hi placeholder:text-lo outline-none" />
         <kbd className="num rounded bg-bg px-1 py-0.5 text-label text-lo ring-1 ring-inset ring-hairline">esc</kbd>
       </div>
 
       <Command.List className="max-h-[54vh] overflow-y-auto p-2 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-label [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-tag [&_[cmdk-group-heading]]:text-lo">
         <Command.Empty className="px-3 py-8 text-center text-body text-lo">No results.</Command.Empty>
 
+        {showLive && live!.teams.length > 0 && (
+          <Command.Group heading="Teams">
+            {live!.teams.map((t) => (
+              <Command.Item
+                key={t.name}
+                value={t.name}
+                onSelect={() => go(routes.board)}
+                className="flex cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-body text-hi data-[selected=true]:bg-hairline/60"
+              >
+                <TeamCrest code={t.code} size={18} />
+                <span className="truncate">{t.name}</span>
+              </Command.Item>
+            ))}
+          </Command.Group>
+        )}
+
         <Command.Group heading="Matches">
-          {MARKETS.map((m) => (
+          {(showLive ? live!.matches : MARKETS).map((m) => (
             <MatchCommandItem key={m.matchId} market={m} onSelect={() => go(routes.match(m.matchId))} />
           ))}
         </Command.Group>

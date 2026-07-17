@@ -9,7 +9,7 @@ import { PriceVoid } from "./PriceVoid";
 import { PriceScrub } from "./PriceScrub";
 import { VelocityBand } from "./VelocityBand";
 import { FlowFieldLazy } from "./FlowFieldLazy";
-import { WorldGlobeLazy } from "./WorldGlobeLazy";
+import { CrestWall } from "./CrestWall";
 import { BoothQuotes } from "./BoothQuotes";
 import { FreeCredits } from "./FreeCredits";
 import { CrowdBand } from "./CrowdBand";
@@ -17,7 +17,6 @@ import { FootballExperience } from "./FootballExperience";
 import { ConsumerBento } from "./ConsumerBento";
 import { DribbleSceneLazy } from "./DribbleSceneLazy";
 import { NumberTicker } from "../../components/ui/NumberTicker";
-import { HyperText } from "../../components/vendor/magicui/hyper-text";
 import { Highlighter } from "../../components/vendor/magicui/highlighter";
 
 // The long landing (ADR-069): the kept notio hero, then the full football-first scroll story below it.
@@ -50,8 +49,12 @@ export function LandingLong() {
               <p data-arrive-item className="text-label font-semibold uppercase tracking-caps text-lo">
                 Football, priced live
               </p>
+              {/* Denies nothing: the old line was "This isn't a terminal", on a page whose nav, hero and footer
+                  say "Open the terminal" nine times — the product's own flagship surface, disowned above the
+                  fold. It also ran the identical formula to FootballExperience's "This isn't a stats page. It's
+                  the match, priced live." two screens down. Say what the scene shows instead. */}
               <h2 data-arrive-item id="scene-h" className="mt-4 max-w-[24ch] font-display text-section font-bold text-hi">
-                This isn&apos;t a terminal — it&apos;s football, priced live.
+                The game moves. The price moves with it.
               </h2>
               <p data-arrive-item className="mt-5 max-w-[52ch] text-strong leading-relaxed text-lo">
                 A run, a shot, a goal — and the price moves before the crowd comes down. Watch the
@@ -73,8 +76,11 @@ export function LandingLong() {
               className="mx-auto grid w-full max-w-[1180px] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_minmax(380px,440px)] lg:items-center lg:gap-16 lg:py-24"
             >
               <div>
+                {/* Plain type, by design: a scramble on the heading fights the one thing the section is asking
+                    you to read (the panel landing a real goal beside it), and garbles the words for the ~700ms
+                    a visitor spends deciding to look. The motion belongs to the market, not the h2. */}
                 <h2 data-arrive-item id="loop-h" className="max-w-[14ch] font-display text-section font-bold text-hi">
-                  <HyperText duration={700}>Goal. Halt. Reprice.</HyperText>
+                  Goal. Halt. Reprice.
                 </h2>
                 <p data-arrive-item className="mt-5 max-w-[48ch] text-strong leading-relaxed text-lo">
                   A goal freezes the market for a beat: the halt. Prices land at the new reality, the Booth
@@ -151,10 +157,14 @@ export function LandingLong() {
           {/* the Booth's own lines from the featured market — the voice that explains every swing */}
           <BoothQuotes />
 
-          {/* 7 — THE WHOLE TOURNAMENT: the numbers ARE the headline; the dotted globe marks MetLife */}
+          {/* 7 — THE WHOLE TOURNAMENT: the numbers ARE the headline; the wall of 48 real crests makes
+              "every one a market" literal (it replaced a dotted globe — see CrestWall). */}
           <section aria-labelledby="numbers-h" className="border-b border-hairline">
             <h2 id="numbers-h" className="sr-only">World Cup 2026 in numbers</h2>
-            <div data-arrive className="mx-auto grid w-full max-w-[1180px] items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_340px] lg:gap-16 lg:py-20">
+            {/* The stats column was 1fr (~800px) for four short numbers, leaving "104" and "48" stranded ~590px
+                apart with a canyon between them and the visual. Cap it and give the recovered width to the wall,
+                which now needs it to show the group structure. */}
+            <div data-arrive className="mx-auto grid w-full max-w-[1180px] items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,460px)_1fr] lg:gap-16 lg:py-20">
               <dl className="grid grid-cols-2 gap-x-6 gap-y-10">
                 {(
                   [
@@ -170,8 +180,9 @@ export function LandingLong() {
                   </div>
                 ))}
               </dl>
-              <div data-arrive-item className="mx-auto hidden h-[340px] w-[340px] lg:block">
-                <WorldGlobeLazy className="h-full w-full" />
+              {/* shows at every breakpoint — the globe was lg-only, so phones got no visual at all here */}
+              <div data-arrive-item className="mx-auto w-full max-w-[460px]">
+                <CrestWall />
               </div>
             </div>
           </section>

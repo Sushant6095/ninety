@@ -130,7 +130,11 @@ export function useHaltSequence(scope: RefObject<HTMLElement | null>, actions: H
         // a FULL crossing (120 died at ~73% and popped out). Constant motion → linear, not the expo-out default.
         tl.set(sweep, { autoAlpha: 1 }, AT.sweep);
         tl.fromTo(sweep, { xPercent: -100 }, { xPercent: 300, duration: D.sweep, ease: "none" }, AT.sweep);
-        tl.to(wash, { autoAlpha: 1, duration: D.freeze }, AT.sweep + 0.06);
+        // The wash IS the halted state made visible, so it may never appear before that state is true: it rides
+        // AT.freeze (the beat halt() fires), not sweep+0.06. Leading it by ~110ms painted the amber HALTED
+        // watermark over a header still reading "Live" — the exact contradiction the law names. Still lands
+        // behind the sweep band (which travels until AT.sweep + D.sweep), so the designed look is unchanged.
+        tl.to(wash, { autoAlpha: 1, duration: D.freeze }, AT.freeze);
         tl.set(sweep, { autoAlpha: 0 }, AT.sweep + D.sweep);
 
         // 3 · FREEZE (+250ms) — view HALTED (strip under the score, cells lock, panel disables), mute + dim, spread blows out
@@ -160,7 +164,11 @@ export function useHaltSequence(scope: RefObject<HTMLElement | null>, actions: H
         tl.set(proxy, { v: SPREAD_WIDE }, AT.resume);
         tl.to(fill, { scaleX: 1, duration: D.decay }, AT.resume);
         tl.to(proxy, { v: SPREAD_NORMAL, duration: D.decay, onUpdate: () => setSpreadLabel(proxy.v) }, AT.resume);
-        tl.to([...wash, ...spread], { autoAlpha: 0, duration: D.decay }, AT.resume);
+        // The wash clears WITH the resume, not on the spread's 1.0s walk-back. Riding D.decay left the amber
+        // HALTED wash painted over a header that already read "Live" for ~670ms every replay. The spread is a
+        // different claim (liquidity returning, genuinely gradual) and keeps its slow decay.
+        tl.to(wash, { autoAlpha: 0, duration: D.freeze }, AT.resume);
+        tl.to(spread, { autoAlpha: 0, duration: D.decay }, AT.resume);
 
         tlRef.current = tl;
         autoplayRef.current = gsap.delayedCall(AUTOPLAY_DELAY, () => tl.play(0));

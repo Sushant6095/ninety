@@ -8,6 +8,7 @@ from .bus import Bus
 from .config import B0, TOPIC_MATCH_EVENTS, TOPIC_ODDS_RAW, TOPIC_PRICES_MARKS
 from .hazard import HazardModel
 from .pricing import env_seconds, market_id_of, tick_to_mark
+from .synth_marks import SynthAggregator, classify_tick
 
 log = logging.getLogger("cortex")
 
@@ -15,6 +16,7 @@ log = logging.getLogger("cortex")
 def run(bus: Bus | None = None, b0: float = B0) -> None:
     bus = bus or Bus()
     hazards: dict[str, HazardModel] = {}
+    synth = SynthAggregator(b0=b0)  # ADR-072: per-fixture O/U + AH -> synthesized 1X2 mark
 
     def on_odds(env: dict) -> None:
         mid = market_id_of(env)
@@ -22,6 +24,21 @@ def run(bus: Bus | None = None, b0: float = B0) -> None:
         mark = tick_to_mark(env, hazard_model=hz, b0=b0)
         if mark is not None:
             bus.publish(TOPIC_PRICES_MARKS, mark["match_id"], mark)
+        # ADR-072: the free feed carries no 1X2 book — fold this tick's Over/Under or Asian-handicap into the
+        # fixture's book pair and, once BOTH are present, publish the synthesized 1X2 mark the engine trades.
+        payload = env.get("payload", {})
+        fixture = str(payload.get("fixtureId") or env.get("match_id") or "")
+        cls = classify_tick(payload)
+        if fixture and cls is not None:
+            kind, line, p = cls
+            if kind == "ou":
+                synth.update_ou(fixture, p, line)
+            else:
+                synth.update_ah(fixture, p, line)
+            hazard = hz.value(env_seconds(env))
+            synth_env = synth.mark_envelope(fixture, source_seq=env.get("source_seq", 0), hazard=hazard)
+            if synth_env is not None:
+                bus.publish(TOPIC_PRICES_MARKS, synth_env["match_id"], synth_env)
 
     def on_event(env: dict) -> None:
         # a goal spikes hazard for every market of that fixture; minute drives late-game scaling

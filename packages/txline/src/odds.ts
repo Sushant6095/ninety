@@ -14,7 +14,7 @@ export const OddsTick = z
     SuperOddsType: z.string().optional(),
     GameState: z.union([z.string(), z.number()]).nullable().optional(),
     InRunning: z.boolean().optional(),
-    MarketParameters: z.string().optional(),
+    MarketParameters: z.string().nullable().optional(), // devnet O1 sends null here (verified 18257865) — was .optional() only, which threw and dropped ALL odds for the fixture
     MarketPeriod: z.string().nullable().optional(),
     PriceNames: z.array(z.string()).optional(), // e.g. ["1","X","2"]
     Prices: z.array(z.number()).optional(), // parallel to PriceNames

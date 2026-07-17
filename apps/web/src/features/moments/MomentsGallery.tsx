@@ -5,16 +5,20 @@ import { AppShell } from "../../components/ui/AppShell";
 import { MomentCard } from "../../components/ui/MomentCard";
 import { MomentHero } from "../../components/ui/MomentHero";
 import { routes } from "../../lib/routes";
-import { MOMENTS, rarityOf, swingOf, type Rarity } from "../../lib/moments";
+import { rarityOf, swingOf, type Rarity } from "../../lib/moments";
+import { useLive } from "../../lib/data/useLive";
+import { getMomentList, MOMENTS } from "../../lib/data/moments";
 
 type Tab = "All" | Rarity;
 const TABS: Tab[] = ["All", "Legendary", "Epic", "Rare", "Common"];
 
 export function MomentsGallery() {
   const [tab, setTab] = useState<Tab>("All");
+  // Live GET /moments (empty today → graceful empty state); MOMENTS is the offline-mode fallback only.
+  const { data: moments } = useLive(() => getMomentList(), MOMENTS);
   // Moment of the day = the biggest swing; it headlines the hero and is demoted out of the grid.
-  const hero = [...MOMENTS].sort((a, b) => Math.abs(swingOf(b)) - Math.abs(swingOf(a)))[0];
-  const rest = MOMENTS.filter((m) => m.id !== hero.id);
+  const hero = moments.length ? [...moments].sort((a, b) => Math.abs(swingOf(b)) - Math.abs(swingOf(a)))[0] : null;
+  const rest = hero ? moments.filter((m) => m.id !== hero.id) : [];
   const rows = tab === "All" ? rest : rest.filter((m) => rarityOf(m) === tab);
 
   return (
@@ -25,39 +29,49 @@ export function MomentsGallery() {
           <p className="mt-1 text-body text-lo">The swings that repriced a market — captured, ranked by size, and proved on-chain.</p>
         </div>
 
-        {hero && <MomentHero m={hero} />}
-
-        <h2 className="mb-3 mt-8 text-label font-semibold uppercase tracking-label text-lo">More moments</h2>
-
-        <div role="tablist" aria-label="Filter by rarity" className="mb-4 inline-flex flex-wrap gap-1 rounded-chip bg-surface p-1 ring-1 ring-inset ring-hairline">
-          {TABS.map((t) => {
-            const active = tab === t;
-            return (
-              <button
-                key={t}
-                type="button"
-                role="tab"
-                aria-selected={active}
-                onClick={() => setTab(t)}
-                className={`cursor-pointer rounded-chip px-3 py-1.5 text-caption font-medium transition-colors duration-200 ${active ? "bg-hairline/60 text-hi" : "text-lo hover:text-hi"}`}
-              >
-                {t}
-              </button>
-            );
-          })}
-        </div>
-
-        {rows.length === 0 ? (
-          <div className="grid place-items-center rounded-card border border-hairline bg-surface px-4 py-16 text-center">
-            <p className="text-body text-lo">No {tab.toLowerCase()} moments yet.</p>
-            <button type="button" onClick={() => setTab("All")} className="mt-2 cursor-pointer text-body text-up transition-opacity duration-200 hover:opacity-80">Show all →</button>
+        {moments.length === 0 ? (
+          <div className="grid place-items-center rounded-card border border-hairline bg-surface px-4 py-20 text-center">
+            <p className="text-heading font-semibold text-hi">No moments yet</p>
+            <p className="mt-1 max-w-sm text-body text-lo">The first market-moving swing gets captured here — check back once tonight&#39;s matches are live.</p>
+            <Link href={routes.matches} className="mt-3 text-body text-up transition-opacity duration-200 hover:opacity-80">Watch tonight&#39;s matches →</Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {rows.map((m) => (
-              <MomentCard key={m.id} m={m} />
-            ))}
-          </div>
+          <>
+            {hero && <MomentHero m={hero} />}
+
+            <h2 className="mb-3 mt-8 text-label font-semibold uppercase tracking-label text-lo">More moments</h2>
+
+            <div role="tablist" aria-label="Filter by rarity" className="mb-4 inline-flex flex-wrap gap-1 rounded-chip bg-surface p-1 ring-1 ring-inset ring-hairline">
+              {TABS.map((t) => {
+                const active = tab === t;
+                return (
+                  <button
+                    key={t}
+                    type="button"
+                    role="tab"
+                    aria-selected={active}
+                    onClick={() => setTab(t)}
+                    className={`cursor-pointer rounded-chip px-3 py-1.5 text-caption font-medium transition-colors duration-200 ${active ? "bg-hairline/60 text-hi" : "text-lo hover:text-hi"}`}
+                  >
+                    {t}
+                  </button>
+                );
+              })}
+            </div>
+
+            {rows.length === 0 ? (
+              <div className="grid place-items-center rounded-card border border-hairline bg-surface px-4 py-16 text-center">
+                <p className="text-body text-lo">No {tab.toLowerCase()} moments yet.</p>
+                <button type="button" onClick={() => setTab("All")} className="mt-2 cursor-pointer text-body text-up transition-opacity duration-200 hover:opacity-80">Show all →</button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {rows.map((m) => (
+                  <MomentCard key={m.id} m={m} />
+                ))}
+              </div>
+            )}
+          </>
         )}
 
         <p className="mt-6 text-caption text-lo">

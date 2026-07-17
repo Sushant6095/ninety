@@ -24,6 +24,7 @@ model User {
   positions    Position[]
   orders       Order[]
   credits      CreditLedger[]
+  picks        Pick[]
 }
 
 model Match {
@@ -49,6 +50,7 @@ model Market {
   match          Match      @relation(fields: [matchId], references: [id])
   orders         Order[]
   positions      Position[]
+  moments        Moment[]
 }
 
 model Order {
@@ -114,10 +116,34 @@ model Settlement {
 }
 
 model Moment {
-  id       String  @id @default(uuid())
-  marketId String
-  imageUri String
-  mintSig  String?
+  id        String   @id @default(uuid())
+  marketId  String
+  imageUri  String
+  mintSig   String? // Solscan cNFT mint signature; null until minted. The on-chain proof surface.
+  swing     Float? // |Δ fair| that triggered this moment (bps), for "biggest-swing" ordering; null on legacy rows
+  createdAt DateTime @default(now()) // moments were previously unordered (no timestamp) — audit gap (ADR-072)
+  market    Market   @relation(fields: [marketId], references: [id])
+
+  @@index([createdAt])
+}
+
+// The Next-Goal game (ADR-072): a free, one-tap PREDICTION — which side scores the next goal — resolved by the
+// real TxLINE goal event. Play-money to the core: no credits are risked, there is no stake and no payout. A
+// correct pick earns points/streak (leaderboard glory), nothing more. NEVER bet/stake/odds/wager in this model.
+model Pick {
+  id         String    @id @default(uuid())
+  userId     String
+  matchId    String // txline match id — resolves against the match's next goal event
+  kind       String    @default("next_goal") // room for future one-tap games (next_card, next_corner…)
+  choice     String // "home" | "away" | "none" (no goal before the window closes)
+  status     String    @default("OPEN") // OPEN | WON | LOST | VOID
+  openMinute Int? // match minute when the pick was made (from TxLINE); null pre-match
+  createdAt  DateTime  @default(now())
+  resolvedAt DateTime?
+  user       User      @relation(fields: [userId], references: [id])
+
+  @@index([matchId, status])
+  @@index([userId, createdAt])
 }
 
 model ChainEvent {

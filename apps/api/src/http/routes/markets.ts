@@ -52,11 +52,68 @@ function marketView(m: MarketWithMatch, mark?: MarkSnapshot | null) {
   };
 }
 
+// --- OpenAPI schemas (additive, ADR docs at GET /docs). Response objects set additionalProperties:true so the
+// serializer passes every field through unchanged — the schema documents the shape, it never filters it. Request
+// schemas stay permissive (no `required`, additionalProperties:true) so they never reject what the handler accepts. ---
+const marketViewSchema = {
+  type: "object",
+  additionalProperties: true,
+  properties: {
+    marketId: { type: "string" },
+    matchId: { type: "string" },
+    kind: { type: "string" },
+    status: { type: "string", description: "SCHEDULED | OPEN | LIVE | HALTED | RESOLVING | SETTLED | VOIDED" },
+    home: { type: "string", description: "full team name (client derives code/crest from baked wc26)" },
+    away: { type: "string" },
+    stage: { type: "string" },
+    kickoffAt: { type: "string", format: "date-time" },
+    minute: { type: "integer", nullable: true, description: "live clock minute (TxLINE); null pre-match/settled" },
+    score: { type: "object", nullable: true, additionalProperties: true, properties: { home: { type: "integer" }, away: { type: "integer" } } },
+    mark: { type: "object", nullable: true, additionalProperties: { type: "number" }, description: "outcome → probability 0..1; null unless a COMPLETE H/D/A mark exists (ADR-071)" },
+    hazard: { type: "number", nullable: true },
+    markTs: { type: "number", nullable: true },
+    settledOutcome: { type: "string", nullable: true },
+    settleSig: { type: "string", nullable: true, description: "raw Solana settle signature; client builds the Solscan URL" },
+  },
+};
+const ammSchema = {
+  type: "object",
+  additionalProperties: true,
+  properties: {
+    q: { type: "array", nullable: true, items: { type: "number" }, description: "mark-implied q (advisory); null if the mark is incomplete" },
+    b: { type: "number" },
+    spread_mult: { type: "number" },
+    markImplied: { type: "boolean" },
+  },
+};
+const quoteSchema = {
+  type: "object",
+  additionalProperties: true,
+  properties: {
+    outcome: { type: "string", enum: ["H", "D", "A"] },
+    side: { type: "string", enum: ["buy", "sell"] },
+    size: { type: "number" },
+    cost: { type: "number", description: "credits (advisory; server price wins at fill)" },
+    avgPx: { type: "number", description: "0..100" },
+    maxPayout: { type: "number", description: "credits" },
+    spreadMult: { type: "number" },
+    markImplied: { type: "boolean" },
+  },
+};
+const errorSchema = { type: "object", additionalProperties: true, properties: { error: { type: "string" } } };
+
 export function registerMarketRoutes(app: FastifyInstance): void {
   const grantStore = new PrismaGrantStore(prisma);
 
   // GET /markets — the discovery list (Home). Public. Postgres market list ⨝ live marks from Redis.
-  app.get("/markets", async () => {
+  app.get("/markets", {
+    schema: {
+      tags: ["markets"],
+      summary: "List markets (discovery)",
+      description: "Public. Every market with its live 1X2 mark. An incomplete mark renders unpriced (mark:null), never a fabricated even book (ADR-071). Play-money: prices/credits, never bet/stake/odds/wager.",
+      response: { 200: { type: "object", additionalProperties: true, properties: { markets: { type: "array", items: marketViewSchema } } } },
+    },
+  }, async () => {
     const markets = (await prisma.market.findMany({ include: { match: true } })) as MarketWithMatch[];
     const marks = await getMarks(redis, markets.map((m) => m.id));
     return { markets: markets.map((m) => marketView(m, marks.get(m.id))) };
@@ -64,7 +121,20 @@ export function registerMarketRoutes(app: FastifyInstance): void {
 
   // GET /markets/:matchId — match detail. Auth-gated; grants the per-match 1,000 credits on FIRST open
   // (idempotent per user·match, prompt 25). Returns {status, mark, amm} — the shape the trade sheet prices from.
-  app.get("/markets/:matchId", async (req, reply) => {
+  app.get("/markets/:matchId", {
+    schema: {
+      tags: ["markets"],
+      summary: "Market detail (mark-implied AMM)",
+      description: "Auth-gated. Grants the per-match 1,000 credits on FIRST open (idempotent per user·match). Returns the market view, whether credits were just granted, and the mark-implied AMM the trade sheet prices from (amm.q is advisory; null when the mark is incomplete). Play-money — credits only.",
+      security: [{ bearerAuth: [] }],
+      params: { type: "object", additionalProperties: true, properties: { matchId: { type: "string" } } },
+      response: {
+        200: { type: "object", additionalProperties: true, properties: { market: marketViewSchema, granted: { type: "boolean" }, amm: ammSchema } },
+        401: errorSchema,
+        404: errorSchema,
+      },
+    },
+  }, async (req, reply) => {
     const user = authFromBearer(req.headers.authorization);
     if (!user) return reply.code(401).send({ error: "unauthenticated" });
     const { matchId } = req.params as { matchId: string };
@@ -86,7 +156,25 @@ export function registerMarketRoutes(app: FastifyInstance): void {
 
   // GET /markets/:matchId/quote?outcome=A&size=60&side=buy — advisory LMSR cost preview (ADR-046). Auth-gated.
   // Reconstructs mark-implied q from the live mark and reuses the pure engine amm.buyCost. Server price wins at fill.
-  app.get("/markets/:matchId/quote", async (req, reply) => {
+  app.get("/markets/:matchId/quote", {
+    schema: {
+      tags: ["markets"],
+      summary: "Advisory trade quote (LMSR cost preview)",
+      description: "Auth-gated. Reconstructs a mark-implied cost preview for `size` shares of `outcome` (ADR-046). Advisory only — the server price wins at fill. 409 when the market is unpriced (incomplete mark), SETTLED or VOIDED. Play-money — credits only.",
+      security: [{ bearerAuth: [] }],
+      params: { type: "object", additionalProperties: true, properties: { matchId: { type: "string" } } },
+      querystring: {
+        type: "object",
+        additionalProperties: true,
+        properties: {
+          outcome: { type: "string", enum: ["H", "D", "A"] },
+          size: { type: "integer", description: "shares to price (1..100000)" },
+          side: { type: "string", description: "buy or sell; anything other than 'sell' is treated as buy" },
+        },
+      },
+      response: { 200: { type: "object", additionalProperties: true, properties: { quote: quoteSchema } }, 400: errorSchema, 401: errorSchema, 404: errorSchema, 409: errorSchema },
+    },
+  }, async (req, reply) => {
     const user = authFromBearer(req.headers.authorization);
     if (!user) return reply.code(401).send({ error: "unauthenticated" });
     const { matchId } = req.params as { matchId: string };

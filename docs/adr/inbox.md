@@ -19,3 +19,17 @@ During the REBUILD Part 2.1 (fixing hook paths), `.claude/settings.json` became 
   edit to it; never leave it unparseable."
 - 2026-07-15T11:52:32Z compaction occurred — if a decision was made this session and not yet ADR'd, capture it now (/adr).
 - 2026-07-15T18:19:47Z compaction occurred — if a decision was made this session and not yet ADR'd, capture it now (/adr).
+- 2026-07-16T15:04:39Z compaction occurred — if a decision was made this session and not yet ADR'd, capture it now (/adr).
+
+## 2026-07-17 · ADR-071 written — live H/D/A synthesis + POST /orders intake (Phase 1+2, H/D/A contract)
+Decision recorded in full at `docs/adr/ADR-071-live-outcome-synthesis-and-orders-intake.md`. Live feed is O/U-only
+(ADR-018); we keep the H/D/A product face and synthesize it in cortex (dixon_coles, quant-reviewer-gated, replay
+fallback). Never a fabricated 33/33/33 book. POST /orders wired to the single in-proc engine (handle was discarded);
+GET /orders added; contract fields (minute/score, leaderboard handle, portfolio rename) aligned. tsc + 145 tests green.
+**Follow-ups that each need their OWN ADR (not yet written):**
+- ADR-042 fill/mark parity: engine fills off its own q, not the mark ("guarded engine-emit") — quant-reviewer-gated.
+- Balance TOCTOU: caller-supplied balance + async ledger lag → concurrent overspend possible. Needs a per-user
+  reservation / balance authority. Play-money-bounded for now.
+- Reject-projection: a reject after the 5s applied-timeout is not persisted (GET /orders won't show it).
+- Read-model ×100 scaling: /quote + /portfolio scale price ×100 but the engine/ledger/orders don't — reconcile
+  "a share pays 1 or 100" once, with the quant-reviewer.

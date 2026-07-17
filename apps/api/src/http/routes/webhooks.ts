@@ -23,7 +23,16 @@ const settledEnvelope = (e: { matchId: string; result: string; sig: string }): E
 };
 
 export function registerWebhookRoutes(app: FastifyInstance, bus: Bus): void {
-  app.post("/webhooks/helius", async (req, reply) => {
+  // Body is a Helius enhanced payload (array of txs, or { transactions: [...] }) — left unschematised so the
+  // array form is never rejected. Auth is a shared secret (Authorization header or ?secret=), not a bearer JWT.
+  app.post("/webhooks/helius", {
+    schema: {
+      tags: ["system"],
+      summary: "Helius settlement webhook",
+      description: "Verifies the shared secret (Authorization header or ?secret=), records settle txs to chain_events (idempotent by sig), and publishes a settled envelope to the bus. Not a bearer route.",
+      response: { 200: { type: "object", additionalProperties: true, properties: { ok: { type: "boolean" } } }, 401: { type: "object", additionalProperties: true, properties: { error: { type: "string" } } } },
+    },
+  }, async (req, reply) => {
     const secret = (req.headers.authorization as string | undefined) ?? (req.query as { secret?: string }).secret;
     if (!verifyHeliusSecret(secret, process.env.HELIUS_WEBHOOK_SECRET)) return reply.code(401).send({ error: "unauthorized" });
     const body = req.body as HeliusTx[] | { transactions?: HeliusTx[] };

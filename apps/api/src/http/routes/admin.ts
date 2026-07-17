@@ -18,7 +18,19 @@ function tokenOk(provided: unknown): boolean {
 export function registerAdminRoutes(app: FastifyInstance, bus: Bus): void {
   // POST /admin/replay {match_id, speed} → replay a finished fixture through the ingest plane at Nx.
   // Play-money law: replay only re-publishes historical events; it never mints credits or settles.
-  app.post("/admin/replay", async (req, reply) => {
+  app.post("/admin/replay", {
+    schema: {
+      tags: ["system"],
+      summary: "Replay a finished fixture",
+      description: "Admin-gated by the `x-admin-token` header (constant-time compared to ADMIN_TOKEN; unset → every call is rejected). Publishes a replay_request onto the system plane; worker-ingest runs the replay. Play-money law: replay only re-publishes historical events — it never mints credits or settles.",
+      body: { type: "object", additionalProperties: true, properties: { match_id: { type: "string" }, speed: { type: "number", description: "replay speed multiplier (default 10)" } } },
+      response: {
+        202: { type: "object", additionalProperties: true, properties: { accepted: { type: "boolean" }, match_id: { type: "string" }, speed: { type: "number" } } },
+        400: { type: "object", additionalProperties: true, properties: { error: { type: "string" } } },
+        401: { type: "object", additionalProperties: true, properties: { error: { type: "string" } } },
+      },
+    },
+  }, async (req, reply) => {
     if (!tokenOk(req.headers["x-admin-token"])) return reply.code(401).send({ error: "unauthorized" });
 
     const body = (req.body ?? {}) as { match_id?: unknown; speed?: unknown };

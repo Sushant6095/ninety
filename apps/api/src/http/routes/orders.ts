@@ -49,9 +49,73 @@ const isFill = (e: EngineEffect): e is Extract<EngineEffect, { type: "fill" }> =
 const logErr = (evt: string, ctx: Record<string, unknown>, err: unknown): void =>
   console.error(JSON.stringify({ evt, ...ctx, msg: String((err as Error)?.message ?? err) }));
 
+// --- OpenAPI schemas (additive). Response objects set additionalProperties:true so nothing is stripped; request
+// body stays permissive so the handler's own typed validation remains the gate. ---
+const errorSchema = { type: "object", additionalProperties: true, properties: { error: { type: "string" }, code: { type: "string", description: "typed engine reject code (INVALID_SIZE, MARKET_HALTED, INSUFFICIENT_BALANCE, …)" } } };
+const orderResultSchema = {
+  type: "object",
+  additionalProperties: true,
+  properties: {
+    accepted: { type: "boolean" },
+    matchId: { type: "string" },
+    outcome: { type: "string", enum: ["H", "D", "A"] },
+    side: { type: "string", enum: ["buy", "sell"] },
+    fill: { type: "object", additionalProperties: true, properties: { size: { type: "number" }, price: { type: "number" }, cost: { type: "number" }, fee: { type: "number" } }, description: "engine-native credits (~0..1/share; see ADR-071 scaling note)" },
+    note: { type: "string" },
+  },
+};
+const orderRowSchema = {
+  type: "object",
+  additionalProperties: true,
+  properties: {
+    id: { type: "string" },
+    ts: { type: "string", format: "date-time" },
+    matchId: { type: "string" },
+    home: { type: "string" },
+    away: { type: "string" },
+    outcome: { type: "string", description: "H | D | A" },
+    side: { type: "string", description: "buy | sell" },
+    size: { type: "integer" },
+    filled: { type: "integer" },
+    status: { type: "string" },
+    avgPrice: { type: "number", nullable: true, description: "engine-native (0..1); null until filled" },
+    credits: { type: "number" },
+    fee: { type: "number" },
+  },
+};
+
 export function registerOrderRoutes(app: FastifyInstance, engine: Engine | null): void {
   // POST /orders — place a trade. Body: { matchId, outcome: "H"|"D"|"A", side: "buy"|"sell", size: int, limit? }
-  app.post("/orders", async (req, reply) => {
+  app.post("/orders", {
+    schema: {
+      tags: ["orders"],
+      summary: "Place a trade",
+      description: "Auth-gated. Submits the trade on the market's single-writer engine lane (journal-then-ack). 200 with the fill (engine-native credits) on success; a typed 4xx on a rejected trade; 202 {status:'processing'} if the lane is slow (the order is journaled — read the result from GET /orders or GET /portfolio). Play-money: credits move via the ledger — there is no balance/deposit/payout, and never bet/stake/odds/wager.",
+      security: [{ bearerAuth: [] }],
+      body: {
+        type: "object",
+        additionalProperties: true,
+        properties: {
+          matchId: { type: "string" },
+          outcome: { type: "string", enum: ["H", "D", "A"] },
+          side: { type: "string", enum: ["buy", "sell"] },
+          size: { type: "integer", description: "shares (1..100000)" },
+          limit: { type: "number", description: "optional limit price" },
+        },
+      },
+      response: {
+        200: orderResultSchema,
+        202: { type: "object", additionalProperties: true, properties: { accepted: { type: "boolean" }, matchId: { type: "string" }, status: { type: "string" } } },
+        400: errorSchema,
+        401: errorSchema,
+        404: errorSchema,
+        409: errorSchema,
+        422: errorSchema,
+        429: errorSchema,
+        503: errorSchema,
+      },
+    },
+  }, async (req, reply) => {
     const user = authFromBearer(req.headers.authorization);
     if (!user) return reply.code(401).send({ error: "unauthenticated" });
     if (!engine) return reply.code(503).send({ error: "engine unavailable" }); // no redis → no single writer wired
@@ -151,7 +215,16 @@ export function registerOrderRoutes(app: FastifyInstance, engine: Engine | null)
   });
 
   // GET /orders — the caller's order history (open + filled), newest first. Pure Postgres read, no engine.
-  app.get("/orders", async (req, reply) => {
+  app.get("/orders", {
+    schema: {
+      tags: ["orders"],
+      summary: "Order history",
+      description: "Auth-gated. The caller's orders (open + filled), newest first. avgPrice/credits/fee are engine-native units. Play-money — credits only.",
+      security: [{ bearerAuth: [] }],
+      querystring: { type: "object", additionalProperties: true, properties: { limit: { type: "string", description: "max rows (1..200; default 100); non-numeric falls back to the default" } } },
+      response: { 200: { type: "object", additionalProperties: true, properties: { orders: { type: "array", items: orderRowSchema } } }, 401: errorSchema },
+    },
+  }, async (req, reply) => {
     const user = authFromBearer(req.headers.authorization);
     if (!user) return reply.code(401).send({ error: "unauthenticated" });
     const limit = Math.min(200, Math.max(1, Number((req.query as { limit?: string }).limit) || 100));

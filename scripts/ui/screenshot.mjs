@@ -49,7 +49,6 @@ async function main() {
       const page = await browser.newPage({ viewport: size, deviceScaleFactor: 2 });
       const url = base + route;
       await page.goto(url, { waitUntil: "networkidle" });
-      if (settle) await page.waitForTimeout(settle);
       // Sections wrapped in <Reveal> only appear once an IntersectionObserver fires. A fullPage screenshot never
       // scrolls, so those sections stay at opacity 0 and the still shows a page that looks half-empty and broken
       // — the home board lost ~1900px of real content this way. Scroll the page through, then return to the top.
@@ -61,9 +60,14 @@ async function main() {
             await new Promise((r) => setTimeout(r, 120));
           }
           window.scrollTo(0, 0);
-          await new Promise((r) => setTimeout(r, 400));
         });
       }
+      // SETTLE **AFTER** the scroll-through, never before. An IO-gated choreography (the landing's LoopStage)
+      // only MOUNTS when the scroll reaches it, and then needs autoplay + timeline (~3.7s) to reach its resting
+      // frame. Settling first and shooting 400ms after the scroll photographed the market MID-STORY — the
+      // pre-goal frame (CAN 0–0, 41.0) that a visitor sees for barely a second — while the copy beside it read
+      // 61.4. That is the "verified" still that ships a contradiction. The resting state is the only honest shot.
+      if (settle) await page.waitForTimeout(settle);
       const path = `${outDir}/${name}.${key}.png`;
       // sm = above-the-fold (viewport) so the phone hero is judged as seen; md/lg/xl = fullPage.
       await page.screenshot({ path, fullPage: key !== "sm" });

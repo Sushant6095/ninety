@@ -22,6 +22,7 @@ export const EventType = z.enum([
   "card",
   "penalty",
   "action",
+  "open", // market opens for pre-match trading (SCHEDULED→OPEN); the deferred lifecycle event (ADR-073)
   "kickoff",
   "ht",
   "ft",

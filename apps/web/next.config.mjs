@@ -14,4 +14,12 @@ export default {
       { protocol: "https", hostname: "api.dicebear.com" }, // avatar fallback
     ],
   },
+  // CONNECT (Phase 2): same-origin proxy so BROWSER (client-component) fetches to the API avoid CORS — the API
+  // has no CORS headers, so a direct :3000→:4000 fetch is blocked and would silently fall back to fixtures.
+  // Client calls "/api/*" (same origin) → rewritten to the API. Server components fetch the API directly (no CORS).
+  // Target is env-driven so a Vercel deploy points at the deployed API.
+  async rewrites() {
+    const target = process.env.API_PROXY_TARGET ?? "http://localhost:4000";
+    return [{ source: "/api/:path*", destination: `${target}/:path*` }];
+  },
 };

@@ -208,6 +208,35 @@ export function settleSpark(matchId: string): void {
   emit();
 }
 
+/** Snap a match into the PRE-news frame a halt choreography rewinds to: one outcome anchored at `pct`, an
+ *  explicit score, and a FLAT River at that level — i.e. the market as it stood *before* the goal landed.
+ *
+ *  Why this exists: `rewindMatch` restores a match's SEED, which is only a pre-goal frame for a market whose
+ *  fixture is still goalless (the terminal's AUS–EGY). A market seeded *after* its goal (CAN–MAR: 1–0, 61.4)
+ *  rewinds to the POST frame, so a choreography starting there has nothing left to land and invents a second
+ *  goal instead. Callers derive PRE from the fixture (open price + score minus the goal) and snap to it here,
+ *  which is exactly what `HaltActions.reset` is documented to do: "snap mark+chart to PRE". */
+export function preGoalFrame(
+  matchId: string,
+  outcome: Outcome,
+  pct: number,
+  score: { home: number; away: number } | null,
+): void {
+  const s = map.get(matchId);
+  if (!s || s.minute == null) return;
+  const prices = anchor(s.prices, outcome, pct);
+  map.set(matchId, {
+    ...s,
+    prices,
+    score,
+    // Flat at the pre level: the cliff the goal draws must be the FIRST move on the tape, not the tail of a
+    // rise that already happened. A trace still ending at the post price would contradict the price cells.
+    spark: flatTrace(prices[s.riverOutcome] * 100, s.minute),
+    homeSpark: s.homeSpark ? flatTrace(prices.H * 100, s.minute) : undefined,
+  });
+  emit();
+}
+
 /** Rewind a match to its seeded opening frame, so a halt always replays from a known state (never from wherever
  *  the drift happened to leave it). Both surfaces' choreographies start here. */
 export function rewindMatch(matchId: string): void {

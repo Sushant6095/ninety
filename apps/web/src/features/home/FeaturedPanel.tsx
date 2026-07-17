@@ -5,13 +5,11 @@ import { MomentumRiver } from "../../components/ui/MomentumRiver";
 import { TeamCrest } from "../../components/ui/TeamCrest";
 import { LivePrice } from "../../components/ui/LivePrice";
 import {
-  useMatchLive, setMatchStatus, setScore, repriceMatch, settleSpark, rewindMatch, FULL_TIME,
+  useMatchLive, setMatchStatus, setScore, repriceMatch, settleSpark, rewindMatch, preGoalFrame, FULL_TIME,
 } from "../live/matchLiveStore";
 import { useHaltSequence, type HaltActions } from "../live/useHaltSequence";
 import { routes } from "../../lib/routes";
 import type { MarketRow, Outcome } from "../../lib/types";
-
-const HOME_STEP = 17; // points the home price jumps when the goal is confirmed
 
 function Cell({ label, price, lead, frozen }: { label: string; price: number; lead: boolean; frozen: boolean }) {
   const ring = frozen ? "bg-halt/5 ring-halt/40" : lead ? "bg-hairline/45 ring-hairline" : "bg-bg/60 ring-hairline/50";
@@ -40,28 +38,39 @@ export function FeaturedPanel({ market, replayNonce = 0 }: { market: MarketRow; 
   const lead: Outcome = mk.H >= mk.D && mk.H >= mk.A ? "H" : mk.A >= mk.D ? "A" : "D";
   const rising = spark.length > 1 && spark[spark.length - 1] >= spark[0];
 
-  // The goal the halt confirms: the home side score, and their price steps from wherever the market OPENED.
-  const openHome = (live?.openPrices.H ?? mk.H) * 100;
-  const seedScore = live ? null : market.score;
-  const homePost = Math.min(94, openHome + HOME_STEP);
+  // THE goal this market's fixture already encodes — replayed, not invented. The fixture states both ends of
+  // it: the tape OPENS at `spark[0]` (CAN 41), the mark now reads `market.mark` (61.4) and the score now reads
+  // `market.score` (1–0). So the goal to land is simply open → mark, (score − the home goal) → score.
+  //
+  // Deriving the post price by stepping the OPEN by a constant was the bug: on a market that had already run up
+  // (41 → 61.4 by 74'), open+17 = 58 lands BELOW the live 61.4, so the leader's price fell as they scored — and
+  // 58 contradicted every other 61.4 on the page. The fixture is the single source for both ends.
+  const homePre = (market.spark[0] ?? mk.H * 100);
+  const homePost = (market.mark?.H ?? mk.H) * 100;
+  const scorePost = market.score;
+  const scorePre = scorePost ? { home: Math.max(0, scorePost.home - 1), away: scorePost.away } : null;
 
   const sectionRef = useRef<HTMLElement>(null);
   const [, setBusy] = useState(false);
   const id = market.matchId;
   const haltActions = useMemo<HaltActions>(
     () => ({
-      reset: () => rewindMatch(id),
+      // "snap mark+chart to PRE, score before the goal" — rewind clears any drift, then PRE is set explicitly
+      // (a market seeded AFTER its goal rewinds to the post frame, so the seed alone is not a pre frame).
+      reset: () => {
+        rewindMatch(id);
+        preGoalFrame(id, "H", homePre, scorePre);
+      },
       halt: () => setMatchStatus(id, "HALTED"),
       land: () => {
         repriceMatch(id, "H", homePost);
-        const s = seedScore ?? { home: 1, away: 0 };
-        setScore(id, { home: s.home + 1, away: s.away });
+        if (scorePost) setScore(id, scorePost);
       },
       settle: () => settleSpark(id),
       resume: () => setMatchStatus(id, "LIVE"),
       busy: setBusy,
     }),
-    [id, homePost], // eslint-disable-line react-hooks/exhaustive-deps
+    [id, homePre, homePost], // eslint-disable-line react-hooks/exhaustive-deps
   );
   const { replay } = useHaltSequence(sectionRef, haltActions);
   // A bumped nonce re-fires the whole halt choreography — the landing uses it to replay the goal on
@@ -109,8 +118,13 @@ export function FeaturedPanel({ market, replayNonce = 0 }: { market: MarketRow; 
         </div>
         <div data-halt="flash" aria-hidden className="pointer-events-none invisible absolute inset-0 z-30 bg-halt opacity-0" />
         <div data-halt="sweep" aria-hidden className="pointer-events-none invisible absolute inset-y-0 left-0 z-30 w-1/3 bg-halt/50 opacity-0 blur-sm" />
+        {/* No minute on this glyph. It marks WHERE the price stepped (the live edge), which is not WHEN the goal
+            was scored: the panel re-enacts an earlier goal at the live edge, so stamping it with the live clock
+            ({minute}=74) claimed "Goal 74'" while the Moment card on the same board reads "The 38th minute:
+            David's goal". The cliff shows the move; the Moment owns the minute. (The terminal's own glyph in
+            BigRiver keeps its minute — there the goal genuinely lands at the live minute.) */}
         <div data-halt="cliff" aria-hidden className="num pointer-events-none invisible absolute right-2 top-1 z-30 rounded-md border border-up/50 bg-bg/90 px-1.5 py-0.5 text-label font-semibold uppercase tracking-wide text-hi opacity-0">
-          Goal {minute}&#39; · {market.homeCode}
+          Goal · {market.homeCode}
         </div>
       </div>
 

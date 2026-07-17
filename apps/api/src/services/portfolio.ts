@@ -7,7 +7,7 @@
 import type { PrismaClient } from "@prisma/client";
 import type { Redis } from "ioredis";
 import { getMarks } from "./markets-read";
-import { BAL_KEY } from "./projection";
+import { getBalance } from "./balance";
 import { hasCompleteFair } from "./quote";
 
 const PAYOUT_PER_SHARE = 100;
@@ -78,7 +78,7 @@ export async function getPortfolio(prisma: PrismaClient, redis: Redis, userId: s
   });
   const raw: RawPosition[] = rows.map((r) => ({ marketId: r.marketId, outcome: r.outcome, qty: r.qty, avgPrice: r.avgPrice }));
   const marks = await getMarks(redis, [...new Set(raw.map((r) => r.marketId))]);
-  const free = Number((await redis.get(BAL_KEY(userId))) ?? 0);
+  const free = await getBalance(prisma, userId); // ADR-003 authority: Σ CreditLedger.delta, not the stale bal: cache
   const base = computePortfolio(raw, marks, free);
   // Enrich each math row with its match identity (rows and base.positions are 1:1 in order).
   const positions: PortfolioPositionFull[] = base.positions.map((p, i) => ({
