@@ -1,0 +1,228 @@
+docs/adr/ADR-073-connect-read-model-live-board-terminal-pinned-cors-proxy.md
+  s_f0eded3307e978::t_55f1bdb97ddf7f 1-53
+packages/schema/src/events.test.ts
+  s_f0eded3307e978::t_2aecf30760f234 22
+apps/api/src/http/routes/events.ts
+  s_f0eded3307e978::t_84fc9f7d09b9d2 11-27
+  s_f0eded3307e978::t_75efb3a3591a59 35-44
+  s_f0eded3307e978::t_cb9f90b699fbdf 8-10
+  s_f0eded3307e978::t_8f11584fa40b7e 28-30,32-34
+  s_f0eded3307e978::t_f7d2113cca8a85 45-47
+  s_c2e9d06738ce82::t_6ed6b1ae641d10 1-7,31,48-50
+apps/api/src/http/server.ts
+  s_f0eded3307e978::t_597c8dad11b21a 28-64
+  s_f0eded3307e978::t_e1317bff31364a 2-3
+  s_f0eded3307e978::t_7989245eb455c2 12-15,73-76
+  s_f0eded3307e978::t_ea98461a26b506 16
+  s_f0eded3307e978::t_de96ea8c1d26b9 77
+  s_f0eded3307e978::t_e27113a598dd57 22,82
+apps/web/src/features/live/matchLiveStore.ts
+  s_7a4588856bfecd::t_a0a88d3c888c91 211-239
+apps/api/src/http/routes/portfolio.ts
+  s_f0eded3307e978::t_bdd1f6c7d9f0ee 9-46,48-56
+packages/txline/src/odds.ts
+  s_f0eded3307e978::t_0d773d18da5bfc 17
+scripts/ui/docs-shot.mjs
+  s_f0eded3307e978::t_ed90f7e2af5074 1-25
+apps/api/src/engine/market.ts
+  s_f0eded3307e978::t_0baa45fabefed2 172-173
+apps/web/src/features/live/useHaltSequence.ts
+  s_7a4588856bfecd::t_1e914bf2120dad 167-171
+  s_7a4588856bfecd::t_1f147133ee64fd 133-137
+apps/web/src/app/leaderboard/page.tsx
+  s_f0eded3307e978::t_7d21c8b7f3c679 2,4-10
+apps/api/package.json
+  s_f0eded3307e978::t_8f232ad409333a 4-9,11-21,23-28
+apps/web/src/lib/data/markets.ts
+  s_f0eded3307e978::t_4709f7ef36e40d 1-6,8-73,77-78,87
+  s_f0eded3307e978::t_c1ce75f3ca83e3 74-76,79-83,85-86
+  s_f0eded3307e978::t_f19e8af5b4cb08 84
+  s_f0eded3307e978::t_e3551a4282a294 7
+apps/web/src/components/ui/CommandMenu.tsx
+  s_f0eded3307e978::t_29e56b376c7e18 42-59
+  s_f0eded3307e978::t_26864b34751079 79-94,96
+  s_f0eded3307e978::t_106d8eb5647a65 2,11-12,14-18
+  s_f0eded3307e978::t_750fce0cd4f578 72
+docs/API-CONTRACT.md
+  s_64dcffbefc89fb::t_1dd75c9c4acab9 1-91,100,147-151
+  s_64dcffbefc89fb::t_840bf444edf123 92-94,97-99
+  s_64dcffbefc89fb::t_7caa89cc961e98 101-103,144-146
+apps/web/src/features/landing/LandingLong.tsx
+  s_7a4588856bfecd::t_9445550ab3209e 52-55,57
+  s_7a4588856bfecd::t_b423bbe80f376d 12
+  s_7a4588856bfecd::t_5333d44f4bd253 79-81,83
+  s_7a4588856bfecd::t_fe9f6acb668f54 164-167
+  s_7a4588856bfecd::t_7eda6092e073e7 160-161
+  s_7a4588856bfecd::t_0c160754a28ab5 183,185
+  s_7a4588856bfecd::t_7b1bf632c6faf4 184
+scripts/ui/screenshot.mjs
+  s_7a4588856bfecd::t_1489631c44ea78 65-70
+apps/web/src/app/moments/[id]/page.tsx
+  s_f0eded3307e978::t_7b2519aaa18844 1,3-7,11-12
+apps/api/src/http/routes/orders.ts
+  s_f0eded3307e978::t_34f9ac1bc43957 52-86,89-118
+  s_f0eded3307e978::t_0561ecd04657c4 218-227
+apps/api/src/http/routes/richdata.ts
+  s_f0eded3307e978::t_9aba617b8a13b4 36-53
+  s_f0eded3307e978::t_af2f4303759835 90
+  s_f0eded3307e978::t_36856f6c85b290 57-83
+  s_f0eded3307e978::t_f3d1ff951a763e 33-35
+  s_f0eded3307e978::t_b3e78745a71f5d 54-56
+  s_f0eded3307e978::t_61529b5ca0e851 84-89
+  s_f0eded3307e978::t_00df9889c02d9d 91-92
+  s_c2e9d06738ce82::t_ce8b2dc91c4be2 1-32
+apps/web/src/lib/data/useLive.ts
+  s_f0eded3307e978::t_21fc01e5f7a5ec 1-42
+apps/web/src/features/landing/CrestWall.tsx
+  s_7a4588856bfecd::t_98d4fd99887c92 1-3,6,11,24,34-37,40-41,43-44,46-47,63-68
+  s_7a4588856bfecd::t_1b46c9f01f1c55 4-5,7-10,12-23,25-33,38-39,42,45,48-62
+docs/adr/inbox.md
+  s_64dcffbefc89fb::t_dd0e0b8213908c 23-35
+  s_64dcffbefc89fb::t_cb0b1b6a1a916d 22
+docs/adr/ADR-074-market-open-lifecycle-open-event-tradeable.md
+  s_f0eded3307e978::t_40ff9076493b5c 1-43
+apps/api/src/http/routes/admin.ts
+  s_f0eded3307e978::t_d318205e5da27a 21-33
+docs/BACKEND-BLOCKCHAIN-AUDIT.md
+  s_f0eded3307e978::t_5520b8465c21bd 1-154
+apps/web/src/features/home/FeaturedPanel.tsx
+  s_7a4588856bfecd::t_6a5dae70f6e06e 8
+  s_7a4588856bfecd::t_d81e3c10d62464 41-51,58-63,67,73
+  s_7a4588856bfecd::t_d279c2ef43326b 121-125,127
+packages/schema/src/events.ts
+  s_f0eded3307e978::t_65898eef53ba12 50
+  s_f0eded3307e978::t_f7ba67162944ec 77
+  s_f0eded3307e978::t_65bad28c2acb65 29
+apps/api/src/http/routes/markets.ts
+  s_f0eded3307e978::t_fba7556951be4c 159-177
+  s_f0eded3307e978::t_f0e233e7df77c3 55-104,109-116
+  s_f0eded3307e978::t_3bc4702836a88e 124-137
+packages/schema/src/envelope.ts
+  s_f0eded3307e978::t_6ea3f16f1a9dde 25
+apps/api/src/http/routes/moments.ts
+  s_f0eded3307e978::t_df5f4e56f022cb 70-78
+  s_f0eded3307e978::t_d33bb2367a17fd 27-56
+  s_f0eded3307e978::t_028438df6c65a9 24-26
+  s_f0eded3307e978::t_85e24b2fec17b3 57-59,67-69
+  s_f0eded3307e978::t_fc5f6e235c97be 79-81
+  s_c2e9d06738ce82::t_2d0b6b0db98870 1-23,60-66,82-87
+apps/api/src/http/routes/search.ts
+  s_f0eded3307e978::t_ea5b6de8088038 15-50,61
+  s_f0eded3307e978::t_df7eba9d177000 12-14
+  s_f0eded3307e978::t_aec191c6fb08ed 51-53,58-60
+  s_f0eded3307e978::t_df1166f9bc208e 62-64
+  s_c2e9d06738ce82::t_66baebb688870a 1-11,54-57,65-76
+docs/adr/ADR-075-backend-blockchain-audit-swagger-txline-odds-failclosed-verdict.md
+  s_f0eded3307e978::t_9fa289438fa778 1-40
+apps/web/src/features/moments/MomentsGallery.tsx
+  s_f0eded3307e978::t_5924e2445be38a 32-40,42,44-60,62-74
+  s_f0eded3307e978::t_819ffccb18aa78 8-10,17-18,20-21
+apps/api/src/http/routes/games.ts
+  s_f0eded3307e978::t_3a04d09c0a515d 27-55
+  s_f0eded3307e978::t_60560838109fe8 82-91
+  s_f0eded3307e978::t_f714e8f1ad42e2 24-26
+  s_f0eded3307e978::t_0c76873a0a1427 56-58,79-81
+  s_f0eded3307e978::t_74efaceda08f20 92-94
+  s_c2e9d06738ce82::t_2470a2b74bc57e 1-23,59-78,95-103
+apps/api/src/http/routes/auth.ts
+  s_f0eded3307e978::t_2f14a41792852d 86-94
+  s_f0eded3307e978::t_11f8377322c2f1 22-24,28-36
+  s_f0eded3307e978::t_a6f0196436d9d3 45-53
+  s_f0eded3307e978::t_d4cda135798527 118-126
+  s_f0eded3307e978::t_1a0b531f7ac571 64-73
+  s_f0eded3307e978::t_bc68f0c1f4305b 100-108
+apps/web/src/lib/data/moments.ts
+  s_f0eded3307e978::t_07046775d4f5f3 1-56
+apps/web/src/lib/api.ts
+  s_f0eded3307e978::t_8441380bc0fc9b 8-11
+  s_f0eded3307e978::t_16f74c48a88089 22-25
+  s_f0eded3307e978::t_c7b82b52f17c11 19,35,49-73
+  s_f0eded3307e978::t_cd7865b483b379 5-7
+  s_f0eded3307e978::t_7d6357f02cbaea 12-14,16-18
+  s_f0eded3307e978::t_3e5adad57b3afb 20-21
+  s_f0eded3307e978::t_3d8d5aa61055ba 26-28,32-34
+  s_f0eded3307e978::t_211c663c25ed52 36-38,46-48
+  s_f0eded3307e978::t_6d746477dc4228 74-76
+  s_f0eded3307e978::t_2404f9e2fd4c0c 1-4,15,29-31,39-45,77-103
+apps/web/src/lib/data/leaderboard.ts
+  s_f0eded3307e978::t_94a5d3b14e3dd7 1-41
+apps/worker-ingest/src/push-demo-ticks.ts
+  s_f0eded3307e978::t_834e272cf644d4 6,9
+  s_f0eded3307e978::t_83bd0ebcfbb088 53
+  s_f0eded3307e978::t_e345342c203aea 1-5,7-8,10-40,58-66
+  s_f0eded3307e978::t_d05b756a92aed0 41-52,54-57
+apps/api/src/services/portfolio.ts
+  s_f0eded3307e978::t_94ac9051dc73e4 10
+  s_f0eded3307e978::t_703c6343df40c7 81
+apps/web/src/lib/data/search.ts
+  s_f0eded3307e978::t_e43da145c26eab 1-45
+apps/web/src/features/home/PowerRankings.tsx
+  s_7a4588856bfecd::t_33525b91d160d3 20-22
+  s_7a4588856bfecd::t_8d5aace082e28c 24,26-27,31
+apps/api/src/http/routes/leaderboard.ts
+  s_f0eded3307e978::t_afb57fda693d44 8-28,30-38
+apps/web/next.config.mjs
+  s_f0eded3307e978::t_68d8e20e792657 17-24
+apps/api/src/http/routes/webhooks.ts
+  s_f0eded3307e978::t_fe0ccb823de16b 26-35
+infra/fly/fly.toml
+  s_7a4588856bfecd::t_822bcfa0eb7bdb 69-72,76
+  s_7a4588856bfecd::t_52941ace74cd1b 14-28
+apps/api/prisma/migrations/20260717080109_add_pick_and_moment_fields/migration.sql
+  s_f0eded3307e978::t_46f3dffdd433f2 1-37
+apps/web/src/app/board/page.tsx
+  s_f0eded3307e978::t_59ac68ca8def95 4,8-10
+  s_f0eded3307e978::t_092c85b5106d45 16-17,19
+  s_f0eded3307e978::t_1d441c5f50256c 11
+docs/adr/ADR-071-live-outcome-synthesis-and-orders-intake.md
+  s_64dcffbefc89fb::t_89be2e0ccc7078 83-108
+  s_64dcffbefc89fb::t_58bd811ae4ffde 1-82,109-116
+scripts/txline-wrappers-probe.mjs
+  s_f0eded3307e978::t_1b3eb3c94e4e0f 88-96
+  s_f0eded3307e978::t_d2905c459b0c18 1-38,40-87,97-118,120-143,145-158,160-174,176-194,196-206,208-221,223-232,234-250,252-268
+  s_f0eded3307e978::t_4dbcc0fa9e27fa 39,119,144,159,175,195,207,222,233,251
+pnpm-lock.yaml
+  s_f0eded3307e978::t_191b7e4e5da9fc 29-34,198,672-675,688-699,867-870,884-887,980-983,2147-2150,2155-2158,2192-2194,2229-2231,2338-2344,2356-2359,2535-2537,2544-2549,2666-2668,2702-2705,2769-2773,2803-2806,2859-2862,2890-2892,2908-2911,2946-2948,3007-3019,3136-3141,3156-3159,3285-3288,3506-3509,3545-3548,3562-3569,3574-3577,3754-3756,3898-3905,3941-3945,4209-4210,4227-4261,4387-4395,4410-4411,4487-4489,5702,5704-5710,5736-5737,5778-5781,5894-5899,5906-5909,6077-6078,6084-6087,6262-6263,6316-6320,6376-6384,6408-6415,6482-6483,6507-6512,6539-6546,6579-6580,6623-6630,6725-6728,6737-6741,6800,6807,6855-6856,7214-7215,7245-7246,7257-7268,7276-7279,7313,7332,7460-7463,7588-7599,7622-7623
+apps/api/src/services/events-read.ts
+  s_f0eded3307e978::t_969aa5c3c0e908 1-69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "fc9cb771db1c1e036b6dae804eb0e05229f17fb2",
+  "prompts": {},
+  "sessions": {
+    "s_64dcffbefc89fb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4e456246-6377-4918-a5d0-30a1b596d9ee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_7a4588856bfecd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c78b1ecf-dbe5-4f68-88fc-64114aa3e3ce",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_c2e9d06738ce82": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-addb6cd66c1c3db88",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_f0eded3307e978": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a9b130ab-386a-40e6-8e4e-c64de5a16637",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
