@@ -6,8 +6,8 @@ import { startEngine } from "./engine";
 import { startProjectionService } from "./services/projection-runtime";
 async function main() {
   const redis = process.env.REDIS_URL ? new IORedis(process.env.REDIS_URL) : undefined;
-  await startEngine(redis); // subscribes bus: prices.marks, match.events → owns market state (null without redis)
+  const engine = await startEngine(redis); // the single in-proc Engine (null without redis) — POST /orders' submit target (ADR-071)
   if (redis) await startProjectionService(redis); // consume orders/fills/positions/credits → Postgres + Redis (ADR-027)
-  await startHttp(); // REST (markets/leaderboard/auth/…) + the markets-read consumer + the uWS bridge (fan-out)
+  await startHttp(undefined, engine); // REST + markets-read consumer + uWS bridge; engine handed in for the order lane
 }
 main();

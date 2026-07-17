@@ -15,7 +15,7 @@ describe("computePortfolio", () => {
     const rows: RawPosition[] = [{ marketId: "wc26-aus-egy", outcome: "A", qty: 90, avgPrice: 0.41 }];
     const p = computePortfolio(rows, marks({ "wc26-aus-egy": { H: 0.074, D: 0.25, A: 0.676 } }), 2450);
     const pos = p.positions[0];
-    expect(pos.markPct).toBeCloseTo(67.6, 1);
+    expect(pos.markNow).toBeCloseTo(67.6, 1);
     expect(pos.value).toBeCloseTo(6084, 0);
     expect(pos.pnl).toBeCloseTo(2394, 0);
     expect(pos.pnlPct).toBeCloseTo(64.9, 1);
@@ -25,7 +25,7 @@ describe("computePortfolio", () => {
   it("a position whose market has no mark → null value/pnl, not added to held", () => {
     const rows: RawPosition[] = [{ marketId: "wc26-can-mar", outcome: "H", qty: 120, avgPrice: 0.44 }];
     const p = computePortfolio(rows, marks({}), 1000);
-    expect(p.positions[0]).toMatchObject({ markPct: null, value: null, pnl: null, pnlPct: null });
+    expect(p.positions[0]).toMatchObject({ markNow: null, value: null, pnl: null, pnlPct: null });
     expect(p.held).toBe(0);
     expect(p.equity).toBe(1000);
   });

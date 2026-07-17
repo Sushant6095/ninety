@@ -160,6 +160,23 @@ describe("engine loop — orders (ADR-026)", () => {
     expect(effects.filter((e) => e.type === "ledger").map((e) => e.kind)).toEqual(["debit", "burn"]);
   });
 
+  it("submit().applied resolves with THIS command's effects — a fill for a valid order, a typed reject otherwise (ADR-071)", async () => {
+    const engine = new Engine({ store: store(), emit: async () => {}, lock: okLock });
+    await engine.start();
+    engine.submit("mA", "matchA", life("open", 1));
+    engine.submit("mA", "matchA", life("kickoff", 2)); // → LIVE (tradeable)
+    const good = engine.submit("mA", "matchA", order(3, { user: "u1", size: 100, outcome: 0 }));
+    expect(good.accepted).toBe(true);
+    if (!good.accepted) return;
+    expect((await good.applied).find((e) => e.type === "fill")).toMatchObject({ user: "u1", size: 100, side: "buy" });
+
+    const bad = engine.submit("mA", "matchA", order(4, { user: "u2", size: 100, outcome: 0, balance: 0 })); // can't afford
+    expect(bad.accepted).toBe(true);
+    if (!bad.accepted) return;
+    expect(await bad.applied).toEqual([{ type: "reject", user: "u2", code: "INSUFFICIENT_BALANCE" }]);
+    await engine.drain();
+  });
+
   it("emits a typed reject (no state change) for an order on a non-tradeable market", async () => {
     const { effects, emit } = collect();
     const engine = new Engine({ store: store(), emit, lock: okLock });

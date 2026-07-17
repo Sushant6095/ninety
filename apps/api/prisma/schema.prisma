@@ -31,6 +31,8 @@ model Match {
   stage     String
   kickoffAt DateTime
   status    String
+  minute    Int? // live clock minute from TxLINE; null pre-match/settled. The live read path's source (was absent — audit gap).
+  score     String? // live score "home-away", e.g. "0-1", from TxLINE; null pre-match. Feeds the SSOT score read path.
   home      String
   away      String
   markets   Market[]

@@ -129,9 +129,14 @@ export class EngineLeaseError extends Error {
     this.name = "EngineLeaseError";
   }
 }
-// A submit is accepted (and returns a `durable` promise that resolves once the command is journaled) or
-// rejected with a typed reason. BACKPRESSURE = queue full (retry/redeliver). UNSERVEABLE = market quarantined.
-export type SubmitResult = { accepted: true; durable: Promise<void> } | { accepted: false; reason: "BACKPRESSURE" | "UNSERVEABLE" };
+// A submit is accepted (and returns a `durable` promise that resolves once the command is journaled, plus an
+// `applied` promise that resolves with the effects THIS command produced once apply completes) or rejected with a
+// typed reason. BACKPRESSURE = queue full (retry/redeliver). UNSERVEABLE = market quarantined. `applied` lets a
+// synchronous caller (POST /orders, ADR-071) read its own fill/reject instead of a blind 202 — the effects are
+// already computed by the deterministic reducer; this only surfaces them (no law change).
+export type SubmitResult =
+  | { accepted: true; durable: Promise<void>; applied: Promise<readonly EngineEffect[]> }
+  | { accepted: false; reason: "BACKPRESSURE" | "UNSERVEABLE" };
 export interface EngineMetrics {
   processed: number;
   backpressureRejects: number;
@@ -235,16 +240,25 @@ export class Engine {
       resolveDurable = res;
       rejectDurable = rej;
     });
+    let resolveApplied!: (e: readonly EngineEffect[]) => void;
+    let rejectApplied!: (e: unknown) => void;
+    const applied = new Promise<readonly EngineEffect[]>((res, rej) => {
+      resolveApplied = res;
+      rejectApplied = rej;
+    });
+    void applied.catch(() => {}); // observe it — most callers (the bus consumers) ignore `applied`; keeps a
+    // command failure from surfacing as an unhandledRejection. A caller that awaits `applied` still sees the error.
     lane.chain = lane.chain
-      .then(() => this.process(marketId, cmd, resolveDurable))
+      .then(() => this.process(marketId, cmd, resolveDurable, resolveApplied))
       .catch((err) => {
         rejectDurable(err); // no-op if durable already resolved (append succeeded) — surfaces a pre-durability failure
+        rejectApplied(err); // no-op if applied already resolved
         this.deps.onError?.(marketId, err);
       })
       .finally(() => {
         lane.depth--;
       });
-    return { accepted: true, durable };
+    return { accepted: true, durable, applied };
   }
 
   /** Await all in-flight lanes (tests / graceful drain). */
@@ -281,10 +295,11 @@ export class Engine {
     }
   }
 
-  private async process(marketId: string, cmd: EngineCmd, onDurable: () => void): Promise<void> {
+  private async process(marketId: string, cmd: EngineCmd, onDurable: () => void, onEffects: (effects: readonly EngineEffect[]) => void): Promise<void> {
     const lane = this.lanes.get(marketId)!;
     if (lane.dead) {
       onDurable(); // quarantined → drop safely (already alerted); let the caller ack (redelivery would poison-loop)
+      onEffects([]); // no effects on a quarantined lane — unblock a synchronous `applied` awaiter
       return;
     }
     const n = await this.journal.append(marketId, cmd); // JOURNAL before apply (journal-then-ack)
@@ -292,6 +307,7 @@ export class Engine {
     const prev = lane.state ?? seedMarket(marketId, marketId, cmd); // seed IDENTICAL to the journal seed (marketId as matchId)
     const { state, effects } = engineApply(prev, cmd);
     lane.state = state; // apply
+    onEffects(effects); // surface the applied effects to a synchronous submitter (after apply; the emit IO below still runs)
     if (cmd.kind === "mark") this.watchdog?.markSeen(marketId, this.now()); // watchdog: fresh pricing feed seen
     if (state.lifecycle.status !== "HALTED") this.watchdog?.clear(marketId); // re-arm once the market leaves HALTED
     await this.journal.maybeSnapshot(marketId, state, n);

@@ -32,6 +32,13 @@ export function isOutcome(x: unknown): x is Outcome {
   return x === "H" || x === "D" || x === "A";
 }
 
+/** A mark is COMPLETE iff every 1X2 outcome (H/D/A) is present and finite. An incomplete mark — an over/under
+ *  feed mark keyed {over,under}, a partial mark, or a low-confidence synthesis — must render UNPRICED, never a
+ *  fabricated even book (ADR-071). Callers guard with this before markImpliedQ / before showing a price. */
+export function hasCompleteFair(fair: Record<string, number> | null | undefined): fair is Record<string, number> {
+  return !!fair && OUTCOMES.every((o) => typeof fair[o] === "number" && Number.isFinite(fair[o]));
+}
+
 /** Preview a trade of `size` shares of `outcome`. Buys pay the spread multiplier on the marginal cost; sells give
  *  it back. Returns credits + avg price (0..100). Reuses the one LMSR impl (engine/amm.ts, ADR-002). */
 export function quoteTrade(fair: Record<string, number>, b: number, outcome: Outcome, size: number, side: Side, spreadMult = 1): Quote {
