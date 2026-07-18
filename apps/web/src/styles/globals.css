@@ -3,12 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Font families — Archivo (display), Inter (UI), IBM Plex Mono (numbers). Loaded via <link> in layout.tsx;
-   these vars carry system fallbacks so the build never blocks on a font fetch. */
+/* Font families — Apple system font (ADR-077). `-apple-system`/`BlinkMacSystemFont` resolve to San Francisco
+   on Apple platforms (the genuine Apple font, no webfont fetch / no licence issue); SF Pro named families and
+   the cross-platform fallbacks follow. Numbers stay mono + tabular via SF Mono (`ui-monospace`). No next/font. */
 :root {
-  --font-display: "Archivo", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-ui: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Monaco, "Cascadia Mono", monospace;
 }
 
 html { color-scheme: dark; }
@@ -32,18 +33,8 @@ body {
 /* Elevation system (NO gradients/glassmorphism — design law). Depth comes from a 1px top highlight +
    ambient shadow so surfaces read as floating over the near-black bg instead of flat outlined boxes.
    The black/white values are neutral ambient light, not palette colors. */
-.elev {
-  box-shadow:
-    inset 0 1px 0 0 rgba(245, 247, 250, 0.03),
-    0 1px 2px 0 rgba(0, 0, 0, 0.5),
-    0 12px 28px -16px rgba(0, 0, 0, 0.9);
-}
-.elev-hi {
-  box-shadow:
-    inset 0 1px 0 0 rgba(245, 247, 250, 0.045),
-    0 2px 4px 0 rgba(0, 0, 0, 0.55),
-    0 20px 44px -20px rgba(0, 0, 0, 0.95);
-}
+.elev { box-shadow: var(--elev-1); }
+.elev-hi { box-shadow: var(--elev-2); }
 
 /* 180ms price flash (design law, matches motion.ts flash: 180) — .flash-up / .flash-down tint the number
    green/pink for one tick on a live change, then it returns to its own color. */

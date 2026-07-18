@@ -3,9 +3,14 @@
    references these vars by name. tailwind.config.ts maps its color keys to these vars. Keep in
    sync with tokens.ts token NAMES; do not add a third palette copy. */
 :root {
+  /* DARK is the default theme (no-JS / no-attr = dark, safe). Light is a [data-theme="light"] override below.
+     The theme is set on <html data-theme> by the no-flash script in layout.tsx (localStorage → prefers-color-scheme). */
   --bg:#0B0D10; --surface:#14171C; --hairline:#232A33;
   --text-hi:#F5F7FA; --text-lo:#97A0AF;
   --up:#2BD97C; --down:#FF3D81; --halt:#FFB020; --chain:#9D6BFF;
+  /* Elevation shadows are theme-scoped (globals.css .elev reads these): near-black ambient in dark. */
+  --elev-1: inset 0 1px 0 0 rgba(245,247,250,0.03), 0 1px 2px 0 rgba(0,0,0,0.5), 0 12px 28px -16px rgba(0,0,0,0.9);
+  --elev-2: inset 0 1px 0 0 rgba(245,247,250,0.045), 0 2px 4px 0 rgba(0,0,0,0.55), 0 20px 44px -20px rgba(0,0,0,0.95);
   --radius-card:16px; --radius-chip:999px;
   /* Motion — mirrors design/motion.ts (the typed authority): change BOTH or neither. */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -16,6 +21,26 @@
   --text-stat: clamp(2.5rem, 1.6rem + 2.4vw, 3.5rem);
   --text-number: clamp(4.5rem, 2rem + 9vw, 10rem);
 }
+
+/* ── LIGHT THEME (ADR-077) ─────────────────────────────────────────────────────────────────────────
+   The bright, Sofascore-style surface: near-white bg + white cards, so the real crests/flags carry the
+   colour. Only the theme-dependent tokens are overridden; the shadcn bridge below references these vars,
+   so it flips automatically. Accents are re-tuned for contrast on white (the dark-mode greens/pinks are
+   too light to read on #FFF): they stay vivid but clear WCAG AA-large for the bold tabular numbers. */
+:root[data-theme="light"] {
+  --bg:#F1F4F9; --surface:#FFFFFF; --hairline:#DCE3EC;
+  --text-hi:#0B0D10; --text-lo:#586372;
+  --up:#0B9E5A; --down:#E11D6B; --halt:#B26A00; --chain:#7C4DFF;
+  /* Soft, tinted grey shadows in light — never the near-black dark-mode ambient (reads as grime on white). */
+  --elev-1: 0 1px 2px 0 rgba(16,24,40,0.06), 0 8px 22px -14px rgba(16,24,40,0.18);
+  --elev-2: 0 2px 4px 0 rgba(16,24,40,0.08), 0 18px 40px -20px rgba(16,24,40,0.22);
+  /* notio beam orbs / radials: a whisper of up-green over the light bg, not the dark wash. */
+  --orb-color-light: color-mix(in srgb, var(--up) 12%, transparent);
+  --orb-color-dark: color-mix(in srgb, var(--up) 16%, transparent);
+  --orb-color-dark-fade: color-mix(in srgb, var(--up) 7%, transparent);
+  --gradient-orb-base: var(--surface);
+}
+:root[data-theme="light"] { color-scheme: light; }
 
 /* ── shadcn/notio semantic bridge (ADR-068). The notio pull (styleui.dev) is built on shadcn semantic
    class names — bg-background, text-primary, bg-card, border-border, text-muted-foreground … — none of

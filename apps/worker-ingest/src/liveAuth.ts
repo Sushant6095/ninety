@@ -83,19 +83,30 @@ export function reuseSubscriber(cluster: Cluster): { subscribe(): Promise<string
   };
 }
 
-/** ed25519 message signer over the subscribing wallet (node crypto; base64 detached signature). */
+/** ed25519 message signer over the subscribing wallet (node crypto; base64 detached signature).
+ *  LAZY (ADR-079): the keypair file is read on first sign()/publicKey use, NOT at construction — so a
+ *  token-only boot (initialAuth present → TxLineClient reuses the session, never re-signs) never seeks
+ *  id.json. Reading eagerly here is what crash-looped devnet ingest on Fly without the wallet mounted. */
 export function keypairSigner(cluster: Cluster): { publicKey: string; sign(message: string): Promise<string> } {
-  const secret = loadSecretKey(cluster);
-  const privateKey = createPrivateKey({
-    key: Buffer.concat([Buffer.from("302e020100300506032b657004220420", "hex"), Buffer.from(secret.slice(0, 32))]),
-    format: "der",
-    type: "pkcs8",
-  });
-  const publicKey = createPublicKey(privateKey).export({ format: "der", type: "spki" }).subarray(-32);
+  let keys: { publicKey: string; privateKey: ReturnType<typeof createPrivateKey> } | null = null;
+  const load = () => {
+    if (keys) return keys;
+    const secret = loadSecretKey(cluster);
+    const privateKey = createPrivateKey({
+      key: Buffer.concat([Buffer.from("302e020100300506032b657004220420", "hex"), Buffer.from(secret.slice(0, 32))]),
+      format: "der",
+      type: "pkcs8",
+    });
+    const pub = createPublicKey(privateKey).export({ format: "der", type: "spki" }).subarray(-32);
+    keys = { publicKey: Buffer.from(pub).toString("base64"), privateKey };
+    return keys;
+  };
   return {
-    publicKey: Buffer.from(publicKey).toString("base64"),
+    get publicKey() {
+      return load().publicKey;
+    },
     async sign(message: string): Promise<string> {
-      return edSign(null, Buffer.from(message), privateKey).toString("base64");
+      return edSign(null, Buffer.from(message), load().privateKey).toString("base64");
     },
   };
 }

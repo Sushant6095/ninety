@@ -27,6 +27,7 @@ export function PriceCells({ mark, todayDelta, codes, selected, onSelect, heldSh
         const on = selected === o;
         const dl = todayDelta[o];
         const sub = o === "H" ? codes.H : o === "A" ? codes.A : null;
+        const held = (heldShares?.[o] ?? 0) > 0;
         const ring = frozen ? "bg-halt/5 ring-halt/40" : on ? "bg-hairline/40 ring-up/50" : "bg-bg/50 ring-hairline/60 hover:ring-hairline";
         return (
           <button
@@ -34,15 +35,20 @@ export function PriceCells({ mark, todayDelta, codes, selected, onSelect, heldSh
             onClick={() => !inert && onSelect(o)}
             disabled={inert}
             aria-pressed={on}
-            className={`flex flex-col gap-1 rounded-lg px-3 py-2 text-left outline-none ring-1 ring-inset transition-[color,background-color,border-color,transform] duration-200 focus-visible:ring-2 focus-visible:ring-up ${ring} ${inert ? "cursor-default" : "active:scale-[0.97]"}`}
+            className={`relative flex flex-col gap-1 rounded-lg px-3 py-2 text-left outline-none ring-1 ring-inset transition-[color,background-color,border-color,transform] duration-200 focus-visible:ring-2 focus-visible:ring-up ${ring} ${inert ? "cursor-default" : "active:scale-[0.97]"}`}
           >
-            <span className="flex items-center justify-between gap-1">
-              <span className="min-w-0 truncate text-label font-semibold uppercase tracking-micro text-lo">
-                {LABEL[o]}{sub && <span className="hidden text-lo sm:inline"> · {sub}</span>}
-              </span>
-              {(heldShares?.[o] ?? 0) > 0 && (
-                <span className="num shrink-0 rounded bg-up/15 px-1 text-label font-semibold text-up ring-1 ring-inset ring-up/25">{heldShares?.[o]} SH</span>
-              )}
+            {/* Held-outcome marker: a small up dot in the corner, NOT a "60 SH" text chip. The ~66px lg cell
+                cannot fit "AWAY" + a 34px "60 SH" chip in any horizontal arrangement (they overlapped even
+                absolutely-positioned), and the exact share count already sits in YOUR POSITION directly below.
+                The dot marks "you hold this outcome" and always clears the label. `aria-label` keeps it readable. */}
+            {held && (
+              <span aria-label={`${heldShares?.[o]} shares held`} className="absolute right-2 top-2 z-10 h-1.5 w-1.5 rounded-full bg-up shadow-[0_0_5px_var(--up)]" />
+            )}
+            <span className={`flex min-w-0 items-baseline gap-1 text-label font-semibold uppercase tracking-micro text-lo ${held ? "pr-3" : ""}`}>
+              {/* Base label shrink-0 so "HOME/DRAW/AWAY" is NEVER the thing that truncates; only the optional
+                  ` · CODE` subtitle may clip. `pr-3` (held cells only) keeps the subtitle clear of the dot. */}
+              <span className="shrink-0">{LABEL[o]}</span>
+              {sub && <span className="hidden min-w-0 truncate text-lo sm:inline">· {sub}</span>}
             </span>
             <LivePrice value={mark[o] * 100} className="font-display text-display font-bold leading-none text-hi" />
             <Delta value={dl} suffix="today" className="text-label" />

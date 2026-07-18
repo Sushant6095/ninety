@@ -31,7 +31,10 @@ app = "omnipitch"
 primary_region = "iad"
 
 [build]
-  dockerfile = "infra/fly/Dockerfile"
+  # Path is resolved relative to THIS config file's dir (infra/fly/), so it's just "Dockerfile" — NOT
+  # "infra/fly/Dockerfile" (that doubles to infra/fly/infra/fly/Dockerfile). Build context stays the repo root
+  # (run `fly deploy -c infra/fly/fly.toml` from the root).
+  dockerfile = "Dockerfile"
 
 # FOUR processes — a missing one silently breaks a whole capability (no cortex = no prices; no jobs = no
 # settlement/booth/moments). Fly schedules each group on its own machine, all kept alive below.

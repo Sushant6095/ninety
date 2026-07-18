@@ -6,7 +6,7 @@
 // empty state — we NEVER fabricate a moment, and never dress the fixtures up as live (fixtures are the offline path
 // only). MomentView carries only id/matchId/teams/imageUri/swing/mintSig; the fields it can't give (title, owner,
 // pick, minute, absolute prices, the river slice) are left neutral/derived, never invented.
-import { getMoments, getMoment, USE_FIXTURES, type MomentView } from "../api";
+import { getMoments, getMoment, type MomentView } from "../api";
 import { MOMENTS, momentById, type Moment } from "../moments";
 import { deriveCode } from "./markets";
 
@@ -37,20 +37,37 @@ export function toMoment(v: MomentView): Moment {
   };
 }
 
-/** The Moments gallery list. Fixtures offline; live GET /moments (empty today → []) otherwise. */
-export async function getMomentList(matchId?: string): Promise<Moment[]> {
-  if (USE_FIXTURES) return MOMENTS;
+/** The Moments gallery list — the LIVE path, kept for CONNECT Phase 2 (un-pin `getMomentList` to this once the
+ *  feed actually mints/seeds moments). Live GET /moments is empty today, so this returns []. */
+export async function getMomentListLive(matchId?: string): Promise<Moment[]> {
   const { moments } = await getMoments(matchId);
   return moments.map(toMoment);
 }
 
-/** One moment for the share card. Fixtures offline; live GET /moments/:id otherwise. null on 404 / network. */
-export async function getMomentDetail(id: string): Promise<Moment | null> {
-  if (USE_FIXTURES) return momentById(id) ?? null;
+/** The Moments gallery list. PINNED to fixtures, EXACTLY like `getBoardMarkets` (CONNECT Phase 2 decision):
+ *  this is a fixture-driven demo — the board pins its markets and headlines a "Moment of the day · minted by
+ *  @hexfan", so an empty Moments gallery both contradicts the board (a minted moment referenced there, "No
+ *  moments yet" here) AND leaves the app's most emotional surface a cold void. The MOMENTS are real baked
+ *  fixtures (real teams, real swings), not fabricated live data, and each keeps its honest `mintSig: null` →
+ *  the cards render "mintless", never a fake mint. Un-pin (return getMomentListLive()) once real minting lands. */
+export async function getMomentList(_matchId?: string): Promise<Moment[]> {
+  return MOMENTS;
+}
+
+/** One moment for the share card — the LIVE path, kept for CONNECT Phase 2. null on 404 / network. */
+export async function getMomentDetailLive(id: string): Promise<Moment | null> {
   try {
     const { moment } = await getMoment(id);
     return toMoment(moment);
   } catch {
     return null; // api() throws on non-2xx (incl. 404) — treat as not found
   }
+}
+
+/** One moment for the share card. PINNED to fixtures alongside `getMomentList` (same CONNECT decision): the
+ *  gallery lists MOMENTS, so every card MUST resolve to its detail — a live (empty) detail path would 404 every
+ *  moment the gallery just showed. An id not in the fixtures still returns null → a real 404 (never a silent
+ *  fall-back to another moment). Un-pin (return getMomentDetailLive(id)) once real minting lands. */
+export async function getMomentDetail(id: string): Promise<Moment | null> {
+  return momentById(id) ?? null;
 }

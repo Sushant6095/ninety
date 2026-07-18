@@ -29,13 +29,16 @@ export const rarityOf = (m: Pick<Moment, "fromPrice" | "toPrice">): Rarity => {
 };
 export const swingOf = (m: Pick<Moment, "fromPrice" | "toPrice">): number => m.toPrice - m.fromPrice;
 
-// Ring/label colour per rarity — tokens only (up/chain/hi/lo), never a raw palette. Legendary earns the violet
-// chain accent because those are the minted, on-chain-proud ones.
+// Ring/label colour per rarity — tokens only, never a raw palette, and NEVER `chain`. Legendary used to be
+// violet (`text-chain`) "because those are the minted, on-chain ones" — but every moment is mintSig:null
+// (mintless), so violet claimed on-chain state the artifact doesn't have (chain is on-chain-ONLY). The ladder
+// climbs in the up-green: Common (muted) → Rare (bright) → Epic (green outline) → Legendary (green FILLED, the
+// loudest chip). Chain violet returns only when a moment is genuinely minted (rendered separately as "Minted").
 export const RARITY_STYLE: Record<Rarity, string> = {
   Common: "text-lo ring-hairline",
   Rare: "text-hi ring-hairline",
   Epic: "text-up ring-up/40",
-  Legendary: "text-chain ring-chain/50",
+  Legendary: "bg-up/15 text-up ring-up/60",
 };
 
 // A short win% slice around the swing minute — the annotated segment shown on the card.

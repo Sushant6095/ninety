@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useReducedMotion } from "framer-motion";
 import { LayoutGrid, GitFork, Wallet, ShieldCheck, RotateCcw, Ticket, type LucideIcon } from "lucide-react";
@@ -39,8 +40,29 @@ export function TerminalDock({ featured = true }: { featured?: boolean }) {
     window.dispatchEvent(new Event(event));
   };
 
+  // Hide the dock while the live-trade fold is in view; reveal it once the reader scrolls into secondary
+  // content. A fixed bottom dock over a dense terminal was floating ON TOP of the live price cells / River —
+  // a solid overlay on live prices is a trading-surface defect, and every target the dock offers (nav, Replay
+  // the halt, the trade ticket) is already visible on the fold. This trades nothing away: the dock is a
+  // quick-return-to-nav affordance that only matters once you've scrolled past the trade panel. Intersection
+  // Observer on a top sentinel (no scroll listener); it starts hidden and reveals on scroll.
+  const [past, setPast] = useState(false);
+  useEffect(() => {
+    const sentinel = document.getElementById("terminal-fold-sentinel");
+    if (!sentinel) return;
+    // Expand the root's top by ~90% of a viewport: the top sentinel keeps "intersecting" until the reader has
+    // scrolled roughly one screen past the fold, so the dock stays hidden across the whole live-trade view.
+    const io = new IntersectionObserver(([e]) => setPast(!e.isIntersecting), { rootMargin: "90% 0px 0px 0px" });
+    io.observe(sentinel);
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <nav aria-label="Terminal tools" className="pointer-events-none fixed inset-x-0 bottom-3 z-40 flex justify-center px-3">
+    <nav
+      aria-label="Terminal tools"
+      aria-hidden={!past}
+      className={`pointer-events-none fixed inset-x-0 bottom-3 z-40 flex justify-center px-3 transition-opacity duration-200 motion-reduce:transition-none ${past ? "opacity-100" : "pointer-events-none opacity-0"}`}
+    >
       <Dock className="elev pointer-events-auto" disableMagnification={!!reduce}>
         {LINKS.map(({ label, href, icon: Icon }) => {
           const active = pathname === href;

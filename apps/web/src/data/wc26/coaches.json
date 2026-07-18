@@ -1,0 +1,416 @@
+[
+  {
+    "id": "244440",
+    "name": "Amir Ghalenoei",
+    "nat": "Iran",
+    "teamId": "27",
+    "teamCode": "IRN",
+    "teamName": "Iran",
+    "photo": "/teams/27/players/amir-ghalenoei.jpg"
+  },
+  {
+    "id": "144004",
+    "name": "Bubista",
+    "nat": "Cape Verde Islands",
+    "teamId": "30",
+    "teamCode": "CPV",
+    "teamName": "Cape Verde",
+    "photo": "/teams/30/players/bubista.jpg"
+  },
+  {
+    "id": "43919",
+    "name": "Carlo Ancelotti",
+    "nat": "Italy",
+    "teamId": "9",
+    "teamCode": "BRA",
+    "teamName": "Brazil",
+    "photo": "/teams/9/players/carlo-ancelotti.jpg"
+  },
+  {
+    "id": "43784",
+    "name": "Carlos Queiroz",
+    "nat": "Portugal",
+    "teamId": "47",
+    "teamCode": "GHA",
+    "teamName": "Ghana",
+    "photo": "/teams/47/players/carlos-queiroz.jpg"
+  },
+  {
+    "id": "259947",
+    "name": "Darren Bazeley",
+    "nat": "England",
+    "teamId": "28",
+    "teamCode": "NZL",
+    "teamName": "New Zealand",
+    "photo": "/teams/28/players/darren-bazeley.jpg"
+  },
+  {
+    "id": "9591",
+    "name": "Dick Advocaat",
+    "nat": "Netherlands",
+    "teamId": "18",
+    "teamCode": "CUW",
+    "teamName": "Curaçao",
+    "photo": "/teams/18/players/dick-advocaat.jpg"
+  },
+  {
+    "id": "10187",
+    "name": "Didier Deschamps",
+    "nat": "France",
+    "teamId": "33",
+    "teamCode": "FRA",
+    "teamName": "France",
+    "photo": "/teams/33/players/didier-deschamps.jpg"
+  },
+  {
+    "id": "173370",
+    "name": "Emerse Faé",
+    "nat": "Ivory Coast",
+    "teamId": "19",
+    "teamCode": "CIV",
+    "teamName": "Ivory Coast",
+    "photo": "/teams/19/players/emerse-fae.jpg"
+  },
+  {
+    "id": "21440",
+    "name": "Fabio Cannavaro",
+    "nat": "Italy",
+    "teamId": "43",
+    "teamCode": "UZB",
+    "teamName": "Uzbekistan",
+    "photo": null
+  },
+  {
+    "id": "43848",
+    "name": "Giorgios Donis",
+    "nat": "Greece",
+    "teamId": "31",
+    "teamCode": "KSA",
+    "teamName": "Saudi Arabia",
+    "photo": null
+  },
+  {
+    "id": "10224",
+    "name": "Graham Arnold",
+    "nat": "Australia",
+    "teamId": "35",
+    "teamCode": "IRQ",
+    "teamName": "Iraq",
+    "photo": null
+  },
+  {
+    "id": "31097",
+    "name": "Graham Potter",
+    "nat": "England",
+    "teamId": "23",
+    "teamCode": "SWE",
+    "teamName": "Sweden",
+    "photo": null
+  },
+  {
+    "id": "45894",
+    "name": "Gustavo Alfaro",
+    "nat": "Argentina",
+    "teamId": "14",
+    "teamCode": "PAR",
+    "teamName": "Paraguay",
+    "photo": null
+  },
+  {
+    "id": "83225",
+    "name": "Hajime Moriyasu",
+    "nat": "Japan",
+    "teamId": "22",
+    "teamCode": "JPN",
+    "teamName": "Japan",
+    "photo": "/teams/22/players/hajime-moriyasu.jpg"
+  },
+  {
+    "id": "10170",
+    "name": "Hervé Renard",
+    "nat": "France",
+    "teamId": "24",
+    "teamCode": "TUN",
+    "teamName": "Tunisia",
+    "photo": null
+  },
+  {
+    "id": "173877",
+    "name": "Hong Myungbo",
+    "nat": "South Korea",
+    "teamId": "3",
+    "teamCode": "KOR",
+    "teamName": "South Korea",
+    "photo": null
+  },
+  {
+    "id": "287681",
+    "name": "Hossam Hassan",
+    "nat": "Egypt",
+    "teamId": "26",
+    "teamCode": "EGY",
+    "teamName": "Egypt",
+    "photo": "/teams/26/players/hossam-hassan.jpg"
+  },
+  {
+    "id": "113599",
+    "name": "Hugo Broos",
+    "nat": "Belgium",
+    "teamId": "2",
+    "teamCode": "RSA",
+    "teamName": "South Africa",
+    "photo": "/teams/2/players/hugo-broos.jpg"
+  },
+  {
+    "id": "83066",
+    "name": "Javier Aguirre",
+    "nat": "Mexico",
+    "teamId": "1",
+    "teamCode": "MEX",
+    "teamName": "Mexico",
+    "photo": null
+  },
+  {
+    "id": "59069",
+    "name": "Jesse Marsch",
+    "nat": "USA",
+    "teamId": "5",
+    "teamCode": "CAN",
+    "teamName": "Canada",
+    "photo": "/teams/5/players/jesse-marsch.jpg"
+  },
+  {
+    "id": "10180",
+    "name": "Julen Lopetegui",
+    "nat": "Spain",
+    "teamId": "7",
+    "teamCode": "QAT",
+    "teamName": "Qatar",
+    "photo": null
+  },
+  {
+    "id": "336",
+    "name": "Julian Nagelsmann",
+    "nat": "Germany",
+    "teamId": "17",
+    "teamCode": "GER",
+    "teamName": "Germany",
+    "photo": null
+  },
+  {
+    "id": "82990",
+    "name": "Lionel Scaloni",
+    "nat": "Argentina",
+    "teamId": "37",
+    "teamCode": "ARG",
+    "teamName": "Argentina",
+    "photo": null
+  },
+  {
+    "id": "192542",
+    "name": "Luis de la Fuente",
+    "nat": "Spain",
+    "teamId": "29",
+    "teamCode": "ESP",
+    "teamName": "Spain",
+    "photo": null
+  },
+  {
+    "id": "56079",
+    "name": "Marcelo Bielsa",
+    "nat": "Argentina",
+    "teamId": "32",
+    "teamCode": "URU",
+    "teamName": "Uruguay",
+    "photo": null
+  },
+  {
+    "id": "11609",
+    "name": "Mauricio Pochettino",
+    "nat": "Argentina",
+    "teamId": "13",
+    "teamCode": "USA",
+    "teamName": "United States",
+    "photo": null
+  },
+  {
+    "id": "216348",
+    "name": "Miroslav Koubek",
+    "nat": "Czech Republic",
+    "teamId": "4",
+    "teamCode": "CZE",
+    "teamName": "Czech Republic",
+    "photo": null
+  },
+  {
+    "id": "295847",
+    "name": "Mohamed Ouahbi",
+    "nat": "Belgium",
+    "teamId": "10",
+    "teamCode": "MAR",
+    "teamName": "Morocco",
+    "photo": null
+  },
+  {
+    "id": "32308",
+    "name": "Murat Yakin",
+    "nat": "Switzerland",
+    "teamId": "8",
+    "teamCode": "SUI",
+    "teamName": "Switzerland",
+    "photo": null
+  },
+  {
+    "id": "166025",
+    "name": "Néstor Lorenzo",
+    "nat": "Argentina",
+    "teamId": "44",
+    "teamCode": "COL",
+    "teamName": "Colombia",
+    "photo": null
+  },
+  {
+    "id": "59070",
+    "name": "Ralf Rangnick",
+    "nat": "Germany",
+    "teamId": "39",
+    "teamCode": "AUT",
+    "teamName": "Austria",
+    "photo": null
+  },
+  {
+    "id": "10211",
+    "name": "Roberto Martínez",
+    "nat": "Spain",
+    "teamId": "41",
+    "teamCode": "POR",
+    "teamName": "Portugal",
+    "photo": null
+  },
+  {
+    "id": "11591",
+    "name": "Ronald Koeman",
+    "nat": "Netherlands",
+    "teamId": "21",
+    "teamCode": "NED",
+    "teamName": "Netherlands",
+    "photo": null
+  },
+  {
+    "id": "45094",
+    "name": "Rudi Garcia",
+    "nat": "France",
+    "teamId": "25",
+    "teamCode": "BEL",
+    "teamName": "Belgium",
+    "photo": null
+  },
+  {
+    "id": "72715",
+    "name": "Sebastián Beccacece",
+    "nat": "Argentina",
+    "teamId": "20",
+    "teamCode": "ECU",
+    "teamName": "Ecuador",
+    "photo": null
+  },
+  {
+    "id": "147881",
+    "name": "Sébastien Desabre",
+    "nat": "France",
+    "teamId": "42",
+    "teamCode": "COD",
+    "teamName": "Democratic Republic of the Congo",
+    "photo": null
+  },
+  {
+    "id": "123774",
+    "name": "Sébastien Migné",
+    "nat": "France",
+    "teamId": "11",
+    "teamCode": "HAI",
+    "teamName": "Haiti",
+    "photo": null
+  },
+  {
+    "id": "196807",
+    "name": "Sergej Barbarez",
+    "nat": "Bosnia-Herzegovina",
+    "teamId": "6",
+    "teamCode": "BIH",
+    "teamName": "Bosnia and Herzegovina",
+    "photo": null
+  },
+  {
+    "id": "15543",
+    "name": "Ståle Solbakken",
+    "nat": "Norway",
+    "teamId": "36",
+    "teamCode": "NOR",
+    "teamName": "Norway",
+    "photo": null
+  },
+  {
+    "id": "34834",
+    "name": "Steve Clarke",
+    "nat": "Scotland",
+    "teamId": "12",
+    "teamCode": "SCO",
+    "teamName": "Scotland",
+    "photo": null
+  },
+  {
+    "id": "11429",
+    "name": "Thomas Christiansen",
+    "nat": "Spain",
+    "teamId": "48",
+    "teamCode": "PAN",
+    "teamName": "Panama",
+    "photo": null
+  },
+  {
+    "id": "72766",
+    "name": "Thomas Tuchel",
+    "nat": "Germany",
+    "teamId": "45",
+    "teamCode": "ENG",
+    "teamName": "England",
+    "photo": null
+  },
+  {
+    "id": "33573",
+    "name": "Tony Popović",
+    "nat": "Australia",
+    "teamId": "15",
+    "teamCode": "AUS",
+    "teamName": "Australia",
+    "photo": null
+  },
+  {
+    "id": "133",
+    "name": "Vincenzo Montella",
+    "nat": "Italy",
+    "teamId": "16",
+    "teamCode": "TUR",
+    "teamName": "Turkey",
+    "photo": null
+  },
+  {
+    "id": "10197",
+    "name": "Vladimir Petković",
+    "nat": "Switzerland",
+    "teamId": "38",
+    "teamCode": "ALG",
+    "teamName": "Algeria",
+    "photo": null
+  },
+  {
+    "id": "10209",
+    "name": "Zlatko Dalić",
+    "nat": "Croatia",
+    "teamId": "46",
+    "teamCode": "CRO",
+    "teamName": "Croatia",
+    "photo": null
+  }
+]

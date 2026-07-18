@@ -5,7 +5,9 @@ import stadiumsJson from "./stadiums.json";
 import gamesJson from "./games.json";
 import type { WcTeam, WcGroup, WcStadium, WcGame } from "./types";
 
-export type { WcTeam, WcGroup, WcStadium, WcGame, WcStanding, WcGameType } from "./types";
+export type { WcTeam, WcGroup, WcStadium, WcGame, WcStanding, WcGameType, WcPlayer, WcCoach, WcReferee } from "./types";
+// NOTE: players/coaches/referees JSON is intentionally NOT imported here — this module is bundled app-wide.
+// The 285 KB player index is loaded lazily by lib/data/entitySearch.ts (dynamic import on first ⌘K open).
 
 export const TEAMS = teamsJson as WcTeam[];
 export const GROUPS = groupsJson as WcGroup[];

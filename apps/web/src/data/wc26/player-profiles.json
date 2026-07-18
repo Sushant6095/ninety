@@ -1,0 +1,3978 @@
+{
+ "source": "football-data.org — FIFA World Cup 2026 (competition 2000). STILL data only (ADR-051).",
+ "bakedAt": "2026-07-18",
+ "query": "GET /v4/competitions/2000/scorers?limit=30 → rank by goals+assists (tie-break goals), take 20; per player GET /v4/persons/{id}/matches?competitions=2000",
+ "note": "API-Football season 2026 is free-plan-restricted → per-match ratings, season aggregates and injuries are UNREACHABLE for WC26 and are omitted, never faked. Photos: baked-local when present, else initials avatar. Ninety index: derived from WC26 per-match production, normalised across the 20 — not an official rating.",
+ "budget": {
+  "footballData": 6,
+  "apiFootball": 0,
+  "footballDataDailyLimit": "10/min"
+ },
+ "players": [
+  {
+   "id": "3218",
+   "name": "Lionel Messi",
+   "firstName": "Lionel",
+   "lastName": "Messi",
+   "dob": "1987-06-24",
+   "nat": "ARG",
+   "natName": "Argentina",
+   "pos": "Offence",
+   "shirt": null,
+   "photo": null,
+   "rank": 1,
+   "goals": 8,
+   "assists": 4,
+   "penalties": 0,
+   "playedMatches": 7,
+   "matches": [
+    {
+     "id": "537388",
+     "date": "2026-07-15T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "SEMI_FINALS",
+     "home": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "away": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "opp": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "score": {
+      "h": 1,
+      "a": 2,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537386",
+     "date": "2026-07-12T01:00:00Z",
+     "status": "FINISHED",
+     "stage": "QUARTER_FINALS",
+     "home": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "away": {
+      "code": "SUI",
+      "name": "Switzerland"
+     },
+     "opp": {
+      "code": "SUI",
+      "name": "Switzerland"
+     },
+     "score": {
+      "h": 3,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537381",
+     "date": "2026-07-07T16:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_16",
+     "home": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "away": {
+      "code": "EGY",
+      "name": "Egypt"
+     },
+     "opp": {
+      "code": "EGY",
+      "name": "Egypt"
+     },
+     "score": {
+      "h": 3,
+      "a": 2,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537427",
+     "date": "2026-07-03T22:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "away": {
+      "code": "CPV",
+      "name": "Cape Verde"
+     },
+     "opp": {
+      "code": "CPV",
+      "name": "Cape Verde"
+     },
+     "score": {
+      "h": 3,
+      "a": 2,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537401",
+     "date": "2026-06-28T02:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "JOR",
+      "name": "Jordan"
+     },
+     "away": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "opp": {
+      "code": "JOR",
+      "name": "Jordan"
+     },
+     "score": {
+      "h": 1,
+      "a": 3,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537399",
+     "date": "2026-06-22T17:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "away": {
+      "code": "AUT",
+      "name": "Austria"
+     },
+     "opp": {
+      "code": "AUT",
+      "name": "Austria"
+     },
+     "score": {
+      "h": 2,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537397",
+     "date": "2026-06-17T01:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "away": {
+      "code": "ALG",
+      "name": "Algeria"
+     },
+     "opp": {
+      "code": "ALG",
+      "name": "Algeria"
+     },
+     "score": {
+      "h": 3,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 98,
+     "raw": 1.14
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 100,
+     "raw": 0.57
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 100,
+     "raw": 1.71
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 98,
+     "raw": 1.14
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 100,
+     "raw": 7
+    }
+   ]
+  },
+  {
+   "id": "3374",
+   "name": "Kylian Mbappé",
+   "firstName": "Kylian",
+   "lastName": "Mbappé",
+   "dob": "1998-12-20",
+   "nat": "FRA",
+   "natName": "France",
+   "pos": "Offence",
+   "shirt": null,
+   "photo": null,
+   "rank": 2,
+   "goals": 8,
+   "assists": 3,
+   "penalties": 1,
+   "playedMatches": 7,
+   "matches": [
+    {
+     "id": "537387",
+     "date": "2026-07-14T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "SEMI_FINALS",
+     "home": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "away": {
+      "code": "ESP",
+      "name": "Spain"
+     },
+     "opp": {
+      "code": "ESP",
+      "name": "Spain"
+     },
+     "score": {
+      "h": 0,
+      "a": 2,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "home",
+     "result": "L"
+    },
+    {
+     "id": "537383",
+     "date": "2026-07-09T20:00:00Z",
+     "status": "FINISHED",
+     "stage": "QUARTER_FINALS",
+     "home": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "away": {
+      "code": "MAR",
+      "name": "Morocco"
+     },
+     "opp": {
+      "code": "MAR",
+      "name": "Morocco"
+     },
+     "score": {
+      "h": 2,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537375",
+     "date": "2026-07-04T21:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_16",
+     "home": {
+      "code": "PAR",
+      "name": "Paraguay"
+     },
+     "away": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "opp": {
+      "code": "PAR",
+      "name": "Paraguay"
+     },
+     "score": {
+      "h": 0,
+      "a": 1,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537416",
+     "date": "2026-06-30T21:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "away": {
+      "code": "SWE",
+      "name": "Sweden"
+     },
+     "opp": {
+      "code": "SWE",
+      "name": "Sweden"
+     },
+     "score": {
+      "h": 3,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537395",
+     "date": "2026-06-26T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "away": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "opp": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "score": {
+      "h": 1,
+      "a": 4,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537393",
+     "date": "2026-06-22T21:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "away": {
+      "code": "IRQ",
+      "name": "Iraq"
+     },
+     "opp": {
+      "code": "IRQ",
+      "name": "Iraq"
+     },
+     "score": {
+      "h": 3,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537391",
+     "date": "2026-06-16T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "away": {
+      "code": "SEN",
+      "name": "Senegal"
+     },
+     "opp": {
+      "code": "SEN",
+      "name": "Senegal"
+     },
+     "score": {
+      "h": 3,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 98,
+     "raw": 1.14
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 75,
+     "raw": 0.43
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 92,
+     "raw": 1.57
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 86,
+     "raw": 1
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 100,
+     "raw": 7
+    }
+   ]
+  },
+  {
+   "id": "38101",
+   "name": "Erling Haaland",
+   "firstName": "Erling",
+   "lastName": "Haaland",
+   "dob": "2000-07-21",
+   "nat": "NOR",
+   "natName": "Norway",
+   "pos": "Offence",
+   "shirt": null,
+   "photo": "/teams/36/players/erling-haaland.jpg",
+   "rank": 3,
+   "goals": 7,
+   "assists": 0,
+   "penalties": 0,
+   "playedMatches": 6,
+   "matches": [
+    {
+     "id": "537385",
+     "date": "2026-07-11T21:00:00Z",
+     "status": "FINISHED",
+     "stage": "QUARTER_FINALS",
+     "home": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "away": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "opp": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "score": {
+      "h": 1,
+      "a": 2,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "home",
+     "result": "L"
+    },
+    {
+     "id": "537377",
+     "date": "2026-07-05T20:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_16",
+     "home": {
+      "code": "BRA",
+      "name": "Brazil"
+     },
+     "away": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "opp": {
+      "code": "BRA",
+      "name": "Brazil"
+     },
+     "score": {
+      "h": 1,
+      "a": 2,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537424",
+     "date": "2026-06-30T17:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "CIV",
+      "name": "Ivory Coast"
+     },
+     "away": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "opp": {
+      "code": "CIV",
+      "name": "Ivory Coast"
+     },
+     "score": {
+      "h": 1,
+      "a": 2,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537395",
+     "date": "2026-06-26T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "away": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "opp": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "score": {
+      "h": 1,
+      "a": 4,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "home",
+     "result": "L"
+    },
+    {
+     "id": "537394",
+     "date": "2026-06-23T00:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "away": {
+      "code": "SEN",
+      "name": "Senegal"
+     },
+     "opp": {
+      "code": "SEN",
+      "name": "Senegal"
+     },
+     "score": {
+      "h": 3,
+      "a": 2,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537392",
+     "date": "2026-06-16T22:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "IRQ",
+      "name": "Iraq"
+     },
+     "away": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "opp": {
+      "code": "IRQ",
+      "name": "Iraq"
+     },
+     "score": {
+      "h": 1,
+      "a": 4,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 100,
+     "raw": 1.17
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 0,
+     "raw": 0
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 68,
+     "raw": 1.17
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 100,
+     "raw": 1.17
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 86,
+     "raw": 6
+    }
+   ]
+  },
+  {
+   "id": "8004",
+   "name": "Harry Kane",
+   "firstName": "Harry",
+   "lastName": "Kane",
+   "dob": "1993-07-28",
+   "nat": "ENG",
+   "natName": "England",
+   "pos": "Offence",
+   "shirt": null,
+   "photo": null,
+   "rank": 4,
+   "goals": 6,
+   "assists": 1,
+   "penalties": 2,
+   "playedMatches": 7,
+   "matches": [
+    {
+     "id": "537388",
+     "date": "2026-07-15T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "SEMI_FINALS",
+     "home": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "away": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "opp": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "score": {
+      "h": 1,
+      "a": 2,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "home",
+     "result": "L"
+    },
+    {
+     "id": "537385",
+     "date": "2026-07-11T21:00:00Z",
+     "status": "FINISHED",
+     "stage": "QUARTER_FINALS",
+     "home": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "away": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "opp": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "score": {
+      "h": 1,
+      "a": 2,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537378",
+     "date": "2026-07-06T01:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_16",
+     "home": {
+      "code": "MEX",
+      "name": "Mexico"
+     },
+     "away": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "opp": {
+      "code": "MEX",
+      "name": "Mexico"
+     },
+     "score": {
+      "h": 2,
+      "a": 3,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537426",
+     "date": "2026-07-01T16:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "away": {
+      "code": "COD",
+      "name": "Congo DR"
+     },
+     "opp": {
+      "code": "COD",
+      "name": "Congo DR"
+     },
+     "score": {
+      "h": 2,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537413",
+     "date": "2026-06-27T21:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "PAN",
+      "name": "Panama"
+     },
+     "away": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "opp": {
+      "code": "PAN",
+      "name": "Panama"
+     },
+     "score": {
+      "h": 0,
+      "a": 2,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537411",
+     "date": "2026-06-23T20:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "away": {
+      "code": "GHA",
+      "name": "Ghana"
+     },
+     "opp": {
+      "code": "GHA",
+      "name": "Ghana"
+     },
+     "score": {
+      "h": 0,
+      "a": 0,
+      "winner": "DRAW"
+     },
+     "side": "home",
+     "result": "D"
+    },
+    {
+     "id": "537409",
+     "date": "2026-06-17T20:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "away": {
+      "code": "CRO",
+      "name": "Croatia"
+     },
+     "opp": {
+      "code": "CRO",
+      "name": "Croatia"
+     },
+     "score": {
+      "h": 4,
+      "a": 2,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 73,
+     "raw": 0.86
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 25,
+     "raw": 0.14
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 58,
+     "raw": 1
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 49,
+     "raw": 0.57
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 100,
+     "raw": 7
+    }
+   ]
+  },
+  {
+   "id": "125010",
+   "name": "Jude Bellingham",
+   "firstName": "Jude",
+   "lastName": "Bellingham",
+   "dob": "2003-06-29",
+   "nat": "ENG",
+   "natName": "England",
+   "pos": "Midfield",
+   "shirt": null,
+   "photo": null,
+   "rank": 5,
+   "goals": 6,
+   "assists": 1,
+   "penalties": 0,
+   "playedMatches": 7,
+   "matches": [
+    {
+     "id": "537388",
+     "date": "2026-07-15T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "SEMI_FINALS",
+     "home": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "away": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "opp": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "score": {
+      "h": 1,
+      "a": 2,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "home",
+     "result": "L"
+    },
+    {
+     "id": "537385",
+     "date": "2026-07-11T21:00:00Z",
+     "status": "FINISHED",
+     "stage": "QUARTER_FINALS",
+     "home": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "away": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "opp": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "score": {
+      "h": 1,
+      "a": 2,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537378",
+     "date": "2026-07-06T01:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_16",
+     "home": {
+      "code": "MEX",
+      "name": "Mexico"
+     },
+     "away": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "opp": {
+      "code": "MEX",
+      "name": "Mexico"
+     },
+     "score": {
+      "h": 2,
+      "a": 3,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537426",
+     "date": "2026-07-01T16:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "away": {
+      "code": "COD",
+      "name": "Congo DR"
+     },
+     "opp": {
+      "code": "COD",
+      "name": "Congo DR"
+     },
+     "score": {
+      "h": 2,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537413",
+     "date": "2026-06-27T21:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "PAN",
+      "name": "Panama"
+     },
+     "away": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "opp": {
+      "code": "PAN",
+      "name": "Panama"
+     },
+     "score": {
+      "h": 0,
+      "a": 2,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537411",
+     "date": "2026-06-23T20:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "away": {
+      "code": "GHA",
+      "name": "Ghana"
+     },
+     "opp": {
+      "code": "GHA",
+      "name": "Ghana"
+     },
+     "score": {
+      "h": 0,
+      "a": 0,
+      "winner": "DRAW"
+     },
+     "side": "home",
+     "result": "D"
+    },
+    {
+     "id": "537409",
+     "date": "2026-06-17T20:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "away": {
+      "code": "CRO",
+      "name": "Croatia"
+     },
+     "opp": {
+      "code": "CRO",
+      "name": "Croatia"
+     },
+     "score": {
+      "h": 4,
+      "a": 2,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 73,
+     "raw": 0.86
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 25,
+     "raw": 0.14
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 58,
+     "raw": 1
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 73,
+     "raw": 0.86
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 100,
+     "raw": 7
+    }
+   ]
+  },
+  {
+   "id": "3373",
+   "name": "Ousmane Dembélé",
+   "firstName": "Ousmane",
+   "lastName": "Dembélé",
+   "dob": "1997-05-15",
+   "nat": "FRA",
+   "natName": "France",
+   "pos": "Offence",
+   "shirt": null,
+   "photo": null,
+   "rank": 6,
+   "goals": 5,
+   "assists": 2,
+   "penalties": 0,
+   "playedMatches": 7,
+   "matches": [
+    {
+     "id": "537387",
+     "date": "2026-07-14T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "SEMI_FINALS",
+     "home": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "away": {
+      "code": "ESP",
+      "name": "Spain"
+     },
+     "opp": {
+      "code": "ESP",
+      "name": "Spain"
+     },
+     "score": {
+      "h": 0,
+      "a": 2,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "home",
+     "result": "L"
+    },
+    {
+     "id": "537383",
+     "date": "2026-07-09T20:00:00Z",
+     "status": "FINISHED",
+     "stage": "QUARTER_FINALS",
+     "home": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "away": {
+      "code": "MAR",
+      "name": "Morocco"
+     },
+     "opp": {
+      "code": "MAR",
+      "name": "Morocco"
+     },
+     "score": {
+      "h": 2,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537375",
+     "date": "2026-07-04T21:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_16",
+     "home": {
+      "code": "PAR",
+      "name": "Paraguay"
+     },
+     "away": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "opp": {
+      "code": "PAR",
+      "name": "Paraguay"
+     },
+     "score": {
+      "h": 0,
+      "a": 1,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537416",
+     "date": "2026-06-30T21:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "away": {
+      "code": "SWE",
+      "name": "Sweden"
+     },
+     "opp": {
+      "code": "SWE",
+      "name": "Sweden"
+     },
+     "score": {
+      "h": 3,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537395",
+     "date": "2026-06-26T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "away": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "opp": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "score": {
+      "h": 1,
+      "a": 4,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537393",
+     "date": "2026-06-22T21:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "away": {
+      "code": "IRQ",
+      "name": "Iraq"
+     },
+     "opp": {
+      "code": "IRQ",
+      "name": "Iraq"
+     },
+     "score": {
+      "h": 3,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537391",
+     "date": "2026-06-16T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "away": {
+      "code": "SEN",
+      "name": "Senegal"
+     },
+     "opp": {
+      "code": "SEN",
+      "name": "Senegal"
+     },
+     "score": {
+      "h": 3,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 61,
+     "raw": 0.71
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 50,
+     "raw": 0.29
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 58,
+     "raw": 1
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 61,
+     "raw": 0.71
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 100,
+     "raw": 7
+    }
+   ]
+  },
+  {
+   "id": "180137",
+   "name": "Mikel Oyarzabal",
+   "firstName": "",
+   "lastName": "Mikel Oyarzabal",
+   "dob": "1997-04-21",
+   "nat": "ESP",
+   "natName": "Spain",
+   "pos": "Midfield",
+   "shirt": null,
+   "photo": null,
+   "rank": 7,
+   "goals": 5,
+   "assists": 1,
+   "penalties": 1,
+   "playedMatches": 7,
+   "matches": [
+    {
+     "id": "537387",
+     "date": "2026-07-14T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "SEMI_FINALS",
+     "home": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "away": {
+      "code": "ESP",
+      "name": "Spain"
+     },
+     "opp": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "score": {
+      "h": 0,
+      "a": 2,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537384",
+     "date": "2026-07-10T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "QUARTER_FINALS",
+     "home": {
+      "code": "ESP",
+      "name": "Spain"
+     },
+     "away": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "opp": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "score": {
+      "h": 2,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537379",
+     "date": "2026-07-06T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_16",
+     "home": {
+      "code": "POR",
+      "name": "Portugal"
+     },
+     "away": {
+      "code": "ESP",
+      "name": "Spain"
+     },
+     "opp": {
+      "code": "POR",
+      "name": "Portugal"
+     },
+     "score": {
+      "h": 0,
+      "a": 1,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537420",
+     "date": "2026-07-02T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "ESP",
+      "name": "Spain"
+     },
+     "away": {
+      "code": "AUT",
+      "name": "Austria"
+     },
+     "opp": {
+      "code": "AUT",
+      "name": "Austria"
+     },
+     "score": {
+      "h": 3,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537373",
+     "date": "2026-06-27T00:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "URU",
+      "name": "Uruguay"
+     },
+     "away": {
+      "code": "ESP",
+      "name": "Spain"
+     },
+     "opp": {
+      "code": "URU",
+      "name": "Uruguay"
+     },
+     "score": {
+      "h": 0,
+      "a": 1,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537371",
+     "date": "2026-06-21T16:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "ESP",
+      "name": "Spain"
+     },
+     "away": {
+      "code": "KSA",
+      "name": "Saudi Arabia"
+     },
+     "opp": {
+      "code": "KSA",
+      "name": "Saudi Arabia"
+     },
+     "score": {
+      "h": 4,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537369",
+     "date": "2026-06-15T16:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "ESP",
+      "name": "Spain"
+     },
+     "away": {
+      "code": "CPV",
+      "name": "Cape Verde"
+     },
+     "opp": {
+      "code": "CPV",
+      "name": "Cape Verde"
+     },
+     "score": {
+      "h": 0,
+      "a": 0,
+      "winner": "DRAW"
+     },
+     "side": "home",
+     "result": "D"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 61,
+     "raw": 0.71
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 25,
+     "raw": 0.14
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 50,
+     "raw": 0.86
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 49,
+     "raw": 0.57
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 100,
+     "raw": 7
+    }
+   ]
+  },
+  {
+   "id": "39237",
+   "name": "Julián Quiñones",
+   "firstName": "Julián",
+   "lastName": "Quiñones",
+   "dob": "1997-03-24",
+   "nat": "MEX",
+   "natName": "Colombia",
+   "pos": "Offence",
+   "shirt": 33,
+   "photo": null,
+   "rank": 8,
+   "goals": 4,
+   "assists": 1,
+   "penalties": 0,
+   "playedMatches": 5,
+   "matches": [
+    {
+     "id": "537378",
+     "date": "2026-07-06T01:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_16",
+     "home": {
+      "code": "MEX",
+      "name": "Mexico"
+     },
+     "away": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "opp": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "score": {
+      "h": 2,
+      "a": 3,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "home",
+     "result": "L"
+    },
+    {
+     "id": "537425",
+     "date": "2026-07-01T02:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "MEX",
+      "name": "Mexico"
+     },
+     "away": {
+      "code": "ECU",
+      "name": "Ecuador"
+     },
+     "opp": {
+      "code": "ECU",
+      "name": "Ecuador"
+     },
+     "score": {
+      "h": 2,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537331",
+     "date": "2026-06-25T01:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "CZE",
+      "name": "Czechia"
+     },
+     "away": {
+      "code": "MEX",
+      "name": "Mexico"
+     },
+     "opp": {
+      "code": "CZE",
+      "name": "Czechia"
+     },
+     "score": {
+      "h": 0,
+      "a": 3,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537330",
+     "date": "2026-06-19T01:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "MEX",
+      "name": "Mexico"
+     },
+     "away": {
+      "code": "KOR",
+      "name": "Korea Republic"
+     },
+     "opp": {
+      "code": "KOR",
+      "name": "Korea Republic"
+     },
+     "score": {
+      "h": 1,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537327",
+     "date": "2026-06-11T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "MEX",
+      "name": "Mexico"
+     },
+     "away": {
+      "code": "RSA",
+      "name": "South Africa"
+     },
+     "opp": {
+      "code": "RSA",
+      "name": "South Africa"
+     },
+     "score": {
+      "h": 2,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 69,
+     "raw": 0.8
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 35,
+     "raw": 0.2
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 58,
+     "raw": 1
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 69,
+     "raw": 0.8
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 71,
+     "raw": 5
+    }
+   ]
+  },
+  {
+   "id": "1556",
+   "name": "Vinicius Junior",
+   "firstName": "",
+   "lastName": "Vinícius Junior",
+   "dob": "2000-07-12",
+   "nat": "BRA",
+   "natName": "Brazil",
+   "pos": "Offence",
+   "shirt": null,
+   "photo": null,
+   "rank": 9,
+   "goals": 4,
+   "assists": 1,
+   "penalties": 0,
+   "playedMatches": 5,
+   "matches": [
+    {
+     "id": "537377",
+     "date": "2026-07-05T20:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_16",
+     "home": {
+      "code": "BRA",
+      "name": "Brazil"
+     },
+     "away": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "opp": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "score": {
+      "h": 1,
+      "a": 2,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "home",
+     "result": "L"
+    },
+    {
+     "id": "537423",
+     "date": "2026-06-29T17:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "BRA",
+      "name": "Brazil"
+     },
+     "away": {
+      "code": "JPN",
+      "name": "Japan"
+     },
+     "opp": {
+      "code": "JPN",
+      "name": "Japan"
+     },
+     "score": {
+      "h": 2,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537343",
+     "date": "2026-06-24T22:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "SCO",
+      "name": "Scotland"
+     },
+     "away": {
+      "code": "BRA",
+      "name": "Brazil"
+     },
+     "opp": {
+      "code": "SCO",
+      "name": "Scotland"
+     },
+     "score": {
+      "h": 0,
+      "a": 3,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537341",
+     "date": "2026-06-20T00:30:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "BRA",
+      "name": "Brazil"
+     },
+     "away": {
+      "code": "HAI",
+      "name": "Haiti"
+     },
+     "opp": {
+      "code": "HAI",
+      "name": "Haiti"
+     },
+     "score": {
+      "h": 3,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537339",
+     "date": "2026-06-13T22:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "BRA",
+      "name": "Brazil"
+     },
+     "away": {
+      "code": "MAR",
+      "name": "Morocco"
+     },
+     "opp": {
+      "code": "MAR",
+      "name": "Morocco"
+     },
+     "score": {
+      "h": 1,
+      "a": 1,
+      "winner": "DRAW"
+     },
+     "side": "home",
+     "result": "D"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 69,
+     "raw": 0.8
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 35,
+     "raw": 0.2
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 58,
+     "raw": 1
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 69,
+     "raw": 0.8
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 71,
+     "raw": 5
+    }
+   ]
+  },
+  {
+   "id": "3638",
+   "name": "Ismaïla Sarr",
+   "firstName": "Ismaïla",
+   "lastName": "Sarr",
+   "dob": "1998-02-25",
+   "nat": "SEN",
+   "natName": "Senegal",
+   "pos": "Offence",
+   "shirt": null,
+   "photo": null,
+   "rank": 10,
+   "goals": 4,
+   "assists": 1,
+   "penalties": 0,
+   "playedMatches": 4,
+   "matches": [
+    {
+     "id": "537422",
+     "date": "2026-07-01T20:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "away": {
+      "code": "SEN",
+      "name": "Senegal"
+     },
+     "opp": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "score": {
+      "h": 3,
+      "a": 2,
+      "winner": "HOME_TEAM"
+     },
+     "side": "away",
+     "result": "L"
+    },
+    {
+     "id": "537396",
+     "date": "2026-06-26T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "SEN",
+      "name": "Senegal"
+     },
+     "away": {
+      "code": "IRQ",
+      "name": "Iraq"
+     },
+     "opp": {
+      "code": "IRQ",
+      "name": "Iraq"
+     },
+     "score": {
+      "h": 5,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537394",
+     "date": "2026-06-23T00:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "away": {
+      "code": "SEN",
+      "name": "Senegal"
+     },
+     "opp": {
+      "code": "NOR",
+      "name": "Norway"
+     },
+     "score": {
+      "h": 3,
+      "a": 2,
+      "winner": "HOME_TEAM"
+     },
+     "side": "away",
+     "result": "L"
+    },
+    {
+     "id": "537391",
+     "date": "2026-06-16T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "away": {
+      "code": "SEN",
+      "name": "Senegal"
+     },
+     "opp": {
+      "code": "FRA",
+      "name": "France"
+     },
+     "score": {
+      "h": 3,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "away",
+     "result": "L"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 86,
+     "raw": 1
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 44,
+     "raw": 0.25
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 73,
+     "raw": 1.25
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 86,
+     "raw": 1
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 57,
+     "raw": 4
+    }
+   ]
+  },
+  {
+   "id": "6928",
+   "name": "Deniz Undav",
+   "firstName": "Deniz",
+   "lastName": "Undav",
+   "dob": "1996-07-19",
+   "nat": "GER",
+   "natName": "Germany",
+   "pos": "Offence",
+   "shirt": 9,
+   "photo": "/teams/17/players/deniz-undav.jpg",
+   "rank": 11,
+   "goals": 3,
+   "assists": 2,
+   "penalties": 0,
+   "playedMatches": 4,
+   "matches": [
+    {
+     "id": "537415",
+     "date": "2026-06-29T20:30:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "GER",
+      "name": "Germany"
+     },
+     "away": {
+      "code": "PAR",
+      "name": "Paraguay"
+     },
+     "opp": {
+      "code": "PAR",
+      "name": "Paraguay"
+     },
+     "score": {
+      "h": 4,
+      "a": 5,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "home",
+     "result": "L"
+    },
+    {
+     "id": "537355",
+     "date": "2026-06-25T20:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "ECU",
+      "name": "Ecuador"
+     },
+     "away": {
+      "code": "GER",
+      "name": "Germany"
+     },
+     "opp": {
+      "code": "ECU",
+      "name": "Ecuador"
+     },
+     "score": {
+      "h": 2,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "away",
+     "result": "L"
+    },
+    {
+     "id": "537353",
+     "date": "2026-06-20T20:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "GER",
+      "name": "Germany"
+     },
+     "away": {
+      "code": "CIV",
+      "name": "Ivory Coast"
+     },
+     "opp": {
+      "code": "CIV",
+      "name": "Ivory Coast"
+     },
+     "score": {
+      "h": 2,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537351",
+     "date": "2026-06-14T17:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "GER",
+      "name": "Germany"
+     },
+     "away": {
+      "code": "CUW",
+      "name": "Curaçao"
+     },
+     "opp": {
+      "code": "CUW",
+      "name": "Curaçao"
+     },
+     "score": {
+      "h": 7,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 64,
+     "raw": 0.75
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 88,
+     "raw": 0.5
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 73,
+     "raw": 1.25
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 64,
+     "raw": 0.75
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 57,
+     "raw": 4
+    }
+   ]
+  },
+  {
+   "id": "212309",
+   "name": "Johan Manzambi",
+   "firstName": "Johan",
+   "lastName": "Manzambi",
+   "dob": "2005-10-14",
+   "nat": "SUI",
+   "natName": "Switzerland",
+   "pos": "Midfield",
+   "shirt": null,
+   "photo": null,
+   "rank": 12,
+   "goals": 3,
+   "assists": 2,
+   "penalties": 0,
+   "playedMatches": 4,
+   "matches": [
+    {
+     "id": "537429",
+     "date": "2026-07-03T03:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "SUI",
+      "name": "Switzerland"
+     },
+     "away": {
+      "code": "ALG",
+      "name": "Algeria"
+     },
+     "opp": {
+      "code": "ALG",
+      "name": "Algeria"
+     },
+     "score": {
+      "h": 2,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537337",
+     "date": "2026-06-24T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "SUI",
+      "name": "Switzerland"
+     },
+     "away": {
+      "code": "CAN",
+      "name": "Canada"
+     },
+     "opp": {
+      "code": "CAN",
+      "name": "Canada"
+     },
+     "score": {
+      "h": 2,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537335",
+     "date": "2026-06-18T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "SUI",
+      "name": "Switzerland"
+     },
+     "away": {
+      "code": "BIH",
+      "name": "Bosnia-H."
+     },
+     "opp": {
+      "code": "BIH",
+      "name": "Bosnia-H."
+     },
+     "score": {
+      "h": 4,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537334",
+     "date": "2026-06-13T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "QAT",
+      "name": "Qatar"
+     },
+     "away": {
+      "code": "SUI",
+      "name": "Switzerland"
+     },
+     "opp": {
+      "code": "QAT",
+      "name": "Qatar"
+     },
+     "score": {
+      "h": 1,
+      "a": 1,
+      "winner": "DRAW"
+     },
+     "side": "away",
+     "result": "D"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 64,
+     "raw": 0.75
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 88,
+     "raw": 0.5
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 73,
+     "raw": 1.25
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 64,
+     "raw": 0.75
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 57,
+     "raw": 4
+    }
+   ]
+  },
+  {
+   "id": "7459",
+   "name": "Cody Gakpo",
+   "firstName": "Cody",
+   "lastName": "Gakpo",
+   "dob": "1999-05-07",
+   "nat": "NED",
+   "natName": "Netherlands",
+   "pos": "Offence",
+   "shirt": null,
+   "photo": "/teams/21/players/cody-gakpo.jpg",
+   "rank": 13,
+   "goals": 3,
+   "assists": 1,
+   "penalties": 0,
+   "playedMatches": 4,
+   "matches": [
+    {
+     "id": "537418",
+     "date": "2026-06-30T01:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "NED",
+      "name": "Netherlands"
+     },
+     "away": {
+      "code": "MAR",
+      "name": "Morocco"
+     },
+     "opp": {
+      "code": "MAR",
+      "name": "Morocco"
+     },
+     "score": {
+      "h": 3,
+      "a": 4,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "home",
+     "result": "L"
+    },
+    {
+     "id": "537361",
+     "date": "2026-06-25T23:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "TUN",
+      "name": "Tunisia"
+     },
+     "away": {
+      "code": "NED",
+      "name": "Netherlands"
+     },
+     "opp": {
+      "code": "TUN",
+      "name": "Tunisia"
+     },
+     "score": {
+      "h": 1,
+      "a": 3,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537359",
+     "date": "2026-06-20T17:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "NED",
+      "name": "Netherlands"
+     },
+     "away": {
+      "code": "SWE",
+      "name": "Sweden"
+     },
+     "opp": {
+      "code": "SWE",
+      "name": "Sweden"
+     },
+     "score": {
+      "h": 5,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537357",
+     "date": "2026-06-14T20:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "NED",
+      "name": "Netherlands"
+     },
+     "away": {
+      "code": "JPN",
+      "name": "Japan"
+     },
+     "opp": {
+      "code": "JPN",
+      "name": "Japan"
+     },
+     "score": {
+      "h": 2,
+      "a": 2,
+      "winner": "DRAW"
+     },
+     "side": "home",
+     "result": "D"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 64,
+     "raw": 0.75
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 44,
+     "raw": 0.25
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 58,
+     "raw": 1
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 64,
+     "raw": 0.75
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 57,
+     "raw": 4
+    }
+   ]
+  },
+  {
+   "id": "3662",
+   "name": "Romelu Lukaku",
+   "firstName": "Romelu",
+   "lastName": "Lukaku",
+   "dob": "1993-05-13",
+   "nat": "BEL",
+   "natName": "Belgium",
+   "pos": "Offence",
+   "shirt": null,
+   "photo": null,
+   "rank": 14,
+   "goals": 3,
+   "assists": 1,
+   "penalties": 0,
+   "playedMatches": 6,
+   "matches": [
+    {
+     "id": "537384",
+     "date": "2026-07-10T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "QUARTER_FINALS",
+     "home": {
+      "code": "ESP",
+      "name": "Spain"
+     },
+     "away": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "opp": {
+      "code": "ESP",
+      "name": "Spain"
+     },
+     "score": {
+      "h": 2,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "away",
+     "result": "L"
+    },
+    {
+     "id": "537380",
+     "date": "2026-07-07T00:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_16",
+     "home": {
+      "code": "USA",
+      "name": "USA"
+     },
+     "away": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "opp": {
+      "code": "USA",
+      "name": "USA"
+     },
+     "score": {
+      "h": 1,
+      "a": 4,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537422",
+     "date": "2026-07-01T20:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "away": {
+      "code": "SEN",
+      "name": "Senegal"
+     },
+     "opp": {
+      "code": "SEN",
+      "name": "Senegal"
+     },
+     "score": {
+      "h": 3,
+      "a": 2,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537367",
+     "date": "2026-06-27T03:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "NZL",
+      "name": "New Zealand"
+     },
+     "away": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "opp": {
+      "code": "NZL",
+      "name": "New Zealand"
+     },
+     "score": {
+      "h": 1,
+      "a": 5,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537365",
+     "date": "2026-06-21T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "away": {
+      "code": "IRN",
+      "name": "Iran"
+     },
+     "opp": {
+      "code": "IRN",
+      "name": "Iran"
+     },
+     "score": {
+      "h": 0,
+      "a": 0,
+      "winner": "DRAW"
+     },
+     "side": "home",
+     "result": "D"
+    },
+    {
+     "id": "537363",
+     "date": "2026-06-15T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "away": {
+      "code": "EGY",
+      "name": "Egypt"
+     },
+     "opp": {
+      "code": "EGY",
+      "name": "Egypt"
+     },
+     "score": {
+      "h": 1,
+      "a": 1,
+      "winner": "DRAW"
+     },
+     "side": "home",
+     "result": "D"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 43,
+     "raw": 0.5
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 29,
+     "raw": 0.17
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 39,
+     "raw": 0.67
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 43,
+     "raw": 0.5
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 86,
+     "raw": 6
+    }
+   ]
+  },
+  {
+   "id": "3220",
+   "name": "Lautaro Martínez",
+   "firstName": "Lautaro",
+   "lastName": "Martínez",
+   "dob": "1997-08-22",
+   "nat": "ARG",
+   "natName": "Argentina",
+   "pos": "Offence",
+   "shirt": null,
+   "photo": null,
+   "rank": 15,
+   "goals": 3,
+   "assists": 1,
+   "penalties": 1,
+   "playedMatches": 7,
+   "matches": [
+    {
+     "id": "537388",
+     "date": "2026-07-15T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "SEMI_FINALS",
+     "home": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "away": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "opp": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "score": {
+      "h": 1,
+      "a": 2,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537386",
+     "date": "2026-07-12T01:00:00Z",
+     "status": "FINISHED",
+     "stage": "QUARTER_FINALS",
+     "home": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "away": {
+      "code": "SUI",
+      "name": "Switzerland"
+     },
+     "opp": {
+      "code": "SUI",
+      "name": "Switzerland"
+     },
+     "score": {
+      "h": 3,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537381",
+     "date": "2026-07-07T16:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_16",
+     "home": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "away": {
+      "code": "EGY",
+      "name": "Egypt"
+     },
+     "opp": {
+      "code": "EGY",
+      "name": "Egypt"
+     },
+     "score": {
+      "h": 3,
+      "a": 2,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537427",
+     "date": "2026-07-03T22:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "away": {
+      "code": "CPV",
+      "name": "Cape Verde"
+     },
+     "opp": {
+      "code": "CPV",
+      "name": "Cape Verde"
+     },
+     "score": {
+      "h": 3,
+      "a": 2,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537401",
+     "date": "2026-06-28T02:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "JOR",
+      "name": "Jordan"
+     },
+     "away": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "opp": {
+      "code": "JOR",
+      "name": "Jordan"
+     },
+     "score": {
+      "h": 1,
+      "a": 3,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537399",
+     "date": "2026-06-22T17:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "away": {
+      "code": "AUT",
+      "name": "Austria"
+     },
+     "opp": {
+      "code": "AUT",
+      "name": "Austria"
+     },
+     "score": {
+      "h": 2,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537397",
+     "date": "2026-06-17T01:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "away": {
+      "code": "ALG",
+      "name": "Algeria"
+     },
+     "opp": {
+      "code": "ALG",
+      "name": "Algeria"
+     },
+     "score": {
+      "h": 3,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 37,
+     "raw": 0.43
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 25,
+     "raw": 0.14
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 33,
+     "raw": 0.57
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 24,
+     "raw": 0.29
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 100,
+     "raw": 7
+    }
+   ]
+  },
+  {
+   "id": "129947",
+   "name": "Charles De Ketelaere",
+   "firstName": "Charles",
+   "lastName": "De Ketelaere",
+   "dob": "2001-03-10",
+   "nat": "BEL",
+   "natName": "Belgium",
+   "pos": "Offence",
+   "shirt": 90,
+   "photo": "/teams/25/players/charles-de-ketelaere.jpg",
+   "rank": 16,
+   "goals": 3,
+   "assists": 1,
+   "penalties": 0,
+   "playedMatches": 6,
+   "matches": [
+    {
+     "id": "537384",
+     "date": "2026-07-10T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "QUARTER_FINALS",
+     "home": {
+      "code": "ESP",
+      "name": "Spain"
+     },
+     "away": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "opp": {
+      "code": "ESP",
+      "name": "Spain"
+     },
+     "score": {
+      "h": 2,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "away",
+     "result": "L"
+    },
+    {
+     "id": "537380",
+     "date": "2026-07-07T00:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_16",
+     "home": {
+      "code": "USA",
+      "name": "USA"
+     },
+     "away": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "opp": {
+      "code": "USA",
+      "name": "USA"
+     },
+     "score": {
+      "h": 1,
+      "a": 4,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537422",
+     "date": "2026-07-01T20:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "away": {
+      "code": "SEN",
+      "name": "Senegal"
+     },
+     "opp": {
+      "code": "SEN",
+      "name": "Senegal"
+     },
+     "score": {
+      "h": 3,
+      "a": 2,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537367",
+     "date": "2026-06-27T03:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "NZL",
+      "name": "New Zealand"
+     },
+     "away": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "opp": {
+      "code": "NZL",
+      "name": "New Zealand"
+     },
+     "score": {
+      "h": 1,
+      "a": 5,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537365",
+     "date": "2026-06-21T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "away": {
+      "code": "IRN",
+      "name": "Iran"
+     },
+     "opp": {
+      "code": "IRN",
+      "name": "Iran"
+     },
+     "score": {
+      "h": 0,
+      "a": 0,
+      "winner": "DRAW"
+     },
+     "side": "home",
+     "result": "D"
+    },
+    {
+     "id": "537363",
+     "date": "2026-06-15T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "away": {
+      "code": "EGY",
+      "name": "Egypt"
+     },
+     "opp": {
+      "code": "EGY",
+      "name": "Egypt"
+     },
+     "score": {
+      "h": 1,
+      "a": 1,
+      "winner": "DRAW"
+     },
+     "side": "home",
+     "result": "D"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 43,
+     "raw": 0.5
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 29,
+     "raw": 0.17
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 39,
+     "raw": 0.67
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 43,
+     "raw": 0.5
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 86,
+     "raw": 6
+    }
+   ]
+  },
+  {
+   "id": "3483",
+   "name": "Breel Embolo",
+   "firstName": "Breel",
+   "lastName": "Embolo",
+   "dob": "1997-02-14",
+   "nat": "SUI",
+   "natName": "Switzerland",
+   "pos": "Offence",
+   "shirt": null,
+   "photo": "/teams/8/players/breel-embolo.jpg",
+   "rank": 17,
+   "goals": 2,
+   "assists": 2,
+   "penalties": 1,
+   "playedMatches": 6,
+   "matches": [
+    {
+     "id": "537386",
+     "date": "2026-07-12T01:00:00Z",
+     "status": "FINISHED",
+     "stage": "QUARTER_FINALS",
+     "home": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "away": {
+      "code": "SUI",
+      "name": "Switzerland"
+     },
+     "opp": {
+      "code": "ARG",
+      "name": "Argentina"
+     },
+     "score": {
+      "h": 3,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "away",
+     "result": "L"
+    },
+    {
+     "id": "537382",
+     "date": "2026-07-07T20:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_16",
+     "home": {
+      "code": "SUI",
+      "name": "Switzerland"
+     },
+     "away": {
+      "code": "COL",
+      "name": "Colombia"
+     },
+     "opp": {
+      "code": "COL",
+      "name": "Colombia"
+     },
+     "score": {
+      "h": 4,
+      "a": 3,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537429",
+     "date": "2026-07-03T03:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "SUI",
+      "name": "Switzerland"
+     },
+     "away": {
+      "code": "ALG",
+      "name": "Algeria"
+     },
+     "opp": {
+      "code": "ALG",
+      "name": "Algeria"
+     },
+     "score": {
+      "h": 2,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537337",
+     "date": "2026-06-24T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "SUI",
+      "name": "Switzerland"
+     },
+     "away": {
+      "code": "CAN",
+      "name": "Canada"
+     },
+     "opp": {
+      "code": "CAN",
+      "name": "Canada"
+     },
+     "score": {
+      "h": 2,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537335",
+     "date": "2026-06-18T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "SUI",
+      "name": "Switzerland"
+     },
+     "away": {
+      "code": "BIH",
+      "name": "Bosnia-H."
+     },
+     "opp": {
+      "code": "BIH",
+      "name": "Bosnia-H."
+     },
+     "score": {
+      "h": 4,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537334",
+     "date": "2026-06-13T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "QAT",
+      "name": "Qatar"
+     },
+     "away": {
+      "code": "SUI",
+      "name": "Switzerland"
+     },
+     "opp": {
+      "code": "QAT",
+      "name": "Qatar"
+     },
+     "score": {
+      "h": 1,
+      "a": 1,
+      "winner": "DRAW"
+     },
+     "side": "away",
+     "result": "D"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 29,
+     "raw": 0.33
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 58,
+     "raw": 0.33
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 39,
+     "raw": 0.67
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 14,
+     "raw": 0.17
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 86,
+     "raw": 6
+    }
+   ]
+  },
+  {
+   "id": "102193",
+   "name": "Crysencio Summerville",
+   "firstName": "Crysencio",
+   "lastName": "Summerville",
+   "dob": "2001-10-30",
+   "nat": "NED",
+   "natName": "Netherlands",
+   "pos": "Offence",
+   "shirt": null,
+   "photo": "/teams/21/players/crysencio-summerville.jpg",
+   "rank": 18,
+   "goals": 2,
+   "assists": 2,
+   "penalties": 0,
+   "playedMatches": 4,
+   "matches": [
+    {
+     "id": "537418",
+     "date": "2026-06-30T01:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "NED",
+      "name": "Netherlands"
+     },
+     "away": {
+      "code": "MAR",
+      "name": "Morocco"
+     },
+     "opp": {
+      "code": "MAR",
+      "name": "Morocco"
+     },
+     "score": {
+      "h": 3,
+      "a": 4,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "home",
+     "result": "L"
+    },
+    {
+     "id": "537361",
+     "date": "2026-06-25T23:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "TUN",
+      "name": "Tunisia"
+     },
+     "away": {
+      "code": "NED",
+      "name": "Netherlands"
+     },
+     "opp": {
+      "code": "TUN",
+      "name": "Tunisia"
+     },
+     "score": {
+      "h": 1,
+      "a": 3,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537359",
+     "date": "2026-06-20T17:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "NED",
+      "name": "Netherlands"
+     },
+     "away": {
+      "code": "SWE",
+      "name": "Sweden"
+     },
+     "opp": {
+      "code": "SWE",
+      "name": "Sweden"
+     },
+     "score": {
+      "h": 5,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537357",
+     "date": "2026-06-14T20:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "NED",
+      "name": "Netherlands"
+     },
+     "away": {
+      "code": "JPN",
+      "name": "Japan"
+     },
+     "opp": {
+      "code": "JPN",
+      "name": "Japan"
+     },
+     "score": {
+      "h": 2,
+      "a": 2,
+      "winner": "DRAW"
+     },
+     "side": "home",
+     "result": "D"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 43,
+     "raw": 0.5
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 88,
+     "raw": 0.5
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 58,
+     "raw": 1
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 43,
+     "raw": 0.5
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 57,
+     "raw": 4
+    }
+   ]
+  },
+  {
+   "id": "3305",
+   "name": "Raúl Jiménez",
+   "firstName": "Raúl",
+   "lastName": "Jiménez",
+   "dob": "1991-05-05",
+   "nat": "MEX",
+   "natName": "Mexico",
+   "pos": "Offence",
+   "shirt": null,
+   "photo": null,
+   "rank": 19,
+   "goals": 3,
+   "assists": 0,
+   "penalties": 1,
+   "playedMatches": 5,
+   "matches": [
+    {
+     "id": "537378",
+     "date": "2026-07-06T01:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_16",
+     "home": {
+      "code": "MEX",
+      "name": "Mexico"
+     },
+     "away": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "opp": {
+      "code": "ENG",
+      "name": "England"
+     },
+     "score": {
+      "h": 2,
+      "a": 3,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "home",
+     "result": "L"
+    },
+    {
+     "id": "537425",
+     "date": "2026-07-01T02:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "MEX",
+      "name": "Mexico"
+     },
+     "away": {
+      "code": "ECU",
+      "name": "Ecuador"
+     },
+     "opp": {
+      "code": "ECU",
+      "name": "Ecuador"
+     },
+     "score": {
+      "h": 2,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537331",
+     "date": "2026-06-25T01:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "CZE",
+      "name": "Czechia"
+     },
+     "away": {
+      "code": "MEX",
+      "name": "Mexico"
+     },
+     "opp": {
+      "code": "CZE",
+      "name": "Czechia"
+     },
+     "score": {
+      "h": 0,
+      "a": 3,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "away",
+     "result": "W"
+    },
+    {
+     "id": "537330",
+     "date": "2026-06-19T01:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "MEX",
+      "name": "Mexico"
+     },
+     "away": {
+      "code": "KOR",
+      "name": "Korea Republic"
+     },
+     "opp": {
+      "code": "KOR",
+      "name": "Korea Republic"
+     },
+     "score": {
+      "h": 1,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537327",
+     "date": "2026-06-11T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "MEX",
+      "name": "Mexico"
+     },
+     "away": {
+      "code": "RSA",
+      "name": "South Africa"
+     },
+     "opp": {
+      "code": "RSA",
+      "name": "South Africa"
+     },
+     "score": {
+      "h": 2,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 51,
+     "raw": 0.6
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 0,
+     "raw": 0
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 35,
+     "raw": 0.6
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 34,
+     "raw": 0.4
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 71,
+     "raw": 5
+    }
+   ]
+  },
+  {
+   "id": "131040",
+   "name": "Folarin Balogun",
+   "firstName": "Folarin",
+   "lastName": "Balogun",
+   "dob": "2001-07-03",
+   "nat": "USA",
+   "natName": "USA",
+   "pos": "Offence",
+   "shirt": null,
+   "photo": "/teams/13/players/folarin-balogun.jpg",
+   "rank": 20,
+   "goals": 3,
+   "assists": 0,
+   "penalties": 0,
+   "playedMatches": 5,
+   "matches": [
+    {
+     "id": "537380",
+     "date": "2026-07-07T00:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_16",
+     "home": {
+      "code": "USA",
+      "name": "USA"
+     },
+     "away": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "opp": {
+      "code": "BEL",
+      "name": "Belgium"
+     },
+     "score": {
+      "h": 1,
+      "a": 4,
+      "winner": "AWAY_TEAM"
+     },
+     "side": "home",
+     "result": "L"
+    },
+    {
+     "id": "537421",
+     "date": "2026-07-02T00:00:00Z",
+     "status": "FINISHED",
+     "stage": "LAST_32",
+     "home": {
+      "code": "USA",
+      "name": "USA"
+     },
+     "away": {
+      "code": "BIH",
+      "name": "Bosnia-H."
+     },
+     "opp": {
+      "code": "BIH",
+      "name": "Bosnia-H."
+     },
+     "score": {
+      "h": 2,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537349",
+     "date": "2026-06-26T02:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "TUR",
+      "name": "Turkey"
+     },
+     "away": {
+      "code": "USA",
+      "name": "USA"
+     },
+     "opp": {
+      "code": "TUR",
+      "name": "Turkey"
+     },
+     "score": {
+      "h": 3,
+      "a": 2,
+      "winner": "HOME_TEAM"
+     },
+     "side": "away",
+     "result": "L"
+    },
+    {
+     "id": "537348",
+     "date": "2026-06-19T19:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "USA",
+      "name": "USA"
+     },
+     "away": {
+      "code": "AUS",
+      "name": "Australia"
+     },
+     "opp": {
+      "code": "AUS",
+      "name": "Australia"
+     },
+     "score": {
+      "h": 2,
+      "a": 0,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    },
+    {
+     "id": "537345",
+     "date": "2026-06-13T01:00:00Z",
+     "status": "FINISHED",
+     "stage": "GROUP_STAGE",
+     "home": {
+      "code": "USA",
+      "name": "USA"
+     },
+     "away": {
+      "code": "PAR",
+      "name": "Paraguay"
+     },
+     "opp": {
+      "code": "PAR",
+      "name": "Paraguay"
+     },
+     "score": {
+      "h": 4,
+      "a": 1,
+      "winner": "HOME_TEAM"
+     },
+     "side": "home",
+     "result": "W"
+    }
+   ],
+   "matchesError": null,
+   "ninetyIndex": [
+    {
+     "key": "scoring",
+     "label": "Scoring",
+     "input": "goals ÷ matches",
+     "value": 51,
+     "raw": 0.6
+    },
+    {
+     "key": "creation",
+     "label": "Creation",
+     "input": "assists ÷ matches",
+     "value": 0,
+     "raw": 0
+    },
+    {
+     "key": "involvement",
+     "label": "Involvement",
+     "input": "(goals + assists) ÷ matches",
+     "value": 35,
+     "raw": 0.6
+    },
+    {
+     "key": "openPlay",
+     "label": "Open play",
+     "input": "non-penalty goals ÷ matches",
+     "value": 51,
+     "raw": 0.6
+    },
+    {
+     "key": "presence",
+     "label": "Presence",
+     "input": "matches played",
+     "value": 71,
+     "raw": 5
+    }
+   ]
+  }
+ ]
+}

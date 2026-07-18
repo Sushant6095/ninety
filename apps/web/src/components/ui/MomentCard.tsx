@@ -16,7 +16,7 @@ export function MomentCard({ m }: { m: Moment }) {
     <Link
       href={routes.moment(m.id)}
       aria-label={`${m.title} — ${rarity} moment, ${m.pick} ${fmtPrice(m.fromPrice)} to ${fmtPrice(m.toPrice)}`}
-      className="group elev block overflow-hidden rounded-card border border-hairline bg-surface p-4 outline-none transition-colors duration-200 hover:border-hairline hover:bg-hairline/10 focus-visible:bg-hairline/10"
+      className="group elev block overflow-hidden rounded-card border border-hairline bg-surface p-4 outline-none transition-colors duration-200 hover:border-hairline hover:bg-hairline/10 focus-visible:bg-hairline/10 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-up/50"
     >
       <div className="flex items-center justify-between">
         <span className={`rounded-chip px-2 py-0.5 text-label font-semibold uppercase tracking-micro ring-1 ring-inset ${RARITY_STYLE[rarity]}`}>{rarity}</span>

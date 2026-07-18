@@ -9,13 +9,15 @@ import { PriceVoid } from "./PriceVoid";
 import { PriceScrub } from "./PriceScrub";
 import { VelocityBand } from "./VelocityBand";
 import { FlowFieldLazy } from "./FlowFieldLazy";
+import { GoalReplayScrollLazy } from "./GoalReplayScrollLazy";
 import { CrestWall } from "./CrestWall";
+import { IconsGallery } from "./IconsGallery";
 import { BoothQuotes } from "./BoothQuotes";
 import { FreeCredits } from "./FreeCredits";
 import { CrowdBand } from "./CrowdBand";
 import { FootballExperience } from "./FootballExperience";
+import { WatchReel } from "./WatchReel";
 import { ConsumerBento } from "./ConsumerBento";
-import { DribbleSceneLazy } from "./DribbleSceneLazy";
 import { NumberTicker } from "../../components/ui/NumberTicker";
 import { Highlighter } from "../../components/vendor/magicui/highlighter";
 
@@ -41,32 +43,10 @@ export function LandingLong() {
         <Hero />
 
         <LandingScroll>
-          {/* 2b — THE 3D FOOTBALL MOMENT (ADR-070): a stylized dribbler weaves, scores, and the
-              price ticks up — landing-only (ADR-058), lazy (next/dynamic ssr:false), IO-gated. The
-              canvas slot is NOT opacity-gated (only the copy cascades) and has a fixed height (no CLS). */}
-          <section aria-labelledby="scene-h" className="border-b border-hairline">
-            <div data-arrive className="mx-auto w-full max-w-[1180px] px-4 pt-16 sm:px-6 lg:pt-24">
-              <p data-arrive-item className="text-label font-semibold uppercase tracking-caps text-lo">
-                Football, priced live
-              </p>
-              {/* Denies nothing: the old line was "This isn't a terminal", on a page whose nav, hero and footer
-                  say "Open the terminal" nine times — the product's own flagship surface, disowned above the
-                  fold. It also ran the identical formula to FootballExperience's "This isn't a stats page. It's
-                  the match, priced live." two screens down. Say what the scene shows instead. */}
-              <h2 data-arrive-item id="scene-h" className="mt-4 max-w-[24ch] font-display text-section font-bold text-hi">
-                The game moves. The price moves with it.
-              </h2>
-              <p data-arrive-item className="mt-5 max-w-[52ch] text-strong leading-relaxed text-lo">
-                A run, a shot, a goal — and the price moves before the crowd comes down. Watch the
-                market read the game.
-              </p>
-            </div>
-            <div className="mx-auto w-full max-w-[1180px] px-4 pb-16 pt-10 sm:px-6 lg:pb-24">
-              <div className="elev relative h-[380px] overflow-hidden rounded-card border border-hairline/70 bg-bg sm:h-[440px] lg:h-[520px]">
-                <DribbleSceneLazy className="h-full w-full" />
-              </div>
-            </div>
-          </section>
+          {/* THE SCROLL-SCRUB SHOWPIECE (ADR-078) — moved to the TOP of the scroll story (right under the
+              hero): a pinned full-bleed canvas scrubs a pre-rendered football clip frame-by-frame to scroll
+              (the iron-man/AirPods effect) via GSAP ScrollTrigger. Lazy + ssr:false + IO-decoded. Landing-only. */}
+          <GoalReplayScrollLazy />
 
           {/* 3 — THE LOOP: the product tells its own story. LoopStage mounts in view and plays the
               real useHaltSequence timeline (goal → halt → reprice → Booth → settle) in front of you. */}
@@ -120,6 +100,10 @@ export function LandingLong() {
           {/* 5 — THE FOOTBALL EXPERIENCE: the consumer-track journey, end to end */}
           <FootballExperience />
 
+          {/* the film — click-to-play reel (skiper67, re-skinned): a cinematic pause that opens full
+              screen; the product loop (game → price → proof) told once, in motion */}
+          <WatchReel />
+
           {/* 6 — PROOF / ON-CHAIN: the one violet surface, signed data streaming behind it */}
           <section aria-labelledby="proof-h" className="relative border-b border-hairline bg-surface/60">
             <FlowFieldLazy className="hidden lg:block" />
@@ -156,6 +140,10 @@ export function LandingLong() {
 
           {/* the Booth's own lines from the featured market — the voice that explains every swing */}
           <BoothQuotes />
+
+          {/* the icons interlude — a hover-expand strip of the game's greats (skiper52, re-skinned),
+              leading into the 48-crest wall: the names that made the shirt → the shirts as markets */}
+          <IconsGallery />
 
           {/* 7 — THE WHOLE TOURNAMENT: the numbers ARE the headline; the wall of 48 real crests makes
               "every one a market" literal (it replaced a dotted globe — see CrestWall). */}

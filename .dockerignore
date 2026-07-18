@@ -1,0 +1,45 @@
+# Docker build context excludes (fly deploy uses `COPY . .` — anything here would otherwise be baked into the image).
+#
+# SECRETS — never in an image. These come from `fly secrets set` at runtime, NOT the build.
+.env
+.env.*
+**/.env
+**/.env.*
+!**/.env.example
+.keys/
+**/*.pem
+**/id.json
+
+# Dependencies + build artifacts — reinstalled/regenerated inside the image (and the Mac-native ones would break Linux).
+node_modules
+**/node_modules
+**/.venv
+**/__pycache__
+**/.pytest_cache
+.next
+**/.next
+dist
+**/dist
+**/.turbo
+*.tsbuildinfo
+
+# VCS + local tooling — not needed at runtime; .claude/worktrees can be full repo copies (huge context).
+.git
+.gitignore
+.claude
+design
+target
+**/target
+
+# Frontend assets — this image runs api/ingest/cortex/jobs ONLY (web is on Vercel). apps/web/public is ~103MB of
+# flag PNGs + media that never belongs in the backend image; excluding it (keeping package.json for the pnpm
+# workspace install) cuts the build-context upload from 124MB to ~15MB.
+apps/web/public
+apps/web-ab/public
+.playwright-mcp
+.agents
+docs
+
+# Editor / OS cruft
+.DS_Store
+*.log

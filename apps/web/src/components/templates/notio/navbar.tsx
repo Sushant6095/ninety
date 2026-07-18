@@ -4,6 +4,7 @@ import { MenuIcon, XIcon, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { Wordmark } from "src/components/ui/Wordmark";
+import { ThemeToggle } from "src/components/ui/ThemeToggle";
 import { DOCS_URL } from "src/lib/routes";
 
 // notio's floating-pill nav, re-skinned to Ninety: our Wordmark + WC26 chip left, real routes + the
@@ -55,6 +56,13 @@ export default function Navbar() {
               )}
             </motion.div>
           ))}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 0.15 + navItems.length * 0.1 }}
+          >
+            <ThemeToggle />
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}

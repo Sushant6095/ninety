@@ -23,6 +23,10 @@ export function iso2(fifaCode: string): string | null {
   return cc;
 }
 
+/** Non-throwing membership check — true when a baked flag exists for this FIFA code. Use to decide whether to
+ *  render <Flag> vs a neutral disc for provider data whose codes we may not cover (never crashes in dev). */
+export const hasFlag = (fifaCode: string): boolean => fifaCode.toUpperCase() in FIFA_TO_ISO;
+
 /** Local baked flag PNG (4:3) at a given render width. w80/w160 are the retina steps baked by bake-flags.mjs. */
 export function flagUrl(fifaCode: string, w: 80 | 160 = 80): string | null {
   const cc = iso2(fifaCode);

@@ -9,6 +9,7 @@ import { MarketStatus } from "./MarketStatus";
 import { TerminalDock } from "./TerminalDock";
 import { PortfolioCard } from "./PortfolioCard";
 import { OpenPositions } from "./OpenPositions";
+import { GamesRail } from "./GamesRail";
 import { TournamentLeaderboard } from "./TournamentLeaderboard";
 import { TodaysMovers } from "./TodaysMovers";
 import { SESSION } from "../../lib/fixtures";
@@ -28,6 +29,9 @@ export function TerminalScreen({ matchId = MATCH.matchId }: { matchId?: string }
     <div className="flex min-h-screen flex-col overflow-x-clip bg-bg pb-20">
       <Ticker />
       <TerminalHeader user={SESSION} />
+      {/* Anchors the dock's fold-gate: while this top sentinel is (near) in view, TerminalDock hides so it never
+          floats over the live prices / River. Zero-height, non-interactive. */}
+      <div id="terminal-fold-sentinel" aria-hidden className="h-0" />
       <main className="mx-auto grid w-full max-w-[1600px] flex-1 grid-cols-1 items-start gap-3 px-3 py-3 sm:px-4 xl:grid-cols-[300px_minmax(0,1fr)_340px]">
         <h1 className="sr-only">Live match terminal</h1>
         <div className="hidden flex-col gap-3 xl:flex">
@@ -37,11 +41,17 @@ export function TerminalScreen({ matchId = MATCH.matchId }: { matchId?: string }
         </div>
         <div className="min-w-0">
           <MatchColumn matchId={matchId} />
+          {/* Below xl the right rail (which holds the Games section) is display:none, so surface the Games hub
+              here in the centre column instead — the terminal stays a games-inclusive surface at every width. */}
+          <div className="mt-3 xl:hidden">
+            <GamesRail />
+          </div>
         </div>
         <div className="hidden flex-col gap-3 xl:flex">
           <MarketStatus matchId={matchId} />
           <PortfolioCard />
           <OpenPositions />
+          <GamesRail />
           <TournamentLeaderboard />
           <TodaysMovers />
         </div>

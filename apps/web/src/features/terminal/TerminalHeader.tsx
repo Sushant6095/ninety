@@ -10,6 +10,7 @@ import { Avatar } from "../../components/ui/Avatar";
 import { routes, DOCS_URL } from "../../lib/routes";
 import { NotificationBell } from "../home/components/NotificationBell";
 import { Logomark } from "../../components/ui/Logomark";
+import { ThemeToggle } from "../../components/ui/ThemeToggle";
 import type { SessionUser } from "../../lib/types";
 
 // The single app-wide surface nav (App and Terminal are merged — no more surface toggle). Covers every
@@ -73,6 +74,7 @@ export function TerminalHeader({ user }: { user: SessionUser }) {
           <Tooltip content="Favourites">
             <button aria-label="Favourites" className="grid h-11 w-11 place-items-center rounded-full text-lo transition-colors duration-200 hover:bg-surface hover:text-hi active:bg-hairline/40"><Star size={17} strokeWidth={2} aria-hidden /></button>
           </Tooltip>
+          <ThemeToggle />
           <NotificationBell />
           <Link href={routes.settings} aria-label="Account" className="rounded-full ring-1 ring-inset ring-hairline transition-shadow duration-200 hover:ring-up/40"><Avatar handle={user.handle} size={36} /></Link>
         </div>

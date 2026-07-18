@@ -6,7 +6,9 @@ import { LEADERS } from "../../lib/fixtures";
 import { routes } from "../../lib/routes";
 
 const fmtPnl = (n: number): string => (n >= 0 ? "+" : "−") + Math.abs(n).toLocaleString("en-US");
-const medal = ["bg-up/15 text-up ring-up/25", "bg-hi/10 text-hi ring-hairline", "bg-chain/15 text-chain ring-chain/25"];
+// Rank-3 medal must NOT use `chain` (the on-chain-only token) — matches the leaderboard fix. Ladder: champion
+// up-green → bright white → muted-but-ringed grey.
+const medal = ["bg-up/15 text-up ring-up/25", "bg-hi/10 text-hi ring-hairline", "bg-hairline/60 text-lo ring-hairline"];
 
 /** Traders of the week — Sofascore's "team of the week" analogue: top performers with real photos + P&L.
  *  Shell is the re-skinned magicui BentoCard; the header carries the AvatarCircles facepile (top five +

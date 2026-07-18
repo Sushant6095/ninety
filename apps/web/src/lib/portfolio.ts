@@ -58,7 +58,10 @@ export const FILLS: Fill[] = [
   { id: "f3", ts: "72'", matchId: "wc26-can-mar", homeCode: "CAN", awayCode: "MAR", side: "buy", pick: "CAN", shares: 40, price: 52.0, credits: 2080, status: "OPEN", pnl: null },
   { id: "f4", ts: "Today", matchId: "wc26-srb-cmr", homeCode: "SRB", awayCode: "CMR", side: "sell", pick: "SRB", shares: 50, price: 88.0, credits: 4400, status: "SETTLED", pnl: 1490 },
   { id: "f5", ts: "Today", matchId: "wc26-cro-bel", homeCode: "CRO", awayCode: "BEL", side: "buy", pick: "CRO", shares: 30, price: 47.0, credits: 1410, status: "SETTLED", pnl: -1410 },
-  { id: "f6", ts: "5 Jul", matchId: "wc26-bra-kor", homeCode: "BRA", awayCode: "KOR", side: "buy", pick: "BRA", shares: 25, price: 68.0, credits: 1700, status: "SETTLED", pnl: 800 },
+  // Was BRA–KOR: a SETTLED fill on a match that is LIVE right now (55', on the watchlist) and dated "5 Jul"
+  // (tomorrow, vs the board's Jul 4). Re-pointed to BRA–HAI — a genuinely settled Group C match (Brazil 4–0,
+  // Jun 26) already in the proof log — so a settled trade no longer collides with a live fixture or a future date.
+  { id: "f6", ts: "Jun 26", matchId: "wc26-bra-hai", homeCode: "BRA", awayCode: "HAI", side: "buy", pick: "BRA", shares: 25, price: 68.0, credits: 1700, status: "SETTLED", pnl: 800 },
 ];
 
 /** Unrealized P&L on an open position, in credits. */

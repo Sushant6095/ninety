@@ -16,17 +16,22 @@ export function MomentsGallery() {
   const [tab, setTab] = useState<Tab>("All");
   // Live GET /moments (empty today → graceful empty state); MOMENTS is the offline-mode fallback only.
   const { data: moments } = useLive(() => getMomentList(), MOMENTS);
-  // Moment of the day = the biggest swing; it headlines the hero and is demoted out of the grid.
-  const hero = moments.length ? [...moments].sort((a, b) => Math.abs(swingOf(b)) - Math.abs(swingOf(a)))[0] : null;
-  const rest = hero ? moments.filter((m) => m.id !== hero.id) : [];
-  const rows = tab === "All" ? rest : rest.filter((m) => rarityOf(m) === tab);
+  // Moment of the day = the biggest swing; it headlines the hero in the "All" view only. When a rarity tab is
+  // active we show a PURE grid of every moment of that rarity — INCLUDING the one that headlines "All". Filtering
+  // `rest` (which excludes the hero) meant "Legendary" rendered "No legendary moments yet" directly under a
+  // LEGENDARY hero — the only legendary moment was the hero, hidden from its own filter. read-out-loud bug.
+  const hero = tab === "All" && moments.length ? [...moments].sort((a, b) => Math.abs(swingOf(b)) - Math.abs(swingOf(a)))[0] : null;
+  const rows = tab === "All" ? (hero ? moments.filter((m) => m.id !== hero.id) : moments) : moments.filter((m) => rarityOf(m) === tab);
 
   return (
     <AppShell>
       <main className="mx-auto w-full max-w-[1200px] flex-1 px-4 py-6 sm:px-6">
         <div className="mb-5">
           <h1 className="font-display text-display font-bold tracking-tight text-hi">Moments</h1>
-          <p className="mt-1 text-body text-lo">The swings that repriced a market — captured, ranked by size, and proved on-chain.</p>
+          {/* "provable on-chain", not "proved": every fixture is mintSig:null (MINTLESS). The old "proved on-chain"
+              asserted a completed proof that zero displayed moments have — the same fake-mint contradiction this
+              pass killed on the board. */}
+          <p className="mt-1 text-body text-lo">The swings that repriced a market — captured, ranked by size, and provable on-chain.</p>
         </div>
 
         {moments.length === 0 ? (
@@ -51,7 +56,7 @@ export function MomentsGallery() {
                     role="tab"
                     aria-selected={active}
                     onClick={() => setTab(t)}
-                    className={`cursor-pointer rounded-chip px-3 py-1.5 text-caption font-medium transition-colors duration-200 ${active ? "bg-hairline/60 text-hi" : "text-lo hover:text-hi"}`}
+                    className={`inline-flex min-h-11 cursor-pointer items-center rounded-chip px-3.5 text-caption font-medium outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-up/60 ${active ? "bg-hairline/60 text-hi" : "text-lo hover:text-hi"}`}
                   >
                     {t}
                   </button>

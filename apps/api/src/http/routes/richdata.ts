@@ -69,6 +69,35 @@ export function registerRichDataRoutes(app: FastifyInstance): void {
   app.get("/rich/matches/:id/h2h", { schema: richSchema("Head-to-head history", "id") }, (req, reply) =>
     serve(reply, "football-data", `/matches/${(req.params as { id: string }).id}/head2head?limit=10`, 24 * HOUR));
 
+  // GET /rich/fixtures/:competition?dateFrom=&dateTo= — fixture schedule + results for a date window (ADR-080).
+  // STILL data only (schedule + FINAL results); live in-play minute/score stays TxLINE-owned (ADR-051). The
+  // client asks for the WHOLE window in ONE call (free tier is 10/min) and slices client-side — do not fan out.
+  // TTL: 60s when the window includes today (statuses/results move that day), 10min otherwise.
+  app.get("/rich/fixtures/:competition", {
+    schema: {
+      ...richSchema("Fixtures + results for a date window", "competition"),
+      querystring: {
+        type: "object",
+        additionalProperties: true,
+        properties: {
+          dateFrom: { type: "string", description: "YYYY-MM-DD (defaults to today-3)" },
+          dateTo: { type: "string", description: "YYYY-MM-DD (defaults to today+1)" },
+        },
+      },
+    },
+  }, (req, reply) => {
+    const competition = (req.params as { competition: string }).competition;
+    const q = req.query as { dateFrom?: string; dateTo?: string };
+    const DATE = /^\d{4}-\d{2}-\d{2}$/;
+    const day = (offset: number) => new Date(Date.now() + offset * 86400_000).toISOString().slice(0, 10);
+    const dateFrom = q.dateFrom && DATE.test(q.dateFrom) ? q.dateFrom : day(-3);
+    const dateTo = q.dateTo && DATE.test(q.dateTo) ? q.dateTo : day(1);
+    const today = day(0);
+    const includesToday = dateFrom <= today && dateTo >= today;
+    const ttl = includesToday ? 60 : 10 * 60;
+    return serve(reply, "football-data", `/competitions/${competition}/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`, ttl);
+  });
+
   // --- API-Football (scarce; only the gaps FD.org can't fill) -------------------------------------
   // GET /rich/lineups/:fixture — starting XI + formation + coach. Cache 6h (posted ~1h pre-kickoff, then fixed).
   app.get("/rich/lineups/:fixture", { schema: richSchema("Lineups (XI + formation + coach)", "fixture") }, (req, reply) =>

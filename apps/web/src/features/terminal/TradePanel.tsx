@@ -133,21 +133,24 @@ export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPl
         <span className="num ml-auto text-label tabular-nums text-lo">{side === "buy" ? `${fmtCR(free)} cr free` : `${heldShares} ${code} held`}</span>
       </div>
 
-      <div className="mt-3 flex items-end gap-4">
-        <dl className="grid flex-1 grid-cols-3 gap-2">
-          <div><dt className="text-label uppercase tracking-wide text-lo">Cost</dt><dd className="num text-strong font-semibold text-hi">{fmtCR(q.cost)} <span className="text-label text-lo">cr</span></dd></div>
-          <div><dt className="text-label uppercase tracking-wide text-lo">Avg px</dt><dd className="num text-strong font-semibold text-hi">{q.avgPx.toFixed(1)}</dd></div>
-          <div><dt className="text-label uppercase tracking-wide text-lo">Max payout</dt><dd className="num text-strong font-semibold text-hi">{fmtCR(q.maxPayout)} <span className="text-label text-lo">cr</span></dd></div>
-        </dl>
+      {/* Metrics ABOVE, action button full-width BELOW (Hyperliquid/Polymarket pattern). They used to share
+          one `flex items-end` row with a shrink-0 button; at lg's narrow trade column the long button label
+          ("Buy Away · EGY @ 55.9") ate the row and the flex-1 metrics dl collapsed to 0px — Cost/Avg/Max
+          overlapped into an unreadable cramp. Stacking gives the three columns real width at every breakpoint
+          and reads as a stronger, clearer CTA. */}
+      <dl className="mt-3 grid grid-cols-3 gap-2">
+        <div><dt className="text-label uppercase tracking-wide text-lo">Cost</dt><dd className="num text-strong font-semibold text-hi">{fmtCR(q.cost)} <span className="text-label text-lo">cr</span></dd></div>
+        <div><dt className="text-label uppercase tracking-wide text-lo">Avg px</dt><dd className="num text-strong font-semibold text-hi">{q.avgPx.toFixed(1)}</dd></div>
+        <div><dt className="text-label uppercase tracking-wide text-lo">Max payout</dt><dd className="num text-strong font-semibold text-hi">{fmtCR(q.maxPayout)} <span className="text-label text-lo">cr</span></dd></div>
+      </dl>
 
-        <button
-          onClick={submit}
-          disabled={disabled}
-          className={`min-h-11 shrink-0 rounded-lg px-5 text-strong font-semibold text-bg transition-[filter,transform] duration-200 ease-out hover:brightness-110 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:cursor-not-allowed ${side === "buy" ? "bg-up focus-visible:ring-up" : "bg-down focus-visible:ring-down"}`}
-        >
-          {disabled ? "Trading paused" : `${side === "buy" ? "Buy" : "Sell"} ${label} @ ${markPx.toFixed(1)}`}
-        </button>
-      </div>
+      <button
+        onClick={submit}
+        disabled={disabled}
+        className={`mt-3 min-h-11 w-full rounded-lg px-5 text-strong font-semibold text-bg transition-[filter,transform] duration-200 ease-out hover:brightness-110 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:cursor-not-allowed ${side === "buy" ? "bg-up focus-visible:ring-up" : "bg-down focus-visible:ring-down"}`}
+      >
+        {disabled ? "Trading paused" : `${side === "buy" ? "Buy" : "Sell"} ${label} @ ${markPx.toFixed(1)}`}
+      </button>
 
       {fill && (
         <p ref={fillRef} className="num mt-2 flex items-center gap-1 text-label text-up" role="status">

@@ -10,7 +10,10 @@ import { fmtCR, signedCR } from "../../lib/format";
 import type { LeaderRow } from "../../lib/types";
 
 const fmtPnl = (n: number): string => (n >= 0 ? "+" : "−") + Math.abs(n).toLocaleString("en-US");
-const medal = ["", "bg-up/15 text-up ring-up/30", "bg-hi/10 text-hi ring-hairline", "bg-chain/15 text-chain ring-chain/30"];
+// Medal ladder in NON-reserved tokens only: champion up-green → bright white → muted-but-ringed. Rank 3 used
+// `text-chain` (violet) — but chain is the on-chain-ONLY token, never a bronze medal (same misuse fixed on the
+// Moments Legendary chip). #3 is a filled+ringed grey so it still reads as a medal vs the transparent #4+ rows.
+const medal = ["", "bg-up/15 text-up ring-up/40", "bg-hi/10 text-hi ring-hairline", "bg-hairline/60 text-lo ring-hairline"];
 
 // Re-skinned shadcn HoverCard content — a trader mini-preview pulled from their profile.
 function TraderPreview({ handle }: { handle: string }) {

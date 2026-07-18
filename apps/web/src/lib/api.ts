@@ -97,6 +97,14 @@ export const getTeam = (id: string) => api(`/rich/teams/${id}`);
 export const getH2H = (matchId: string) => api(`/rich/matches/${matchId}/h2h`);
 export const getLineups = (fixture: string) => api(`/rich/lineups/${fixture}`);
 export const getPlayer = (id: string, season?: number) => api(`/rich/players/${id}${season ? `?season=${season}` : ""}`);
+// Fixture schedule + results for a date window (ADR-080) — ONE call for the whole window, sliced client-side.
+export const getFixtures = (competition: string, dateFrom: string, dateTo: string) =>
+  api(`/rich/fixtures/${competition}?dateFrom=${dateFrom}&dateTo=${dateTo}`);
+
+// ---- player read-model (top-20 WC26 profiles, baked; ADR-082) --------------------------------------
+// STILL data (ADR-051) re-served by GET /players + /players/:id; 503 if the bake is absent (never fabricated).
+export const getPlayerProfiles = () => api<{ source: string; bakedAt: string; players: unknown[] }>("/players");
+export const getPlayerProfile = (id: string) => api<{ player: unknown }>(`/players/${encodeURIComponent(id)}`);
 
 // ---- live WS (re-export the resume-capable client so lib/ws.ts is consumed, not dead) --------------
 export { connect as wsConnect, type Frame } from "./ws";

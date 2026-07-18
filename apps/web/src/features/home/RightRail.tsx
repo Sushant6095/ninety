@@ -3,10 +3,13 @@ import Link from "next/link";
 import { RailCard } from "../../components/ui/RailCard";
 import { Avatar } from "../../components/ui/Avatar";
 import { MagicCard } from "../../components/vendor/magicui/magic-card";
+import { TeamCrest } from "../../components/ui/TeamCrest";
 import { FeaturedPanel } from "./FeaturedPanel";
 import { useMatchLiveList } from "../live/matchLiveStore";
 import { routes } from "../../lib/routes";
 import { LEADERS, MARKETS } from "../../lib/fixtures";
+import { MOMENTS, swingOf } from "../../lib/moments";
+import { fmtPrice } from "../../lib/format";
 
 const fmtPnl = (n: number): string => (n >= 0 ? "+" : "−") + Math.abs(n).toLocaleString("en-US");
 const TOP_TRADERS = 5; // the rail shows the leaders' head; the full board lives at /leaderboard
@@ -14,6 +17,12 @@ const STARTING_SOON = 3;
 const HOUR = 3600_000;
 
 const MARKET_BY_ID = new Map(MARKETS.map((m) => [m.matchId, m]));
+
+// Moment of the day = the biggest swing in MOMENTS — the SAME selection the /moments gallery hero uses, so the
+// two can never disagree. This used to be hardcoded copy ("The 38th minute … minted by @hexfan"), which (a)
+// contradicted the gallery once it was populated (gallery hero = Croatia's +33, this said David's +22) and (b)
+// claimed "minted" for a mintless fixture. Deriving it is the same fix "Starting soon" already got.
+const MOMENT_OF_DAY = [...MOMENTS].sort((a, b) => Math.abs(swingOf(b)) - Math.abs(swingOf(a)))[0];
 
 /** "in 1h 40m" until kick-off, measured from the slate's own clock (the earliest kickoff on the board). */
 function untilLabel(kickoffAt: string, from: number): string {
@@ -93,9 +102,20 @@ export function RightRail() {
           <h2 className="mb-1 flex items-center gap-1 text-label font-semibold uppercase tracking-label text-chain">
             <span aria-hidden>◆</span> Moment of the day
           </h2>
-          <p className="font-display text-heading font-bold leading-tight text-hi">The 38th minute</p>
-          <p className="num mt-1 text-label text-lo">
-            CAN–MAR · David repricing <span className="text-up">41 → 63</span> · minted by @hexfan
+          <p className="font-display text-heading font-bold leading-tight text-hi">{MOMENT_OF_DAY.title}</p>
+          <p className="num mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-label text-lo">
+            <span className="inline-flex items-center gap-1">
+              <TeamCrest code={MOMENT_OF_DAY.homeCode} size={14} />
+              <TeamCrest code={MOMENT_OF_DAY.awayCode} size={14} />
+              {MOMENT_OF_DAY.homeCode}&#8211;{MOMENT_OF_DAY.awayCode}
+            </span>
+            <span aria-hidden className="text-lo/50">·</span>
+            <span>
+              {MOMENT_OF_DAY.pick} <span className="text-up">{fmtPrice(MOMENT_OF_DAY.fromPrice)} → {fmtPrice(MOMENT_OF_DAY.toPrice)}</span>
+            </span>
+            <span aria-hidden className="text-lo/50">·</span>
+            {/* Honest chain state: the fixtures are mintless (mintSig null) — "captured by", never "minted by". */}
+            <span>{MOMENT_OF_DAY.mintSig ? "minted by" : "captured by"} {MOMENT_OF_DAY.owner}</span>
           </p>
         </Link>
       </MagicCard>

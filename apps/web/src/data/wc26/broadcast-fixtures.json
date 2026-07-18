@@ -1,0 +1,76 @@
+{
+  "_note": "REAL football-data.org snapshot (competition 2000, FIFA World Cup), window 2026-07-15..2026-07-19, captured 2026-07-18 (ADR-080). Pinned demo source for the broadcast ticker; the live path is getFixtures() via GET /rich/fixtures. Trimmed to the fields the mapper reads.",
+  "competition": "FIFA World Cup",
+  "window": {
+    "dateFrom": "2026-07-15",
+    "dateTo": "2026-07-19"
+  },
+  "matches": [
+    {
+      "id": 537388,
+      "utcDate": "2026-07-15T19:00:00Z",
+      "status": "FINISHED",
+      "stage": "SEMI_FINALS",
+      "homeTeam": {
+        "name": "England",
+        "shortName": "England",
+        "tla": "ENG"
+      },
+      "awayTeam": {
+        "name": "Argentina",
+        "shortName": "Argentina",
+        "tla": "ARG"
+      },
+      "score": {
+        "fullTime": {
+          "home": 1,
+          "away": 2
+        }
+      }
+    },
+    {
+      "id": 537389,
+      "utcDate": "2026-07-18T21:00:00Z",
+      "status": "TIMED",
+      "stage": "THIRD_PLACE",
+      "homeTeam": {
+        "name": "France",
+        "shortName": "France",
+        "tla": "FRA"
+      },
+      "awayTeam": {
+        "name": "England",
+        "shortName": "England",
+        "tla": "ENG"
+      },
+      "score": {
+        "fullTime": {
+          "home": null,
+          "away": null
+        }
+      }
+    },
+    {
+      "id": 537390,
+      "utcDate": "2026-07-19T19:00:00Z",
+      "status": "TIMED",
+      "stage": "FINAL",
+      "homeTeam": {
+        "name": "Spain",
+        "shortName": "Spain",
+        "tla": "ESP"
+      },
+      "awayTeam": {
+        "name": "Argentina",
+        "shortName": "Argentina",
+        "tla": "ARG"
+      },
+      "score": {
+        "fullTime": {
+          "home": null,
+          "away": null
+        }
+      }
+    }
+  ]
+}

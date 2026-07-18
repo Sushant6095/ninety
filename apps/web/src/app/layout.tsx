@@ -1,6 +1,5 @@
 import "../styles/globals.css";
 import type { Metadata } from "next";
-import { Archivo, Inter, IBM_Plex_Mono } from "next/font/google";
 import { OfflineBanner } from "../components/ui/OfflineBanner";
 import { PrototypeRibbon } from "../components/ui/PrototypeRibbon";
 import { Toaster } from "../components/ui/Toaster";
@@ -8,10 +7,11 @@ import { CssStudio } from "../components/dev/CssStudio";
 import { MatchLiveProvider } from "../features/live/MatchLiveProvider";
 import { TooltipProvider } from "../components/ui/Tooltip";
 
-// Self-hosted via next/font — reliable render (no FOUT / no system-font fallback that reads as "AI default").
-const archivo = Archivo({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-display", display: "swap" });
-const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-ui", display: "swap" });
-const plexMono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-mono", display: "swap" });
+// Fonts are the Apple system stack (globals.css --font-*): no webfont fetch, genuine San Francisco on Apple.
+// THEME (ADR-077): a no-flash inline script sets <html data-theme> + the `dark` class BEFORE first paint, from
+// localStorage("ninety-theme") then prefers-color-scheme, defaulting to dark. Keeping the `dark` class in sync
+// with data-theme is what makes notio's `dark:` variants (darkMode:"class") resolve for the active theme.
+const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem('ninety-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}var d=document.documentElement;d.setAttribute('data-theme',t);d.classList.toggle('dark',t!=='light');}catch(e){var d=document.documentElement;d.setAttribute('data-theme','dark');d.classList.add('dark');}})();`;
 
 const TITLE = "Ninety — live football exchange";
 const DESCRIPTION =
@@ -38,9 +38,13 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  // `dark` is permanent (v1 is dark-only) — it makes notio's `dark:` variants resolve; darkMode:"class" in tailwind.config.
+  // The no-flash script sets data-theme + the `dark` class before paint; suppressHydrationWarning because it
+  // mutates <html> before React hydrates. Default (SSR) markup carries `dark` so a no-JS render stays dark.
   return (
-    <html lang="en" className={`dark ${archivo.variable} ${inter.variable} ${plexMono.variable}`}>
+    <html lang="en" className="dark" data-theme="dark" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
       <body>
         <PrototypeRibbon />
         <OfflineBanner />

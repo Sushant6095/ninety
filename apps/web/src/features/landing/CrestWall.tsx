@@ -48,7 +48,7 @@ export function CrestWall({ className = "" }: { className?: string }) {
       <ul aria-label="All 48 qualified teams, by group" className="grid grid-cols-4 gap-x-3 gap-y-3 sm:gap-x-4 lg:grid-cols-3">
         {GROUPED.map((g) => (
           <li key={g.letter}>
-            <p className="num mb-1 text-[10px] font-semibold uppercase tracking-caps text-lo/70">{g.letter}</p>
+            <p className="num mb-1 text-label font-semibold uppercase tracking-caps text-lo/70">{g.letter}</p>
             <div className="grid grid-cols-2 gap-1 rounded-md p-1 ring-1 ring-inset ring-hairline/50">
               {g.codes.map((code) => (
                 <span

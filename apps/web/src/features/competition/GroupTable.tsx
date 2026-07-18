@@ -11,21 +11,26 @@ export function GroupTable({ group }: { group: WcGroup }) {
     <section className="elev overflow-hidden rounded-card border border-hairline bg-surface">
       <header className="flex items-center justify-between border-b border-hairline px-4 py-2.5">
         <h2 className="text-strong font-semibold text-hi">Group {group.name}</h2>
-        <span className="text-label uppercase tracking-label text-lo">Top {QUALIFY} advance</span>
+        {/* Matches the page subtitle + the board's GroupStandings ("Top 2 + best thirds advance"). The bare
+            "Top 2 advance" understated the actual WC26 rule (top 2 of each PLUS the 8 best third-placed teams). */}
+        <span className="text-label uppercase tracking-label text-lo">Top {QUALIFY} + best 3rds</span>
       </header>
-      <table className="w-full text-caption">
+      {/* table-fixed so a long team name ("Democratic Republic of the Congo", 33 chars) TRUNCATES inside the
+          Team column instead of widening it and shoving GF/GA/GD/Pts off the card edge (Group K clipped in an
+          auto-layout table). Every column except Team is width-capped; Team takes the remainder + truncates. */}
+      <table className="w-full table-fixed text-caption">
         <thead>
           <tr className="text-label uppercase tracking-wide text-lo">
-            <th className="py-1.5 pl-4 pr-1 text-left font-medium">#</th>
+            <th className="w-9 py-1.5 pl-4 pr-1 text-left font-medium">#</th>
             <th className="py-1.5 pr-2 text-left font-medium">Team</th>
-            <th className="num px-1.5 py-1.5 text-right font-medium">MP</th>
-            <th className="num px-1.5 py-1.5 text-right font-medium">W</th>
-            <th className="num px-1.5 py-1.5 text-right font-medium">D</th>
-            <th className="num px-1.5 py-1.5 text-right font-medium">L</th>
-            <th className="num hidden px-1.5 py-1.5 text-right font-medium sm:table-cell">GF</th>
-            <th className="num hidden px-1.5 py-1.5 text-right font-medium sm:table-cell">GA</th>
-            <th className="num px-1.5 py-1.5 text-right font-medium">GD</th>
-            <th className="num py-1.5 pl-1.5 pr-4 text-right font-semibold text-hi">Pts</th>
+            <th className="num w-8 px-1.5 py-1.5 text-right font-medium">MP</th>
+            <th className="num w-7 px-1.5 py-1.5 text-right font-medium">W</th>
+            <th className="num w-7 px-1.5 py-1.5 text-right font-medium">D</th>
+            <th className="num w-7 px-1.5 py-1.5 text-right font-medium">L</th>
+            <th className="num hidden w-8 px-1.5 py-1.5 text-right font-medium sm:table-cell">GF</th>
+            <th className="num hidden w-8 px-1.5 py-1.5 text-right font-medium sm:table-cell">GA</th>
+            <th className="num w-9 px-1.5 py-1.5 text-right font-medium">GD</th>
+            <th className="num w-11 py-1.5 pl-1.5 pr-4 text-right font-semibold text-hi">Pts</th>
           </tr>
         </thead>
         <tbody>
