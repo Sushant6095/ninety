@@ -1,0 +1,25 @@
+apps/web/src/features/home/Footer.tsx
+  s_08f2b9ce86c8fd::t_178134c741b4d0 9
+  s_08f2b9ce86c8fd::t_fb22fa6185da55 12
+apps/web/src/lib/terminal.ts
+  s_08f2b9ce86c8fd::t_78cef6590df466 99-101
+apps/web/src/features/terminal/MarketStatus.tsx
+  s_08f2b9ce86c8fd::t_cc2a7f336d9d9d 37
+  s_08f2b9ce86c8fd::t_15f8c52b06fd35 6,8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "99a8005eb7d1656676bc18094ca98ccc703745ec",
+  "prompts": {},
+  "sessions": {
+    "s_08f2b9ce86c8fd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e450ff95-d42a-4a05-917b-547815348b13",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
