@@ -44,7 +44,7 @@ export function MatchHeader({ match, live }: { match: TerminalMatch; live: Match
           <span className="text-hi">{match.stage} · {match.home} vs {match.away}</span>
         </nav>
         <div className="flex shrink-0 items-center gap-2">
-          <span className={`rounded-chip bg-surface px-2 py-1 text-label font-semibold uppercase tracking-tag ring-1 ring-inset transition-colors duration-200 ${status === "HALTED" ? "text-halt ring-halt/40" : "text-lo ring-hairline"}`}>Market {status}</span>
+          <span className={`rounded-chip bg-surface px-2 py-1 text-label font-semibold uppercase tracking-tag ring-1 ring-inset transition-colors duration-200 ${status === "HALTED" ? "text-halt ring-halt/40" : "text-lo ring-hairline"}`}>Replay{status === "HALTED" ? " · Halted" : ""}</span>
           <button className="hit inline-flex items-center gap-1 rounded-chip bg-surface px-2 py-1 text-label text-lo ring-1 ring-inset ring-hairline transition-colors duration-200 hover:text-hi">
             <Star size={12} className="text-up" aria-hidden /> Favourite
           </button>

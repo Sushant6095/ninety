@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { AvatarCircles } from "../../components/vendor/magicui/avatar-circles";
 import { LEADERS } from "../../lib/fixtures";
 import { routes } from "../../lib/routes";
-import { MARKET_STATUS } from "../../lib/terminal";
 
 interface Avatar {
   imageUrl: string;
@@ -43,10 +42,7 @@ export function TradersStrip() {
   return (
     <div className="flex min-h-11 items-center gap-3 border-t border-hairline/60 px-4 py-2.5">
       {avatars.length > 0 && <AvatarCircles avatarUrls={avatars} className="-space-x-3" />}
-      <p className="text-caption text-lo">
-        <span className="num font-semibold tabular-nums text-hi">{MARKET_STATUS.tradersIn.toLocaleString("en-US")}</span>{" "}
-        traders in this market
-      </p>
+      <p className="text-caption text-lo">Traders in this market</p>
     </div>
   );
 }
