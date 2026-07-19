@@ -1,0 +1,231 @@
+apps/web/src/lib/routes.ts
+  s_36d8ea3a9ff67a::t_b0cbb564a07bcc 15
+apps/web/src/features/competition/GroupTable.tsx
+  s_36d8ea3a9ff67a::t_3a41abd945591e 2-3
+  s_36d8ea3a9ff67a::t_e6f8dfad331406 50-52,56
+apps/web/src/features/terminal/BigRiver.tsx
+  s_36d8ea3a9ff67a::t_29a429907bf8c8 91-93
+  s_36d8ea3a9ff67a::t_b84a3dc4c92e59 61-75
+  s_36d8ea3a9ff67a::t_13e8d183c1cfea 40
+  s_36d8ea3a9ff67a::t_5f8c9892101f9b 110-121,123-129
+  s_36d8ea3a9ff67a::t_aee70b792f0ac8 20
+  s_36d8ea3a9ff67a::t_7905da6e83c646 148-150
+  s_36d8ea3a9ff67a::t_98cd52044f33ea 53-57
+  s_36d8ea3a9ff67a::t_8c255a3273c10b 122
+design/verdicts/2026-07-19-route-play.md
+  s_36d8ea3a9ff67a::t_48be382d2c3490 1-49
+apps/web/src/features/docs/DocsShell.tsx
+  s_36d8ea3a9ff67a::t_5459c892b0b5e0 1-128
+apps/web/src/components/ui/AppShell.tsx
+  s_36d8ea3a9ff67a::t_8fd8154ae83c10 15,18,22
+apps/web/src/features/terminal/TerminalScreen.tsx
+  s_36d8ea3a9ff67a::t_97db6ccc3348fb 30
+  s_36d8ea3a9ff67a::t_3bcb062fc5c5de 49-52,58-61
+apps/web/src/app/docs/about/page.tsx
+  s_36d8ea3a9ff67a::t_0ed2885fc3f37c 1,4,14-28,31-87,90-110
+  s_36d8ea3a9ff67a::t_25fbadcd44fd45 2-3,5-13
+  s_36d8ea3a9ff67a::t_5c80f3a20b768d 88-89
+  s_36d8ea3a9ff67a::t_b0113c31f13169 29-30
+docs/ralph-ui-ledger.md
+  s_36d8ea3a9ff67a::t_055601ac7d4903 93
+  s_36d8ea3a9ff67a::t_31b25e1e9ecad6 92
+apps/web/src/lib/types.ts
+  s_36d8ea3a9ff67a::t_ea1c6dde926180 40-56
+apps/web/src/features/docs/DocsSlider.tsx
+  s_36d8ea3a9ff67a::t_d4b6da6b12ad6a 1-170
+apps/web/src/components/templates/notio/navbar.tsx
+  s_36d8ea3a9ff67a::t_44bf4a6d660e94 14,17
+apps/web/src/features/terminal/TerminalHeader.tsx
+  s_36d8ea3a9ff67a::t_53e059780bb3b0 36-39,41-42
+  s_36d8ea3a9ff67a::t_8c0a95e4a45b30 32
+  s_36d8ea3a9ff67a::t_b2d36b785352e0 40
+  s_36d8ea3a9ff67a::t_080044d958c8fc 74-75,77-81,88
+  s_36d8ea3a9ff67a::t_22b8e0831e97fb 14
+  s_36d8ea3a9ff67a::t_c7cd6b5a8c16d4 10
+apps/web/src/features/landing/LandingLong.tsx
+  s_08f2b9ce86c8fd::t_574743117c5403 42-46
+  s_08f2b9ce86c8fd::t_a9eb733ddb51be 12
+docs/handoff/PROMPT-FINAL-PARALLEL.md
+  s_08f2b9ce86c8fd::t_91f50c7583a15e 1-109
+apps/web/src/app/docs/layout.tsx
+  s_36d8ea3a9ff67a::t_d4799e455037c0 1-13
+apps/web/src/app/docs/roadmap/page.tsx
+  s_36d8ea3a9ff67a::t_898e714b068bf6 1-83
+apps/web/src/features/settings/SettingsPage.tsx
+  s_36d8ea3a9ff67a::t_6ee249b20e0535 98-102,105
+  s_36d8ea3a9ff67a::t_1ddfaeb9ee79f3 3,8
+  s_36d8ea3a9ff67a::t_8a8f6347d26a52 62-64
+  s_36d8ea3a9ff67a::t_8452bf4e0b74cb 43-45,49-50,54
+apps/web/src/features/account/AccountPage.tsx
+  s_36d8ea3a9ff67a::t_fd305cfbd2ca32 20,22-23
+  s_36d8ea3a9ff67a::t_665fcb79aeff61 120
+  s_36d8ea3a9ff67a::t_29286877646fea 30
+  s_36d8ea3a9ff67a::t_bc31eb5635511f 197
+  s_36d8ea3a9ff67a::t_aa8507bd98bdc3 59-61,63,69,74-83,85,88-89,91,93-95
+  s_36d8ea3a9ff67a::t_b91765520a19e2 164
+  s_36d8ea3a9ff67a::t_c80f2a8ba3bf7d 38,42,45,47
+  s_36d8ea3a9ff67a::t_92307040524128 101
+  s_36d8ea3a9ff67a::t_9f79e7132c32b0 138-145
+apps/web/src/features/terminal/MatchColumn.tsx
+  s_36d8ea3a9ff67a::t_94f17df25d6701 24,30-33
+  s_36d8ea3a9ff67a::t_ca100f3ab7332b 278
+  s_36d8ea3a9ff67a::t_edb1d5f333a672 75-77,79-80
+  s_36d8ea3a9ff67a::t_c4e42d4e7e4876 119-130
+  s_36d8ea3a9ff67a::t_8a3201699353e6 132-133,135-145
+  s_36d8ea3a9ff67a::t_5f4406f5f71748 259-276
+  s_36d8ea3a9ff67a::t_7aaa9b0778670b 22-23
+  s_36d8ea3a9ff67a::t_37036fd5122efc 203-205,210
+apps/web/src/features/landing/LandingNav.tsx
+  s_36d8ea3a9ff67a::t_fd168fe4b4b0d7 6
+  s_36d8ea3a9ff67a::t_9ec82dc42374a9 37-40,44
+apps/web/src/features/moments/MomentDetail.tsx
+  s_36d8ea3a9ff67a::t_6a6da74b7fcd43 8-9
+  s_36d8ea3a9ff67a::t_9b55ead69919b7 49
+  s_36d8ea3a9ff67a::t_8e6d1791986189 61-73
+  s_36d8ea3a9ff67a::t_40c73c5dfe310a 88-91
+design/PROVENANCE.md
+  s_08f2b9ce86c8fd::t_a2ba319749ddaf 274-278
+docs/adr/ADR-078-landing-scroll-scrub-frame-sequence.md
+  s_08f2b9ce86c8fd::t_a2ba319749ddaf 47-72
+apps/web/package.json
+  s_36d8ea3a9ff67a::t_f87ae1e41bb6a1 31-32
+  s_36d8ea3a9ff67a::t_0802df2f2b7062 33
+design/verdicts/2026-07-19-route-onboarding.md
+  s_36d8ea3a9ff67a::t_5c06f69cf8a04c 1-50
+apps/web/src/features/terminal/OpenPositions.tsx
+  s_36d8ea3a9ff67a::t_8b147be7d7c989 2,4-5,10-11,13-14,16,21,23-62,64-69
+apps/web/src/features/docs/DocsProse.tsx
+  s_36d8ea3a9ff67a::t_3a5e1f24d3e4fa 1-73
+apps/web/src/features/terminal/PlainMatchColumn.tsx
+  s_36d8ea3a9ff67a::t_3f4bf9229b9b69 14,16
+  s_36d8ea3a9ff67a::t_f03a8dfa17e9e1 97-98,100-101
+apps/web/src/features/terminal/TodaysMovers.tsx
+  s_36d8ea3a9ff67a::t_85203069ca16b1 2,6
+  s_36d8ea3a9ff67a::t_513de12c79ae00 35-36
+  s_36d8ea3a9ff67a::t_42505715ebeebe 25-27
+  s_36d8ea3a9ff67a::t_15ea7691253217 47
+apps/web/src/features/terminal/MatchHeader.tsx
+  s_36d8ea3a9ff67a::t_1533b66948197e 79,85
+apps/web/src/features/terminal/depth/Lineups.tsx
+  s_36d8ea3a9ff67a::t_5c9a0b6294590d 70-71
+  s_36d8ea3a9ff67a::t_702a883749b18e 3-4
+  s_36d8ea3a9ff67a::t_6ed02f5c9fa832 106
+apps/web/src/lib/portfolio.ts
+  s_36d8ea3a9ff67a::t_f268df55451048 4,6-8
+  s_36d8ea3a9ff67a::t_8aabaffb7420bb 20
+apps/web/src/features/profile/ProfilePage.tsx
+  s_36d8ea3a9ff67a::t_78628037cb6566 30
+apps/web/src/features/session/SessionProvider.tsx
+  s_36d8ea3a9ff67a::t_ea1619a9fff681 1-100
+apps/web/src/features/terminal/MatchStates.tsx
+  s_36d8ea3a9ff67a::t_c5d1ae2ce3d131 39-41,46-52,55-56
+apps/web/src/features/home/components/NotificationBell.tsx
+  s_36d8ea3a9ff67a::t_2ec3422b991451 8-10,13-14,16,18
+apps/web/src/components/ui/Wordmark.tsx
+  s_36d8ea3a9ff67a::t_d0c33c0db8cd26 11
+apps/web/src/features/terminal/TournamentLeaderboard.tsx
+  s_36d8ea3a9ff67a::t_8afe550bbff5c5 1,5,10-11,14-15,17
+  s_36d8ea3a9ff67a::t_4beb7e9bc97e79 12
+  s_36d8ea3a9ff67a::t_f6503772d9c73a 38-39,42-45
+apps/web/src/features/terminal/MarketStatus.tsx
+  s_36d8ea3a9ff67a::t_49027d873415f7 38-39,42
+apps/web/src/features/landing/StaticHero.tsx
+  s_08f2b9ce86c8fd::t_7598858ac016a3 1-13,18-22,24-36
+  s_08f2b9ce86c8fd::t_5d95373ed28258 14-17,23
+apps/web/src/features/account/AccuracyPanel.tsx
+  s_36d8ea3a9ff67a::t_8d458c94cee042 19-21,34-51,53,55
+apps/web/src/features/terminal/YourPosition.tsx
+  s_36d8ea3a9ff67a::t_3c62206cb67d9b 2,4-5
+  s_36d8ea3a9ff67a::t_e83341950720f8 23-37,39
+apps/web/src/features/terminal/PortfolioCard.tsx
+  s_36d8ea3a9ff67a::t_86256f5528035e 2,4-6,8-12,17,23,27,29-30,32-34
+apps/web/src/app/docs/architecture/page.tsx
+  s_36d8ea3a9ff67a::t_78c275841f7d63 1-90
+apps/web/src/features/onboarding/OnboardingPage.tsx
+  s_36d8ea3a9ff67a::t_6831915f81d9e7 59
+  s_36d8ea3a9ff67a::t_8cbc4862422c5f 37
+  s_36d8ea3a9ff67a::t_4080dc7ecaac38 70
+apps/web/src/lib/moments.ts
+  s_36d8ea3a9ff67a::t_cfe8dfe29f2591 59
+apps/web/src/app/docs/page.tsx
+  s_36d8ea3a9ff67a::t_30c3cf7c5d1bd4 1-111
+apps/web/src/lib/terminal.ts
+  s_36d8ea3a9ff67a::t_83ec97c963769c 5
+apps/web/src/features/portfolio/HistoryPage.tsx
+  s_36d8ea3a9ff67a::t_33e13b9374e393 7
+  s_36d8ea3a9ff67a::t_ff349a52558f26 59-62,64-65,69
+apps/web/src/features/home/HomeShell.tsx
+  s_36d8ea3a9ff67a::t_a82514e2c5dd58 22
+apps/web/src/features/leaderboard/LeaderboardPage.tsx
+  s_36d8ea3a9ff67a::t_a3ac4102da49cf 75-97,100-102,105
+  s_36d8ea3a9ff67a::t_0b2950d3669f3f 1,7
+  s_36d8ea3a9ff67a::t_d7b99f305b470f 126,131
+apps/web/src/app/layout.tsx
+  s_36d8ea3a9ff67a::t_dba1d55250c12f 8
+  s_36d8ea3a9ff67a::t_b2683a004f9755 50-61
+apps/web/src/features/account/ProofsPanel.tsx
+  s_36d8ea3a9ff67a::t_da827a9dbc85e3 9,13-15
+apps/web/public/hero-stadium.svg
+  s_08f2b9ce86c8fd::t_f6d64d089dd187 3-4,8-11,13-16,18-20,24-26,28-30,32-34,38,40-47,50,52-54,57,59-62,66
+  s_08f2b9ce86c8fd::t_8e5de54749b6dc 1-2,6-7,12,17,21-23,27,31,35-37,39,48-49,51,55-56,58,63-65,67
+  s_08f2b9ce86c8fd::t_dadb2f7e15b9b8 5
+apps/web/src/lib/fixtures.ts
+  s_36d8ea3a9ff67a::t_fa862b4c596f20 54-55
+  s_36d8ea3a9ff67a::t_53ffe36fb79101 4
+apps/web/src/features/how/HowItWorksPage.tsx
+  s_36d8ea3a9ff67a::t_741c82748642d2 19
+apps/web/src/features/terminal/TradePanel.tsx
+  s_36d8ea3a9ff67a::t_6ac1d43bda07d2 177
+  s_36d8ea3a9ff67a::t_1031c291f01441 37
+  s_36d8ea3a9ff67a::t_4c7679e3968cb0 150-158
+  s_36d8ea3a9ff67a::t_7b32f0aad964a3 30-31
+  s_36d8ea3a9ff67a::t_1bd3450144155e 61-64,67-68,75,79-91
+apps/web/src/features/docs/docsNav.ts
+  s_36d8ea3a9ff67a::t_eacb470d320383 1-21
+apps/web/src/features/docs/ArchDiagram.tsx
+  s_36d8ea3a9ff67a::t_3f208c7d8ae9af 1-95
+apps/web/src/features/docs/DocsLoop.tsx
+  s_36d8ea3a9ff67a::t_28285a4261e9fb 1-28
+pnpm-lock.yaml
+  s_36d8ea3a9ff67a::t_4fa7a093b2123e 117-125,2554-2577,3928-3931,6127-6147,7652-7653
+docs/demo/PHONE-SCRIPT.md
+  s_36d8ea3a9ff67a::t_4ac8a45fdcb449 1-171
+docs/handoff/RUN-ORDER.md
+  s_36d8ea3a9ff67a::t_c3aa80a3170cb7 1-82
+docs/GRANT-AGENTIC.md
+  s_36d8ea3a9ff67a::t_89d17a9cdb907e 1-144
+docs/SUBMISSION-FORM-FINAL.md
+  s_36d8ea3a9ff67a::t_02efe589ac3500 1-200
+docs/demo/PRESENTATION-MASTER.md
+  s_36d8ea3a9ff67a::t_49f1813c1c9eaa 1-491
+docs/handoff/PROMPT-docs-site.md
+  s_36d8ea3a9ff67a::t_f183273a054d67 1-86
+docs/handoff/PROMPT-hero-static-image.md
+  s_36d8ea3a9ff67a::t_a4be11015043f3 1-55
+docs/site/DOCS-CONTENT.md
+  s_36d8ea3a9ff67a::t_aeed5e49e2b379 1-232
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "b1bf5ed5387fe6692a7e42bfa578d1fd3f3ec316",
+  "prompts": {},
+  "sessions": {
+    "s_08f2b9ce86c8fd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e450ff95-d42a-4a05-917b-547815348b13",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_36d8ea3a9ff67a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2297fb64-1e86-426e-89ba-9e7244165831",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
