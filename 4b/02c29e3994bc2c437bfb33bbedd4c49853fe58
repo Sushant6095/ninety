@@ -1,0 +1,490 @@
+apps/worker-jobs/src/tg.ts
+  s_08f2b9ce86c8fd::t_8bbb55aac09afc 19-47
+  s_08f2b9ce86c8fd::t_77d48c185af809 60
+  s_08f2b9ce86c8fd::t_1136b0ab667a87 89-95
+design/verdicts/2026-07-17-terminal-football-warmth.md
+  s_7a4588856bfecd::t_04a50f3711f5af 1-41
+design/verdicts/2026-07-19-landing-proof.md
+  s_36d8ea3a9ff67a::t_e9f39e50df6bef 1-28
+apps/web/src/features/moments/MomentsGallery.tsx
+  s_36d8ea3a9ff67a::t_515b026006e08c 20,22,31,34,40
+apps/web/src/features/account/AccuracyPanel.tsx
+  s_36d8ea3a9ff67a::t_d5318b8ae2febb 2-3,38
+apps/worker-jobs/src/providers.test.ts
+  s_08f2b9ce86c8fd::t_c0c7255cad4c5d 2-80
+  s_08f2b9ce86c8fd::t_e8ab66f4d5ce2f 1
+apps/web/src/features/home/RightRail.tsx
+  s_3647dc687bee1a::t_50bd9f0a12e386 11
+  s_3647dc687bee1a::t_e338bd7eb508c1 34
+  s_3647dc687bee1a::t_665da4bd45f764 55-57
+apps/web/src/features/landing/LandingLong.tsx
+  s_36d8ea3a9ff67a::t_3b087337853ea7 112-115
+  s_36d8ea3a9ff67a::t_f520709dc645e7 39,42-46
+  s_36d8ea3a9ff67a::t_5ced89abc27bd0 169-173
+  s_36d8ea3a9ff67a::t_51981a4d43ea5a 182-185
+  s_36d8ea3a9ff67a::t_095e1a367f02a2 135-152,154
+  s_048a3385448d96::t_1fed7d72a72a76 13
+  s_36d8ea3a9ff67a::t_3c1b4f9b2baa41 53-54,57
+  s_048a3385448d96::t_52b89ec0d4587a 213-216
+  s_36d8ea3a9ff67a::t_1d615288c28800 84-94
+apps/web/src/lib/entityLinks.ts
+  s_048a3385448d96::t_54005824500fbc 1-18,21-57
+  s_048a3385448d96::t_eedef815be7d00 19-20
+apps/worker-jobs/src/card.test.ts
+  s_08f2b9ce86c8fd::t_3d3d0430510fa3 4
+  s_08f2b9ce86c8fd::t_dfbf532bc2fdc7 62
+apps/web/src/features/terminal/TradePanel.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 27-28,30,34,56,62,138,158
+design/verdicts/2026-07-19-landing-loop.md
+  s_36d8ea3a9ff67a::t_532e51064eb723 1-28
+apps/web/src/features/home/LeftRail.tsx
+  s_36d8ea3a9ff67a::t_2a7befe09bd45c 107
+  s_36d8ea3a9ff67a::t_189981d947302f 59
+apps/web/src/features/terminal/OpenPositions.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 20
+apps/api/src/http/server.ts
+  s_3647dc687bee1a::t_5d2ab45c0ddf1e 25
+  s_3647dc687bee1a::t_45f8cb46d0b97c 88
+apps/web/src/features/account/PositionsPanel.tsx
+  s_36d8ea3a9ff67a::t_d5318b8ae2febb 2
+apps/web/src/features/landing/LandingFinaleLazy.tsx
+  s_048a3385448d96::t_5b49719109dfa1 1-14
+apps/web/src/features/home/HomeShell.tsx
+  s_36d8ea3a9ff67a::t_311e26df7ef0aa 25
+  s_3647dc687bee1a::t_7a43b48693bfcd 37
+apps/worker-cortex/src/cortex/synth_marks.py
+  s_3647dc687bee1a::t_c7f9216fc7679a 93-97,99
+apps/worker-jobs/src/commands.test.ts
+  s_08f2b9ce86c8fd::t_ea17eeba011d96 2-92,94-95
+  s_08f2b9ce86c8fd::t_baf3b67a5f5d7c 93
+  s_08f2b9ce86c8fd::t_e8ab66f4d5ce2f 1
+docs/adr/ADR-082-player-pages-top20-wc26.md
+  s_048a3385448d96::t_cd7fe53e9bdd1c 1-50,58-81
+  s_048a3385448d96::t_80ff719f9af603 51-57
+docs/adr/ADR-084-txline-devnet-activation-live-feed-keypair-free-refresh.md
+  s_3647dc687bee1a::t_40a3aac3e03e31 1-46
+apps/web/src/features/terminal/BigRiver.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 15,22-23,29,33,55,77,84,97,103-104,108,116,121,130,136,144
+apps/web/src/features/terminal/BoothTimeline.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 13,23,51
+design/verdicts/2026-07-19-route-board.md
+  s_36d8ea3a9ff67a::t_f37c0334ec858a 1-44
+design/verdicts/2026-07-17-surface5-consistency.md
+  s_7a4588856bfecd::t_4118c20b92a6ad 1-37
+apps/web/src/features/terminal/depth/EventsTimeline.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 6,15,30,47
+apps/web/src/features/terminal/MarketStatus.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 8,15
+apps/web/src/features/landing/FreeCredits.tsx
+  s_36d8ea3a9ff67a::t_a29cd00f31e9da 29
+apps/web/src/features/games/StreakRail.tsx
+  s_36d8ea3a9ff67a::t_c7df449ec6c077 2
+apps/web/src/features/games/Verdict.tsx
+  s_36d8ea3a9ff67a::t_c7df449ec6c077 2,4,12,45,51,103,129
+apps/worker-jobs/src/providers.ts
+  s_08f2b9ce86c8fd::t_e8ab66f4d5ce2f 1,72
+  s_08f2b9ce86c8fd::t_043ea8b6d7bed9 2-71,73-100
+apps/api/src/services/market-creation.ts
+  s_3647dc687bee1a::t_a11d07797d7c60 1-47
+docs/adr/ADR-081-entity-search-baked-index.md
+  s_048a3385448d96::t_77cb931080fc0a 77-107
+  s_36d8ea3a9ff67a::t_ce9cce4974f025 1-76
+apps/web/src/lib/terminal.ts
+  s_36d8ea3a9ff67a::t_25e526f0b623c4 50
+  s_048a3385448d96::t_265cab218ea825 117,119-120
+  s_048a3385448d96::t_53fd9ce90d0d3b 5
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 1,8,32,35,37,63,65,72,79,84,89-90,92,95,97,108,118,122,127-128,132,135
+design/verdicts/2026-07-19-route-match.md
+  s_36d8ea3a9ff67a::t_283e9585947b72 1-37
+apps/web/src/components/ui/Avatar.tsx
+  s_048a3385448d96::t_49a89d6ca2c5bd 8
+  s_048a3385448d96::t_78cf20aca8f844 7,9-24,26-28,31-32,35
+design/verdicts/2026-07-19-route-history.md
+  s_36d8ea3a9ff67a::t_24e92addebea8e 1-37
+design/verdicts/2026-07-19-landing-watchreel.md
+  s_36d8ea3a9ff67a::t_b64864dc0f27d6 1-26
+design/verdicts/2026-07-19-route-leaderboard.md
+  s_36d8ea3a9ff67a::t_ef82b96c7b28e5 1-34
+apps/web/src/features/games/svar-filter.d.ts
+  s_36d8ea3a9ff67a::t_c7df449ec6c077 1
+docs/BLOCKERS.md
+  s_08f2b9ce86c8fd::t_efa872b2c24095 73
+  s_36d8ea3a9ff67a::t_c84f02ccfc153f 75-84
+  s_36d8ea3a9ff67a::t_6ac1ddacba540d 85-88
+  s_36d8ea3a9ff67a::t_26cb84799fcb2a 89-95
+  s_3647dc687bee1a::t_7fe8376ace9cc4 38-45
+  s_36d8ea3a9ff67a::t_2232ceaf5fa785 96-103
+  s_08f2b9ce86c8fd::t_ef897c07f84fd0 63
+  s_3647dc687bee1a::t_493ecb82ad59c0 1-5,18-37,46-49
+  s_08f2b9ce86c8fd::t_dbbb02dc774c54 68
+  s_3647dc687bee1a::t_ee1796298d2617 6-17
+  s_08f2b9ce86c8fd::t_b73797245f2298 62,64-67,69-72,74
+  s_36d8ea3a9ff67a::t_42f4636f31d9d2 50-61
+docs/handoff/refs/README.md
+  s_7a4588856bfecd::t_730ae94addc9f2 17-18
+  s_7a4588856bfecd::t_b0fc570cd03629 1-16,19-75
+packages/txline/src/client.ts
+  s_3647dc687bee1a::t_ce5c199fc82616 125-129,138-146,149-156
+  s_3647dc687bee1a::t_c4a94212a83b5d 209-219
+design/verdicts/2026-07-19-landing-consumerbento.md
+  s_36d8ea3a9ff67a::t_ae5010f24a4bf6 1-28
+apps/web/src/components/templates/notio/call-to-action/hero.tsx
+  s_36d8ea3a9ff67a::t_52067183373482 7,9-12,15,20,22,25,27-28,30,35,39,45,60,62
+apps/web/src/lib/routes.ts
+  s_048a3385448d96::t_8ccedbcafb0a63 22-23
+apps/web/src/features/moments/MomentDetail.tsx
+  s_36d8ea3a9ff67a::t_515b026006e08c 40,42,78,89,95
+design/verdicts/2026-07-19-landing-iconsgallery.md
+  s_36d8ea3a9ff67a::t_2fe764c3568276 1-32
+apps/web/src/features/landing/ConsumerBento.tsx
+  s_36d8ea3a9ff67a::t_a53c30f6ac35c3 7-11,15,31,46,69,82,85-96,98-108
+apps/web/src/data/wc26/link-index.json
+  s_048a3385448d96::t_836b4f4cc8ce10 1
+docs/adr/inbox.md
+  s_7a4588856bfecd::t_c8dbc813ddde5d 37
+  s_7a4588856bfecd::t_b8ab0042d18ad8 36
+apps/worker-jobs/src/commands.ts
+  s_08f2b9ce86c8fd::t_5144f27243836f 2-97
+  s_08f2b9ce86c8fd::t_e8ab66f4d5ce2f 1
+design/verdicts/team-pages-adr083.md
+  s_08f2b9ce86c8fd::t_edddb3e9754c54 1-41
+apps/web/src/styles/globals.css
+  s_048a3385448d96::t_5aeae3400b2764 79-88
+apps/web/src/features/terminal/MatchTabs.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 30,47
+apps/web/src/features/games/roundLog.ts
+  s_36d8ea3a9ff67a::t_c7df449ec6c077 2,4,10,54,59,69
+design/verdicts/2026-07-19-landing-numbers-crestwall.md
+  s_36d8ea3a9ff67a::t_55255395828b63 1-31
+design/PROVENANCE.md
+  s_7a4588856bfecd::t_8477e3672acbb8 38-43
+  s_08f2b9ce86c8fd::t_56d4dfcc5c91ad 201-213
+  s_7a4588856bfecd::t_f79dbfe96dcb33 166
+  s_7a4588856bfecd::t_d4673501e483dc 92
+  s_048a3385448d96::t_3b9118f115e787 187-198
+  s_048a3385448d96::t_32d41ecc31befb 199-200
+  s_7a4588856bfecd::t_a50fa255960559 100
+  s_7a4588856bfecd::t_e6873932d05b50 49
+  s_048a3385448d96::t_a8062b34da938d 186
+  s_7a4588856bfecd::t_572971dec0ff7b 99
+  s_36d8ea3a9ff67a::t_2f96ad5775278e 173-185
+  s_7a4588856bfecd::t_d420a8489dc549 37
+  s_7a4588856bfecd::t_8a22c57af360ab 101
+  s_048a3385448d96::t_4809437ac8c64e 214-223
+  s_08f2b9ce86c8fd::t_6820a1ec57a6cf 224-273
+  s_7a4588856bfecd::t_1ce7862c8f13cc 164
+  s_7a4588856bfecd::t_524fe0b7fd2652 33-36
+  s_7a4588856bfecd::t_fa0368403df3cc 165
+design/verdicts/2026-07-18-broadcast-ticker.md
+  s_7a4588856bfecd::t_378420a7f9cd3e 1-46
+design/verdicts/2026-07-18-landing-watch-the-film.md
+  s_7a4588856bfecd::t_9c7f2b139a8ae4 1-36
+apps/worker-jobs/src/main.ts
+  s_08f2b9ce86c8fd::t_e8ab66f4d5ce2f 2,38,40
+  s_08f2b9ce86c8fd::t_36ede054635d64 1,3-5,8-9,13-16,29-32,34,36-37,39,43-56
+apps/worker-jobs/package.json
+  s_08f2b9ce86c8fd::t_5787d89246455d 4
+apps/web/src/components/ui/PrototypeRibbon.tsx
+  s_36d8ea3a9ff67a::t_3214d12b9d98e1 16
+  s_3647dc687bee1a::t_44c51d2995f0c7 1-3,8,11-13
+apps/web/src/features/landing/GoalReplayScrollLazy.tsx
+  s_36d8ea3a9ff67a::t_39209153c09996 22-25
+apps/web/src/features/terminal/depth/CrowdCall.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 9,23
+apps/web/src/features/terminal/PlainMatchTabs.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 8,47
+apps/web/src/features/terminal/PriceCells.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 14-16
+apps/web/src/features/terminal/BoothLine.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 3,21
+apps/web/src/features/terminal/MatchStates.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 39,49,60,66,89
+apps/web/src/features/terminal/TerminalDock.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 11,27,31
+apps/web/src/features/terminal/TradersStrip.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 16,27
+apps/web/src/features/terminal/YourPosition.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 12
+design/verdicts/2026-07-19-route-moments.md
+  s_36d8ea3a9ff67a::t_aab030659bc5ba 1-38
+apps/web/src/features/terminal/depth/Lineups.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 7,9,21,122
+apps/web/src/features/terminal/PlainMatchColumn.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 22,31,39,51,58,77,131
+design/verdicts/2026-07-19-landing-fullpage.md
+  s_36d8ea3a9ff67a::t_15406a8919d71d 1-51
+design/verdicts/2026-07-19-landing-opener-beats-1-2.md
+  s_36d8ea3a9ff67a::t_032a3f0963599a 1-54
+apps/web/src/features/terminal/MatchColumn.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 38,41,47,57,59,75,82,110,136,172-173,194,199,239
+apps/web/src/features/landing/HeroGradientField.tsx
+  s_36d8ea3a9ff67a::t_f28b1f4cb5cfb4 1-70
+design/verdicts/2026-07-18-landing-scroll-scrub-pass1.md
+  s_7a4588856bfecd::t_c51ac92e8b9b3a 1-26
+docs/adr/ADR-073-connect-read-model-live-board-terminal-pinned-cors-proxy.md
+  s_7a4588856bfecd::t_a81cb845acd825 5
+apps/web/src/features/home/CenterColumn.tsx
+  s_3647dc687bee1a::t_e308a73793ee83 49-51
+docs/ralph-ui-ledger.md
+  s_36d8ea3a9ff67a::t_2e02c6277e4ca2 69
+  s_36d8ea3a9ff67a::t_238203fc205631 75
+  s_36d8ea3a9ff67a::t_2fd70c5e3bda68 70
+  s_7a4588856bfecd::t_d8f1e2b9e5e6bb 1-12,14-24,61-62
+  s_36d8ea3a9ff67a::t_935f1124eeb402 74
+  s_36d8ea3a9ff67a::t_782857f18be8e2 71
+  s_36d8ea3a9ff67a::t_7b1d488aaad348 72
+  s_36d8ea3a9ff67a::t_5b0b45a3073315 78
+  s_36d8ea3a9ff67a::t_286191061804a8 79-81
+  s_36d8ea3a9ff67a::t_6c15a2a043a178 84
+  s_36d8ea3a9ff67a::t_d94c2eff6ca05d 86
+  s_36d8ea3a9ff67a::t_42f4636f31d9d2 65-66
+  s_36d8ea3a9ff67a::t_73ce519511d46b 82
+  s_36d8ea3a9ff67a::t_b6c4c481b81a72 87
+  s_36d8ea3a9ff67a::t_68cfc73b2388f2 88
+  s_36d8ea3a9ff67a::t_ccbd47663fe35e 85
+  s_36d8ea3a9ff67a::t_33a2beeeddc395 77
+  s_3647dc687bee1a::t_d0f7e523af28a1 25-60,64
+  s_36d8ea3a9ff67a::t_35ab4c3c9753f8 67
+  s_36d8ea3a9ff67a::t_cbae1d1a8be909 73
+  s_36d8ea3a9ff67a::t_0652fd7db08165 68
+  s_7a4588856bfecd::t_3186a2ac982f39 63
+  s_36d8ea3a9ff67a::t_d748399e938fd2 83
+  s_7a4588856bfecd::t_dd57e7acf4dc13 13
+  s_36d8ea3a9ff67a::t_5b222707a585b3 76
+apps/web/src/features/home/FeaturedPanel.tsx
+  s_3647dc687bee1a::t_2459963f60da0c 115-130,132-134,136
+  s_3647dc687bee1a::t_a26082899b7627 40-44
+  s_3647dc687bee1a::t_174366d48a27d6 107
+  s_3647dc687bee1a::t_f4a83e770685ea 94,97
+design/verdicts/2026-07-18-ralph-final-loop.md
+  s_3647dc687bee1a::t_22af425f960401 1-45
+design/verdicts/2026-07-19-route-terminal.md
+  s_36d8ea3a9ff67a::t_97970fd483234a 1-41
+apps/web/src/features/terminal/CompetitionsRail.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 13,23,25,80-81,125,138
+apps/web/src/features/terminal/depth/MatchStats.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 6
+apps/web/src/features/games/PickPad.tsx
+  s_36d8ea3a9ff67a::t_c7df449ec6c077 5,44,204,227
+docs/demo/artifacts/markets-live-final.json
+  s_3647dc687bee1a::t_d6b552307b2b0b 1-25
+apps/web/src/features/account/AccountPage.tsx
+  s_36d8ea3a9ff67a::t_d5318b8ae2febb 2,5,36,71,100,166,179,198
+design/verdicts/2026-07-19-route-account.md
+  s_36d8ea3a9ff67a::t_9d03df973b6134 1-37
+design/verdicts/2026-07-19-landing-boothquotes.md
+  s_36d8ea3a9ff67a::t_61ab77c04b1594 1-33
+design/verdicts/2026-07-19-landing-freecredits.md
+  s_36d8ea3a9ff67a::t_9d8ee108db6e62 1-26
+docs/adr/ADR-080-football-data-fixtures-schedule-results.md
+  s_7a4588856bfecd::t_190bd0dcfde303 1-60
+apps/web/src/features/games/useNextGoalGame.ts
+  s_36d8ea3a9ff67a::t_c7df449ec6c077 2,5,41,43,133,169
+apps/web/src/features/account/WatchlistPanel.tsx
+  s_36d8ea3a9ff67a::t_d5318b8ae2febb 2,43
+apps/web/src/features/terminal/TerminalScreen.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 18,24,45
+docs/adr/ADR-083-team-pages-wc26-nations-clubs.md
+  s_08f2b9ce86c8fd::t_491effca46aba1 74-78
+  s_08f2b9ce86c8fd::t_f6efc115ce1f3c 1-31,39-73,79-87
+  s_08f2b9ce86c8fd::t_4dfab791c088f6 32-38
+apps/web/src/features/account/ProofsPanel.tsx
+  s_36d8ea3a9ff67a::t_d5318b8ae2febb 1,3,20,52
+design/verdicts/2026-07-19-landing-price.md
+  s_36d8ea3a9ff67a::t_fde021c0fd3a3c 1-28
+apps/web/src/features/terminal/MatchHeader.tsx
+  s_048a3385448d96::t_5692ab5addef78 55,61
+  s_048a3385448d96::t_fb3ffd222cc51b 4-5
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 10-11,17,20,23,33
+apps/worker-jobs/src/inbound.ts
+  s_08f2b9ce86c8fd::t_e8ab66f4d5ce2f 1
+  s_08f2b9ce86c8fd::t_03015e3eb642d5 2-54,56-117,119-131
+  s_08f2b9ce86c8fd::t_48b1acefb2d50c 55
+  s_08f2b9ce86c8fd::t_636870fba76a11 118
+apps/web/src/features/home/components/NotificationBell.tsx
+  s_36d8ea3a9ff67a::t_59b7bb8f4ff118 52
+  s_36d8ea3a9ff67a::t_403f324e1e0c1c 11
+design/DECISIONS.md
+  s_7a4588856bfecd::t_15e1a3e3840b7d 12
+apps/web/src/features/landing/LandingFinale.tsx
+  s_048a3385448d96::t_93c896af55006b 14-18,20-21
+  s_048a3385448d96::t_d804cf8f7f129b 77-81,83,89-92
+  s_048a3385448d96::t_c55ffc1306b0d5 1-4,11-13,19,22-76,82,84-88,93-157
+  s_048a3385448d96::t_efbf1fd0e8a8c4 5-10
+apps/web/src/features/landing/WatchReel.tsx
+  s_36d8ea3a9ff67a::t_5d800976b86be0 22
+docs/adr/ADR-076-fe-football-warmth-pass-verify-by-looking.md
+  s_7a4588856bfecd::t_6fb29068c52b05 1-92
+apps/web/src/lib/data/entitySearch.ts
+  s_048a3385448d96::t_e3185034c81269 60-61,69
+  s_048a3385448d96::t_79af94b3b736e2 12
+  s_048a3385448d96::t_5af769e4e11a01 98-100,110
+apps/web/src/components/ui/CommandMenu.tsx
+  s_048a3385448d96::t_0ff42789cb58ca 119-122
+apps/worker-ingest/src/ingest.ts
+  s_3647dc687bee1a::t_2f3ee768adf3bd 190
+  s_3647dc687bee1a::t_1cbc0603287988 186-189,191-219,222-224
+apps/web/src/components/templates/notio/navbar.tsx
+  s_36d8ea3a9ff67a::t_a049a1c39e913d 23
+  s_36d8ea3a9ff67a::t_db9e27b8a03940 21
+apps/web/src/features/games/nextGoalMachine.ts
+  s_36d8ea3a9ff67a::t_c7df449ec6c077 1,15,30-31,34,56,65,77,86,100,128
+docs/adr/ADR-085-landing-finale-crest-parallax.md
+  s_048a3385448d96::t_786287aaa56952 1-66
+apps/web/src/lib/moments.ts
+  s_36d8ea3a9ff67a::t_515b026006e08c 1,3,32-33,44,53,56
+apps/web/src/features/terminal/AttackMomentum.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 7,15
+apps/web/src/features/terminal/TerminalHeader.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 16,35,50
+design/verdicts/2026-07-18-landing-icons-hover-expand.md
+  s_7a4588856bfecd::t_f578435804a698 1-33
+design/verdicts/2026-07-17-landing-football-warmth.md
+  s_7a4588856bfecd::t_72da08921ea808 1-71
+design/verdicts/2026-07-18-ralph-landing-vs-hyperliquid.md
+  s_7a4588856bfecd::t_6cc6122c0e5fdf 1-27
+apps/web/src/components/templates/notio/footer.tsx
+  s_36d8ea3a9ff67a::t_6bb993ca44ef0e 94
+apps/web/src/features/competition/CompetitionPage.tsx
+  s_36d8ea3a9ff67a::t_3de70d605b551e 14
+apps/web/src/features/landing/BoothQuotes.tsx
+  s_36d8ea3a9ff67a::t_eccb85564ff24a 26
+  s_36d8ea3a9ff67a::t_d4fe2b0d894623 6-8
+apps/web/src/components/ui/EntityLink.tsx
+  s_048a3385448d96::t_18853de09b0ad7 1-26
+docs/adr/ADR-085-earlywhistle-telegram-inbound-real-providers.md
+  s_08f2b9ce86c8fd::t_e8ab66f4d5ce2f 1-72
+docs/adr/ADR-078-landing-scroll-scrub-frame-sequence.md
+  s_7a4588856bfecd::t_e5772bb33c8f3c 1-46
+design/verdicts/2026-07-19-landing-velocityband-footballexperience.md
+  s_36d8ea3a9ff67a::t_93ec64515d1ad3 1-34
+apps/web/src/features/games/nextGoalMachine.test.ts
+  s_36d8ea3a9ff67a::t_c7df449ec6c077 55,59-60
+apps/web/src/features/terminal/TournamentLeaderboard.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 9,15
+apps/web/next.config.mjs
+  s_048a3385448d96::t_197545e6468df5 12-14
+apps/web/src/components/ui/CreditPill.tsx
+  s_36d8ea3a9ff67a::t_c7df449ec6c077 15,46
+design/verdicts/2026-07-19-route-competition.md
+  s_36d8ea3a9ff67a::t_4327d958683a3a 1-35
+docs/SUBMISSION-TECHNICAL.md
+  s_3647dc687bee1a::t_8c1e398fb3646e 1-65
+apps/worker-jobs/src/inbound.test.ts
+  s_08f2b9ce86c8fd::t_ee80b0c936f36b 2-104
+  s_08f2b9ce86c8fd::t_e8ab66f4d5ce2f 1
+apps/web/src/features/terminal/LatestEvents.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 14
+apps/web/src/features/terminal/TodaysMovers.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 7,16
+docs/adr/ADR-077-apple-font-light-dark-theme-toggle.md
+  s_7a4588856bfecd::t_59850bda8c057d 1-49
+design/verdicts/2026-07-17-moments-football-warmth.md
+  s_7a4588856bfecd::t_43e9c22d584c52 1-42
+apps/web/src/lib/fixtures.ts
+  s_36d8ea3a9ff67a::t_16fbc8584d0cae 63,65-71,73-77
+  s_36d8ea3a9ff67a::t_5d299ac92a29d7 138
+  s_36d8ea3a9ff67a::t_2e8160bc730eb3 140
+docs/adr/ADR-079-lazy-keypair-signer-token-only-ingest-boot.md
+  s_f0eded3307e978::t_2b9ef46255338b 1-49
+apps/web/src/features/games/NextGoal.tsx
+  s_36d8ea3a9ff67a::t_c7df449ec6c077 2,20,37,41,71,119
+apps/web/src/features/games/RoundFilter.tsx
+  s_36d8ea3a9ff67a::t_c7df449ec6c077 2,51
+design/verdicts/2026-07-17-board-football-warmth.md
+  s_7a4588856bfecd::t_1395be319c7bab 1-54
+apps/web/src/features/terminal/GamesRail.tsx
+  s_36d8ea3a9ff67a::t_e06ce3e4ba473c 9,12,37
+docs/PROJECT-STATE-AND-VOCAB.md
+  s_f0eded3307e978::t_92e2972040cbf2 1-158
+docs/handoff/PROMPT-search-entities.md
+  s_f0eded3307e978::t_fc7ba5b1dca32e 1-108
+docs/handoff/PROMPT-search-spotlight-amendment.md
+  s_f0eded3307e978::t_a04e68c9ccac2f 1-101
+apps/web/src/lib/data/markets.ts
+  s_3647dc687bee1a::t_b76db19cbd6246 81-84,86-91
+docs/COMPONENT-AUDIT-2026-07-16.md
+  s_338735e9af5335::t_3391ee85f861d5 1-135
+docs/DATA-PLACEMENT.md
+  s_08f2b9ce86c8fd::t_4e84f171c151ee 1-66
+docs/STATUS-2026-07-16.md
+  s_338735e9af5335::t_4a251e3b41b4a6 1-153
+docs/handoff/PARALLEL-PLAN.md
+  s_048a3385448d96::t_71829c0f601984 1-95
+docs/handoff/PROMPT-TERMINAL-9OF10-FINAL.md
+  s_048a3385448d96::t_59aca752a1646b 1-122
+docs/handoff/PROMPT-component-integration-wave1.md
+  s_36d8ea3a9ff67a::t_1ba55d567c41b9 1-135
+docs/handoff/PROMPT-component-replacement-map.md
+  s_36d8ea3a9ff67a::t_c0bd0879f4f4a0 1-95
+docs/handoff/PROMPT-player-pages.md
+  s_7a4588856bfecd::t_d06ae167407778 1-117
+docs/handoff/PROMPT-team-pages.md
+  s_048a3385448d96::t_148625687754da 1-115
+docs/handoff/PROMPT-txline-go-live.md
+  s_3647dc687bee1a::t_c092ddf4854e18 1-114
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "4b02c29e3994bc2c437bfb33bbedd4c49853fe58",
+  "prompts": {},
+  "sessions": {
+    "s_048a3385448d96": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6c6bc2e2-f3d7-47b2-9c0e-363a107437e5",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_08f2b9ce86c8fd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e450ff95-d42a-4a05-917b-547815348b13",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_338735e9af5335": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93fac499-ebc1-4122-b865-8c9f3e20d6b6",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_3647dc687bee1a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acdd045b-f3e6-454e-9ef6-bdfe77c16732",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_36d8ea3a9ff67a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2297fb64-1e86-426e-89ba-9e7244165831",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_7a4588856bfecd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c78b1ecf-dbe5-4f68-88fc-64114aa3e3ce",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_f0eded3307e978": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a9b130ab-386a-40e6-8e4e-c64de5a16637",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
