@@ -1,0 +1,24 @@
+docs/demo/SCRIPT-5min.md
+  s_3647dc687bee1a::t_c5e3f2a0b3f700 140
+  s_3647dc687bee1a::t_b4424515bcf4f0 162
+README.md
+  s_3647dc687bee1a::t_39ce2faace4f6e 166
+  s_3647dc687bee1a::t_1f8d008cac685c 204
+  s_3647dc687bee1a::t_a8f82958c98c92 56-57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "34ccf36c9169154ced44f7169d553d232df090af",
+  "prompts": {},
+  "sessions": {
+    "s_3647dc687bee1a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acdd045b-f3e6-454e-9ef6-bdfe77c16732",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
