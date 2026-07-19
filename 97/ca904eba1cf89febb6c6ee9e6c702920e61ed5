@@ -1,0 +1,21 @@
+apps/web/src/features/terminal/TradersStrip.tsx
+  s_3647dc687bee1a::t_ef4e5928ca5951 45
+apps/web/src/features/terminal/MatchHeader.tsx
+  s_3647dc687bee1a::t_d8114916ceff2b 47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "97ca904eba1cf89febb6c6ee9e6c702920e61ed5",
+  "prompts": {},
+  "sessions": {
+    "s_3647dc687bee1a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acdd045b-f3e6-454e-9ef6-bdfe77c16732",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
