@@ -1,0 +1,221 @@
+apps/web/src/features/how/sections/Architecture.tsx
+  s_36d8ea3a9ff67a::t_8fdf5c3d3af2ac 16
+apps/web/src/features/proofs/ProofsPage.tsx
+  s_36d8ea3a9ff67a::t_714cee2ed252bf 52
+.mcp.json
+  s_f0eded3307e978::t_c3b765201b24cb 35-36
+  s_f0eded3307e978::t_6e3a68fa1838c1 37-39
+  s_45db4dd4dda727::t_d9370a330ce280 40
+docs/ralph-ui-ledger.md
+  s_36d8ea3a9ff67a::t_676a3fe7b5d900 90
+  s_36d8ea3a9ff67a::t_a20fb4324623ff 89
+  s_36d8ea3a9ff67a::t_2a5e0db8ae19f2 91
+skills-lock.json
+  s_f0eded3307e978::t_365e2eac78f525 16-63,70-87,100-135,142-195,201-326
+apps/web/src/features/how/sections/TheLoop.tsx
+  s_36d8ea3a9ff67a::t_8fdf5c3d3af2ac 12,42
+apps/web/src/features/how/sections/Coverage.tsx
+  s_36d8ea3a9ff67a::t_8fdf5c3d3af2ac 29
+apps/web/src/features/how/sections/Faq.tsx
+  s_36d8ea3a9ff67a::t_8fdf5c3d3af2ac 9,13,17,25
+CLAUDE.md
+  s_7a4588856bfecd::t_7f1bebd43781cc 55,57-58
+  s_7a4588856bfecd::t_08c3354dd06294 62-64
+  s_7a4588856bfecd::t_e35f1a7cf156e9 69-74
+  s_7a4588856bfecd::t_cdbe01a7713d94 21-31,93-110
+design/verdicts/2026-07-19-route-bracket.md
+  s_36d8ea3a9ff67a::t_f570ada00a9cca 1-52
+docs/adr/inbox.md
+  s_3647dc687bee1a::t_90f8b72395743a 38
+apps/web/src/features/how/sections/ProofFlow.tsx
+  s_36d8ea3a9ff67a::t_8fdf5c3d3af2ac 28-29,35,57,61,74
+  s_36d8ea3a9ff67a::t_f945587749ece7 17
+  s_36d8ea3a9ff67a::t_2b3c0d506e2277 37
+apps/web/src/features/how/sections/TxLineSection.tsx
+  s_36d8ea3a9ff67a::t_8fdf5c3d3af2ac 8,10,24
+.claude/hooks/no-dead-code.sh
+  s_f0eded3307e978::t_b383f09522c067 55-56
+  s_f0eded3307e978::t_c8e597f2581b1d 52-54
+  s_f0eded3307e978::t_09354d60cb875f 57-59
+  s_f0eded3307e978::t_c86375500908b6 1-51,60-83
+apps/web/src/features/bracket/BracketB.tsx
+  s_36d8ea3a9ff67a::t_81621d00122495 174
+  s_36d8ea3a9ff67a::t_761c5ee7acf76e 168-169
+apps/web/src/features/how/sections/OpenSource.tsx
+  s_36d8ea3a9ff67a::t_8fdf5c3d3af2ac 11,17
+.gitignore
+  s_08f2b9ce86c8fd::t_7cbdba96e3674c 37-40
+  s_08f2b9ce86c8fd::t_fd43995316ec9a 11-12
+packages/txline/scripts/snapshot.ts
+  s_08f2b9ce86c8fd::t_7dafe479d5d79e 81-85
+design/verdicts/2026-07-19-route-how-it-works.md
+  s_36d8ea3a9ff67a::t_85d705f41af3b8 1-52
+apps/web/src/features/how/sections/Hero.tsx
+  s_36d8ea3a9ff67a::t_8fdf5c3d3af2ac 22
+design/verdicts/2026-07-19-route-proofs.md
+  s_36d8ea3a9ff67a::t_0c9a4d147cb984 1-35
+apps/web/src/features/how/sections/UserGuide.tsx
+  s_36d8ea3a9ff67a::t_8fdf5c3d3af2ac 5,10
+.claude/skills/ask-matt
+  s_338735e9af5335::t_40da2c846872e5 1
+.claude/skills/claude-handoff
+  s_338735e9af5335::t_ca51cbc373cc57 1
+.claude/skills/code-review
+  s_338735e9af5335::t_2ac9c0c29997e1 1
+.claude/skills/codebase-design
+  s_338735e9af5335::t_f1899a1dca7650 1
+.claude/skills/configure-site
+  s_338735e9af5335::t_cf95881139f72f 1
+.claude/skills/cr-create
+  s_338735e9af5335::t_c046c883e5e342 1
+.claude/skills/cr-review
+  s_338735e9af5335::t_ae6a681e68df38 1
+.claude/skills/design-an-interface
+  s_338735e9af5335::t_1a1593a97592b7 1
+.claude/skills/diagnosing-bugs
+  s_338735e9af5335::t_fc93c0323c65cc 1
+.claude/skills/domain-modeling
+  s_338735e9af5335::t_1fd8df0f333888 1
+.claude/skills/edit-article
+  s_338735e9af5335::t_e75a1e2c7222d1 1
+.claude/skills/git-guardrails-claude-code
+  s_338735e9af5335::t_8e95f4ac37f2f0 1
+.claude/skills/grill-me
+  s_338735e9af5335::t_f672507ab9258b 1
+.claude/skills/grill-with-docs
+  s_338735e9af5335::t_acba7cadff578d 1
+.claude/skills/grilling
+  s_338735e9af5335::t_017125994a6e42 1
+.claude/skills/handoff
+  s_338735e9af5335::t_9115c45118903e 1
+.claude/skills/implement
+  s_338735e9af5335::t_3f4b2a5b3c6b84 1
+.claude/skills/improve-codebase-architecture
+  s_338735e9af5335::t_1ba20a5d5545a5 1
+.claude/skills/loop-me
+  s_338735e9af5335::t_1e636d8743ca5a 1
+.claude/skills/migrate-to-shoehorn
+  s_338735e9af5335::t_e35a8f16f43d17 1
+.claude/skills/obsidian-vault
+  s_338735e9af5335::t_3d9ab16ec6c04a 1
+.claude/skills/prototype
+  s_338735e9af5335::t_10b76b19b270e7 1
+.claude/skills/qa
+  s_338735e9af5335::t_72308b1186a4ad 1
+.claude/skills/request-refactor-plan
+  s_338735e9af5335::t_3bb8e61deefbf1 1
+.claude/skills/research
+  s_338735e9af5335::t_38cff8c852e158 1
+.claude/skills/resolving-merge-conflicts
+  s_338735e9af5335::t_359aa50bdac0a3 1
+.claude/skills/scaffold-exercises
+  s_338735e9af5335::t_4462d823b12c88 1
+.claude/skills/setup-matt-pocock-skills
+  s_338735e9af5335::t_905403add7243f 1
+.claude/skills/setup-pre-commit
+  s_338735e9af5335::t_fdf9103743db75 1
+.claude/skills/setup-ts-deep-modules
+  s_338735e9af5335::t_ce7c8b605fdb7c 1
+.claude/skills/supabase
+  s_f0eded3307e978::t_baa15198da1252 1
+.claude/skills/supabase-postgres-best-practices
+  s_f0eded3307e978::t_9ecb2a49894542 1
+.claude/skills/tdd
+  s_338735e9af5335::t_a3f55c42855668 1
+.claude/skills/teach
+  s_338735e9af5335::t_9d9fe5dc1631f2 1
+.claude/skills/to-questionnaire
+  s_338735e9af5335::t_08a1ccd51e1580 1
+.claude/skills/to-spec
+  s_338735e9af5335::t_0d5926407f1353 1
+.claude/skills/to-tickets
+  s_338735e9af5335::t_1cc514aeb7fc57 1
+.claude/skills/triage
+  s_338735e9af5335::t_a9529484dba896 1
+.claude/skills/ubiquitous-language
+  s_338735e9af5335::t_db7767e300a738 1
+.claude/skills/wayfinder
+  s_338735e9af5335::t_1bf973a9d5b8ec 1
+.claude/skills/wizard
+  s_338735e9af5335::t_a1b8a2a465d313 1
+.claude/skills/write-docs
+  s_338735e9af5335::t_6549e382980a8f 1
+.claude/skills/write-openapi
+  s_338735e9af5335::t_6b101e5622ff8d 1
+.claude/skills/writing-beats
+  s_338735e9af5335::t_fb3ccbb8f4ce04 1
+.claude/skills/writing-fragments
+  s_338735e9af5335::t_40c3bd7d0b9469 1
+.claude/skills/writing-great-skills
+  s_338735e9af5335::t_72e24e656410b7 1
+.claude/skills/writing-shape
+  s_338735e9af5335::t_6aa13c027388af 1
+pnpm-lock.yaml
+  s_08f2b9ce86c8fd::t_49bc65e58c2104 250-252
+docs/demo/SCRIPT-MAIN-5MIN.md
+  s_3647dc687bee1a::t_65aebace4cb61b 1-161
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "779bfd1e6a54f46bdfb4affd196ac36da95fc8d3",
+  "prompts": {},
+  "sessions": {
+    "s_08f2b9ce86c8fd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e450ff95-d42a-4a05-917b-547815348b13",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_338735e9af5335": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93fac499-ebc1-4122-b865-8c9f3e20d6b6",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_3647dc687bee1a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "acdd045b-f3e6-454e-9ef6-bdfe77c16732",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_36d8ea3a9ff67a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2297fb64-1e86-426e-89ba-9e7244165831",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_45db4dd4dda727": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-a93efc871cb25390e",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_7a4588856bfecd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c78b1ecf-dbe5-4f68-88fc-64114aa3e3ce",
+        "model": "unknown"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    },
+    "s_f0eded3307e978": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a9b130ab-386a-40e6-8e4e-c64de5a16637",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "sushant-vyapar <sushant.jain@vyapar.com>"
+    }
+  }
+}
