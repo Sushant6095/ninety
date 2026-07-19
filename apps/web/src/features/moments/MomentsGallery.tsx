@@ -28,10 +28,10 @@ export function MomentsGallery() {
       <main className="mx-auto w-full max-w-[1200px] flex-1 px-4 py-6 sm:px-6">
         <div className="mb-5">
           <h1 className="font-display text-display font-bold tracking-tight text-hi">Moments</h1>
-          {/* "provable on-chain", not "proved": every fixture is mintSig:null (MINTLESS). The old "proved on-chain"
-              asserted a completed proof that zero displayed moments have — the same fake-mint contradiction this
-              pass killed on the board. */}
-          <p className="mt-1 text-body text-lo">The swings that repriced a market — captured, ranked by size, and provable on-chain.</p>
+          {/* Every displayed moment is mintSig:null (MINTLESS) until on-chain minting is live (BLOCKERS B1) — so
+              the copy states the future action ("mints … at settlement"), never a completed proof. Saying
+              "provable on-chain" over all-MINTLESS cards read as a contradiction; this states the honest state. */}
+          <p className="mt-1 text-body text-lo">The swings that repriced a market — captured live and ranked by size. Each mints on Solana at settlement.</p>
         </div>
 
         {moments.length === 0 ? (

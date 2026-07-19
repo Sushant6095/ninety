@@ -17,7 +17,7 @@ import type { SessionUser } from "../../lib/types";
 // destination the old App nav had, plus the Terminal's live-market filters and proof status.
 // `external` items (Docs → GitBook) render as new-tab anchors with no active state.
 const SUBNAV: { label: string; href: string; count?: number; home?: boolean; external?: boolean }[] = [
-  { label: "Trending", href: routes.moments },
+  { label: "Trending", href: routes.board },
   { label: "WC26", href: routes.board, count: 80, home: true },
   { label: "Live", href: routes.board, count: 4 },
   { label: "Today", href: routes.board, count: 12 },
@@ -105,7 +105,6 @@ export function TerminalHeader({ user }: { user: SessionUser }) {
           <div className="num ml-auto flex shrink-0 items-center gap-3 pl-4 pr-1 text-label tracking-wide text-lo">
             <span>FEED <span className="text-hi">42 ms</span></span>
             <span className="inline-flex items-center gap-1"><span className="h-1.5 w-1.5 rounded-full bg-chain shadow-[0_0_5px_var(--chain)]" /><span className="text-chain">DEVNET</span></span>
-            <span className="hidden sm:inline">SLOT <span className="text-hi">297,441,208</span></span>
           </div>
         </div>
       </div>

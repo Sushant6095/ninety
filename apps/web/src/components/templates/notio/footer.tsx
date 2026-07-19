@@ -34,7 +34,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="text-3xl md:text-5xl font-aleo font-bold text-hi"
+            className="text-3xl md:text-5xl font-display font-bold text-hi"
           >
             The whistle is <br /> the opening bell
           </motion.h2>

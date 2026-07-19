@@ -28,7 +28,7 @@ const FAQS = [
 
 export function Faq() {
   return (
-    <Section eyebrow="FAQ" title="The questions judges ask first.">
+    <Section eyebrow="FAQ" title="The questions everyone asks first.">
       <Accordion.Root type="single" collapsible className="overflow-hidden rounded-card border border-hairline bg-surface">
         {FAQS.map((f, i) => (
           <Accordion.Item key={i} value={`q${i}`} className="border-b border-hairline/60 last:border-b-0">

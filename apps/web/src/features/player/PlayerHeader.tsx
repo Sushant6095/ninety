@@ -78,7 +78,7 @@ export function PlayerHeader({ p }: { p: PlayerProfile }) {
               <span className="num tabular-nums">#{p.rank}</span>
               <span className="truncate">scorer · World Cup 2026</span>
             </div>
-            <h1 className="mt-1 truncate text-[1.9rem] font-semibold leading-tight tracking-tight text-hi sm:text-[2.25rem]">{p.name}</h1>
+            <h1 className="mt-1 truncate text-3xl font-semibold leading-tight tracking-tight text-hi sm:text-4xl">{p.name}</h1>
             <div className="mt-3 flex items-end gap-6">
               <HeadlineStat label="Goals" value={p.goals} />
               <HeadlineStat label="Assists" value={p.assists} />

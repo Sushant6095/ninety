@@ -172,7 +172,7 @@ export function BracketB() {
 
       {/* The road to the final: R16 → Final ← R16 */}
       <div className="overflow-x-auto pb-2" tabIndex={0} role="group" aria-label="Knockout bracket — scroll horizontally">
-        <div className="flex min-w-[1120px] items-stretch gap-1">
+        <div className="flex min-w-[1120px] items-stretch gap-1 pr-4">
           {LEFT.map((col, i) => (
             <div key={`L${i}`} data-round={col[0].type} className="flex flex-1 items-stretch">
               <RoundColumn matches={col} label={ROUND_LABEL[col[0].type] ?? col[0].type} />

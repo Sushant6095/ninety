@@ -7,7 +7,7 @@ import { routes } from "../../lib/routes";
 
 // The featured live match a cold user lands on for their first trade (VERIFY: onboarding → first trade < 60s).
 const TONIGHT = { matchId: "wc26-can-mar", label: "Canada vs Morocco", meta: "LIVE · 74′ · Round of 16" };
-const WALLET = "9pXk…devnetOMNI"; // invisibly provisioned embedded wallet (display form)
+const WALLET = "9pXk3nQvRb…Hs7fZ2k"; // invisibly provisioned embedded devnet wallet (display form, base58)
 const validEmail = (e: string): boolean => /.+@.+\..+/.test(e.trim());
 
 export function OnboardingPage() {
@@ -55,6 +55,9 @@ export function OnboardingPage() {
                 >
                   Continue <ArrowRight className="h-4 w-4" aria-hidden strokeWidth={2.25} />
                 </button>
+                <p aria-live="polite" className="mt-2 text-center text-label text-lo">
+                  {validEmail(email) ? "One tap to your wallet — no password." : "Enter your email to continue."}
+                </p>
               </div>
             )}
 

@@ -7,7 +7,9 @@ import { Footer } from "../home/Footer";
 import { routes } from "../../lib/routes";
 import { SESSION } from "../../lib/fixtures";
 
-const WALLET = "9pXk3nQv…devnetOMNIpitch7fZ2"; // embedded devnet wallet (display form)
+// Demo embedded devnet wallet, display form (truncated). Real-format base58 (no readable words); the live
+// key is derived per-user at sign-in once auth lands (BLOCKERS B3). Under the PROTOTYPE banner.
+const WALLET = "9pXk3nQvRb…Hs7fZ2k";
 
 function Toggle({ label, desc, on, onToggle }: { label: string; desc: string; on: boolean; onToggle: () => void }) {
   return (

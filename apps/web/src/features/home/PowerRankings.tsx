@@ -3,15 +3,15 @@ import { TeamCrest } from "../../components/ui/TeamCrest";
 import { teamName } from "../../lib/fixtures";
 import { POWER_RANKINGS } from "../../lib/rankings";
 
-/** Ninety Power Rankings — a market-implied strength table (our answer to Sofascore's Power Rankings).
- *  Rating priced from our own markets; movement is the shift vs the last update.
+/** Ninety Power Rankings — the Ninety model's WC26 strength table (our answer to Sofascore's Power Rankings).
+ *  A modeled rating (not sourced from a live market — see BLOCKERS B2); movement is the shift vs the last update.
  *  Shell is the re-skinned magicui BentoCard — the board bento's tall narrow cell. */
 export function PowerRankings() {
   return (
     <BentoCard>
       <div className="flex items-center justify-between border-b border-hairline px-4 py-2.5">
         <h2 className="text-label font-semibold uppercase tracking-label text-lo">Ninety power rankings</h2>
-        <span className="text-label uppercase tracking-wide text-lo">Market-implied · WC26</span>
+        <span className="text-label uppercase tracking-wide text-lo">Ninety model · WC26</span>
       </div>
       <ul className="divide-y divide-hairline/60">
         {POWER_RANKINGS.map((row) => {

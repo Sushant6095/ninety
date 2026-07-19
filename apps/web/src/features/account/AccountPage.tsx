@@ -71,11 +71,16 @@ export function AccountPage() {
   // (round-then-sum vs sum-then-round drifted by 1 CR — a read-out-loud bug on a numbers product).
   const unrealDisplay = positions.reduce((s, p) => s + Math.round(unrealized(p)), 0);
   const equity = ACCOUNT.free + mv;
-  // The drawn curve must END at the live equity — a static seed curve under a live day-change number
-  // let a rising shape carry a falling label (design-cop 2026-07-16 gap 2).
-  const curve = [...ACCOUNT.curve, equity];
-  const dayChange = equity - ACCOUNT.curve[0];
-  const dayPct = (dayChange / ACCOUNT.curve[0]) * 100;
+  // Rescale the seed curve's SHAPE so it starts at the day-open and ENDS exactly at the live equity. Just
+  // appending `equity` to a seed that ended ~1.9k CR higher drew a false vertical cliff at the right edge
+  // (a rising shape crashing under a −1.4% label). Because live marks drift, any fixed endpoint mismatches;
+  // remapping [open..seedEnd] → [open..equity] keeps the texture, lands on the real value, and matches the
+  // day-change sign. Guard the degenerate flat-seed case.
+  const open = ACCOUNT.curve[0];
+  const seedSpan = ACCOUNT.curve[ACCOUNT.curve.length - 1] - open;
+  const curve = seedSpan === 0 ? ACCOUNT.curve.map(() => equity) : ACCOUNT.curve.map((p) => open + ((p - open) * (equity - open)) / seedSpan);
+  const dayChange = equity - open;
+  const dayPct = (dayChange / open) * 100;
   const gain = dayChange >= 0;
 
   // Rank percentile against the cup's trader pool (largest settled market's participation).

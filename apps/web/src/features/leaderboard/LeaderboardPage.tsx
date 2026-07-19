@@ -72,6 +72,10 @@ function Row({ row, you }: { row: LeaderRow; you: boolean }) {
 }
 
 export function LeaderboardPage({ leaders }: { leaders: LeaderRow[] }) {
+  // Pin the viewer's own row when they sit outside the visible top — a leaderboard you can't find yourself on
+  // is a contact list. Mirrors the terminal's TournamentLeaderboard "you" row. Handle/rank/pnl from the profile.
+  const me = resolveProfile(SESSION.handle);
+  const meInList = leaders.some((l) => l.handle.toLowerCase() === SESSION.handle.toLowerCase());
   return (
     <div className="flex min-h-screen flex-col overflow-x-clip bg-bg">
       <TerminalHeader user={SESSION} />
@@ -98,6 +102,11 @@ export function LeaderboardPage({ leaders }: { leaders: LeaderRow[] }) {
                 <Row key={l.handle} row={l} you={l.handle.toLowerCase() === SESSION.handle.toLowerCase()} />
               ))}
             </ul>
+            {!meInList && (
+              <ul className="border-t-2 border-hairline">
+                <Row row={{ rank: me.rank, handle: me.handle, pnl: me.pnl }} you />
+              </ul>
+            )}
           </div>
         )}
       </main>

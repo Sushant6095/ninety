@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { Share2, Link2, Check } from "lucide-react";
+import { Share2, Link2, Check, ArrowRight } from "lucide-react";
 import { TerminalHeader } from "../terminal/TerminalHeader";
 import { Footer } from "../home/Footer";
 import { TeamCrest } from "../../components/ui/TeamCrest";
@@ -91,9 +91,19 @@ export function MomentDetail({ m }: { m: Moment }) {
           </div>
         </article>
 
-        <div className="mt-4 flex gap-3">
-          <Action onClick={share} active={copied === "share"} icon={<Share2 className="h-4 w-4" aria-hidden strokeWidth={2} />} label="Share" activeLabel="Link copied" />
-          <Action onClick={copy} active={copied === "copy"} icon={<Link2 className="h-4 w-4" aria-hidden strokeWidth={2} />} label="Copy link" activeLabel="Copied" />
+        <div className="mt-4 grid gap-3">
+          {/* Escape hatch — a moment is a swing on a real market; let the viewer open that market instead of
+              dead-ending on the card. "View the market" reads right whether the match is live or settled. */}
+          <Link
+            href={routes.match(m.matchId)}
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-chip bg-up px-5 text-strong font-semibold text-bg outline-none transition-opacity duration-200 hover:opacity-90 focus-visible:opacity-90 active:scale-[0.97]"
+          >
+            View the market <ArrowRight className="h-4 w-4" aria-hidden strokeWidth={2.25} />
+          </Link>
+          <div className="flex gap-3">
+            <Action onClick={share} active={copied === "share"} icon={<Share2 className="h-4 w-4" aria-hidden strokeWidth={2} />} label="Share" activeLabel="Link copied" />
+            <Action onClick={copy} active={copied === "copy"} icon={<Link2 className="h-4 w-4" aria-hidden strokeWidth={2} />} label="Copy link" activeLabel="Copied" />
+          </div>
         </div>
       </main>
       <Footer />

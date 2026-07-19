@@ -19,7 +19,7 @@ function disc(text: string, bg: string, ring: string, fg: string): string {
   const svg =
     `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">` +
     `<rect width="39" height="39" x="0.5" y="0.5" rx="19.5" fill="${bg}" stroke="${ring}"/>` +
-    `<text x="20" y="24.5" text-anchor="middle" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="12" font-weight="600" fill="${fg}">${text}</text>` +
+    `<text x="20" y="24.5" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600" fill="${fg}">${text}</text>` +
     `</svg>`;
   return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }

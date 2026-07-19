@@ -15,6 +15,7 @@ import { registerEventRoutes } from "./routes/events";
 import { registerSearchRoutes } from "./routes/search";
 import { registerRichDataRoutes } from "./routes/richdata";
 import { registerPlayerRoutes } from "./routes/players";
+import { registerTeamRoutes } from "./routes/teams";
 import { registerWebhookRoutes } from "./routes/webhooks";
 import { assertSecretsAtBoot } from "../auth/secrets";
 import { ConsoleOtpSender, UnconfiguredOtpSender } from "../auth/otp";
@@ -77,6 +78,7 @@ export async function startHttp(bus?: Bus, engine?: Engine | null) {
   registerSearchRoutes(app); // GET /search?q= — teams + matches from Postgres (ADR-072)
   registerRichDataRoutes(app); // GET /rich/* — cached STILL data (FD.org + API-Football), env-gated (ADR-072)
   registerPlayerRoutes(app); // GET /players + /players/:id — baked top-20 WC26 profiles read-model (ADR-082)
+  registerTeamRoutes(app); // GET /rich/teams/:id/matches — team fixtures+results proxy (STILL data, ADR-083)
   const b = bus ?? (await createBus());
   registerWebhookRoutes(app, b); // POST /webhooks/helius → chain_events + settled envelope (prompt 23)
   registerAdminRoutes(app, b);

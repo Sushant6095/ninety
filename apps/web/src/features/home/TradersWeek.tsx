@@ -10,7 +10,7 @@ const fmtPnl = (n: number): string => (n >= 0 ? "+" : "−") + Math.abs(n).toLoc
 // up-green → bright white → muted-but-ringed grey.
 const medal = ["bg-up/15 text-up ring-up/25", "bg-hi/10 text-hi ring-hairline", "bg-hairline/60 text-lo ring-hairline"];
 
-/** Traders of the week — Sofascore's "team of the week" analogue: top performers with real photos + P&L.
+/** Traders of the week — Sofascore's "team of the week" analogue: top performers by P&L (modeled, BLOCKERS B2).
  *  Shell is the re-skinned magicui BentoCard; the header carries the AvatarCircles facepile (top five +
  *  the "+N" mono overflow), all one link into the leaderboard. */
 export function TradersWeek() {
