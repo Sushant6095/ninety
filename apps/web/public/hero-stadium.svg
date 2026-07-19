@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A floodlit football stadium at night, darkened">
+  <!-- GENERATED ASSET (ADR-078). Anonymous token-palette night-stadium scene — no photograph, no person, no club
+       or brand mark, no external source, no licence question. Vector, so it is crisp at any resolution and a few KB
+       (FCP-optimal). Palette mirrors tokens.css DARK; the hero commits to a cinematic dark look in both UI themes,
+       and StaticHero.tsx fades its lower-left into the page background so the thesis stays legible. -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#05070A"/>
+      <stop offset="0.42" stop-color="#0A0D12"/>
+      <stop offset="0.72" stop-color="#0E141B"/>
+      <stop offset="1" stop-color="#0B0F14"/>
+    </linearGradient>
+    <radialGradient id="bloom" cx="0.5" cy="0.62" r="0.6">
+      <stop offset="0" stop-color="#CFE0F5" stop-opacity="0.34"/>
+      <stop offset="0.32" stop-color="#7C93B4" stop-opacity="0.16"/>
+      <stop offset="0.7" stop-color="#0B0D10" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pitch" cx="0.5" cy="0.9" r="0.5">
+      <stop offset="0" stop-color="#3CE88C" stop-opacity="0.5"/>
+      <stop offset="0.4" stop-color="#1c7d4f" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#0B0D10" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="flood" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="1"/>
+      <stop offset="0.18" stop-color="#EAF3FF" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#EAF3FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vig" cx="0.5" cy="0.5" r="0.72">
+      <stop offset="0.5" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.5"/>
+    </radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.045"/></feComponentTransfer></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="30"/></filter>
+    <filter id="soft2"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <rect width="1920" height="1080" fill="url(#bloom)"/>
+
+  <!-- far stand: a lit bowl silhouette with a bright top rim where the floodlights catch it -->
+  <g>
+    <path d="M -80,760 Q 960,560 2000,760 L 2000,1080 L -80,1080 Z" fill="#0E1218"/>
+    <path d="M -80,760 Q 960,560 2000,760" fill="none" stroke="#8FA6C4" stroke-opacity="0.5" stroke-width="3" filter="url(#soft2)"/>
+    <path d="M -80,772 Q 960,574 2000,772" fill="none" stroke="#F5F7FA" stroke-opacity="0.14" stroke-width="1.5"/>
+    <!-- faint tier lines -->
+    <path d="M -80,820 Q 960,632 2000,820" fill="none" stroke="#232A33" stroke-opacity="0.7" stroke-width="2"/>
+    <path d="M -80,890 Q 960,712 2000,890" fill="none" stroke="#1a2129" stroke-opacity="0.7" stroke-width="2"/>
+  </g>
+
+  <!-- floodlit pitch: a darkened-green glow with a faint centre circle + halfway line -->
+  <rect width="1920" height="1080" fill="url(#pitch)"/>
+  <g stroke="#EAF7EF" stroke-opacity="0.13" fill="none" stroke-width="2">
+    <ellipse cx="960" cy="972" rx="150" ry="34"/>
+    <line x1="300" y1="972" x2="1620" y2="972"/>
+  </g>
+
+  <!-- four floodlight banks above the rim: a bright core, a wide bloom, a beam fanning onto the pitch -->
+  <g>
+    <g transform="translate(300 330)"><polygon points="0,20 -190,600 210,600" fill="url(#flood)" opacity="0.14"/><circle r="120" fill="url(#flood)" filter="url(#soft)"/><circle r="30" fill="#FFFFFF"/><rect x="-46" y="-58" width="92" height="30" rx="6" fill="#0E141B"/><rect x="-42" y="-54" width="84" height="22" rx="4" fill="#EAF3FF" opacity="0.9"/></g>
+    <g transform="translate(720 288)"><polygon points="0,20 -170,640 190,640" fill="url(#flood)" opacity="0.12"/><circle r="108" fill="url(#flood)" filter="url(#soft)"/><circle r="26" fill="#FFFFFF"/><rect x="-42" y="-54" width="84" height="28" rx="6" fill="#0E141B"/><rect x="-38" y="-50" width="76" height="20" rx="4" fill="#EAF3FF" opacity="0.9"/></g>
+    <g transform="translate(1200 288)"><polygon points="0,20 -170,640 190,640" fill="url(#flood)" opacity="0.12"/><circle r="108" fill="url(#flood)" filter="url(#soft)"/><circle r="26" fill="#FFFFFF"/><rect x="-42" y="-54" width="84" height="28" rx="6" fill="#0E141B"/><rect x="-38" y="-50" width="76" height="20" rx="4" fill="#EAF3FF" opacity="0.9"/></g>
+    <g transform="translate(1620 330)"><polygon points="0,20 -210,600 190,600" fill="url(#flood)" opacity="0.14"/><circle r="120" fill="url(#flood)" filter="url(#soft)"/><circle r="30" fill="#FFFFFF"/><rect x="-46" y="-58" width="92" height="30" rx="6" fill="#0E141B"/><rect x="-42" y="-54" width="84" height="22" rx="4" fill="#EAF3FF" opacity="0.9"/></g>
+  </g>
+
+  <rect width="1920" height="1080" filter="url(#grain)"/>
+  <rect width="1920" height="1080" fill="url(#vig)"/>
+</svg>

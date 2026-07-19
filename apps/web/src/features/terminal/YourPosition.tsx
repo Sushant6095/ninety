@@ -1,5 +1,8 @@
 "use client";
+import { useRef } from "react";
 import { LivePrice } from "../../components/ui/LivePrice";
+import { gsap, useGSAP } from "../../lib/gsap";
+import motion from "../../design/motion";
 
 interface YourPositionProps {
   code: string; // held outcome's code, e.g. "EGY"
@@ -17,8 +20,23 @@ export function YourPosition({ code, shares, avgEntry, markPct, opened }: YourPo
   const pct = cost > 0 ? (pnl / cost) * 100 : 0;
   const up = pnl >= 0;
 
+  // The row ENTERS when a fill changes the holding — keyed on `shares`, so the ticking mark (which re-renders
+  // this every beat) never re-triggers it, only an actual buy/sell does. Through the shared GSAP wrapper,
+  // token timing, transform/opacity only; reduced motion snaps it in place with no travel.
+  const scope = useRef<HTMLDivElement>(null);
+  useGSAP(
+    () => {
+      const el = scope.current;
+      if (!el) return;
+      const rm = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+      if (rm) { gsap.set(el, { autoAlpha: 1, y: 0 }); return; }
+      gsap.fromTo(el, { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: motion.transition / 1000 });
+    },
+    { scope, dependencies: [shares] },
+  );
+
   return (
-    <div className="px-4 py-3">
+    <div ref={scope} className="px-4 py-3">
       <div className="mb-1 flex items-center justify-between">
         <h3 className="text-label font-semibold uppercase tracking-label text-lo">Your position</h3>
         <span className="num rounded bg-up/12 px-1 py-0.5 text-label font-semibold text-up ring-1 ring-inset ring-up/25">{code} · {shares} SH</span>

@@ -1,4 +1,6 @@
 import { TeamCrest } from "../../components/ui/TeamCrest";
+import { EntityLink } from "../../components/ui/EntityLink";
+import { teamHref } from "../../lib/entityLinks";
 import { teamById, type WcGroup } from "../../data/wc26";
 
 const QUALIFY = 2; // top two of each group advance to the Round of 32
@@ -45,11 +47,13 @@ export function GroupTable({ group }: { group: WcGroup }) {
                   </span>
                 </td>
                 <td className="py-2 pr-2">
-                  <span className="flex min-w-0 items-center gap-2">
+                  {/* Crest + name link to /team/[code] when that nation is baked (honesty gate, ADR-083);
+                      an unbaked team resolves to null and EntityLink renders the same row as plain text. */}
+                  <EntityLink href={teamHref(team?.code)} ariaLabel={`${team?.name ?? s.teamId} team page`} className="flex min-w-0 items-center gap-2">
                     <TeamCrest code={team?.code ?? "?"} size={20} />
                     <span className="truncate text-hi">{team?.name ?? s.teamId}</span>
                     <span className="num hidden text-label text-lo md:inline">{team?.code}</span>
-                  </span>
+                  </EntityLink>
                 </td>
                 <td className="num px-1.5 py-2 text-right tabular-nums text-lo">{s.mp}</td>
                 <td className="num px-1.5 py-2 text-right tabular-nums text-lo">{s.w}</td>

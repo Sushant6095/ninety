@@ -1,21 +1,11 @@
 // Portfolio + History fixtures — shaped like GET /me/portfolio, /me/positions, /me/history (SCREEN-DATA-MAP).
 // Internally reconciling to the cent: equity = free + Σ(shares·markNow); unrealized = Σ shares·(markNow − avgEntry).
 // Prices are 0..100 (a winning share settles to 100 credits), so 1 share currently worth `markNow` credits.
-import type { Outcome } from "./types";
+import type { Position } from "./types";
 
-export interface OpenPosition {
-  marketId: string;
-  matchId: string;
-  homeCode: string;
-  awayCode: string;
-  outcome: Outcome;
-  pick: string; // the outcome's team code or "DRAW" — what you're long
-  shares: number;
-  avgEntry: number; // 0..100
-  markNow: number; // 0..100 (current price = current value per share, credits)
-  minute: number | null; // live match minute, null = upcoming (pre)
-  status: "LIVE" | "PRE";
-}
+// The open-position shape now lives in lib/types as Position (shared with the per-user session). Kept here as
+// OpenPosition so every existing consumer (PositionsPanel, AccountPage, HistoryPage) stays unchanged.
+export type OpenPosition = Position;
 
 // Ordered biggest-conviction first. markNow drives current value; the live swap feeds it from m:{match}:prices.
 export const OPEN_POSITIONS: OpenPosition[] = [
@@ -27,7 +17,7 @@ export const OPEN_POSITIONS: OpenPosition[] = [
 ];
 
 export interface Account {
-  free: number; // uncommitted credits (matches SESSION.credits)
+  free: number; // uncommitted credits (the session's spendable balance)
   curve: number[]; // equity over the session, ending at current equity
 }
 // free is the header CreditPill balance; curve ends at free + Σ market value (computed in the page).

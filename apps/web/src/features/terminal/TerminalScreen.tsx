@@ -12,7 +12,6 @@ import { OpenPositions } from "./OpenPositions";
 import { GamesRail } from "./GamesRail";
 import { TournamentLeaderboard } from "./TournamentLeaderboard";
 import { TodaysMovers } from "./TodaysMovers";
-import { SESSION } from "../../lib/fixtures";
 import { MATCH } from "../../lib/terminal";
 
 /** The Terminal · the pro match-detail trading surface: live competitions + attack momentum + events (left),
@@ -28,7 +27,7 @@ export function TerminalScreen({ matchId = MATCH.matchId }: { matchId?: string }
     // pb-20 clears the fixed bottom dock so the footer / trade panel never sit under it at any breakpoint.
     <div className="flex min-h-screen flex-col overflow-x-clip bg-bg pb-20">
       <Ticker />
-      <TerminalHeader user={SESSION} />
+      <TerminalHeader />
       {/* Anchors the dock's fold-gate: while this top sentinel is (near) in view, TerminalDock hides so it never
           floats over the live prices / River. Zero-height, non-interactive. */}
       <div id="terminal-fold-sentinel" aria-hidden className="h-0" />
@@ -47,13 +46,19 @@ export function TerminalScreen({ matchId = MATCH.matchId }: { matchId?: string }
             <GamesRail />
           </div>
         </div>
+        {/* Right rail runs three tiers of weight, not one flat stack (that equal weight is what read 5/10):
+            market status + account (PortfolioCard, OpenPositions) carry normal weight and the elevated card
+            surface; the Games hub sits between; the leaderboard + movers drop to a quieter, tighter TERTIARY
+            group (gap-2, no elevation on their own cards) so the eye ranks the rail instead of scanning it flat. */}
         <div className="hidden flex-col gap-3 xl:flex">
           <MarketStatus matchId={matchId} />
           <PortfolioCard />
           <OpenPositions />
           <GamesRail />
-          <TournamentLeaderboard />
-          <TodaysMovers />
+          <div className="mt-1 flex flex-col gap-2">
+            <TournamentLeaderboard />
+            <TodaysMovers />
+          </div>
         </div>
       </main>
       <Footer />

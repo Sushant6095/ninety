@@ -6,12 +6,13 @@ import Link from "next/link";
 import { ProofBadge } from "../../components/ui/ProofBadge";
 import { TeamCrest } from "../../components/ui/TeamCrest";
 import { routes } from "../../lib/routes";
-import { FILLS } from "../../lib/portfolio";
+import { FILLS, type Fill } from "../../lib/portfolio";
 import { PROOFS } from "../../lib/proofs";
 import { signedCR } from "../../lib/format";
 
-export function ProofHistoryList() {
-  const settled = FILLS.filter((f) => f.status === "SETTLED");
+// fills defaults to the seeded FILLS; the account passes [] for a fresh session so the honest empty state shows.
+export function ProofHistoryList({ fills = FILLS }: { fills?: Fill[] }) {
+  const settled = fills.filter((f) => f.status === "SETTLED");
   const proofByMatch = new Map(PROOFS.map((p) => [p.matchId, p]));
 
   if (settled.length === 0) {

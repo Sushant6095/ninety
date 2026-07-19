@@ -17,16 +17,17 @@ import { AccuracyBody } from "./AccuracyPanel";
 import { PositionsList } from "./PositionsPanel";
 import { ProofHistoryList } from "./ProofsPanel";
 import { WatchlistBody } from "./WatchlistPanel";
+import { useSession } from "../session/SessionProvider";
 import { routes } from "../../lib/routes";
-import { SESSION, MARKETS } from "../../lib/fixtures";
-import { ACCOUNT, OPEN_POSITIONS, FILLS, marketValue, costBasis, unrealized, type OpenPosition } from "../../lib/portfolio";
+import { MARKETS } from "../../lib/fixtures";
+import { ACCOUNT, FILLS, marketValue, costBasis, unrealized, type OpenPosition } from "../../lib/portfolio";
 import { momentsByOwner } from "../../lib/moments";
 import { PROOFS, PROOFS_TOTAL } from "../../lib/proofs";
 import { fmtCR, signedCR, signedPct } from "../../lib/format";
 
 const RAIL: RailItem[] = [
   { label: "Overview", href: "#overview", icon: LayoutGrid },
-  { label: "Positions", href: "#positions", icon: Layers, count: OPEN_POSITIONS.length },
+  { label: "Positions", href: "#positions", icon: Layers },
   { label: "Accuracy", href: "#accuracy", icon: Target },
   { label: "Moments", href: "#moments", icon: Sparkles },
   { label: "Proofs", href: "#proofs", icon: ShieldCheck },
@@ -34,16 +35,16 @@ const RAIL: RailItem[] = [
 ];
 
 /** Rail footer · identity only. The wallet never holds value here; it signs and it proves. */
-function RailIdentity() {
+function RailIdentity({ handle }: { handle: string }) {
   return (
     <div className="rounded-card border border-hairline bg-surface p-3">
       <Link
-        href={routes.profile(SESSION.handle)}
+        href={routes.profile(handle)}
         className="group flex min-h-11 items-center gap-2.5 rounded-chip px-1 py-1 outline-none transition-colors duration-200 hover:bg-hairline/25 focus-visible:bg-hairline/25 active:scale-[0.97]"
       >
-        <Avatar handle={SESSION.handle} size={28} />
+        <Avatar handle={handle} size={28} />
         <span className="min-w-0">
-          <span className="block truncate text-strong font-medium text-hi">{SESSION.handle}</span>
+          <span className="block truncate text-strong font-medium text-hi">{handle}</span>
           <span className="block text-label text-lo transition-colors duration-200 group-hover:text-hi">Public profile →</span>
         </span>
       </Link>
@@ -55,46 +56,49 @@ function RailIdentity() {
 }
 
 export function AccountPage() {
-  // Live merge, same as the board (ADR-051): still parts from the seed, moving parts from the ONE store.
+  const session = useSession();
+  // Positions come from the per-user session — a fresh trader has none. Live merge, same as the board (ADR-051):
+  // still parts from the session, moving parts from the ONE store.
   const liveById = new Map(useMatchLiveList().map((s) => [s.matchId, s]));
-  const positions = OPEN_POSITIONS.map((p): OpenPosition => {
+  const positions = session.positions.map((p): OpenPosition => {
     const live = liveById.get(p.matchId);
     if (p.status !== "LIVE" || !live || live.minute == null) return p;
     return { ...p, minute: live.minute, markNow: Math.round(live.prices[p.outcome] * 1000) / 10 };
   });
 
-  // Reconciles to the cent: equity = free + Σ market value; unrealized = value − cost.
+  // Reconciles to the cent: equity = credits + Σ market value; unrealized = value − cost.
   const mv = positions.reduce((s, p) => s + marketValue(p), 0);
   const invested = positions.reduce((s, p) => s + costBasis(p), 0);
   const unreal = mv - invested;
-  // Display sum = Σ of the per-row ROUNDED values, so the card always equals what the rows show
-  // (round-then-sum vs sum-then-round drifted by 1 CR · a read-out-loud bug on a numbers product).
   const unrealDisplay = positions.reduce((s, p) => s + Math.round(unrealized(p)), 0);
-  const equity = ACCOUNT.free + mv;
-  // Rescale the seed curve's SHAPE so it starts at the day-open and ENDS exactly at the live equity. Just
-  // appending `equity` to a seed that ended ~1.9k CR higher drew a false vertical cliff at the right edge
-  // (a rising shape crashing under a −1.4% label). Because live marks drift, any fixed endpoint mismatches;
-  // remapping [open..seedEnd] → [open..equity] keeps the texture, lands on the real value, and matches the
-  // day-change sign. Guard the degenerate flat-seed case.
-  const open = ACCOUNT.curve[0];
-  const seedSpan = ACCOUNT.curve[ACCOUNT.curve.length - 1] - open;
-  const curve = seedSpan === 0 ? ACCOUNT.curve.map(() => equity) : ACCOUNT.curve.map((p) => open + ((p - open) * (equity - open)) / seedSpan);
+  const equity = session.credits + mv;
+  // No activity → no equity history: a flat line at today's credits, 0% day change. Honest, not a fabricated
+  // climb. With activity, rescale the seed curve's SHAPE to start at the day-open and END exactly at live equity.
+  const seedOpen = ACCOUNT.curve[0];
+  const seedSpan = ACCOUNT.curve[ACCOUNT.curve.length - 1] - seedOpen;
+  const curve =
+    !session.hasActivity || seedSpan === 0
+      ? ACCOUNT.curve.map(() => equity)
+      : ACCOUNT.curve.map((p) => seedOpen + ((p - seedOpen) * (equity - seedOpen)) / seedSpan);
+  const open = curve[0];
   const dayChange = equity - open;
-  const dayPct = (dayChange / open) * 100;
+  const dayPct = open ? (dayChange / open) * 100 : 0;
   const gain = dayChange >= 0;
 
-  // Rank percentile against the cup's trader pool (largest settled market's participation).
+  // Rank percentile against the cup's trader pool — only when the session actually has a rank. A fresh trader is
+  // unranked and shows so honestly, never a fabricated #142.
   const traders = Math.max(...PROOFS.map((p) => p.traders));
-  const topPct = Math.max(1, Math.ceil((SESSION.rank / traders) * 100));
+  const topPct = session.rank == null ? null : Math.max(1, Math.ceil((session.rank / traders) * 100));
 
-  const moments = momentsByOwner(SESSION.handle);
-  const settledCount = FILLS.filter((f) => f.status === "SETTLED").length;
+  const railItems = RAIL.map((it) => (it.label === "Positions" ? { ...it, count: positions.length } : it));
+  const moments = momentsByOwner(session.handle);
+  const settledCount = session.hasActivity ? FILLS.filter((f) => f.status === "SETTLED").length : 0;
   const watchCount = MARKETS.filter((m) => m.favourite).length;
 
   return (
     <AppShell>
       <main className="flex flex-1 flex-col">
-        <DashboardShell rail={<DashboardRail items={RAIL} footer={<RailIdentity />} />}>
+        <DashboardShell rail={<DashboardRail items={railItems} footer={<RailIdentity handle={session.handle} />} />}>
           <DashboardTopbar
             title="Account"
             sub="Your forecasting record · every call priced live, every settlement proven on-chain."
@@ -113,7 +117,7 @@ export function AccountPage() {
               <StatCard
                 icon={Coins}
                 label="Credits"
-                value={<>{fmtCR(ACCOUNT.free)} <span className="text-caption font-normal text-lo">CR</span></>}
+                value={<>{fmtCR(session.credits)} <span className="text-caption font-normal text-lo">CR</span></>}
                 detail={<>1,000 granted per match · <span className="text-hi/80">no cash value</span></>}
               />
               <StatCard
@@ -131,8 +135,14 @@ export function AccountPage() {
               <StatCard
                 icon={Trophy}
                 label="Rank"
-                value={<>#{fmtCR(SESSION.rank)}</>}
-                detail={<span className="num tabular-nums">Top {topPct}% of {fmtCR(traders)} traders · <span className={SESSION.rankDelta >= 0 ? "text-up" : "text-down"}>{signedCR(SESSION.rankDelta)} today</span></span>}
+                value={session.rank == null ? <span className="text-lo">Unranked</span> : <>#{fmtCR(session.rank)}</>}
+                detail={
+                  session.rank == null ? (
+                    <span className="text-lo">Trade a settled market to join the board</span>
+                  ) : (
+                    <span className="num tabular-nums">Top {topPct}% of {fmtCR(traders)} traders</span>
+                  )
+                }
               />
             </StatGrid>
           </section>
@@ -151,7 +161,7 @@ export function AccountPage() {
               </div>
             </Panel>
             <Panel id="accuracy" title="Forecast accuracy">
-              <AccuracyBody handle={SESSION.handle} />
+              <AccuracyBody handle={session.handle} active={session.hasActivity} />
             </Panel>
           </section>
 
@@ -184,7 +194,7 @@ export function AccountPage() {
               )}
             </Panel>
             <Panel id="proofs" title="Proof history" count={settledCount} action={{ label: `All ${PROOFS_TOTAL} proofs`, href: routes.proofs }}>
-              <ProofHistoryList />
+              <ProofHistoryList fills={session.hasActivity ? FILLS : []} />
             </Panel>
           </Reveal>
 

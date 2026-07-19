@@ -76,13 +76,13 @@ export function MatchHeader({ match, live }: { match: TerminalMatch; live: Match
           </div>
         </div>
 
-        <div className="flex min-w-0 items-center justify-end gap-3 text-right">
+        <EntityLink href={teamHref(match.awayCode)} ariaLabel={`${match.away} team page`} className="flex min-w-0 items-center justify-end gap-3 text-right">
           <div className="min-w-0">
             <div className="truncate text-body font-semibold text-hi sm:text-heading">{match.away}</div>
             <div className="num text-label uppercase tracking-wide text-lo">{match.awayMeta}</div>
           </div>
           <TeamCrest code={match.awayCode} size={48} priority />
-        </div>
+        </EntityLink>
       </div>
 
       {(scorer || match.venue) && (

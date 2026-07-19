@@ -19,12 +19,18 @@ import {
   useMatchLive, setMatchStatus, setScore, repriceMatch, settleSpark, rewindMatch,
   TERMINAL_MATCH_ID, MONEY_SHOT,
 } from "../live/matchLiveStore";
-import { MATCH, POSITIONS, PORTFOLIO, GOAL_MINUTE, type PositionRow } from "../../lib/terminal";
+import { MATCH, GOAL_MINUTE, type PositionRow } from "../../lib/terminal";
+import { useSession } from "../session/SessionProvider";
+import { marketByMatchId, koClock } from "../../lib/fixtures";
 import { quote as lmsrQuote } from "../../lib/lmsr";
 import { fmtCR } from "../../lib/format";
 import type { Outcome } from "../../lib/types";
 
 const IDX: Record<Outcome, number> = { H: 0, D: 1, A: 2 };
+
+// The market's real kickoff wall-clock (UTC), read from the one fixture universe · shown in the pre-match state
+// instead of a fake ticking countdown (the match already sits at 74' in the demo; a countdown would be a lie).
+const KICKOFF = (() => { const ko = marketByMatchId(MATCH.matchId)?.kickoffAt; return ko ? koClock(ko) : "—"; })();
 const codeFor = (o: Outcome): string => (o === "H" ? MATCH.homeCode : o === "A" ? MATCH.awayCode : "DRAW");
 const vsFor = (o: Outcome): string => (o === "H" ? MATCH.awayCode : o === "A" ? MATCH.homeCode : `${MATCH.homeCode}/${MATCH.awayCode}`);
 
@@ -66,9 +72,12 @@ function FeaturedMatchColumn() {
   const minute = live?.minute ?? MONEY_SHOT.minute;
   const score = live?.score ?? { home: 0, away: 0 };
 
+  // Identity is per-session (offline-first): a fresh account starts at its own credits with NO position on this
+  // match — never a fabricated portfolio. Buying decrements `free` from that real balance and enters a position.
+  const session = useSession();
   const [selected, setSelected] = useState<Outcome>("A");
-  const [positions, setPositions] = useState<PositionRow[]>(() => POSITIONS.filter((p) => p.marketId === MATCH.matchId));
-  const [free, setFree] = useState(PORTFOLIO.free);
+  const [positions, setPositions] = useState<PositionRow[]>([]);
+  const [free, setFree] = useState(session.credits);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [replayBusy, setReplayBusy] = useState(false);
 
@@ -107,16 +116,33 @@ function FeaturedMatchColumn() {
     };
   }, [replay]);
 
+  // QA/screenshot affordance: `/terminal?state=pre` (or live | halted | settled) sets the store status on mount,
+  // so every market state — the pre-match edge case especially — is reachable at a deterministic URL without a
+  // click. Reads the raw query on the client only (no useSearchParams → no Suspense/prerender coupling). The
+  // StateSwitcher still drives it interactively; this just makes the state screenshot-able directly.
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("state")?.toUpperCase();
+    const next = (["PRE", "LIVE", "HALTED", "SETTLED"] as MatchView[]).find((v) => v === q);
+    if (next) setMatchStatus(TERMINAL_MATCH_ID, next);
+  }, []);
+
+  const preMatch = view === "PRE";
+
   // The header restates the store · the scorer line appears only once the score actually says a goal exists.
+  // PRE-MATCH is honest and distinct: no scoreline yet (MatchHeader renders "vs"), no live minute pip, phase
+  // reads PRE-MATCH — the match has not kicked off, so the header narrates nothing it cannot back.
   const headerLive = useMemo(
-    () => ({
-      score,
-      minute,
-      phase: live?.phase ?? MONEY_SHOT.phase,
-      scorer: score.away > 0 ? `ASHOUR ← HAFEZ ${GOAL_MINUTE}'` : "",
-      status: view,
-    }),
-    [score, minute, live?.phase, view],
+    () =>
+      preMatch
+        ? { score: null, minute: null, phase: "PRE-MATCH", scorer: "", status: "PRE" }
+        : {
+            score,
+            minute,
+            phase: live?.phase ?? MONEY_SHOT.phase,
+            scorer: score.away > 0 ? `ASHOUR ← HAFEZ ${GOAL_MINUTE}'` : "",
+            status: view,
+          },
+    [preMatch, score, minute, live?.phase, view],
   );
 
   const heldShares: Partial<Record<Outcome, number>> = {};
@@ -174,13 +200,14 @@ function FeaturedMatchColumn() {
       <BigRiver
         match={MATCH}
         mark={mark}
-        spark={spark}
-        homeSpark={homeSpark}
-        minute={minute}
+        spark={preMatch ? [] : spark}
+        homeSpark={preMatch ? [] : homeSpark}
+        minute={preMatch ? 0 : minute}
         onReplay={replay}
         replayBusy={replayBusy}
         boothQuote={BOOTH_QUOTE}
         boothDelta={BOOTH_DELTA}
+        pre={preMatch}
       />
 
       <StateSwitcher view={view} onChange={(v) => setMatchStatus(TERMINAL_MATCH_ID, v)} />
@@ -229,8 +256,26 @@ function FeaturedMatchColumn() {
                   </TradeSheet>
                 </>
               )}
+              {/* PRE-MATCH · the ticket is present but DISABLED with a stated reason, so the surface reads
+                  "the market is here, it just hasn't opened" rather than an absent or broken panel. */}
+              {preMatch && (
+                <>
+                  <div className="hidden lg:block">
+                    <TradePanel amm={MATCH.amm} selected={selected} code={codeFor(selected)} markPx={mark[selected] * 100} free={free} heldShares={heldShares[selected] ?? 0} onPlace={placeOrder} disabled disabledReason="Trading opens at kickoff" />
+                  </div>
+                  <div className="border-b border-hairline p-3 lg:hidden">
+                    <button
+                      type="button"
+                      disabled
+                      className="flex h-11 w-full cursor-not-allowed items-center justify-center gap-2 rounded-lg bg-up px-4 text-strong font-semibold text-bg opacity-50"
+                    >
+                      Trading opens at kickoff
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
-            {view === "PRE" && <PreMatchPanel kickoff="02:14:36" />}
+            {preMatch && <PreMatchPanel kickoff={KICKOFF} />}
             {primary && (view === "LIVE" || view === "HALTED") && (
               <YourPosition code={primary.code} shares={primary.shares} avgEntry={primary.avgEntry} markPct={mark[primary.outcome] * 100} opened={primary.pre ? "opened pre-match" : "opened in-play"} />
             )}

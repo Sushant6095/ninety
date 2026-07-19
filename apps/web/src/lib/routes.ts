@@ -12,6 +12,7 @@ export const routes = {
   moments: "/moments",
   history: "/history",
   howItWorks: "/how-it-works",
+  docs: "/docs", // the in-app written reference (ADR: docs move in-house; GitBook demoted to a footer link)
   onboarding: "/onboarding",
   settings: "/settings",
   terminal: "/terminal",

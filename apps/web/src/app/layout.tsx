@@ -5,6 +5,7 @@ import { PrototypeRibbon } from "../components/ui/PrototypeRibbon";
 import { Toaster } from "../components/ui/Toaster";
 import { CssStudio } from "../components/dev/CssStudio";
 import { MatchLiveProvider } from "../features/live/MatchLiveProvider";
+import { SessionProvider } from "../features/session/SessionProvider";
 import { TooltipProvider } from "../components/ui/Tooltip";
 
 // Fonts are the Apple system stack (globals.css --font-*): no webfont fetch, genuine San Francisco on Apple.
@@ -46,15 +47,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body>
-        <PrototypeRibbon />
-        <OfflineBanner />
-        <MatchLiveProvider>
-          {/* One radix tooltip provider app-wide: sibling tooltips skip the open delay (the toolbar feels fast). */}
-          <TooltipProvider>{children}</TooltipProvider>
-        </MatchLiveProvider>
-        <Toaster />
-        {/* Dev-only visual editor — explicitly opt-in so it never renders in the demo, deploy, or screenshots. */}
-        {process.env.NEXT_PUBLIC_CSS_STUDIO === "1" && <CssStudio />}
+        {/* The per-user identity wraps everything, so any surface (header, account, leaderboard) reads one session. */}
+        <SessionProvider>
+          <PrototypeRibbon />
+          <OfflineBanner />
+          <MatchLiveProvider>
+            {/* One radix tooltip provider app-wide: sibling tooltips skip the open delay (the toolbar feels fast). */}
+            <TooltipProvider>{children}</TooltipProvider>
+          </MatchLiveProvider>
+          <Toaster />
+          {/* Dev-only visual editor — explicitly opt-in so it never renders in the demo, deploy, or screenshots. */}
+          {process.env.NEXT_PUBLIC_CSS_STUDIO === "1" && <CssStudio />}
+        </SessionProvider>
       </body>
     </html>
   );

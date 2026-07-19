@@ -34,7 +34,7 @@ export function OnboardingPage() {
             {step === 0 && (
               <div>
                 <h1 className="font-display text-heading font-bold tracking-tight text-hi">Trade the match, live.</h1>
-                <p className="mt-1.5 text-body leading-relaxed text-lo">Free to play. 1,000 credits on us — no card, no deposit, ever.</p>
+                <p className="mt-1.5 text-body leading-relaxed text-lo">Free to play. 1,000 credits on us. No card, no deposit, ever.</p>
                 <label className="mt-5 block">
                   <span className="text-label font-medium uppercase tracking-tag text-lo">Email</span>
                   <input
@@ -56,7 +56,7 @@ export function OnboardingPage() {
                   Continue <ArrowRight className="h-4 w-4" aria-hidden strokeWidth={2.25} />
                 </button>
                 <p aria-live="polite" className="mt-2 text-center text-label text-lo">
-                  {validEmail(email) ? "One tap to your wallet — no password." : "Enter your email to continue."}
+                  {validEmail(email) ? "One tap to your wallet. No password." : "Enter your email to continue."}
                 </p>
               </div>
             )}
@@ -67,7 +67,7 @@ export function OnboardingPage() {
                   <Wallet className="h-5 w-5 text-chain" aria-hidden strokeWidth={2} />
                 </div>
                 <h1 className="mt-4 font-display text-heading font-bold tracking-tight text-hi">Your wallet is ready.</h1>
-                <p className="mt-1.5 text-body leading-relaxed text-lo">We created a Solana wallet for you invisibly — no seed phrase, no extension. It&#39;s how your settlements get proved on-chain.</p>
+                <p className="mt-1.5 text-body leading-relaxed text-lo">We created a Solana wallet for you invisibly, no seed phrase, no extension. It&#39;s how your settlements get proved on-chain.</p>
                 <div className="mt-4 flex items-center justify-between rounded-card border border-hairline bg-bg/40 px-4 py-3">
                   <span className="text-caption text-lo">Devnet wallet</span>
                   <span className="num text-caption tabular-nums text-chain">{WALLET}</span>

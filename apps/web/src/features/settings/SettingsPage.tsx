@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Copy, Check, LogOut } from "lucide-react";
 import { TerminalHeader } from "../terminal/TerminalHeader";
 import { Footer } from "../home/Footer";
 import { routes } from "../../lib/routes";
-import { SESSION } from "../../lib/fixtures";
+import { useSession, useSignOut } from "../session/SessionProvider";
 
 // Demo embedded devnet wallet, display form (truncated). Real-format base58 (no readable words); the live
 // key is derived per-user at sign-in once auth lands (BLOCKERS B3). Under the PROTOTYPE banner.
@@ -40,13 +40,18 @@ const NOTIFS = [
 ] as const;
 
 export function SettingsPage() {
+  const session = useSession();
+  const signOut = useSignOut();
+  const router = useRouter();
   const [notifs, setNotifs] = useState<Record<string, boolean>>({ kickoff: true, events: true, halts: false, settle: true });
   const [copied, setCopied] = useState(false);
   const copy = async () => { try { await navigator.clipboard.writeText(WALLET); setCopied(true); window.setTimeout(() => setCopied(false), 1500); } catch { /* clipboard blocked */ } };
+  // Sign out clears this browser's identity and issues a fresh one, then returns to the landing.
+  const onSignOut = () => { signOut(); router.push(routes.home); };
 
   return (
     <div className="flex min-h-screen flex-col overflow-x-clip bg-bg">
-      <TerminalHeader user={SESSION} />
+      <TerminalHeader />
       <main className="mx-auto w-full max-w-[720px] flex-1 px-4 py-6 sm:px-6">
         <h1 className="mb-5 font-display text-display font-bold tracking-tight text-hi">Settings</h1>
 
@@ -54,9 +59,9 @@ export function SettingsPage() {
         <section className="mb-5 overflow-hidden rounded-card border border-hairline bg-surface">
           <h2 className="border-b border-hairline px-4 py-3 text-label font-semibold uppercase tracking-label text-lo">Account</h2>
           <dl className="divide-y divide-hairline/60">
-            <div className="flex items-center justify-between px-4 py-3"><dt className="text-body text-lo">Handle</dt><dd className="num text-body font-medium text-hi">{SESSION.handle}</dd></div>
-            <div className="flex items-center justify-between px-4 py-3"><dt className="text-body text-lo">Email</dt><dd className="text-body text-hi">vd•••@example.com</dd></div>
-            <div className="flex items-center justify-between px-4 py-3"><dt className="text-body text-lo">Rank</dt><dd className="num text-body font-medium text-hi">#{SESSION.rank}</dd></div>
+            <div className="flex items-center justify-between px-4 py-3"><dt className="text-body text-lo">Handle</dt><dd className="num text-body font-medium text-hi">{session.handle}</dd></div>
+            <div className="flex items-center justify-between px-4 py-3"><dt className="text-body text-lo">Email</dt><dd className="text-body text-lo">Not linked</dd></div>
+            <div className="flex items-center justify-between px-4 py-3"><dt className="text-body text-lo">Rank</dt><dd className={`text-body font-medium ${session.rank == null ? "text-lo" : "num text-hi"}`}>{session.rank == null ? "Unranked" : `#${session.rank}`}</dd></div>
           </dl>
         </section>
 
@@ -90,13 +95,14 @@ export function SettingsPage() {
           </div>
         </section>
 
-        {/* Sign out */}
-        <Link
-          href={routes.home}
-          className="inline-flex h-11 items-center justify-center gap-2 rounded-chip bg-surface px-5 text-strong font-medium text-down ring-1 ring-inset ring-hairline outline-none transition-colors duration-200 hover:ring-down/40 focus-visible:ring-down/40 active:bg-hairline/40"
+        {/* Sign out — clears this identity and issues a fresh one. */}
+        <button
+          type="button"
+          onClick={onSignOut}
+          className="inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-chip bg-surface px-5 text-strong font-medium text-down ring-1 ring-inset ring-hairline outline-none transition-colors duration-200 hover:ring-down/40 focus-visible:ring-down/40 active:bg-hairline/40"
         >
           <LogOut className="h-4 w-4" aria-hidden strokeWidth={2} /> Sign out
-        </Link>
+        </button>
       </main>
       <Footer />
     </div>

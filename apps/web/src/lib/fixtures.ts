@@ -1,7 +1,7 @@
 // Replay/reference fixtures for the Home slice — shaped like docs/api-samples/. Chunk 5 swaps these for
 // GET /markets + GET /leaderboard on the running API. Denser than a stub on purpose: a live exchange home
 // needs a full board (multiple competitions, live + upcoming + finished), real metrics, and real assets.
-import type { LeaderRow, MarketRow, MarketStatus, NewsItem, SessionUser } from "./types";
+import type { LeaderRow, MarketRow, MarketStatus, NewsItem } from "./types";
 
 const spark = (from: number, to: number, n = 24): number[] =>
   Array.from({ length: n }, (_, i) => {
@@ -51,7 +51,8 @@ function mkt(s: Spec): MarketRow {
   };
 }
 
-export const SESSION: SessionUser = { handle: "@vd", credits: 2450, rank: 142, rankDelta: 3 };
+// The signed-in identity is NOT a fixture — it is per-user and lives in features/session (SessionProvider,
+// useSession). A brand-new visitor gets 1000 credits, no rank, no positions. Nothing here fabricates a user.
 
 // ONE universe (A2): this array is the single fixture source for the whole app. The ticker below and the
 // terminal's rail (lib/terminal.ts) DERIVE from it — never a second hand-written slate. The Round of 16 is

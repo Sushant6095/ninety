@@ -35,9 +35,11 @@ export function MarketStatus({ matchId = TERMINAL_MATCH_ID }: { matchId?: string
         </span>
       </div>
       <div className="grid grid-cols-2 gap-2 px-4 pb-3">
+        {/* Telemetry is TERTIARY: quieter numbers (text-strong, not the heading weight) so these config tiles
+            recede under the status pill and the account cards, instead of shouting at the same size as prices. */}
         {TILES.map((t) => (
           <div key={t.label} className="rounded-lg bg-bg p-2 ring-1 ring-inset ring-hairline/60">
-            <div className="num text-heading font-bold tabular-nums text-hi">{t.value}</div>
+            <div className="num text-strong font-semibold tabular-nums text-hi/90">{t.value}</div>
             <div className="mt-0.5 text-label uppercase tracking-wide text-lo">{t.label}</div>
           </div>
         ))}

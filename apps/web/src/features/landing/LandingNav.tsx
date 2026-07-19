@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Wordmark } from "../../components/ui/Wordmark";
-import { routes, DOCS_URL } from "../../lib/routes";
+import { routes } from "../../lib/routes";
 
 /** The landing's sticky marketing nav (structure only from the notio reference: logo left, links +
  *  CTA right). Transparent while the hero owns the top of the page; past ~8px of scroll it turns
@@ -34,15 +34,14 @@ export function LandingNav() {
           >
             How it works
           </Link>
-          {/* The deep written reference (GitBook). Opens in a new tab; /how-it-works stays the in-app explainer. */}
-          <a
-            href={DOCS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* The in-app written reference (docs moved in-house). /how-it-works stays the visual explainer;
+              the GitBook link is a footer reference now. */}
+          <Link
+            href={routes.docs}
             className="hidden min-h-11 items-center rounded-chip px-3 text-body font-medium text-lo outline-none transition-colors duration-200 hover:text-hi focus-visible:text-hi focus-visible:ring-2 focus-visible:ring-up/60 active:opacity-70 sm:inline-flex"
           >
             Docs
-          </a>
+          </Link>
           <Link
             href={routes.terminal}
             className="inline-flex h-11 items-center gap-1.5 rounded-chip bg-up px-4 text-body font-semibold text-bg outline-none transition-opacity duration-200 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-up focus-visible:ring-offset-2 focus-visible:ring-offset-bg active:opacity-80"

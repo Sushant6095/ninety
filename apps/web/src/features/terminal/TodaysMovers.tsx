@@ -1,7 +1,9 @@
 "use client";
+import Link from "next/link";
 import { Delta } from "../../components/ui/Delta";
 import { useMatchLiveList } from "../live/matchLiveStore";
 import { MOVERS } from "../../lib/terminal";
+import { routes } from "../../lib/routes";
 import type { Outcome } from "../../lib/types";
 
 /** Today's movers · biggest Δ vs open across the R16 board (right rail, bottom). Price and Δ are read from the
@@ -20,7 +22,9 @@ export function TodaysMovers() {
   }).sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta));
 
   return (
-    <section className="elev rounded-card border border-hairline/70 bg-surface">
+    // TERTIARY · quieter surface (no elevation, softer hairline) so the movers list reads below the account
+    // + status cards above it in the rail rather than competing with them at equal weight.
+    <section className="rounded-card border border-hairline/60 bg-surface">
       <div className="flex items-center justify-between px-4 pt-3 pb-2">
         <h2 className="text-label font-semibold uppercase tracking-label text-lo">Today&apos;s movers</h2>
         <span className="text-label font-semibold uppercase tracking-label text-lo">Δ vs open</span>
@@ -28,8 +32,8 @@ export function TodaysMovers() {
       <ul className="px-2 pb-2">
         {rows.map((m) => (
           <li key={`${m.code}-${m.vs}`}>
-            <a
-              href="/match"
+            <Link
+              href={routes.match(m.matchId)}
               className="flex min-h-11 items-center gap-3 rounded-lg px-2 py-1 transition-colors duration-200 hover:bg-hairline/25"
             >
               <span className="min-w-0 flex-1">
@@ -40,7 +44,7 @@ export function TodaysMovers() {
               </span>
               <span className="num text-body tabular-nums text-hi">{m.price.toFixed(1)}</span>
               <Delta value={m.delta} className="w-[52px] text-right text-caption" />
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

@@ -36,15 +36,24 @@ export function StateSwitcher({ view, onChange }: { view: MatchView; onChange: (
   );
 }
 
-/** PRE · countdown, opening prices note, claim CTA (a cold user's first credits before kickoff). */
+/** PRE · honest "feed connected, market pre-match" status, the real kickoff time, opening-prices note, and a
+ *  claim CTA (a cold user's first credits before kickoff). `kickoff` is the real UTC wall-clock from the fixture,
+ *  not a fake ticking countdown. */
 export function PreMatchPanel({ kickoff }: { kickoff: string }) {
   const [claimed, setClaimed] = useState(false);
   return (
     <div className="border-b border-hairline px-4 py-4">
+      {/* Honest status: the live feed IS connected · the market just has not opened yet. Not "loading", not broken. */}
+      <div className="mb-3 flex items-center gap-2 text-label font-semibold uppercase tracking-label">
+        <span className="h-1.5 w-1.5 rounded-full bg-up shadow-[0_0_5px_var(--up)]" aria-hidden />
+        <span className="text-up">Live feed connected</span>
+        <span className="text-lo/50">·</span>
+        <span className="text-lo">Market pre-match</span>
+      </div>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <div className="text-label font-semibold uppercase tracking-label text-lo">Kicks off in</div>
-          <div className="num mt-1 font-display text-display font-bold tabular-nums text-hi">{kickoff}</div>
+          <div className="text-label font-semibold uppercase tracking-label text-lo">Kickoff</div>
+          <div className="num mt-1 font-display text-display font-bold tabular-nums text-hi">{kickoff} <span className="text-heading font-semibold text-lo">UTC</span></div>
         </div>
         <p className="max-w-[240px] text-caption leading-relaxed text-lo">Opening prices are live now · the market goes hot at kickoff. Buy early or wait for the whistle.</p>
       </div>

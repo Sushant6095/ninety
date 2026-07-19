@@ -6,7 +6,6 @@ import { RightRail } from "./RightRail";
 import { CenterColumn } from "./CenterColumn";
 import { MobileFeatured } from "./MobileFeatured";
 import { Footer } from "./Footer";
-import { SESSION } from "../../lib/fixtures";
 import type { MarketRow } from "../../lib/types";
 
 interface HomeShellProps {
@@ -20,7 +19,7 @@ export function HomeShell({ markets, children }: HomeShellProps) {
     // The working bell (godui notification-inbox, re-skinned) sits in TerminalHeader's alerts slot.
     <div className="flex min-h-screen flex-col overflow-x-clip bg-bg">
       <Ticker />
-      <TerminalHeader user={SESSION} />
+      <TerminalHeader />
       <main className="mx-auto grid w-full max-w-[1600px] flex-1 grid-cols-1 items-start gap-3 px-4 py-3 sm:px-6 xl:grid-cols-[280px_minmax(0,1fr)_340px]">
         <h1 className="sr-only">Ninety · live World Cup 2026 exchange</h1>
         {/* Both rails PIN. Their content is ~1000px and the centre column scrolls to ~2200, so unpinned they died

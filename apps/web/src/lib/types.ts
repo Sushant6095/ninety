@@ -37,6 +37,23 @@ export interface LeaderRow {
   pnl: number; // net credit P&L (play-money)
 }
 
+// A single open position in a trader's book — the shape GET /me/positions returns. Named Position so the
+// per-user session (features/session) and the account surfaces share ONE type; lib/portfolio re-exports it as
+// OpenPosition for its existing consumers. A brand-new session carries an empty Position[].
+export interface Position {
+  marketId: string;
+  matchId: string;
+  homeCode: string;
+  awayCode: string;
+  outcome: Outcome;
+  pick: string; // the outcome's team code or "DRAW" — what you're long
+  shares: number;
+  avgEntry: number; // 0..100
+  markNow: number; // 0..100 (current price = current value per share, credits)
+  minute: number | null; // live match minute, null = upcoming (pre)
+  status: "LIVE" | "PRE";
+}
+
 export interface SessionUser {
   handle: string;
   credits: number;

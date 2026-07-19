@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { TeamCrest } from "../../../components/ui/TeamCrest";
+import { EntityLink } from "../../../components/ui/EntityLink";
+import { playerHrefByName } from "../../../lib/entityLinks";
 import { LINEUPS, type Lineup } from "../../../lib/matchdepth";
 import { squadByCode, managerByCode, teamMediaByCode, type PlayerMedia } from "../../../lib/teamMedia";
 
@@ -65,7 +67,8 @@ function FacesPitch({ code, squad, manager }: { code: string; squad: PlayerMedia
             <span className="grid h-8 w-8 place-items-center overflow-hidden rounded-full bg-surface ring-1 ring-inset ring-hairline">
               <Image src={p.file} alt={p.name} width={32} height={32} className="h-full w-full object-cover" />
             </span>
-            <span className="max-w-16 truncate text-label leading-none text-hi/90">{surname(p.name)}</span>
+            {/* Player name → /player/[id] via the honesty gate: a baked top-20 name links, everyone else stays plain text. */}
+            <EntityLink href={playerHrefByName(p.name)} ariaLabel={`${p.name} player page`} className="max-w-16 truncate text-label leading-none text-hi/90">{surname(p.name)}</EntityLink>
           </span>
         ))}
       </div>
@@ -100,7 +103,7 @@ function DotPitch({ l }: { l: Lineup }) {
         {positions(l).map((p) => (
           <span key={p.num} className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-0.5" style={{ left: `${p.x}%`, top: `${p.y}%` }}>
             <span className="num grid h-6 w-6 place-items-center rounded-full bg-hairline text-label font-bold tabular-nums text-hi ring-1 ring-inset ring-hairline">{p.num}</span>
-            <span className="max-w-14 truncate text-label leading-none text-lo">{p.name}</span>
+            <EntityLink href={playerHrefByName(p.name)} ariaLabel={`${p.name} player page`} className="max-w-14 truncate text-label leading-none text-lo">{p.name}</EntityLink>
           </span>
         ))}
       </div>

@@ -1,6 +1,5 @@
 import { TerminalHeader } from "../terminal/TerminalHeader";
 import { Footer } from "../home/Footer";
-import { SESSION } from "../../lib/fixtures";
 import { Hero } from "./sections/Hero";
 import { TheLoop } from "./sections/TheLoop";
 import { ProofFlowLazy } from "./sections/ProofFlowLazy";
@@ -17,7 +16,7 @@ import { Faq } from "./sections/Faq";
 export function HowItWorksPage() {
   return (
     <div className="flex min-h-screen flex-col overflow-x-clip bg-bg">
-      <TerminalHeader user={SESSION} />
+      <TerminalHeader />
       <main className="flex-1">
         <Hero />
         <TheLoop />

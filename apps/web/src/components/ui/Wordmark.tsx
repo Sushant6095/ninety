@@ -8,7 +8,7 @@ interface WordmarkProps {
 /** The Ninety horizontal lockup (brand, ADR-064): the River-9 mark + Archivo wordmark. Links home. */
 export function Wordmark({ tag }: WordmarkProps) {
   return (
-    <Link href="/" aria-label="Ninety — home" className="group inline-flex items-center gap-2 text-hi">
+    <Link href="/" aria-label="Ninety, home" className="group inline-flex items-center gap-2 text-hi">
       <Logomark size={26} className="shrink-0 transition-transform duration-200 group-hover:-translate-y-px" />
       <span className="font-display text-heading font-extrabold leading-none tracking-tighter transition-opacity duration-200 group-hover:opacity-80">
         Ninety

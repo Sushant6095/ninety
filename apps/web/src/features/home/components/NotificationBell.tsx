@@ -5,16 +5,17 @@ import { Bell } from "lucide-react";
 import { motion as m } from "../../../design/motion";
 import { NotificationInbox, type Notification } from "../../../components/vendor/godui/notification-inbox";
 
-// The seed feed — same fixture world as the board (CAN–MAR halt, the SRB–CMR proof, @vd's rank/streak).
-// Chain accent ONLY on the on-chain row; halt accent ONLY on the halt row (token law).
+// The seed feed — the same fixture world as the board (the CAN–MAR halt, a settlement proof, a market open, a
+// leaderboard note). No self-referential identity: the signed-in user's own alerts come from real activity, so
+// this feed carries only world events. Chain accent ONLY on the on-chain row; halt accent ONLY on the halt row.
 const SEED: Notification[] = [
   { id: "n-halt", actor: "CAN – MAR", action: "halted", target: "goal, Canada 38'", time: "2m ago", group: "Today", accent: "halt" },
-  // JPN–CRO, not SRB–CMR: the left rail names JPN–CRO as the LAST proof, so the freshest proof
-  // alert must be the same match (read-out-loud law — two chrome elements may not disagree).
+  // JPN–CRO: the left rail names JPN–CRO as the LAST proof, so the freshest proof alert must be the same match
+  // (read-out-loud law — two chrome elements may not disagree).
   { id: "n-proof", actor: "JPN – CRO", action: "settlement proof verified", target: "on-chain", time: "44m ago", group: "Today", accent: "chain" },
-  { id: "n-streak", actor: "@vd", action: "streak", target: "+3 in Next goal", time: "3h ago", group: "Today" },
+  { id: "n-open", actor: "GER – COL", action: "opens for trading at", target: "7:00pm", time: "3h ago", group: "Today" },
   { id: "n-volume", actor: "ESP – JPN", action: "is today's most-traded market at", target: "231.8k CR", time: "5h ago", group: "Today", read: true },
-  { id: "n-rank", actor: "@vd", action: "moved up to", target: "rank #142", time: "1d ago", group: "Yesterday", read: true },
+  { id: "n-leader", actor: "@pitchwizard", action: "tops the", target: "World Cup leaderboard", time: "1d ago", group: "Yesterday", read: true },
 ];
 
 /** The header alerts bell — godui notification-inbox re-skinned to tokens behind a Ninety trigger:

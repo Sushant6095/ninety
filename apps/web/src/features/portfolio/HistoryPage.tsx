@@ -4,8 +4,8 @@ import Link from "next/link";
 import { TerminalHeader } from "../terminal/TerminalHeader";
 import { Footer } from "../home/Footer";
 import { TeamCrest } from "../../components/ui/TeamCrest";
+import { useSession } from "../session/SessionProvider";
 import { routes } from "../../lib/routes";
-import { SESSION } from "../../lib/fixtures";
 import { FILLS, type Fill } from "../../lib/portfolio";
 import { fmtCR, fmtPrice, signedCR } from "../../lib/format";
 
@@ -56,13 +56,17 @@ function FillRow({ f }: { f: Fill }) {
 }
 
 export function HistoryPage() {
+  // A fresh session has no fills — honest empty, never a fabricated trade history. Fills appear once there's real
+  // activity (hasActivity). The seeded FILLS stand in for a returning account.
+  const { hasActivity } = useSession();
+  const fills = hasActivity ? FILLS : [];
   const [filter, setFilter] = useState<FilterKey>("all");
-  const rows = FILLS.filter((f) => match(f, filter));
-  const realized = FILLS.filter((f) => f.status === "SETTLED").reduce((s, f) => s + (f.pnl ?? 0), 0);
+  const rows = fills.filter((f) => match(f, filter));
+  const realized = fills.filter((f) => f.status === "SETTLED").reduce((s, f) => s + (f.pnl ?? 0), 0);
 
   return (
     <div className="flex min-h-screen flex-col overflow-x-clip bg-bg">
-      <TerminalHeader user={SESSION} />
+      <TerminalHeader />
       <main className="mx-auto w-full max-w-[860px] flex-1 px-4 py-6 sm:px-6">
         <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
           <div>

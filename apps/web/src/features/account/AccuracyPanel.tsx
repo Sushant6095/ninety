@@ -16,7 +16,9 @@ function Row({ label, value, tone = "hi" }: { label: string; value: string; tone
   );
 }
 
-export function AccuracyBody({ handle }: { handle: string }) {
+// active = the session has real trading activity. A fresh trader has none, so the profile-derived hit rate /
+// best call / streak stay honestly empty (never fabricated) — but the Next-Goal streak below is real play, kept.
+export function AccuracyBody({ handle, active }: { handle: string; active: boolean }) {
   const profile = resolveProfile(handle);
   const rounds = useRoundLog();
   // Current Next-Goal streak: consecutive correct calls from the newest round back.
@@ -29,19 +31,28 @@ export function AccuracyBody({ handle }: { handle: string }) {
 
   return (
     <div className="divide-y divide-hairline/60">
-      <div className="px-4 py-4">
-        <div className="flex items-baseline justify-between">
+      {active ? (
+        <>
+          <div className="px-4 py-4">
+            <div className="flex items-baseline justify-between">
+              <span className="text-label font-medium uppercase tracking-tag text-lo">Hit rate</span>
+              <span className="num text-caption tabular-nums text-lo">{profile.trades} trades</span>
+            </div>
+            <div className="num mt-1 font-display text-display font-bold tabular-nums text-hi">{hitPct}%</div>
+            {/* the read-at-a-glance bar · width is data, not decoration */}
+            <div className="mt-2 h-1.5 overflow-hidden rounded-chip bg-bg ring-1 ring-inset ring-hairline" role="img" aria-label={`${hitPct} percent of calls correct`}>
+              <div className="h-full rounded-chip bg-up" style={{ width: `${hitPct}%` }} />
+            </div>
+          </div>
+          <Row label="Best call" value={signedCR(profile.bestSwing)} tone="up" />
+          <Row label="Trade streak" value={profile.streak >= 0 ? `${profile.streak} wins` : `${Math.abs(profile.streak)} losses`} />
+        </>
+      ) : (
+        <div className="px-4 py-4">
           <span className="text-label font-medium uppercase tracking-tag text-lo">Hit rate</span>
-          <span className="num text-caption tabular-nums text-lo">{profile.trades} trades</span>
+          <p className="mt-1 text-body text-lo">No settled trades yet · your forecast accuracy builds as you trade.</p>
         </div>
-        <div className="num mt-1 font-display text-display font-bold tabular-nums text-hi">{hitPct}%</div>
-        {/* the read-at-a-glance bar · width is data, not decoration */}
-        <div className="mt-2 h-1.5 overflow-hidden rounded-chip bg-bg ring-1 ring-inset ring-hairline" role="img" aria-label={`${hitPct} percent of calls correct`}>
-          <div className="h-full rounded-chip bg-up" style={{ width: `${hitPct}%` }} />
-        </div>
-      </div>
-      <Row label="Best call" value={signedCR(profile.bestSwing)} tone="up" />
-      <Row label="Trade streak" value={profile.streak >= 0 ? `${profile.streak} wins` : `${Math.abs(profile.streak)} losses`} />
+      )}
       <div className="flex items-baseline justify-between gap-3 px-4 py-3">
         <span className="text-caption text-lo">Next-Goal streak</span>
         {rounds.length === 0 ? (

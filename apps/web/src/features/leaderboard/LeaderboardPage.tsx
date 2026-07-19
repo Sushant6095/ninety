@@ -1,10 +1,11 @@
+"use client";
 import Link from "next/link";
 import { TerminalHeader } from "../terminal/TerminalHeader";
 import { Footer } from "../home/Footer";
 import { Avatar } from "../../components/ui/Avatar";
 import { HoverCard, HoverCardTrigger, HoverCardContent } from "../../components/ui/HoverCard";
+import { useSession } from "../session/SessionProvider";
 import { routes } from "../../lib/routes";
-import { SESSION } from "../../lib/fixtures";
 import { resolveProfile } from "../../lib/profile";
 import { fmtCR, signedCR } from "../../lib/format";
 import type { LeaderRow } from "../../lib/types";
@@ -71,14 +72,37 @@ function Row({ row, you }: { row: LeaderRow; you: boolean }) {
   );
 }
 
+// The signed-in trader's own pinned row. A fresh session is honestly UNRANKED with no P&L yet — never a
+// fabricated rank or number. Links to your account (your real, honest record), not a synthesized profile.
+function SelfRow({ handle, rank }: { handle: string; rank: number | null }) {
+  return (
+    <li>
+      <Link
+        href={routes.account}
+        className="grid grid-cols-[48px_1fr_auto] items-center gap-3 bg-up/[0.05] px-4 py-3 outline-none transition-colors duration-200 hover:bg-hairline/25 focus-visible:bg-hairline/25"
+      >
+        <span className="num grid h-7 w-7 place-items-center rounded-full text-caption font-semibold text-lo ring-1 ring-inset ring-transparent">
+          {rank == null ? "·" : rank}
+        </span>
+        <span className="flex min-w-0 items-center gap-3">
+          <Avatar handle={handle} size={32} />
+          <span className="truncate text-strong font-medium text-hi">{handle}</span>
+          <span className="rounded-chip bg-surface px-2 py-0.5 text-label font-medium text-lo ring-1 ring-inset ring-hairline">you</span>
+        </span>
+        <span className="text-caption font-medium text-lo">{rank == null ? "Unranked" : ""}</span>
+      </Link>
+    </li>
+  );
+}
+
 export function LeaderboardPage({ leaders }: { leaders: LeaderRow[] }) {
   // Pin the viewer's own row when they sit outside the visible top — a leaderboard you can't find yourself on
-  // is a contact list. Mirrors the terminal's TournamentLeaderboard "you" row. Handle/rank/pnl from the profile.
-  const me = resolveProfile(SESSION.handle);
-  const meInList = leaders.some((l) => l.handle.toLowerCase() === SESSION.handle.toLowerCase());
+  // is a contact list. The row reflects the REAL session: a fresh trader is unranked with no P&L, shown honestly.
+  const session = useSession();
+  const meInList = leaders.some((l) => l.handle.toLowerCase() === session.handle.toLowerCase());
   return (
     <div className="flex min-h-screen flex-col overflow-x-clip bg-bg">
-      <TerminalHeader user={SESSION} />
+      <TerminalHeader />
       <main className="mx-auto w-full max-w-[860px] flex-1 px-4 py-6 sm:px-6">
         <div className="mb-5">
           <h1 className="font-display text-display font-bold tracking-tight text-hi">Leaderboard</h1>
@@ -99,12 +123,12 @@ export function LeaderboardPage({ leaders }: { leaders: LeaderRow[] }) {
             </div>
             <ul className="divide-y divide-hairline/60">
               {leaders.map((l) => (
-                <Row key={l.handle} row={l} you={l.handle.toLowerCase() === SESSION.handle.toLowerCase()} />
+                <Row key={l.handle} row={l} you={l.handle.toLowerCase() === session.handle.toLowerCase()} />
               ))}
             </ul>
             {!meInList && (
               <ul className="border-t-2 border-hairline">
-                <Row row={{ rank: me.rank, handle: me.handle, pnl: me.pnl }} you />
+                <SelfRow handle={session.handle} rank={session.rank} />
               </ul>
             )}
           </div>

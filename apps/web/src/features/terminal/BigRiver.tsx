@@ -17,6 +17,7 @@ interface BigRiverProps {
   replayBusy: boolean; // gate the button while the timeline runs
   boothQuote: string; // the reactive Booth call, bound to the real before→after away-win%
   boothDelta: number; // points the away-win% stepped
+  pre?: boolean; // PRE-MATCH: no in-play trace yet · the River draws its honest empty state, not a live trace
 }
 
 /** The center hero · the big Momentum River (away-win% area) with outcome tags, y/x axes and the goal callout,
@@ -36,7 +37,7 @@ const PLOT_BOT = 89.5; // y% of value 0
 const yFor = (v: number): number => PLOT_BOT - (v / Y_MAX) * (PLOT_BOT - PLOT_TOP);
 const TICKS = [60, 40, 20];
 
-export function BigRiver({ match, mark, spark, homeSpark, minute, onReplay, replayBusy, boothQuote, boothDelta }: BigRiverProps) {
+export function BigRiver({ match, mark, spark, homeSpark, minute, onReplay, replayBusy, boothQuote, boothDelta, pre = false }: BigRiverProps) {
   // Where the trace ends on the 0–90' axis. The NOW line, the minute label AND the cliff all hang off this one
   // number, so none of them can drift from the series the chart actually drew.
   const nowPct = Math.min(100, Math.max(0, (minute / FULL_TIME) * 100));
@@ -49,24 +50,29 @@ export function BigRiver({ match, mark, spark, homeSpark, minute, onReplay, repl
   ];
 
   return (
-    <div className="border-b border-hairline px-4 py-3">
-      <div className="mb-1 flex items-center justify-between gap-2">
-        <h3 className="text-label font-semibold uppercase tracking-label text-lo">
+    // PRIMARY hero · more vertical breathing room than the standard px-4 py-3 panels, so the River reads as the
+    // centre of gravity rather than one more equal-weight row (deliberate spacing rhythm, not uniform padding).
+    <div className="border-b border-hairline px-4 py-4">
+      <div className="mb-1.5 flex items-center justify-between gap-2">
+        <h3 className="text-caption font-semibold uppercase tracking-label text-hi">
           Momentum River · <span className="text-up">{match.awayCode} win %</span>
         </h3>
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={onReplay}
-            disabled={replayBusy}
-            // A quiet control, NOT an amber one: amber is the halt signal (design law), and burning it on an
-            // idle button pre-spends the very cue the money-shot lands on. It only goes amber while it runs.
-            className={`hit inline-flex min-h-8 items-center gap-1.5 rounded-chip bg-bg px-2.5 py-1 text-label font-semibold uppercase tracking-wide ring-1 ring-inset outline-none transition-[color,background-color,transform] duration-200 focus-visible:ring-2 focus-visible:ring-hi active:scale-[0.97] disabled:cursor-default ${
-              replayBusy ? "text-halt ring-halt/40" : "text-lo ring-hairline hover:text-hi hover:ring-hi/30"
-            }`}
-          >
-            <RotateCcw className="h-3 w-3" aria-hidden strokeWidth={2.5} /> Replay the halt
-          </button>
+          {/* Pre-match has no halt to replay yet, so the control is suppressed until the market is live. */}
+          {!pre && (
+            <button
+              type="button"
+              onClick={onReplay}
+              disabled={replayBusy}
+              // A quiet control, NOT an amber one: amber is the halt signal (design law), and burning it on an
+              // idle button pre-spends the very cue the money-shot lands on. It only goes amber while it runs.
+              className={`hit inline-flex min-h-8 items-center gap-1.5 rounded-chip bg-bg px-2.5 py-1 text-label font-semibold uppercase tracking-wide ring-1 ring-inset outline-none transition-[color,background-color,transform] duration-200 focus-visible:ring-2 focus-visible:ring-hi active:scale-[0.97] disabled:cursor-default ${
+                replayBusy ? "text-halt ring-halt/40" : "text-lo ring-hairline hover:text-hi hover:ring-hi/30"
+              }`}
+            >
+              <RotateCcw className="h-3 w-3" aria-hidden strokeWidth={2.5} /> Replay the halt
+            </button>
+          )}
           <span className="num hidden text-label uppercase tracking-wide text-lo sm:inline">
             LMSR · TICK {match.tick.toFixed(2)} · B={match.b.toLocaleString("en-US")}
           </span>
@@ -82,8 +88,9 @@ export function BigRiver({ match, mark, spark, homeSpark, minute, onReplay, repl
         </div>
 
         {/* outcome tags on the right edge · driven off the live mark so badge == price cell == trade price, and
-            parked at the HEIGHT of their own trace, so the AUS badge can never float above the AUS line */}
-        {tags.map((t) => (
+            parked at the HEIGHT of their own trace, so the AUS badge can never float above the AUS line.
+            Suppressed pre-match: floating live price tags over an empty plot would imply an in-play tape. */}
+        {!pre && tags.map((t) => (
           <div
             key={t.key}
             className={`num pointer-events-none absolute right-1 z-20 flex -translate-y-1/2 items-center gap-1 rounded px-1 py-0.5 text-label font-semibold ring-1 ring-inset ${t.cls}`}
@@ -99,6 +106,26 @@ export function BigRiver({ match, mark, spark, homeSpark, minute, onReplay, repl
         <div data-halt="chart">
           <MomentumRiver data={spark} up height={300} secondary={homeSpark} yRange={[0, Y_MAX]} totalMinutes={FULL_TIME} />
         </div>
+
+        {/* ── PRE-MATCH honest empty state ── The feed is connected but the match has not kicked off, so there is no
+            in-play trace. The chart canvas above still renders at container width (never the 300px blank-canvas
+            default), and over it we draw an explicit, intentional treatment: a FLAT dashed baseline sitting at the
+            opening away-mark and a centered "market pre-match" note. Not a blank void, not a fake live trace. */}
+        {pre && (
+          <>
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 z-20 border-t border-dashed border-hairline"
+              style={{ top: `${yFor(mark.A * 100)}%` }}
+            />
+            <div className="pointer-events-none absolute inset-0 z-20 grid place-items-center">
+              <div className="rounded-chip bg-bg/90 px-3 py-1.5 text-center ring-1 ring-inset ring-hairline">
+                <div className="text-label font-semibold uppercase tracking-label text-lo">Market pre-match</div>
+                <div className="num mt-0.5 text-caption text-lo">Opening {(mark.A * 100).toFixed(1)} · trading opens at kickoff</div>
+              </div>
+            </div>
+          </>
+        )}
 
         {/* ── Halt choreography overlays (DOM only · never inside the chart canvas). Hidden until the GSAP timeline runs. ── */}
         {/* persistent amber HALT wash · bathes the whole frozen River for the entire halted phase, then fades on resume */}
@@ -118,8 +145,9 @@ export function BigRiver({ match, mark, spark, homeSpark, minute, onReplay, repl
           {match.goalLabel}
         </div>
 
-        {/* the NOW line · sits exactly where the trace ends, so the chart and the match clock are visibly one thing */}
-        <div aria-hidden className="pointer-events-none absolute inset-y-0 z-10 w-px bg-hairline" style={{ left: `${nowPct}%` }} />
+        {/* the NOW line · sits exactly where the trace ends, so the chart and the match clock are visibly one thing.
+            Pre-match there is no "now" on the match clock yet, so it is suppressed. */}
+        {!pre && <div aria-hidden className="pointer-events-none absolute inset-y-0 z-10 w-px bg-hairline" style={{ left: `${nowPct}%` }} />}
       </div>
 
       {/* x-axis = real match time. Three labels on a 0–90 axis: HT is the exact midpoint, so they land true. */}

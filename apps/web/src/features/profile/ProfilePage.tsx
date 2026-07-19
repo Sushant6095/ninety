@@ -5,7 +5,6 @@ import { Avatar } from "../../components/ui/Avatar";
 import { EquityCurve } from "../../components/ui/EquityCurve";
 import { MomentCard } from "../../components/ui/MomentCard";
 import { routes } from "../../lib/routes";
-import { SESSION } from "../../lib/fixtures";
 import { resolveProfile } from "../../lib/profile";
 import { momentsByOwner } from "../../lib/moments";
 import { fmtCR, signedCR } from "../../lib/format";
@@ -28,7 +27,7 @@ export function ProfilePage({ handle }: { handle: string }) {
 
   return (
     <div className="flex min-h-screen flex-col overflow-x-clip bg-bg">
-      <TerminalHeader user={SESSION} />
+      <TerminalHeader />
       <main className="mx-auto w-full max-w-[1040px] flex-1 px-4 py-6 sm:px-6">
         {/* HERO */}
         <section className="elev overflow-hidden rounded-card border border-hairline bg-surface">

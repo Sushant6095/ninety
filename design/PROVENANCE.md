@@ -271,3 +271,8 @@ failure." A 30-effect checklist is dropped for the following reasons, not layere
    anime-based effect actually ships.
 5. **Right cadence** — each effect should land one-at-a-time with its own screenshot and long-task check, exactly like
    the swap process; a bulk import is the slop both prompts warn against. Left as a backlog, each to earn its place.
+
+## Landing static hero (ADR-078 pass 2, 2026-07-19)
+| Component | Source | Licence | Placement |
+|---|---|---|---|
+| `public/hero-stadium.svg` (the hero backdrop) | **Generated** — hand-authored token-palette SVG (ours); floodlight banks + light beams + a darkened green pitch. No photograph, no person, no club/national kit, no brand mark, no external asset, no AI-image service. | **n/a — original generated asset** (nothing to license, nothing to attribute; not a press photo, not fan art, no watermark). | Landing BEAT-1 hero (`features/landing/StaticHero.tsx`), full-bleed 16:9, CSS `cover` background + `--bg` legibility scrim. Replaced the retired `/frames/hero` scroll-scrub (a named-player-likeness placeholder, deleted). |

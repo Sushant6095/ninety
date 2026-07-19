@@ -27,13 +27,14 @@ interface TradePanelProps {
   free: number; // uncommitted credits · buying power
   heldShares: number; // shares held of the selected outcome · sell ceiling
   onPlace: (side: "buy" | "sell", size: number) => PlaceResult; // server-verified analog; applies optimistically
-  disabled?: boolean; // market halted · controls lock, greyed + inert (the felt-freeze during the halt)
+  disabled?: boolean; // market halted / pre-match · controls lock, greyed + inert (the felt-freeze during the halt)
+  disabledReason?: string; // the CTA copy while disabled · "Trading paused" (halt) or "Trading opens at kickoff" (pre)
 }
 
 /** Buy/Sell + size (slider + quick amounts) → live LMSR quote → confirm. On confirm the parent applies the fill
  *  optimistically (or rejects · insufficient credits / oversell · via toast). Client previews; the store verifies.
  *  `disabled` (halt) makes the whole panel inert + greyed so the user FEELS trading was taken away, then restored. */
-export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPlace, disabled = false }: TradePanelProps) {
+export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPlace, disabled = false, disabledReason = "Trading paused" }: TradePanelProps) {
   const [side, setSide] = useState<"buy" | "sell">("buy");
   const [size, setSize] = useState(20);
   // A confirmed fill (or null). Carries what the choreography needs so the inline line + toast agree.
@@ -57,21 +58,37 @@ export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPl
     setFill(r.ok ? { size, code, avgPx: r.avgPx ?? markPx } : null);
   };
 
-  // submit → fill confirmation → toast as ONE one-shot GSAP timeline (ADR-061). Off the price tape and only
-  // on a confirmed fill, so it is wall-safe; transform/opacity only; reduced motion drops the travel and
-  // fires the toast immediately. The press dip itself stays CSS active:scale (ADR-058 · untouched).
+  // submit → fill confirmation → credits count to the new balance → toast, as ONE one-shot GSAP timeline
+  // (ADR-061). Off the price tape and only on a confirmed fill, so it is wall-safe; transform/opacity + a
+  // textContent roll only; reduced motion drops the travel, sets the balance instantly and fires the toast
+  // immediately. The press dip itself stays CSS active:scale (ADR-058 · untouched).
   const scope = useRef<HTMLDivElement>(null);
   const fillRef = useRef<HTMLParagraphElement>(null);
+  const balanceRef = useRef<HTMLSpanElement>(null); // the free-credits number that counts on a fill
+  const lastFreeRef = useRef(free); // the last committed balance · the count-up's start value
   useGSAP(
     () => {
       const el = fillRef.current;
       if (!fill || !el) return;
       const rm = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
       const reveal = rm ? 0.001 : m.fast / 1000;
-      gsap
+      const tl = gsap
         .timeline()
         .fromTo(el, { autoAlpha: 0, y: rm ? 0 : 6 }, { autoAlpha: 1, y: 0, duration: reveal }, 0)
         .call(() => toast.success(`Filled ${fill.size} ${fill.code} @ ${fill.avgPx.toFixed(1)}`), undefined, reveal);
+
+      // Credits roll old → new balance (down on a buy, up on a sell). React keeps the span at the committed
+      // value between fills; GSAP only animates the transient roll on the fill frame.
+      const bal = balanceRef.current;
+      const from = lastFreeRef.current;
+      lastFreeRef.current = free;
+      if (bal && from !== free) {
+        if (rm) bal.textContent = fmtCR(free);
+        else {
+          const proxy = { v: from };
+          tl.to(proxy, { v: free, duration: m.slow / 1000, onUpdate: () => { bal.textContent = fmtCR(proxy.v); } }, 0);
+        }
+      }
     },
     { scope, dependencies: [fill], revertOnUpdate: true },
   );
@@ -130,7 +147,15 @@ export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPl
         >
           Max
         </button>
-        <span className="num ml-auto text-label tabular-nums text-lo">{side === "buy" ? `${fmtCR(free)} cr free` : `${heldShares} ${code} held`}</span>
+        <span className="num ml-auto text-label tabular-nums text-lo">
+          {side === "buy" ? (
+            <>
+              <span ref={balanceRef}>{fmtCR(free)}</span> cr free
+            </>
+          ) : (
+            `${heldShares} ${code} held`
+          )}
+        </span>
       </div>
 
       {/* Metrics ABOVE, action button full-width BELOW (Hyperliquid/Polymarket pattern). They used to share
@@ -149,7 +174,7 @@ export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPl
         disabled={disabled}
         className={`mt-3 min-h-11 w-full rounded-lg px-5 text-strong font-semibold text-bg transition-[filter,transform] duration-200 ease-out hover:brightness-110 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:cursor-not-allowed ${side === "buy" ? "bg-up focus-visible:ring-up" : "bg-down focus-visible:ring-down"}`}
       >
-        {disabled ? "Trading paused" : `${side === "buy" ? "Buy" : "Sell"} ${label} @ ${markPx.toFixed(1)}`}
+        {disabled ? disabledReason : `${side === "buy" ? "Buy" : "Sell"} ${label} @ ${markPx.toFixed(1)}`}
       </button>
 
       {fill && (

@@ -5,11 +5,12 @@ import { Share2, Link2, Check, ArrowRight } from "lucide-react";
 import { TerminalHeader } from "../terminal/TerminalHeader";
 import { Footer } from "../home/Footer";
 import { TeamCrest } from "../../components/ui/TeamCrest";
+import { EntityLink } from "../../components/ui/EntityLink";
+import { teamHref } from "../../lib/entityLinks";
 import { Avatar } from "../../components/ui/Avatar";
 import { EquityCurve } from "../../components/ui/EquityCurve";
 import { ProofBadge } from "../../components/ui/ProofBadge";
 import { routes } from "../../lib/routes";
-import { SESSION } from "../../lib/fixtures";
 import { rarityOf, swingOf, RARITY_STYLE, type Moment } from "../../lib/moments";
 import { fmtPrice, signedCR } from "../../lib/format";
 
@@ -45,7 +46,7 @@ export function MomentDetail({ m }: { m: Moment }) {
 
   return (
     <div className="flex min-h-screen flex-col overflow-x-clip bg-bg">
-      <TerminalHeader user={SESSION} />
+      <TerminalHeader />
       <main className="mx-auto w-full max-w-[640px] flex-1 px-4 py-6 sm:px-6">
         <Link href={routes.moments} className="mb-4 inline-flex items-center gap-1 text-caption font-medium text-lo transition-colors duration-200 hover:text-hi">← Moments</Link>
 
@@ -57,10 +58,19 @@ export function MomentDetail({ m }: { m: Moment }) {
           </div>
 
           <div className="px-5 pt-3">
-            <div className="flex items-center gap-2">
-              <TeamCrest code={m.homeCode} size={20} />
-              <TeamCrest code={m.awayCode} size={20} />
-              <span className="num text-caption tabular-nums text-lo">{m.homeCode} v {m.awayCode} · World Cup 2026</span>
+            {/* Each crest + code links to /team/[code] when that team is baked (honesty gate, ADR-083);
+                an unbaked code (e.g. SRB, CMR) resolves to null and renders as plain text. */}
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-caption text-lo">
+              <EntityLink href={teamHref(m.homeCode)} ariaLabel={`${m.homeCode} team page`} className="inline-flex items-center gap-1.5">
+                <TeamCrest code={m.homeCode} size={20} />
+                <span className="num tabular-nums text-lo">{m.homeCode}</span>
+              </EntityLink>
+              <span className="num tabular-nums">v</span>
+              <EntityLink href={teamHref(m.awayCode)} ariaLabel={`${m.awayCode} team page`} className="inline-flex items-center gap-1.5">
+                <TeamCrest code={m.awayCode} size={20} />
+                <span className="num tabular-nums text-lo">{m.awayCode}</span>
+              </EntityLink>
+              <span className="num tabular-nums">· World Cup 2026</span>
             </div>
             <h1 className="mt-2 font-display text-display font-bold tracking-tight text-hi">{m.title}</h1>
           </div>
@@ -75,7 +85,10 @@ export function MomentDetail({ m }: { m: Moment }) {
             <span className="num text-heading font-semibold tabular-nums text-hi">{fmtPrice(m.toPrice)}</span>
             <span className={`num text-strong font-semibold tabular-nums ${up ? "text-up" : "text-down"}`}>{signedCR(swing)}</span>
           </div>
-          <p className="px-5 pb-4 pt-1 text-center text-caption text-lo">{m.pick} win probability · repriced inside a single minute.</p>
+          <p className="px-5 pb-4 pt-1 text-center text-caption text-lo">
+            {/* pick is a team code or "DRAW"; teamHref("DRAW") is null so the draw case stays plain text. */}
+            <EntityLink href={teamHref(m.pick)} ariaLabel={`${m.pick} team page`}>{m.pick}</EntityLink> win probability · repriced inside a single minute.
+          </p>
 
           {/* Owner + chain surface */}
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-hairline px-5 py-4">

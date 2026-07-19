@@ -44,3 +44,29 @@ page errors. Overlay read-out-loud consistent (REPLAY · "Scroll the tape." · S
 - Sync a `PriceChip` to scroll progress so the number ticks as the action peaks ("price = probability" in one scroll).
 - Swap the placeholder clip for an original stylised football goal render (resolves the legal caveat).
 - Minor: the overlay uses a couple of off-scale `text-[11px]` / inline `var(--text-section)` type values — move to the 6-step scale.
+
+## Pass 2 (2026-07-19) — RETIRED from the landing; replaced by ONE static hero
+The scroll-scrub cinema is **unmounted** and its frame asset **deleted**. Why: the only frame source we ever had
+was a named-player likeness placeholder (Messi / Argentina kit, B6) — exactly what CLAUDE.md's legal armor forbids
+on a public landing, and this is the public ship. Rather than keep sourcing a clean 96-frame clip for a mechanism
+that costs FCP, the landing opens on ONE static hero image.
+
+- **Unmounted:** `<GoalReplayScrollLazy />` removed from `LandingLong.tsx` (BEAT 1) → `<StaticHero />`.
+- **Deleted:** `apps/web/public/frames/hero/` (96 JPGs, ~8 MB) — removed from the tree so the likeness placeholder
+  does not ship publicly or sit in git history any longer. The empty `public/frames/` dir was removed too.
+- **Retained (unmounted), by design:** `GoalReplayScroll.tsx` + `GoalReplayScrollLazy.tsx` stay — the GSAP scrub
+  mechanism (pass-1 decisions above) is documented work that may return with a licensed/original clip. The
+  `no-dead-code` Stop hook checks API endpoints / the wiring layer / route stubs — **not** orphaned frontend
+  components — so it does not flag them; no forced deletion. (`GoalReplayScrollLazy` still references
+  `/frames/hero/…` in its default props, but it is never mounted, so the built landing requests zero `/frames/`.)
+- **New hero — `features/landing/StaticHero.tsx`:** full-bleed 16:9, backdrop = a **generated, anonymous**
+  token-palette night-stadium scene (`public/hero-stadium.svg` — floodlight banks + beams + a darkened green pitch;
+  no photo, no person, no club/brand mark, no external source, so no licence question and nothing to attribute).
+  Vector, so it is crisp at any resolution and a few KB — served as a CSS `cover` background (no raster to blur;
+  the SVG paints instantly and FCP is optimal). A `--bg` scrim anchored bottom-left keeps the eyebrow + thesis
+  AA-legible in **both** themes (contrast comes from `text-hi` vs `--bg`, verified on shots, not eyeballed). The
+  wordmark (Navbar) and the thesis "Every match is a market for ninety minutes." are unchanged. Ken-Burns is a
+  compositor-only ≤1.04 scale, disabled under `prefers-reduced-motion`.
+- **FCP improved:** ~512 ms (live scrub, `ssr:false` canvas gated on a 96-JPG decode) → ~128 ms (SSR'd static hero,
+  local prod). The scrub island's 8 MB of frames + client-only paint are off the critical path; the hero text is in
+  the initial HTML. (Caveat: after = localhost, before = live-over-network; the structural win holds regardless.)

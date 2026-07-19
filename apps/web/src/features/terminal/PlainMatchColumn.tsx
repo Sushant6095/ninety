@@ -11,8 +11,9 @@ import { TradeSheet } from "../../components/ui/TradeSheet";
 import { PreMatchPanel, SettledPanel } from "./MatchStates";
 import { PlainMatchTabs } from "./PlainMatchTabs";
 import { useMatchLive, FULL_TIME } from "../live/matchLiveStore";
-import { POSITIONS, PORTFOLIO, type PositionRow, type TerminalMatch } from "../../lib/terminal";
+import { type PositionRow, type TerminalMatch } from "../../lib/terminal";
 import { marketByMatchId, koClock, teamName } from "../../lib/fixtures";
+import { useSession } from "../session/SessionProvider";
 import { quote as lmsrQuote } from "../../lib/lmsr";
 import { fmtCR } from "../../lib/format";
 import type { MarketRow, Outcome } from "../../lib/types";
@@ -93,9 +94,11 @@ function PlainColumnInner({ matchId, market }: { matchId: string; market: Market
   const minute = live?.minute ?? market.minute;
   const score = live?.score ?? market.score ?? null;
 
+  // Per-session, offline-first: fresh account starts at its own credits with NO position on this match.
+  const session = useSession();
   const [selected, setSelected] = useState<Outcome>("H");
-  const [positions, setPositions] = useState<PositionRow[]>(() => POSITIONS.filter((p) => p.marketId === matchId));
-  const [free, setFree] = useState(PORTFOLIO.free);
+  const [positions, setPositions] = useState<PositionRow[]>([]);
+  const [free, setFree] = useState(session.credits);
   const [sheetOpen, setSheetOpen] = useState(false);
 
   // The bottom dock's "Open trade ticket" tool lands here (the replay tool is featured-only). No-op on the

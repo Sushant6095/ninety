@@ -5,17 +5,16 @@ import Link from "next/link";
 import { useState } from "react";
 import { Wordmark } from "src/components/ui/Wordmark";
 import { ThemeToggle } from "src/components/ui/ThemeToggle";
-import { DOCS_URL } from "src/lib/routes";
 
 // notio's floating-pill nav, re-skinned to Ninety: our Wordmark + WC26 chip left, real routes + the
 // one filled CTA ("Open the terminal") right. Dropped notio's logo SVGs, theme toggle, and auth links.
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Docs is the deep written reference (GitBook) — external, opens a new tab.
+  // Docs is the in-app written reference now (moved in-house from GitBook).
   const navItems: { label: string; href: string; external?: boolean }[] = [
     { label: "How it works", href: "/how-it-works" },
-    { label: "Docs", href: DOCS_URL, external: true },
+    { label: "Docs", href: "/docs" },
   ];
 
   // top-10 (40px) clears the 32px global PrototypeRibbon — a fixed top-4 pill overlapped it by 16px (S9).

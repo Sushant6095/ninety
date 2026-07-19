@@ -9,7 +9,7 @@ import { PriceVoid } from "./PriceVoid";
 import { PriceScrub } from "./PriceScrub";
 import { VelocityBand } from "./VelocityBand";
 import { FlowFieldLazy } from "./FlowFieldLazy";
-import { GoalReplayScrollLazy } from "./GoalReplayScrollLazy";
+import { StaticHero } from "./StaticHero";
 import { LandingFinaleLazy } from "./LandingFinaleLazy";
 import { CrestWall } from "./CrestWall";
 import { BoothQuotes } from "./BoothQuotes";
@@ -39,9 +39,11 @@ export function LandingLong() {
       {/* 1 — nav (kept) */}
       <Navbar />
       <main>
-        {/* BEAT 1 — THE CINEMA (ADR-078): the page OPENS on the pinned full-bleed frame-scrub carrying the
-            thesis, then resolves into the product below. Landing-only, never a live-price surface. */}
-        <GoalReplayScrollLazy />
+        {/* BEAT 1 — THE HERO (ADR-078): the page OPENS on ONE static full-bleed night-stadium image carrying the
+            thesis, then resolves into the product below. The scroll-scrub frame cinema was retired (its /frames
+            asset was a named-player likeness placeholder, B6); the scrub components are kept but unmounted.
+            Landing-only, never a live-price surface. */}
+        <StaticHero />
 
         {/* BEAT 2 — the product resolves in: the live River + one action line + the single CTA. */}
         <Hero />

@@ -7,10 +7,11 @@ import { CommandMenu } from "../../components/ui/CommandMenu";
 import { Tooltip } from "../../components/ui/Tooltip";
 import { CreditPill } from "../../components/ui/CreditPill";
 import { Avatar } from "../../components/ui/Avatar";
-import { routes, DOCS_URL } from "../../lib/routes";
+import { routes } from "../../lib/routes";
 import { NotificationBell } from "../home/components/NotificationBell";
 import { Logomark } from "../../components/ui/Logomark";
 import { ThemeToggle } from "../../components/ui/ThemeToggle";
+import { useSession } from "../session/SessionProvider";
 import type { SessionUser } from "../../lib/types";
 
 // The single app-wide surface nav (App and Terminal are merged · no more surface toggle). Covers every
@@ -28,12 +29,17 @@ const SUBNAV: { label: string; href: string; count?: number; home?: boolean; ext
   { label: "Moments", href: routes.moments },
   { label: "History", href: routes.history },
   { label: "Proofs", href: routes.proofs, count: 88 },
-  { label: "Docs", href: DOCS_URL, external: true },
+  { label: "Docs", href: routes.docs },
 ];
 
 /** The one Ninety chrome: wordmark + TERMINAL badge · search · balance/rank/actions, then a dense sub-nav row
- *  with the live feed/proof status on the right. Used on every screen · the board (/) and the desk alike. */
-export function TerminalHeader({ user }: { user: SessionUser }) {
+ *  with the live feed/proof status on the right. Used on every screen · the board (/) and the desk alike.
+ *
+ *  Identity comes from `useSession()` (the session provider) · NOT a hardcoded fixture. `user` stays as an
+ *  optional legacy prop so callers still passing it keep compiling; it is intentionally unread. rank is null
+ *  for a fresh account, which renders an honest "Unranked" (never a fabricated rank 142). */
+export function TerminalHeader({ user: _legacyUser }: { user?: SessionUser } = {}) {
+  const session = useSession();
   const path = usePathname();
   const [cmdkOpen, setCmdkOpen] = useState(false);
   useEffect(() => {
@@ -65,18 +71,21 @@ export function TerminalHeader({ user }: { user: SessionUser }) {
         </button>
 
         <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-2">
-          <CreditPill credits={user.credits} />
-          <Link href={routes.portfolio} aria-label={`Rank ${user.rank}`} className="hidden items-center gap-1 rounded-chip bg-surface px-2 py-1 text-caption ring-1 ring-inset ring-hairline transition-colors duration-200 hover:ring-up/40 lg:inline-flex">
+          <CreditPill credits={session.credits} />
+          <Link href={routes.portfolio} aria-label={session.rank != null ? `Rank ${session.rank}` : "Unranked · trade to earn a rank"} className="hidden items-center gap-1 rounded-chip bg-surface px-2 py-1 text-caption ring-1 ring-inset ring-hairline transition-colors duration-200 hover:ring-up/40 lg:inline-flex">
             <span className="text-lo">RANK</span>
-            <span className="num font-medium text-hi">#{user.rank}</span>
-            <span className="num inline-flex items-center gap-0.5 text-up">▲{user.rankDelta}</span>
+            {session.rank != null ? (
+              <span className="num font-medium text-hi">#{session.rank}</span>
+            ) : (
+              <span className="num font-medium text-lo">Unranked</span>
+            )}
           </Link>
           <Tooltip content="Favourites">
             <button aria-label="Favourites" className="grid h-11 w-11 place-items-center rounded-full text-lo transition-colors duration-200 hover:bg-surface hover:text-hi active:bg-hairline/40"><Star size={17} strokeWidth={2} aria-hidden /></button>
           </Tooltip>
           <ThemeToggle />
           <NotificationBell />
-          <Link href={routes.settings} aria-label="Account" className="rounded-full ring-1 ring-inset ring-hairline transition-shadow duration-200 hover:ring-up/40"><Avatar handle={user.handle} size={36} /></Link>
+          <Link href={routes.settings} aria-label="Account" className="rounded-full ring-1 ring-inset ring-hairline transition-shadow duration-200 hover:ring-up/40"><Avatar handle={session.handle} size={36} /></Link>
         </div>
       </div>
 

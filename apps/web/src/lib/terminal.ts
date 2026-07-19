@@ -2,7 +2,7 @@
 //   GET /markets/:id (detail + amm{q,b,spread_mult}, ADR-046 guarded emit) · GET /markets/:id/quote ·
 //   GET /portfolio (positions + equity) · movers from market:{id}:open. Chunk-swappable 1:1 once the API boots.
 import type { Outcome } from "./types";
-import { koClock, MARKETS, SESSION } from "./fixtures";
+import { koClock, MARKETS } from "./fixtures";
 
 // ── selected market detail (Australia vs Egypt · R16) ────────────────────────────
 // SEED ONLY. Everything that MOVES during the match · minute, phase, score, prices, the River · is owned by
@@ -115,11 +115,6 @@ export const ATTACK = {
   attacking: "EGYPT",
   bars: [12, 20, 8, -14, -8, 24, 40, 18, -10, 30, 52, 34, 16, -6, 22, 44, 60, 38, 20, -12, 28, 48, 66, 40, 24, 10, -8, 34, 56, 72],
 };
-
-// ONE identity: derive the tournament-rank view from the single SESSION source (lib/fixtures) so the handle and
-// rank never contradict another panel. The "@you" second identity is gone · every panel shows SESSION.handle.
-// (pnl is the tournament-specific P&L figure; handle + rank + delta come from the one session.)
-export const SESSION_RANK = { rank: SESSION.rank, handle: SESSION.handle, pnl: 1214, delta: SESSION.rankDelta };
 
 // The AI booth timeline · commentary + the market impact each event had. Goalless, like EVENTS: the 74'
 // reprice is prepended live by BoothTimeline once the goal actually lands.
