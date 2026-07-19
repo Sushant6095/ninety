@@ -15,7 +15,7 @@ The product is one tight live loop, five beats:
 
 At full time the result is meant to settle **on-chain by verifying a TxODDS cryptographic proof — with no admin able to decide a result** (ADR-017, a repo law). That path is deliberately fail-closed today; the reason is the lead of the README and the highlight of this submission (see the forge finding, below).
 
-Built in **12 days** (2026-07-07 → 2026-07-18): **177 commits**, **79 ADRs**, **258 automated tests passing**, **5/5 Anchor tests**, TxLINE verified live on devnet.
+Built in **13 days** (2026-07-07 → 2026-07-19): **185 commits**, **87 ADRs**, **279 automated tests passing**, **5/5 Anchor tests**, TxLINE verified live on devnet.
 
 ## The forge finding (lead with this)
 
