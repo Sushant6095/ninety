@@ -96,7 +96,9 @@ export const EVENTS: EventRow[] = [
 // the rail (LatestEvents) and the depth timeline (EventsTimeline) can never disagree on its minute or wording.
 export const GOAL_EVENT: EventRow = { minute: GOAL_MINUTE, text: "GOAL · Ashour (Egypt), assist Hafez", kind: "goal" };
 
-export const MARKET_STATUS = { status: "OPEN" as const, tick: 2.2, feedMs: 42, b: 1200, tradersIn: 3412 };
+// Real market config only — tick cadence + LMSR liquidity. No fabricated feed-latency or trader-count telemetry
+// (a precise "42ms"/"3,412" implies a measurement we don't have on a modeled surface — the honesty pass removed them).
+export const MARKET_STATUS = { status: "OPEN" as const, tick: 2.2, b: 1200 };
 
 export const PORTFOLIO = {
   equity: 8534, free: 2450, changePct: 34.8,

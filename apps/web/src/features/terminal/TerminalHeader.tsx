@@ -103,7 +103,6 @@ export function TerminalHeader({ user }: { user: SessionUser }) {
             );
           })}
           <div className="num ml-auto flex shrink-0 items-center gap-3 pl-4 pr-1 text-label tracking-wide text-lo">
-            <span>FEED <span className="text-hi">42 ms</span></span>
             <span className="inline-flex items-center gap-1"><span className="h-1.5 w-1.5 rounded-full bg-chain shadow-[0_0_5px_var(--chain)]" /><span className="text-chain">DEVNET</span></span>
           </div>
         </div>

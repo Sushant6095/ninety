@@ -6,10 +6,10 @@ export function Footer() {
       <div className="mx-auto max-w-[1600px] px-4 py-5 sm:px-6">
         <div className="flex flex-col gap-2 text-label text-lo sm:flex-row sm:items-center sm:justify-between">
           <p>Ninety is a free-to-play game. Credits are play money and have no cash value.</p>
-          <p className="num tracking-wide">LMSR PRICING · PROOFS ON SOLANA DEVNET · FEED 42 MS</p>
+          <p className="num tracking-wide">LMSR PRICING · PROOFS ON SOLANA DEVNET</p>
         </div>
         <p className="mt-3 border-t border-hairline/60 pt-3 text-label text-lo">
-          Live data from TxLINE · World Cup context from{" "}
+          Priced by TxLINE · World Cup context from{" "}
           <a
             href="https://github.com/rezarahiminia/worldcup2026"
             target="_blank"

@@ -3,12 +3,11 @@ import { useMatchLive, TERMINAL_MATCH_ID, type MatchStatus } from "../live/match
 import { MARKET_STATUS } from "../../lib/terminal";
 import { TradersStrip } from "./TradersStrip";
 
-const { tick, feedMs, b } = MARKET_STATUS;
+const { tick, b } = MARKET_STATUS;
 
-// Three tiles · the traders head-count moved into the TradersStrip below (one number, one place).
+// Real market metrics only · traders head-count is the TradersStrip below (avatars, no fabricated number).
 const TILES: { value: string; label: string }[] = [
   { value: `${tick.toFixed(1)}s`, label: "TICK" },
-  { value: `${feedMs}ms`, label: "FEED" },
   { value: b.toLocaleString("en-US"), label: "LMSR B" },
 ];
 
@@ -35,7 +34,7 @@ export function MarketStatus({ matchId = TERMINAL_MATCH_ID }: { matchId?: string
           {status}
         </span>
       </div>
-      <div className="grid grid-cols-3 gap-2 px-4 pb-3">
+      <div className="grid grid-cols-2 gap-2 px-4 pb-3">
         {TILES.map((t) => (
           <div key={t.label} className="rounded-lg bg-bg p-2 ring-1 ring-inset ring-hairline/60">
             <div className="num text-heading font-bold tabular-nums text-hi">{t.value}</div>

@@ -120,7 +120,6 @@ function SettlementPanel() {
             <span aria-hidden>→</span>
           </Link>
         </div>
-        <div>feed latency <span className="text-hi">42 ms</span></div>
       </div>
       </section>
     </MagicCard>
