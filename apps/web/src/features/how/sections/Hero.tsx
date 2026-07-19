@@ -19,7 +19,7 @@ export function Hero() {
           Every match is a market for ninety minutes.
         </h1>
         <p className="mt-5 max-w-[54ch] text-strong leading-relaxed text-lo">
-          A free-to-play live football exchange. Prices move with the game, the Booth explains the swings, and Solana proves the result — trustlessly.
+          A free-to-play live football exchange. Prices move with the game, the Booth explains the swings, and Solana proves the result, trustlessly.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link href={routes.onboarding} className="inline-flex h-11 items-center justify-center gap-2 rounded-chip bg-up px-5 text-strong font-semibold text-bg outline-none transition-opacity duration-200 hover:opacity-90 focus-visible:opacity-90 active:opacity-80">

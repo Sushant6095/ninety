@@ -32,16 +32,12 @@
       "env": {}
     },
     "supabase": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@supabase/mcp-server-supabase@latest",
-        "--read-only",
-        "--project-ref=YOUR_SUPABASE_PROJECT_REF"
-      ],
-      "env": {
-        "SUPABASE_ACCESS_TOKEN": "${SUPABASE_ACCESS_TOKEN}"
-      }
+      "type": "http",
+      "url": "https://mcp.supabase.com/mcp?project_ref=atpctubvfyknizwqbtyl"
+    },
+    "fly": {
+      "command": "fly",
+      "args": ["mcp", "server"]
     }
   }
 }

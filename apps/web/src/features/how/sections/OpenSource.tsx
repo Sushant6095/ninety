@@ -8,13 +8,13 @@ const BUILT_WITH = ["Next.js", "React", "Solana + Anchor", "Node + Fastify", "Tx
 
 const POINTS = [
   { title: "Auditable by anyone", body: "The engine, the pricing math, and the settlement path are all in the open. Read exactly how a price is formed and how a market resolves." },
-  { title: "Verifiable on-chain", body: "You don't have to trust us — every settlement is a Solana transaction you can check on Solscan yourself." },
+  { title: "Verifiable on-chain", body: "You don't have to trust us. Every settlement is a Solana transaction you can check on Solscan yourself." },
   { title: "No hidden result path", body: "The Anchor program verifies a TxLINE proof on-chain. There is no admin override; no one can change how a market settles." },
 ];
 
 export function OpenSource() {
   return (
-    <Section eyebrow="Open source" title="Nothing to trust — everything to verify." lede="Ninety is open source. The whole system is auditable, and every result is checkable on-chain.">
+    <Section eyebrow="Open source" title="Nothing to trust. Everything to verify." lede="Ninety is open source. The whole system is auditable, and every result is checkable on-chain.">
       <div className="grid gap-4 sm:grid-cols-3">
         {POINTS.map((p) => (
           <div key={p.title} className="elev rounded-card border border-hairline bg-surface p-5">

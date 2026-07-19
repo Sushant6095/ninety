@@ -78,7 +78,11 @@ async function main(): Promise<void> {
   calls.expireNextToken = true;
   const refreshed = await client.scoresSnapshot(WC26_FIXTURE_ID);
   assert.equal(refreshed[0].FixtureId, s0.FixtureId);
-  assert.equal(calls.activate, 2, "a 401 triggers exactly one re-activate");
+  // ADR-084: a 401 (expired JWT) renews the JWT ONLY — keypair-free, reusing the apiToken. No wallet re-activate
+  // (a devnet txSig activates exactly once; re-activating 403s "already used"). So activate stays 1 while the
+  // guest-start count ticks to 2 as the JWT is renewed.
+  assert.equal(calls.activate, 1, "a 401 renews the JWT only — no wallet re-activate (ADR-084 renew-JWT-only)");
+  assert.equal(calls.guestStart, 2, "the expired JWT was renewed via guest-start (apiToken reused)");
 
   assert.throws(
     () => new TxLineClient({ cluster: "devnet", apiOrigin: "https://txline.txodds.com", fetch, subscriber, signer }),

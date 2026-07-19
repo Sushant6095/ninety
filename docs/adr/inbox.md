@@ -35,3 +35,4 @@ GET /orders added; contract fields (minute/score, leaderboard handle, portfolio 
   "a share pays 1 or 100" once, with the quant-reviewer.
 - 2026-07-17T22:56:58Z compaction occurred — if a decision was made this session and not yet ADR'd, capture it now (/adr).
 - 2026-07-18T07:43:34Z compaction occurred — if a decision was made this session and not yet ADR'd, capture it now (/adr).
+- 2026-07-19T12:47:09Z compaction occurred — if a decision was made this session and not yet ADR'd, capture it now (/adr).

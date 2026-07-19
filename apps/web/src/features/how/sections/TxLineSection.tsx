@@ -5,9 +5,9 @@ import { Section } from "./Section";
 // Violet is on-chain ONLY (token law): the proofs card and the S4 endpoint earn it; prices/scores
 // and REST plumbing are data-plane and stay neutral.
 const PROVIDES = [
-  { icon: Activity, title: "Consensus prices", body: "A live, book-consensus price for every outcome — the fair-value signal Ninety's LMSR market prices against.", chain: false },
+  { icon: Activity, title: "Consensus prices", body: "A live, book-consensus price for every outcome, the fair-value signal Ninety's LMSR market prices against.", chain: false },
   { icon: Radio, title: "Live scores", body: "Score events the instant they happen, including the game_finalised record that decides the result.", chain: false },
-  { icon: ShieldCheck, title: "Cryptographic proofs", body: "A Merkle stat-validation bundle for each score — the proof Solana verifies on-chain to settle.", chain: true },
+  { icon: ShieldCheck, title: "Cryptographic proofs", body: "A Merkle stat-validation bundle for each score, the proof Solana verifies on-chain to settle.", chain: true },
 ];
 
 // The real client surface (packages/txline) — the tech-doc endpoint list.
@@ -21,7 +21,7 @@ const ENDPOINTS = [
 
 export function TxLineSection() {
   return (
-    <Section eyebrow="Data backbone" title="Powered by TxLINE." lede="Ninety runs on TxLINE — the signed sports-data layer that feeds the prices, the scores, and the proofs that make settlement trustless.">
+    <Section eyebrow="Data backbone" title="Powered by TxLINE." lede="Ninety runs on TxLINE, the signed sports-data layer that feeds the prices, the scores, and the proofs that make settlement trustless.">
       <div className="grid gap-4 sm:grid-cols-3">
         {PROVIDES.map((p) => (
           <div key={p.title} className="elev rounded-card border border-hairline bg-surface p-5">

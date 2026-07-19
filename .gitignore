@@ -8,6 +8,8 @@ dist/
 # Solana signing keypairs (SETTLEMENT_KEYPAIR_PATH=./.keys/…) — NEVER publish to a public repo
 .keys/
 *.pem
+**/id.json
+Video-*.mp4
 *.log
 __pycache__/
 .venv/
@@ -32,3 +34,7 @@ design/screens/impl/*
 
 # vendored skill packs (installed via `npx skills add …`) — keep LOCAL, never ship ~18 skill dirs
 .agents/skills/
+
+# stray root artifacts (screenshots + a duplicate skill-pack download) — never commit
+/ours-*.png
+/3d-scroll-website-skill-pack*

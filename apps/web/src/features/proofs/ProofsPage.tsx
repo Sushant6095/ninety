@@ -49,7 +49,7 @@ export function ProofsPage() {
       <div className="mb-5">
         <h1 className="font-display text-display font-bold tracking-tight text-hi">Proofs</h1>
         <p className="mt-1 max-w-[64ch] text-body leading-relaxed text-lo">
-          Every result is decided by TxLINE consensus — no admin can change it. The on-chain settle proof is
+          Every result is decided by TxLINE consensus. No admin can change it. The on-chain settle proof is
           <span className="text-hi"> fail-closed on purpose</span>: reviewing the sanctioned oracle we found
           <span className="num text-hi"> validate_stat_v2</span> does not bind finality on-chain, so a genuine
           mid-match proof could settle a wrong result. We disabled settlement rather than ship something we can

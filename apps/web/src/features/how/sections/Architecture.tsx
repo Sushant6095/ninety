@@ -13,7 +13,7 @@ const LAYERS = [
 
 export function Architecture() {
   return (
-    <Section eyebrow="System architecture" title="Seven layers, one data flow." lede="TxLINE feeds the ingest workers, the engine reprices as the single writer, and Solana proves the result — everything else is read models on top.">
+    <Section eyebrow="System architecture" title="Seven layers, one data flow." lede="TxLINE feeds the ingest workers, the engine reprices as the single writer, and Solana proves the result. Everything else is read models on top.">
       <ol className="relative">
         {LAYERS.map((l, i) => (
           <li key={l.n} className="relative grid grid-cols-[64px_1fr] gap-4 pb-4 last:pb-0">

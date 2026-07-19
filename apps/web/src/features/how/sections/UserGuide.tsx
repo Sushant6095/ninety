@@ -2,12 +2,12 @@ import { Gift, ListFilter, Waves, ArrowLeftRight, TriangleAlert, Trophy } from "
 import { Section } from "./Section";
 
 const STEPS = [
-  { icon: Gift, title: "Claim your 1,000 credits", body: "Sign up in one step — no card, no deposit. You get 1,000 play-money credits to trade with. That's your whole bankroll; it's free and it's not real money." },
+  { icon: Gift, title: "Claim your 1,000 credits", body: "Sign up in one step. No card, no deposit. You get 1,000 play-money credits to trade with. That's your whole bankroll; it's free and it's not real money." },
   { icon: ListFilter, title: "Pick a live match", body: "Open the board and tap a match that's in play. You land on the trading screen with the live score, the Momentum River, and three prices: Home, Draw, Away." },
   { icon: Waves, title: "Read the River", body: "The River is the market's live read of who wins, 0–100. Rising green = that outcome is getting more likely. A goal shows as a cliff. It's the story of the match, priced." },
   { icon: ArrowLeftRight, title: "Buy the side you believe", body: "Think the price is wrong? Buy Home, Draw, or Away. The cost is shown before you confirm; a winning share settles at 100 credits. Sell any time to lock in a move." },
   { icon: TriangleAlert, title: "Watch a goal halt & reprice", body: "When a goal lands, trading pauses for a beat, the Booth explains it, and the price snaps to the new reality. Good reads before the crowd are where the P&L is.", accent: "halt" as const },
-  { icon: Trophy, title: "Full time — winners paid", body: "At the whistle the market settles on Solana. Every winning share pays 100 credits, your P&L rolls up the leaderboard, and your biggest swing can mint as a Moment.", accent: "chain" as const },
+  { icon: Trophy, title: "Full time · winners paid", body: "At the whistle the market settles on Solana. Every winning share pays 100 credits, your P&L rolls up the leaderboard, and your biggest swing can mint as a Moment.", accent: "chain" as const },
 ];
 
 const ACCENT = { up: "bg-up/10 text-up ring-up/40", halt: "bg-halt/10 text-halt ring-halt/40", chain: "bg-chain/10 text-chain ring-chain/40" } as const;

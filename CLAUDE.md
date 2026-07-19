@@ -18,16 +18,17 @@ like one premium product — never a template, never a stats portal, never a Saa
 - **Verifying your OWN output is not "questioning the prompt."** Execute without asking — then LOOK
   at what you shipped (the Verification law below still binds). Shipping blind is not "just doing it."
 
-## Frontend pre-flight — MANDATORY before ANY change under apps/web. Do these IN ORDER.
-1. Invoke **ui-craft** (the §0 router) + **ui-ux-pro-max** + **design-taste-frontend**. Skills do NOT
-   fire on their own — you MUST call the Skill tool. Not invoking them is a law violation.
-2. **context7** on every library API you touch this session (GSAP, ScrollTrigger, lightweight-charts,
-   Framer, shadergradient, anime.js, React Flow). No API from memory. The blank-River bug came from
-   exactly that.
-3. Search **shadcn → magicui → 21st.dev → OriginKit** for every generic primitive BEFORE hand-building.
-   Log the searches (incl. misses) in `design/PROVENANCE.md`.
-4. For motion feel invoke **emil-design-eng** + **taste-skill**.
-Skip any step → the change is NOT valid, revert it.
+## Frontend pre-flight — before ANY change under apps/web
+- **Invoke `ui-craft` FIRST — it is the router.** Skills don't auto-fire; you must call it. It reads
+  the task and its §0 table names the ONE **proven** skill to invoke for it (emil-design-eng for
+  motion, apple-design for fluid feel, design-taste-frontend for landing taste, gsap-skills for
+  scroll, review/improve/find-animation for motion work). Invoke that proven skill.
+- **NEVER invoke our custom/project skills** — momentum-river, proof-flow-viz, component-picker,
+  dataviz. They are unproven and mess things up. The River and proof-flow page are hand-built to
+  their specs (docs), not via a skill.
+- **context7** before any library API you haven't verified this session. No API from memory — that
+  was the blank-River bug.
+- Pull generic primitives from shadcn → magicui → 21st.dev; log each in `design/PROVENANCE.md`.
 
 ## Verification law — READ FIRST. Shipping-without-looking is our #1 failure.
 - A screen is NOT done until you have screenshotted it and **LOOKED at the image**. "It renders",
@@ -51,18 +52,26 @@ Skip any step → the change is NOT valid, revert it.
 
 ## Design law (violations are bugs)
 - Colors ONLY via CSS variables in `tokens.css`. Raw hex in a component = bug.
-- Palette: bg #0B0D10 · surface #14171C · hairline #232A33 · up #2BD97C · down #FF3D81 ·
+- Palette (DARK, default): bg #0B0D10 · surface #14171C · hairline #232A33 · up #2BD97C · down #FF3D81 ·
   halt #FFB020 (halts only) · chain #9D6BFF (on-chain only) · text #F5F7FA / #97A0AF.
+  **LIGHT-theme values** (near-white bg/surface + contrast-tuned accents readable on white) live in the same
+  `tokens.css` under `:root[data-theme="light"]` (ADR-077) — the ONLY sanctioned second home for raw hex.
 - ALL numbers: IBM Plex Mono, tabular-nums; prices one decimal (61.4). The up/down flash fires
   180ms on **every** tick and must **re-fire on rapid same-direction ticks** — a silent tape during
   a rally is a bug.
-- Type: Archivo (display/hero) · Inter (UI). Motion 150–250ms ease-out via the motion tokens;
-  `prefers-reduced-motion` honoured everywhere, GSAP included.
+- Type: **Apple system font (ADR-077)** — SF Pro / `-apple-system` for display + UI, SF Mono for numbers
+  (numbers stay mono + tabular). No webfont fetch; genuine San Francisco on Apple. Motion 150–250ms ease-out
+  via the motion tokens; `prefers-reduced-motion` honoured everywhere, GSAP included.
 - **DYNAMISM (ADR-058): the landing hero MAY be bold and alive** — an animated shadergradient
   background, GSAP scroll choreography, big display type, the live River owning the hero, and the
   halt sequence playing on scroll are all SANCTIONED there. The animated gradient is **LEGAL on the
   landing hero.** It stays BANNED on `/terminal`, the board, and any surface carrying a live price
-  (GPU contention breaks the 150ms tick path). No glassmorphism, no lorem, no light mode (v1).
+  (GPU contention breaks the 150ms tick path). No glassmorphism, no lorem.
+- **THEME (ADR-077): light mode is LIVE.** A token-driven light/dark toggle (`ThemeToggle`, in both the app
+  header and the landing nav); `<html data-theme>` + the `dark` class are set before paint by a no-flash
+  script, default = OS `prefers-color-scheme`, persisted to `localStorage`. Every surface + canvas themes off
+  the tokens, so both modes render from ONE component set. The animated gradient stays landing-hero-only in
+  both themes.
 - **Animation libs (ADR-052, amended ADR-059): GSAP IS THE PRIMARY. Use it as much as possible —
   it is law.** All choreography, scroll (ScrollTrigger), draws, pins, SplitText, and the full GSAP
   component/scroll kit go through `apps/web/src/lib/gsap.ts`. Framer Motion for micro-interactions.
@@ -81,23 +90,24 @@ Skip any step → the change is NOT valid, revert it.
   SHOULD beat its reference. design-cop judges the RUBRIC, not pixel-match. "Drift from the PNG" is
   NOT a failure — a screen that merely matches is NOT passing.
 
-## Tool law — skills do NOT auto-trigger. You MUST invoke them. Using them is LAW.
-- Skills load only their one-line description into context. To USE one you call the Skill tool.
-  Nothing fires on its own. Not invoking a mandated skill is a law violation, not a shortcut.
-- **Every FE session:** ui-craft (§0 router) · **ui-ux-pro-max** · **design-taste-frontend** ·
-  **emil-design-eng** (feel) · **taste-skill** (anti-slop). Charts → **dataviz** BEFORE the first
-  line of chart code. Landing → **gsap-scrolltrigger** + **page-load-animations**.
-  (taste-skill and ui-ux-pro-max must be installed — if missing, install before the session.)
-- **GSAP everywhere it fits — it is the primary animation tool (see Design law).** The GSAP UI/scroll
-  component kit is sanctioned across the whole frontend.
-- Any library API you have not verified THIS session → **context7 FIRST**. Guessing an API from
-  memory is how the blank-River bug happened. Non-negotiable.
-- Generic primitives (dialog, tabs, scroll-area, tooltip, number ticker, marquee, bento, sheet) →
-  PULL from **shadcn → magicui → 21st.dev → OriginKit** and re-skin to tokens. Hand-building a
-  generic primitive is a DEFECT. Hand-build ONLY the Ninety-specific pieces: River, MatchCard,
-  PriceChip, trade ticket, ProofBadge, Booth.
-- Every pulled or hand-built component gets a row in `design/PROVENANCE.md` (source · tool call ·
-  searches incl. misses). No row = not done.
+## Tool law — the router dispatches to PROVEN skills
+- **`ui-craft` is the router** (a dispatcher, not a craft skill). Invoke it first for any apps/web
+  work. Its §0 table maps the task → the ONE **proven, published** skill to invoke. You invoke that
+  proven skill. The proven skills carry the craft; this file carries the constraints; the router
+  connects them.
+- **Proven skills the router dispatches to:** emil-design-eng · review-animations · improve-animations
+  · find-animation-opportunities · animation-vocabulary · apple-design · design-taste-frontend ·
+  gsap-skills. Install any that are missing before the session (the router can't dispatch to a skill
+  that doesn't exist — the a11y-architect ghost taught us that).
+- **NEVER invoke our custom/project skills:** momentum-river, proof-flow-viz, component-picker,
+  dataviz. Unproven, they mess things up. River + proof-flow page = hand-built to their specs (docs).
+- **GSAP is the primary animation tool** (see Design law); Framer for micro-interactions. No third lib.
+- Generic primitives (dialog, tabs, scroll-area, ticker, marquee, bento) → PULL from
+  shadcn → magicui → 21st.dev, re-skin to tokens. Hand-build ONLY the Ninety-specific pieces:
+  River, MatchCard, PriceChip, trade ticket, ProofBadge, Booth.
+- Every component gets a `design/PROVENANCE.md` row (source · skill/tool). No row = not done.
+- **`design-cop` is an AGENT, not a skill** — the verification gate (caught the blank River, the fake
+  proofs, the contradictions). It stays. Retiring custom skills ≠ skipping verification.
 
 ## Architecture law
 - All inter-service comms through `packages/bus` (two planes: AnyEvent domain events + SysEvent

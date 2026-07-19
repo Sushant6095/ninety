@@ -26,7 +26,7 @@ const HOST_CITIES: { name: string; lat: number; lng: number }[] = [
 
 export function Coverage() {
   return (
-    <Section eyebrow="Coverage" title="Live across the World Cup 2026." lede="Sixteen host cities, three countries, 104 matches — every one a live market from kickoff to the on-chain whistle.">
+    <Section eyebrow="Coverage" title="Live across the World Cup 2026." lede="Sixteen host cities, three countries, 104 matches, every one a live market from kickoff to the on-chain whistle.">
       <div className="elev overflow-hidden rounded-card border border-hairline bg-surface p-4 sm:p-6">
         <DottedMap
           aria-label="World map with the sixteen World Cup 2026 host cities marked"

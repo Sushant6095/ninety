@@ -165,13 +165,13 @@ export function BracketB() {
       <div className="mb-6">
         <h1 className="font-display text-display font-bold tracking-tight text-hi">The bracket</h1>
         <p className="mt-1 text-body text-lo">
-          The road to the Final on 19 July. Slots fill as the group stage settles — results come from the live feed,
-          never from the calendar.
+          The road to the Final on 19 July. Slots fill as the group stage settles, and results come from the live
+          feed, never from the calendar.
         </p>
       </div>
 
       {/* The road to the final: R16 → Final ← R16 */}
-      <div className="overflow-x-auto pb-2" tabIndex={0} role="group" aria-label="Knockout bracket — scroll horizontally">
+      <div className="overflow-x-auto pb-2" tabIndex={0} role="group" aria-label="Knockout bracket, scroll horizontally">
         <div className="flex min-w-[1120px] items-stretch gap-1 pr-4">
           {LEFT.map((col, i) => (
             <div key={`L${i}`} data-round={col[0].type} className="flex flex-1 items-stretch">
