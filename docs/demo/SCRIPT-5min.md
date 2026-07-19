@@ -137,7 +137,7 @@
 
 > **VISUAL:** Slide 11 → slide 12 → title card
 
-**"All of this was built in seven days. One engineer, and a team of AI agents under a written constitution — eighty-one commits, fifty-three architecture decisions, every one written down before it was coded.**
+**"All of this was built in thirteen days. One engineer, and a team of AI agents under a written constitution — a hundred and eighty-one commits, eighty-seven architecture decisions, every one written down before it was coded.**
 
 **Next: we finish the live wiring, and Ninety monitors the World Cup Final on the nineteenth — real prices, real halts, real settlement. Prize money goes straight into infrastructure, so the feed and the proofs keep running.**
 
@@ -159,6 +159,6 @@
 | play-money · free to play | free bet · risk-free |
 | the market repriced | the odds shifted |
 
-**Numbers to land clean:** 0–100 · 1,000 free credits · 61.4 · 104 fixtures · 81 commits · 53 ADRs · 7 days · July 19.
+**Numbers to land clean:** 0–100 · 1,000 free credits · 104 fixtures · 181 commits · 87 ADRs · 13 days · July 19.
 
 **If you overrun:** cut the LMSR/bus sentence at 3:45 and the Moments line at 2:50. Never cut the cold open, the halt, or the settlement finding.
