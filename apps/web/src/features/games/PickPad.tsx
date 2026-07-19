@@ -2,7 +2,7 @@
 // The decision surface (ADR-060, extended by ADR-061): the focal countdown + the big, 2-second-legible pick
 // buttons. Two picks on /play; three on /terminal (home · away · nobody). Framer Motion owns the
 // micro-interactions (press scale(0.97), selection spring); the countdown ring drains via a CSS transition on
-// stroke-dashoffset (precedented by the River cliff draw-on). Slow and deliberate by design — the countdown IS
+// stroke-dashoffset (precedented by the River cliff draw-on). Slow and deliberate by design · the countdown IS
 // the tension. Reduced motion drops the drain, keeps the number.
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
@@ -41,7 +41,7 @@ export function PickPad({
   home: Team;
   away: Team;
   onPick: (side: Pick) => void;
-  nobody?: boolean; // three-pick terminal variant — adds the "nobody / no goal" call (ADR-061)
+  nobody?: boolean; // three-pick terminal variant · adds the "nobody / no goal" call (ADR-061)
   prompt?: ReactNode; // READY-state question; the terminal passes the full "…home, away, or nobody?" line
 }) {
   const reduce = useReducedMotion();
@@ -201,7 +201,7 @@ function PickButton({
   );
 }
 
-/** The quiet third call (terminal only) — "nobody scores this window". A slim bar under the two teams, so the
+/** The quiet third call (terminal only) · "nobody scores this window". A slim bar under the two teams, so the
  *  flags stay the heroes (subtract-then-elevate). Same press/selection vocabulary as the team picks. */
 function NobodyButton({
   pick,
@@ -224,7 +224,7 @@ function NobodyButton({
       disabled={locked}
       onClick={() => onPick("N")}
       aria-pressed={selected}
-      aria-label="Nobody scores next — no goal this window"
+      aria-label="Nobody scores next · no goal this window"
       whileTap={locked ? undefined : { scale: 0.97 }}
       animate={{ opacity: dimmed ? 0.5 : 1 }}
       transition={{ type: "spring", duration: 0.3, bounce: 0.15 }}

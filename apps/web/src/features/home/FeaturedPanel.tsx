@@ -37,6 +37,11 @@ export function FeaturedPanel({ market, replayNonce = 0 }: { market: MarketRow; 
   const halted = live?.status === "HALTED";
   const lead: Outcome = mk.H >= mk.D && mk.H >= mk.A ? "H" : mk.A >= mk.D ? "A" : "D";
   const rising = spark.length > 1 && spark[spark.length - 1] >= spark[0];
+  // A market is only REPLAYABLE (goal cliff + halt choreography) when it is in-play with a scoreline and a
+  // trace to replay. The live WC Final is PRE-MATCH — real feed-priced, but no goal yet — so it must render as
+  // a calm pre-match hero, never a fabricated "Goal" over an empty score (ADR-084).
+  const replayable = minute != null && !!score && spark.length > 1;
+  const koClock = new Date(market.kickoffAt).toISOString().slice(11, 16);
 
   // THE goal this market's fixture already encodes — replayed, not invented. The fixture states both ends of
   // it: the tape OPENS at `spark[0]` (CAN 41), the mark now reads `market.mark` (61.4) and the score now reads
@@ -86,10 +91,10 @@ export function FeaturedPanel({ market, replayNonce = 0 }: { market: MarketRow; 
   return (
     <section ref={sectionRef} className="elev-hi relative overflow-hidden rounded-card border border-hairline/70 bg-surface">
       <div className="flex items-center justify-between px-4 pt-3">
-        <h2 className="text-label font-semibold uppercase tracking-label text-lo">Featured — {halted ? "Halted" : "Live"}</h2>
+        <h2 className="text-label font-semibold uppercase tracking-label text-lo">Featured · {halted ? "Halted" : replayable ? "Live" : market.stage}</h2>
         <span className={`num inline-flex items-center gap-1 text-label ${halted ? "text-halt" : "text-up"}`}>
           <span className={`h-1.5 w-1.5 rounded-full ${halted ? "bg-halt" : "bg-up shadow-[0_0_6px_var(--up)]"}`} />
-          {minute}&#39;
+          {replayable ? `${minute}’` : `Kicks off ${koClock}`}
         </span>
       </div>
 
@@ -99,7 +104,7 @@ export function FeaturedPanel({ market, replayNonce = 0 }: { market: MarketRow; 
           <span className="text-label font-medium tracking-wide text-lo">{market.homeCode}</span>
         </span>
         <span className="num font-display text-display-xl font-extrabold leading-none tabular-nums text-hi">
-          {score?.home}<span className="px-1 text-lo">–</span>{score?.away}
+          {score ? <>{score.home}<span className="px-1 text-lo">–</span>{score.away}</> : <span className="text-lo">vs</span>}
         </span>
         <span className="flex flex-col items-center gap-1.5">
           <TeamCrest code={market.awayCode} size={52} priority />
@@ -107,28 +112,28 @@ export function FeaturedPanel({ market, replayNonce = 0 }: { market: MarketRow; 
         </span>
       </div>
 
-      {/* the River + its halt staging. The overlays are DOM chrome outside the canvas, exactly as on /terminal. */}
-      <div className="relative px-1">
-        <div data-halt="chart">
-          {/* the live spark, not the fixture's — and on the match-time axis, so it ends at the live minute */}
-          <MomentumRiver data={spark} up={rising} height={108} totalMinutes={FULL_TIME} />
+      {/* the River + its halt staging — ONLY when the market is in-play with a goal to replay. A PRE-MATCH market
+          (the live Final) has no trace and no goal, so we show a calm "priced from the live feed" strip instead of
+          a blank River or a fabricated goal cliff. */}
+      {replayable ? (
+        <div className="relative px-1">
+          <div data-halt="chart">
+            <MomentumRiver data={spark} up={rising} height={108} totalMinutes={FULL_TIME} />
+          </div>
+          <div data-halt="wash" aria-hidden className="pointer-events-none invisible absolute inset-0 z-10 border-t-2 border-halt/70 bg-halt/15 opacity-0">
+            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-heading font-extrabold uppercase tracking-hero text-halt/50">Halted</span>
+          </div>
+          <div data-halt="flash" aria-hidden className="pointer-events-none invisible absolute inset-0 z-30 bg-halt opacity-0" />
+          <div data-halt="sweep" aria-hidden className="pointer-events-none invisible absolute inset-y-0 left-0 z-30 w-1/3 bg-halt/50 opacity-0 blur-sm" />
+          <div data-halt="cliff" aria-hidden className="num pointer-events-none invisible absolute right-2 top-1 z-30 rounded-md border border-up/50 bg-bg/90 px-1.5 py-0.5 text-label font-semibold uppercase tracking-wide text-hi opacity-0">
+            Goal · {market.homeCode}
+          </div>
         </div>
-        <div data-halt="wash" aria-hidden className="pointer-events-none invisible absolute inset-0 z-10 border-t-2 border-halt/70 bg-halt/15 opacity-0">
-          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-heading font-extrabold uppercase tracking-hero text-halt/50">Halted</span>
-        </div>
-        <div data-halt="flash" aria-hidden className="pointer-events-none invisible absolute inset-0 z-30 bg-halt opacity-0" />
-        <div data-halt="sweep" aria-hidden className="pointer-events-none invisible absolute inset-y-0 left-0 z-30 w-1/3 bg-halt/50 opacity-0 blur-sm" />
-        {/* No minute on this glyph. It marks WHERE the price stepped (the live edge), which is not WHEN the goal
-            was scored: the panel re-enacts an earlier goal at the live edge, so stamping it with the live clock
-            ({minute}=74) claimed "Goal 74'" while the Moment card on the same board reads "The 38th minute:
-            David's goal". The cliff shows the move; the Moment owns the minute. (The terminal's own glyph in
-            BigRiver keeps its minute — there the goal genuinely lands at the live minute.) */}
-        <div data-halt="cliff" aria-hidden className="num pointer-events-none invisible absolute right-2 top-1 z-30 rounded-md border border-up/50 bg-bg/90 px-1.5 py-0.5 text-label font-semibold uppercase tracking-wide text-hi opacity-0">
-          Goal · {market.homeCode}
-        </div>
-      </div>
+      ) : (
+        <p className="px-4 pb-1 pt-2 text-center text-caption text-lo">Priced live from the TxLINE feed · trading opens before kickoff.</p>
+      )}
 
-      <div data-halt="dim" className="grid grid-cols-3 gap-1 px-3 pt-1">
+      <div className="grid grid-cols-3 gap-1 px-3 pt-1">
         <Cell label="Home" price={mk.H * 100} lead={lead === "H"} frozen={halted} />
         <Cell label="Draw" price={mk.D * 100} lead={lead === "D"} frozen={halted} />
         <Cell label="Away" price={mk.A * 100} lead={lead === "A"} frozen={halted} />

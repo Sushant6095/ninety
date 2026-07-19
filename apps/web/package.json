@@ -23,7 +23,6 @@
     "@svar-ui/react-core": "^2.6.0",
     "@svar-ui/react-filter": "^2.6.0",
     "@xyflow/react": "^12.11.2",
-    "balloons-js": "^0.0.3",
     "camera-controls": "^3.1.2",
     "canvas-confetti": "^1.9.4",
     "class-variance-authority": "^0.7.1",

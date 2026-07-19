@@ -116,8 +116,10 @@ const ROW = "group flex min-h-[3.5rem] items-center gap-3 rounded-lg px-3 py-2 d
 // Chevron: fades in on hover AND on keyboard selection (the apple-spotlight row treatment).
 const CHEVRON = "shrink-0 text-lo opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-data-[selected=true]:opacity-100";
 
-/** Entity result row (two-line). Navigable rows (href present) carry a chevron + pointer; informational rows
- *  (player/manager/venue — no page yet) show every fact we hold and never route to a 404 (the honesty gate). */
+/** Entity result row (two-line). Navigable rows (href present) carry a chevron + pointer; informational rows show
+ *  every fact we hold and never route to a 404 (the honesty gate). Navigable now = teams (→ /team/[code], ADR-083)
+ *  and the baked top-20 players (→ /player/[id], ADR-082); a non-top-20 player, and managers/venues (no page),
+ *  stay informational. The gate is driven entirely by `e.href` from entitySearch, so it can never go stale here. */
 function EntityRow({ e, onOpen }: { e: Entity; onOpen: (e: Entity) => void }) {
   const nav = !!e.href;
   return (

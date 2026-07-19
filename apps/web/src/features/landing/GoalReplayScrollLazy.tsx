@@ -19,9 +19,10 @@ export function GoalReplayScrollLazy() {
     <GoalReplayScroll
       frameCount={96}
       framePath={(n) => `/frames/hero/hero_${String(n).padStart(4, "0")}.jpg`}
-      eyebrow="REPLAY"
-      headline="Scroll the tape."
-      sub="A pre-rendered sequence, scrubbed frame-by-frame to your scroll — the landing showpiece."
+      pinLengthVh={220}
+      eyebrow="World Cup 2026"
+      headline="Every match is a market for ninety minutes"
+      sub="Scroll to replay the goal that moved the market."
     />
   );
 }

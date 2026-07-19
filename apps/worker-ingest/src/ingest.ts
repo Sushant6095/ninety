@@ -183,9 +183,45 @@ export async function runIngest(
     onGap,
   });
 
+  // A live market-OPEN event (SCHEDULED→OPEN) so the fixture becomes tradeable + appears in GET /markets. The
+  // engine maps a type:"open" match-event to the `open` trigger (ADR-074); same shape push-demo-ticks uses.
+  const openEnvelope = (fid: string): Envelope => {
+    const nowIso = new Date().toISOString();
+    return { event_id: randomUUID(), source: "txline.fixtures", source_seq: 0, match_id: fid, ts_source: nowIso, ts_ingest: nowIso, type: "open", payload: { status: "open" } };
+  };
+
+  // PRE-MATCH PRIME (ADR-084 follow-up): the odds SSE carries only IN-RUNNING ticks, so a SCHEDULED fixture (the
+  // WC Final before kickoff) never reaches cortex and no market opens. On every fixtures poll we fetch each
+  // upcoming World Cup (CompetitionId 72) fixture's odds SNAPSHOT and push its books + one `open` event through
+  // the SAME pipeline the stream uses — so /markets carries the real pre-match market (cortex synthesises 1X2
+  // from the OU + Asian-handicap books) BEFORE the whistle. Re-running each poll captures odds movement (ticks
+  // dedupe when unchanged); `open` fires once per fixture. WC-only: the free tier also carries other comps.
+  const primed = new Set<string>();
+  const primeUpcoming = async (fixtures: Fixture[]): Promise<void> => {
+    for (const f of fixtures) {
+      if (f.CompetitionId !== 72) continue;
+      const fid = String(f.FixtureId);
+      try {
+        const books = (await client.oddsSnapshot(fid)) as OddsTick[];
+        if (!books.length) continue; // no odds published yet — retry next poll
+        let published = 0;
+        for (const t of books) published += await pipe.ingestOdds(t);
+        if (published > 0 && !primed.has(fid)) {
+          await bus.publish(TOPICS.matchEvents, fid, openEnvelope(fid));
+          primed.add(fid);
+        }
+        console.log(JSON.stringify({ evt: "ingest.prematch.primed", fid, books: books.length, published, opened: primed.has(fid) }));
+      } catch (e) {
+        console.error(JSON.stringify({ evt: "ingest.prematch.error", fid, msg: String((e as Error)?.message ?? e) }));
+      }
+    }
+  };
+
   const poll = async () => {
     try {
-      await pipe.upsertFixtures((await client.fixtures()) as Fixture[]);
+      const fixtures = (await client.fixtures()) as Fixture[];
+      await pipe.upsertFixtures(fixtures);
+      await primeUpcoming(fixtures);
     } catch (e) {
       console.error(JSON.stringify({ evt: "ingest.fixtures.error", msg: String((e as Error)?.message ?? e) }));
     }

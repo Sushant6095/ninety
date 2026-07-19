@@ -1,7 +1,7 @@
 "use client";
-// The payoff surface (ADR-060) — the ~1s snappy resolve after the slow countdown. GSAP choreographs the
+// The payoff surface (ADR-060) · the ~1s snappy resolve after the slow countdown. GSAP choreographs the
 // win burst (heavy motion, ADR-052); Framer handles the panel pop and the count-up. Celebration is EARNED:
-// a 3-streak throws more beams, a bigger pop, more glow than a 2. LOST never punishes — quiet, muted,
+// a 3-streak throws more beams, a bigger pop, more glow than a 2. LOST never punishes · quiet, muted,
 // "so close", points kept. Reduced motion drops every beam and pop, keeps opacity + color.
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
@@ -9,7 +9,7 @@ import { gsap, useGSAP } from "../../lib/gsap";
 import { Confetti, type ConfettiRef } from "../../components/vendor/magicui/confetti";
 import { awardFor, type GameStats, type Result, type Side } from "./nextGoalMachine";
 
-// per-tier escalation — intensity, not hue (up-green stays the win semantic; design law reserves halt/chain)
+// per-tier escalation · intensity, not hue (up-green stays the win semantic; design law reserves halt/chain)
 const BEAMS = [0, 6, 8, 10, 14] as const;
 const BEAM_LEN = [0, 40, 52, 64, 76] as const;
 const POP = [1, 1.05, 1.08, 1.12, 1.16] as const;
@@ -42,13 +42,13 @@ export function Verdict({
   const scorer = scored === "H" ? home : scored === "A" ? away : null;
   const award = won ? awardFor(stats.streak) : 0;
 
-  // Correct-pick confetti (magicui/canvas-confetti) — fires ONCE per resolved round (Verdict
+  // Correct-pick confetti (magicui/canvas-confetti) · fires ONCE per resolved round (Verdict
   // remounts per round via the AnimatePresence key). Colors come from the up + hi tokens read
   // off :root at fire time (no hex literals); origin is the verdict card's centre. Reduced
   // motion → no confetti at all (the verdict state is the feedback).
   const burstAnchor = useRef<HTMLDivElement>(null);
   const confettiRef = useRef<ConfettiRef>(null);
-  const fired = useRef(false); // once per mount — StrictMode's dev double-effect must not double-burst
+  const fired = useRef(false); // once per mount · StrictMode's dev double-effect must not double-burst
   useEffect(() => {
     if (!won || reduce || fired.current) return;
     fired.current = true;
@@ -100,7 +100,7 @@ export function Verdict({
           <>
             <span className="font-display text-heading font-bold tracking-tight text-hi">So close.</span>
             <span className="mt-1 text-caption text-lo">
-              {scorer?.code} scored — streak reset, <span className="text-hi">points safe</span>
+              {scorer?.code} scored · streak reset, <span className="text-hi">points safe</span>
             </span>
           </>
         ) : (
@@ -126,7 +126,7 @@ export function Verdict({
   );
 }
 
-/** Radiating beams — GSAP grows them outward (scaleY) with a stagger, then fades. Token-green only. */
+/** Radiating beams · GSAP grows them outward (scaleY) with a stagger, then fades. Token-green only. */
 function WinBurst({ tier, reduce }: { tier: 0 | 1 | 2 | 3 | 4; reduce: boolean }) {
   const scope = useRef<HTMLDivElement>(null);
   const count = BEAMS[tier];

@@ -22,6 +22,7 @@ import { ConsoleOtpSender, UnconfiguredOtpSender } from "../auth/otp";
 import { redis } from "../redis";
 import { startMarketsRead } from "../services/markets-read";
 import { startEventsRead } from "../services/events-read";
+import { startMarketCreation } from "../services/market-creation";
 import { startWs } from "../ws/gateway";
 
 export async function startHttp(bus?: Bus, engine?: Engine | null) {
@@ -84,6 +85,7 @@ export async function startHttp(bus?: Bus, engine?: Engine | null) {
   registerAdminRoutes(app, b);
   await startMarketsRead(b, redis); // prices.marks → Redis market:{id} (the live-price read model)
   await startEventsRead(b, redis); // match.events + match.actions → Redis m:{id}:events|actions:log (timeline snapshot)
+  await startMarketCreation(b, redis); // `open` events → upsert PG Match+Market for live fixtures (ADR-084 CONNECT)
   await app.listen({ port: 4000, host: "0.0.0.0" });
   void startWs(b).catch((e) => console.error(JSON.stringify({ evt: "ws.start.error", msg: String((e as Error)?.message ?? e) }))); // WS bridge (non-fatal)
   return app;

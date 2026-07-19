@@ -1,6 +1,6 @@
 "use client";
 
-/** Speaking indicator — the Booth's eq-bars (the BoothTimeline motif) pulsing on scaleY via a CSS keyframe.
+/** Speaking indicator · the Booth's eq-bars (the BoothTimeline motif) pulsing on scaleY via a CSS keyframe.
  *  Isolated micro-motion on its own elements (never the GSAP timeline, never Framer) so no double-animation. */
 function EqBars() {
   const bars = [0, 120, 240, 360, 180]; // staggered start so the bars read as live speech, not a sync flash
@@ -18,7 +18,7 @@ interface BoothLineProps {
   delta: number; // points the away-win% stepped (POST − PRE)
 }
 
-/** The Booth line under the River (Booth Mount A) — a persistent, reactive AI call. Hidden until the halt
+/** The Booth line under the River (Booth Mount A) · a persistent, reactive AI call. Hidden until the halt
  *  choreography reveals it as the final beat (GSAP slides `[data-halt="booth"]` up + fades it in), then it
  *  STAYS through the resume to LIVE. Hand-built Ninety piece: no registry has the Booth. */
 export function BoothLine({ quote, delta }: BoothLineProps) {

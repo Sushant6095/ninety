@@ -1,26 +1,40 @@
-import Image from "next/image";
-
 interface AvatarProps {
   handle: string;
   size?: number; // px
   className?: string;
 }
 
-/** Real photo avatar (deterministic per handle via pravatar seed) over an initials fallback that shows while
- *  loading or if the image fails. next/image (host allow-listed in next.config) with explicit dimensions. */
+// Deterministic identicon — initials in a token-tinted disc, seeded from the handle. NO network, NO third-party
+// avatar CDN, NO photos of people who do not exist. The tint is picked from a fixed set of Ninety
+// tokens by a stable hash of the handle, so a given user always gets the same colour, and it renders identically
+// offline and in both themes. Classes are static (JIT-safe) — never string-built token names.
+const VARIANTS = [
+  "bg-up/15 text-up ring-up/40",
+  "bg-chain/15 text-chain ring-chain/40",
+  "bg-halt/15 text-halt ring-halt/40",
+  "bg-down/15 text-down ring-down/40",
+  "bg-hairline/60 text-hi ring-hairline",
+] as const;
+
+function hash(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
+  return Math.abs(h);
+}
+
 export function Avatar({ handle, size = 32, className = "" }: AvatarProps) {
-  const seed = encodeURIComponent(handle.replace(/^@/, "").toLowerCase());
-  const initials = handle.replace(/^@/, "").slice(0, 2).toUpperCase();
+  const key = handle.replace(/^@/, "");
+  const initials = (key.slice(0, 2) || "··").toUpperCase();
+  const variant = VARIANTS[hash(key.toLowerCase()) % VARIANTS.length];
   return (
     <span
-      className={`relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-hairline/60 ring-1 ring-inset ring-hairline ${className}`}
+      aria-hidden
+      className={`inline-grid shrink-0 place-items-center overflow-hidden rounded-full ring-1 ring-inset ${variant} ${className}`}
       style={{ width: size, height: size }}
     >
-      <span aria-hidden className="num absolute inset-0 grid place-items-center font-semibold text-lo" style={{ fontSize: Math.round(size * 0.34) }}>
+      <span className="num font-semibold leading-none" style={{ fontSize: Math.round(size * 0.38) }}>
         {initials}
       </span>
-      {/* impeccable-disable broken-image -- src is a runtime pravatar URL; renders a real photo, not a placeholder */}
-      <Image src={`https://i.pravatar.cc/${size * 2}?u=${seed}`} alt="" width={size} height={size} loading="lazy" className="relative h-full w-full object-cover" />
     </span>
   );
 }

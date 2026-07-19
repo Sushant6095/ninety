@@ -19,6 +19,8 @@ export const routes = {
   match: (id: string): string => `/match/${id}`,
   profile: (handle: string): string => `/profile/${handle.replace(/^@/, "")}`,
   moment: (id: string): string => `/moments/${id}`,
+  player: (id: string): string => `/player/${id}`, // ADR-082 — only the baked top-20 exist; resolve via lib/entityLinks
+  team: (code: string): string => `/team/${code.toUpperCase()}`, // ADR-083 — 48 nations + 10 clubs; resolve via lib/entityLinks
 } as const;
 
 // The written reference, hosted on GitBook (external). /how-it-works is the in-app visual explainer;

@@ -10,7 +10,7 @@ Voice law: play-money only (price · trade · credits). Never bet/stake/odds/wag
 >
 > Then our proof-auditor found the sponsor's own settle path doesn't bind finality on-chain. So we fail-closed on purpose instead of shipping a forgeable settle.
 >
-> Play-money. 126 commits, 58 ADRs, 7 days. 🧵 _TODO_link
+> Play-money. 177 commits, 79 ADRs, 12 days. 🧵 _TODO_link
 
 **Shorter alt (< 280 chars):**
 
@@ -48,7 +48,7 @@ The product is one tight live loop: a TxLINE score event triggers a goal, the ma
 
 At full time the result is meant to settle on-chain by verifying a TxODDS cryptographic proof of the score, with no admin able to decide a result. Building it, we adversarially reviewed the settlement and found TxODDS's own sanctioned instruction (validate_stat_v2) does not bind finality on-chain — a permissionless caller could settle a wrong result with a genuine mid-match proof by selecting the batch. So settlement is fail-closed on purpose (SETTLEMENT_LIVE = false, an explicit revert), and we filed the finding back to the sponsor. We won't ship a settle we can prove is forgeable, even in play-money.
 
-Built in 7 days: 126 commits, 58 ADRs, 257 automated tests passing, 5/5 Anchor tests, TxLINE verified live on devnet.
+Built in 12 days: 177 commits, 79 ADRs, 258 automated tests passing, 5/5 Anchor tests, TxLINE verified live on devnet.
 ```
 
 **TxLINE / TxODDS endpoints used**
@@ -81,11 +81,16 @@ Open question that gates our on-chain settlement: validate_stat_v2 does not bind
 
 **Links**
 ```
-Repo: _TODO_ (public GitHub URL)
-Demo video: _TODO_ (record SF Jul 14–15; shot-list at docs/demo/SHOT-LIST.md)
-Deployed app: _TODO_ (Vercel prototype, ADR-048)
+Repo: https://github.com/Sushant6095/ninety
+Demo video: _TODO_ (shot-list at docs/demo/SHOT-LIST.md; script at docs/demo/SCRIPT-5min.md)
+Deployed app: https://ninety-nu.vercel.app
+Live API (REST + Swagger): https://omnipitch.fly.dev/docs
 Program on Explorer: https://explorer.solana.com/address/6ps8ao7CVhacnRajvFXWTmkknsRnHfEbWmtQ3nDCdBkj?cluster=devnet
 ```
+
+> **Re-verify the counts before pasting** — they move with every commit. Numbers above were true at
+> 177 commits / 79 ADRs (2026-07-18). Refresh with:
+> `echo "$(git rev-list --count HEAD) commits, $(ls docs/adr/ADR-*.md | wc -l | tr -d ' ') ADRs"`
 
 **Team**
 ```

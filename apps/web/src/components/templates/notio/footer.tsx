@@ -91,7 +91,7 @@ export default function Footer() {
           className="flex flex-col items-center gap-1.5 text-center"
         >
           <p className="text-muted-foreground text-sm">
-            &copy; 2026 Ninety · Play money — no deposits, no cash payouts, ever.
+            &copy; 2026 Ninety · Play money, no deposits, no cash payouts, ever.
           </p>
           <p className="text-lo/70 text-xs">
             Landing structure adapted from notio (styleui.dev); crowd by skiper. Not affiliated with

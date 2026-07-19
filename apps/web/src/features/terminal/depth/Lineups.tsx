@@ -4,9 +4,9 @@ import { LINEUPS, type Lineup } from "../../../lib/matchdepth";
 import { squadByCode, managerByCode, teamMediaByCode, type PlayerMedia } from "../../../lib/teamMedia";
 
 // Two-source law (ADR-051/ADR-062): the confirmed starting XI + formation MOVE with team news, so they come from
-// API-Football at wire time (currently BLOCKED — no key). What sits still is the SQUAD and each player's FACE,
+// API-Football at wire time (currently BLOCKED · no key). What sits still is the SQUAD and each player's FACE,
 // baked from TheSportsDB. So this tab renders the real squad on the native SVG pitch, positioned by TheSportsDB
-// position, and says plainly that the confirmed XI is pending — never an empty tab, never a faked lineup.
+// position, and says plainly that the confirmed XI is pending · never an empty tab, never a faked lineup.
 
 // GK 0 (bottom) · DEF 1 · MID 2 · FWD 3 (top) on a portrait pitch.
 const Y_BY_ROW = [88, 64, 40, 16];
@@ -18,7 +18,7 @@ function bucket(pos: string): 0 | 1 | 2 | 3 {
 }
 const surname = (n: string) => n.split(" ").filter(Boolean).slice(-1)[0] ?? n;
 
-// pitch markings — hairline only, no grass (tokens). Shared by both the faces pitch and the dot fallback.
+// pitch markings · hairline only, no grass (tokens). Shared by both the faces pitch and the dot fallback.
 function Markings() {
   return (
     <svg viewBox="0 0 100 150" className="absolute inset-0 h-full w-full" fill="none" stroke="var(--hairline)" strokeWidth="0.6" aria-hidden preserveAspectRatio="none">
@@ -119,7 +119,7 @@ function Side({ l }: { l: Lineup }) {
   return <DotPitch l={l} />;
 }
 
-// Honest "pending" pitch for a side TheSportsDB hasn't baked a squad for — never a faked XI (ADR-051/ADR-062).
+// Honest "pending" pitch for a side TheSportsDB hasn't baked a squad for · never a faked XI (ADR-051/ADR-062).
 function PendingPitch({ code }: { code: string }) {
   return (
     <div className="rounded-card border border-hairline bg-surface p-3">

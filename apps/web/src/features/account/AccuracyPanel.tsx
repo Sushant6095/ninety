@@ -1,6 +1,6 @@
 "use client";
-// Forecast accuracy — the track-record panel. Hit-rate / trades / best call from the profile aggregates;
-// the Next-Goal streak is LIVE from the games round log (useSyncExternalStore, read-only — ADR-060).
+// Forecast accuracy · the track-record panel. Hit-rate / trades / best call from the profile aggregates;
+// the Next-Goal streak is LIVE from the games round log (useSyncExternalStore, read-only · ADR-060).
 import Link from "next/link";
 import { useRoundLog } from "../games/roundLog";
 import { resolveProfile } from "../../lib/profile";
@@ -35,7 +35,7 @@ export function AccuracyBody({ handle }: { handle: string }) {
           <span className="num text-caption tabular-nums text-lo">{profile.trades} trades</span>
         </div>
         <div className="num mt-1 font-display text-display font-bold tabular-nums text-hi">{hitPct}%</div>
-        {/* the read-at-a-glance bar — width is data, not decoration */}
+        {/* the read-at-a-glance bar · width is data, not decoration */}
         <div className="mt-2 h-1.5 overflow-hidden rounded-chip bg-bg ring-1 ring-inset ring-hairline" role="img" aria-label={`${hitPct} percent of calls correct`}>
           <div className="h-full rounded-chip bg-up" style={{ width: `${hitPct}%` }} />
         </div>

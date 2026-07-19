@@ -1,4 +1,4 @@
-// Next Goal — the PURE core (ADR-060). No React, no store, no DOM: just the state-machine vocabulary,
+// Next Goal · the PURE core (ADR-060). No React, no store, no DOM: just the state-machine vocabulary,
 // the scoring math, the goal-detection, and localStorage persistence. Kept pure so the money/streak logic
 // is unit-checkable (nextGoalMachine.test.ts) without a browser or the live store.
 
@@ -12,7 +12,7 @@ export type Side = "H" | "A";
  *  three-pick variant (ADR-061) adds "N" (nobody / no goal). "N" is a PICK, never a scored side. */
 export type Pick = Side | "N";
 
-/** The resolution outcome — the three ways a locked round can end. */
+/** The resolution outcome · the three ways a locked round can end. */
 export type Result = "WON" | "LOST" | "NO_CALL";
 
 export interface Score {
@@ -27,11 +27,11 @@ export interface GameStats {
   best: number;
 }
 
-// ── timing (ms) — asymmetric by design (emil): the decision is slow and deliberate, the resolve is snappy ──
-export const PICK_MS = 3000; // the countdown/lock window — the tension IS this
+// ── timing (ms) · asymmetric by design (emil): the decision is slow and deliberate, the resolve is snappy ──
+export const PICK_MS = 3000; // the countdown/lock window · the tension IS this
 export const RESOLVE_WINDOW_MS = 2200; // no delta by here after lock → NO_CALL (no penalty)
 // Terminal variant (ADR-061): the goal comes from the REAL match (the player drives the halt), not a
-// /play auto-harness that fires inside 1.5s — so give a comfortable window to trigger it, and to let a
+// /play auto-harness that fires inside 1.5s · so give a comfortable window to trigger it, and to let a
 // "nobody" call win by the window elapsing quietly.
 export const TERMINAL_RESOLVE_WINDOW_MS = 8000;
 export const FLASH_MS = 180; // the RESOLVING goal-flash beat before the verdict paints
@@ -53,7 +53,7 @@ export function awardFor(streak: number): number {
   return Math.round(BASE_POINTS * multiplierFor(streak));
 }
 
-/** Celebration escalation tier (0..4) from the resulting streak — a 3 MUST feel bigger than a 2. */
+/** Celebration escalation tier (0..4) from the resulting streak · a 3 MUST feel bigger than a 2. */
 export function celebrationTier(streak: number): 0 | 1 | 2 | 3 | 4 {
   if (streak <= 0) return 0;
   if (streak === 1) return 1;
@@ -62,7 +62,7 @@ export function celebrationTier(streak: number): 0 | 1 | 2 | 3 | 4 {
   return 4;
 }
 
-/** Which side (if any) scored since the pick was locked — the read-only resolution signal. */
+/** Which side (if any) scored since the pick was locked · the read-only resolution signal. */
 export function detectGoal(lockScore: Score, now: Score): Side | null {
   if (now.home > lockScore.home) return "H";
   if (now.away > lockScore.away) return "A";
@@ -74,7 +74,7 @@ export function resultFor(pick: Side, scored: Side): Result {
   return pick === scored ? "WON" : "LOST";
 }
 
-/** Resolve a locked round from the pick and which side (if any) scored — a strict SUPERSET of the two-pick
+/** Resolve a locked round from the pick and which side (if any) scored · a strict SUPERSET of the two-pick
  *  path: for a Side pick this is `resultFor` (goal) or NO_CALL (no goal), IDENTICAL to /play. Only "N"
  *  (nobody) changes the meaning of "no goal": nobody called it right, so the window elapsing is a WIN, and
  *  any goal is a (never-punishing) LOSS. */
@@ -83,7 +83,7 @@ export function resolvePick(pick: Pick, scored: Side | null): Result {
   return scored === null ? "NO_CALL" : resultFor(pick, scored);
 }
 
-/** Apply a resolved result to the stats — immutable (coding-style law: never mutate). LOST never punishes
+/** Apply a resolved result to the stats · immutable (coding-style law: never mutate). LOST never punishes
  *  points; it soft-resets the streak. NO_CALL leaves everything untouched. */
 export function applyResult(stats: GameStats, result: Result): GameStats {
   if (result === "WON") {
@@ -97,7 +97,7 @@ export function applyResult(stats: GameStats, result: Result): GameStats {
   if (result === "LOST") {
     return { points: stats.points, streak: 0, best: stats.best };
   }
-  return stats; // NO_CALL — streak safe
+  return stats; // NO_CALL · streak safe
 }
 
 // ── persistence (localStorage ONLY) ──
@@ -125,6 +125,6 @@ export function saveStats(stats: GameStats): void {
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(stats));
   } catch {
-    /* private mode / quota — the round still played, just isn't remembered */
+    /* private mode / quota · the round still played, just isn't remembered */
   }
 }

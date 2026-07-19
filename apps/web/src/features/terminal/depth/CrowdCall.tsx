@@ -6,7 +6,7 @@ import { MATCH } from "../../../lib/terminal";
 // 21st.dev pull: ruixen.ui "Review Filter Bars" (row = option | proportional bar | count, radix
 // RadioGroup semantics), re-skinned to tokens as Sofascore's who-wins vote
 // (docs/sofascore-research/components/vote-and-poll.md): stars → outcome codes, accent bar → hi ink.
-// Your call is local state; the counts are seed noise on purpose — the poll is sentiment, the price
+// Your call is local state; the counts are seed noise on purpose · the poll is sentiment, the price
 // is the market, and the footer line says exactly that.
 const SEED = [
   { value: "H", label: MATCH.homeCode, votes: 5214 },
@@ -20,7 +20,7 @@ export function CrowdCall() {
   return (
     <div className="mt-4 rounded-card border border-hairline bg-surface p-4">
       <div className="flex items-baseline justify-between">
-        <h3 className="text-label font-semibold uppercase tracking-label text-lo">Crowd call — who wins?</h3>
+        <h3 className="text-label font-semibold uppercase tracking-label text-lo">Crowd call · who wins?</h3>
         <span className="num text-label tabular-nums text-lo">{total.toLocaleString("en-US")} calls</span>
       </div>
       <RadioGroup.Root value={pick} onValueChange={setPick} aria-label="Who wins?" className="mt-3 flex flex-col gap-2">

@@ -10,7 +10,7 @@ import { TERM_MARKETS, type TermMarketRow } from "../../lib/terminal";
 import type { Outcome } from "../../lib/types";
 
 const OUT: Outcome[] = ["H", "D", "A"];
-// One source of truth for the screener's column geometry — Row and the header row both consume these,
+// One source of truth for the screener's column geometry · Row and the header row both consume these,
 // so a width edit can never misalign them. 456px = 8 rows (Hyperliquid watchlist cap).
 const COL = { star: "w-3", min: "w-9", price: "min-w-[34px]" } as const;
 const RAIL_MAX_H = "max-h-[456px]";
@@ -20,9 +20,9 @@ function leadOf(mark: Record<Outcome, number>): Outcome {
   return mark.H >= mark.D && mark.H >= mark.A ? "H" : mark.A >= mark.D ? "A" : "D";
 }
 
-/** One rail row. Its minute, score and prices come from the ONE store — this rail lists the SAME match the
+/** One rail row. Its minute, score and prices come from the ONE store · this rail lists the SAME match the
  *  centre column is trading, so a fixture read here is a guaranteed contradiction the moment the goal lands.
- *  Column labels live in the header row (screener pattern), so each price cell is just the number — denser. */
+ *  Column labels live in the header row (screener pattern), so each price cell is just the number · denser. */
 function Row({ m }: { m: TermMarketRow }) {
   const live = useMatchLive(m.matchId);
   const mark = live?.prices ?? m.mark;
@@ -77,8 +77,8 @@ const FILTERS: Array<{ key: RailFilter; label: string }> = [
   { key: "faves", label: "Faves" },
 ];
 
-/** Left rail — the market screener (hyperscreener structure, Ninety tokens): filter pills, a real column
- *  header row, grouped dense rows. No column sorting on purpose — the round grouping IS the ordering that
+/** Left rail · the market screener (hyperscreener structure, Ninety tokens): filter pills, a real column
+ *  header row, grouped dense rows. No column sorting on purpose · the round grouping IS the ordering that
  *  carries information here, and Today's Movers already ranks by Δ. */
 export function CompetitionsRail() {
   const [filter, setFilter] = useState<RailFilter>("all");
@@ -122,7 +122,7 @@ export function CompetitionsRail() {
         </div>
       </div>
 
-      {/* Column header (screener pattern) — mirrors the row grid exactly; kick-offs are UTC. */}
+      {/* Column header (screener pattern) · mirrors the row grid exactly; kick-offs are UTC. */}
       <div className="flex items-center gap-2 border-b border-hairline/70 bg-bg/30 py-1.5 pl-3 pr-2 text-label font-semibold uppercase tracking-micro text-lo" aria-hidden>
         <span className={`${COL.star} shrink-0`} />
         <span className={`${COL.min} shrink-0 text-center`}>UTC</span>
@@ -135,7 +135,7 @@ export function CompetitionsRail() {
         </span>
       </div>
 
-      {/* The full R16 slate is 13 rows — cap the list at ~8 rows (Hyperliquid watchlist pattern) so Attack
+      {/* The full R16 slate is 13 rows · cap the list at ~8 rows (Hyperliquid watchlist pattern) so Attack
           Momentum and the events feed stay on the first screen; the rail scrolls inside its own hairline bar. */}
       <ScrollArea className={RAIL_MAX_H}>
         {groups.length === 0 ? (

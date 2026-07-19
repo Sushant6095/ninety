@@ -6,13 +6,13 @@ import { routes } from "../../lib/routes";
 
 const fmtPnl = (n: number): string => (n >= 0 ? "+" : "−") + Math.abs(n).toLocaleString("en-US");
 
-/** Tournament leaderboard rail — top 5 traders, then a pinned "you" row from the current session. */
+/** Tournament leaderboard rail · top 5 traders, then a pinned "you" row from the current session. */
 export function TournamentLeaderboard() {
   const { rank, handle, pnl, delta } = SESSION_RANK;
   return (
     <section className="elev rounded-card border border-hairline/70 bg-surface">
       <div className="flex items-center justify-between px-4 pt-3 pb-2">
-        <h2 className="text-label font-semibold uppercase tracking-label text-lo">Leaderboard — Tournament</h2>
+        <h2 className="text-label font-semibold uppercase tracking-label text-lo">Leaderboard · Tournament</h2>
         <Link href={routes.leaders} className="text-label text-lo transition-colors duration-200 hover:text-hi">All →</Link>
       </div>
 

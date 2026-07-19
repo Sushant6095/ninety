@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>kt</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+</head>
+<body>
+<h1 id="ninety-project-state-frontend-vocabulary-knowledge-transfer">Ninety — Project State + Frontend Vocabulary (knowledge transfer)</h1>
+<p><em>Synthesized from the full build. Use the vocabulary sections to write precise small-block FE prompts.</em></p>
+<hr />
+<h2 id="pointer-chart-done-vs-remaining-priority">1. POINTER CHART — DONE vs REMAINING (priority)</h2>
+<h3 id="done-backend-strongest-part-95">✅ DONE — Backend (strongest part, ~95%)</h3>
+<ul>
+<li>LMSR engine (single-writer, journal-then-ack, tested) · bus (Redis Streams) · schema (zod/AnyEvent)</li>
+<li>TxLINE client (live-verified devnet, 8 wrappers) · cortex pricing (Shin de-vig, hazard)</li>
+<li>Workers: ingest · cortex · jobs (settlement saga) · Anchor program (BUILT) · auth · Booth</li>
+<li>EarlyWhistle Telegram bot (mostly built, ADR-023) · ~257 tests green</li>
+</ul>
+<h3 id="done-frontend-surfaces-exist">✅ DONE — Frontend (surfaces exist)</h3>
+<ul>
+<li>Landing (notio-based) · board · terminal · moments · competition · leaderboard · portfolio</li>
+<li>how-it-works · bracket · River-9 logo · single AppShell · halt sequence · component pass (magicui etc.)</li>
+<li>Baked: 118 flags · TheSportsDB crests/jerseys/player faces · stadium images</li>
+</ul>
+<h3 id="done-processlaw">✅ DONE — Process/law</h3>
+<ul>
+<li>CLAUDE.md (verification law · execution law · the ONE router → proven skills) · design-cop verdicts</li>
+<li>PROVENANCE gate · hooks · India submission (done)</li>
+</ul>
+<h3 id="remaining-by-priority">🔴 REMAINING — by priority</h3>
+<p><strong>P0 — visible bugs / embarrassing (fix first)</strong> - [ ] Scramble heading gibberish ("Goal. kfci. mgqcfie.") — text-scramble makes headings unreadable - [ ] 3D dribbler = grey capsules in an empty void → needs rigged GLTF model (human provides) - [ ] Empty black voids on landing → fill with imagery/video - [ ] Verify on PRODUCTION build, not dev</p>
+<p><strong>P1 — backend construction (no credentials)</strong> - [ ] <code>POST /orders</code> (the trade path — currently <code>export {}</code>) → engine → fills → ledger - [ ] <code>moments.ts</code> (empty stub) · games API · events/actions API · search API - [ ] Rich data layer (cached free APIs: TheSportsDB/API-Football/Football-Data) - [ ] API-contract alignment (endpoint shapes = frontend fixture shapes) — <code>docs/API-CONTRACT.md</code> - [ ] Outcome-space synthesis: derive H/D/A from feed's O/U + Asian handicap (revive dixon_coles, quant-review)</p>
+<p><strong>P2 — deploy (needs YOUR accounts/keys)</strong> - [ ] Supabase (Postgres) · Redis Cloud (30MB) · Fly (api + 4 workers) - [ ] Deploy Anchor program to devnet (<code>anchor deploy</code> — NOT deployed, AccountNotFound) - [ ] TxLINE live ingest (TXLINE_NETWORK + funded wallet) - [ ] Wire frontend → live API (behind NEXT_PUBLIC_USE_FIXTURES)</p>
+<p><strong>P3 — Solana as core</strong> - [ ] Real ProofBadge reads (@solana/web3.js) · wallet auth · leaderboard roots · moments cNFTs - [ ] SETTLEMENT_LIVE stays FALSE (the forge — until TxODDS confirms finality)</p>
+<p><strong>P4 — richness</strong> - [ ] Imagery/video pass (rights-free: Pexels/Coverr/Unsplash) · 3D dribbler (rigged model) - [ ] Depth tabs (lineups pitch/stats/h2h/events) · Next Goal game · Telegram landing highlight</p>
+<hr />
+<h2 id="features-you-may-have-forgotten">2. FEATURES YOU MAY HAVE FORGOTTEN</h2>
+<ul>
+<li><strong>The settlement forge finding (ADR-036/037)</strong> — your STRONGEST story: you broke your own settlement, proved it forgeable, and hard-gated it off. Lead your submission with this.</li>
+<li><strong>The two-source rule (ADR-051)</strong> — TxLINE owns what MOVES; worldcup26/baked owns what SITS STILL.</li>
+<li><strong>The Booth</strong> — AI commentary on every price swing (built, tested).</li>
+<li><strong>Moments</strong> — biggest-swing cards, mintable as cNFTs.</li>
+<li><strong>VOID/refund on abandoned matches</strong> — 19 TxLINE phase codes → trustless refund, no admin path.</li>
+<li><strong>Action events</strong> — shot/free_kick/var/substitution → the events timeline (sponsor-native, free).</li>
+<li><strong>Mainnet SL12 = real-time free</strong> vs devnet SL1 — for live match data.</li>
+<li><strong>/account = forecasting track record</strong> — the "who predicts football best" credential (play-money angle).</li>
+<li><strong>Next Goal game</strong> — free one-tap, resolves on a real goal.</li>
+<li><strong>GitBook docs</strong> (sushi-2.gitbook.io/ninety-docs) — lead with the TxLINE endpoint map.</li>
+</ul>
+<hr />
+<h2 id="frontend-map-every-page-section-component-the-words">3. FRONTEND MAP — every page, section, component (the WORDS)</h2>
+<h3 id="routes-pages">Routes (pages)</h3>
+<p><code>/</code> landing · <code>/board</code> (or <code>/matches</code>) · <code>/terminal</code> · <code>/match/[id]</code> · <code>/competition</code> · <code>/bracket</code> · <code>/portfolio</code> · <code>/account</code> · <code>/leaderboard</code> · <code>/moments</code> · <code>/moments/[id]</code> · <code>/proofs</code> · <code>/how-it-works</code> · <code>/profile/[handle]</code> · <code>/history</code> · <code>/settings</code> · <code>/onboarding</code> · <code>/replay/[id]</code> · <code>/play</code> (games) · <code>/docs</code></p>
+<h3 id="landing-sections-top-bottom">Landing sections (top → bottom)</h3>
+<p><code>hero</code> · <code>the loop</code> (goal→halt→reprice) · <code>3D football scene</code> · <code>price is probability</code> (count-up number) · <code>velocity chapter break</code> · <code>the football experience</code> · <code>proof / on-chain</code> · <code>the booth</code> · <code>the tournament</code> (globe + stats) · <code>pricing</code> (free) · <code>games/moments/telegram bento</code> · <code>close CTA</code></p>
+<h3 id="terminal-components">Terminal components</h3>
+<p><code>screener rail</code> · <code>score header</code> · <code>Momentum River (BigRiver)</code> · <code>market status panel</code> · <code>price cells (H/D/A)</code> · <code>trade panel</code> (buy/sell · size slider · Max · submit) · <code>portfolio card</code> · <code>open positions</code> · <code>leaderboard</code> · <code>today's movers</code> · <code>depth tabs</code> (Lineups·Stats·H2H·Events) · <code>the Booth</code> · <code>attack momentum</code> · <code>latest events</code> · <code>command palette (⌘K)</code></p>
+<h3 id="board-components">Board components</h3>
+<p><code>ticker</code> · <code>header/nav</code> · <code>left rail</code> (my matches · WC stages · followed teams · settlement–Solana) · <code>match card</code> · <code>match list</code> (grouped by competition) · <code>featured panel</code> · <code>mini-river (sparkline)</code> · <code>right rail</code> (top traders · starting soon · moment of the day) · <code>biggest movers</code> · <code>footer</code></p>
+<hr />
+<h2 id="ui-design-vocabulary-words-to-add-remove-tune">4. UI / DESIGN VOCABULARY (words to ADD / REMOVE / TUNE)</h2>
+<h3 id="tokens-palette-never-raw-hex">Tokens &amp; palette (never raw hex)</h3>
+<p><code>--bg #0B0D10</code> · <code>--surface #14171C</code> · <code>--hairline #232A33</code> · <code>--up #2BD97C</code> (green) · <code>--down #FF3D81</code> (pink) · <code>--halt #FFB020</code> (amber, halts only) · <code>--chain #9D6BFF</code> (violet, on-chain only) · <code>--text-hi #F5F7FA</code> · <code>--text-lo #97A0AF</code></p>
+<h3 id="type">Type</h3>
+<p><code>Archivo</code> (display/hero) · <code>Inter</code> (UI) · <code>IBM Plex Mono</code> (numbers, tabular-nums, prices one decimal)</p>
+<h3 id="motion-effects-vocab">Motion / effects vocab</h3>
+<p><code>tick-flash</code> (180ms on price change) · <code>halt sweep</code> (amber) · <code>count-up / number ticker</code> · <code>Ken-Burns</code> · <code>parallax</code> · <code>scroll reveal</code> · <code>ScrollTrigger</code> · <code>pin</code> · <code>stagger</code> · <code>crossfade</code> · <code>draw-on</code> · <code>marquee</code> · <code>bento</code> · <code>spotlight card</code> · <code>border-beam</code> · <code>animated-beam</code> · <code>text-scramble</code> (⚠ NOT on headings — makes them unreadable) · <code>shimmer</code> · <code>confetti</code> (game wins only)</p>
+<h3 id="layout-structure-vocab">Layout / structure vocab</h3>
+<p><code>hero</code> · <code>hierarchy</code> (one hero per screen) · <code>restraint</code> · <code>subtract-then-elevate</code> · <code>spacing scale</code> · <code>density</code> · <code>void</code> (bad — empty space to fill) · <code>scrim</code> (dark overlay for legible copy) · <code>mix-blend</code> · <code>gradient</code> (landing hero only, ADR-058) · <code>glassmorphism</code> (banned) · <code>full-bleed</code></p>
+<h3 id="states-a11y-vocab">States / a11y vocab</h3>
+<p><code>hover</code> · <code>focus-visible</code> · <code>active</code> · <code>disabled</code> · <code>loading/skeleton</code> · <code>empty state</code> · <code>error state</code> · <code>prefers-reduced-motion</code> · <code>44px hit target</code> · <code>contrast</code> · <code>aria-live</code></p>
+<h3 id="qualityprocess-vocab">Quality/process vocab</h3>
+<p><code>token-only</code> · <code>re-skin</code> · <code>provenance row</code> · <code>design-cop verdict</code> · <code>read-out-loud test</code> · <code>MotionScore</code> · <code>FCP</code> · <code>local production build</code> · <code>lazy / IO-gated</code> · <code>canvas guard (width≠300)</code></p>
+<h3 id="copy-law-legal-never-break">Copy law (LEGAL — never break)</h3>
+<p>Say: <code>price · trade · credits · shares · points</code>. NEVER: <code>bet · stake · odds · wager · gamble</code>. <code>play-money · no deposits · no payouts, ever</code>.</p>
+<hr />
+<h2 id="tomorrow-tg-bot-apis-blockchain-the-parts-you-dont-know">5. TOMORROW — TG BOT · APIs · BLOCKCHAIN (the parts you don't know)</h2>
+<h3 id="telegram-bot">Telegram bot</h3>
+<ul>
+<li>EarlyWhistle is MOSTLY BUILT (ADR-023, apps/worker-jobs): renderCard, sparkline buffer, send scheduler, per-match state machine, settled-card with Solscan proof + Moment photo.</li>
+<li>REMAINING: wire the stubbed Redis-backed readers (fixture/leaderboard/moment) + the getUpdates loop in main.ts · connect a real bot token · deploy worker-jobs · add a landing highlight section.</li>
+<li>HUMAN GATE: create the bot via @BotFather → TELEGRAM_BOT_TOKEN in .env (never chat/commit).</li>
+<li>Copy law applies in the bot (booth-filter enforces it).</li>
+</ul>
+<h3 id="apis-build-order">APIs (build order)</h3>
+<ol>
+<li>Align contract to frontend shapes (<code>docs/API-CONTRACT.md</code>) — FIRST.</li>
+<li><code>POST /orders</code> (trade) → engine.applyOrder → fills → ledger → WS. + <code>GET /orders</code>.</li>
+<li><code>moments.ts</code> · <code>/games/picks</code> · <code>/matches/:id/events</code> · <code>/search</code>.</li>
+<li>Rich data layer: cached (Redis TTL) proxy over TheSportsDB + API-Football + Football-Data. Two-source law: STILL data only; live scores/prices stay TxLINE.</li>
+<li>HUMAN GATE: data-API free keys in .env.</li>
+</ol>
+<h3 id="blockchain">Blockchain</h3>
+<ul>
+<li>Program is BUILT, NOT DEPLOYED (AccountNotFound) → <code>anchor deploy</code> to devnet (you have 1.99 SOL).</li>
+<li>Then: @solana/web3.js in web · real ProofBadge reads → working Solscan links · wallet identity auth · leaderboard roots on-chain · moments cNFTs.</li>
+<li>SETTLEMENT_LIVE stays FALSE (the forge, ADR-036/037) until TxODDS confirms finality binding.</li>
+<li>Skills to use: solana-dev-skill (deploy) · quicknode/solana-finance-skill (chain reads).</li>
+<li>DO NOT install solana-agent-kit (real-money DeFi agent — violates play-money).</li>
+</ul>
+<hr />
+<p><em>The whole page is a market for ninety minutes. Priced by TxLINE. Settled on Solana. Play-money, forever.</em></p>
+</body>
+</html>

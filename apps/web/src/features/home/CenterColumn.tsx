@@ -36,7 +36,6 @@ interface CenterColumnProps {
 }
 
 export function CenterColumn({ markets, children }: CenterColumnProps) {
-  const [filter, setFilter] = useState<FilterKey>("live");
   const reduce = useReducedMotion();
 
   const statusById = new Map(useMatchLiveList().map((s) => [s.matchId, s.status]));
@@ -47,6 +46,9 @@ export function CenterColumn({ markets, children }: CenterColumnProps) {
     upcoming: markets.filter((m) => catOf(m) === "upcoming").length,
     finished: markets.filter((m) => catOf(m) === "finished").length,
   };
+  // Open on the first non-empty tab so the board never lands on an empty "Live" — the live slate is often ONE
+  // pre-match market (the WC Final, priced from the real feed) with no in-play games (ADR-084).
+  const [filter, setFilter] = useState<FilterKey>(counts.live > 0 ? "live" : counts.upcoming > 0 ? "upcoming" : counts.finished > 0 ? "finished" : "live");
   const filtered = markets.filter((m) => catOf(m) === filter);
 
   return (

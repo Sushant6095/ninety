@@ -1,5 +1,5 @@
 "use client";
-// Next Goal (ADR-060) — the read-only orchestrator. Reads the live match (moving) from the store via the
+// Next Goal (ADR-060) · the read-only orchestrator. Reads the live match (moving) from the store via the
 // hook and the team metadata (still) from MATCH. Swaps the decision surface (PickPad) for the payoff
 // (Verdict). Writes ZERO match state; the goal is produced by the page harness through onLock/onReset.
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -17,7 +17,7 @@ const AWAY = { code: MATCH.awayCode, name: MATCH.away };
 const TERMINAL: Result[] = ["WON", "LOST", "NO_CALL"];
 
 /** @param onLock/onReset  round lifecycle events. /play turns them into store-owned goals via its harness;
- *                         /terminal passes no-ops (read-only — the game reads the REAL halt goal, ADR-061).
+ *                         /terminal passes no-ops (read-only · the game reads the REAL halt goal, ADR-061).
  *  @param nobody          add the "nobody" third pick (terminal variant). @param resolveWindowMs  lock→NO_CALL wait. */
 export function NextGoal({
   onLock,
@@ -34,11 +34,11 @@ export function NextGoal({
   const g = useNextGoalGame(onLock, onReset, { resolveWindowMs });
   const resolved = TERMINAL.includes(g.phase as Result);
   const halted = g.match.status === "HALTED";
-  const prompt = nobody ? `Who scores next — ${HOME.name}, ${AWAY.name}, or nobody?` : undefined;
+  const prompt = nobody ? `Who scores next · ${HOME.name}, ${AWAY.name}, or nobody?` : undefined;
 
   return (
     <section
-      aria-label="Next Goal — a quick call on who scores next"
+      aria-label="Next Goal · a quick call on who scores next"
       className="elev-hi w-full max-w-sm overflow-hidden rounded-card border border-hairline/70 bg-surface"
     >
       {/* eyebrow */}
@@ -68,7 +68,7 @@ export function NextGoal({
         </span>
       </div>
 
-      {/* the last stretch of the River, compressed — WHY calling the next goal is live (design-cop
+      {/* the last stretch of the River, compressed · WHY calling the next goal is live (design-cop
           2026-07-16 gap 5: the card had a dead zone; the market's pulse fills it). Static SVG, PRM-safe. */}
       <MiniTape spark={g.match.spark} outcome={g.match.sparkOutcome} home={HOME.code} away={AWAY.code} halted={halted} />
 
@@ -116,7 +116,7 @@ function MiniTape({ spark, outcome, home, away, halted }: { spark: number[]; out
     <div className="flex items-center gap-3 border-y border-hairline/60 bg-bg/40 px-4 py-2" aria-hidden>
       <span className="text-label font-semibold uppercase tracking-[0.1em] text-lo">{code} win %</span>
       <div className="min-w-0 flex-1">
-        {/* line stays trend-colored — down-pink would misread a halt as a fall; the amber NUMBER carries the halt */}
+        {/* line stays trend-colored · down-pink would misread a halt as a fall; the amber NUMBER carries the halt */}
         <Sparkline values={tail} up={up} width={168} height={22} />
       </div>
       <span className={`num text-strong font-bold tabular-nums ${halted ? "text-halt" : "text-hi"}`}>{now.toFixed(1)}</span>

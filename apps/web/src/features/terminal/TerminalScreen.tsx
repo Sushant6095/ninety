@@ -15,13 +15,13 @@ import { TodaysMovers } from "./TodaysMovers";
 import { SESSION } from "../../lib/fixtures";
 import { MATCH } from "../../lib/terminal";
 
-/** The Terminal — the pro match-detail trading surface: live competitions + attack momentum + events (left),
+/** The Terminal · the pro match-detail trading surface: live competitions + attack momentum + events (left),
  *  the selected market with the big River + trade panel + your position (center), market status + portfolio +
  *  positions + tournament leaderboard + movers (right). Ticks live; wired to fixtures that mirror the API.
  *
  *  `matchId` selects the centre market and defaults to the featured AUS-EGY money-shot, so /terminal is
  *  unchanged. The left-rail attack-momentum + latest-events cards are AUS-EGY-specific fixtures, so they show
- *  only for the featured market — a non-featured match never gets another match's momentum/events under it. */
+ *  only for the featured market · a non-featured match never gets another match's momentum/events under it. */
 export function TerminalScreen({ matchId = MATCH.matchId }: { matchId?: string }) {
   const featured = matchId === MATCH.matchId;
   return (
@@ -42,7 +42,7 @@ export function TerminalScreen({ matchId = MATCH.matchId }: { matchId?: string }
         <div className="min-w-0">
           <MatchColumn matchId={matchId} />
           {/* Below xl the right rail (which holds the Games section) is display:none, so surface the Games hub
-              here in the centre column instead — the terminal stays a games-inclusive surface at every width. */}
+              here in the centre column instead · the terminal stays a games-inclusive surface at every width. */}
           <div className="mt-3 xl:hidden">
             <GamesRail />
           </div>

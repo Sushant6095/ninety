@@ -5,14 +5,14 @@ import { TradersStrip } from "./TradersStrip";
 
 const { tick, feedMs, b } = MARKET_STATUS;
 
-// Three tiles — the traders head-count moved into the TradersStrip below (one number, one place).
+// Three tiles · the traders head-count moved into the TradersStrip below (one number, one place).
 const TILES: { value: string; label: string }[] = [
   { value: `${tick.toFixed(1)}s`, label: "TICK" },
   { value: `${feedMs}ms`, label: "FEED" },
   { value: b.toLocaleString("en-US"), label: "LMSR B" },
 ];
 
-// Status pill styling — amber only while halted (design law: amber = halts).
+// Status pill styling · amber only while halted (design law: amber = halts).
 const PILL: Record<MatchStatus, string> = {
   PRE: "text-lo ring-hairline",
   LIVE: "text-up ring-up/30",

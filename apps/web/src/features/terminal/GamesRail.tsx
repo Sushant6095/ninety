@@ -6,10 +6,10 @@ import { routes } from "../../lib/routes";
 
 const PIPS = 5;
 
-/** The terminal's GAMES section — a hub entry for the football game(s) we built (Next Goal, ADR-060), in the
+/** The terminal's GAMES section · a hub entry for the football game(s) we built (Next Goal, ADR-060), in the
  *  right rail. This is NOT the live playable call (that sits beside the trade panel, contextual to the open
  *  match); it's the section that names the games surface, shows YOUR persisted streak, and links to the full
- *  /play experience. Read-only consumer of the round log (localStorage) — holds no writer. Play-money framing. */
+ *  /play experience. Read-only consumer of the round log (localStorage) · holds no writer. Play-money framing. */
 export function GamesRail() {
   const rounds = useRoundLog(); // newest first
   // Trailing streak = leading run of correct calls; wins/played from the whole log. Light, no game machine.
@@ -34,7 +34,7 @@ export function GamesRail() {
       </div>
       <Link
         href={routes.play}
-        aria-label="Next Goal — call the next scorer"
+        aria-label="Next Goal · call the next scorer"
         className="group m-2 mt-0 flex items-center gap-3 rounded-lg p-2 outline-none transition-colors duration-200 hover:bg-hairline/20 focus-visible:bg-hairline/20"
       >
         <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-bg text-up ring-1 ring-inset ring-hairline">

@@ -76,6 +76,16 @@ body {
 .tab-fade[data-state="active"] { animation: tabIn var(--duration-fast) var(--ease-out); }
 @keyframes tabIn { from { opacity: 0; } }
 
+/* Landing finale parallax (ADR-085). Transform-only drift on duplicated tiles — GPU-composited, NEVER
+   background-position (that repaints every frame; eight full-width layers of it would regress FCP/long-tasks).
+   Each .pfin-track holds TWO identical tile sets, so translateX(-50%) advances exactly one set and the loop is
+   seamless. Speed varies per layer via inline animation-duration (far = slow, near = fast). Gated to
+   no-preference so reduced motion renders the scene STATIC — no drift at all (design law / finale STEP 3). */
+@keyframes pfinDrift { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+@media (prefers-reduced-motion: no-preference) {
+  .pfin-track { will-change: transform; animation: pfinDrift linear infinite; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

@@ -11,7 +11,7 @@ const ICON: Record<EventRow["kind"], { Icon: LucideIcon; tint: string }> = {
   play: { Icon: Play, tint: "text-lo" },
 };
 
-/** Latest events — the live match feed (goals, subs, cards, restarts) mirroring Sofascore's incident list.
+/** Latest events · the live match feed (goals, subs, cards, restarts) mirroring Sofascore's incident list.
  *  Bound to the ONE store: it lists only minutes the match has actually played, and the goal appears only once
  *  the score says a goal exists. An incident list that outruns the clock is the oldest bug on this screen. */
 export function LatestEvents() {

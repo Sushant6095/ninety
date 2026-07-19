@@ -33,3 +33,5 @@ GET /orders added; contract fields (minute/score, leaderboard handle, portfolio 
 - Reject-projection: a reject after the 5s applied-timeout is not persisted (GET /orders won't show it).
 - Read-model ×100 scaling: /quote + /portfolio scale price ×100 but the engine/ledger/orders don't — reconcile
   "a share pays 1 or 100" once, with the quant-reviewer.
+- 2026-07-17T22:56:58Z compaction occurred — if a decision was made this session and not yet ADR'd, capture it now (/adr).
+- 2026-07-18T07:43:34Z compaction occurred — if a decision was made this session and not yet ADR'd, capture it now (/adr).

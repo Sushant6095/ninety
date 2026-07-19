@@ -10,7 +10,7 @@ function Impact({ e }: { e: BoothEvent }) {
   return <span className={`num shrink-0 text-label ${up ? "text-up" : "text-down"} ${big ? "font-bold" : "font-medium"}`}>{up ? "▲" : "▼"}{Math.abs(e.delta).toFixed(1)}</span>;
 }
 
-/** The Booth — live AI commentary + the market impact each event had. Every word here is bound to the ONE store:
+/** The Booth · live AI commentary + the market impact each event had. Every word here is bound to the ONE store:
  *  the phase pill restates the real status and minute, and the goal call is only listed once the score says a
  *  goal exists. A timeline that narrates a minute the match hasn't reached is the bug this screen keeps hitting. */
 export function BoothTimeline() {
@@ -20,7 +20,7 @@ export function BoothTimeline() {
   const halted = status === "HALTED";
   const scored = (live?.score?.away ?? 0) > 0;
 
-  // Only events the match has actually played, newest first — plus the goal call the moment it lands.
+  // Only events the match has actually played, newest first · plus the goal call the moment it lands.
   const events = [...(scored ? [BOOTH_GOAL] : []), ...BOOTH_TIMELINE]
     .filter((e) => e.minute <= minute)
     .sort((a, b) => b.minute - a.minute);
@@ -48,7 +48,7 @@ export function BoothTimeline() {
 
       {/* The log itself wears terminal chrome (magicui Terminal, re-skinned). sequence is OFF on purpose:
           the vendor sequencer indexes children by position, so a goal line prepending live would inherit an
-          already-completed index and never reveal. Each line fades in on mount at m.fast instead — a system
+          already-completed index and never reveal. Each line fades in on mount at m.fast instead · a system
           log, not a movie; keys keep played lines from re-animating. */}
       <Terminal sequence={false}>
         {events.map((e, i) => (

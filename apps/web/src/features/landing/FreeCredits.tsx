@@ -26,7 +26,7 @@ export function FreeCredits() {
             One price: free.
           </h2>
           <p data-arrive-item className="mx-auto mt-4 max-w-[52ch] text-strong leading-relaxed text-lo">
-            Tiers exist to sell you an upgrade. Play money has nothing to sell — every match starts
+            Tiers exist to sell you an upgrade. Play money has nothing to sell. Every match starts
             you with the same 1,000 credits as everyone else.
           </p>
         </div>

@@ -90,8 +90,13 @@ def classify_tick(payload: dict) -> tuple[str, float, float] | None:
     prices = payload.get("prices") or []
     if len(names) != 2 or len(prices) != 2:
         return None
+    # TxLINE sends the handicap/total line as "line=0.5" (confirmed on the live devnet feed), not a bare number —
+    # take the part after "=" so float() succeeds. Without this every book failed to classify and the synth 1X2
+    # mark was never produced (the market stayed unpriced).
+    raw_mp = str(payload.get("marketParameters", "")).strip()
+    mp = raw_mp.split("=", 1)[1] if "=" in raw_mp else raw_mp
     try:
-        line = float(str(payload.get("marketParameters", "")).strip())
+        line = float(mp)
     except (TypeError, ValueError):
         return None
     odds = [x / ODDS_SCALE for x in prices]

@@ -35,16 +35,16 @@ const SETTLED_RESULT = { winner: "A" as Outcome, winnerName: "Egypt", scoreLine:
 
 // The terminal Next Goal card is a PURE READ-ONLY consumer (ADR-061): it resolves off the SAME store score
 // delta the halt money-shot writes via land(), and NEVER fabricates a goal. So its round-lifecycle callbacks
-// are no-ops here — /play's harness (matchSimHarness) is the ONLY thing that turns these into store writes.
+// are no-ops here · /play's harness (matchSimHarness) is the ONLY thing that turns these into store writes.
 const NOOP = (): void => {};
 
-// ── The halt money-shot — ONE consistent story, ONE clock (ADR-055) ───────────────────────────────
+// ── The halt money-shot · ONE consistent story, ONE clock (ADR-055) ───────────────────────────────
 // Australia v Egypt is goalless at 74' and Egypt's win% has been flat ~31 all match. Ashour's counter lands AT
 // the live minute: the market halts, reprices 31 → 55, the score steps 0–0 → 0–1, and the Booth calls it. The
 // choreography writes ONLY to the store, so the header, River, rails, Booth and the / board all step together.
 const { awayPre: AWAY_PRE, awayPost: AWAY_POST } = MONEY_SHOT;
 const BOOTH_DELTA = AWAY_POST - AWAY_PRE; // +24
-const BOOTH_QUOTE = `Ashour's counter — Egypt ${AWAY_PRE} → ${AWAY_POST}`;
+const BOOTH_QUOTE = `Ashour's counter · Egypt ${AWAY_PRE} → ${AWAY_POST}`;
 
 /** Center trading column dispatcher. The featured AUS-EGY market keeps the full money-shot below EXACTLY as-is
  *  (halt choreography, Next Goal, depth tabs); any other market opens the plain per-match terminal, which reads
@@ -54,9 +54,9 @@ export function MatchColumn({ matchId }: { matchId: string }) {
   return <PlainMatchColumn matchId={matchId} />;
 }
 
-/** The featured money-shot — owns the selected outcome AND the optimistic trade store: a confirmed order updates
+/** The featured money-shot · owns the selected outcome AND the optimistic trade store: a confirmed order updates
  *  positions + free credits locally and reconciles on the fill frame (here: applied immediately; the reject path
- *  — insufficient credits / oversell — surfaces a Sonner toast). Every live number reads from the ONE store. */
+ *  · insufficient credits / oversell · surfaces a Sonner toast). Every live number reads from the ONE store. */
 function FeaturedMatchColumn() {
   const live = useMatchLive(TERMINAL_MATCH_ID);
   const view: MatchView = live?.status ?? "LIVE";
@@ -72,14 +72,14 @@ function FeaturedMatchColumn() {
   const [sheetOpen, setSheetOpen] = useState(false);
   const [replayBusy, setReplayBusy] = useState(false);
 
-  // Δ vs open — derived from the store, never seeded, so the cells can't claim a move the price didn't make.
+  // Δ vs open · derived from the store, never seeded, so the cells can't claim a move the price didn't make.
   const open = live?.openPrices ?? MONEY_SHOT.prices;
   const todayDelta = useMemo(
     () => ({ H: (mark.H - open.H) * 100, D: (mark.D - open.D) * 100, A: (mark.A - open.A) * 100 }) as Record<Outcome, number>,
     [mark, open],
   );
 
-  // The Tier-0 halt money-shot — one GSAP timeline scoped to this section, driven off the data-halt hooks its
+  // The Tier-0 halt money-shot · one GSAP timeline scoped to this section, driven off the data-halt hooks its
   // children render. The callbacks only write to the store; GSAP owns all the travel.
   const sectionRef = useRef<HTMLElement>(null);
   const haltActions = useMemo<HaltActions>(
@@ -107,7 +107,7 @@ function FeaturedMatchColumn() {
     };
   }, [replay]);
 
-  // The header restates the store — the scorer line appears only once the score actually says a goal exists.
+  // The header restates the store · the scorer line appears only once the score actually says a goal exists.
   const headerLive = useMemo(
     () => ({
       score,
@@ -133,7 +133,7 @@ function FeaturedMatchColumn() {
 
       if (side === "buy") {
         if (q.cost > free) {
-          const msg = `Not enough credits — needs ${fmtCR(q.cost)}, you have ${fmtCR(free)}.`;
+          const msg = `Not enough credits · needs ${fmtCR(q.cost)}, you have ${fmtCR(free)}.`;
           toast.error(msg);
           return { ok: false, error: msg };
         }
@@ -169,8 +169,8 @@ function FeaturedMatchColumn() {
   return (
     <section ref={sectionRef} className="elev overflow-hidden rounded-card border border-hairline/70 bg-surface">
       <MatchHeader match={MATCH} live={headerLive} />
-      {/* the halt strip lands directly UNDER THE SCORE — mounts on HALTED, slides itself in (Framer, isolated) */}
-      {view === "HALTED" && <HaltBanner reason="Ashour's counter under review — repricing" />}
+      {/* the halt strip lands directly UNDER THE SCORE · mounts on HALTED, slides itself in (Framer, isolated) */}
+      {view === "HALTED" && <HaltBanner reason="Ashour's counter under review · repricing" />}
       <BigRiver
         match={MATCH}
         mark={mark}
@@ -191,12 +191,12 @@ function FeaturedMatchColumn() {
           held={primary ? { code: primary.code, outcome: primary.outcome, shares: primary.shares, avgEntry: primary.avgEntry } : undefined}
         />
       ) : (
-        // Trade decision (left) + the Next Goal call (right, lg+) — the game sits BESIDE the panel, stacked
+        // Trade decision (left) + the Next Goal call (right, lg+) · the game sits BESIDE the panel, stacked
         // below it on mobile. It lives OUTSIDE data-halt="dim" on purpose: its win burst must stay bright
         // when the halt dims the trade area around it.
         <div className="lg:flex lg:items-stretch">
           <div className="min-w-0 lg:flex-1">
-            {/* the trade area — dims to 0.55 while the market is halted (GSAP drives opacity on this hook) */}
+            {/* the trade area · dims to 0.55 while the market is halted (GSAP drives opacity on this hook) */}
             <div data-halt="dim">
               <PriceCells
                 mark={mark}
@@ -236,7 +236,7 @@ function FeaturedMatchColumn() {
             )}
           </div>
           {(view === "LIVE" || view === "HALTED") && (
-            <aside aria-label="Next Goal — call the next scorer" className="border-t border-hairline p-3 lg:w-[340px] lg:shrink-0 lg:border-l lg:border-t-0">
+            <aside aria-label="Next Goal · call the next scorer" className="border-t border-hairline p-3 lg:w-[340px] lg:shrink-0 lg:border-l lg:border-t-0">
               <NextGoal nobody resolveWindowMs={TERMINAL_RESOLVE_WINDOW_MS} onLock={NOOP} onReset={NOOP} />
             </aside>
           )}

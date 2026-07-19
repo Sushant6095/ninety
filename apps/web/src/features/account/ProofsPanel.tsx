@@ -1,6 +1,6 @@
-// On-chain proof history — every settlement this account traded in. Result + realized P&L from the fills;
+// On-chain proof history · every settlement this account traded in. Result + realized P&L from the fills;
 // the receipt is the ProofBadge → Solscan devnet (the ONE violet surface on /account, per chain-token law).
-// A settled fill whose proof sits outside the curated slice links into the full /proofs log instead — never
+// A settled fill whose proof sits outside the curated slice links into the full /proofs log instead · never
 // a fabricated signature.
 import Link from "next/link";
 import { ProofBadge } from "../../components/ui/ProofBadge";
@@ -17,7 +17,7 @@ export function ProofHistoryList() {
   if (settled.length === 0) {
     return (
       <div className="grid place-items-center px-4 py-14 text-center">
-        <p className="text-body text-lo">No settlements yet — your first settled trade lands its proof here.</p>
+        <p className="text-body text-lo">No settlements yet · your first settled trade lands its proof here.</p>
         <Link
           href={routes.proofs}
           className="mt-2 rounded-chip px-2 py-1 text-body text-up outline-none transition-opacity duration-200 hover:opacity-80 focus-visible:ring-1 focus-visible:ring-up/40 active:scale-[0.97]"
@@ -49,7 +49,7 @@ export function ProofHistoryList() {
               </span>
             </span>
             {/* Mintless mode (credibility fix, ADR-065): Proof carries NO tx signature until a real
-                settle tx exists — a fabricated sig on a violet badge is worse than a link. Every row
+                settle tx exists · a fabricated sig on a violet badge is worse than a link. Every row
                 routes to the proof log; the Solscan ProofBadge returns when the sig field does. */}
             <Link
               href={routes.proofs}

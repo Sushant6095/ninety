@@ -52,12 +52,12 @@ test("resultFor: picked side wins, other loses", () => {
 test("resolvePick: a Side pick is IDENTICAL to /play (goal → resultFor, no goal → NO_CALL)", () => {
   assert.equal(resolvePick("H", "H"), "WON");
   assert.equal(resolvePick("H", "A"), "LOST");
-  assert.equal(resolvePick("A", null), "NO_CALL"); // window elapsed, no goal — streak safe
+  assert.equal(resolvePick("A", null), "NO_CALL"); // window elapsed, no goal · streak safe
 });
 
 test("resolvePick: the terminal 'nobody' call wins iff no goal comes, and any goal is a (soft) loss", () => {
-  assert.equal(resolvePick("N", null), "WON"); // nobody scored — called it
-  assert.equal(resolvePick("N", "A"), "LOST"); // a goal came — never punished (applyResult keeps points)
+  assert.equal(resolvePick("N", null), "WON"); // nobody scored · called it
+  assert.equal(resolvePick("N", "A"), "LOST"); // a goal came · never punished (applyResult keeps points)
   assert.equal(resolvePick("N", "H"), "LOST");
 });
 

@@ -10,12 +10,11 @@ import { PriceScrub } from "./PriceScrub";
 import { VelocityBand } from "./VelocityBand";
 import { FlowFieldLazy } from "./FlowFieldLazy";
 import { GoalReplayScrollLazy } from "./GoalReplayScrollLazy";
+import { LandingFinaleLazy } from "./LandingFinaleLazy";
 import { CrestWall } from "./CrestWall";
-import { IconsGallery } from "./IconsGallery";
 import { BoothQuotes } from "./BoothQuotes";
 import { FreeCredits } from "./FreeCredits";
 import { CrowdBand } from "./CrowdBand";
-import { FootballExperience } from "./FootballExperience";
 import { WatchReel } from "./WatchReel";
 import { ConsumerBento } from "./ConsumerBento";
 import { NumberTicker } from "../../components/ui/NumberTicker";
@@ -37,23 +36,25 @@ const PROOF_STEPS = [
 export function LandingLong() {
   return (
     <div className="flex min-h-screen flex-col bg-bg">
-      {/* 1 — nav (kept) · 2 — hero (kept: notio shell + live HeroRiver, the 10/10) */}
+      {/* 1 — nav (kept) */}
       <Navbar />
       <main>
+        {/* BEAT 1 — THE CINEMA (ADR-078): the page OPENS on the pinned full-bleed frame-scrub carrying the
+            thesis, then resolves into the product below. Landing-only, never a live-price surface. */}
+        <GoalReplayScrollLazy />
+
+        {/* BEAT 2 — the product resolves in: the live River + one action line + the single CTA. */}
         <Hero />
 
         <LandingScroll>
-          {/* THE SCROLL-SCRUB SHOWPIECE (ADR-078) — moved to the TOP of the scroll story (right under the
-              hero): a pinned full-bleed canvas scrubs a pre-rendered football clip frame-by-frame to scroll
-              (the iron-man/AirPods effect) via GSAP ScrollTrigger. Lazy + ssr:false + IO-decoded. Landing-only. */}
-          <GoalReplayScrollLazy />
-
           {/* 3 — THE LOOP: the product tells its own story. LoopStage mounts in view and plays the
               real useHaltSequence timeline (goal → halt → reprice → Booth → settle) in front of you. */}
           <section aria-labelledby="loop-h" className="border-b border-hairline">
+            {/* Tighter than beat 2's split by design: narrower left copy column + centered rows so the live
+                LoopStage panel (the section's focal point) closes the dead quadrant a wide 1fr column left open. */}
             <div
               data-arrive
-              className="mx-auto grid w-full max-w-[1180px] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_minmax(380px,440px)] lg:items-center lg:gap-16 lg:py-24"
+              className="mx-auto grid w-full max-w-[1180px] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(420px,480px)] lg:items-center lg:gap-14 lg:py-16"
             >
               <div>
                 {/* Plain type, by design: a scramble on the heading fights the one thing the section is asking
@@ -80,6 +81,17 @@ export function LandingLong() {
           {/* 4 — PRICE IS PROBABILITY: one giant number does the explaining, the void orbiting behind it */}
           <section aria-labelledby="price-h" className="relative border-b border-hairline">
             <PriceVoid className="hidden lg:block" />
+            {/* Focus veil: PriceVoid's densest cluster sits dead-centre, where the giant number is — it bloomed a
+                bright core that occluded the "61.4" decimal (S4/S9). This darkens the centre band so the number +
+                copy read cleanly while the disk stays visible at the edges — the number IS the event horizon. */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 z-[1] hidden lg:block"
+              style={{
+                background:
+                  "radial-gradient(46% 58% at 50% 44%, color-mix(in srgb, var(--bg) 84%, transparent) 0%, color-mix(in srgb, var(--bg) 46%, transparent) 55%, transparent 82%)",
+              }}
+            />
             <div data-arrive className="relative z-10 mx-auto w-full max-w-[1180px] px-4 py-16 text-center sm:px-6 lg:py-24">
               <h2 data-arrive-item id="price-h" className="text-label font-semibold uppercase tracking-caps text-lo">
                 Price is probability
@@ -97,8 +109,10 @@ export function LandingLong() {
           {/* chapter break — the loop's verbs riding the scroll (magicui scroll-based-velocity) */}
           <VelocityBand />
 
-          {/* 5 — THE FOOTBALL EXPERIENCE: the consumer-track journey, end to end */}
-          <FootballExperience />
+          {/* DELETED (pass 5): section 5 "The football experience" was a 5-up equal icon-card grid (S3) that
+              RECAPPED what the page already shows live — Watch/Read=beat 2 River + the LOOP; Call/Own/Follow=
+              the ConsumerBento (Games/Moments/Telegram). Subtract-then-elevate: a shorter page that shows beats
+              a longer one that re-tells. Removed the grid + its 3 em-dashes; content survives in those sections. */}
 
           {/* the film — click-to-play reel (skiper67, re-skinned): a cinematic pause that opens full
               screen; the product loop (game → price → proof) told once, in motion */}
@@ -118,15 +132,26 @@ export function LandingLong() {
                   Everything is proven.
                 </Highlighter>
               </h2>
-              <div className="mt-10 grid gap-8 sm:grid-cols-3">
-                {PROOF_STEPS.map((s) => (
-                  <div data-arrive-item key={s.n}>
-                    <p className="num text-label font-semibold tracking-caps text-lo">{s.n}</p>
-                    <h3 className="mt-2 text-strong font-semibold text-hi">{s.title}</h3>
-                    <p className="mt-2 text-body leading-relaxed text-lo">{s.copy}</p>
-                  </div>
+              {/* Not a 3-up card grid (S3): a directional trust-PATH. The nodes sit on a --chain rail that runs
+                  feed → program → public, so the three steps read as one chain of custody (which is the whole
+                  point of proof), matching the signed-data FlowField behind. On-chain violet is sanctioned here. */}
+              <ol className="mt-12 flex flex-col gap-9 sm:flex-row sm:gap-0">
+                {PROOF_STEPS.map((s, i) => (
+                  <li data-arrive-item key={s.n} className="relative flex-1 sm:pr-10">
+                    {i < PROOF_STEPS.length - 1 && (
+                      <span
+                        aria-hidden
+                        className="absolute left-4 top-4 hidden h-px w-full -translate-y-1/2 bg-gradient-to-r from-chain/50 via-chain/25 to-transparent sm:block"
+                      />
+                    )}
+                    <span className="num relative z-10 grid h-8 w-8 place-items-center rounded-full border border-chain/45 bg-bg text-caption font-semibold text-chain">
+                      {s.n}
+                    </span>
+                    <h3 className="mt-4 text-strong font-semibold text-hi">{s.title}</h3>
+                    <p className="mt-2 max-w-[32ch] text-body leading-relaxed text-lo">{s.copy}</p>
+                  </li>
                 ))}
-              </div>
+              </ol>
               <div data-arrive-item>
                 <Link
                   href="/proofs"
@@ -141,9 +166,11 @@ export function LandingLong() {
           {/* the Booth's own lines from the featured market — the voice that explains every swing */}
           <BoothQuotes />
 
-          {/* the icons interlude — a hover-expand strip of the game's greats (skiper52, re-skinned),
-              leading into the 48-crest wall: the names that made the shirt → the shirts as markets */}
-          <IconsGallery />
+          {/* DELETED (pass 8): "The icons" hover-expand strip was 7 REAL named-player broadcast stills
+              (Bellingham/Zlatan/Haaland/Zidane/Messi/Pelé) carrying club + sponsor + federation marks — the
+              biggest B6 legal liability on the page (CLAUDE.md legal armor) — and decorative-only (S8), redundant
+              with the CrestWall right below (which makes "48 shirts = 48 markets" literal with SAFE baked crests).
+              Deleting it removes that likeness liability entirely. Subtract-then-elevate. */}
 
           {/* 7 — THE WHOLE TOURNAMENT: the numbers ARE the headline; the wall of 48 real crests makes
               "every one a market" literal (it replaced a dotted globe — see CrestWall). */}
@@ -152,8 +179,10 @@ export function LandingLong() {
             {/* The stats column was 1fr (~800px) for four short numbers, leaving "104" and "48" stranded ~590px
                 apart with a canyon between them and the visual. Cap it and give the recovered width to the wall,
                 which now needs it to show the group structure. */}
-            <div data-arrive className="mx-auto grid w-full max-w-[1180px] items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,460px)_1fr] lg:gap-16 lg:py-20">
-              <dl className="grid grid-cols-2 gap-x-6 gap-y-10">
+            <div data-arrive className="mx-auto grid w-full max-w-[1180px] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,440px)_1fr] lg:items-stretch lg:gap-16 lg:py-20">
+              {/* lg: a full-height vertical stat rail (4 numbers distributed top→bottom) so the short stat block
+                  balances the tall 12-group crest wall instead of floating centred with dead space above + below. */}
+              <dl className="grid grid-cols-2 gap-x-6 gap-y-10 lg:flex lg:h-full lg:flex-col lg:justify-between lg:gap-0">
                 {(
                   [
                     { value: <NumberTicker value={104} className="text-stat font-bold text-hi" />, label: "Fixtures, group stage to final" },
@@ -181,6 +210,10 @@ export function LandingLong() {
           {/* 8 — GAMES + MOMENTS + TELEGRAM: the consumer features as a bento */}
           <ConsumerBento />
         </LandingScroll>
+
+        {/* 9 — THE CLOSE (ADR-085): the page's final statement — a layered football parallax with the huge
+            NINETY wordmark. Landing-only; lazy so it never costs FCP; reduced motion renders it static. */}
+        <LandingFinaleLazy />
       </main>
 
       {/* 9 — close (kept): notio "opening bell" footer, crowd terrace on its bottom edge */}

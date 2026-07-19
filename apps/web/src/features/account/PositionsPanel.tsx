@@ -1,5 +1,5 @@
 "use client";
-// Open positions — the /portfolio idiom absorbed into /account: entry vs live mark per match, unrealized in
+// Open positions · the /portfolio idiom absorbed into /account: entry vs live mark per match, unrealized in
 // credits. Identity from the seed; minute/mark from the ONE live store (ADR-051) so a row never disagrees
 // with /terminal or the board.
 import Link from "next/link";

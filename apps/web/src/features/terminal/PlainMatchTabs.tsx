@@ -5,7 +5,7 @@ import type { PositionRow } from "../../lib/terminal";
 import type { Outcome } from "../../lib/types";
 import { fmtPrice, signedCR } from "../../lib/format";
 
-// Non-featured depth tabs — the HONEST subset. We only surface what's actually true for an arbitrary market:
+// Non-featured depth tabs · the HONEST subset. We only surface what's actually true for an arbitrary market:
 // the real baked squads (Lineups) and your live positions. Stats / H2H / Events / Booth are AUS-EGY-only
 // fixtures on the featured MatchTabs, so they are deliberately absent here rather than shown under the wrong
 // match (the credibility law: never AUS-EGY data under another match's header).
@@ -44,7 +44,7 @@ export function PlainMatchTabs({
 
       <Tabs.Content value="positions" className="tab-fade outline-none">
         {positions.length === 0 ? (
-          <p className="px-4 py-10 text-center text-body leading-relaxed text-lo">No position in this match yet — arm an outcome above to trade.</p>
+          <p className="px-4 py-10 text-center text-body leading-relaxed text-lo">No position in this match yet · arm an outcome above to trade.</p>
         ) : (
           <ul className="divide-y divide-hairline/60">
             {positions.map((p) => {

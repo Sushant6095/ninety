@@ -13,7 +13,7 @@ interface Avatar {
 const SHOWN = LEADERS.slice(0, 5);
 const initials = (handle: string): string => handle.replace(/^@/, "").slice(0, 2).toUpperCase();
 
-// Local SVG initials disc as a data URI — no remote avatar URLs, ever. Colors are read from the live
+// Local SVG initials disc as a data URI · no remote avatar URLs, ever. Colors are read from the live
 // CSS custom properties at mount so no raw hex enters the component (design law).
 function disc(text: string, bg: string, ring: string, fg: string): string {
   const svg =
@@ -24,7 +24,7 @@ function disc(text: string, bg: string, ring: string, fg: string): string {
   return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 
-/** "Traders in this market" — the top traders as initials discs (magicui AvatarCircles, imported as-is)
+/** "Traders in this market" · the top traders as initials discs (magicui AvatarCircles, imported as-is)
  *  plus the live head-count. Static market metric, same source as the old TRADERS IN tile. */
 export function TradersStrip() {
   const [avatars, setAvatars] = useState<Avatar[]>([]);

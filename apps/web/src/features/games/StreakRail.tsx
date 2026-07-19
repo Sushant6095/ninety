@@ -1,5 +1,5 @@
 "use client";
-// The persistent tally (ADR-060) — streak pips, points, best. localStorage-backed via the hook's stats.
+// The persistent tally (ADR-060) · streak pips, points, best. localStorage-backed via the hook's stats.
 // Numbers are mono/tabular (design law). Pips fill green as the streak climbs; the count pops on change.
 // Zero-state pips are unlit-but-ALIVE (design-cop 2026-07-16 gap 5): hairline rings, not filled discs
 // (filled gray read as disabled UI), and the first pip breathes on opacity while there's no streak.

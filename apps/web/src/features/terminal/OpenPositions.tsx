@@ -17,7 +17,7 @@ function Pnl({ pnl, pre }: { pnl: number | null; pre?: boolean }) {
   return <span className={`num text-body font-semibold tabular-nums ${n >= 0 ? "text-up" : "text-down"}`}>{fmtPnl(n)}</span>;
 }
 
-/** OPEN POSITIONS — right-rail card. Live P&L per held outcome; PRE for matches not yet kicked off. */
+/** OPEN POSITIONS · right-rail card. Live P&L per held outcome; PRE for matches not yet kicked off. */
 export function OpenPositions() {
   const liveById = new Map(useMatchLiveList().map((s) => [s.matchId, s]));
   return (

@@ -1,6 +1,6 @@
-// Moments fixtures — a Moment is a captured price swing on the River (a goal/red that repriced a market).
+// Moments fixtures · a Moment is a captured price swing on the River (a goal/red that repriced a market).
 // Shaped like GET /moments + GET /moments/:id + GET /profile/:handle (moments shelf). SCREEN-DATA-MAP: mint
-// sig is the ONLY chain surface (violet) and is nullable — "mintless mode" when moments aren't minted.
+// sig is the ONLY chain surface (violet) and is nullable · "mintless mode" when moments aren't minted.
 import type { Outcome } from "./types";
 
 export type Rarity = "Common" | "Rare" | "Epic" | "Legendary";
@@ -29,8 +29,8 @@ export const rarityOf = (m: Pick<Moment, "fromPrice" | "toPrice">): Rarity => {
 };
 export const swingOf = (m: Pick<Moment, "fromPrice" | "toPrice">): number => m.toPrice - m.fromPrice;
 
-// Ring/label colour per rarity — tokens only, never a raw palette, and NEVER `chain`. Legendary used to be
-// violet (`text-chain`) "because those are the minted, on-chain ones" — but every moment is mintSig:null
+// Ring/label colour per rarity · tokens only, never a raw palette, and NEVER `chain`. Legendary used to be
+// violet (`text-chain`) "because those are the minted, on-chain ones" · but every moment is mintSig:null
 // (mintless), so violet claimed on-chain state the artifact doesn't have (chain is on-chain-ONLY). The ladder
 // climbs in the up-green: Common (muted) → Rare (bright) → Epic (green outline) → Legendary (green FILLED, the
 // loudest chip). Chain violet returns only when a moment is genuinely minted (rendered separately as "Minted").
@@ -41,7 +41,7 @@ export const RARITY_STYLE: Record<Rarity, string> = {
   Legendary: "bg-up/15 text-up ring-up/60",
 };
 
-// A short win% slice around the swing minute — the annotated segment shown on the card.
+// A short win% slice around the swing minute · the annotated segment shown on the card.
 const seg = (from: number, to: number): number[] => {
   const pre = [from, from + 1, from - 1, from];
   const jump = [from + (to - from) * 0.4, from + (to - from) * 0.75, to - 1, to];
@@ -50,10 +50,10 @@ const seg = (from: number, to: number): number[] => {
 };
 
 // mintSig is null across the board: minting rides the same on-chain settle path, which is fail-closed on purpose
-// (ADR-036/037) — there is no real mint tx yet, so these run in "mintless mode" rather than link a fabricated
+// (ADR-036/037) · there is no real mint tx yet, so these run in "mintless mode" rather than link a fabricated
 // signature. Each flips to a Solscan-verifiable ProofBadge the moment a real mint tx exists.
 export const MOMENTS: Moment[] = [
-  // Ashour's counter is the 74' money-shot (GOAL_MINUTE on /terminal) — the minute must match there, not read 13'.
+  // Ashour's counter is the 74' money-shot (GOAL_MINUTE on /terminal) · the minute must match there, not read 13'.
   { id: "m-ashour-74", matchId: "wc26-aus-egy", homeCode: "AUS", awayCode: "EGY", title: "Ashour's counter", outcome: "A", pick: "EGY", minute: 74, fromPrice: 31, toPrice: 55, owner: "@pitchwizard", ts: "today", mintSig: null, segment: seg(31, 55) },
   { id: "m-david-38", matchId: "wc26-can-mar", homeCode: "CAN", awayCode: "MAR", title: "David reprices Canada", outcome: "H", pick: "CAN", minute: 38, fromPrice: 41, toPrice: 63, owner: "@hexfan", ts: "today", mintSig: null, segment: seg(41, 63) },
   { id: "m-srb-76", matchId: "wc26-srb-cmr", homeCode: "SRB", awayCode: "CMR", title: "Serbia seal it", outcome: "H", pick: "SRB", minute: 76, fromPrice: 72, toPrice: 92, owner: "@vd", ts: "today", mintSig: null, segment: seg(72, 92) },

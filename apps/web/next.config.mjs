@@ -9,10 +9,9 @@ export default {
   // a standalone Vercel deploy uploads only apps/web, so root at the app itself there.
   outputFileTracingRoot: process.env.VERCEL ? import.meta.dirname : path.join(import.meta.dirname, "../.."),
   images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "i.pravatar.cc" }, // real avatar photos (deterministic per handle seed)
-      { protocol: "https", hostname: "api.dicebear.com" }, // avatar fallback
-    ],
+    // Avatars are now local deterministic identicons (components/ui/Avatar.tsx) — no third-party avatar CDN,
+    // no photos of people who do not exist. Nothing else fetches a remote image, so the allowlist is empty.
+    remotePatterns: [],
   },
   // CONNECT (Phase 2): same-origin proxy so BROWSER (client-component) fetches to the API avoid CORS — the API
   // has no CORS headers, so a direct :3000→:4000 fetch is blocked and would silently fall back to fixtures.

@@ -13,7 +13,7 @@ import { Logomark } from "../../components/ui/Logomark";
 import { ThemeToggle } from "../../components/ui/ThemeToggle";
 import type { SessionUser } from "../../lib/types";
 
-// The single app-wide surface nav (App and Terminal are merged — no more surface toggle). Covers every
+// The single app-wide surface nav (App and Terminal are merged · no more surface toggle). Covers every
 // destination the old App nav had, plus the Terminal's live-market filters and proof status.
 // `external` items (Docs → GitBook) render as new-tab anchors with no active state.
 const SUBNAV: { label: string; href: string; count?: number; home?: boolean; external?: boolean }[] = [
@@ -32,7 +32,7 @@ const SUBNAV: { label: string; href: string; count?: number; home?: boolean; ext
 ];
 
 /** The one Ninety chrome: wordmark + TERMINAL badge · search · balance/rank/actions, then a dense sub-nav row
- *  with the live feed/proof status on the right. Used on every screen — the board (/) and the desk alike. */
+ *  with the live feed/proof status on the right. Used on every screen · the board (/) and the desk alike. */
 export function TerminalHeader({ user }: { user: SessionUser }) {
   const path = usePathname();
   const [cmdkOpen, setCmdkOpen] = useState(false);
@@ -47,7 +47,7 @@ export function TerminalHeader({ user }: { user: SessionUser }) {
     <>
       <header className="sticky top-0 z-30 bg-bg">
       <div className="mx-auto flex h-14 max-w-[1600px] items-center gap-3 px-4 sm:gap-5 sm:px-6">
-        <Link href={routes.home} aria-label="Ninety — home" className="group inline-flex shrink-0 items-center gap-2 text-hi">
+        <Link href={routes.home} aria-label="Ninety · home" className="group inline-flex shrink-0 items-center gap-2 text-hi">
           <Logomark size={26} className="shrink-0 transition-transform duration-200 group-hover:-translate-y-px" />
           <span className="font-display text-heading font-extrabold leading-none tracking-tighter transition-opacity duration-200 group-hover:opacity-80">Ninety</span>
           <span className="num rounded-md bg-surface px-1 py-0.5 text-label font-semibold uppercase leading-none tracking-tag text-lo ring-1 ring-inset ring-hairline">{path === routes.board ? "WC26" : "Terminal"}</span>

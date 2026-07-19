@@ -60,21 +60,21 @@ export const SESSION: SessionUser = { handle: "@vd", credits: 2450, rank: 142, r
 export const MARKETS: MarketRow[] = [
   // ── Round of 16 · live now ──────────────────────────────────────────────────
   // from: 41 so the tape CONTAINS the story every caption tells (David at 38': 41 → 63, on to 61.4 at 74').
-  mkt({ hc: "CAN", ac: "MAR", comp: "World Cup — Round of 16", ko: "2026-07-04T19:00:00Z", min: 74, score: [1, 0], mark: [0.614, 0.221, 0.165], from: 41, to: 61.4, fav: true, vol: 184200 }),
+  mkt({ hc: "CAN", ac: "MAR", comp: "World Cup · Round of 16", ko: "2026-07-04T19:00:00Z", min: 74, score: [1, 0], mark: [0.614, 0.221, 0.165], from: 41, to: 61.4, fav: true, vol: 184200 }),
   // The terminal's traded market — same store entry /terminal reads (goalless at 74', Egypt flat ~31).
-  mkt({ hc: "AUS", ac: "EGY", comp: "World Cup — Round of 16", ko: "2026-07-04T18:30:00Z", min: 74, score: [0, 0], mark: [0.48, 0.21, 0.31], from: 47, to: 48, fav: true, vol: 156300 }),
-  mkt({ hc: "ESP", ac: "JPN", comp: "World Cup — Round of 16", ko: "2026-07-04T18:00:00Z", min: 58, score: [2, 1], mark: [0.682, 0.196, 0.122], from: 60, to: 68.2, fav: true, vol: 231800 }),
-  mkt({ hc: "BRA", ac: "KOR", comp: "World Cup — Round of 16", ko: "2026-07-04T14:00:00Z", min: 55, score: [2, 0], mark: [0.86, 0.1, 0.04], from: 71, to: 86, fav: true, vol: 120400 }),
-  mkt({ hc: "FRA", ac: "SEN", comp: "World Cup — Round of 16", ko: "2026-07-04T15:00:00Z", min: 41, score: [2, 0], mark: [0.74, 0.16, 0.1], from: 56, to: 74, fav: true, vol: 88100 }),
-  mkt({ hc: "POR", ac: "URU", comp: "World Cup — Round of 16", ko: "2026-07-04T17:00:00Z", min: 63, score: [1, 0], mark: [0.58, 0.24, 0.18], from: 55, to: 58, vol: 64200 }),
-  mkt({ hc: "NED", ac: "USA", comp: "World Cup — Round of 16", ko: "2026-07-04T16:00:00Z", min: 30, score: [1, 1], mark: [0.455, 0.281, 0.264], from: 62, to: 45.5, vol: 71300 }),
-  mkt({ hc: "ARG", ac: "MEX", comp: "World Cup — Round of 16", ko: "2026-07-04T20:30:00Z", min: 12, score: [0, 0], mark: [0.441, 0.287, 0.272], from: 45, to: 44.1, vol: 96400 }),
+  mkt({ hc: "AUS", ac: "EGY", comp: "World Cup · Round of 16", ko: "2026-07-04T18:30:00Z", min: 74, score: [0, 0], mark: [0.48, 0.21, 0.31], from: 47, to: 48, fav: true, vol: 156300 }),
+  mkt({ hc: "ESP", ac: "JPN", comp: "World Cup · Round of 16", ko: "2026-07-04T18:00:00Z", min: 58, score: [2, 1], mark: [0.682, 0.196, 0.122], from: 60, to: 68.2, fav: true, vol: 231800 }),
+  mkt({ hc: "BRA", ac: "KOR", comp: "World Cup · Round of 16", ko: "2026-07-04T14:00:00Z", min: 55, score: [2, 0], mark: [0.86, 0.1, 0.04], from: 71, to: 86, fav: true, vol: 120400 }),
+  mkt({ hc: "FRA", ac: "SEN", comp: "World Cup · Round of 16", ko: "2026-07-04T15:00:00Z", min: 41, score: [2, 0], mark: [0.74, 0.16, 0.1], from: 56, to: 74, fav: true, vol: 88100 }),
+  mkt({ hc: "POR", ac: "URU", comp: "World Cup · Round of 16", ko: "2026-07-04T17:00:00Z", min: 63, score: [1, 0], mark: [0.58, 0.24, 0.18], from: 55, to: 58, vol: 64200 }),
+  mkt({ hc: "NED", ac: "USA", comp: "World Cup · Round of 16", ko: "2026-07-04T16:00:00Z", min: 30, score: [1, 1], mark: [0.455, 0.281, 0.264], from: 62, to: 45.5, vol: 71300 }),
+  mkt({ hc: "ARG", ac: "MEX", comp: "World Cup · Round of 16", ko: "2026-07-04T20:30:00Z", min: 12, score: [0, 0], mark: [0.441, 0.287, 0.272], from: 45, to: 44.1, vol: 96400 }),
   // ── Round of 16 · later today ───────────────────────────────────────────────
-  mkt({ hc: "GER", ac: "COL", comp: "World Cup — Round of 16", ko: "2026-07-05T19:00:00Z", min: null, mark: [0.485, 0.27, 0.245], from: 49, to: 48.5, vol: 12750 }),
-  mkt({ hc: "ENG", ac: "SUI", comp: "World Cup — Round of 16", ko: "2026-07-05T20:30:00Z", min: null, mark: [0.52, 0.26, 0.22], from: 50, to: 52, fav: true, vol: 9800 }),
-  mkt({ hc: "ITA", ac: "NGA", comp: "World Cup — Round of 16", ko: "2026-07-05T22:00:00Z", min: null, mark: [0.55, 0.26, 0.19], from: 54, to: 55, vol: 8100 }),
-  mkt({ hc: "DEN", ac: "SWE", comp: "World Cup — Round of 16", ko: "2026-07-05T23:30:00Z", min: null, mark: [0.47, 0.28, 0.25], from: 47, to: 47, vol: 6400 }),
-  mkt({ hc: "POL", ac: "GHA", comp: "World Cup — Round of 16", ko: "2026-07-06T01:30:00Z", min: null, mark: [0.61, 0.23, 0.16], from: 60, to: 61, vol: 5200 }),
+  mkt({ hc: "GER", ac: "COL", comp: "World Cup · Round of 16", ko: "2026-07-05T19:00:00Z", min: null, mark: [0.485, 0.27, 0.245], from: 49, to: 48.5, vol: 12750 }),
+  mkt({ hc: "ENG", ac: "SUI", comp: "World Cup · Round of 16", ko: "2026-07-05T20:30:00Z", min: null, mark: [0.52, 0.26, 0.22], from: 50, to: 52, fav: true, vol: 9800 }),
+  mkt({ hc: "ITA", ac: "NGA", comp: "World Cup · Round of 16", ko: "2026-07-05T22:00:00Z", min: null, mark: [0.55, 0.26, 0.19], from: 54, to: 55, vol: 8100 }),
+  mkt({ hc: "DEN", ac: "SWE", comp: "World Cup · Round of 16", ko: "2026-07-05T23:30:00Z", min: null, mark: [0.47, 0.28, 0.25], from: 47, to: 47, vol: 6400 }),
+  mkt({ hc: "POL", ac: "GHA", comp: "World Cup · Round of 16", ko: "2026-07-06T01:30:00Z", min: null, mark: [0.61, 0.23, 0.16], from: 60, to: 61, vol: 5200 }),
   // ── Finished today · R16 early kickoffs (a 1X2 settles on 90 minutes — a knockout draw settles D) ──
   mkt({ hc: "SRB", ac: "CMR", comp: "Finished today", ko: "2026-07-04T12:00:00Z", min: null, score: [2, 1], mark: [1, 0, 0], from: 48, to: 88, vol: 44000, status: "SETTLED" }),
   // CPV, not QAT: Group A's table shows Qatar out on 1 point, so Qatar cannot be playing an R16 match.
@@ -135,8 +135,8 @@ export const LEADERS: LeaderRow[] = [
 export const NEWS: NewsItem[] = [
   // No score in this headline: the featured match's score STEPS live when the halt lands, and a fixture that
   // names a scoreline is a fixture that will contradict the board the moment it does.
-  { id: "n1", tag: "WORLD CUP", title: "Morocco pile on late pressure at BMO Field — Canada sitting deep", when: "6m ago" },
+  { id: "n1", tag: "WORLD CUP", title: "Morocco pile on late pressure at BMO Field, Canada sitting deep", when: "6m ago" },
   { id: "n2", tag: "MOMENTS", title: "The 38th minute: David's goal repriced CAN from 41 → 63", when: "22m ago" },
-  { id: "n3", tag: "SETTLEMENT", title: "Serbia 2–1 Cameroon settled on-chain — proof posted to devnet", when: "1h ago" },
+  { id: "n3", tag: "SETTLEMENT", title: "Serbia 2–1 Cameroon settled on-chain, proof posted to devnet", when: "1h ago" },
   { id: "n4", tag: "MARKETS", title: "Spain vs Japan is today's most-traded market at 231.8k CR", when: "2h ago" },
 ];

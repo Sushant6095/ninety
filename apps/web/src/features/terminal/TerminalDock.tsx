@@ -8,7 +8,7 @@ import { Dock, DockIcon } from "../../components/vendor/magicui/dock";
 import { routes } from "../../lib/routes";
 
 // Dock → MatchColumn signals. Window events keep the dock decoupled from the trade column's state
-// (same document, one listener each — no store, no context plumbing for two one-shot actions).
+// (same document, one listener each · no store, no context plumbing for two one-shot actions).
 export const DOCK_TRADE_EVENT = "ninety:terminal-trade";
 export const DOCK_REPLAY_EVENT = "ninety:terminal-replay";
 
@@ -24,11 +24,11 @@ const ACTIONS: { label: string; event: string; icon: LucideIcon }[] = [
   { label: "Open trade ticket", event: DOCK_TRADE_EVENT, icon: Ticket },
 ];
 
-// Fills the whole 44px disc — the disc IS the hit target.
+// Fills the whole 44px disc · the disc IS the hit target.
 const ITEM =
   "flex h-full w-full items-center justify-center rounded-full text-lo outline-none transition-colors duration-200 hover:bg-hairline/40 hover:text-hi focus-visible:ring-2 focus-visible:ring-up active:scale-[0.97]";
 
-/** Bottom dock for /terminal — tools + nav (magicui Dock, re-skinned). Magnification stays ≤1.15×
+/** Bottom dock for /terminal · tools + nav (magicui Dock, re-skinned). Magnification stays ≤1.15×
  *  and dies entirely under prefers-reduced-motion; the active route gets a hi underline dot.
  *  `featured` (the AUS-EGY money-shot) gates the "Replay the halt" tool: only that market runs the halt
  *  choreography, so a non-featured match must not advertise a halt it has no way to replay. */

@@ -11,9 +11,9 @@ interface PriceCellsProps {
   codes: { H: string; A: string };
   selected: Outcome;
   onSelect: (o: Outcome) => void;
-  heldShares?: Partial<Record<Outcome, number>>; // shares held per outcome — badge updates as fills land
-  disabled?: boolean; // PRE/SETTLED — cells shown but not armable
-  frozen?: boolean; // HALTED — prices frozen, amber styling
+  heldShares?: Partial<Record<Outcome, number>>; // shares held per outcome · badge updates as fills land
+  disabled?: boolean; // PRE/SETTLED · cells shown but not armable
+  frozen?: boolean; // HALTED · prices frozen, amber styling
 }
 
 /** The three tradeable outcome cells. Selecting one arms the trade panel; a held outcome shows a live share badge.

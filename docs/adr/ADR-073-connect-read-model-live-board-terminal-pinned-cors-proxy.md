@@ -2,6 +2,7 @@
 
 **Status:** Accepted · **Date:** 2026-07-17 · **Follows:** ADR-072 (P1 backend + `lib/api.ts` client, the swap it left open),
 ADR-071 (never a fabricated 33/33/33 book), ADR-051 (two-source rule), ADR-042 (home data layer / store seam), ADR-050 (AppShell contract).
+· **Superseded (decision #3) by:** ADR-076 — leaderboard + moments were pinned back to fixtures (live read-model produced read-out-loud contradictions: empty moments void, QA-only leaderboard).
 
 ## Context
 `apps/web` rendered entirely from baked fixtures; `lib/api.ts` (the typed live client ADR-072 built) had **0 importers**.

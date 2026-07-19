@@ -2,7 +2,6 @@
 // /play (ADR-060) — composes the read-only Next Goal game with the page feed harness. onLock/onReset are
 // plain round events; the harness turns them into store-owned goals. The game holds no writer.
 import Link from "next/link";
-import { MilestoneBalloons } from "../../components/ui/MilestoneBalloons";
 import { NextGoal } from "../../features/games/NextGoal";
 import { RoundFilter } from "../../features/games/RoundFilter";
 import { routes } from "../../lib/routes";
@@ -13,7 +12,6 @@ export function PlayScreen() {
 
   return (
     <main className="flex min-h-dvh flex-col items-center bg-bg px-4 py-6">
-      <MilestoneBalloons />
       <header className="flex w-full max-w-sm items-center justify-between">
         <Link
           href={routes.matches}

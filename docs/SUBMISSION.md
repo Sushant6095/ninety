@@ -15,7 +15,7 @@ The product is one tight live loop, five beats:
 
 At full time the result is meant to settle **on-chain by verifying a TxODDS cryptographic proof — with no admin able to decide a result** (ADR-017, a repo law). That path is deliberately fail-closed today; the reason is the lead of the README and the highlight of this submission (see the forge finding, below).
 
-Built in **7 days** (2026-07-07 → 2026-07-13): **81 commits**, **51 ADRs**, **257 automated tests passing**, **5/5 Anchor tests**, TxLINE verified live on devnet.
+Built in **12 days** (2026-07-07 → 2026-07-18): **177 commits**, **79 ADRs**, **258 automated tests passing**, **5/5 Anchor tests**, TxLINE verified live on devnet.
 
 ## The forge finding (lead with this)
 
@@ -66,6 +66,7 @@ Our decision: **settlement is fail-closed on purpose** (`SETTLEMENT_LIVE = false
 - **Live TxLINE subscribe tx (devnet):** [`2RMQS9tY…rZgYDPqqtX`](https://explorer.solana.com/tx/2RMQS9tYsfgnRz42pUih4meEXTB6LeDSgtjfprG51vcAdKxVZJd9G7tEsZz8WzyjC9rjmLHCjQNFw9rZgYDPqqtX?cluster=devnet)
 - **Settlement story (the forge finding):** [`docs/adr/ADR-036`](adr/ADR-036-settle-market-txoracle-cpi-statkey-binding.md) · [`docs/adr/ADR-037`](adr/ADR-037-settle-statkeys-1-2-game-finalised-failclosed.md)
 - **TxLINE endpoint map:** [`docs/TXLINE-MAP.md`](TXLINE-MAP.md)
-- **Demo video:** _TODO — record during SF Jul 14–15; shot-list at [`docs/demo/SHOT-LIST.md`](demo/SHOT-LIST.md)_
-- **Deployed app:** _TODO — Vercel prototype URL (ADR-048); paste on deploy_
+- **Demo video:** _TODO — shot-list at [`docs/demo/SHOT-LIST.md`](demo/SHOT-LIST.md), script at [`docs/demo/SCRIPT-5min.md`](demo/SCRIPT-5min.md)_
+- **Deployed app:** [`ninety-nu.vercel.app`](https://ninety-nu.vercel.app) — prototype, fixture data (banner is on the site)
+- **Live API (REST + Swagger):** [`omnipitch.fly.dev/docs`](https://omnipitch.fly.dev/docs) — Fastify on Fly, Aiven Postgres + Valkey; `/rich/*` serves real football-data.org + API-Football data
 - **Ready-to-paste tweet + submission-form fields:** [`docs/SUBMISSION-FIELDS.md`](SUBMISSION-FIELDS.md)

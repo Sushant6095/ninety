@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { renderCard, sparkline, boothVoice, escapeMd, type CardState } from "./card";
 
-const APP = "https://omnipitch.gg";
+const APP = "https://ninety-nu.vercel.app";
 
 function liveState(over: Partial<CardState> = {}): CardState {
   return {
@@ -59,7 +59,7 @@ describe("renderCard (pure)", () => {
   it("keyboard links to the app match URL + a Follow callback", () => {
     const { reply_markup } = renderCard(liveState(), APP);
     const [trade, follow] = reply_markup.inline_keyboard[0];
-    expect(trade.url).toBe("https://omnipitch.gg/match/18193785");
+    expect(trade.url).toBe("https://ninety-nu.vercel.app/match/18193785");
     expect(follow.callback_data).toBe("follow:18193785");
   });
 

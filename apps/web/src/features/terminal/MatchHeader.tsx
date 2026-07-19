@@ -1,24 +1,26 @@
 import Image from "next/image";
 import { Star } from "lucide-react";
 import { TeamCrest } from "../../components/ui/TeamCrest";
+import { EntityLink } from "../../components/ui/EntityLink";
+import { teamHref, playerHrefByName } from "../../lib/entityLinks";
 import { teamMediaByCode } from "../../lib/teamMedia";
 import type { TerminalMatch } from "../../lib/terminal";
 
 interface MatchLive {
-  score: { home: number; away: number } | null; // null before kickoff — shows "vs" instead of a scoreline
-  minute: number | null; // null before kickoff — the live-minute pip is hidden, only the phase shows
+  score: { home: number; away: number } | null; // null before kickoff · shows "vs" instead of a scoreline
+  minute: number | null; // null before kickoff · the live-minute pip is hidden, only the phase shows
   phase: string;
   scorer: string; // "" hides the scorer line (pre-goal)
   status: string; // "LIVE" | "HALTED" …
 }
 
-/** Center header for the selected market — breadcrumb, both sides with FIFA/group meta, live score + status.
+/** Center header for the selected market · breadcrumb, both sides with FIFA/group meta, live score + status.
  *  `live` is REQUIRED and comes straight from the store: there is deliberately no fixture fallback, because a
  *  fallback is how the header ends up narrating a different minute than the River (ADR-055). `match` holds only
- *  the still parts — names, badges, venue.
+ *  the still parts · names, badges, venue.
  *
  *  ATMOSPHERE: the backdrop is the HOME side's baked crowd/stadium shot (TheSportsDB strFanart1), dimmed under a
- *  scrim so the numbers stay legible. It is team atmosphere, not a venue claim — the free tier has no image for a
+ *  scrim so the numbers stay legible. It is team atmosphere, not a venue claim · the free tier has no image for a
  *  neutral WC26 venue (MetLife/Lumen), so the venue NAME stays the authoritative text (ADR-062). */
 export function MatchHeader({ match, live }: { match: TerminalMatch; live: MatchLive }) {
   const { score, minute, phase, scorer, status } = live;
@@ -28,7 +30,7 @@ export function MatchHeader({ match, live }: { match: TerminalMatch; live: Match
       {atmosphere && (
         <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
           <Image src={atmosphere} alt="" fill sizes="100vw" className="object-cover object-center opacity-10" />
-          {/* legibility scrim (the sanctioned exception to the no-gradient law — never decorative): fade the
+          {/* legibility scrim (the sanctioned exception to the no-gradient law · never decorative): fade the
               atmosphere back to the surface token so the tape/score stay ≥4.5:1 */}
           <div className="absolute inset-0 bg-gradient-to-b from-surface/70 via-surface/85 to-surface" />
         </div>
@@ -50,13 +52,13 @@ export function MatchHeader({ match, live }: { match: TerminalMatch; live: Match
       </div>
 
       <div className="flex items-center justify-between gap-3">
-        <div className="flex min-w-0 items-center gap-3">
+        <EntityLink href={teamHref(match.homeCode)} ariaLabel={`${match.home} team page`} className="flex min-w-0 items-center gap-3">
           <TeamCrest code={match.homeCode} size={48} priority />
           <div className="min-w-0">
             <div className="truncate text-body font-semibold text-hi sm:text-heading">{match.home}</div>
             <div className="num text-label uppercase tracking-wide text-lo">{match.homeMeta}</div>
           </div>
-        </div>
+        </EntityLink>
 
         <div className="shrink-0 text-center">
           {score ? (

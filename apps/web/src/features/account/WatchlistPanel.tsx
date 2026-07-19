@@ -1,5 +1,5 @@
 "use client";
-// Watchlist — the board's followed-match idiom (LeftRail MyMatchRow): identity from the seed's ★ favourites,
+// Watchlist · the board's followed-match idiom (LeftRail MyMatchRow): identity from the seed's ★ favourites,
 // minute/score/halt from the ONE live store so a row never disagrees with the board.
 import Link from "next/link";
 import { TeamCrest } from "../../components/ui/TeamCrest";
@@ -40,7 +40,7 @@ export function WatchlistBody() {
   if (followed.length === 0) {
     return (
       <div className="grid place-items-center px-4 py-10 text-center">
-        <p className="text-body text-lo">Nothing followed yet — star a match on the board.</p>
+        <p className="text-body text-lo">Nothing followed yet · star a match on the board.</p>
         <Link
           href={routes.matches}
           className="mt-2 rounded-chip px-2 py-1 text-body text-up outline-none transition-opacity duration-200 hover:opacity-80 focus-visible:ring-1 focus-visible:ring-up/40 active:scale-[0.97]"

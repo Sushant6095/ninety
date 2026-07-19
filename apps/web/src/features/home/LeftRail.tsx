@@ -56,7 +56,7 @@ export function LeftRail() {
         </ul>
       </RailCard>
 
-      <RailCard label="World Cup 2026 — stages">
+      <RailCard label="World Cup 2026 · stages">
         <ul>
           {STAGES.map((s) => (
             <li key={s.name}>
@@ -104,7 +104,7 @@ function SettlementPanel() {
     >
       <section className="px-4 py-3">
       <h2 className="mb-2 flex items-center gap-1 text-label font-semibold uppercase tracking-label text-chain">
-        <span className="text-chain">◆</span> Settlement — Solana
+        <span className="text-chain">◆</span> Settlement · Solana
       </h2>
       <div className="num space-y-1 text-label leading-relaxed text-lo">
         <div>devnet · program <span className="text-hi">deployed</span></div>

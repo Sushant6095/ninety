@@ -1,4 +1,4 @@
-// Type shim for @svar-ui/filter-store — the published @svar-ui/react-filter@2.6.0 points its
+// Type shim for @svar-ui/filter-store · the published @svar-ui/react-filter@2.6.0 points its
 // "types" at dist/types/index.d.ts while the real file ships at dist/types/src/index.d.ts, so
 // TS cannot resolve the store's exports (`createArrayFilter`, field/set shapes) even though the
 // runtime bundles them. This declares just the surface the games filter uses, mirroring

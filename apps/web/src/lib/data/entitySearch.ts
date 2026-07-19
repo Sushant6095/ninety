@@ -9,6 +9,7 @@ import type { WcPlayer, WcCoach } from "../../data/wc26";
 import players from "../../data/wc26/players.json";
 import coaches from "../../data/wc26/coaches.json";
 import { routes } from "../routes";
+import { teamHref, playerHref } from "../entityLinks";
 
 export type EntityKind = "team" | "player" | "manager" | "venue" | "competition";
 
@@ -56,7 +57,8 @@ export function loadEntities(): Entity[] {
     importance: IMPORTANCE.competition,
   });
 
-  // Teams — navigable to /competition (Phase A honest destination; /team/[code] is Phase B).
+  // Teams — navigable to /team/[code] (ADR-083). Falls back to informational only if a team somehow lacks a
+  // baked profile (teamHref returns null); every WC26 nation has one, so in practice all teams are navigable.
   for (const t of TEAMS) {
     list.push({
       kind: "team",
@@ -64,7 +66,7 @@ export function loadEntities(): Entity[] {
       name: t.name,
       meta: `Group ${t.group} · World Cup 2026`,
       teamCode: t.code,
-      href: routes.competition,
+      href: teamHref(t.code) ?? undefined,
       importance: IMPORTANCE.team,
     });
   }
@@ -93,7 +95,9 @@ export function loadEntities(): Entity[] {
     });
   }
 
-  // Players — informational. Position · club · age.
+  // Players — navigable to /player/[id] for the baked top-20 (ADR-082); every other player stays informational
+  // (playerHref returns null → no href → no route to a 404). The honesty gate did not disappear, it moved: it now
+  // sits on "is this player in the baked profile set?" rather than "does any player page exist?".
   for (const p of players as WcPlayer[]) {
     const age = ageFrom(p.dob);
     list.push({
@@ -103,6 +107,7 @@ export function loadEntities(): Entity[] {
       meta: `${p.pos ?? "Player"} · ${p.teamName}${age != null ? ` · ${age}` : ""}`,
       teamCode: p.teamCode,
       photo: p.photo,
+      href: playerHref(p.id) ?? undefined,
       importance: IMPORTANCE.player,
     });
   }

@@ -16,6 +16,35 @@ export interface TelegramClient {
   sendPhoto(chatId: string, photo: Buffer, opts?: SendOpts & { caption?: string }): Promise<{ message_id: number }>;
 }
 
+// --- Inbound (getUpdates long-polling). A SEPARATE interface so the broadcast-only TelegramClient (and every
+// existing test fake of it) is untouched; FetchTelegram implements both. ---
+export interface TgChat {
+  id: number;
+  type: string; // "private" | "group" | "supergroup" | "channel"
+}
+export interface TgMessage {
+  message_id: number;
+  chat: TgChat;
+  text?: string;
+}
+export interface TgCallbackQuery {
+  id: string;
+  data?: string;
+  message?: TgMessage;
+}
+export interface TgUpdate {
+  update_id: number;
+  message?: TgMessage;
+  callback_query?: TgCallbackQuery;
+}
+
+export interface PollingClient {
+  /** Long-poll for updates newer than `offset` (Telegram holds the request up to `timeoutSec`). */
+  getUpdates(offset: number, timeoutSec?: number): Promise<TgUpdate[]>;
+  /** Ack a callback button press (stops the client-side spinner); optional toast text. */
+  answerCallbackQuery(id: string, text?: string): Promise<void>;
+}
+
 export class TgApiError extends Error {
   constructor(
     readonly status: number,
@@ -28,7 +57,7 @@ export class TgApiError extends Error {
 }
 
 /** Real client. JSON for text methods; sendPhoto uses multipart. Throws TgApiError (retryAfter on 429). */
-export class FetchTelegram implements TelegramClient {
+export class FetchTelegram implements TelegramClient, PollingClient {
   constructor(
     private readonly token: string,
     private readonly base = "https://api.telegram.org",
@@ -56,6 +85,13 @@ export class FetchTelegram implements TelegramClient {
   }
   async unpinChatMessage(chatId: string, messageId: number) {
     await this.call("unpinChatMessage", { chat_id: chatId, message_id: messageId });
+  }
+  getUpdates(offset: number, timeoutSec = 30) {
+    // allowed_updates trims the firehose to what we handle (skips the pin/unpin service messages our own cards cause).
+    return this.call<TgUpdate[]>("getUpdates", { offset, timeout: timeoutSec, allowed_updates: ["message", "callback_query"] });
+  }
+  async answerCallbackQuery(id: string, text?: string) {
+    await this.call("answerCallbackQuery", { callback_query_id: id, ...(text ? { text } : {}) });
   }
   async sendPhoto(chatId: string, photo: Buffer, opts: SendOpts & { caption?: string } = {}) {
     const form = new FormData();

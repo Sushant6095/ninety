@@ -122,7 +122,11 @@ export class TxLineClient {
   async authenticate(): Promise<Session> {
     if (this.session && !this.isExpired(this.session)) return this.session;
     if (this.inflight) return this.inflight;
-    this.inflight = this.handshake();
+    // On expiry, prefer a KEYPAIR-FREE guest-JWT renewal that reuses the existing apiToken (STEP 4 / docs
+    // §JWT lifecycle): a devnet txSig activates exactly ONCE, so re-activating 403s ("already used") AND
+    // needs the wallet — so a token-only prod host must never take the full-handshake path on routine
+    // expiry. Full handshake only when there is no apiToken to reuse.
+    this.inflight = this.session?.apiToken ? this.renewJwtOnly(this.session.apiToken) : this.handshake();
     try {
       this.session = await this.inflight;
       return this.session;
@@ -131,10 +135,25 @@ export class TxLineClient {
     }
   }
 
-  /** Force a fresh handshake (e.g. after a 401). */
+  /** Renew ONLY the guest JWT (POST /auth/guest/start — no wallet signature, no on-chain tx) and reuse the
+   *  SAME apiToken. This is the keypair-free refresh path; the wallet is never touched. */
+  private async renewJwtOnly(apiToken: string): Promise<Session> {
+    const jwt = await this.guestStart();
+    return { jwt, apiToken, obtainedAt: Date.now() };
+  }
+
+  /** Force a FULL fresh handshake (guest JWT → subscribe → sign → activate). Last resort only — needs the
+   *  wallet, and on devnet re-activation 403s. Used when a JWT-only renewal still 401s (dead apiToken). */
   async refresh(): Promise<Session> {
     this.session = null;
-    return this.authenticate();
+    this.inflight = null;
+    this.inflight = this.handshake();
+    try {
+      this.session = await this.inflight;
+      return this.session;
+    } finally {
+      this.inflight = null;
+    }
   }
 
   private isExpired(s: Session): boolean {
@@ -187,8 +206,17 @@ export class TxLineClient {
     let session = await this.authenticate();
     let res = await this.fetchImpl(url, { method: "GET", headers: this.authHeaders(session) });
     if (res.status === 401 || res.status === 403) {
-      session = await this.refresh();
-      res = await this.fetchImpl(url, { method: "GET", headers: this.authHeaders(session) });
+      // First a keypair-free JWT renewal (reuse the apiToken). Only if THAT still 401s — a dead apiToken,
+      // not just an expired JWT — fall back to the full on-chain re-handshake (needs the wallet).
+      if (session.apiToken) {
+        session = await this.renewJwtOnly(session.apiToken);
+        this.session = session;
+        res = await this.fetchImpl(url, { method: "GET", headers: this.authHeaders(session) });
+      }
+      if (res.status === 401 || res.status === 403) {
+        session = await this.refresh();
+        res = await this.fetchImpl(url, { method: "GET", headers: this.authHeaders(session) });
+      }
     }
     return (await this.readJson(res, path)) as T;
   }

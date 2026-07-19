@@ -37,9 +37,9 @@ export function MomentDetail({ m }: { m: Moment }) {
   const share = async () => {
     try {
       const nav = navigator as Navigator & { share?: (d: ShareData) => Promise<void> };
-      if (nav.share) await nav.share({ title: m.title, text: `${m.pick} ${m.fromPrice} → ${m.toPrice} — a ${rarity} moment on Ninety`, url });
+      if (nav.share) await nav.share({ title: m.title, text: `${m.pick} ${m.fromPrice} → ${m.toPrice} · a ${rarity} moment on Ninety`, url });
       else { await navigator.clipboard.writeText(url); flash("share"); }
-    } catch { /* user dismissed share sheet — no-op */ }
+    } catch { /* user dismissed share sheet · no-op */ }
   };
   const copy = async () => { try { await navigator.clipboard.writeText(url); flash("copy"); } catch { /* clipboard blocked */ } };
 
@@ -75,7 +75,7 @@ export function MomentDetail({ m }: { m: Moment }) {
             <span className="num text-heading font-semibold tabular-nums text-hi">{fmtPrice(m.toPrice)}</span>
             <span className={`num text-strong font-semibold tabular-nums ${up ? "text-up" : "text-down"}`}>{signedCR(swing)}</span>
           </div>
-          <p className="px-5 pb-4 pt-1 text-center text-caption text-lo">{m.pick} win probability — repriced inside a single minute.</p>
+          <p className="px-5 pb-4 pt-1 text-center text-caption text-lo">{m.pick} win probability · repriced inside a single minute.</p>
 
           {/* Owner + chain surface */}
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-hairline px-5 py-4">
@@ -86,13 +86,13 @@ export function MomentDetail({ m }: { m: Moment }) {
             {m.mintSig ? (
               <ProofBadge sig={m.mintSig} label="Minted" />
             ) : (
-              <span className="text-label font-medium uppercase tracking-wide text-lo">Mintless — not on-chain</span>
+              <span className="text-label font-medium uppercase tracking-wide text-lo">Mintless · not on-chain</span>
             )}
           </div>
         </article>
 
         <div className="mt-4 grid gap-3">
-          {/* Escape hatch — a moment is a swing on a real market; let the viewer open that market instead of
+          {/* Escape hatch · a moment is a swing on a real market; let the viewer open that market instead of
               dead-ending on the card. "View the market" reads right whether the match is live or settled. */}
           <Link
             href={routes.match(m.matchId)}

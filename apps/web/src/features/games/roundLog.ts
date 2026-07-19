@@ -1,13 +1,13 @@
 "use client";
-// Next Goal round history — GAMING-ONLY. A tiny localStorage-backed log of resolved rounds
+// Next Goal round history · GAMING-ONLY. A tiny localStorage-backed log of resolved rounds
 // (correct/missed calls only; NO_CALL is a non-event) written by useNextGoalGame's finalize and
-// read by the /play round filter. No accounts, no backend — same persistence posture as the
+// read by the /play round filter. No accounts, no backend · same persistence posture as the
 // streak stats (ADR-060). Immutable appends; useSyncExternalStore keeps readers in sync.
 import { useSyncExternalStore } from "react";
 import type { Pick } from "./nextGoalMachine";
 
 export interface RoundRecord {
-  /** Epoch ms at resolution — doubles as the id. */
+  /** Epoch ms at resolution · doubles as the id. */
   at: number;
   /** What the player called: H | A | N (nobody). */
   pick: Pick;
@@ -51,12 +51,12 @@ export function loadRounds(): RoundRecord[] {
 
 export function appendRound(round: RoundRecord): void {
   if (typeof window === "undefined") return;
-  const next = [round, ...loadRounds()].slice(0, MAX_ROUNDS); // immutable — never mutate the snapshot
+  const next = [round, ...loadRounds()].slice(0, MAX_ROUNDS); // immutable · never mutate the snapshot
   cache = next;
   try {
     window.localStorage.setItem(ROUNDS_KEY, JSON.stringify(next));
   } catch {
-    /* private mode / quota — the in-memory log still updates */
+    /* private mode / quota · the in-memory log still updates */
   }
   listeners.forEach((fn) => fn());
 }
@@ -66,7 +66,7 @@ export function subscribeRounds(fn: () => void): () => void {
   return () => listeners.delete(fn);
 }
 
-/** The resolved-rounds log, newest first — re-renders on every append. */
+/** The resolved-rounds log, newest first · re-renders on every append. */
 export function useRoundLog(): RoundRecord[] {
   return useSyncExternalStore(subscribeRounds, loadRounds, () => EMPTY);
 }

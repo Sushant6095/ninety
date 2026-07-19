@@ -1,5 +1,5 @@
 "use client";
-// Round history filter (SVAR react-filter, MIT) — GAMING-ONLY (ADR-060 posture): never import
+// Round history filter (SVAR react-filter, MIT) · GAMING-ONLY (ADR-060 posture): never import
 // this into terminal/board/trade surfaces. FilterBar is re-skinned via svar-ninety.css, scoped
 // under .games-filter; data-wx-portal-root keeps SVAR's dropdown portals INSIDE the scope so no
 // stock chrome can leak. Filtering runs through the library's createArrayFilter over the
@@ -48,7 +48,7 @@ export function RoundFilter() {
     return (
       <section aria-label="Past rounds" className="w-full max-w-sm rounded-card border border-hairline/70 bg-surface px-4 py-3">
         <h2 className="text-label font-bold uppercase tracking-[0.16em] text-hi">Past rounds</h2>
-        <p className="mt-2 text-caption text-lo">No rounds yet — call a goal above and your history lands here.</p>
+        <p className="mt-2 text-caption text-lo">No rounds yet · call a goal above and your history lands here.</p>
       </section>
     );
   }

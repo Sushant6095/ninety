@@ -24,14 +24,14 @@ interface TradePanelProps {
   selected: Outcome;
   code: string; // outcome's team code, e.g. "EGY"
   markPx: number; // live spot price of the selected outcome (0..100)
-  free: number; // uncommitted credits — buying power
-  heldShares: number; // shares held of the selected outcome — sell ceiling
+  free: number; // uncommitted credits · buying power
+  heldShares: number; // shares held of the selected outcome · sell ceiling
   onPlace: (side: "buy" | "sell", size: number) => PlaceResult; // server-verified analog; applies optimistically
-  disabled?: boolean; // market halted — controls lock, greyed + inert (the felt-freeze during the halt)
+  disabled?: boolean; // market halted · controls lock, greyed + inert (the felt-freeze during the halt)
 }
 
 /** Buy/Sell + size (slider + quick amounts) → live LMSR quote → confirm. On confirm the parent applies the fill
- *  optimistically (or rejects — insufficient credits / oversell — via toast). Client previews; the store verifies.
+ *  optimistically (or rejects · insufficient credits / oversell · via toast). Client previews; the store verifies.
  *  `disabled` (halt) makes the whole panel inert + greyed so the user FEELS trading was taken away, then restored. */
 export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPlace, disabled = false }: TradePanelProps) {
   const [side, setSide] = useState<"buy" | "sell">("buy");
@@ -53,13 +53,13 @@ export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPl
   const setSz = (n: number) => { setSize(Math.max(0, Math.min(MAX, n))); setFill(null); };
   const flip = (s: "buy" | "sell") => { setSide(s); setFill(null); };
   const submit = () => {
-    const r = onPlace(side, size); // parent applies the fill (or toasts a reject — those stay in placeOrder)
+    const r = onPlace(side, size); // parent applies the fill (or toasts a reject · those stay in placeOrder)
     setFill(r.ok ? { size, code, avgPx: r.avgPx ?? markPx } : null);
   };
 
   // submit → fill confirmation → toast as ONE one-shot GSAP timeline (ADR-061). Off the price tape and only
   // on a confirmed fill, so it is wall-safe; transform/opacity only; reduced motion drops the travel and
-  // fires the toast immediately. The press dip itself stays CSS active:scale (ADR-058 — untouched).
+  // fires the toast immediately. The press dip itself stays CSS active:scale (ADR-058 · untouched).
   const scope = useRef<HTMLDivElement>(null);
   const fillRef = useRef<HTMLParagraphElement>(null);
   useGSAP(
@@ -135,7 +135,7 @@ export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPl
 
       {/* Metrics ABOVE, action button full-width BELOW (Hyperliquid/Polymarket pattern). They used to share
           one `flex items-end` row with a shrink-0 button; at lg's narrow trade column the long button label
-          ("Buy Away · EGY @ 55.9") ate the row and the flex-1 metrics dl collapsed to 0px — Cost/Avg/Max
+          ("Buy Away · EGY @ 55.9") ate the row and the flex-1 metrics dl collapsed to 0px · Cost/Avg/Max
           overlapped into an unreadable cramp. Stacking gives the three columns real width at every breakpoint
           and reads as a stronger, clearer CTA. */}
       <dl className="mt-3 grid grid-cols-3 gap-2">
@@ -155,7 +155,7 @@ export function TradePanel({ amm, selected, code, markPx, free, heldShares, onPl
       {fill && (
         <p ref={fillRef} className="num mt-2 flex items-center gap-1 text-label text-up" role="status">
           <span aria-hidden>✓</span>
-          Filled {fill.size} {fill.code} @ {fill.avgPx.toFixed(1)} — position updated (optimistic; reconciles on the fill frame).
+          Filled {fill.size} {fill.code} @ {fill.avgPx.toFixed(1)} · position updated (optimistic; reconciles on the fill frame).
         </p>
       )}
     </div>

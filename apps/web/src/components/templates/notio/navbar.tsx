@@ -18,8 +18,9 @@ export default function Navbar() {
     { label: "Docs", href: DOCS_URL, external: true },
   ];
 
+  // top-10 (40px) clears the 32px global PrototypeRibbon — a fixed top-4 pill overlapped it by 16px (S9).
   return (
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 mx-2 md:mx-4 lg:mx-6 w-[calc(100%-1rem)] md:max-w-3xl lg:max-w-5xl xl:max-w-6xl bg-background/80 backdrop-blur-md py-2 px-4 rounded-xl border border-hairline/70">
+    <header className="fixed top-10 left-1/2 -translate-x-1/2 z-50 mx-2 md:mx-4 lg:mx-6 w-[calc(100%-1rem)] md:max-w-3xl lg:max-w-5xl xl:max-w-6xl bg-background/80 backdrop-blur-md py-2 px-4 rounded-xl border border-hairline/70">
       <nav aria-label="Primary" className="flex flex-row justify-between items-center py-1">
         <motion.div
           initial={{ opacity: 0, x: -20 }}

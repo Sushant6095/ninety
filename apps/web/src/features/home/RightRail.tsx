@@ -8,6 +8,7 @@ import { FeaturedPanel } from "./FeaturedPanel";
 import { useMatchLiveList } from "../live/matchLiveStore";
 import { routes } from "../../lib/routes";
 import { LEADERS, MARKETS } from "../../lib/fixtures";
+import type { MarketRow } from "../../lib/types";
 import { MOMENTS, swingOf } from "../../lib/moments";
 import { fmtPrice } from "../../lib/format";
 
@@ -30,7 +31,7 @@ function untilLabel(kickoffAt: string, from: number): string {
   return mins < 60 ? `in ${mins}m` : `in ${Math.floor(mins / 60)}h ${mins % 60}m`;
 }
 
-export function RightRail() {
+export function RightRail({ featured }: { featured?: MarketRow }) {
   // Starting soon is DERIVED from the matches the store says are still to kick off. It used to be a hardcoded
   // array, which drifted: it had Senegal kicking off against England in 1h 40m while Senegal was 41' into a live
   // match against France on the same board. A rail that invents its own slate will always end up contradicting it.
@@ -51,7 +52,9 @@ export function RightRail() {
 
   return (
     <aside aria-label="Featured match and top traders" className="flex w-full flex-col gap-3">
-      <FeaturedPanel market={MARKETS[0]} />
+      {/* The live WC Final (getBoardMarkets → GET /markets) headlines the hero; the fixture slate is only the
+          offline fallback. Featuring the real, feed-priced market instead of a fabricated live game. */}
+      <FeaturedPanel market={featured ?? MARKETS[0]} />
 
       <RailCard
         label="Top traders today"

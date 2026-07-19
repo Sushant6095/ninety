@@ -1,8 +1,8 @@
 "use client";
-// /account — the verifiable forecasting track record. Being RIGHT is the product: credits, open positions,
+// /account · the verifiable forecasting track record. Being RIGHT is the product: credits, open positions,
 // accuracy, owned moments, rank, and the on-chain receipts, in one place. Structure is the re-skinned
 // watermelon web3-dashboard shell (rail · topbar · stat grid · panels); every gut is Ninety's own.
-// /portfolio redirects here — this page absorbs its equity/positions idiom.
+// /portfolio redirects here · this page absorbs its equity/positions idiom.
 import Link from "next/link";
 import { Activity, Coins, LayoutGrid, Layers, ShieldCheck, Sparkles, Star, Target, TrendingUp, Trophy } from "lucide-react";
 import { DashboardRail, DashboardShell, DashboardTopbar, Panel, StatCard, StatGrid, type RailItem } from "../../components/vendor/watermelon/dashboard-shell";
@@ -33,7 +33,7 @@ const RAIL: RailItem[] = [
   { label: "Watchlist", href: "#watchlist", icon: Star },
 ];
 
-/** Rail footer — identity only. The wallet never holds value here; it signs and it proves. */
+/** Rail footer · identity only. The wallet never holds value here; it signs and it proves. */
 function RailIdentity() {
   return (
     <div className="rounded-card border border-hairline bg-surface p-3">
@@ -68,7 +68,7 @@ export function AccountPage() {
   const invested = positions.reduce((s, p) => s + costBasis(p), 0);
   const unreal = mv - invested;
   // Display sum = Σ of the per-row ROUNDED values, so the card always equals what the rows show
-  // (round-then-sum vs sum-then-round drifted by 1 CR — a read-out-loud bug on a numbers product).
+  // (round-then-sum vs sum-then-round drifted by 1 CR · a read-out-loud bug on a numbers product).
   const unrealDisplay = positions.reduce((s, p) => s + Math.round(unrealized(p)), 0);
   const equity = ACCOUNT.free + mv;
   // Rescale the seed curve's SHAPE so it starts at the day-open and ENDS exactly at the live equity. Just
@@ -97,7 +97,7 @@ export function AccountPage() {
         <DashboardShell rail={<DashboardRail items={RAIL} footer={<RailIdentity />} />}>
           <DashboardTopbar
             title="Account"
-            sub="Your forecasting record — every call priced live, every settlement proven on-chain."
+            sub="Your forecasting record · every call priced live, every settlement proven on-chain."
             actions={
               <Link
                 href={routes.matches}
@@ -163,7 +163,7 @@ export function AccountPage() {
             <Panel id="moments" title="Moments owned" count={moments.length} action={{ label: "Gallery", href: routes.moments }}>
               {moments.length === 0 ? (
                 <div className="grid place-items-center px-4 py-14 text-center">
-                  <p className="text-body text-lo">No moments yet — capture a swing while a match is live.</p>
+                  <p className="text-body text-lo">No moments yet · capture a swing while a match is live.</p>
                   <Link
                     href={routes.moments}
                     className="mt-2 rounded-chip px-2 py-1 text-body text-up outline-none transition-opacity duration-200 hover:opacity-80 focus-visible:ring-1 focus-visible:ring-up/40 active:scale-[0.97]"
@@ -176,7 +176,7 @@ export function AccountPage() {
                   {moments.map((m) => (
                     <div key={m.id} className="grid content-start gap-2">
                       <MomentCard m={m} />
-                      {/* the mint receipt — MomentCard is one big Link, so the Solscan anchor lives beside it */}
+                      {/* the mint receipt · MomentCard is one big Link, so the Solscan anchor lives beside it */}
                       {m.mintSig && <ProofBadge sig={m.mintSig} label="Minted" className="justify-self-start" />}
                     </div>
                   ))}
@@ -195,7 +195,7 @@ export function AccountPage() {
           </Reveal>
 
           <p className="pb-2 text-center text-label text-lo">
-            Ninety runs on play-money credits — no deposits, no cash value. The wallet is identity and proof only.
+            Ninety runs on play-money credits · no deposits, no cash value. The wallet is identity and proof only.
           </p>
         </DashboardShell>
       </main>

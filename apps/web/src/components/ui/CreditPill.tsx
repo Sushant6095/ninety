@@ -12,7 +12,7 @@ interface CreditPillProps {
 const fmt = (n: number): string => Math.round(n).toLocaleString("en-US");
 
 /** Play-money balance chip → portfolio. Green dot + "CR" (credits, never $).
- *  The balance counts up/down between values on change — the magicui number-ticker idiom
+ *  The balance counts up/down between values on change · the magicui number-ticker idiom
  *  (framer `animate` over m.count on the token ease), rolling from the PREVIOUS balance, not 0.
  *  Count-ups are for credits/stats only; a live price keeps its 180ms LivePrice flash instead.
  *  Reduced motion (and SSR/first paint) shows the final value instantly. */
@@ -43,7 +43,7 @@ export function CreditPill({ credits }: CreditPillProps) {
   return (
     <Link
       href={routes.portfolio}
-      aria-label={`${fmt(credits)} credits — open portfolio`}
+      aria-label={`${fmt(credits)} credits · open portfolio`}
       className="group inline-flex items-center gap-2 rounded-chip bg-surface px-3 py-1 outline-none ring-1 ring-inset ring-hairline transition-[box-shadow,transform,background-color] duration-200 ease-out hover:ring-up/40 focus-visible:shadow-[0_0_0_2px_var(--up)] active:scale-[0.97] active:bg-hairline/40"
     >
       <span className="h-1.5 w-1.5 rounded-full bg-up shadow-[0_0_6px_var(--up)]" />

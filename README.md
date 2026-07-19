@@ -53,8 +53,8 @@ Verified against the repo, not estimated.
 
 | | |
 | :--- | :--- |
-| **128** commits | in the 8-day build sprint (2026-07-07 → 2026-07-14) |
-| **57** ADRs | every architectural, product, and design call recorded in [`docs/adr/`](docs/adr/) |
+| **177** commits | in the 12-day build sprint (2026-07-07 → 2026-07-18) |
+| **79** ADRs | every architectural, product, and design call recorded in [`docs/adr/`](docs/adr/) |
 | **257** automated tests pass | 248 TypeScript (vitest, 6 packages) + 9 Python (pytest) |
 | **5 / 5** Anchor tests | on-chain leaderboard claim, localnet |
 | **TxLINE live on devnet** | subscribe → activate → snapshot ran authenticated against a real fixture |
@@ -163,7 +163,7 @@ sequenceDiagram
 
 ## Architecture
 
-The whole system is decided, not improvised — 57 ADRs in [`docs/adr/`](docs/adr/) record every call. Two laws hold it together: **all inter-service traffic flows through `packages/bus`** (no service calls another directly), and **the engine is the single writer of market state** (journal-then-ack, one logical writer per market). The full design document with layer maps and diagrams: **[ARCHITECTURE.md](ARCHITECTURE.md)**.
+The whole system is decided, not improvised — 79 ADRs in [`docs/adr/`](docs/adr/) record every call. Two laws hold it together: **all inter-service traffic flows through `packages/bus`** (no service calls another directly), and **the engine is the single writer of market state** (journal-then-ack, one logical writer per market). The full design document with layer maps and diagrams: **[ARCHITECTURE.md](ARCHITECTURE.md)**.
 
 ```mermaid
 flowchart LR
@@ -201,7 +201,7 @@ packages/
 programs/
   omnipitch_core/  Anchor program — markets, proof-gated settle, leaderboard claims
 infra/             docker-compose · Fly (4 processes) · free-tier map · grafana
-docs/              57 ADRs · TxLINE map + captured samples · submission · demo script
+docs/              79 ADRs · TxLINE map + captured samples · submission · demo script
 design/            tokens · screen references · provenance ledger · review verdicts
 ```
 

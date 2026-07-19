@@ -1,0 +1,25 @@
+{
+  "markets": [
+    {
+      "marketId": "18257739",
+      "matchId": "18257739",
+      "kind": "1X2",
+      "status": "OPEN",
+      "home": "Spain",
+      "away": "Argentina",
+      "stage": "Final",
+      "kickoffAt": "2026-07-19T19:00:00.000Z",
+      "minute": null,
+      "score": null,
+      "mark": {
+        "H": 0.146339038396131,
+        "D": 0.5471053044208485,
+        "A": 0.3065556571830205
+      },
+      "hazard": 0.000010848641149522012,
+      "markTs": 1784453641813,
+      "settledOutcome": null,
+      "settleSig": null
+    }
+  ]
+}

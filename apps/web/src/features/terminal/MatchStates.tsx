@@ -36,7 +36,7 @@ export function StateSwitcher({ view, onChange }: { view: MatchView; onChange: (
   );
 }
 
-/** PRE — countdown, opening prices note, claim CTA (a cold user's first credits before kickoff). */
+/** PRE · countdown, opening prices note, claim CTA (a cold user's first credits before kickoff). */
 export function PreMatchPanel({ kickoff }: { kickoff: string }) {
   const [claimed, setClaimed] = useState(false);
   return (
@@ -46,7 +46,7 @@ export function PreMatchPanel({ kickoff }: { kickoff: string }) {
           <div className="text-label font-semibold uppercase tracking-label text-lo">Kicks off in</div>
           <div className="num mt-1 font-display text-display font-bold tabular-nums text-hi">{kickoff}</div>
         </div>
-        <p className="max-w-[240px] text-caption leading-relaxed text-lo">Opening prices are live now — the market goes hot at kickoff. Buy early or wait for the whistle.</p>
+        <p className="max-w-[240px] text-caption leading-relaxed text-lo">Opening prices are live now · the market goes hot at kickoff. Buy early or wait for the whistle.</p>
       </div>
       {!claimed ? (
         <button
@@ -57,13 +57,13 @@ export function PreMatchPanel({ kickoff }: { kickoff: string }) {
           <Gift className="h-4 w-4" aria-hidden strokeWidth={2} /> Claim 1,000 credits
         </button>
       ) : (
-        <div className="mt-4 inline-flex items-center gap-2 text-caption font-medium text-up"><Check className="h-4 w-4" aria-hidden strokeWidth={2.5} /> 1,000 credits added — you&#39;re ready for kickoff.</div>
+        <div className="mt-4 inline-flex items-center gap-2 text-caption font-medium text-up"><Check className="h-4 w-4" aria-hidden strokeWidth={2.5} /> 1,000 credits added · you&#39;re ready for kickoff.</div>
       )}
     </div>
   );
 }
 
-/** HALTED — booth callout under the amber banner while trading is paused. */
+/** HALTED · booth callout under the amber banner while trading is paused. */
 export function HaltCallout({ reason }: { reason: string }) {
   return (
     <div className="border-b border-hairline px-4 py-3">
@@ -86,7 +86,7 @@ interface SettledHeld {
   avgEntry: number;
 }
 
-/** SETTLED — final result, on-chain proof, your P&L recap, and mint/claim CTAs. */
+/** SETTLED · final result, on-chain proof, your P&L recap, and mint/claim CTAs. */
 export function SettledPanel({ result, held }: { result: SettledResult; held?: SettledHeld }) {
   const [claimed, setClaimed] = useState(false);
   const won = held ? held.outcome === result.winner : false;

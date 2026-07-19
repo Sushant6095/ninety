@@ -9,7 +9,7 @@ interface YourPositionProps {
   opened: string; // "opened pre-match @ 22'"
 }
 
-/** The user's live position in the selected market — value + unrealized P&L recompute off the ticking mark. */
+/** The user's live position in the selected market · value + unrealized P&L recompute off the ticking mark. */
 export function YourPosition({ code, shares, avgEntry, markPct, opened }: YourPositionProps) {
   const value = (shares * markPct) / 100 * 100; // shares × price(cr); price in 0..100 → credits per share
   const cost = shares * avgEntry / 100 * 100;

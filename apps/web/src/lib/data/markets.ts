@@ -78,10 +78,16 @@ export async function getBoardMarketsLive(): Promise<MarketRow[]> {
   return markets.map(toMarketRow);
 }
 
-/** The board's markets. PINNED to fixtures for now (CONNECT Phase 2 decision): the board is a store-seeded
- *  composite and the live universe is one unpriced match, so a live board renders empty and contradicts its
- *  fixture-seeded rails. Un-pin (return getBoardMarketsLive()) once the universe is populated + the store seam
- *  is rewired. */
+/** The board's markets — NOW LIVE (ADR-084). GET /markets carries the real WC Final priced from the TxLINE feed
+ *  (cortex-synthesized 1X2). We serve those real markets and DROP the fixture slate so the board never shows the
+ *  eight fabricated simultaneous "live" matches (the #1 mockup signal). The fixture MARKETS remain only as an
+ *  offline safety net if the API is unreachable at request time (server component, force-dynamic). */
 export async function getBoardMarkets(): Promise<MarketRow[]> {
+  try {
+    const live = await getBoardMarketsLive();
+    if (live.length) return live;
+  } catch {
+    /* API unreachable → fall through to the offline fixture slate */
+  }
   return MARKETS;
 }

@@ -1,8 +1,8 @@
 "use client";
-// The Next Goal state machine (ADR-060) — READ-ONLY. It reads the ONE live store via useMatchLive and
+// The Next Goal state machine (ADR-060) · READ-ONLY. It reads the ONE live store via useMatchLive and
 // resolves purely by observing a score delta while LOCKED. It imports NO store writers and never touches
 // match state; the goal is produced by the page's feed harness (app/play/matchSimHarness.ts). The only
-// coupling to the page is two plain UI callbacks (onLock/onReset) — round events, not match state.
+// coupling to the page is two plain UI callbacks (onLock/onReset) · round events, not match state.
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useMatchLive, subscribeMatch, TERMINAL_MATCH_ID } from "../live/matchLiveStore";
 import {
@@ -38,9 +38,9 @@ export interface NextGoalView {
 
 const ZERO: Score = { home: 0, away: 0 };
 
-/** @param onLock  fired when a pick commits — /play's harness uses it to schedule the (store-owned) goal;
+/** @param onLock  fired when a pick commits · /play's harness uses it to schedule the (store-owned) goal;
  *                 on /terminal it is a no-op (the game reads the REAL halt goal, never fabricates one).
- *  @param onReset fired when a new round starts — /play rewinds the demo match; /terminal no-ops (read-only).
+ *  @param onReset fired when a new round starts · /play rewinds the demo match; /terminal no-ops (read-only).
  *  @param opts.resolveWindowMs how long to wait after lock for a goal before NO_CALL (default /play's 2.2s). */
 export function useNextGoalGame(
   onLock: () => void,
@@ -130,7 +130,7 @@ export function useNextGoalGame(
     after(resolveWindowMs, () => resolve(null)); // no goal by the window → NO_CALL (or a "nobody" win)
   }, [after, clearTimers, resolve, resolveWindowMs, score]);
 
-  // Resolve off the REAL goal WHILE LOCKED — the read-only mechanism (the same score delta the halt money-shot
+  // Resolve off the REAL goal WHILE LOCKED · the read-only mechanism (the same score delta the halt money-shot
   // writes via land()). Subscribe to RAW store emits, not React renders, so the halt's reset()→land() dip is
   // seen even under reduced motion (where render-time reads coalesce to the final frame). A score DROP below
   // the lock baseline is a rewind (the terminal Replay's reset), so re-arm to the new floor; the following
@@ -166,7 +166,7 @@ export function useNextGoalGame(
       }
       if (p === "PICKING") {
         if (side === pickRef.current) lock(); // express lock: re-tap your side to commit now
-        else setPick(side); // switch — the countdown keeps running (tension does not reset)
+        else setPick(side); // switch · the countdown keeps running (tension does not reset)
       }
     },
     [after, lock],

@@ -27,7 +27,7 @@ function Empty({ text }: { text: string }) {
   return <p className="px-4 py-10 text-center text-body leading-relaxed text-lo">{text}</p>;
 }
 
-/** Match-view depth tabs (UI-LOCK §7.1) — Sofascore depth INSIDE the match view, never on the board: Market (the
+/** Match-view depth tabs (UI-LOCK §7.1) · Sofascore depth INSIDE the match view, never on the board: Market (the
  *  Booth) · Stats · Lineups · H2H · Events · Positions. Re-skinned radix Tabs. Stats/Lineups/H2H swap 1:1 for api-football v3. */
 export function MatchTabs({ positions, mark }: { positions: PositionRow[]; mark: Record<Outcome, number> }) {
   return (
@@ -44,7 +44,7 @@ export function MatchTabs({ positions, mark }: { positions: PositionRow[]; mark:
 
       <Tabs.Content value="positions" className="tab-fade outline-none">
         {positions.length === 0 ? (
-          <Empty text="No position in this match yet — arm an outcome above to trade." />
+          <Empty text="No position in this match yet · arm an outcome above to trade." />
         ) : (
           <ul className="divide-y divide-hairline/60">
             {positions.map((p) => {

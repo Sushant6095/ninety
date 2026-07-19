@@ -19,7 +19,7 @@ export function WatchReel() {
             The whole idea, in one film.
           </h2>
           <p data-arrive-item className="mt-5 max-w-[46ch] text-strong leading-relaxed text-lo">
-            The game moving, the price moving with it, the result proven on-chain. Press play — it
+            The game moving, the price moving with it, the result proven on-chain. Press play. It
             opens full screen.
           </p>
         </div>

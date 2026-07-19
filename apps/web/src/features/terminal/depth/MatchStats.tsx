@@ -3,7 +3,7 @@ import { MATCH_STATS, type StatRow } from "../../../lib/matchdepth";
 // Sofascore-style stat row: home value | label | away value, with a proportional split bar. Swaps 1:1 for
 // api-football v3 `fixtures/statistics` (per-team {type, value}).
 //
-// Color grammar (dataviz): up/down are RESERVED for price direction on this exchange — a team side may not
+// Color grammar (dataviz): up/down are RESERVED for price direction on this exchange · a team side may not
 // wear them (the rail shows EGY green because its price is up; a green AUS bar 200px away contradicts it).
 // Side identity is positional (home left, away right, values at the ends); color carries EMPHASIS only —
 // the leading side takes the bright ink, mirroring the hi/lo text treatment on the values themselves.

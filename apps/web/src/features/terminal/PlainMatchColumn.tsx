@@ -19,7 +19,7 @@ import type { MarketRow, Outcome } from "../../lib/types";
 
 // ── The non-featured match terminal ─────────────────────────────────────────────────────────────────
 // Any board market that ISN'T the AUS-EGY money-shot opens here: its OWN header, score, teams, River and
-// price cells — all from the fixture identity + the ONE live store, keyed by this matchId. It deliberately
+// price cells · all from the fixture identity + the ONE live store, keyed by this matchId. It deliberately
 // carries NONE of the featured halt choreography (no useHaltSequence, no Next Goal card, no Ashour cliff) and
 // never borrows AUS-EGY data. Density comes from being real, not from replaying another match's story.
 
@@ -28,7 +28,7 @@ const AMM_B = 1200;
 const OUTCOMES: Outcome[] = ["H", "D", "A"];
 const EMPTY_MARK: Record<Outcome, number> = { H: 0, D: 0, A: 0 };
 
-// LMSR inventory that reproduces the live mark: q = b·ln(p) — the same derivation lib/terminal's MATCH.amm is
+// LMSR inventory that reproduces the live mark: q = b·ln(p) · the same derivation lib/terminal's MATCH.amm is
 // built from, so a client-side quote is priced off exactly the prices the cells show. ponytail: derived from the
 // store mark rather than a per-match seeded amm (there is only one seeded amm, the featured market's).
 function ammFromPrices(prices: Record<Outcome, number>): { q: number[]; b: number; spreadMult: number } {
@@ -36,7 +36,7 @@ function ammFromPrices(prices: Record<Outcome, number>): { q: number[]; b: numbe
 }
 
 // The still identity for MatchHeader, from the board fixture. Meta stays honest ("HOME"/"AWAY", no invented FIFA
-// rank/venue for non-featured markets); the amm/goal fields exist only to satisfy the type — the live amm above
+// rank/venue for non-featured markets); the amm/goal fields exist only to satisfy the type · the live amm above
 // is what actually prices a trade.
 function toTerminalMatch(m: MarketRow): TerminalMatch {
   return {
@@ -48,14 +48,14 @@ function toTerminalMatch(m: MarketRow): TerminalMatch {
   };
 }
 
-/** A quiet momentum River — the home-win% trace over the 0–90' axis, no halt overlays. Ticks live via the store. */
+/** A quiet momentum River · the home-win% trace over the 0–90' axis, no halt overlays. Ticks live via the store. */
 function PlainRiver({ homeCode, spark, minute }: { homeCode: string; spark: number[]; minute: number }) {
   const rising = spark.length > 1 && spark[spark.length - 1] >= spark[0];
   const nowPct = Math.min(100, Math.max(0, (minute / FULL_TIME) * 100));
   return (
     <div className="border-b border-hairline px-4 py-3">
       <h3 className="mb-1 text-label font-semibold uppercase tracking-label text-lo">
-        Momentum River — <span className="text-hi">{homeCode} win %</span>
+        Momentum River · <span className="text-hi">{homeCode} win %</span>
       </h3>
       <div className="relative">
         <MomentumRiver data={spark} up={rising} height={300} yRange={[0, 100]} totalMinutes={FULL_TIME} />
@@ -74,7 +74,7 @@ function PlainRiver({ homeCode, spark, minute }: { homeCode: string; spark: numb
 }
 
 /** Route-facing wrapper: resolve the fixture, then hand a guaranteed market to the inner (so every hook runs
- *  unconditionally). The route already 404s an unknown id — the null here is belt-and-braces. */
+ *  unconditionally). The route already 404s an unknown id · the null here is belt-and-braces. */
 export function PlainMatchColumn({ matchId }: { matchId: string }) {
   const market = marketByMatchId(matchId);
   if (!market) return null;
@@ -128,7 +128,7 @@ function PlainColumnInner({ matchId, market }: { matchId: string; market: Market
       const q = lmsrQuote(amm.q, amm.b, IDX[selected], size, side, amm.spreadMult);
       const code = codeFor(selected);
       if (side === "buy") {
-        if (q.cost > free) { const msg = `Not enough credits — needs ${fmtCR(q.cost)}, you have ${fmtCR(free)}.`; toast.error(msg); return { ok: false, error: msg }; }
+        if (q.cost > free) { const msg = `Not enough credits · needs ${fmtCR(q.cost)}, you have ${fmtCR(free)}.`; toast.error(msg); return { ok: false, error: msg }; }
         setFree((f) => f - q.cost);
         setPositions((prev) => {
           const i = prev.findIndex((p) => p.outcome === selected);

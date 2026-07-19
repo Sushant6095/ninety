@@ -3,9 +3,9 @@
 // featured replay, not invented testimonials; each line is stamped with the move it made, ending on the
 // 74' goal that repriced Canada to 61.4 (the number the price-is-probability section enlarges).
 const QUOTES = [
-  { minute: 9, text: "Canada start on the front foot — the market drifts their way before a real chance arrives.", value: "+3.1", goal: false },
-  { minute: 63, text: "Morocco steady the game and the tape goes quiet. No move — the Booth calls it even for now.", value: "+0.6", goal: false },
-  { minute: 74, text: "Canada strike! The market lurches — CAN to win jumps from 41 to 61.4 on the goal.", value: "61.4", goal: true },
+  { minute: 9, text: "Canada start on the front foot. The market drifts their way before a real chance arrives.", value: "+3.1", goal: false },
+  { minute: 63, text: "Morocco steady the game and the tape goes quiet. No move; the Booth calls it even for now.", value: "+0.6", goal: false },
+  { minute: 74, text: "Canada strike! The market lurches: CAN to win jumps from 41 to 61.4 on the goal.", value: "61.4", goal: true },
 ] as const;
 
 /** "From the booth" — three commentary lines as quote cards, sitting between the free-credits panel
@@ -23,7 +23,7 @@ export function BoothQuotes() {
           The Booth explains every swing.
         </h2>
         <p data-arrive-item className="mt-4 max-w-[52ch] text-strong leading-relaxed text-lo">
-          Live commentary from the Canada–Morocco market — every line stamped with the move it made.
+          Live commentary from the Canada–Morocco market, every line stamped with the move it made.
         </p>
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
           {QUOTES.map((q) => (

@@ -4,7 +4,7 @@ import { ATTACK } from "../../lib/terminal";
 
 // Signed attack pressure over the last ~30 windows: positive = away/Egypt (bright ink), negative = home (muted ink).
 // Green/pink are reserved for price direction only (semantic-color law); the two teams read by ink brightness + sign.
-// Inline SVG — NOT a chart lib. The hero Momentum River (lightweight-charts) is the only real chart (ADR-045).
+// Inline SVG · NOT a chart lib. The hero Momentum River (lightweight-charts) is the only real chart (ADR-045).
 const BARS = ATTACK.bars;
 const VW = 300;
 const VH = 90;
@@ -12,7 +12,7 @@ const GAP = 2;
 const MAX = Math.max(1, ...BARS.map((v) => Math.abs(v)));
 
 export function AttackMomentum() {
-  // The status word reads from the ONE store — a panel that says LIVE over a halted market is a lie.
+  // The status word reads from the ONE store · a panel that says LIVE over a halted market is a lie.
   const live = useMatchLive(TERMINAL_MATCH_ID);
   const status = live?.status ?? "LIVE";
   const halted = status === "HALTED";
